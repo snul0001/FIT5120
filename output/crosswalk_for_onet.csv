@@ -1,0 +1,1705 @@
+anzsco_code,label_4digit,soc,soc_label,isco_codes,pct_unit_support,broad_group_match
+1111,Chief Executive or Managing Director,11-1011.00,Chief Executives,1120,100.0,True
+1111,Chief Executive or Managing Director,11-1021.00,General and Operations Managers,1120,100.0,True
+1111,Chief Executive or Managing Director,13-1075.00,Labor Relations Specialists,1114,100.0,False
+1111,Chief Executive or Managing Director,33-1012.00,First-Line Supervisors of Police and Detectives,1112,100.0,False
+1112,Corporate General Manager,11-1011.00,Chief Executives,1120,50.0,True
+1112,Corporate General Manager,11-1021.00,General and Operations Managers,1120,50.0,True
+1112,Corporate General Manager,13-1075.00,Labor Relations Specialists,1114,50.0,False
+1112,Corporate General Manager,33-1011.00,First-Line Supervisors of Correctional Officers,0110,50.0,True
+1112,Corporate General Manager,33-1012.00,First-Line Supervisors of Police and Detectives,0110; 1112,50.0,True
+1112,Corporate General Manager,33-3012.00,Correctional Officers and Jailers,0110,50.0,True
+1112,Corporate General Manager,33-3021.00,Detectives and Criminal Investigators,0110,50.0,True
+1112,Corporate General Manager,33-3021.06,Intelligence Analysts,0110,50.0,True
+1112,Corporate General Manager,33-3051.00,Police and Sheriff's Patrol Officers,0110,50.0,True
+1112,Corporate General Manager,47-5032.00,"Explosives Workers, Ordnance Handling Experts, and Blasters",0110,50.0,False
+1113,Local Government Legislator,11-1031.00,Legislators,1111,100.0,True
+1211,Aquaculture Farmer,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",1312; 6221,100.0,True
+1211,Aquaculture Farmer,19-4012.00,Agricultural Technicians,6221,100.0,False
+1211,Aquaculture Farmer,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",1312,100.0,False
+1211,Aquaculture Farmer,45-2093.00,"Farmworkers, Farm, Ranch, and Aquacultural Animals",6221,100.0,True
+1211,Aquaculture Farmer,49-3041.00,Farm Equipment Mechanics and Service Technicians,6221,100.0,False
+1212,Cotton Grower,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",1311; 6112; 6114,90.0,True
+1212,Cotton Grower,17-2021.00,Agricultural Engineers,6111; 6114,80.0,False
+1212,Cotton Grower,19-1031.02,Range Managers,1311,90.0,False
+1212,Cotton Grower,19-4012.00,Agricultural Technicians,6111,80.0,False
+1212,Cotton Grower,19-4012.01,Precision Agriculture Technicians,6111,80.0,False
+1212,Cotton Grower,19-4099.01,Quality Control Analysts,6112,70.0,False
+1212,Cotton Grower,37-1012.00,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",6113,60.0,False
+1212,Cotton Grower,37-2021.00,Pest Control Workers,6112,70.0,False
+1212,Cotton Grower,37-3011.00,Landscaping and Groundskeeping Workers,6113,60.0,False
+1212,Cotton Grower,37-3012.00,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",6112,70.0,False
+1212,Cotton Grower,37-3013.00,Tree Trimmers and Pruners,6112; 6113,70.0,False
+1212,Cotton Grower,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",6111; 6112; 6114,80.0,True
+1212,Cotton Grower,45-2091.00,Agricultural Equipment Operators,6111,80.0,True
+1212,Cotton Grower,45-2092.00,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",6111; 6112; 6113,80.0,True
+1212,Cotton Grower,45-4021.00,Fallers,6112,70.0,True
+1213,Apiarist,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",1311,100.0,True
+1213,Apiarist,19-1031.02,Range Managers,1311,100.0,False
+1213,Apiarist,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",6121,90.9,True
+1213,Apiarist,45-2021.00,Animal Breeders,6121,90.9,True
+1213,Apiarist,45-2093.00,"Farmworkers, Farm, Ranch, and Aquacultural Animals",6121,90.9,True
+1214,Mixed Crop and Livestock Farmer,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",1311; 6114,100.0,True
+1214,Mixed Crop and Livestock Farmer,17-2021.00,Agricultural Engineers,6114,100.0,False
+1214,Mixed Crop and Livestock Farmer,19-1031.02,Range Managers,1311,100.0,False
+1214,Mixed Crop and Livestock Farmer,25-9021.00,Farm and Home Management Educators,6130,100.0,False
+1214,Mixed Crop and Livestock Farmer,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",6114,100.0,True
+1311,Sales and Marketing Manager,11-2032.00,Public Relations Managers,1222,66.7,True
+1321,Corporate Services Manager,11-3013.00,Facilities Managers,1219,100.0,True
+1321,Corporate Services Manager,11-3013.01,Security Managers,1219,100.0,True
+1321,Corporate Services Manager,11-3031.00,Financial Managers,1211,100.0,True
+1321,Corporate Services Manager,11-3031.01,Treasurers and Controllers,1211,100.0,True
+1321,Corporate Services Manager,11-3051.02,Geothermal Production Managers,1219,100.0,True
+1321,Corporate Services Manager,11-3051.03,Biofuels Production Managers,1219,100.0,True
+1321,Corporate Services Manager,11-3051.04,Biomass Power Plant Managers,1219,100.0,True
+1321,Corporate Services Manager,11-3051.06,Hydroelectric Production Managers,1219,100.0,True
+1321,Corporate Services Manager,11-9199.08,Loss Prevention Managers,1219,100.0,True
+1321,Corporate Services Manager,11-9199.09,Wind Energy Operations Managers,1219,100.0,True
+1321,Corporate Services Manager,13-1082.00,Project Management Specialists,1219,100.0,False
+1322,Finance Manager,11-3031.00,Financial Managers,1211,100.0,True
+1322,Finance Manager,11-3031.01,Treasurers and Controllers,1211,100.0,True
+1323,Human Resource Manager,11-3111.00,Compensation and Benefits Managers,1212,100.0,True
+1323,Human Resource Manager,11-3121.00,Human Resources Managers,1212,100.0,True
+1324,Policy and Planning Manager,11-1021.00,General and Operations Managers,1213,100.0,True
+1324,Policy and Planning Manager,11-3061.00,Purchasing Managers,1213,100.0,True
+1324,Policy and Planning Manager,11-9151.00,Social and Community Service Managers,1213,100.0,True
+1324,Policy and Planning Manager,11-9199.02,Compliance Managers,1213,100.0,True
+1324,Policy and Planning Manager,13-1082.00,Project Management Specialists,1213,100.0,False
+1324,Policy and Planning Manager,13-1141.00,"Compensation, Benefits, and Job Analysis Specialists",1213,100.0,False
+1324,Policy and Planning Manager,13-1161.00,Market Research Analysts and Marketing Specialists,1213,100.0,False
+1324,Policy and Planning Manager,15-1299.09,Information Technology Project Managers,1213,100.0,False
+1324,Policy and Planning Manager,19-2041.01,Climate Change Policy Analysts,1213,100.0,False
+1324,Policy and Planning Manager,33-9031.00,Gambling Surveillance Officers and Gambling Investigators,1213,100.0,False
+1324,Policy and Planning Manager,43-3061.00,Procurement Clerks,1213,100.0,False
+1324,Policy and Planning Manager,43-4061.00,"Eligibility Interviewers, Government Programs",1213,100.0,False
+1325,Research and Development Manager,11-9041.00,Architectural and Engineering Managers,1223,100.0,True
+1325,Research and Development Manager,11-9041.01,Biofuels/Biodiesel Technology and Product Development Managers,1223,100.0,True
+1325,Research and Development Manager,11-9121.00,Natural Sciences Managers,1223,100.0,True
+1325,Research and Development Manager,11-9121.01,Clinical Research Coordinators,1223,100.0,True
+1331,Construction Project Manager,11-9021.00,Construction Managers,1323,100.0,True
+1331,Construction Project Manager,47-1011.03,Solar Energy Installation Managers,1323,100.0,False
+1331,Construction Project Manager,47-2031.00,Carpenters,7111,50.0,True
+1331,Construction Project Manager,47-2081.00,Drywall and Ceiling Tile Installers,7111,50.0,True
+1331,Construction Project Manager,47-4031.00,Fence Erectors,7111,50.0,True
+1331,Construction Project Manager,49-9095.00,Manufactured Building and Mobile Home Installers,7111,50.0,True
+1332,Engineering Manager,11-3012.00,Administrative Services Managers,1349,100.0,True
+1332,Engineering Manager,11-9131.00,Postmasters and Mail Superintendents,1349,100.0,True
+1332,Engineering Manager,19-2041.00,"Environmental Scientists and Specialists, Including Health",1349,100.0,False
+1332,Engineering Manager,33-1011.00,First-Line Supervisors of Correctional Officers,1349,100.0,False
+1333,Importer or Exporter,11-3061.00,Purchasing Managers,1324,50.0,True
+1333,Importer or Exporter,11-3071.00,"Transportation, Storage, and Distribution Managers",1324,50.0,True
+1333,Importer or Exporter,11-3071.04,Supply Chain Managers,1324,50.0,True
+1333,Importer or Exporter,41-1011.00,First-Line Supervisors of Retail Sales Workers,1420,50.0,False
+1334,Manufacturer,11-3051.00,Industrial Production Managers,1321,100.0,True
+1334,Manufacturer,11-3051.01,Quality Control Systems Managers,1321,100.0,True
+1336,Supply and Distribution Manager,11-3061.00,Purchasing Managers,1324,100.0,True
+1336,Supply and Distribution Manager,11-3071.00,"Transportation, Storage, and Distribution Managers",1324,100.0,True
+1336,Supply and Distribution Manager,11-3071.04,Supply Chain Managers,1324,100.0,True
+1341,Child Care Centre Manager,11-9031.00,"Education and Childcare Administrators, Preschool and Daycare",1341,100.0,True
+1342,Medical Administrator / Medical Superintendent,11-9111.00,Medical and Health Services Managers,1342; 1343,80.0,True
+1342,Medical Administrator / Medical Superintendent,11-9151.00,Social and Community Service Managers,1344,60.0,True
+1342,Medical Administrator / Medical Superintendent,11-9199.00,"Managers, All Other",1343,60.0,True
+1343,School Principal,11-9032.00,"Education Administrators, Kindergarten through Secondary",1345,100.0,True
+1343,School Principal,11-9033.00,"Education Administrators, Postsecondary",1345,100.0,True
+1344,Faculty Head,11-9032.00,"Education Administrators, Kindergarten through Secondary",1345,100.0,True
+1344,Faculty Head,11-9033.00,"Education Administrators, Postsecondary",1345,100.0,True
+1351,Chief Information Officer,11-3021.00,Computer and Information Systems Managers,1330,100.0,True
+1351,Chief Information Officer,15-1299.09,Information Technology Project Managers,1330,100.0,False
+1391,Commissioned Defence Force Officer,11-3012.00,Administrative Services Managers,1349,66.7,True
+1391,Commissioned Defence Force Officer,11-9131.00,Postmasters and Mail Superintendents,1349,66.7,True
+1391,Commissioned Defence Force Officer,19-2041.00,"Environmental Scientists and Specialists, Including Health",1349,66.7,False
+1391,Commissioned Defence Force Officer,33-1011.00,First-Line Supervisors of Correctional Officers,1349,66.7,False
+1392,Senior Non-commissioned Defence Force Member,33-1011.00,First-Line Supervisors of Correctional Officers,0210,100.0,True
+1392,Senior Non-commissioned Defence Force Member,33-1012.00,First-Line Supervisors of Police and Detectives,0210,100.0,True
+1392,Senior Non-commissioned Defence Force Member,33-3021.06,Intelligence Analysts,0210,100.0,True
+1399,Arts Administrator or Manager,11-3012.00,Administrative Services Managers,1349,83.3,True
+1399,Arts Administrator or Manager,11-9131.00,Postmasters and Mail Superintendents,1349,83.3,True
+1399,Arts Administrator or Manager,19-2041.00,"Environmental Scientists and Specialists, Including Health",1349,83.3,False
+1399,Arts Administrator or Manager,33-1011.00,First-Line Supervisors of Correctional Officers,1349,83.3,False
+1411,Cafe or Restaurant Manager,11-9051.00,Food Service Managers,1412,100.0,True
+1411,Cafe or Restaurant Manager,11-9199.00,"Managers, All Other",5221,100.0,False
+1411,Cafe or Restaurant Manager,35-1012.00,First-Line Supervisors of Food Preparation and Serving Workers,1412,100.0,False
+1412,Caravan Park and Camping Ground Manager,39-1022.00,First-Line Supervisors of Personal Service Workers,1439,100.0,False
+1413,Hotel or Motel Manager,11-9081.00,Lodging Managers,1411,100.0,True
+1414,Licensed Club Manager,39-1022.00,First-Line Supervisors of Personal Service Workers,1439,100.0,False
+1421,Retail Manager (General),11-9199.00,"Managers, All Other",5221,83.3,False
+1421,Retail Manager (General),41-1011.00,First-Line Supervisors of Retail Sales Workers,1420,83.3,False
+1491,Amusement Centre Manager,11-9071.00,Gambling Managers,1431,100.0,True
+1491,Amusement Centre Manager,11-9072.00,"Entertainment and Recreation Managers, Except Gambling",1431,100.0,True
+1491,Amusement Centre Manager,11-9179.01,Fitness and Wellness Coordinators,1431,100.0,True
+1491,Amusement Centre Manager,11-9179.02,Spa Managers,1431,100.0,True
+1492,Call or Contact Centre Manager,11-3013.00,Facilities Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,11-3013.01,Security Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,11-3051.02,Geothermal Production Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,11-3051.03,Biofuels Production Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,11-3051.04,Biomass Power Plant Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,11-3051.06,Hydroelectric Production Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,11-9199.08,Loss Prevention Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,11-9199.09,Wind Energy Operations Managers,1219,50.0,True
+1492,Call or Contact Centre Manager,13-1082.00,Project Management Specialists,1219,50.0,False
+1492,Call or Contact Centre Manager,39-1022.00,First-Line Supervisors of Personal Service Workers,1439,100.0,False
+1493,Conference and Event Organiser,13-1121.00,"Meeting, Convention, and Event Planners",3332,100.0,True
+1494,Fleet Manager,11-3061.00,Purchasing Managers,1324,100.0,True
+1494,Fleet Manager,11-3071.00,"Transportation, Storage, and Distribution Managers",1324,100.0,True
+1494,Fleet Manager,11-3071.04,Supply Chain Managers,1324,100.0,True
+1499,Boarding Kennel or Cattery Operator,39-1022.00,First-Line Supervisors of Personal Service Workers,1439,66.7,False
+2111,Actor,11-9072.00,"Entertainment and Recreation Managers, Except Gambling",2659,50.0,False
+2111,Actor,27-1012.00,Craft Artists,2659,50.0,True
+2111,Actor,27-1013.00,"Fine Artists, Including Painters, Sculptors, and Illustrators",2659,50.0,True
+2111,Actor,27-1019.00,"Artists and Related Workers, All Other",2659,50.0,True
+2111,Actor,27-2011.00,Actors,2655; 2659,50.0,True
+2111,Actor,27-2031.00,Dancers,2659,50.0,True
+2111,Actor,27-2041.00,Music Directors and Composers,2652,50.0,True
+2111,Actor,27-2042.00,Musicians and Singers,2652; 2659,50.0,True
+2111,Actor,27-2091.00,"Disc Jockeys, Except Radio",2652; 2659,50.0,True
+2111,Actor,27-3011.00,Broadcast Announcers and Radio Disc Jockeys,2659,50.0,True
+2111,Actor,27-4012.00,Broadcast Technicians,2659,50.0,True
+2111,Actor,39-1014.00,"First-Line Supervisors of Entertainment and Recreation Workers, Except Gambling Services",2659,50.0,False
+2111,Actor,39-3091.00,Amusement and Recreation Attendants,2659,50.0,False
+2111,Actor,39-7011.00,Tour Guides and Escorts,2659,50.0,False
+2111,Actor,39-9032.00,Recreation Workers,2659,50.0,False
+2111,Actor,41-9012.00,Models,2659,50.0,False
+2112,Composer,27-2041.00,Music Directors and Composers,2652,100.0,True
+2112,Composer,27-2042.00,Musicians and Singers,2652,100.0,True
+2112,Composer,27-2091.00,"Disc Jockeys, Except Radio",2652,100.0,True
+2113,Photographer,27-4021.00,Photographers,3431,100.0,False
+2114,Painter (Visual Arts),27-1013.00,"Fine Artists, Including Painters, Sculptors, and Illustrators",2651,75.0,True
+2121,Artistic Director,27-2012.00,Producers and Directors,2654,50.0,True
+2121,Artistic Director,27-2012.03,Media Programming Directors,2654,50.0,True
+2121,Artistic Director,27-2012.05,Media Technical Directors/Managers,2654,50.0,True
+2121,Artistic Director,27-3011.00,Broadcast Announcers and Radio Disc Jockeys,2656,50.0,True
+2121,Artistic Director,27-4032.00,Film and Video Editors,2654,50.0,True
+2122,Author,27-3042.00,Technical Writers,2641,100.0,True
+2122,Author,27-3043.00,Writers and Authors,2641,100.0,True
+2122,Author,27-3043.05,"Poets, Lyricists and Creative Writers",2641,100.0,True
+2123,"Art Director (Film, Television or Stage)",27-2012.00,Producers and Directors,2654,100.0,True
+2123,"Art Director (Film, Television or Stage)",27-2012.03,Media Programming Directors,2654,100.0,True
+2123,"Art Director (Film, Television or Stage)",27-2012.05,Media Technical Directors/Managers,2654,100.0,True
+2123,"Art Director (Film, Television or Stage)",27-4032.00,Film and Video Editors,2654,100.0,True
+2124,Copywriter,27-3023.00,"News Analysts, Reporters, and Journalists",2642,71.4,True
+2124,Copywriter,27-3041.00,Editors,2642,71.4,True
+2211,Accountant (General),13-2011.00,Accountants and Auditors,2411,100.0,True
+2211,Accountant (General),13-2031.00,Budget Analysts,2411,100.0,True
+2211,Accountant (General),13-2061.00,Financial Examiners,2411,100.0,True
+2211,Accountant (General),13-2082.00,Tax Preparers,2411,100.0,True
+2211,Accountant (General),13-2099.04,"Fraud Examiners, Investigators and Analysts",2411,100.0,True
+2212,Company Secretary,11-3031.00,Financial Managers,1211,50.0,True
+2212,Company Secretary,11-3031.01,Treasurers and Controllers,1211,50.0,True
+2212,Company Secretary,13-2011.00,Accountants and Auditors,2411,50.0,True
+2212,Company Secretary,13-2031.00,Budget Analysts,2411,50.0,True
+2212,Company Secretary,13-2061.00,Financial Examiners,2411,50.0,True
+2212,Company Secretary,13-2082.00,Tax Preparers,2411,50.0,True
+2212,Company Secretary,13-2099.04,"Fraud Examiners, Investigators and Analysts",2411,50.0,True
+2221,Commodities Trader,41-3031.00,"Securities, Commodities, and Financial Services Sales Agents",3311,50.0,False
+2222,Financial Market Dealer,41-3031.00,"Securities, Commodities, and Financial Services Sales Agents",3311,100.0,False
+2223,Financial Investment Adviser,11-3031.03,Investment Fund Managers,2412,100.0,False
+2223,Financial Investment Adviser,13-2052.00,Personal Financial Advisors,2412,100.0,True
+2231,Human Resource Adviser,13-1041.03,Equal Opportunity Representatives and Officers,2423,100.0,True
+2231,Human Resource Adviser,13-1071.00,Human Resources Specialists,2423,100.0,True
+2231,Human Resource Adviser,13-1075.00,Labor Relations Specialists,2423,100.0,True
+2231,Human Resource Adviser,13-1141.00,"Compensation, Benefits, and Job Analysis Specialists",2423,100.0,True
+2231,Human Resource Adviser,21-1012.00,"Educational, Guidance, and Career Counselors and Advisors",2423,100.0,True
+2232,ICT Trainer,11-3131.00,Training and Development Managers,2424,100.0,False
+2232,ICT Trainer,13-1151.00,Training and Development Specialists,2356; 2424,100.0,True
+2232,ICT Trainer,25-1021.00,"Computer Science Teachers, Postsecondary",2356,100.0,True
+2233,Training and Development Professional,11-3131.00,Training and Development Managers,2424,100.0,False
+2233,Training and Development Professional,13-1151.00,Training and Development Specialists,2356; 2424,100.0,True
+2233,Training and Development Professional,25-1021.00,"Computer Science Teachers, Postsecondary",2356,100.0,True
+2241,Actuary,15-2011.00,Actuaries,2120,100.0,True
+2241,Actuary,15-2021.00,Mathematicians,2120,100.0,True
+2241,Actuary,15-2031.00,Operations Research Analysts,2120,100.0,True
+2241,Actuary,15-2041.00,Statisticians,2120,100.0,True
+2241,Actuary,15-2041.01,Biostatisticians,2120,100.0,True
+2241,Actuary,19-3022.00,Survey Researchers,2120,100.0,True
+2242,Archivist,15-1299.03,Document Management Specialists,2621,75.0,True
+2242,Archivist,25-4011.00,Archivists,2621,75.0,True
+2242,Archivist,25-4012.00,Curators,2621,75.0,True
+2243,Economist,19-3011.00,Economists,2631,100.0,True
+2243,Economist,19-3011.01,Environmental Economists,2631,100.0,True
+2244,Intelligence Officer,19-2041.01,Climate Change Policy Analysts,2422,100.0,True
+2244,Intelligence Officer,21-1091.00,Health Education Specialists,2422,100.0,True
+2244,Intelligence Officer,33-3021.06,Intelligence Analysts,2422,100.0,False
+2245,Land Economist,11-9021.00,Construction Managers,1323,50.0,True
+2245,Land Economist,13-1011.00,"Agents and Business Managers of Artists, Performers, and Athletes",3339,50.0,True
+2245,Land Economist,13-1031.00,"Claims Adjusters, Examiners, and Investigators",3315,50.0,True
+2245,Land Economist,13-1032.00,"Insurance Appraisers, Auto Damage",3315,50.0,True
+2245,Land Economist,13-2022.00,Appraisers of Personal and Business Property,3315,50.0,True
+2245,Land Economist,13-2023.00,Appraisers and Assessors of Real Estate,3315,50.0,True
+2245,Land Economist,19-3011.00,Economists,2631,50.0,True
+2245,Land Economist,19-3011.01,Environmental Economists,2631,50.0,True
+2245,Land Economist,23-2093.00,"Title Examiners, Abstractors, and Searchers",3315,50.0,False
+2245,Land Economist,41-3011.00,Advertising Sales Agents,3339,50.0,False
+2245,Land Economist,47-1011.03,Solar Energy Installation Managers,1323,50.0,False
+2246,Librarian,11-3012.00,Administrative Services Managers,1349,100.0,True
+2246,Librarian,11-9131.00,Postmasters and Mail Superintendents,1349,100.0,True
+2246,Librarian,19-2041.00,"Environmental Scientists and Specialists, Including Health",1349,100.0,False
+2246,Librarian,25-4022.00,Librarians and Media Collections Specialists,2622,100.0,True
+2246,Librarian,33-1011.00,First-Line Supervisors of Correctional Officers,1349,100.0,False
+2247,Management Consultant,13-1051.00,Cost Estimators,2421,100.0,True
+2247,Management Consultant,13-1111.00,Management Analysts,2421,100.0,True
+2247,Management Consultant,15-2051.01,Business Intelligence Analysts,2421,100.0,True
+2251,Advertising Specialist,13-1161.00,Market Research Analysts and Marketing Specialists,2431,100.0,True
+2251,Advertising Specialist,13-1199.06,Online Merchants,2431,100.0,True
+2252,ICT Account Manager,11-9199.00,"Managers, All Other",2434,100.0,False
+2252,ICT Account Manager,41-3091.00,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",2434,100.0,False
+2252,ICT Account Manager,41-4011.00,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",2434,100.0,False
+2252,ICT Account Manager,41-4012.00,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",2434,100.0,False
+2252,ICT Account Manager,41-9031.00,Sales Engineers,2434,100.0,False
+2253,Public Relations Professional,11-2033.00,Fundraising Managers,2432,100.0,False
+2253,Public Relations Professional,13-1131.00,Fundraisers,2432,100.0,True
+2253,Public Relations Professional,27-3031.00,Public Relations Specialists,2432,100.0,True
+2254,Sales Representative (Industrial Products),41-4011.00,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",2433,100.0,False
+2254,Sales Representative (Industrial Products),41-4011.07,Solar Sales Representatives and Assessors,2433,100.0,False
+2254,Sales Representative (Industrial Products),41-9031.00,Sales Engineers,2433,100.0,False
+2311,Aeroplane Pilot,53-2011.00,"Airline Pilots, Copilots, and Flight Engineers",3153,80.0,False
+2311,Aeroplane Pilot,53-2012.00,Commercial Pilots,3153,80.0,False
+2312,Master Fisher,53-5021.00,"Captains, Mates, and Pilots of Water Vessels",3152,50.0,False
+2321,Architect,17-1011.00,"Architects, Except Landscape and Naval",2161,50.0,True
+2321,Architect,17-1012.00,Landscape Architects,2162,50.0,True
+2322,Surveyor,15-1299.02,Geographic Information Systems Technologists and Technicians,2165,100.0,True
+2322,Surveyor,17-1021.00,Cartographers and Photogrammetrists,2165,100.0,True
+2322,Surveyor,17-1022.00,Surveyors,2165,100.0,True
+2322,Surveyor,17-1022.01,Geodetic Surveyors,2165,100.0,True
+2323,Fashion Designer,27-1021.00,Commercial and Industrial Designers,2163,100.0,True
+2323,Fashion Designer,27-1022.00,Fashion Designers,2163,100.0,True
+2324,Graphic Designer,15-1255.01,Video Game Designers,2166,100.0,True
+2324,Graphic Designer,27-1011.00,Art Directors,2166,100.0,True
+2324,Graphic Designer,27-1014.00,Special Effects Artists and Animators,2166,100.0,True
+2324,Graphic Designer,27-1024.00,Graphic Designers,2166,100.0,True
+2324,Graphic Designer,27-2012.04,Talent Directors,2166,100.0,True
+2324,Graphic Designer,43-9031.00,Desktop Publishers,2166,100.0,False
+2325,Interior Designer,17-1011.00,"Architects, Except Landscape and Naval",2161,100.0,True
+2325,Interior Designer,27-1025.00,Interior Designers,3432,100.0,False
+2325,Interior Designer,27-1026.00,Merchandise Displayers and Window Trimmers,3432,100.0,False
+2325,Interior Designer,27-1027.00,Set and Exhibit Designers,3432,100.0,False
+2326,Urban and Regional Planner,17-1012.00,Landscape Architects,2162,100.0,True
+2326,Urban and Regional Planner,19-3099.01,Transportation Planners,2164,100.0,True
+2331,Chemical Engineer,11-9199.10,Wind Energy Development Managers,2149,50.0,False
+2331,Chemical Engineer,13-1081.01,Logistics Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2031.00,Bioengineers and Biomedical Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2041.00,Chemical Engineers,2145,50.0,True
+2331,Chemical Engineer,17-2111.00,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",2149,50.0,True
+2331,Chemical Engineer,17-2111.02,Fire-Prevention and Protection Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2112.01,Human Factors Engineers and Ergonomists,2149,50.0,True
+2331,Chemical Engineer,17-2112.02,Validation Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2121.00,Marine Engineers and Naval Architects,2149,50.0,True
+2331,Chemical Engineer,17-2131.00,Materials Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2141.01,Fuel Cell Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2161.00,Nuclear Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2171.00,Petroleum Engineers,2146,50.0,True
+2331,Chemical Engineer,17-2199.03,"Energy Engineers, Except Wind and Solar",2149,50.0,True
+2331,Chemical Engineer,17-2199.07,Photonics Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2199.08,Robotics Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2199.09,Nanosystems Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2199.10,Wind Energy Engineers,2149,50.0,True
+2331,Chemical Engineer,17-2199.11,Solar Energy Systems Engineers,2149,50.0,True
+2331,Chemical Engineer,19-1012.00,Food Scientists and Technologists,2145,50.0,True
+2331,Chemical Engineer,19-2032.00,Materials Scientists,2149,50.0,True
+2331,Chemical Engineer,19-5011.00,Occupational Health and Safety Specialists,2149,50.0,True
+2332,Civil Engineer,17-2051.00,Civil Engineers,2142,80.0,True
+2332,Civil Engineer,17-2051.01,Transportation Engineers,2142,80.0,True
+2332,Civil Engineer,17-2051.02,Water/Wastewater Engineers,2142,80.0,True
+2332,Civil Engineer,17-2151.00,"Mining and Geological Engineers, Including Mining Safety Engineers",2142,80.0,True
+2333,Electrical Engineer,17-2071.00,Electrical Engineers,2151,100.0,True
+2334,Electronics Engineer,17-2061.00,Computer Hardware Engineers,2152,100.0,True
+2334,Electronics Engineer,17-2072.00,"Electronics Engineers, Except Computer",2152,100.0,True
+2334,Electronics Engineer,17-2072.01,Radio Frequency Identification Device Specialists,2152,100.0,True
+2334,Electronics Engineer,17-2199.06,Microsystems Engineers,2152,100.0,True
+2335,Industrial Engineer,13-1081.00,Logisticians,2141,66.7,True
+2335,Industrial Engineer,13-1081.02,Logistics Analysts,2141,66.7,True
+2335,Industrial Engineer,17-2112.00,Industrial Engineers,2141,66.7,True
+2335,Industrial Engineer,17-2112.03,Manufacturing Engineers,2141,66.7,True
+2336,Mining Engineer (excluding Petroleum),17-2171.00,Petroleum Engineers,2146,100.0,True
+2339,Aeronautical Engineer,11-9199.10,Wind Energy Development Managers,2149,57.1,False
+2339,Aeronautical Engineer,13-1081.01,Logistics Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2031.00,Bioengineers and Biomedical Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2111.00,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",2149,57.1,True
+2339,Aeronautical Engineer,17-2111.02,Fire-Prevention and Protection Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2112.01,Human Factors Engineers and Ergonomists,2149,57.1,True
+2339,Aeronautical Engineer,17-2112.02,Validation Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2121.00,Marine Engineers and Naval Architects,2149,57.1,True
+2339,Aeronautical Engineer,17-2131.00,Materials Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2141.01,Fuel Cell Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2161.00,Nuclear Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2199.03,"Energy Engineers, Except Wind and Solar",2149,57.1,True
+2339,Aeronautical Engineer,17-2199.07,Photonics Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2199.08,Robotics Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2199.09,Nanosystems Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2199.10,Wind Energy Engineers,2149,57.1,True
+2339,Aeronautical Engineer,17-2199.11,Solar Energy Systems Engineers,2149,57.1,True
+2339,Aeronautical Engineer,19-2032.00,Materials Scientists,2149,57.1,True
+2339,Aeronautical Engineer,19-5011.00,Occupational Health and Safety Specialists,2149,57.1,True
+2341,Agricultural Consultant,19-4012.01,Precision Agriculture Technicians,2132,100.0,True
+2342,Chemist,17-2041.00,Chemical Engineers,2145,66.7,True
+2342,Chemist,19-1012.00,Food Scientists and Technologists,2145,66.7,True
+2343,Conservation Officer,13-1199.05,Sustainability Specialists,2133,100.0,True
+2343,Conservation Officer,19-1031.00,Conservation Scientists,2133,100.0,True
+2343,Conservation Officer,19-2041.00,"Environmental Scientists and Specialists, Including Health",2133,100.0,True
+2343,Conservation Officer,19-2041.02,Environmental Restoration Planners,2133,100.0,True
+2343,Conservation Officer,19-2041.03,Industrial Ecologists,2133,100.0,True
+2343,Conservation Officer,33-3031.00,Fish and Game Wardens,2133,100.0,False
+2344,Geologist,19-2042.00,"Geoscientists, Except Hydrologists and Geographers",2114,100.0,True
+2344,Geologist,19-2043.00,Hydrologists,2114,100.0,True
+2345,Life Scientist (General),19-1011.00,Animal Scientists,2131,100.0,True
+2345,Life Scientist (General),19-1013.00,Soil and Plant Scientists,2131,100.0,True
+2345,Life Scientist (General),19-1021.00,Biochemists and Biophysicists,2131,100.0,True
+2345,Life Scientist (General),19-1022.00,Microbiologists,2131,100.0,True
+2345,Life Scientist (General),19-1023.00,Zoologists and Wildlife Biologists,2131,100.0,True
+2345,Life Scientist (General),19-1029.01,Bioinformatics Scientists,2131,100.0,True
+2345,Life Scientist (General),19-1029.02,Molecular and Cellular Biologists,2131,100.0,True
+2345,Life Scientist (General),19-1029.03,Geneticists,2131,100.0,True
+2345,Life Scientist (General),19-1029.04,Biologists,2131,100.0,True
+2345,Life Scientist (General),19-1041.00,Epidemiologists,2131,100.0,True
+2345,Life Scientist (General),19-1042.00,"Medical Scientists, Except Epidemiologists",2131,100.0,True
+2345,Life Scientist (General),29-9092.00,Genetic Counselors,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1011.00,Animal Scientists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1013.00,Soil and Plant Scientists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1021.00,Biochemists and Biophysicists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1022.00,Microbiologists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1023.00,Zoologists and Wildlife Biologists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1029.01,Bioinformatics Scientists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1029.02,Molecular and Cellular Biologists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1029.03,Geneticists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1029.04,Biologists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1041.00,Epidemiologists,2131,100.0,True
+2346,Medical Laboratory Scientist,19-1042.00,"Medical Scientists, Except Epidemiologists",2131,100.0,True
+2346,Medical Laboratory Scientist,29-2011.00,Medical and Clinical Laboratory Technologists,3212,100.0,True
+2346,Medical Laboratory Scientist,29-2011.01,Cytogenetic Technologists,3212,100.0,True
+2346,Medical Laboratory Scientist,29-2011.02,Cytotechnologists,3212,100.0,True
+2346,Medical Laboratory Scientist,29-2011.04,Histotechnologists,3212,100.0,True
+2346,Medical Laboratory Scientist,29-2012.00,Medical and Clinical Laboratory Technicians,3212,100.0,True
+2346,Medical Laboratory Scientist,29-2012.01,Histology Technicians,3212,100.0,True
+2346,Medical Laboratory Scientist,29-9092.00,Genetic Counselors,2131,100.0,True
+2347,Veterinarian,29-1131.00,Veterinarians,2250,100.0,True
+2411,Early Childhood (Pre-primary School) Teacher,11-9031.00,"Education and Childcare Administrators, Preschool and Daycare",1341,50.0,True
+2411,Early Childhood (Pre-primary School) Teacher,25-2011.00,"Preschool Teachers, Except Special Education",2342,100.0,True
+2411,Early Childhood (Pre-primary School) Teacher,25-2012.00,"Kindergarten Teachers, Except Special Education",2342,100.0,True
+2412,Kaiako Kura Kaupapa Māori (Māori-medium Primary School Teacher),25-2021.00,"Elementary School Teachers, Except Special Education",2341,100.0,True
+2412,Kaiako Kura Kaupapa Māori (Māori-medium Primary School Teacher),25-2022.00,"Middle School Teachers, Except Special and Career/Technical Education",2330,100.0,True
+2412,Kaiako Kura Kaupapa Māori (Māori-medium Primary School Teacher),25-2023.00,"Career/Technical Education Teachers, Middle School",2330,100.0,True
+2412,Kaiako Kura Kaupapa Māori (Māori-medium Primary School Teacher),25-2031.00,"Secondary School Teachers, Except Special and Career/Technical Education",2330,100.0,True
+2413,Middle School Teacher / Intermediate School Teacher,25-2022.00,"Middle School Teachers, Except Special and Career/Technical Education",2330,100.0,True
+2413,Middle School Teacher / Intermediate School Teacher,25-2023.00,"Career/Technical Education Teachers, Middle School",2330,100.0,True
+2413,Middle School Teacher / Intermediate School Teacher,25-2031.00,"Secondary School Teachers, Except Special and Career/Technical Education",2330,100.0,True
+2414,Secondary School Teacher,25-2021.00,"Elementary School Teachers, Except Special Education",2341,100.0,True
+2414,Secondary School Teacher,25-2022.00,"Middle School Teachers, Except Special and Career/Technical Education",2330,100.0,True
+2414,Secondary School Teacher,25-2023.00,"Career/Technical Education Teachers, Middle School",2330,100.0,True
+2414,Secondary School Teacher,25-2031.00,"Secondary School Teachers, Except Special and Career/Technical Education",2330,100.0,True
+2415,Special Needs Teacher,25-2051.00,"Special Education Teachers, Preschool",2352,100.0,True
+2415,Special Needs Teacher,25-2055.00,"Special Education Teachers, Kindergarten",2352,100.0,True
+2415,Special Needs Teacher,25-2056.00,"Special Education Teachers, Elementary School",2352,100.0,True
+2415,Special Needs Teacher,25-2057.00,"Special Education Teachers, Middle School",2352,100.0,True
+2415,Special Needs Teacher,25-2058.00,"Special Education Teachers, Secondary School",2352,100.0,True
+2415,Special Needs Teacher,25-2059.01,Adapted Physical Education Specialists,2352,100.0,True
+2415,Special Needs Teacher,25-3011.00,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",2352,100.0,True
+2415,Special Needs Teacher,25-3031.00,"Substitute Teachers, Short-Term",2359,50.0,True
+2415,Special Needs Teacher,25-3041.00,Tutors,2359,50.0,True
+2421,University Lecturer,19-4061.00,Social Science Research Assistants,2310,100.0,True
+2421,University Lecturer,25-1011.00,"Business Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1021.00,"Computer Science Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1022.00,"Mathematical Science Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1031.00,"Architecture Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1032.00,"Engineering Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1041.00,"Agricultural Sciences Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1042.00,"Biological Science Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1043.00,"Forestry and Conservation Science Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1051.00,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1052.00,"Chemistry Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1053.00,"Environmental Science Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1054.00,"Physics Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1061.00,"Anthropology and Archeology Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1062.00,"Area, Ethnic, and Cultural Studies Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1063.00,"Economics Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1064.00,"Geography Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1065.00,"Political Science Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1066.00,"Psychology Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1067.00,"Sociology Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1071.00,"Health Specialties Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1072.00,"Nursing Instructors and Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1081.00,"Education Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1082.00,"Library Science Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1111.00,"Criminal Justice and Law Enforcement Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1112.00,"Law Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1113.00,"Social Work Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1121.00,"Art, Drama, and Music Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1122.00,"Communications Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1123.00,"English Language and Literature Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1124.00,"Foreign Language and Literature Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1125.00,"History Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1126.00,"Philosophy and Religion Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1192.00,"Family and Consumer Sciences Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-1193.00,"Recreation and Fitness Studies Teachers, Postsecondary",2310,100.0,True
+2421,University Lecturer,25-9044.00,"Teaching Assistants, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,11-3131.00,Training and Development Managers,2424,100.0,False
+2422,Vocational Education Teacher / Polytechnic Teacher,13-1151.00,Training and Development Specialists,2356; 2424,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,19-4061.00,Social Science Research Assistants,2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1011.00,"Business Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1021.00,"Computer Science Teachers, Postsecondary",2310; 2356,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1022.00,"Mathematical Science Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1031.00,"Architecture Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1032.00,"Engineering Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1041.00,"Agricultural Sciences Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1042.00,"Biological Science Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1043.00,"Forestry and Conservation Science Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1051.00,"Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1052.00,"Chemistry Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1053.00,"Environmental Science Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1054.00,"Physics Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1061.00,"Anthropology and Archeology Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1062.00,"Area, Ethnic, and Cultural Studies Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1063.00,"Economics Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1064.00,"Geography Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1065.00,"Political Science Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1066.00,"Psychology Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1067.00,"Sociology Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1071.00,"Health Specialties Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1072.00,"Nursing Instructors and Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1081.00,"Education Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1082.00,"Library Science Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1111.00,"Criminal Justice and Law Enforcement Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1112.00,"Law Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1113.00,"Social Work Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1121.00,"Art, Drama, and Music Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1122.00,"Communications Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1123.00,"English Language and Literature Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1124.00,"Foreign Language and Literature Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1125.00,"History Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1126.00,"Philosophy and Religion Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1192.00,"Family and Consumer Sciences Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1193.00,"Recreation and Fitness Studies Teachers, Postsecondary",2310,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-1194.00,"Career/Technical Education Teachers, Postsecondary",2320,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-2032.00,"Career/Technical Education Teachers, Secondary School",2320,100.0,True
+2422,Vocational Education Teacher / Polytechnic Teacher,25-9044.00,"Teaching Assistants, Postsecondary",2310,100.0,True
+2491,Education Adviser,25-9031.00,Instructional Coordinators,2351,100.0,True
+2492,Art Teacher (Private Tuition),11-9039.00,"Education Administrators, All Other",2355,60.0,False
+2492,Art Teacher (Private Tuition),25-1121.00,"Art, Drama, and Music Teachers, Postsecondary",2355,60.0,True
+2492,Art Teacher (Private Tuition),25-3099.00,"Teachers and Instructors, All Other",2355,60.0,True
+2492,Art Teacher (Private Tuition),27-2031.00,Dancers,2355,60.0,True
+2492,Art Teacher (Private Tuition),27-4021.00,Photographers,2355,60.0,True
+2493,Teacher of English to Speakers of Other Languages,25-1123.00,"English Language and Literature Teachers, Postsecondary",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-1124.00,"Foreign Language and Literature Teachers, Postsecondary",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-2021.00,"Elementary School Teachers, Except Special Education",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-2022.00,"Middle School Teachers, Except Special and Career/Technical Education",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-2023.00,"Career/Technical Education Teachers, Middle School",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-2051.00,"Special Education Teachers, Preschool",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-2057.00,"Special Education Teachers, Middle School",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-2058.00,"Special Education Teachers, Secondary School",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,25-3011.00,"Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",2353,100.0,True
+2493,Teacher of English to Speakers of Other Languages,29-1127.00,Speech-Language Pathologists,2353,100.0,True
+2511,Dietitian,29-1031.00,Dietitians and Nutritionists,2265,100.0,True
+2512,Medical Diagnostic Radiographer,29-1124.00,Radiation Therapists,3211,100.0,True
+2512,Medical Diagnostic Radiographer,29-2032.00,Diagnostic Medical Sonographers,3211,100.0,True
+2512,Medical Diagnostic Radiographer,29-2034.00,Radiologic Technologists and Technicians,3211,100.0,True
+2512,Medical Diagnostic Radiographer,29-2035.00,Magnetic Resonance Imaging Technologists,3211,100.0,True
+2512,Medical Diagnostic Radiographer,29-2036.00,Medical Dosimetrists,3211,100.0,True
+2512,Medical Diagnostic Radiographer,29-2099.01,Neurodiagnostic Technologists,3211,100.0,True
+2512,Medical Diagnostic Radiographer,31-9099.02,Endoscopy Technicians,3211,100.0,True
+2513,Environmental Health Officer,11-9161.00,Emergency Management Directors,2263,100.0,False
+2513,Environmental Health Officer,11-9199.11,Brownfield Redevelopment Specialists and Site Managers,2263,100.0,False
+2513,Environmental Health Officer,13-1041.01,Environmental Compliance Inspectors,3257,50.0,True
+2513,Environmental Health Officer,19-5011.00,Occupational Health and Safety Specialists,2263,100.0,True
+2513,Environmental Health Officer,19-5012.00,Occupational Health and Safety Technicians,3257,50.0,True
+2514,Optometrist,29-1041.00,Optometrists,2267,100.0,True
+2514,Optometrist,29-1299.02,Orthoptists,2267,100.0,True
+2515,Hospital Pharmacist,29-1051.00,Pharmacists,2262,66.7,True
+2521,Chiropractor,29-1011.00,Chiropractors,2269,100.0,True
+2521,Chiropractor,29-1081.00,Podiatrists,2269,100.0,True
+2521,Chiropractor,29-1122.00,Occupational Therapists,2269,100.0,True
+2521,Chiropractor,29-1125.00,Recreational Therapists,2269,100.0,True
+2521,Chiropractor,29-1129.01,Art Therapists,2269,100.0,True
+2521,Chiropractor,29-1129.02,Music Therapists,2269,100.0,True
+2521,Chiropractor,29-1224.00,Radiologists,2269,100.0,True
+2521,Chiropractor,29-2033.00,Nuclear Medicine Technologists,2269,100.0,True
+2521,Chiropractor,29-9091.00,Athletic Trainers,2269,100.0,True
+2521,Chiropractor,31-2011.00,Occupational Therapy Assistants,2269,100.0,False
+2521,Chiropractor,31-2012.00,Occupational Therapy Aides,2269,100.0,False
+2522,Acupuncturist,29-1011.00,Chiropractors,2269,50.0,True
+2522,Acupuncturist,29-1081.00,Podiatrists,2269,50.0,True
+2522,Acupuncturist,29-1122.00,Occupational Therapists,2269,50.0,True
+2522,Acupuncturist,29-1125.00,Recreational Therapists,2269,50.0,True
+2522,Acupuncturist,29-1129.01,Art Therapists,2269,50.0,True
+2522,Acupuncturist,29-1129.02,Music Therapists,2269,50.0,True
+2522,Acupuncturist,29-1224.00,Radiologists,2269,50.0,True
+2522,Acupuncturist,29-1291.00,Acupuncturists,2230; 3230,100.0,True
+2522,Acupuncturist,29-1299.01,Naturopathic Physicians,2230,100.0,True
+2522,Acupuncturist,29-2033.00,Nuclear Medicine Technologists,2269,50.0,True
+2522,Acupuncturist,29-9091.00,Athletic Trainers,2269,50.0,True
+2522,Acupuncturist,31-2011.00,Occupational Therapy Assistants,2269,50.0,False
+2522,Acupuncturist,31-2012.00,Occupational Therapy Aides,2269,50.0,False
+2523,Dental Specialist,29-1021.00,"Dentists, General",2261,100.0,True
+2523,Dental Specialist,29-1022.00,Oral and Maxillofacial Surgeons,2261,100.0,True
+2523,Dental Specialist,29-1023.00,Orthodontists,2261,100.0,True
+2524,Occupational Therapist,29-1011.00,Chiropractors,2269,100.0,True
+2524,Occupational Therapist,29-1081.00,Podiatrists,2269,100.0,True
+2524,Occupational Therapist,29-1122.00,Occupational Therapists,2269,100.0,True
+2524,Occupational Therapist,29-1125.00,Recreational Therapists,2269,100.0,True
+2524,Occupational Therapist,29-1129.01,Art Therapists,2269,100.0,True
+2524,Occupational Therapist,29-1129.02,Music Therapists,2269,100.0,True
+2524,Occupational Therapist,29-1224.00,Radiologists,2269,100.0,True
+2524,Occupational Therapist,29-2033.00,Nuclear Medicine Technologists,2269,100.0,True
+2524,Occupational Therapist,29-9091.00,Athletic Trainers,2269,100.0,True
+2524,Occupational Therapist,31-2011.00,Occupational Therapy Assistants,2269,100.0,False
+2524,Occupational Therapist,31-2012.00,Occupational Therapy Aides,2269,100.0,False
+2525,Physiotherapist,29-1123.00,Physical Therapists,2264,100.0,True
+2526,Podiatrist,29-1011.00,Chiropractors,2269,100.0,True
+2526,Podiatrist,29-1081.00,Podiatrists,2269,100.0,True
+2526,Podiatrist,29-1122.00,Occupational Therapists,2269,100.0,True
+2526,Podiatrist,29-1125.00,Recreational Therapists,2269,100.0,True
+2526,Podiatrist,29-1129.01,Art Therapists,2269,100.0,True
+2526,Podiatrist,29-1129.02,Music Therapists,2269,100.0,True
+2526,Podiatrist,29-1224.00,Radiologists,2269,100.0,True
+2526,Podiatrist,29-2033.00,Nuclear Medicine Technologists,2269,100.0,True
+2526,Podiatrist,29-9091.00,Athletic Trainers,2269,100.0,True
+2526,Podiatrist,31-2011.00,Occupational Therapy Assistants,2269,100.0,False
+2526,Podiatrist,31-2012.00,Occupational Therapy Aides,2269,100.0,False
+2527,Audiologist,29-1127.00,Speech-Language Pathologists,2266,100.0,True
+2527,Audiologist,29-1181.00,Audiologists,2266,100.0,True
+2531,General Practitioner,29-1215.00,Family Medicine Physicians,2211,100.0,True
+2532,Anaesthetist,29-1211.00,Anesthesiologists,2212,100.0,True
+2532,Anaesthetist,29-1212.00,Cardiologists,2212,100.0,True
+2532,Anaesthetist,29-1213.00,Dermatologists,2212,100.0,True
+2532,Anaesthetist,29-1214.00,Emergency Medicine Physicians,2212,100.0,True
+2532,Anaesthetist,29-1216.00,General Internal Medicine Physicians,2212,100.0,True
+2532,Anaesthetist,29-1217.00,Neurologists,2212,100.0,True
+2532,Anaesthetist,29-1218.00,Obstetricians and Gynecologists,2212,100.0,True
+2532,Anaesthetist,29-1221.00,"Pediatricians, General",2212,100.0,True
+2532,Anaesthetist,29-1222.00,"Physicians, Pathologists",2212,100.0,True
+2532,Anaesthetist,29-1223.00,Psychiatrists,2212,100.0,True
+2532,Anaesthetist,29-1229.01,Allergists and Immunologists,2212,100.0,True
+2532,Anaesthetist,29-1229.02,Hospitalists,2212,100.0,True
+2532,Anaesthetist,29-1229.03,Urologists,2212,100.0,True
+2532,Anaesthetist,29-1229.04,Physical Medicine and Rehabilitation Physicians,2212,100.0,True
+2532,Anaesthetist,29-1229.05,Preventive Medicine Physicians,2212,100.0,True
+2532,Anaesthetist,29-1229.06,Sports Medicine Physicians,2212,100.0,True
+2532,Anaesthetist,29-1241.00,"Ophthalmologists, Except Pediatric",2212,100.0,True
+2532,Anaesthetist,29-1242.00,"Orthopedic Surgeons, Except Pediatric",2212,100.0,True
+2532,Anaesthetist,29-1243.00,Pediatric Surgeons,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1211.00,Anesthesiologists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1212.00,Cardiologists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1213.00,Dermatologists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1214.00,Emergency Medicine Physicians,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1216.00,General Internal Medicine Physicians,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1217.00,Neurologists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1218.00,Obstetricians and Gynecologists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1221.00,"Pediatricians, General",2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1222.00,"Physicians, Pathologists",2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1223.00,Psychiatrists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1229.01,Allergists and Immunologists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1229.02,Hospitalists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1229.03,Urologists,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1229.04,Physical Medicine and Rehabilitation Physicians,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1229.05,Preventive Medicine Physicians,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1229.06,Sports Medicine Physicians,2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1241.00,"Ophthalmologists, Except Pediatric",2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1242.00,"Orthopedic Surgeons, Except Pediatric",2212,100.0,True
+2533,Specialist Physician (General Medicine),29-1243.00,Pediatric Surgeons,2212,100.0,True
+2534,Psychiatrist,29-1211.00,Anesthesiologists,2212,100.0,True
+2534,Psychiatrist,29-1212.00,Cardiologists,2212,100.0,True
+2534,Psychiatrist,29-1213.00,Dermatologists,2212,100.0,True
+2534,Psychiatrist,29-1214.00,Emergency Medicine Physicians,2212,100.0,True
+2534,Psychiatrist,29-1216.00,General Internal Medicine Physicians,2212,100.0,True
+2534,Psychiatrist,29-1217.00,Neurologists,2212,100.0,True
+2534,Psychiatrist,29-1218.00,Obstetricians and Gynecologists,2212,100.0,True
+2534,Psychiatrist,29-1221.00,"Pediatricians, General",2212,100.0,True
+2534,Psychiatrist,29-1222.00,"Physicians, Pathologists",2212,100.0,True
+2534,Psychiatrist,29-1223.00,Psychiatrists,2212,100.0,True
+2534,Psychiatrist,29-1229.01,Allergists and Immunologists,2212,100.0,True
+2534,Psychiatrist,29-1229.02,Hospitalists,2212,100.0,True
+2534,Psychiatrist,29-1229.03,Urologists,2212,100.0,True
+2534,Psychiatrist,29-1229.04,Physical Medicine and Rehabilitation Physicians,2212,100.0,True
+2534,Psychiatrist,29-1229.05,Preventive Medicine Physicians,2212,100.0,True
+2534,Psychiatrist,29-1229.06,Sports Medicine Physicians,2212,100.0,True
+2534,Psychiatrist,29-1241.00,"Ophthalmologists, Except Pediatric",2212,100.0,True
+2534,Psychiatrist,29-1242.00,"Orthopedic Surgeons, Except Pediatric",2212,100.0,True
+2534,Psychiatrist,29-1243.00,Pediatric Surgeons,2212,100.0,True
+2535,Surgeon (General),29-1211.00,Anesthesiologists,2212,100.0,True
+2535,Surgeon (General),29-1212.00,Cardiologists,2212,100.0,True
+2535,Surgeon (General),29-1213.00,Dermatologists,2212,100.0,True
+2535,Surgeon (General),29-1214.00,Emergency Medicine Physicians,2212,100.0,True
+2535,Surgeon (General),29-1216.00,General Internal Medicine Physicians,2212,100.0,True
+2535,Surgeon (General),29-1217.00,Neurologists,2212,100.0,True
+2535,Surgeon (General),29-1218.00,Obstetricians and Gynecologists,2212,100.0,True
+2535,Surgeon (General),29-1221.00,"Pediatricians, General",2212,100.0,True
+2535,Surgeon (General),29-1222.00,"Physicians, Pathologists",2212,100.0,True
+2535,Surgeon (General),29-1223.00,Psychiatrists,2212,100.0,True
+2535,Surgeon (General),29-1229.01,Allergists and Immunologists,2212,100.0,True
+2535,Surgeon (General),29-1229.02,Hospitalists,2212,100.0,True
+2535,Surgeon (General),29-1229.03,Urologists,2212,100.0,True
+2535,Surgeon (General),29-1229.04,Physical Medicine and Rehabilitation Physicians,2212,100.0,True
+2535,Surgeon (General),29-1229.05,Preventive Medicine Physicians,2212,100.0,True
+2535,Surgeon (General),29-1229.06,Sports Medicine Physicians,2212,100.0,True
+2535,Surgeon (General),29-1241.00,"Ophthalmologists, Except Pediatric",2212,100.0,True
+2535,Surgeon (General),29-1242.00,"Orthopedic Surgeons, Except Pediatric",2212,100.0,True
+2535,Surgeon (General),29-1243.00,Pediatric Surgeons,2212,100.0,True
+2539,Dermatologist,29-1211.00,Anesthesiologists,2212,100.0,True
+2539,Dermatologist,29-1212.00,Cardiologists,2212,100.0,True
+2539,Dermatologist,29-1213.00,Dermatologists,2212,100.0,True
+2539,Dermatologist,29-1214.00,Emergency Medicine Physicians,2212,100.0,True
+2539,Dermatologist,29-1216.00,General Internal Medicine Physicians,2212,100.0,True
+2539,Dermatologist,29-1217.00,Neurologists,2212,100.0,True
+2539,Dermatologist,29-1218.00,Obstetricians and Gynecologists,2212,100.0,True
+2539,Dermatologist,29-1221.00,"Pediatricians, General",2212,100.0,True
+2539,Dermatologist,29-1222.00,"Physicians, Pathologists",2212,100.0,True
+2539,Dermatologist,29-1223.00,Psychiatrists,2212,100.0,True
+2539,Dermatologist,29-1229.01,Allergists and Immunologists,2212,100.0,True
+2539,Dermatologist,29-1229.02,Hospitalists,2212,100.0,True
+2539,Dermatologist,29-1229.03,Urologists,2212,100.0,True
+2539,Dermatologist,29-1229.04,Physical Medicine and Rehabilitation Physicians,2212,100.0,True
+2539,Dermatologist,29-1229.05,Preventive Medicine Physicians,2212,100.0,True
+2539,Dermatologist,29-1229.06,Sports Medicine Physicians,2212,100.0,True
+2539,Dermatologist,29-1241.00,"Ophthalmologists, Except Pediatric",2212,100.0,True
+2539,Dermatologist,29-1242.00,"Orthopedic Surgeons, Except Pediatric",2212,100.0,True
+2539,Dermatologist,29-1243.00,Pediatric Surgeons,2212,100.0,True
+2541,Midwife,29-1161.00,Nurse Midwives,2222,100.0,True
+2541,Midwife,29-9099.01,Midwives,2222,100.0,True
+2542,Nurse Educator,29-1141.00,Registered Nurses,2221,100.0,True
+2542,Nurse Educator,29-1141.01,Acute Care Nurses,2221,100.0,True
+2542,Nurse Educator,29-1141.02,Advanced Practice Psychiatric Nurses,2221,100.0,True
+2542,Nurse Educator,29-1141.03,Critical Care Nurses,2221,100.0,True
+2542,Nurse Educator,29-1141.04,Clinical Nurse Specialists,2221,100.0,True
+2542,Nurse Educator,29-1171.00,Nurse Practitioners,2221,100.0,True
+2543,Nurse Manager,11-9111.00,Medical and Health Services Managers,1343,100.0,True
+2543,Nurse Manager,11-9199.00,"Managers, All Other",1343,100.0,True
+2543,Nurse Manager,29-1141.00,Registered Nurses,2221,100.0,True
+2543,Nurse Manager,29-1141.01,Acute Care Nurses,2221,100.0,True
+2543,Nurse Manager,29-1141.02,Advanced Practice Psychiatric Nurses,2221,100.0,True
+2543,Nurse Manager,29-1141.03,Critical Care Nurses,2221,100.0,True
+2543,Nurse Manager,29-1141.04,Clinical Nurse Specialists,2221,100.0,True
+2543,Nurse Manager,29-1171.00,Nurse Practitioners,2221,100.0,True
+2544,Nurse Practitioner,29-1141.00,Registered Nurses,2221,100.0,True
+2544,Nurse Practitioner,29-1141.01,Acute Care Nurses,2221,100.0,True
+2544,Nurse Practitioner,29-1141.02,Advanced Practice Psychiatric Nurses,2221,100.0,True
+2544,Nurse Practitioner,29-1141.03,Critical Care Nurses,2221,100.0,True
+2544,Nurse Practitioner,29-1141.04,Clinical Nurse Specialists,2221,100.0,True
+2544,Nurse Practitioner,29-1171.00,Nurse Practitioners,2221,100.0,True
+2611,ICT Business Analyst,13-1051.00,Cost Estimators,2421,50.0,True
+2611,ICT Business Analyst,13-1111.00,Management Analysts,2421,50.0,True
+2611,ICT Business Analyst,15-1211.00,Computer Systems Analysts,2511,100.0,True
+2611,ICT Business Analyst,15-1211.01,Health Informatics Specialists,2511,100.0,True
+2611,ICT Business Analyst,15-1221.00,Computer and Information Research Scientists,2511,100.0,True
+2611,ICT Business Analyst,15-1299.08,Computer Systems Engineers/Architects,2511,100.0,True
+2611,ICT Business Analyst,15-2051.00,Data Scientists,2511,100.0,True
+2611,ICT Business Analyst,15-2051.01,Business Intelligence Analysts,2421,50.0,True
+2612,Multimedia Specialist,13-1161.01,Search Marketing Strategists,2513,100.0,True
+2612,Multimedia Specialist,15-1251.00,Computer Programmers,2514,50.0,True
+2612,Multimedia Specialist,15-1252.00,Software Developers,2512,50.0,True
+2612,Multimedia Specialist,15-1254.00,Web Developers,2513,100.0,True
+2612,Multimedia Specialist,15-1255.00,Web and Digital Interface Designers,2513,100.0,True
+2612,Multimedia Specialist,15-1255.01,Video Game Designers,2166,50.0,True
+2612,Multimedia Specialist,15-1299.07,Blockchain Engineers,2512,50.0,True
+2612,Multimedia Specialist,27-1011.00,Art Directors,2166,50.0,True
+2612,Multimedia Specialist,27-1014.00,Special Effects Artists and Animators,2166,50.0,True
+2612,Multimedia Specialist,27-1024.00,Graphic Designers,2166,50.0,True
+2612,Multimedia Specialist,27-2012.04,Talent Directors,2166,50.0,True
+2612,Multimedia Specialist,43-9031.00,Desktop Publishers,2166,50.0,False
+2612,Multimedia Specialist,51-9162.00,Computer Numerically Controlled Tool Programmers,2514,50.0,False
+2613,Analyst Programmer,15-1251.00,Computer Programmers,2514,80.0,True
+2613,Analyst Programmer,15-1252.00,Software Developers,2512,80.0,True
+2613,Analyst Programmer,15-1299.07,Blockchain Engineers,2512,80.0,True
+2613,Analyst Programmer,51-9162.00,Computer Numerically Controlled Tool Programmers,2514,80.0,False
+2631,Computer Network and Systems Engineer,15-1241.00,Computer Network Architects,2523,66.7,True
+2632,ICT Quality Assurance Engineer,13-1199.04,Business Continuity Planners,2519,100.0,True
+2632,ICT Quality Assurance Engineer,15-1253.00,Software Quality Assurance Analysts and Testers,2519,100.0,True
+2633,Telecommunications Engineer,15-1241.01,Telecommunications Engineering Specialists,2153,100.0,True
+2711,Barrister,23-1011.00,Lawyers,2611,100.0,True
+2713,Solicitor,23-1011.00,Lawyers,2611,100.0,True
+2721,Careers Counsellor,21-1011.00,Substance Abuse and Behavioral Disorder Counselors,2635,66.7,True
+2721,Careers Counsellor,21-1013.00,Marriage and Family Therapists,2635,66.7,True
+2721,Careers Counsellor,21-1014.00,Mental Health Counselors,2635,66.7,True
+2721,Careers Counsellor,21-1015.00,Rehabilitation Counselors,2635,66.7,True
+2721,Careers Counsellor,21-1022.00,Healthcare Social Workers,2635,66.7,True
+2721,Careers Counsellor,21-1023.00,Mental Health and Substance Abuse Social Workers,2635,66.7,True
+2721,Careers Counsellor,21-1092.00,Probation Officers and Correctional Treatment Specialists,2635,66.7,True
+2722,Minister of Religion,21-2011.00,Clergy,2636; 3413,100.0,True
+2722,Minister of Religion,21-2021.00,"Directors, Religious Activities and Education",2636; 3413,100.0,True
+2722,Minister of Religion,39-4031.00,"Morticians, Undertakers, and Funeral Arrangers",3413,100.0,False
+2723,Clinical Psychologist,19-3032.00,Industrial-Organizational Psychologists,2634,100.0,True
+2723,Clinical Psychologist,19-3033.00,Clinical and Counseling Psychologists,2634,100.0,True
+2723,Clinical Psychologist,19-3034.00,School Psychologists,2634,100.0,True
+2723,Clinical Psychologist,19-3039.02,Neuropsychologists,2634,100.0,True
+2723,Clinical Psychologist,19-3039.03,Clinical Neuropsychologists,2634,100.0,True
+2724,Historian,27-3091.00,Interpreters and Translators,2643,60.0,True
+2725,Social Worker,21-1011.00,Substance Abuse and Behavioral Disorder Counselors,2635,100.0,True
+2725,Social Worker,21-1013.00,Marriage and Family Therapists,2635,100.0,True
+2725,Social Worker,21-1014.00,Mental Health Counselors,2635,100.0,True
+2725,Social Worker,21-1015.00,Rehabilitation Counselors,2635,100.0,True
+2725,Social Worker,21-1022.00,Healthcare Social Workers,2635,100.0,True
+2725,Social Worker,21-1023.00,Mental Health and Substance Abuse Social Workers,2635,100.0,True
+2725,Social Worker,21-1092.00,Probation Officers and Correctional Treatment Specialists,2635,100.0,True
+2726,Community Arts Worker,21-1011.00,Substance Abuse and Behavioral Disorder Counselors,2635,100.0,True
+2726,Community Arts Worker,21-1013.00,Marriage and Family Therapists,2635,100.0,True
+2726,Community Arts Worker,21-1014.00,Mental Health Counselors,2635,100.0,True
+2726,Community Arts Worker,21-1015.00,Rehabilitation Counselors,2635,100.0,True
+2726,Community Arts Worker,21-1022.00,Healthcare Social Workers,2635,100.0,True
+2726,Community Arts Worker,21-1023.00,Mental Health and Substance Abuse Social Workers,2635,100.0,True
+2726,Community Arts Worker,21-1092.00,Probation Officers and Correctional Treatment Specialists,2635,100.0,True
+3111,Agricultural Technician,19-4012.00,Agricultural Technicians,3142,100.0,True
+3112,Anaesthetic Technician,29-1071.01,Anesthesiologist Assistants,3259,57.1,True
+3112,Anaesthetic Technician,29-1122.01,"Low Vision Therapists, Orientation and Mobility Specialists, and Vision Rehabilitation Therapists",3259,57.1,True
+3112,Anaesthetic Technician,29-1126.00,Respiratory Therapists,3259,57.1,True
+3112,Anaesthetic Technician,29-1151.00,Nurse Anesthetists,3259,57.1,True
+3112,Anaesthetic Technician,29-2031.00,Cardiovascular Technologists and Technicians,3259,57.1,True
+3112,Anaesthetic Technician,29-2051.00,Dietetic Technicians,3259,57.1,True
+3112,Anaesthetic Technician,29-2057.00,Ophthalmic Medical Technicians,3259,57.1,True
+3112,Anaesthetic Technician,31-9099.01,Speech-Language Pathology Assistants,3259,57.1,True
+3113,Fisheries Officer,13-1041.01,Environmental Compliance Inspectors,3257,50.0,True
+3113,Fisheries Officer,19-5012.00,Occupational Health and Safety Technicians,3257,50.0,True
+3113,Fisheries Officer,33-2022.00,Forest Fire Inspectors and Prevention Specialists,3359,75.0,True
+3113,Fisheries Officer,33-9031.00,Gambling Surveillance Officers and Gambling Investigators,3359,75.0,True
+3113,Fisheries Officer,45-2011.00,Agricultural Inspectors,3359,75.0,False
+3113,Fisheries Officer,53-6051.00,Transportation Inspectors,3359,75.0,False
+3113,Fisheries Officer,53-6051.07,"Transportation Vehicle, Equipment and Systems Inspectors, Except Aviation",3359,75.0,False
+3114,Chemistry Technician,17-3028.00,Calibration Technologists and Technicians,3111,83.3,True
+3114,Chemistry Technician,19-2099.01,Remote Sensing Scientists and Technologists,3111,83.3,True
+3114,Chemistry Technician,19-4013.00,Food Science Technicians,3111,83.3,True
+3114,Chemistry Technician,19-4031.00,Chemical Technicians,3111,83.3,True
+3114,Chemistry Technician,19-4042.00,"Environmental Science and Protection Technicians, Including Health",3111,83.3,True
+3114,Chemistry Technician,19-4043.00,"Geological Technicians, Except Hydrologic Technicians",3111,83.3,True
+3114,Chemistry Technician,19-4044.00,Hydrologic Technicians,3111,83.3,True
+3114,Chemistry Technician,19-4051.00,Nuclear Technicians,3111,83.3,True
+3114,Chemistry Technician,19-4051.02,Nuclear Monitoring Technicians,3111,83.3,True
+3114,Chemistry Technician,19-4099.03,Remote Sensing Technicians,3111,83.3,True
+3122,Civil Engineering Draftsperson,13-1041.04,Government Property Inspectors and Investigators,3112,50.0,True
+3122,Civil Engineering Draftsperson,17-3011.00,Architectural and Civil Drafters,3118,50.0,True
+3122,Civil Engineering Draftsperson,17-3012.00,Electrical and Electronics Drafters,3118,50.0,True
+3122,Civil Engineering Draftsperson,17-3013.00,Mechanical Drafters,3118,50.0,True
+3122,Civil Engineering Draftsperson,17-3022.00,Civil Engineering Technologists and Technicians,3112,50.0,True
+3122,Civil Engineering Draftsperson,17-3031.00,Surveying and Mapping Technicians,3112,50.0,True
+3122,Civil Engineering Draftsperson,33-2021.00,Fire Inspectors and Investigators,3112,50.0,True
+3122,Civil Engineering Draftsperson,47-4011.00,Construction and Building Inspectors,3112,50.0,False
+3122,Civil Engineering Draftsperson,47-4011.01,Energy Auditors,3112,50.0,False
+3122,Civil Engineering Draftsperson,47-4061.00,Rail-Track Laying and Maintenance Equipment Operators,3112,50.0,False
+3122,Civil Engineering Draftsperson,53-6041.00,Traffic Technicians,3112,50.0,False
+3123,Electrical Engineering Draftsperson,17-3011.00,Architectural and Civil Drafters,3118,50.0,True
+3123,Electrical Engineering Draftsperson,17-3012.00,Electrical and Electronics Drafters,3118,50.0,True
+3123,Electrical Engineering Draftsperson,17-3013.00,Mechanical Drafters,3118,50.0,True
+3123,Electrical Engineering Draftsperson,51-8013.04,Hydroelectric Plant Technicians,3113,50.0,False
+3124,Electronic Engineering Draftsperson,15-1232.00,Computer User Support Specialists,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-2061.00,Computer Hardware Engineers,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-2072.00,"Electronics Engineers, Except Computer",3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-2072.01,Radio Frequency Identification Device Specialists,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-2199.06,Microsystems Engineers,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-2199.07,Photonics Engineers,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-3011.00,Architectural and Civil Drafters,3118,50.0,True
+3124,Electronic Engineering Draftsperson,17-3012.00,Electrical and Electronics Drafters,3118,50.0,True
+3124,Electronic Engineering Draftsperson,17-3013.00,Mechanical Drafters,3118,50.0,True
+3124,Electronic Engineering Draftsperson,17-3021.00,Aerospace Engineering and Operations Technologists and Technicians,3155,50.0,True
+3124,Electronic Engineering Draftsperson,17-3023.00,Electrical and Electronic Engineering Technologists and Technicians,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-3024.01,Robotics Technicians,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-3028.00,Calibration Technologists and Technicians,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-3029.01,Non-Destructive Testing Specialists,3114,50.0,True
+3124,Electronic Engineering Draftsperson,17-3029.08,Photonics Technicians,3114,50.0,True
+3124,Electronic Engineering Draftsperson,29-2081.00,"Opticians, Dispensing",3114,50.0,True
+3124,Electronic Engineering Draftsperson,31-9099.02,Endoscopy Technicians,3114,50.0,True
+3124,Electronic Engineering Draftsperson,49-2011.00,"Computer, Automated Teller, and Office Machine Repairers",3114,50.0,True
+3124,Electronic Engineering Draftsperson,49-2091.00,Avionics Technicians,3114; 3155,50.0,True
+3124,Electronic Engineering Draftsperson,49-2093.00,"Electrical and Electronics Installers and Repairers, Transportation Equipment",3114,50.0,True
+3124,Electronic Engineering Draftsperson,49-2096.00,"Electronic Equipment Installers and Repairers, Motor Vehicles",3114,50.0,True
+3124,Electronic Engineering Draftsperson,49-9041.00,Industrial Machinery Mechanics,3114,50.0,True
+3124,Electronic Engineering Draftsperson,49-9043.00,"Maintenance Workers, Machinery",3114,50.0,True
+3124,Electronic Engineering Draftsperson,49-9062.00,Medical Equipment Repairers,3114,50.0,True
+3124,Electronic Engineering Draftsperson,49-9071.00,"Maintenance and Repair Workers, General",3114,50.0,True
+3124,Electronic Engineering Draftsperson,51-9083.00,Ophthalmic Laboratory Technicians,3114,50.0,False
+3124,Electronic Engineering Draftsperson,51-9141.00,Semiconductor Processing Technicians,3114,50.0,False
+3125,Mechanical Engineering Draftsperson,17-3011.00,Architectural and Civil Drafters,3118,50.0,True
+3125,Mechanical Engineering Draftsperson,17-3012.00,Electrical and Electronics Drafters,3118,50.0,True
+3125,Mechanical Engineering Draftsperson,17-3013.00,Mechanical Drafters,3118,50.0,True
+3125,Mechanical Engineering Draftsperson,17-3021.00,Aerospace Engineering and Operations Technologists and Technicians,3115,50.0,True
+3125,Mechanical Engineering Draftsperson,17-3024.00,Electro-Mechanical and Mechatronics Technologists and Technicians,3115,50.0,True
+3125,Mechanical Engineering Draftsperson,17-3027.00,Mechanical Engineering Technologists and Technicians,3115,50.0,True
+3125,Mechanical Engineering Draftsperson,17-3027.01,Automotive Engineering Technicians,3115,50.0,True
+3125,Mechanical Engineering Draftsperson,49-3043.00,Rail Car Repairers,3115,50.0,True
+3126,Safety Inspector,11-9199.10,Wind Energy Development Managers,2149,100.0,False
+3126,Safety Inspector,13-1041.01,Environmental Compliance Inspectors,3257,100.0,True
+3126,Safety Inspector,13-1081.01,Logistics Engineers,2149,100.0,True
+3126,Safety Inspector,15-1299.02,Geographic Information Systems Technologists and Technicians,3117,100.0,True
+3126,Safety Inspector,17-1022.00,Surveyors,3117,100.0,True
+3126,Safety Inspector,17-1022.01,Geodetic Surveyors,3117,100.0,True
+3126,Safety Inspector,17-2031.00,Bioengineers and Biomedical Engineers,2149,100.0,True
+3126,Safety Inspector,17-2111.00,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",2149,100.0,True
+3126,Safety Inspector,17-2111.02,Fire-Prevention and Protection Engineers,2149,100.0,True
+3126,Safety Inspector,17-2112.01,Human Factors Engineers and Ergonomists,2149,100.0,True
+3126,Safety Inspector,17-2112.02,Validation Engineers,2149,100.0,True
+3126,Safety Inspector,17-2121.00,Marine Engineers and Naval Architects,2149,100.0,True
+3126,Safety Inspector,17-2131.00,Materials Engineers,2149,100.0,True
+3126,Safety Inspector,17-2141.01,Fuel Cell Engineers,2149,100.0,True
+3126,Safety Inspector,17-2161.00,Nuclear Engineers,2149,100.0,True
+3126,Safety Inspector,17-2199.03,"Energy Engineers, Except Wind and Solar",2149,100.0,True
+3126,Safety Inspector,17-2199.07,Photonics Engineers,2149,100.0,True
+3126,Safety Inspector,17-2199.08,Robotics Engineers,2149,100.0,True
+3126,Safety Inspector,17-2199.09,Nanosystems Engineers,2149,100.0,True
+3126,Safety Inspector,17-2199.10,Wind Energy Engineers,2149,100.0,True
+3126,Safety Inspector,17-2199.11,Solar Energy Systems Engineers,2149,100.0,True
+3126,Safety Inspector,17-3031.00,Surveying and Mapping Technicians,3117,100.0,True
+3126,Safety Inspector,19-2032.00,Materials Scientists,2149,100.0,True
+3126,Safety Inspector,19-4043.00,"Geological Technicians, Except Hydrologic Technicians",3117,100.0,True
+3126,Safety Inspector,19-5011.00,Occupational Health and Safety Specialists,2149; 3117,100.0,True
+3126,Safety Inspector,19-5012.00,Occupational Health and Safety Technicians,3117; 3257,100.0,True
+3126,Safety Inspector,51-8031.00,Water and Wastewater Treatment Plant and System Operators,3117,100.0,False
+3129,Maintenance Planner,17-3024.01,Robotics Technicians,3119,50.0,True
+3129,Maintenance Planner,17-3025.00,Environmental Engineering Technologists and Technicians,3119,50.0,True
+3129,Maintenance Planner,17-3026.00,Industrial Engineering Technologists and Technicians,3119,50.0,True
+3129,Maintenance Planner,17-3026.01,Nanotechnology Engineering Technologists and Technicians,3119,50.0,True
+3129,Maintenance Planner,17-3029.08,Photonics Technicians,3119,50.0,True
+3129,Maintenance Planner,19-4099.01,Quality Control Analysts,3119,50.0,True
+3131,Hardware Technician,49-2011.00,"Computer, Automated Teller, and Office Machine Repairers",7422,50.0,True
+3131,Hardware Technician,49-2022.00,"Telecommunications Equipment Installers and Repairers, Except Line Installers",7422,50.0,True
+3131,Hardware Technician,49-2097.00,Audiovisual Equipment Installers and Repairers,7422,50.0,True
+3131,Hardware Technician,49-2098.00,Security and Fire Alarm Systems Installers,7422,50.0,True
+3131,Hardware Technician,49-9052.00,Telecommunications Line Installers and Repairers,7422,50.0,True
+3132,Radiocommunications Technician,15-1231.00,Computer Network Support Specialists,3522,100.0,True
+3132,Radiocommunications Technician,15-1241.00,Computer Network Architects,3522,100.0,True
+3132,Radiocommunications Technician,15-1241.01,Telecommunications Engineering Specialists,3522,100.0,True
+3132,Radiocommunications Technician,49-2021.00,"Radio, Cellular, and Tower Equipment Installers and Repairers",3522,100.0,True
+3132,Radiocommunications Technician,49-2022.00,"Telecommunications Equipment Installers and Repairers, Except Line Installers",3522,100.0,True
+3132,Radiocommunications Technician,49-9052.00,Telecommunications Line Installers and Repairers,3522,100.0,True
+3211,Automotive Electrician,47-4021.00,Elevator and Escalator Installers and Repairers,7412,100.0,True
+3211,Automotive Electrician,49-2092.00,"Electric Motor, Power Tool, and Related Repairers",7412,100.0,True
+3211,Automotive Electrician,49-3053.00,Outdoor Power Equipment and Other Small Engine Mechanics,7412,100.0,True
+3211,Automotive Electrician,49-3092.00,Recreational Vehicle Service Technicians,7412,100.0,True
+3211,Automotive Electrician,49-9011.00,Mechanical Door Repairers,7412,100.0,True
+3211,Automotive Electrician,49-9012.00,"Control and Valve Installers and Repairers, Except Mechanical Door",7412,100.0,True
+3211,Automotive Electrician,49-9031.00,Home Appliance Repairers,7412,100.0,True
+3211,Automotive Electrician,49-9081.00,Wind Turbine Service Technicians,7412,100.0,True
+3211,Automotive Electrician,49-9099.01,Geothermal Technicians,7412,100.0,True
+3212,Motor Mechanic (General),49-3021.00,Automotive Body and Related Repairers,7231,100.0,True
+3212,Motor Mechanic (General),49-3023.00,Automotive Service Technicians and Mechanics,7231,100.0,True
+3212,Motor Mechanic (General),49-3031.00,Bus and Truck Mechanics and Diesel Engine Specialists,7231,100.0,True
+3212,Motor Mechanic (General),49-3052.00,Motorcycle Mechanics,7231,100.0,True
+3212,Motor Mechanic (General),49-3093.00,Tire Repairers and Changers,7231,100.0,True
+3222,Sheetmetal Trades Worker,47-2011.00,Boilermakers,7213,100.0,True
+3222,Sheetmetal Trades Worker,47-2211.00,Sheet Metal Workers,7213,100.0,True
+3222,Sheetmetal Trades Worker,51-4192.00,"Layout Workers, Metal and Plastic",7213,100.0,True
+3223,Metal Fabricator,51-4121.00,"Welders, Cutters, Solderers, and Brazers",7212,100.0,True
+3231,Aircraft Maintenance Engineer (Avionics),49-2091.00,Avionics Technicians,7421,66.7,True
+3231,Aircraft Maintenance Engineer (Avionics),49-2093.00,"Electrical and Electronics Installers and Repairers, Transportation Equipment",7421,66.7,True
+3231,Aircraft Maintenance Engineer (Avionics),49-2094.00,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",7421,66.7,True
+3231,Aircraft Maintenance Engineer (Avionics),49-2096.00,"Electronic Equipment Installers and Repairers, Motor Vehicles",7421,66.7,True
+3231,Aircraft Maintenance Engineer (Avionics),49-3011.00,Aircraft Mechanics and Service Technicians,7232,66.7,True
+3231,Aircraft Maintenance Engineer (Avionics),49-9061.00,Camera and Photographic Equipment Repairers,7421,66.7,True
+3231,Aircraft Maintenance Engineer (Avionics),53-6032.00,Aircraft Service Attendants,7232,66.7,False
+3232,Fitter (General),49-3041.00,Farm Equipment Mechanics and Service Technicians,7233,50.0,True
+3232,Fitter (General),49-3042.00,"Mobile Heavy Equipment Mechanics, Except Engines",7233,50.0,True
+3232,Fitter (General),49-3051.00,Motorboat Mechanics and Service Technicians,7233,50.0,True
+3232,Fitter (General),49-9041.00,Industrial Machinery Mechanics,7233,50.0,True
+3232,Fitter (General),49-9043.00,"Maintenance Workers, Machinery",7233,50.0,True
+3232,Fitter (General),51-4023.00,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic",7223,50.0,True
+3232,Fitter (General),51-4031.00,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",7223,50.0,True
+3232,Fitter (General),51-4032.00,"Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic",7223,50.0,True
+3232,Fitter (General),51-4034.00,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",7223,50.0,True
+3232,Fitter (General),51-4041.00,Machinists,7223,50.0,True
+3232,Fitter (General),51-4081.00,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",7223,50.0,True
+3232,Fitter (General),51-9161.00,Computer Numerically Controlled Tool Operators,7223,50.0,True
+3233,Engraver,49-9094.00,Locksmiths and Safe Repairers,7222,50.0,True
+3233,Engraver,51-4061.00,"Model Makers, Metal and Plastic",7222,50.0,True
+3233,Engraver,51-4071.00,Foundry Mold and Coremakers,7222,50.0,True
+3233,Engraver,51-4111.00,Tool and Die Makers,7222,50.0,True
+3233,Engraver,51-7032.00,"Patternmakers, Wood",7222,50.0,True
+3234,Engineering Patternmaker,49-9094.00,Locksmiths and Safe Repairers,7222,100.0,True
+3234,Engineering Patternmaker,51-4061.00,"Model Makers, Metal and Plastic",7222,100.0,True
+3234,Engineering Patternmaker,51-4071.00,Foundry Mold and Coremakers,7222,100.0,True
+3234,Engineering Patternmaker,51-4111.00,Tool and Die Makers,7222,100.0,True
+3234,Engineering Patternmaker,51-7032.00,"Patternmakers, Wood",7222,100.0,True
+3241,Panelbeater,47-2011.00,Boilermakers,7213,100.0,True
+3241,Panelbeater,47-2211.00,Sheet Metal Workers,7213,100.0,True
+3241,Panelbeater,51-4192.00,"Layout Workers, Metal and Plastic",7213,100.0,True
+3242,Vehicle Body Builder,47-2011.00,Boilermakers,7213,50.0,True
+3242,Vehicle Body Builder,47-2211.00,Sheet Metal Workers,7213,50.0,True
+3242,Vehicle Body Builder,51-4192.00,"Layout Workers, Metal and Plastic",7213,50.0,True
+3242,Vehicle Body Builder,51-6093.00,Upholsterers,7534,50.0,True
+3243,Vehicle Painter,51-9124.00,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",7132,100.0,True
+3311,Bricklayer,47-2021.00,Brickmasons and Blockmasons,7112,50.0,True
+3311,Bricklayer,47-2022.00,Stonemasons,7113,50.0,True
+3311,Bricklayer,47-3011.00,"Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",7112,50.0,True
+3311,Bricklayer,51-9195.03,"Stone Cutters and Carvers, Manufacturing",7113,50.0,True
+3312,Carpenter and Joiner,47-2031.00,Carpenters,7115,100.0,True
+3312,Carpenter and Joiner,47-3012.00,Helpers--Carpenters,7115,100.0,True
+3312,Carpenter and Joiner,49-9095.00,Manufactured Building and Mobile Home Installers,7115,100.0,True
+3321,Floor Finisher,47-2041.00,Carpet Installers,7122,100.0,True
+3321,Floor Finisher,47-2042.00,"Floor Layers, Except Carpet, Wood, and Hard Tiles",7122,100.0,True
+3321,Floor Finisher,47-2043.00,Floor Sanders and Finishers,7122,100.0,True
+3321,Floor Finisher,47-2044.00,Tile and Stone Setters,7122,100.0,True
+3321,Floor Finisher,47-2051.00,Cement Masons and Concrete Finishers,7114,100.0,True
+3321,Floor Finisher,47-2053.00,Terrazzo Workers and Finishers,7114,100.0,True
+3321,Floor Finisher,47-4031.00,Fence Erectors,9313,100.0,True
+3322,Painting Trades Worker,47-2082.00,Tapers,7131,100.0,True
+3322,Painting Trades Worker,47-2141.00,"Painters, Construction and Maintenance",7131,100.0,True
+3322,Painting Trades Worker,47-2142.00,Paperhangers,7131,100.0,True
+3322,Painting Trades Worker,47-3014.00,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons",7131,100.0,True
+3322,Painting Trades Worker,51-9123.00,"Painting, Coating, and Decorating Workers",7131,100.0,True
+3331,Glazier,47-2121.00,Glaziers,7125,100.0,True
+3331,Glazier,49-3022.00,Automotive Glass Installers and Repairers,7125,100.0,True
+3332,Fibrous Plasterer,47-2081.00,Drywall and Ceiling Tile Installers,7123,100.0,True
+3332,Fibrous Plasterer,47-2161.00,Plasterers and Stucco Masons,7123,100.0,True
+3332,Fibrous Plasterer,47-3014.00,"Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons",7123,100.0,True
+3333,Roof Tiler,47-2181.00,Roofers,7121,100.0,True
+3333,Roof Tiler,47-3016.00,Helpers--Roofers,7121,100.0,True
+3334,Wall and Floor Tiler,47-2041.00,Carpet Installers,7122,100.0,True
+3334,Wall and Floor Tiler,47-2042.00,"Floor Layers, Except Carpet, Wood, and Hard Tiles",7122,100.0,True
+3334,Wall and Floor Tiler,47-2043.00,Floor Sanders and Finishers,7122,100.0,True
+3334,Wall and Floor Tiler,47-2044.00,Tile and Stone Setters,7122,100.0,True
+3341,Plumber (General),47-2151.00,Pipelayers,7126,100.0,True
+3341,Plumber (General),47-2152.00,"Plumbers, Pipefitters, and Steamfitters",7126,100.0,True
+3341,Plumber (General),47-3015.00,"Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters",7126,100.0,True
+3341,Plumber (General),47-4071.00,Septic Tank Servicers and Sewer Pipe Cleaners,7126,100.0,True
+3411,Electrician (General),47-2111.00,Electricians,7411,66.7,True
+3411,Electrician (General),47-2152.04,Solar Thermal Installers and Technicians,7411,66.7,True
+3411,Electrician (General),47-2231.00,Solar Photovoltaic Installers,7411,66.7,True
+3411,Electrician (General),47-3013.00,Helpers--Electricians,7411,66.7,True
+3411,Electrician (General),47-4021.00,Elevator and Escalator Installers and Repairers,7412,100.0,True
+3411,Electrician (General),49-2092.00,"Electric Motor, Power Tool, and Related Repairers",7412,100.0,True
+3411,Electrician (General),49-3053.00,Outdoor Power Equipment and Other Small Engine Mechanics,7412,100.0,True
+3411,Electrician (General),49-3092.00,Recreational Vehicle Service Technicians,7412,100.0,True
+3411,Electrician (General),49-9011.00,Mechanical Door Repairers,7412,100.0,True
+3411,Electrician (General),49-9012.00,"Control and Valve Installers and Repairers, Except Mechanical Door",7412,100.0,True
+3411,Electrician (General),49-9031.00,Home Appliance Repairers,7412,100.0,True
+3411,Electrician (General),49-9081.00,Wind Turbine Service Technicians,7412,100.0,True
+3411,Electrician (General),49-9099.01,Geothermal Technicians,7412,100.0,True
+3421,Airconditioning and Refrigeration Mechanic,49-9021.00,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers",7127,100.0,True
+3422,Electrical Linesworker / Electrical Line Mechanic,49-9051.00,Electrical Power-Line Installers and Repairers,7413,100.0,True
+3423,Business Machine Mechanic,49-2091.00,Avionics Technicians,7421,80.0,True
+3423,Business Machine Mechanic,49-2093.00,"Electrical and Electronics Installers and Repairers, Transportation Equipment",7421,80.0,True
+3423,Business Machine Mechanic,49-2094.00,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",7421,80.0,True
+3423,Business Machine Mechanic,49-2096.00,"Electronic Equipment Installers and Repairers, Motor Vehicles",7421,80.0,True
+3423,Business Machine Mechanic,49-9061.00,Camera and Photographic Equipment Repairers,7421,80.0,True
+3424,Cabler (Data and Telecommunications),49-2011.00,"Computer, Automated Teller, and Office Machine Repairers",7422,100.0,True
+3424,Cabler (Data and Telecommunications),49-2022.00,"Telecommunications Equipment Installers and Repairers, Except Line Installers",7422,100.0,True
+3424,Cabler (Data and Telecommunications),49-2097.00,Audiovisual Equipment Installers and Repairers,7422,100.0,True
+3424,Cabler (Data and Telecommunications),49-2098.00,Security and Fire Alarm Systems Installers,7422,100.0,True
+3424,Cabler (Data and Telecommunications),49-9052.00,Telecommunications Line Installers and Repairers,7422,100.0,True
+3511,Baker,51-3011.00,Bakers,7512,100.0,True
+3512,Butcher or Smallgoods Maker,51-3021.00,Butchers and Meat Cutters,7511,100.0,True
+3512,Butcher or Smallgoods Maker,51-3022.00,"Meat, Poultry, and Fish Cutters and Trimmers",7511,100.0,True
+3512,Butcher or Smallgoods Maker,51-3023.00,Slaughterers and Meat Packers,7511,100.0,True
+3513,Chef,35-1011.00,Chefs and Head Cooks,3434,100.0,False
+3513,Chef,35-2013.00,"Cooks, Private Household",3434,100.0,False
+3514,Cook,35-2012.00,"Cooks, Institution and Cafeteria",5120,100.0,True
+3514,Cook,35-2014.00,"Cooks, Restaurant",5120,100.0,True
+3611,Dog Handler or Trainer,33-9011.00,Animal Control Workers,5164,100.0,True
+3611,Dog Handler or Trainer,39-2011.00,Animal Trainers,5164,100.0,True
+3611,Dog Handler or Trainer,39-2021.00,Animal Caretakers,5164,100.0,True
+3612,Shearer,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",6121,100.0,True
+3612,Shearer,45-2021.00,Animal Breeders,6121,100.0,True
+3612,Shearer,45-2093.00,"Farmworkers, Farm, Ranch, and Aquacultural Animals",6121,100.0,True
+3613,Veterinary Nurse,29-2056.00,Veterinary Technologists and Technicians,3240,100.0,True
+3613,Veterinary Nurse,31-9096.00,Veterinary Assistants and Laboratory Animal Caretakers,3240,100.0,True
+3613,Veterinary Nurse,33-9011.00,Animal Control Workers,5164,100.0,True
+3613,Veterinary Nurse,39-2011.00,Animal Trainers,5164,100.0,True
+3613,Veterinary Nurse,39-2021.00,Animal Caretakers,5164,100.0,True
+3621,Florist,51-9031.00,"Cutters and Trimmers, Hand",7549,100.0,True
+3622,Gardener (General),37-1012.00,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",6113,100.0,False
+3622,Gardener (General),37-3011.00,Landscaping and Groundskeeping Workers,6113,100.0,False
+3622,Gardener (General),37-3013.00,Tree Trimmers and Pruners,6113,100.0,False
+3622,Gardener (General),45-2092.00,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",6113,100.0,True
+3623,Greenkeeper,37-1012.00,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",6113,100.0,False
+3623,Greenkeeper,37-3011.00,Landscaping and Groundskeeping Workers,6113,100.0,False
+3623,Greenkeeper,37-3013.00,Tree Trimmers and Pruners,6113,100.0,False
+3623,Greenkeeper,45-2092.00,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",6113,100.0,True
+3624,Nurseryperson,37-1012.00,"First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",6113,100.0,False
+3624,Nurseryperson,37-3011.00,Landscaping and Groundskeeping Workers,6113,100.0,False
+3624,Nurseryperson,37-3013.00,Tree Trimmers and Pruners,6113,100.0,False
+3624,Nurseryperson,45-2092.00,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",6113,100.0,True
+3911,Hairdresser,39-5011.00,Barbers,5141,100.0,True
+3911,Hairdresser,39-5012.00,"Hairdressers, Hairstylists, and Cosmetologists",5141,100.0,True
+3911,Hairdresser,39-5093.00,Shampooers,5141,100.0,True
+3921,Print Finisher,43-9071.00,"Office Machine Operators, Except Computer",7323,50.0,False
+3921,Print Finisher,51-5112.00,Printing Press Operators,7322,50.0,True
+3921,Print Finisher,51-5113.00,Print Binding and Finishing Workers,7323,50.0,True
+3922,Graphic Pre-press Trades Worker,51-5111.00,Prepress Technicians and Workers,7321,100.0,True
+3923,Printing Machinist,51-5112.00,Printing Press Operators,7322,100.0,True
+3931,Canvas Goods Fabricator,51-6041.00,Shoe and Leather Workers and Repairers,7536,50.0,True
+3931,Canvas Goods Fabricator,51-6051.00,"Sewers, Hand",7533,75.0,True
+3932,Apparel Cutter,51-6052.00,"Tailors, Dressmakers, and Custom Sewers",7531,50.0,True
+3932,Apparel Cutter,51-6092.00,Fabric and Apparel Patternmakers,7532,75.0,True
+3933,Upholsterer,51-6093.00,Upholsterers,7534,100.0,True
+3941,Cabinetmaker,51-7011.00,Cabinetmakers and Bench Carpenters,7522,100.0,True
+3941,Cabinetmaker,51-7021.00,Furniture Finishers,7522,100.0,True
+3941,Cabinetmaker,51-7031.00,"Model Makers, Wood",7522,100.0,True
+3991,Boat Builder and Repairer,47-2011.00,Boilermakers,7213,50.0,True
+3991,Boat Builder and Repairer,47-2031.00,Carpenters,7115,100.0,True
+3991,Boat Builder and Repairer,47-2171.00,Reinforcing Iron and Rebar Workers,7214,50.0,True
+3991,Boat Builder and Repairer,47-2211.00,Sheet Metal Workers,7213,50.0,True
+3991,Boat Builder and Repairer,47-2221.00,Structural Iron and Steel Workers,7214,50.0,True
+3991,Boat Builder and Repairer,47-3012.00,Helpers--Carpenters,7115,100.0,True
+3991,Boat Builder and Repairer,49-9095.00,Manufactured Building and Mobile Home Installers,7115,100.0,True
+3991,Boat Builder and Repairer,49-9096.00,Riggers,7215,100.0,True
+3991,Boat Builder and Repairer,51-2041.00,Structural Metal Fabricators and Fitters,7214,50.0,True
+3991,Boat Builder and Repairer,51-2051.00,Fiberglass Laminators and Fabricators,8142,50.0,True
+3991,Boat Builder and Repairer,51-4192.00,"Layout Workers, Metal and Plastic",7213,50.0,True
+3992,Chemical Plant Operator,51-8011.00,Nuclear Power Reactor Operators,3131,66.7,False
+3992,Chemical Plant Operator,51-8012.00,Power Distributors and Dispatchers,3131,66.7,False
+3992,Chemical Plant Operator,51-8013.00,Power Plant Operators,3131,66.7,False
+3993,Gallery or Museum Technician,25-4013.00,Museum Technicians and Conservators,3433,100.0,True
+3994,Jeweller,51-9071.00,Jewelers and Precious Stone and Metal Workers,7313,100.0,True
+3994,Jeweller,51-9071.06,Gem and Diamond Workers,7313,100.0,True
+3995,Broadcast Transmitter Operator,27-4011.00,Audio and Video Technicians,3521,62.5,False
+3995,Broadcast Transmitter Operator,27-4012.00,Broadcast Technicians,3521,62.5,False
+3995,Broadcast Transmitter Operator,27-4014.00,Sound Engineering Technicians,3521,62.5,False
+3995,Broadcast Transmitter Operator,27-4031.00,"Camera Operators, Television, Video, and Film",3521,62.5,False
+3995,Broadcast Transmitter Operator,39-3021.00,Motion Picture Projectionists,3521,62.5,False
+3996,Signwriter,27-1012.00,Craft Artists,7316,100.0,False
+3996,Signwriter,51-9194.00,Etchers and Engravers,7316,100.0,True
+4111,Ambulance Officer,29-2042.00,Emergency Medical Technicians,3258,100.0,True
+4111,Ambulance Officer,29-2043.00,Paramedics,3258,100.0,True
+4111,Ambulance Officer,53-3011.00,"Ambulance Drivers and Attendants, Except Emergency Medical Technicians",3258,100.0,False
+4111,Ambulance Officer,53-3031.00,Driver/Sales Workers,8322,50.0,True
+4111,Ambulance Officer,53-3033.00,Light Truck Drivers,8322,50.0,True
+4111,Ambulance Officer,53-3053.00,Shuttle Drivers and Chauffeurs,8322,50.0,True
+4111,Ambulance Officer,53-3054.00,Taxi Drivers,8322,50.0,True
+4111,Ambulance Officer,53-6021.00,Parking Attendants,8322,50.0,True
+4112,Dental Hygienist,29-1024.00,Prosthodontists,3214,50.0,True
+4112,Dental Hygienist,29-1292.00,Dental Hygienists,3251,50.0,True
+4112,Dental Hygienist,29-2091.00,Orthotists and Prosthetists,3214,50.0,True
+4112,Dental Hygienist,29-2092.00,Hearing Aid Specialists,3214,50.0,True
+4112,Dental Hygienist,31-9091.00,Dental Assistants,3251,50.0,True
+4112,Dental Hygienist,51-9081.00,Dental Laboratory Technicians,3214,50.0,False
+4112,Dental Hygienist,51-9082.00,Medical Appliance Technicians,3214,50.0,False
+4113,Diversional Therapist,29-1071.01,Anesthesiologist Assistants,3259,100.0,True
+4113,Diversional Therapist,29-1122.01,"Low Vision Therapists, Orientation and Mobility Specialists, and Vision Rehabilitation Therapists",3259,100.0,True
+4113,Diversional Therapist,29-1126.00,Respiratory Therapists,3259,100.0,True
+4113,Diversional Therapist,29-1151.00,Nurse Anesthetists,3259,100.0,True
+4113,Diversional Therapist,29-2031.00,Cardiovascular Technologists and Technicians,3259,100.0,True
+4113,Diversional Therapist,29-2051.00,Dietetic Technicians,3259,100.0,True
+4113,Diversional Therapist,29-2057.00,Ophthalmic Medical Technicians,3259,100.0,True
+4113,Diversional Therapist,31-9099.01,Speech-Language Pathology Assistants,3259,100.0,True
+4114,Enrolled Nurse,29-1071.00,Physician Assistants,3222,100.0,True
+4114,Enrolled Nurse,29-2061.00,Licensed Practical and Licensed Vocational Nurses,3221,100.0,True
+4114,Enrolled Nurse,29-9093.00,Surgical Assistants,3222,100.0,True
+4114,Enrolled Nurse,29-9099.01,Midwives,3222,100.0,True
+4114,Enrolled Nurse,31-1131.00,Nursing Assistants,3222,100.0,True
+4114,Enrolled Nurse,31-9092.00,Medical Assistants,3222,100.0,True
+4115,Aboriginal and Torres Strait Islander Health Worker,21-1021.00,"Child, Family, and School Social Workers",3412,50.0,True
+4115,Aboriginal and Torres Strait Islander Health Worker,21-1093.00,Social and Human Service Assistants,3412,50.0,True
+4115,Aboriginal and Torres Strait Islander Health Worker,21-1094.00,Community Health Workers,3253,50.0,True
+4115,Aboriginal and Torres Strait Islander Health Worker,25-3021.00,Self-Enrichment Teachers,3412,50.0,True
+4115,Aboriginal and Torres Strait Islander Health Worker,29-2053.00,Psychiatric Technicians,3412,50.0,True
+4115,Aboriginal and Torres Strait Islander Health Worker,31-1122.00,Personal Care Aides,3412,50.0,True
+4116,Massage Therapist,31-2021.00,Physical Therapist Assistants,3255,100.0,True
+4116,Massage Therapist,31-9011.00,Massage Therapists,3255,100.0,True
+4117,Community Worker,21-1021.00,"Child, Family, and School Social Workers",3412,83.3,True
+4117,Community Worker,21-1093.00,Social and Human Service Assistants,3412,83.3,True
+4117,Community Worker,25-3021.00,Self-Enrichment Teachers,3412,83.3,True
+4117,Community Worker,29-2053.00,Psychiatric Technicians,3412,83.3,True
+4117,Community Worker,31-1122.00,Personal Care Aides,3412,83.3,True
+4211,Child Care Worker,33-9094.00,School Bus Monitors,5311,100.0,True
+4211,Child Care Worker,39-9011.00,Childcare Workers,5311,100.0,True
+4211,Child Care Worker,39-9011.01,Nannies,5311,100.0,True
+4221,Aboriginal and Torres Strait Islander Education Worker,25-9042.00,"Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",5312,83.3,False
+4221,Aboriginal and Torres Strait Islander Education Worker,25-9043.00,"Teaching Assistants, Special Education",5312,83.3,False
+4231,Aged or Disabled Carer,31-1121.00,Home Health Aides,5322,100.0,True
+4231,Aged or Disabled Carer,31-1131.00,Nursing Assistants,5321,100.0,True
+4231,Aged or Disabled Carer,31-1133.00,Psychiatric Aides,5321,100.0,True
+4232,Dental Assistant,29-1292.00,Dental Hygienists,3251,100.0,True
+4232,Dental Assistant,29-2099.08,Patient Representatives,5329,100.0,False
+4232,Dental Assistant,31-1132.00,Orderlies,5329,100.0,True
+4232,Dental Assistant,31-2022.00,Physical Therapist Aides,5329,100.0,True
+4232,Dental Assistant,31-9091.00,Dental Assistants,3251,100.0,True
+4232,Dental Assistant,31-9093.00,Medical Equipment Preparers,5329,100.0,True
+4232,Dental Assistant,31-9097.00,Phlebotomists,5329,100.0,True
+4233,Hospital Orderly,31-1131.00,Nursing Assistants,5321,50.0,True
+4233,Hospital Orderly,31-1133.00,Psychiatric Aides,5321,50.0,True
+4234,Child or Youth Residential Care Assistant,21-1021.00,"Child, Family, and School Social Workers",3412,66.7,True
+4234,Child or Youth Residential Care Assistant,21-1093.00,Social and Human Service Assistants,3412,66.7,True
+4234,Child or Youth Residential Care Assistant,25-3021.00,Self-Enrichment Teachers,3412,66.7,True
+4234,Child or Youth Residential Care Assistant,29-2053.00,Psychiatric Technicians,3412,66.7,True
+4234,Child or Youth Residential Care Assistant,31-1122.00,Personal Care Aides,3412,66.7,True
+4234,Child or Youth Residential Care Assistant,33-9094.00,School Bus Monitors,5311,66.7,True
+4234,Child or Youth Residential Care Assistant,39-9011.00,Childcare Workers,5311,66.7,True
+4234,Child or Youth Residential Care Assistant,39-9011.01,Nannies,5311,66.7,True
+4311,Bar Attendant,35-3011.00,Bartenders,5132,100.0,True
+4311,Bar Attendant,35-3023.01,Baristas,5132,100.0,True
+4312,Cafe Worker,35-3031.00,Waiters and Waitresses,5131,100.0,True
+4312,Cafe Worker,35-3041.00,"Food Servers, Nonrestaurant",5246,100.0,True
+4313,Gaming Worker,39-1013.00,First-Line Supervisors of Gambling Services Workers,4212,100.0,False
+4313,Gaming Worker,39-1022.00,First-Line Supervisors of Personal Service Workers,1439,100.0,False
+4313,Gaming Worker,39-3011.00,Gambling Dealers,4212,100.0,False
+4313,Gaming Worker,39-3012.00,Gambling and Sports Book Writers and Runners,4212,100.0,False
+4313,Gaming Worker,41-2012.00,Gambling Change Persons and Booth Cashiers,4212,100.0,True
+4313,Gaming Worker,43-3041.00,Gambling Cage Workers,4212,100.0,True
+4314,Hotel Service Manager,11-9081.00,Lodging Managers,1411,100.0,True
+4314,Hotel Service Manager,37-1011.00,First-Line Supervisors of Housekeeping and Janitorial Workers,5151,100.0,True
+4315,Waiter,35-3031.00,Waiters and Waitresses,5131,100.0,True
+4411,Defence Force Member - Other Ranks,33-3021.06,Intelligence Analysts,0310,100.0,True
+4411,Defence Force Member - Other Ranks,43-5031.00,Public Safety Telecommunicators,0310,100.0,False
+4411,Defence Force Member - Other Ranks,47-5032.00,"Explosives Workers, Ordnance Handling Experts, and Blasters",0310,100.0,False
+4411,Defence Force Member - Other Ranks,53-2011.00,"Airline Pilots, Copilots, and Flight Engineers",0310,100.0,False
+4411,Defence Force Member - Other Ranks,53-2012.00,Commercial Pilots,0310,100.0,False
+4412,Emergency Service Worker,33-1021.00,First-Line Supervisors of Firefighting and Prevention Workers,5411,50.0,True
+4412,Emergency Service Worker,33-2011.00,Firefighters,5411,50.0,True
+4412,Emergency Service Worker,33-3041.00,Parking Enforcement Workers,5419,50.0,True
+4412,Emergency Service Worker,33-9091.00,Crossing Guards and Flaggers,5419,50.0,True
+4412,Emergency Service Worker,33-9092.00,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers",5419,50.0,True
+4413,Detective,33-3021.00,Detectives and Criminal Investigators,3355,100.0,True
+4413,Detective,33-3051.00,Police and Sheriff's Patrol Officers,5412,100.0,True
+4413,Detective,33-3052.00,Transit and Railroad Police,5412,100.0,True
+4421,Prison Officer,33-3012.00,Correctional Officers and Jailers,5413,100.0,True
+4422,"Alarm, Security or Surveillance Monitor",13-1199.07,Security Management Specialists,5414,62.5,False
+4422,"Alarm, Security or Surveillance Monitor",33-1091.00,First-Line Supervisors of Security Workers,5414,62.5,True
+4422,"Alarm, Security or Surveillance Monitor",33-9032.00,Security Guards,5414,62.5,True
+4422,"Alarm, Security or Surveillance Monitor",33-9099.02,Retail Loss Prevention Specialists,5414,62.5,True
+4511,Beauty Therapist,39-5091.00,"Makeup Artists, Theatrical and Performance",5142,100.0,True
+4511,Beauty Therapist,39-5092.00,Manicurists and Pedicurists,5142,100.0,True
+4511,Beauty Therapist,39-5094.00,Skincare Specialists,5142,100.0,True
+4512,Driving Instructor,25-3099.00,"Teachers and Instructors, All Other",5165,100.0,False
+4513,Funeral Director,11-9171.00,Funeral Home Managers,5163,100.0,False
+4513,Funeral Director,39-4011.00,Embalmers,5163,100.0,True
+4513,Funeral Director,39-4012.00,Crematory Operators,5163,100.0,True
+4513,Funeral Director,39-4021.00,Funeral Attendants,5163,100.0,True
+4513,Funeral Director,39-4031.00,"Morticians, Undertakers, and Funeral Arrangers",5163,100.0,True
+4514,Gallery or Museum Guide,19-1031.03,Park Naturalists,5113,100.0,False
+4514,Gallery or Museum Guide,35-9031.00,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop",5113,100.0,True
+4514,Gallery or Museum Guide,39-7011.00,Tour Guides and Escorts,5113,100.0,True
+4515,Natural Remedy Consultant,29-1291.00,Acupuncturists,3230,66.7,True
+4516,Tourist Information Officer,39-7012.00,Travel Guides,4221,100.0,False
+4516,Tourist Information Officer,41-3041.00,Travel Agents,4221,100.0,True
+4516,Tourist Information Officer,43-4181.00,Reservation and Transportation Ticket Agents and Travel Clerks,4221,100.0,True
+4517,Flight Attendant,53-1044.00,First-Line Supervisors of Passenger Attendants,5111,100.0,False
+4517,Flight Attendant,53-2031.00,Flight Attendants,5111,100.0,False
+4517,Flight Attendant,53-6061.00,Passenger Attendants,5111,100.0,False
+4518,Civil Celebrant,31-1122.00,Personal Care Aides,5169,57.1,True
+4518,Civil Celebrant,31-1132.00,Orderlies,5169,57.1,True
+4518,Civil Celebrant,33-9093.00,Transportation Security Screeners,5169,57.1,True
+4518,Civil Celebrant,35-3011.00,Bartenders,5169,57.1,True
+4518,Civil Celebrant,35-3023.00,Fast Food and Counter Workers,5169,57.1,True
+4518,Civil Celebrant,35-9021.00,Dishwashers,5169,57.1,True
+4518,Civil Celebrant,35-9031.00,"Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop",5169,57.1,True
+4518,Civil Celebrant,39-1022.00,First-Line Supervisors of Personal Service Workers,5169,57.1,True
+4518,Civil Celebrant,53-3051.00,"Bus Drivers, School",5169,57.1,False
+4521,Fitness Instructor,29-1128.00,Exercise Physiologists,3423,100.0,True
+4521,Fitness Instructor,39-1014.00,"First-Line Supervisors of Entertainment and Recreation Workers, Except Gambling Services",3423,100.0,False
+4521,Fitness Instructor,39-9032.00,Recreation Workers,3423,100.0,False
+4522,Bungy Jump Master,29-1128.00,Exercise Physiologists,3423,100.0,True
+4522,Bungy Jump Master,39-1014.00,"First-Line Supervisors of Entertainment and Recreation Workers, Except Gambling Services",3423,100.0,False
+4522,Bungy Jump Master,39-9032.00,Recreation Workers,3423,100.0,False
+4523,Diving Instructor (Open Water),27-2022.00,Coaches and Scouts,3422,90.9,False
+4523,Diving Instructor (Open Water),27-2023.00,"Umpires, Referees, and Other Sports Officials",3422,90.9,False
+4523,Diving Instructor (Open Water),39-9031.00,Exercise Trainers and Group Fitness Instructors,3422,90.9,False
+4524,Footballer,27-2021.00,Athletes and Sports Competitors,3421,80.0,False
+5111,Contract Administrator,13-1011.00,"Agents and Business Managers of Artists, Performers, and Athletes",3339,100.0,True
+5111,Contract Administrator,41-3011.00,Advertising Sales Agents,3339,100.0,False
+5121,Office Manager,43-1011.00,First-Line Supervisors of Office and Administrative Support Workers,3341,100.0,False
+5122,Health Practice Manager,11-9111.00,Medical and Health Services Managers,1342,50.0,True
+5122,Health Practice Manager,31-9094.00,Medical Transcriptionists,3344,50.0,True
+5122,Health Practice Manager,43-1011.00,First-Line Supervisors of Office and Administrative Support Workers,3341,50.0,False
+5122,Health Practice Manager,43-4031.00,"Court, Municipal, and License Clerks",3342,50.0,False
+5122,Health Practice Manager,43-6012.00,Legal Secretaries and Administrative Assistants,3342,50.0,False
+5122,Health Practice Manager,43-6013.00,Medical Secretaries and Administrative Assistants,3344,50.0,False
+5211,Personal Assistant,27-3092.00,Court Reporters and Simultaneous Captioners,3343,100.0,False
+5211,Personal Assistant,43-3061.00,Procurement Clerks,3343,100.0,False
+5211,Personal Assistant,43-6011.00,Executive Secretaries and Executive Administrative Assistants,3343,100.0,False
+5212,Secretary (General),27-3092.00,Court Reporters and Simultaneous Captioners,3343,50.0,False
+5212,Secretary (General),43-3061.00,Procurement Clerks,3343,50.0,False
+5212,Secretary (General),43-4031.00,"Court, Municipal, and License Clerks",3342,50.0,False
+5212,Secretary (General),43-6011.00,Executive Secretaries and Executive Administrative Assistants,3343,50.0,False
+5212,Secretary (General),43-6012.00,Legal Secretaries and Administrative Assistants,3342,50.0,False
+5212,Secretary (General),43-6014.00,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",4120,50.0,True
+5311,General Clerk,43-9061.00,"Office Clerks, General",4110,100.0,True
+5411,Call or Contact Centre Team Leader,41-9041.00,Telemarketers,4222,50.0,True
+5411,Call or Contact Centre Team Leader,43-1011.00,First-Line Supervisors of Office and Administrative Support Workers,3341,50.0,False
+5411,Call or Contact Centre Team Leader,43-2021.00,Telephone Operators,4222,50.0,True
+5411,Call or Contact Centre Team Leader,43-4051.00,Customer Service Representatives,4222,50.0,True
+5411,Call or Contact Centre Team Leader,43-4171.00,Receptionists and Information Clerks,4222,50.0,True
+5412,Information Officer,43-4021.00,Correspondence Clerks,4225,100.0,True
+5412,Information Officer,43-4051.00,Customer Service Representatives,4225,100.0,True
+5412,Information Officer,43-4151.00,Order Clerks,4225,100.0,True
+5421,Receptionist (General),43-4171.00,Receptionists and Information Clerks,4226,50.0,True
+5511,Accounts Clerk,43-3021.00,Billing and Posting Clerks,4311,100.0,True
+5511,Accounts Clerk,43-3031.00,"Bookkeeping, Accounting, and Auditing Clerks",4311,100.0,True
+5512,Bookkeeper,11-2033.00,Fundraising Managers,3313,100.0,False
+5512,Bookkeeper,11-9121.01,Clinical Research Coordinators,3313,100.0,False
+5512,Bookkeeper,13-1131.00,Fundraisers,3313,100.0,True
+5512,Bookkeeper,13-2011.00,Accountants and Auditors,3313,100.0,True
+5512,Bookkeeper,43-3021.00,Billing and Posting Clerks,3313; 4311,100.0,True
+5512,Bookkeeper,43-3031.00,"Bookkeeping, Accounting, and Auditing Clerks",3313; 4311,100.0,True
+5512,Bookkeeper,43-3051.00,Payroll and Timekeeping Clerks,3313,100.0,False
+5513,Payroll Clerk,43-3051.00,Payroll and Timekeeping Clerks,4313,100.0,True
+5521,Bank Worker,43-3071.00,Tellers,4211,100.0,True
+5521,Bank Worker,43-5051.00,Postal Service Clerks,4211,100.0,True
+5522,Credit or Loans Officer (Aus) / Finance Clerk (NZ) ,13-2041.00,Credit Analysts,3312,100.0,True
+5522,Credit or Loans Officer (Aus) / Finance Clerk (NZ) ,13-2071.00,Credit Counselors,3312,100.0,True
+5522,Credit or Loans Officer (Aus) / Finance Clerk (NZ) ,13-2072.00,Loan Officers,3312,100.0,True
+5522,Credit or Loans Officer (Aus) / Finance Clerk (NZ) ,43-4041.00,"Credit Authorizers, Checkers, and Clerks",3312,100.0,False
+5522,Credit or Loans Officer (Aus) / Finance Clerk (NZ) ,43-4131.00,Loan Interviewers and Clerks,3312,100.0,False
+5522,Credit or Loans Officer (Aus) / Finance Clerk (NZ) ,43-4141.00,New Accounts Clerks,3312,100.0,False
+5523,Bookmaker,43-4011.00,Brokerage Clerks,4312,75.0,True
+5523,Bookmaker,43-9041.00,Insurance Claims and Policy Processing Clerks,4312,75.0,True
+5611,Betting Agency Counter Clerk,39-1013.00,First-Line Supervisors of Gambling Services Workers,4212,100.0,False
+5611,Betting Agency Counter Clerk,39-3011.00,Gambling Dealers,4212,100.0,False
+5611,Betting Agency Counter Clerk,39-3012.00,Gambling and Sports Book Writers and Runners,4212,100.0,False
+5611,Betting Agency Counter Clerk,41-2012.00,Gambling Change Persons and Booth Cashiers,4212,100.0,True
+5611,Betting Agency Counter Clerk,43-3041.00,Gambling Cage Workers,4212,100.0,True
+5612,Courier,39-6011.00,Baggage Porters and Bellhops,9621,50.0,False
+5612,Courier,43-5021.00,Couriers and Messengers,8321; 9331; 9621,50.0,False
+5612,Courier,43-5052.00,Postal Service Mail Carriers,4412; 9331,50.0,True
+5612,Courier,43-5053.00,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",4412,50.0,True
+5612,Courier,43-9051.00,"Mail Clerks and Mail Machine Operators, Except Postal Service",4412; 9331,50.0,True
+5612,Courier,49-3091.00,Bicycle Repairers,9331,50.0,False
+5612,Courier,53-3031.00,Driver/Sales Workers,8321; 8322; 9331,100.0,True
+5612,Courier,53-3033.00,Light Truck Drivers,8321; 8322,100.0,True
+5612,Courier,53-3053.00,Shuttle Drivers and Chauffeurs,8322,100.0,True
+5612,Courier,53-3054.00,Taxi Drivers,8321; 8322,100.0,True
+5612,Courier,53-6021.00,Parking Attendants,8322,100.0,True
+5613,Filing or Registry Clerk,15-2051.02,Clinical Data Managers,3252,100.0,True
+5613,Filing or Registry Clerk,29-2072.00,Medical Records Specialists,3252,100.0,True
+5613,Filing or Registry Clerk,29-9021.00,Health Information Technologists and Medical Registrars,3252,100.0,True
+5613,Filing or Registry Clerk,43-4071.00,File Clerks,4415,100.0,True
+5614,Mail Clerk,43-5052.00,Postal Service Mail Carriers,4412,100.0,True
+5614,Mail Clerk,43-5053.00,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",4412,100.0,True
+5614,Mail Clerk,43-9051.00,"Mail Clerks and Mail Machine Operators, Except Postal Service",4412,100.0,True
+5615,Survey Interviewer,43-4111.00,"Interviewers, Except Eligibility and Loan",4227,100.0,True
+5616,Switchboard Operator,43-2011.00,"Switchboard Operators, Including Answering Service",4223,100.0,True
+5616,Switchboard Operator,43-2021.00,Telephone Operators,4223,100.0,True
+5616,Switchboard Operator,43-5031.00,Public Safety Telecommunicators,4223,100.0,True
+5619,Classified Advertising Clerk,11-2011.00,Advertising and Promotions Managers,4419,50.0,False
+5619,Classified Advertising Clerk,11-2033.00,Fundraising Managers,3313,50.0,False
+5619,Classified Advertising Clerk,11-9121.01,Clinical Research Coordinators,3313,50.0,False
+5619,Classified Advertising Clerk,13-1041.00,Compliance Officers,3354,50.0,True
+5619,Classified Advertising Clerk,13-1131.00,Fundraisers,3313,50.0,True
+5619,Classified Advertising Clerk,13-2011.00,Accountants and Auditors,3313,50.0,True
+5619,Classified Advertising Clerk,43-3021.00,Billing and Posting Clerks,3313,50.0,False
+5619,Classified Advertising Clerk,43-3031.00,"Bookkeeping, Accounting, and Auditing Clerks",3313,50.0,False
+5619,Classified Advertising Clerk,43-3051.00,Payroll and Timekeeping Clerks,3313,50.0,False
+5619,Classified Advertising Clerk,43-4011.00,Brokerage Clerks,4312,50.0,True
+5619,Classified Advertising Clerk,43-4021.00,Correspondence Clerks,4419,50.0,True
+5619,Classified Advertising Clerk,43-5011.00,Cargo and Freight Agents,4323,50.0,True
+5619,Classified Advertising Clerk,43-5011.01,Freight Forwarders,4323,50.0,True
+5619,Classified Advertising Clerk,43-5032.00,"Dispatchers, Except Police, Fire, and Ambulance",4323,50.0,True
+5619,Classified Advertising Clerk,43-6014.00,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",4419,50.0,True
+5619,Classified Advertising Clerk,43-9022.00,Word Processors and Typists,4419,50.0,True
+5619,Classified Advertising Clerk,43-9041.00,Insurance Claims and Policy Processing Clerks,4312,50.0,True
+5619,Classified Advertising Clerk,43-9051.00,"Mail Clerks and Mail Machine Operators, Except Postal Service",4419,50.0,True
+5619,Classified Advertising Clerk,43-9061.00,"Office Clerks, General",4419,50.0,True
+5619,Classified Advertising Clerk,43-9081.00,Proofreaders and Copy Markers,4413,50.0,True
+5619,Classified Advertising Clerk,43-9111.00,Statistical Assistants,3314,50.0,False
+5619,Classified Advertising Clerk,53-1041.00,Aircraft Cargo Handling Supervisors,4323,50.0,False
+5911,Production Clerk,43-5071.00,"Shipping, Receiving, and Inventory Clerks",4321,80.0,True
+5911,Production Clerk,43-5111.00,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping",4321,80.0,True
+5912,Despatching and Receiving Clerk,13-1041.08,Customs Brokers,3331,50.0,True
+5912,Despatching and Receiving Clerk,43-5011.00,Cargo and Freight Agents,4323,50.0,True
+5912,Despatching and Receiving Clerk,43-5011.01,Freight Forwarders,4323,50.0,True
+5912,Despatching and Receiving Clerk,43-5032.00,"Dispatchers, Except Police, Fire, and Ambulance",4323,50.0,True
+5912,Despatching and Receiving Clerk,53-1041.00,Aircraft Cargo Handling Supervisors,4323,50.0,False
+5991,Conveyancer,23-1012.00,Judicial Law Clerks,3411,100.0,False
+5991,Conveyancer,23-2011.00,Paralegals and Legal Assistants,3411,100.0,False
+5991,Conveyancer,33-3011.00,Bailiffs,3411,100.0,True
+5991,Conveyancer,33-9021.00,Private Detectives and Investigators,3411,100.0,True
+5992,Clerk of Court,23-1012.00,Judicial Law Clerks,3411,100.0,False
+5992,Clerk of Court,23-2011.00,Paralegals and Legal Assistants,3411,100.0,False
+5992,Clerk of Court,33-3011.00,Bailiffs,3411,100.0,True
+5992,Clerk of Court,33-9021.00,Private Detectives and Investigators,3411,100.0,True
+5993,Debt Collector,43-3011.00,Bill and Account Collectors,4214,100.0,True
+5994,Human Resource Clerk,43-4161.00,"Human Resources Assistants, Except Payroll and Timekeeping",4416,100.0,True
+5995,Customs Officer,13-1041.01,Environmental Compliance Inspectors,3257,50.0,True
+5995,Customs Officer,19-5012.00,Occupational Health and Safety Technicians,3257,50.0,True
+5996,Insurance Investigator,13-1031.00,"Claims Adjusters, Examiners, and Investigators",3315,100.0,True
+5996,Insurance Investigator,13-1032.00,"Insurance Appraisers, Auto Damage",3315,100.0,True
+5996,Insurance Investigator,13-2022.00,Appraisers of Personal and Business Property,3315,100.0,True
+5996,Insurance Investigator,13-2023.00,Appraisers and Assessors of Real Estate,3315,100.0,True
+5996,Insurance Investigator,23-2093.00,"Title Examiners, Abstractors, and Searchers",3315,100.0,False
+5997,Library Assistant,25-4031.00,Library Technicians,4411,100.0,False
+5997,Library Assistant,43-4121.00,"Library Assistants, Clerical",4411,100.0,True
+6111,Auctioneer,13-1011.00,"Agents and Business Managers of Artists, Performers, and Athletes",3339,100.0,True
+6111,Auctioneer,41-3011.00,Advertising Sales Agents,3339,100.0,False
+6112,Insurance Agent,13-2053.00,Insurance Underwriters,3321,100.0,True
+6112,Insurance Agent,41-3021.00,Insurance Sales Agents,3321,100.0,False
+6113,Sales Representative (Building and Plumbing Supplies),41-3091.00,"Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel",3322,100.0,False
+6113,Sales Representative (Building and Plumbing Supplies),41-4012.00,"Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",3322,100.0,False
+6121,Business Broker,11-9141.00,"Property, Real Estate, and Community Association Managers",3334,100.0,False
+6121,Business Broker,39-9041.00,Residential Advisors,3334,100.0,False
+6121,Business Broker,41-9021.00,Real Estate Brokers,3334,100.0,False
+6121,Business Broker,41-9022.00,Real Estate Sales Agents,3334,100.0,False
+6211,Sales Assistant (General),27-1023.00,Floral Designers,5223,100.0,False
+6211,Sales Assistant (General),35-3041.00,"Food Servers, Nonrestaurant",5246,100.0,True
+6211,Sales Assistant (General),39-5091.00,"Makeup Artists, Theatrical and Performance",5142,100.0,True
+6211,Sales Assistant (General),39-5092.00,Manicurists and Pedicurists,5142,100.0,True
+6211,Sales Assistant (General),39-5094.00,Skincare Specialists,5142,100.0,True
+6211,Sales Assistant (General),41-2022.00,Parts Salespersons,5223,100.0,True
+6211,Sales Assistant (General),41-2031.00,Retail Salespersons,5223,100.0,True
+6211,Sales Assistant (General),43-3071.00,Tellers,4213,100.0,True
+6212,ICT Sales Assistant,27-1023.00,Floral Designers,5223,100.0,False
+6212,ICT Sales Assistant,41-2022.00,Parts Salespersons,5223,100.0,True
+6212,ICT Sales Assistant,41-2031.00,Retail Salespersons,5223,100.0,True
+6213,Motor Vehicle or Caravan Salesperson,27-1023.00,Floral Designers,5223,100.0,False
+6213,Motor Vehicle or Caravan Salesperson,41-2022.00,Parts Salespersons,5223,100.0,True
+6213,Motor Vehicle or Caravan Salesperson,41-2031.00,Retail Salespersons,5223,100.0,True
+6214,Pharmacy Sales Assistant,27-1023.00,Floral Designers,5223,100.0,False
+6214,Pharmacy Sales Assistant,41-2022.00,Parts Salespersons,5223,100.0,True
+6214,Pharmacy Sales Assistant,41-2031.00,Retail Salespersons,5223,100.0,True
+6215,Retail Supervisor,35-3031.00,Waiters and Waitresses,5131,100.0,True
+6215,Retail Supervisor,41-1011.00,First-Line Supervisors of Retail Sales Workers,5222,100.0,True
+6215,Retail Supervisor,41-1012.00,First-Line Supervisors of Non-Retail Sales Workers,5222,100.0,True
+6215,Retail Supervisor,41-2011.00,Cashiers,5222,100.0,True
+6215,Retail Supervisor,49-1011.00,"First-Line Supervisors of Mechanics, Installers, and Repairers",5222,100.0,False
+6216,Service Station Attendant,53-6031.00,Automotive and Watercraft Service Attendants,5245,100.0,False
+6217,Cash Van Salesperson,35-3023.00,Fast Food and Counter Workers,5211; 5212,66.7,True
+6217,Cash Van Salesperson,41-2011.00,Cashiers,5211,66.7,True
+6217,Cash Van Salesperson,41-9011.00,Demonstrators and Product Promoters,5211,66.7,True
+6217,Cash Van Salesperson,41-9091.00,"Door-to-Door Sales Workers, News and Street Vendors, and Related Workers",5211; 5212; 9520,66.7,True
+6219,Materials Recycler,41-2021.00,Counter and Rental Clerks,5249,66.7,True
+6311,Checkout Operator,11-2011.00,Advertising and Promotions Managers,4419,50.0,False
+6311,Checkout Operator,11-2033.00,Fundraising Managers,3313,50.0,False
+6311,Checkout Operator,11-9121.01,Clinical Research Coordinators,3313,50.0,False
+6311,Checkout Operator,13-1041.00,Compliance Officers,3354,50.0,True
+6311,Checkout Operator,13-1131.00,Fundraisers,3313,50.0,True
+6311,Checkout Operator,13-2011.00,Accountants and Auditors,3313,50.0,True
+6311,Checkout Operator,41-2011.00,Cashiers,5230,100.0,True
+6311,Checkout Operator,43-3021.00,Billing and Posting Clerks,3313,50.0,False
+6311,Checkout Operator,43-3031.00,"Bookkeeping, Accounting, and Auditing Clerks",3313,50.0,False
+6311,Checkout Operator,43-3051.00,Payroll and Timekeeping Clerks,3313,50.0,False
+6311,Checkout Operator,43-4011.00,Brokerage Clerks,4312,50.0,True
+6311,Checkout Operator,43-4021.00,Correspondence Clerks,4419,50.0,True
+6311,Checkout Operator,43-5011.00,Cargo and Freight Agents,4323,50.0,True
+6311,Checkout Operator,43-5011.01,Freight Forwarders,4323,50.0,True
+6311,Checkout Operator,43-5032.00,"Dispatchers, Except Police, Fire, and Ambulance",4323,50.0,True
+6311,Checkout Operator,43-6014.00,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",4419,50.0,True
+6311,Checkout Operator,43-9022.00,Word Processors and Typists,4419,50.0,True
+6311,Checkout Operator,43-9041.00,Insurance Claims and Policy Processing Clerks,4312,50.0,True
+6311,Checkout Operator,43-9051.00,"Mail Clerks and Mail Machine Operators, Except Postal Service",4419,50.0,True
+6311,Checkout Operator,43-9061.00,"Office Clerks, General",4419,50.0,True
+6311,Checkout Operator,43-9081.00,Proofreaders and Copy Markers,4413,50.0,True
+6311,Checkout Operator,43-9111.00,Statistical Assistants,3314,50.0,False
+6311,Checkout Operator,53-1041.00,Aircraft Cargo Handling Supervisors,4323,50.0,False
+6311,Checkout Operator,53-6031.00,Automotive and Watercraft Service Attendants,5245,50.0,False
+6391,Model,41-9011.00,Demonstrators and Product Promoters,5242,50.0,True
+6391,Model,41-9012.00,Models,5241,50.0,True
+6392,Retail Buyer,13-1021.00,"Buyers and Purchasing Agents, Farm Products",3323,100.0,True
+6392,Retail Buyer,13-1022.00,"Wholesale and Retail Buyers, Except Farm Products",3323,100.0,True
+6392,Retail Buyer,13-1023.00,"Purchasing Agents, Except Wholesale, Retail, and Farm Products",3323,100.0,True
+6392,Retail Buyer,41-2021.00,Counter and Rental Clerks,5249,50.0,True
+6393,Telemarketer,41-9041.00,Telemarketers,5244,100.0,True
+6394,Ticket Seller,13-1021.00,"Buyers and Purchasing Agents, Farm Products",3323,50.0,True
+6394,Ticket Seller,13-1022.00,"Wholesale and Retail Buyers, Except Farm Products",3323,50.0,True
+6394,Ticket Seller,13-1023.00,"Purchasing Agents, Except Wholesale, Retail, and Farm Products",3323,50.0,True
+6394,Ticket Seller,39-3031.00,"Ushers, Lobby Attendants, and Ticket Takers",9629,50.0,False
+6394,Ticket Seller,39-3091.00,Amusement and Recreation Attendants,9629,50.0,False
+6394,Ticket Seller,39-3093.00,"Locker Room, Coatroom, and Dressing Room Attendants",9629,50.0,False
+6394,Ticket Seller,39-7012.00,Travel Guides,4221,50.0,False
+6394,Ticket Seller,41-2011.00,Cashiers,5230,50.0,True
+6394,Ticket Seller,41-2021.00,Counter and Rental Clerks,5249,50.0,True
+6394,Ticket Seller,41-3041.00,Travel Agents,4221,50.0,True
+6394,Ticket Seller,43-4181.00,Reservation and Transportation Ticket Agents and Travel Clerks,4221,50.0,True
+6394,Ticket Seller,53-1044.00,First-Line Supervisors of Passenger Attendants,5112,50.0,False
+6394,Ticket Seller,53-4031.00,Railroad Conductors and Yardmasters,5112,50.0,False
+6395,Visual Merchandiser,27-1025.00,Interior Designers,3432,100.0,False
+6395,Visual Merchandiser,27-1026.00,Merchandise Displayers and Window Trimmers,3432,100.0,False
+6395,Visual Merchandiser,27-1027.00,Set and Exhibit Designers,3432,100.0,False
+6395,Visual Merchandiser,27-4015.00,Lighting Technicians,3435,100.0,False
+6395,Visual Merchandiser,39-3092.00,Costume Attendants,3435,100.0,False
+6399,Other Sales Support Worker,13-1021.00,"Buyers and Purchasing Agents, Farm Products",3323,100.0,True
+6399,Other Sales Support Worker,13-1022.00,"Wholesale and Retail Buyers, Except Farm Products",3323,100.0,True
+6399,Other Sales Support Worker,13-1023.00,"Purchasing Agents, Except Wholesale, Retail, and Farm Products",3323,100.0,True
+6399,Other Sales Support Worker,41-2021.00,Counter and Rental Clerks,5249,100.0,True
+7111,Clay Products Machine Operator,47-5051.00,"Rock Splitters, Quarry",8114,60.0,False
+7112,Industrial Spraypainter,51-9124.00,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",7132,100.0,True
+7113,Paper Products Machine Operator,45-4021.00,Fallers,8172,66.7,False
+7113,Paper Products Machine Operator,51-3091.00,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders",7521,66.7,True
+7113,Paper Products Machine Operator,51-7041.00,"Sawing Machine Setters, Operators, and Tenders, Wood",8172,66.7,True
+7113,Paper Products Machine Operator,51-7042.00,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",7521,66.7,True
+7113,Paper Products Machine Operator,51-9051.00,"Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders",7521,66.7,True
+7114,Photographic Developer and Printer,29-2099.08,Patient Representatives,5329,100.0,False
+7114,Photographic Developer and Printer,31-1132.00,Orderlies,5329,100.0,True
+7114,Photographic Developer and Printer,31-2022.00,Physical Therapist Aides,5329,100.0,True
+7114,Photographic Developer and Printer,31-9093.00,Medical Equipment Preparers,5329,100.0,True
+7114,Photographic Developer and Printer,31-9097.00,Phlebotomists,5329,100.0,True
+7114,Photographic Developer and Printer,51-9151.00,Photographic Process Workers and Processing Machine Operators,8132,100.0,True
+7115,Plastic Cablemaking Machine Operator,51-2051.00,Fiberglass Laminators and Fabricators,8142,85.7,True
+7116,Sewing Machinist,51-6031.00,Sewing Machine Operators,8153,100.0,True
+7117,Footwear Production Machine Operator,51-6042.00,Shoe Machine Operators and Tenders,8156,100.0,True
+7117,Footwear Production Machine Operator,51-6061.00,Textile Bleaching and Dyeing Machine Operators and Tenders,8154; 8155,100.0,True
+7117,Footwear Production Machine Operator,51-6062.00,"Textile Cutting Machine Setters, Operators, and Tenders",8156,100.0,True
+7117,Footwear Production Machine Operator,51-6063.00,"Textile Knitting and Weaving Machine Setters, Operators, and Tenders",8152; 8159,100.0,True
+7117,Footwear Production Machine Operator,51-6064.00,"Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders",8151; 8159,100.0,True
+7117,Footwear Production Machine Operator,51-6091.00,"Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers",8159,100.0,True
+7117,Footwear Production Machine Operator,51-6092.00,Fabric and Apparel Patternmakers,8159,100.0,True
+7117,Footwear Production Machine Operator,51-6099.00,"Textile, Apparel, and Furnishings Workers, All Other",8155; 8159,100.0,True
+7117,Footwear Production Machine Operator,51-9023.00,"Mixing and Blending Machine Setters, Operators, and Tenders",8155,100.0,True
+7117,Footwear Production Machine Operator,51-9061.00,"Inspectors, Testers, Sorters, Samplers, and Weighers",7535,100.0,True
+7117,Footwear Production Machine Operator,51-9199.00,"Production Workers, All Other",8155,100.0,True
+7121,"Crane, Hoist or Lift Operator",53-7021.00,Crane and Tower Operators,8343,100.0,True
+7121,"Crane, Hoist or Lift Operator",53-7041.00,Hoist and Winch Operators,8343,100.0,True
+7122,Driller,47-5012.00,"Rotary Drill Operators, Oil and Gas",8111,66.7,False
+7122,Driller,47-5041.00,Continuous Mining Machine Operators,8111,66.7,False
+7122,Driller,47-5043.00,"Roof Bolters, Mining",8111,66.7,False
+7122,Driller,47-5044.00,"Loading and Moving Machine Operators, Underground Mining",8111,66.7,False
+7123,Engineering Production Worker,47-2011.00,Boilermakers,7213,100.0,True
+7123,Engineering Production Worker,47-2211.00,Sheet Metal Workers,7213,100.0,True
+7123,Engineering Production Worker,51-4021.00,"Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic",8121,100.0,True
+7123,Engineering Production Worker,51-4023.00,"Rolling Machine Setters, Operators, and Tenders, Metal and Plastic",7223,100.0,True
+7123,Engineering Production Worker,51-4031.00,"Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",7223,100.0,True
+7123,Engineering Production Worker,51-4032.00,"Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic",7223,100.0,True
+7123,Engineering Production Worker,51-4033.00,"Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic",7224,100.0,True
+7123,Engineering Production Worker,51-4034.00,"Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",7223,100.0,True
+7123,Engineering Production Worker,51-4035.00,"Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic",8121,100.0,True
+7123,Engineering Production Worker,51-4041.00,Machinists,7223,100.0,True
+7123,Engineering Production Worker,51-4051.00,Metal-Refining Furnace Operators and Tenders,3135,100.0,False
+7123,Engineering Production Worker,51-4081.00,"Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic",7223,100.0,True
+7123,Engineering Production Worker,51-4121.00,"Welders, Cutters, Solderers, and Brazers",7212,100.0,True
+7123,Engineering Production Worker,51-4191.00,"Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic",3135,100.0,False
+7123,Engineering Production Worker,51-4192.00,"Layout Workers, Metal and Plastic",7213,100.0,True
+7123,Engineering Production Worker,51-4193.00,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic",8122,100.0,True
+7123,Engineering Production Worker,51-4194.00,"Tool Grinders, Filers, and Sharpeners",7224,100.0,True
+7123,Engineering Production Worker,51-9022.00,"Grinding and Polishing Workers, Hand",7224,100.0,True
+7123,Engineering Production Worker,51-9161.00,Computer Numerically Controlled Tool Operators,7223,100.0,True
+7211,Agricultural and Horticultural Mobile Plant Operator,19-1031.02,Range Managers,6210,50.0,False
+7211,Agricultural and Horticultural Mobile Plant Operator,19-1032.00,Foresters,6210,50.0,False
+7211,Agricultural and Horticultural Mobile Plant Operator,19-4071.00,Forest and Conservation Technicians,6210,50.0,False
+7211,Agricultural and Horticultural Mobile Plant Operator,33-2022.00,Forest Fire Inspectors and Prevention Specialists,6210,50.0,False
+7211,Agricultural and Horticultural Mobile Plant Operator,33-3031.00,Fish and Game Wardens,6210,50.0,False
+7211,Agricultural and Horticultural Mobile Plant Operator,37-3013.00,Tree Trimmers and Pruners,6210,50.0,False
+7211,Agricultural and Horticultural Mobile Plant Operator,45-2091.00,Agricultural Equipment Operators,8341,100.0,False
+7211,Agricultural and Horticultural Mobile Plant Operator,45-3031.00,Fishing and Hunting Workers,6210,50.0,True
+7211,Agricultural and Horticultural Mobile Plant Operator,45-4011.00,Forest and Conservation Workers,6210,50.0,True
+7211,Agricultural and Horticultural Mobile Plant Operator,45-4022.00,Logging Equipment Operators,8341,100.0,False
+7212,Earthmoving Plant Operator (General),47-2071.00,"Paving, Surfacing, and Tamping Equipment Operators",8342,100.0,False
+7212,Earthmoving Plant Operator (General),47-2072.00,Pile Driver Operators,8342,100.0,False
+7212,Earthmoving Plant Operator (General),47-2073.00,Operating Engineers and Other Construction Equipment Operators,8342,100.0,False
+7212,Earthmoving Plant Operator (General),47-4091.00,Segmental Pavers,8342,100.0,False
+7212,Earthmoving Plant Operator (General),47-5022.00,"Excavating and Loading Machine and Dragline Operators, Surface Mining",8342,100.0,False
+7212,Earthmoving Plant Operator (General),53-7031.00,Dredge Operators,8342,100.0,True
+7213,Forklift Driver,53-7051.00,Industrial Truck and Tractor Operators,8344,100.0,True
+7219,Aircraft Baggage Handler and Airline Ground Crew,47-2071.00,"Paving, Surfacing, and Tamping Equipment Operators",8342,71.4,False
+7219,Aircraft Baggage Handler and Airline Ground Crew,47-2072.00,Pile Driver Operators,8342,71.4,False
+7219,Aircraft Baggage Handler and Airline Ground Crew,47-2073.00,Operating Engineers and Other Construction Equipment Operators,8342,71.4,False
+7219,Aircraft Baggage Handler and Airline Ground Crew,47-4091.00,Segmental Pavers,8342,71.4,False
+7219,Aircraft Baggage Handler and Airline Ground Crew,47-5022.00,"Excavating and Loading Machine and Dragline Operators, Surface Mining",8342,71.4,False
+7219,Aircraft Baggage Handler and Airline Ground Crew,53-7031.00,Dredge Operators,8342,71.4,True
+7311,Chauffeur,53-3031.00,Driver/Sales Workers,8322,100.0,True
+7311,Chauffeur,53-3033.00,Light Truck Drivers,8322,100.0,True
+7311,Chauffeur,53-3053.00,Shuttle Drivers and Chauffeurs,8322,100.0,True
+7311,Chauffeur,53-3054.00,Taxi Drivers,8322,100.0,True
+7311,Chauffeur,53-6021.00,Parking Attendants,8322,100.0,True
+7312,Bus Driver,53-3051.00,"Bus Drivers, School",8331,100.0,True
+7312,Bus Driver,53-3052.00,"Bus Drivers, Transit and Intercity",8331,100.0,True
+7313,Train Driver,53-3051.00,"Bus Drivers, School",8331,50.0,True
+7313,Train Driver,53-3052.00,"Bus Drivers, Transit and Intercity",8331,50.0,True
+7313,Train Driver,53-4011.00,Locomotive Engineers,8311,50.0,True
+7313,Train Driver,53-4041.00,Subway and Streetcar Operators,8311,50.0,True
+7321,Delivery Driver,39-6011.00,Baggage Porters and Bellhops,9621,100.0,False
+7321,Delivery Driver,43-5021.00,Couriers and Messengers,8321; 9331; 9621,100.0,False
+7321,Delivery Driver,43-5052.00,Postal Service Mail Carriers,4412; 9331,100.0,True
+7321,Delivery Driver,43-5053.00,"Postal Service Mail Sorters, Processors, and Processing Machine Operators",4412,100.0,True
+7321,Delivery Driver,43-9051.00,"Mail Clerks and Mail Machine Operators, Except Postal Service",4412; 9331,100.0,True
+7321,Delivery Driver,49-3091.00,Bicycle Repairers,9331,100.0,False
+7321,Delivery Driver,53-3031.00,Driver/Sales Workers,8321; 8322; 9331,100.0,True
+7321,Delivery Driver,53-3033.00,Light Truck Drivers,8321; 8322,100.0,True
+7321,Delivery Driver,53-3053.00,Shuttle Drivers and Chauffeurs,8322,100.0,True
+7321,Delivery Driver,53-3054.00,Taxi Drivers,8321; 8322,100.0,True
+7321,Delivery Driver,53-6021.00,Parking Attendants,8322,100.0,True
+7331,Truck Driver (General),53-3032.00,Heavy and Tractor-Trailer Truck Drivers,8332,100.0,True
+7331,Truck Driver (General),53-7051.00,Industrial Truck and Tractor Operators,8332,100.0,True
+7411,Storeperson,43-5071.00,"Shipping, Receiving, and Inventory Clerks",4321,100.0,True
+7411,Storeperson,43-5111.00,"Weighers, Measurers, Checkers, and Samplers, Recordkeeping",4321,100.0,True
+7411,Storeperson,51-9198.00,Helpers--Production Workers,9329,100.0,False
+7411,Storeperson,53-7062.00,"Laborers and Freight, Stock, and Material Movers, Hand",9333,100.0,True
+7411,Storeperson,53-7065.00,Stockers and Order Fillers,9333,100.0,True
+7411,Storeperson,53-7121.00,"Tank Car, Truck, and Ship Loaders",9333,100.0,True
+8111,Car Detailer,53-7061.00,Cleaners of Vehicles and Equipment,9122,100.0,True
+8112,Commercial Cleaner,37-1011.00,First-Line Supervisors of Housekeeping and Janitorial Workers,5151,100.0,True
+8112,Commercial Cleaner,37-2011.00,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",9112,100.0,True
+8112,Commercial Cleaner,47-4041.00,Hazardous Materials Removal Workers,7133,100.0,True
+8113,Domestic Cleaner,37-2012.00,Maids and Housekeeping Cleaners,9111,100.0,True
+8114,Commercial Housekeeper,11-9081.00,Lodging Managers,5152,50.0,False
+8114,Commercial Housekeeper,37-1011.00,First-Line Supervisors of Housekeeping and Janitorial Workers,5151; 5152,50.0,True
+8114,Commercial Housekeeper,37-2011.00,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",9112,50.0,True
+8114,Commercial Housekeeper,37-2012.00,Maids and Housekeeping Cleaners,5152,50.0,True
+8114,Commercial Housekeeper,39-1022.00,First-Line Supervisors of Personal Service Workers,5152,50.0,True
+8115,Laundry Worker (General),51-6011.00,Laundry and Dry-Cleaning Workers,8157,100.0,True
+8115,Laundry Worker (General),51-6021.00,"Pressers, Textile, Garment, and Related Materials",9121,100.0,False
+8116,Carpet Cleaner,51-9192.00,"Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders",9129,66.7,False
+8211,Builder's Labourer,47-2061.00,Construction Laborers,9312,50.0,True
+8211,Builder's Labourer,47-4031.00,Fence Erectors,9313,50.0,True
+8211,Builder's Labourer,47-4051.00,Highway Maintenance Workers,9312,50.0,True
+8211,Builder's Labourer,53-6011.00,Bridge and Lock Tenders,9312,50.0,True
+8212,Concreter,47-2041.00,Carpet Installers,7122,100.0,True
+8212,Concreter,47-2042.00,"Floor Layers, Except Carpet, Wood, and Hard Tiles",7122,100.0,True
+8212,Concreter,47-2043.00,Floor Sanders and Finishers,7122,100.0,True
+8212,Concreter,47-2044.00,Tile and Stone Setters,7122,100.0,True
+8212,Concreter,47-2051.00,Cement Masons and Concrete Finishers,7114,100.0,True
+8212,Concreter,47-2053.00,Terrazzo Workers and Finishers,7114,100.0,True
+8212,Concreter,47-4031.00,Fence Erectors,9313,100.0,True
+8213,Fencer,47-4031.00,Fence Erectors,9313,100.0,True
+8214,Building Insulation Installer,45-4021.00,Fallers,7119,50.0,False
+8214,Building Insulation Installer,47-2031.00,Carpenters,7111; 7115; 7119,50.0,True
+8214,Building Insulation Installer,47-2061.00,Construction Laborers,7119,50.0,True
+8214,Building Insulation Installer,47-2072.00,Pile Driver Operators,7119,50.0,True
+8214,Building Insulation Installer,47-2081.00,Drywall and Ceiling Tile Installers,7111,50.0,True
+8214,Building Insulation Installer,47-2131.00,"Insulation Workers, Floor, Ceiling, and Wall",7124,50.0,True
+8214,Building Insulation Installer,47-2132.00,"Insulation Workers, Mechanical",7124,50.0,True
+8214,Building Insulation Installer,47-3012.00,Helpers--Carpenters,7115,50.0,True
+8214,Building Insulation Installer,47-4031.00,Fence Erectors,7111; 9313,50.0,True
+8214,Building Insulation Installer,47-4041.00,Hazardous Materials Removal Workers,7119,50.0,True
+8214,Building Insulation Installer,47-4099.03,Weatherization Installers and Technicians,7124,50.0,True
+8214,Building Insulation Installer,49-9095.00,Manufactured Building and Mobile Home Installers,7111; 7115; 7119,50.0,True
+8214,Building Insulation Installer,49-9096.00,Riggers,7119,50.0,True
+8214,Building Insulation Installer,51-2092.00,Team Assemblers,7119,50.0,True
+8214,Building Insulation Installer,51-7011.00,Cabinetmakers and Bench Carpenters,7119,50.0,True
+8215,Paving and Surfacing Labourer,47-2061.00,Construction Laborers,9312,100.0,True
+8215,Paving and Surfacing Labourer,47-4051.00,Highway Maintenance Workers,9312,100.0,True
+8215,Paving and Surfacing Labourer,53-6011.00,Bridge and Lock Tenders,9312,100.0,True
+8216,Railway Track Worker,13-1041.01,Environmental Compliance Inspectors,3257,100.0,True
+8216,Railway Track Worker,19-5012.00,Occupational Health and Safety Technicians,3257,100.0,True
+8216,Railway Track Worker,33-2022.00,Forest Fire Inspectors and Prevention Specialists,3359,100.0,True
+8216,Railway Track Worker,33-3041.00,Parking Enforcement Workers,5419,100.0,True
+8216,Railway Track Worker,33-9031.00,Gambling Surveillance Officers and Gambling Investigators,3359,100.0,True
+8216,Railway Track Worker,33-9091.00,Crossing Guards and Flaggers,5419,100.0,True
+8216,Railway Track Worker,33-9092.00,"Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers",5419,100.0,True
+8216,Railway Track Worker,45-2011.00,Agricultural Inspectors,3359,100.0,False
+8216,Railway Track Worker,47-2061.00,Construction Laborers,9312,100.0,True
+8216,Railway Track Worker,47-4051.00,Highway Maintenance Workers,9312,100.0,True
+8216,Railway Track Worker,53-6011.00,Bridge and Lock Tenders,9312,100.0,True
+8216,Railway Track Worker,53-6051.00,Transportation Inspectors,3359,100.0,False
+8216,Railway Track Worker,53-6051.07,"Transportation Vehicle, Equipment and Systems Inspectors, Except Aviation",3359,100.0,False
+8311,Baking Factory Worker,51-3091.00,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders",8160,100.0,True
+8311,Baking Factory Worker,51-3092.00,Food Batchmakers,8160,100.0,True
+8311,Baking Factory Worker,51-3093.00,Food Cooking Machine Operators and Tenders,8160,100.0,True
+8311,Baking Factory Worker,51-9012.00,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",8160,100.0,True
+8311,Baking Factory Worker,51-9193.00,Cooling and Freezing Equipment Operators and Tenders,8160,100.0,True
+8312,Meat Boner and Slicer,51-3021.00,Butchers and Meat Cutters,7511,100.0,True
+8312,Meat Boner and Slicer,51-3022.00,"Meat, Poultry, and Fish Cutters and Trimmers",7511,100.0,True
+8312,Meat Boner and Slicer,51-3023.00,Slaughterers and Meat Packers,7511,100.0,True
+8313,Meat Process Worker,51-3021.00,Butchers and Meat Cutters,7511,100.0,True
+8313,Meat Process Worker,51-3022.00,"Meat, Poultry, and Fish Cutters and Trimmers",7511,100.0,True
+8313,Meat Process Worker,51-3023.00,Slaughterers and Meat Packers,7511,100.0,True
+8313,Meat Process Worker,51-3091.00,"Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders",8160,100.0,True
+8313,Meat Process Worker,51-3092.00,Food Batchmakers,8160,100.0,True
+8313,Meat Process Worker,51-3093.00,Food Cooking Machine Operators and Tenders,8160,100.0,True
+8313,Meat Process Worker,51-9012.00,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",8160,100.0,True
+8313,Meat Process Worker,51-9193.00,Cooling and Freezing Equipment Operators and Tenders,8160,100.0,True
+8321,Chocolate Packer,51-9111.00,Packaging and Filling Machine Operators and Tenders,8183,100.0,True
+8321,Chocolate Packer,53-7064.00,"Packers and Packagers, Hand",9321,100.0,True
+8322,Product Assembler,17-2199.08,Robotics Engineers,3139,100.0,True
+8322,Product Assembler,17-3024.01,Robotics Technicians,3139,100.0,True
+8322,Product Assembler,47-2211.00,Sheet Metal Workers,8219,100.0,False
+8322,Product Assembler,47-5032.00,"Explosives Workers, Ordnance Handling Experts, and Blasters",8219,100.0,False
+8322,Product Assembler,49-3091.00,Bicycle Repairers,8219,100.0,False
+8322,Product Assembler,49-9062.00,Medical Equipment Repairers,8219,100.0,False
+8322,Product Assembler,51-2011.00,"Aircraft Structure, Surfaces, Rigging, and Systems Assemblers",8211,100.0,True
+8322,Product Assembler,51-2021.00,"Coil Winders, Tapers, and Finishers",8212,100.0,True
+8322,Product Assembler,51-2022.00,Electrical and Electronic Equipment Assemblers,8212,100.0,True
+8322,Product Assembler,51-2023.00,Electromechanical Equipment Assemblers,8212,100.0,True
+8322,Product Assembler,51-2031.00,Engine and Other Machine Assemblers,8211,100.0,True
+8322,Product Assembler,51-2041.00,Structural Metal Fabricators and Fitters,8219,100.0,True
+8322,Product Assembler,51-2051.00,Fiberglass Laminators and Fabricators,8219,100.0,True
+8322,Product Assembler,51-2092.00,Team Assemblers,3139; 8219,100.0,True
+8322,Product Assembler,51-2099.00,"Assemblers and Fabricators, All Other",8219,100.0,True
+8322,Product Assembler,51-4122.00,"Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders",8212,100.0,True
+8322,Product Assembler,51-4199.00,"Metal Workers and Plastic Workers, All Other",8219,100.0,True
+8322,Product Assembler,51-6099.00,"Textile, Apparel, and Furnishings Workers, All Other",3139,100.0,False
+8322,Product Assembler,51-7011.00,Cabinetmakers and Bench Carpenters,8219,100.0,True
+8322,Product Assembler,51-7021.00,Furniture Finishers,8219,100.0,True
+8322,Product Assembler,51-7042.00,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",8219,100.0,True
+8322,Product Assembler,51-9012.00,"Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders",3139,100.0,False
+8322,Product Assembler,51-9071.00,Jewelers and Precious Stone and Metal Workers,8219,100.0,True
+8322,Product Assembler,51-9071.06,Gem and Diamond Workers,8219,100.0,True
+8322,Product Assembler,51-9141.00,Semiconductor Processing Technicians,8212,100.0,True
+8322,Product Assembler,51-9191.00,Adhesive Bonding Machine Operators and Tenders,8219,100.0,True
+8322,Product Assembler,51-9197.00,Tire Builders,8219,100.0,True
+8322,Product Assembler,51-9198.00,Helpers--Production Workers,8219,100.0,True
+8391,Metal Engineering Process Worker,51-9198.00,Helpers--Production Workers,9329,100.0,False
+8392,Plastics Factory Worker,51-9061.00,"Inspectors, Testers, Sorters, Samplers, and Weighers",7535,50.0,True
+8392,Plastics Factory Worker,51-9198.00,Helpers--Production Workers,9329,100.0,False
+8393,Product Examiner,17-3029.01,Non-Destructive Testing Specialists,7543,100.0,False
+8393,Product Examiner,45-2041.00,"Graders and Sorters, Agricultural Products",7515,66.7,False
+8393,Product Examiner,45-4023.00,Log Graders and Scalers,7543,100.0,False
+8393,Product Examiner,51-9061.00,"Inspectors, Testers, Sorters, Samplers, and Weighers",7543,100.0,True
+8394,Paper and Pulp Mill Worker,51-9198.00,Helpers--Production Workers,9329,100.0,False
+8399,Cement and Concrete Plant Worker,51-9198.00,Helpers--Production Workers,9329,88.9,False
+8411,Aquaculture Worker,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",6221,100.0,False
+8411,Aquaculture Worker,19-4012.00,Agricultural Technicians,6221,100.0,False
+8411,Aquaculture Worker,45-2091.00,Agricultural Equipment Operators,9216,100.0,True
+8411,Aquaculture Worker,45-2093.00,"Farmworkers, Farm, Ranch, and Aquacultural Animals",6221; 9216,100.0,True
+8411,Aquaculture Worker,45-2099.00,"Agricultural Workers, All Other",9216,100.0,True
+8411,Aquaculture Worker,45-3031.00,Fishing and Hunting Workers,9216,100.0,True
+8411,Aquaculture Worker,49-3041.00,Farm Equipment Mechanics and Service Technicians,6221,100.0,False
+8412,Fruit or Nut Farm Worker,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",6112,50.0,False
+8412,Fruit or Nut Farm Worker,17-2021.00,Agricultural Engineers,6111,50.0,False
+8412,Fruit or Nut Farm Worker,19-4012.00,Agricultural Technicians,6111,50.0,False
+8412,Fruit or Nut Farm Worker,19-4012.01,Precision Agriculture Technicians,6111,50.0,False
+8412,Fruit or Nut Farm Worker,19-4099.01,Quality Control Analysts,6112,50.0,False
+8412,Fruit or Nut Farm Worker,37-2021.00,Pest Control Workers,6112,50.0,False
+8412,Fruit or Nut Farm Worker,37-3012.00,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",6112,50.0,False
+8412,Fruit or Nut Farm Worker,37-3013.00,Tree Trimmers and Pruners,6112,50.0,False
+8412,Fruit or Nut Farm Worker,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",6111; 6112,50.0,True
+8412,Fruit or Nut Farm Worker,45-2041.00,"Graders and Sorters, Agricultural Products",9211,100.0,True
+8412,Fruit or Nut Farm Worker,45-2091.00,Agricultural Equipment Operators,6111,50.0,True
+8412,Fruit or Nut Farm Worker,45-2092.00,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",6111; 6112; 9211,100.0,True
+8412,Fruit or Nut Farm Worker,45-4021.00,Fallers,6112,50.0,True
+8413,Forestry Worker,19-1031.02,Range Managers,6210,100.0,False
+8413,Forestry Worker,19-1032.00,Foresters,6210,100.0,False
+8413,Forestry Worker,19-4071.00,Forest and Conservation Technicians,6210,100.0,False
+8413,Forestry Worker,33-2022.00,Forest Fire Inspectors and Prevention Specialists,6210,100.0,False
+8413,Forestry Worker,33-3031.00,Fish and Game Wardens,6210,100.0,False
+8413,Forestry Worker,37-3013.00,Tree Trimmers and Pruners,6210,100.0,False
+8413,Forestry Worker,45-2091.00,Agricultural Equipment Operators,8341,66.7,False
+8413,Forestry Worker,45-3031.00,Fishing and Hunting Workers,6210,100.0,True
+8413,Forestry Worker,45-4011.00,Forest and Conservation Workers,6210; 9215,100.0,True
+8413,Forestry Worker,45-4022.00,Logging Equipment Operators,8341,66.7,False
+8414,Garden Labourer,27-1023.00,Floral Designers,9214,100.0,False
+8414,Garden Labourer,37-2021.00,Pest Control Workers,9214,100.0,True
+8414,Garden Labourer,37-3011.00,Landscaping and Groundskeeping Workers,9214,100.0,True
+8414,Garden Labourer,37-3012.00,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",9214,100.0,True
+8414,Garden Labourer,45-2092.00,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",9214,100.0,True
+8414,Garden Labourer,47-4031.00,Fence Erectors,9214,100.0,True
+8415,Beef Cattle Farm Worker,39-2021.00,Animal Caretakers,9212,100.0,False
+8415,Beef Cattle Farm Worker,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",6121,87.5,True
+8415,Beef Cattle Farm Worker,45-2021.00,Animal Breeders,6121; 9212,100.0,True
+8415,Beef Cattle Farm Worker,45-2093.00,"Farmworkers, Farm, Ranch, and Aquacultural Animals",6121,87.5,True
+8416,Mixed Crop and Livestock Farm Worker,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",6112; 6114,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,17-2021.00,Agricultural Engineers,6111; 6114,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,19-4012.00,Agricultural Technicians,6111,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,19-4012.01,Precision Agriculture Technicians,6111; 9213,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,19-4099.01,Quality Control Analysts,6112,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,25-9021.00,Farm and Home Management Educators,6130,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,37-2021.00,Pest Control Workers,6112; 9213,100.0,True
+8416,Mixed Crop and Livestock Farm Worker,37-3012.00,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",6112,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,37-3013.00,Tree Trimmers and Pruners,6112,100.0,False
+8416,Mixed Crop and Livestock Farm Worker,45-1011.00,"First-Line Supervisors of Farming, Fishing, and Forestry Workers",6111; 6112; 6114,100.0,True
+8416,Mixed Crop and Livestock Farm Worker,45-2041.00,"Graders and Sorters, Agricultural Products",9213,100.0,True
+8416,Mixed Crop and Livestock Farm Worker,45-2091.00,Agricultural Equipment Operators,6111; 9213,100.0,True
+8416,Mixed Crop and Livestock Farm Worker,45-2092.00,"Farmworkers and Laborers, Crop, Nursery, and Greenhouse",6111; 6112; 9213,100.0,True
+8416,Mixed Crop and Livestock Farm Worker,45-4021.00,Fallers,6112,100.0,True
+8419,Hunter-Trapper,33-3031.00,Fish and Game Wardens,6224,66.7,False
+8419,Hunter-Trapper,37-2021.00,Pest Control Workers,7544,100.0,False
+8419,Hunter-Trapper,37-3012.00,"Pesticide Handlers, Sprayers, and Applicators, Vegetation",7544,100.0,False
+8419,Hunter-Trapper,45-3031.00,Fishing and Hunting Workers,6224,66.7,True
+8511,Fast Food Cook,35-2011.00,"Cooks, Fast Food",9411,100.0,True
+8511,Fast Food Cook,35-2015.00,"Cooks, Short Order",9411,100.0,True
+8511,Fast Food Cook,35-3023.00,Fast Food and Counter Workers,9411,100.0,True
+8512,Pastrycook's Assistant,35-2021.00,Food Preparation Workers,9412,100.0,True
+8512,Pastrycook's Assistant,35-9021.00,Dishwashers,9412,100.0,True
+8513,Kitchenhand,35-2021.00,Food Preparation Workers,9412,100.0,True
+8513,Kitchenhand,35-9021.00,Dishwashers,9412,100.0,True
+8911,Freight Handler (Rail or Road),53-7062.00,"Laborers and Freight, Stock, and Material Movers, Hand",9333,100.0,True
+8911,Freight Handler (Rail or Road),53-7065.00,Stockers and Order Fillers,9333,100.0,True
+8911,Freight Handler (Rail or Road),53-7121.00,"Tank Car, Truck, and Ship Loaders",9333,100.0,True
+8912,Shelf Filler,27-1026.00,Merchandise Displayers and Window Trimmers,9334,100.0,False
+8912,Shelf Filler,53-7065.00,Stockers and Order Fillers,9334,100.0,True
+8991,Caretaker,11-3013.00,Facilities Managers,5153,100.0,False
+8991,Caretaker,21-2011.00,Clergy,5153,100.0,False
+8991,Caretaker,21-2021.00,"Directors, Religious Activities and Education",5153,100.0,False
+8991,Caretaker,37-2011.00,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",5153,100.0,True
+8991,Caretaker,37-2012.00,Maids and Housekeeping Cleaners,5153,100.0,True
+8991,Caretaker,39-3091.00,Amusement and Recreation Attendants,5153,100.0,True
+8991,Caretaker,39-4031.00,"Morticians, Undertakers, and Funeral Arrangers",5153,100.0,True
+8991,Caretaker,49-9071.00,"Maintenance and Repair Workers, General",5153,100.0,False
+8992,Deck Hand,45-3031.00,Fishing and Hunting Workers,6223,50.0,True
+8992,Deck Hand,53-5011.00,Sailors and Marine Oilers,8350,50.0,True
+8992,Deck Hand,53-5021.00,"Captains, Mates, and Pilots of Water Vessels",6223,50.0,False
+8992,Deck Hand,53-5022.00,Motorboat Operators,6222; 8350,50.0,True
+8993,Handyperson,49-9071.00,"Maintenance and Repair Workers, General",9622,100.0,False
+8994,Motor Vehicle Parts and Accessories Fitter (General),49-3021.00,Automotive Body and Related Repairers,7231,80.0,True
+8994,Motor Vehicle Parts and Accessories Fitter (General),49-3023.00,Automotive Service Technicians and Mechanics,7231,80.0,True
+8994,Motor Vehicle Parts and Accessories Fitter (General),49-3031.00,Bus and Truck Mechanics and Diesel Engine Specialists,7231,80.0,True
+8994,Motor Vehicle Parts and Accessories Fitter (General),49-3052.00,Motorcycle Mechanics,7231,80.0,True
+8994,Motor Vehicle Parts and Accessories Fitter (General),49-3093.00,Tire Repairers and Changers,7231,80.0,True
+8995,Printer's Assistant,43-9071.00,"Office Machine Operators, Except Computer",7323,50.0,False
+8995,Printer's Assistant,51-5112.00,Printing Press Operators,7322,50.0,True
+8995,Printer's Assistant,51-5113.00,Print Binding and Finishing Workers,7323,50.0,True
+8996,Recycling or Rubbish Collector,53-7062.04,Recycling and Reclamation Workers,9611,100.0,True
+8996,Recycling or Rubbish Collector,53-7081.00,Refuse and Recyclable Material Collectors,9611,100.0,True
+8997,Vending Machine Attendant,41-2011.00,Cashiers,5230,100.0,True
+8997,Vending Machine Attendant,43-5041.00,"Meter Readers, Utilities",9623,100.0,False
+8997,Vending Machine Attendant,49-9091.00,"Coin, Vending, and Amusement Machine Servicers and Repairers",9623,100.0,False
+8999,Bicycle Mechanic,39-3031.00,"Ushers, Lobby Attendants, and Ticket Takers",9629,58.3,False
+8999,Bicycle Mechanic,39-3091.00,Amusement and Recreation Attendants,9629,58.3,False
+8999,Bicycle Mechanic,39-3093.00,"Locker Room, Coatroom, and Dressing Room Attendants",9629,58.3,False
