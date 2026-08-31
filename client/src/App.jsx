@@ -188,6 +188,36 @@ export default function App() {
   };
 
   const handleDownload = () => {
+    const headers = [
+      "Rank", "Occupation Title", "Sector", "Match Score", "Match Level", 
+      "AI Resilience Score", "AI Resilience Label", "Market Demand", 
+      "Avg Augmentation (%)", "Avg Automation (%)"
+    ];
+
+    const rows = matches.map(m => {
+      const ai = aiDetailsMap[m.occupation_id] || {};
+      return [
+        m.rank,
+        `"${m.title}"`,
+        `"${m.sector || ''}"`,
+        m.match_score,
+        `"${m.match_label}"`,
+        ai.resilience_score ?? 'N/A',
+        `"${formatLabel(ai.resilience_label)}"`,
+        `"${formatLabel(ai.demand_label)}"`,
+        ai.avg_augmentation ? Math.round(ai.avg_augmentation * 100) : 'N/A',
+        ai.avg_automation ? Math.round(ai.avg_automation * 100) : 'N/A'
+      ].join(',');
+    });
+
+    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows].join('\n');
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "IResi_AI_Career_Matches.csv");
+    document.body.appendChild(link); 
+    link.click();
+    document.body.removeChild(link);
     setHasDownloaded(true);
   };
 
@@ -371,7 +401,7 @@ export default function App() {
 
                       {/* Expanded Section matches the Image styling precisely in dark mode */}
                       {isExpanded && ai && (
-                        <div className="accordion-enter-animation px-5 sm:px-8 pb-6 sm:pb-8 pt-6 border-t border-zinc-100 dark:border-white/5 dark:bg-[#0E1525]">
+                        <div className="accordion-enter-animation px-5 sm:px-8 pb-6 sm:pb-8 pt-2 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0E1525]">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
                             
                             {/* Left Column: Market Intelligence */}
