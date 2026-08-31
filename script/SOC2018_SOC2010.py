@@ -12,14 +12,14 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent #base directory
 DATA = BASE_DIR.parent / "data" / "soc_2010_to_2018_crosswalk.xlsx" #location
 
-OUTPUT = BASE_DIR.parent / "output" / "soc2010_to_soc2018.csv"
+OUTPUT = BASE_DIR.parent / "output" / "soc2018_to_soc2010.csv"
 OUTPUT.parent.mkdir(parents=True, exist_ok=True) #incase the folder itself doesn't exist
 
 HEADER_ROW = 8
 
 
 def main():
-    df = pd.read_excel(DATA, header=HEADER_ROW)
+    df = pd.read_excel(DATA, header=HEADER_ROW,dtype = str)
     df = df.rename(columns={
         "2010 SOC Code": "soc_2010_code",
         "2010 SOC Title": "soc_2010_title",
@@ -42,7 +42,7 @@ def main():
 
     out.to_csv(OUTPUT, index=False)
     print(f"{len(out)} rows written to {OUTPUT}")
-    print(out["match_type"].value_counts())
+    print(out["match_type"].value_counts()) #note: looking it through excel some rows are automatically turned into date but they are still strings.
 
 
 if __name__ == "__main__":
