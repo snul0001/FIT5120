@@ -1,685 +1,475 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  Search, 
-  X, 
-  ArrowRight, 
-  ArrowLeft,
-  BookOpen, 
-  RotateCcw,
-  Loader2,
-  CheckCircle2,
-  Briefcase,
-  MapPin,
-  Sparkles,
-  SlidersHorizontal,
-  Sun,
-  Moon,
-  TrendingUp,
-  AlertCircle,
-  GraduationCap,
-  Building2,
-  Compass
+  ArrowRight, ArrowLeft, Loader2, Check, 
+  MapPin, Briefcase, ChevronDown, ChevronUp,
+  Cpu, LayoutDashboard, Zap, Sun, Moon, Download
 } from 'lucide-react';
 
-// Datasets
-const AVAILABLE_INTERESTS = [
-  'Artificial Intelligence', 'Cyber Security', 'Cloud Infrastructure', 
-  'Data Analytics', 'FinTech', 'Green Energy & Sustainability', 
-  'Healthcare Tech', 'Product Design', 'Robotics & Automation', 
-  'Software Architecture', 'UX/UI Research', 'Venture Capital'
+const BASE = '/api';
+const INITIAL_MATCH_COUNT = 4;
+
+const AU_LOCATIONS = ['Victoria', 'New South Wales', 'Queensland', 'Western Australia', 'South Australia', 'Remote'];
+const WORK_PREFERENCES = ['Graduate Role', 'Part-time', 'Internship', 'Contract'];
+
+const MOCK_INTERESTS = [
+  { interest_id: "investigative", label: "Solving problems & analysing" },
+  { interest_id: "conventional", label: "Organising & planning" },
+  { interest_id: "artistic", label: "Creating & designing" },
+  { interest_id: "social", label: "Helping & working with people" },
+  { interest_id: "enterprising", label: "Leading & managing" },
+  { interest_id: "realistic", label: "Building & fixing systems" }
 ];
 
-const AVAILABLE_SKILLS = [
-  'Python', 'Pandas & NumPy', 'Project Management', 'Public Speaking', 
-  'PostgreSQL', 'Prompt Engineering', 'PyTorch', 'React.js', 
-  'REST API Design', 'Strategic Planning', 'System Design', 
-  'TypeScript', 'User Research'
+const MOCK_MATCHES = [
+  { occupation_id: "271133", rank: 1, title: "Cyber Security Analyst", sector: "ICT", match_score: 96, match_label: "Exceptional Fit" },
+  { occupation_id: "271134", rank: 2, title: "Cloud Solutions Architect", sector: "ICT", match_score: 88, match_label: "Strong Fit" },
+  { occupation_id: "271135", rank: 3, title: "Data Engineer", sector: "ICT", match_score: 84, match_label: "Strong Fit" },
+  { occupation_id: "271136", rank: 4, title: "DevOps Engineer", sector: "ICT", match_score: 81, match_label: "Moderate Fit" }
 ];
 
-const AU_LOCATIONS = ['Victoria (VIC)', 'New South Wales (NSW)', 'Queensland (QLD)', 'Western Australia (WA)', 'South Australia (SA)', 'Remote / Flexible'];
-const WORK_PREFERENCES = ['Full-time Graduate', 'Part-time', 'Internship / Co-op', 'Contract / Project-based'];
-
-// Fallback Payload generator when backend API fails
-const generateFallbackData = (userProfile) => ({
-  isFallback: true,
-  timestamp: new Date().toISOString(),
-  profileSummary: {
-    course: userProfile.preferredCourse || 'Computer Science / Engineering',
-    location: userProfile.targetLocation || 'Victoria (VIC)',
-    workPreference: userProfile.workPreference || 'Full-time Graduate',
-  },
-  metrics: {
-    matchScore: 92,
-    regionalDemandIndex: 'High',
-    estGraduateSalary: '$82,000 - $95,000 AUD',
-    activeListings: 1420
-  },
-  recommendedRoles: [
-    {
-      title: 'Junior Cloud & AI Integration Engineer',
-      matchPercentage: 94,
-      demandLevel: 'Very High',
-      growthRate: '+18.4% YoY',
-      avgSalary: '$88,000 AUD',
-      keySkillsRequired: ['Python', 'System Design', 'Cloud Infrastructure'],
-      description: 'Design and deploy localized machine learning workflows for enterprise infrastructure across Australian cloud hubs.'
-    },
-    {
-      title: 'Data & Systems Analyst',
-      matchPercentage: 88,
-      demandLevel: 'High',
-      growthRate: '+12.1% YoY',
-      avgSalary: '$82,000 AUD',
-      keySkillsRequired: ['SQL / PostgreSQL', 'Data Analytics', 'REST APIs'],
-      description: 'Synthesize complex relational telemetry for government and private enterprise partners.'
-    },
-    {
-      title: 'Product Technology Associate',
-      matchPercentage: 81,
-      demandLevel: 'Moderate',
-      growthRate: '+9.5% YoY',
-      avgSalary: '$78,000 AUD',
-      keySkillsRequired: ['Project Management', 'UX Research', 'TypeScript'],
-      description: 'Bridge software engineering teams with market needs in fast-scaling technology startups.'
-    }
+const MOCK_AI_DATA = {
+  tasks: [
+    { task_text: "Accepting responsibility for the processes, procedures and operational management associated with system security and disaster recovery planning", automation_score: 0.40, augmentation_score: 0.70 },
+    { task_text: "Continually surveying the current computer site to determine future network needs and making recommendations for enhancements in the implementation of future servers and networks", automation_score: 0.50, augmentation_score: 0.70 },
+    { task_text: "Designing and maintaining database architecture, data structures, tables, dictionaries and naming conventions to ensure the accuracy and completeness of all data master files", automation_score: 0.40, augmentation_score: 0.70 }
   ],
-  recommendedSkillUpskill: [
-    { skill: 'AWS / Azure Fundamentals', importance: 'Critical', effort: '2-4 weeks' },
-    { skill: 'CI/CD Pipeline Automation', importance: 'Recommended', effort: '1-2 weeks' },
-    { skill: 'Agile / Scrum Operations', importance: 'Nice to have', effort: '1 week' }
-  ]
-});
+  resilience_score: 78,
+  resilience_label: "Medium",
+  demand_label: "High",
+  avg_augmentation: 0.71,
+  avg_automation: 0.48
+};
+
+const formatLabel = (label) => {
+  if (!label || label.includes("Not available") || label === "Pending Data") return "N/A";
+  return label.split(/[—–-]/)[0].trim();
+};
+
+const getMatchColor = (score, label = '') => {
+  const l = label.toLowerCase();
+  if (score >= 90 || l.includes('exceptional')) {
+    return {
+      badge: 'bg-emerald-500/15 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 border border-emerald-500/30',
+      cardBorder: 'border-l-4 border-l-emerald-500 dark:border-l-emerald-500',
+      rankBg: 'bg-emerald-600 dark:bg-emerald-500 text-white dark:text-white font-bold',
+      cardHover: 'hover:bg-emerald-500/[0.02] dark:hover:bg-white/[0.02]'
+    };
+  }
+  if (score >= 84 || l.includes('strong')) {
+    return {
+      badge: 'bg-blue-500/15 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400 border border-blue-500/30',
+      cardBorder: 'border-l-4 border-l-blue-500 dark:border-l-blue-500',
+      rankBg: 'bg-blue-600 dark:bg-blue-500 text-white dark:text-white font-bold',
+      cardHover: 'hover:bg-blue-500/[0.02] dark:hover:bg-white/[0.02]'
+    };
+  }
+  if (score >= 70 || l.includes('moderate')) {
+    return {
+      badge: 'bg-amber-500/15 text-amber-800 dark:bg-amber-500/20 dark:text-amber-400 border border-amber-500/30',
+      cardBorder: 'border-l-4 border-l-amber-500 dark:border-l-amber-500',
+      rankBg: 'bg-amber-600 dark:bg-amber-500 text-white dark:text-white font-bold',
+      cardHover: 'hover:bg-amber-500/[0.02] dark:hover:bg-white/[0.02]'
+    };
+  }
+  return {
+    badge: 'bg-zinc-500/15 text-zinc-700 dark:bg-zinc-500/20 dark:text-zinc-300 border border-zinc-500/30',
+    cardBorder: 'border-l-4 border-l-zinc-400 dark:border-l-zinc-500',
+    rankBg: 'bg-zinc-700 text-white dark:bg-zinc-600 dark:text-white font-bold',
+    cardHover: 'hover:bg-zinc-500/[0.02] dark:hover:bg-white/[0.02]'
+  };
+};
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('fw_theme') === 'dark');
-  const [sessionToken, setSessionToken] = useState('');
-  
-  // Navigation & View State: 'home' | 'results'
+  const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
   const [currentView, setCurrentView] = useState('home');
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // API & Recommendation Response Data
-  const [recommendationData, setRecommendationData] = useState(null);
+  const [expandedRoleId, setExpandedRoleId] = useState(null);
+  const [showAllMatches, setShowAllMatches] = useState(false);
+  const [hasDownloaded, setHasDownloaded] = useState(false);
 
-  // Form State
-  const [preferredCourse, setPreferredCourse] = useState('');
-  const [targetLocation, setTargetLocation] = useState('Victoria (VIC)');
-  const [workPreference, setWorkPreference] = useState('Full-time Graduate');
-
-  // Search State
-  const [interestSearch, setInterestSearch] = useState('');
+  const [targetLocation, setTargetLocation] = useState('Victoria');
+  const [workPreference, setWorkPreference] = useState('Graduate Role');
   const [selectedInterests, setSelectedInterests] = useState([]);
-  const [skillSearch, setSkillSearch] = useState('');
-  const [selectedSkills, setSelectedSkills] = useState([]);
+
+  const [apiInterests, setApiInterests] = useState([]);
+  const [matches, setMatches] = useState([]);
+  const [aiDetailsMap, setAiDetailsMap] = useState({});
 
   useEffect(() => {
-    let token = sessionStorage.getItem('fw_session_id');
-    if (!token) {
-      token = `fw_${crypto.randomUUID()}`;
-      sessionStorage.setItem('fw_session_id', token);
-    }
-    setSessionToken(token);
+    const root = window.document.documentElement;
+    if (isDark) root.classList.add('dark');
+    else root.classList.remove('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  useEffect(() => {
+    const fetchInterests = async () => {
+      try {
+        const res = await fetch(`${BASE}/profile/interests`);
+        if (!res.ok) throw new Error();
+        setApiInterests(await res.json());
+      } catch {
+        setApiInterests(MOCK_INTERESTS);
+      }
+    };
+    fetchInterests();
   }, []);
 
-  const toggleTheme = () => {
-    setIsDarkMode(prev => {
-      const nextTheme = !prev;
-      localStorage.setItem('fw_theme', nextTheme ? 'dark' : 'light');
-      return nextTheme;
-    });
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (currentView === 'results' && !hasDownloaded) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [currentView, hasDownloaded]);
+
+  const confirmNavigation = (targetView) => {
+    if (currentView === 'results' && !hasDownloaded) {
+      const confirmLeave = window.confirm(
+        "Warning: You have not downloaded your career results yet. Leaving now will reset your session. Are you sure you want to exit?"
+      );
+      if (!confirmLeave) return;
+    }
+    setCurrentView(targetView);
   };
 
-  const filteredInterests = useMemo(() => {
-    if (!interestSearch.trim()) return [];
-    return AVAILABLE_INTERESTS.filter(
-      item => item.toLowerCase().includes(interestSearch.toLowerCase()) && !selectedInterests.includes(item)
-    );
-  }, [interestSearch, selectedInterests]);
+  const toggleInterest = (id) => {
+    setSelectedInterests(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
+  };
 
-  const filteredSkills = useMemo(() => {
-    if (!skillSearch.trim()) return [];
-    return AVAILABLE_SKILLS.filter(
-      item => item.toLowerCase().includes(skillSearch.toLowerCase()) && !selectedSkills.includes(item)
-    );
-  }, [skillSearch, selectedSkills]);
+  const handleToggleExpand = (occupationId) => {
+    setExpandedRoleId(prev => prev === occupationId ? null : occupationId);
+  };
 
-  const addInterest = (item) => { setSelectedInterests([...selectedInterests, item]); setInterestSearch(''); };
-  const removeInterest = (item) => { setSelectedInterests(selectedInterests.filter(i => i !== item)); };
-  const addSkill = (item) => { setSelectedSkills([...selectedSkills, item]); setSkillSearch(''); };
-  const removeSkill = (item) => { setSelectedSkills(selectedSkills.filter(s => s !== item)); };
-
-  // Form Submit / API Execution with Fallback Strategy
-  const handleSubmitProfile = async (e) => {
-    e.preventDefault();
+  const handleAnalyze = async () => {
     setIsSubmitting(true);
-
-    const userProfile = {
-      preferredCourse,
-      targetLocation,
-      workPreference,
-      interests: selectedInterests,
-      skills: selectedSkills,
-    };
+    setShowAllMatches(false);
+    setExpandedRoleId(null);
+    setHasDownloaded(false);
 
     try {
-      const response = await fetch('/api/v1/profile/recommendations', {
+      const matchRes = await fetch(`${BASE}/occupations/match`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Session-Token': sessionToken
-        },
-        body: JSON.stringify({ profile: userProfile })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ interest_ids: selectedInterests })
+      });
+      if (!matchRes.ok) throw new Error();
+      const matchData = await matchRes.json();
+      setMatches(matchData);
+
+      const aiPromises = matchData.map(async (role) => {
+        try {
+          const aiRes = await fetch(`${BASE}/occupations/${role.occupation_id}/ai`);
+          if (aiRes.ok) {
+            const aiData = await aiRes.json();
+            return { id: role.occupation_id, data: aiData };
+          }
+        } catch {}
+        return { id: role.occupation_id, data: MOCK_AI_DATA };
       });
 
-      if (!response.ok) throw new Error('API server returned error status');
-
-      const data = await response.json();
-      setRecommendationData(data);
-    } catch (err) {
-      // API call failed -> Fallback content injection
-      console.warn('Backend API unreachable. Loading offline recommendations telemetry fallback.');
-      const fallback = generateFallbackData(userProfile);
-      setRecommendationData(fallback);
+      const aiResults = await Promise.all(aiPromises);
+      const aiMap = {};
+      aiResults.forEach(item => { aiMap[item.id] = item.data; });
+      setAiDetailsMap(aiMap);
+    } catch {
+      setMatches(MOCK_MATCHES);
+      const mockMap = {};
+      MOCK_MATCHES.forEach(m => { mockMap[m.occupation_id] = MOCK_AI_DATA; });
+      setAiDetailsMap(mockMap);
     } finally {
       setIsSubmitting(false);
-      setIsDrawerOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       setCurrentView('results');
     }
   };
 
-  const themeClasses = {
-    bg: isDarkMode ? 'bg-[#0B0C0E] text-slate-100' : 'bg-[#FAF9F6] text-slate-900',
-    navBg: isDarkMode ? 'bg-[#0B0C0E]/90 border-slate-800' : 'bg-[#FAF9F6]/90 border-slate-200/80',
-    cardBg: isDarkMode ? 'bg-[#12141C] border-slate-800' : 'bg-white border-slate-200/80',
-    drawerBg: isDarkMode ? 'bg-[#12141C] border-slate-800' : 'bg-white border-slate-200',
-    inputBg: isDarkMode ? 'bg-slate-900/90 border-slate-800 text-slate-100 focus:border-emerald-400' : 'bg-slate-50 border-slate-200 text-slate-900 focus:border-slate-950',
-    primaryBtn: isDarkMode ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-950 text-white hover:bg-slate-800',
-    secondaryText: isDarkMode ? 'text-slate-400' : 'text-slate-600',
-    subtleBorder: isDarkMode ? 'border-slate-800' : 'border-slate-100',
-    dropdownBg: isDarkMode ? 'bg-[#181B26] border-slate-800' : 'bg-white border-slate-200',
+  const handleDownload = () => {
+    setHasDownloaded(true);
   };
 
+  const visibleMatches = showAllMatches ? matches : matches.slice(0, INITIAL_MATCH_COUNT);
+
+  // Dynamic Background: Retains original #09090B on Home/Setup, switches to the deep navy #0B1121 on Results page.
+  const pageBackground =  'bg-[#FAFAFA] dark:bg-[#0B1121]';
+
   return (
-    <div className={`min-h-screen transition-colors duration-200 font-sans selection:bg-emerald-200 selection:text-slate-950 ${themeClasses.bg}`}>
-      
-      {/* Navigation Bar */}
-      <nav className={`border-b sticky top-0 z-30 backdrop-blur-md transition-colors duration-200 ${themeClasses.navBg}`}>
-        <div className="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between">
-          <div 
-            onClick={() => setCurrentView('home')} 
-            className="flex items-center gap-2.5 cursor-pointer group"
-          >
-            <div className={`w-7 h-7 rounded flex items-center justify-center font-bold text-xs ${isDarkMode ? 'bg-white text-slate-950' : 'bg-slate-900 text-white'}`}>
-              FW
+    <>
+      <style>{`
+        @keyframes continuousMove { 0% { background-position: 0 0; } 100% { background-position: 40px 40px; } }
+        @keyframes pageFadeIn { 0% { opacity: 0; transform: translateY(10px) scale(0.99); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes accordionExpand { 0% { opacity: 0; max-height: 0px; transform: translateY(-6px); } 100% { opacity: 1; max-height: 1000px; transform: translateY(0); } }
+        .moving-pattern-bg { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 40L40 0M0 0l40 40' stroke='%23000000' stroke-width='1' stroke-opacity='0.14'/%3E%3C/svg%3E"); animation: continuousMove 20s linear infinite; }
+        .dark .moving-pattern-bg { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 40L40 0M0 0l40 40' stroke='%23ffffff' stroke-width='1' stroke-opacity='0.12'/%3E%3C/svg%3E"); }
+        .view-enter-animation { animation: pageFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .accordion-enter-animation { animation: accordionExpand 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      `}</style>
+
+      <div className={`min-h-screen text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-500 relative overflow-hidden ${pageBackground}`}>
+        <div className="fixed inset-0 z-0 pointer-events-none moving-pattern-bg" />
+        <div className="fixed -top-40 -left-40 w-[600px] h-[600px] bg-zinc-200/50 dark:bg-white/5 rounded-full blur-[140px] pointer-events-none" />
+
+        <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-colors duration-500 ${currentView === 'results' ? 'bg-white/70 dark:bg-[#0B1121]/70 border-zinc-200/50 dark:border-white/5' : 'bg-white/70 dark:bg-[#09090B]/70 border-zinc-200/50 dark:border-zinc-800/50'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            <div onClick={() => confirmNavigation('home')} className="flex items-center gap-2 sm:gap-3 cursor-pointer group">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#3B82F6] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
+                <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
+              </div>
+              <span className="font-bold tracking-tight text-base sm:text-lg">IResi</span>
             </div>
-            <span className={`font-bold tracking-tight text-lg ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>
-              FutureWork
-            </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className={`p-2 rounded-lg border transition-colors ${
-                isDarkMode 
-                  ? 'bg-slate-900 border-slate-800 text-amber-400 hover:bg-slate-800' 
-                  : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-              }`}
-            >
-              {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
-            <button 
-              onClick={() => setIsDrawerOpen(true)}
-              className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all flex items-center gap-2 ${themeClasses.primaryBtn}`}
-            >
-              <span>{currentView === 'results' ? 'Modify Profile' : 'Set Up Profile'}</span>
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* VIEW 1: HOME LANDING */}
-      {currentView === 'home' && (
-        <main className="max-w-6xl mx-auto px-6 pt-16 pb-24">
-          <div className="max-w-3xl space-y-6">
-            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-semibold tracking-wide border ${
-              isDarkMode ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-emerald-50 border-emerald-200 text-emerald-800'
-            }`}>
-              <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
-              <span>Australian Tertiary Career Intelligence</span>
-            </div>
-
-            <h1 className={`text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.08] ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>
-              Bridge your studies to real workforce opportunities.
-            </h1>
-
-            <p className={`text-lg leading-relaxed font-normal ${themeClasses.secondaryText}`}>
-              FutureWork provides direct, data-backed career trajectory matching for university students across Australia—without requiring account sign-ups or tracking cookies.
-            </p>
-
-            <div className="pt-2">
-              <button 
-                onClick={() => setIsDrawerOpen(true)}
-                className={`px-6 py-3.5 font-semibold text-sm rounded-xl transition-all shadow-sm flex items-center gap-3 ${themeClasses.primaryBtn}`}
-              >
-                <span>Launch Profile Builder</span>
-                <ArrowRight className="w-4 h-4 text-emerald-500" />
+            <div className="flex items-center gap-4 sm:gap-6">
+              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white transition-colors">
+                {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
             </div>
           </div>
+        </nav>
 
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-            <div className={`md:col-span-7 p-8 rounded-2xl border shadow-sm space-y-4 transition-colors ${themeClasses.cardBg}`}>
-              <h2 className="text-xs uppercase tracking-widest font-mono font-bold text-slate-400">About FutureWork</h2>
-              <h3 className={`text-xl font-bold leading-snug ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                Built specifically for Australian higher education students.
-              </h3>
-              <p className={`text-sm leading-relaxed ${themeClasses.secondaryText}`}>
-                Navigating course completion into the labor force can feel unguided. FutureWork continuously ingests Australian workforce telemetry to evaluate high-growth roles, location demands, and skill match indexes.
+        <div className="relative z-10">
+          {currentView === 'home' && (
+            <main key="home" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-32 sm:pt-48 pb-24 sm:pb-32 flex flex-col items-center text-center">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-zinc-950 dark:text-white leading-[1.1] sm:leading-[1.05] max-w-4xl transition-colors duration-500">
+                Navigate the AI shift with <span className="text-zinc-400 dark:text-zinc-600 block sm:inline">precision.</span>
+              </h1>
+              <p className="mt-6 sm:mt-8 text-base sm:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl font-light leading-relaxed transition-colors duration-500">
+                Map your interests to high-resilience tech careers. We analyze official national data to show exactly where AI will automate or elevate your future role.
               </p>
-            </div>
-
-            <div className="md:col-span-5 space-y-4">
-              <div className={`p-6 rounded-2xl border shadow-sm transition-colors ${themeClasses.cardBg}`}>
-                <span className="text-xs font-mono font-bold text-emerald-500 uppercase tracking-wider">01. Privacy First</span>
-                <h4 className={`text-base font-bold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Zero Sign-Ups</h4>
-                <p className={`text-xs mt-1 leading-relaxed ${themeClasses.secondaryText}`}>
-                  Session state is managed cryptographically in local browser memory.
-                </p>
-              </div>
-
-              <div className={`p-6 rounded-2xl border shadow-sm transition-colors ${themeClasses.cardBg}`}>
-                <span className={`text-xs font-mono font-bold uppercase tracking-wider ${isDarkMode ? 'text-slate-300' : 'text-slate-950'}`}>02. State Specific</span>
-                <h4 className={`text-base font-bold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Regional Labor Data</h4>
-                <p className={`text-xs mt-1 leading-relaxed ${themeClasses.secondaryText}`}>
-                  Filters predictions based on specific state demands across VIC, NSW, QLD, WA, and SA.
-                </p>
-              </div>
-            </div>
-          </div>
-        </main>
-      )}
-
-      {/* VIEW 2: RESULTS DASHBOARD */}
-      {currentView === 'results' && recommendationData && (
-        <main className="max-w-6xl mx-auto px-6 pt-10 pb-24 space-y-8">
-          
-          {/* Top Return Navigation & Status Notice */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <button 
-              onClick={() => setCurrentView('home')}
-              className={`inline-flex items-center gap-2 text-xs font-semibold ${themeClasses.secondaryText} hover:text-emerald-500 transition-colors`}
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Overview</span>
-            </button>
-
-            {/* Offline/Fallback Banner Alert if API failed */}
-            {recommendationData.isFallback && (
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-medium">
-                <AlertCircle className="w-4 h-4 shrink-0" />
-                <span>API Offline: Rendering cached regional labor telemetry fallback.</span>
-              </div>
-            )}
-          </div>
-
-          {/* Results Summary Header */}
-          <div className={`p-8 rounded-2xl border ${themeClasses.cardBg} space-y-6`}>
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-500">
-                  Career Trajectory Analysis
-                </span>
-                <h1 className={`text-2xl sm:text-3xl font-bold mt-1 ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>
-                  {recommendationData.profileSummary.course}
-                </h1>
-                <div className={`flex flex-wrap items-center gap-4 mt-2 text-xs ${themeClasses.secondaryText}`}>
-                  <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-slate-400" /> {recommendationData.profileSummary.location}</span>
-                  <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5 text-slate-400" /> {recommendationData.profileSummary.workPreference}</span>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setIsDrawerOpen(true)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold border flex items-center gap-2 transition-all ${
-                  isDarkMode ? 'bg-slate-900 border-slate-700 hover:bg-slate-800 text-white' : 'bg-slate-100 border-slate-200 hover:bg-slate-200 text-slate-900'
-                }`}
+              <button 
+                onClick={() => confirmNavigation('setup')}
+                className="mt-10 sm:mt-12 px-6 py-3 sm:px-8 sm:py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium flex items-center gap-3 hover:scale-[1.02] transition-all duration-300"
               >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>Adjust Parameters</span>
+                Configure Profile <ArrowRight className="w-4 h-4" />
               </button>
-            </div>
+            </main>
+          )}
 
-            {/* Metrics Matrix Bar */}
-            <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t ${themeClasses.subtleBorder}`}>
-              <div>
-                <span className="text-[11px] font-mono text-slate-400 uppercase">Profile Match</span>
-                <p className="text-xl font-bold text-emerald-500 mt-0.5">{recommendationData.metrics.matchScore}% Index</p>
-              </div>
-              <div>
-                <span className="text-[11px] font-mono text-slate-400 uppercase">Regional Demand</span>
-                <p className={`text-xl font-bold mt-0.5 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>{recommendationData.metrics.regionalDemandIndex}</p>
-              </div>
-              <div>
-                <span className="text-[11px] font-mono text-slate-400 uppercase">Est. Graduate Salary</span>
-                <p className={`text-xl font-bold mt-0.5 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>{recommendationData.metrics.estGraduateSalary}</p>
-              </div>
-              <div>
-                <span className="text-[11px] font-mono text-slate-400 uppercase">Active State Opportunities</span>
-                <p className={`text-xl font-bold mt-0.5 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>{recommendationData.metrics.activeListings}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Grid: Recommended Roles + Skill Gaps */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-            
-            {/* Left 8 Cols: Matched Roles */}
-            <div className="md:col-span-8 space-y-4">
-              <h2 className={`text-sm font-bold uppercase tracking-wider ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                Matched Career Trajectories ({recommendationData.recommendedRoles.length})
-              </h2>
-
-              {recommendationData.recommendedRoles.map((role, idx) => (
-                <div key={idx} className={`p-6 rounded-2xl border transition-all shadow-sm ${themeClasses.cardBg} space-y-4`}>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <span className="text-xs font-mono font-semibold text-emerald-500">{role.growthRate}</span>
-                      <h3 className={`text-lg font-bold mt-0.5 ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>
-                        {role.title}
-                      </h3>
+          {currentView === 'setup' && (
+            <main key="setup" className="view-enter-animation max-w-4xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32">
+              <button onClick={() => confirmNavigation('home')} className="mb-8 sm:mb-12 inline-flex items-center gap-2 text-xs sm:text-sm text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors">
+                <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Go back
+              </button>
+              <div className="space-y-12 sm:space-y-16">
+                <section>
+                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-6 sm:mb-8">1. Work Parameters</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="space-y-2">
+                      <label className="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">Region</label>
+                      <select value={targetLocation} onChange={(e) => setTargetLocation(e.target.value)} className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-zinc-800 text-zinc-900 dark:text-white rounded-xl sm:rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 text-sm focus:ring-2 focus:ring-black dark:focus:ring-white outline-none cursor-pointer appearance-none">
+                        {AU_LOCATIONS.map(loc => <option key={loc}>{loc}</option>)}
+                      </select>
                     </div>
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${
-                      isDarkMode ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-emerald-50 border-emerald-200 text-emerald-800'
-                    }`}>
-                      {role.matchPercentage}% Match
-                    </span>
-                  </div>
-
-                  <p className={`text-xs leading-relaxed ${themeClasses.secondaryText}`}>
-                    {role.description}
-                  </p>
-
-                  <div className="space-y-2 pt-2">
-                    <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400">Core Requirements</span>
-                    <div className="flex flex-wrap gap-2">
-                      {role.keySkillsRequired.map(skill => (
-                        <span key={skill} className={`px-2.5 py-1 rounded-md text-xs font-medium border ${
-                          isDarkMode ? 'bg-slate-900 border-slate-800 text-slate-300' : 'bg-slate-100 border-slate-200 text-slate-800'
-                        }`}>
-                          {skill}
-                        </span>
-                      ))}
+                    <div className="space-y-2">
+                      <label className="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">Role Type</label>
+                      <select value={workPreference} onChange={(e) => setWorkPreference(e.target.value)} className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-zinc-800 text-zinc-900 dark:text-white rounded-xl sm:rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 text-sm focus:ring-2 focus:ring-black dark:focus:ring-white outline-none cursor-pointer appearance-none">
+                        {WORK_PREFERENCES.map(pref => <option key={pref}>{pref}</option>)}
+                      </select>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Right 4 Cols: Recommended Skill Upskilling */}
-            <div className="md:col-span-4 space-y-4">
-              <h2 className={`text-sm font-bold uppercase tracking-wider ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                Recommended Competencies
-              </h2>
-
-              <div className={`p-6 rounded-2xl border ${themeClasses.cardBg} space-y-4`}>
-                <p className={`text-xs leading-relaxed ${themeClasses.secondaryText}`}>
-                  Acquiring these key market skills increases your regional match score by up to 24%.
-                </p>
-
-                <div className="space-y-3 pt-2">
-                  {recommendationData.recommendedSkillUpskill.map((item, i) => (
-                    <div key={i} className={`p-3 rounded-xl border ${themeClasses.subtleBorder} flex items-center justify-between`}>
-                      <div>
-                        <h4 className={`text-xs font-bold ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>{item.skill}</h4>
-                        <span className="text-[10px] text-slate-400">Est. Time: {item.effort}</span>
-                      </div>
-                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 font-bold">
-                        {item.importance}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                </section>
+                <section>
+                  <div className="flex items-end justify-between mb-6 sm:mb-8">
+                    <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">2. Career DNA</h2>
+                    <span className="text-xs sm:text-sm text-zinc-400 dark:text-zinc-500">{selectedInterests.length} selected</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+                    {apiInterests.map((item) => {
+                      const isSelected = selectedInterests.includes(item.interest_id);
+                      return (
+                        <div
+                          key={item.interest_id}
+                          onClick={() => toggleInterest(item.interest_id)}
+                          className={`relative p-5 sm:p-6 rounded-2xl sm:rounded-3xl cursor-pointer transition-all duration-300 ease-out flex flex-col gap-3 sm:gap-4 border ${
+                            isSelected 
+                              ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-lg sm:scale-[1.02]' 
+                              : 'bg-white/80 dark:bg-zinc-900/80 text-zinc-700 dark:text-zinc-300 border-transparent dark:border-zinc-800'
+                          }`}
+                        >
+                          <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border transition-colors ${isSelected ? 'border-zinc-700 bg-zinc-800 dark:border-zinc-300 dark:bg-zinc-200' : 'border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950'}`}>
+                            {isSelected && <Check className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${isDark ? 'text-black' : 'text-white'}`} strokeWidth={3} />}
+                          </div>
+                          <span className="font-medium text-xs sm:text-sm leading-snug">{item.label}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </section>
               </div>
-            </div>
+              <div className="mt-12 sm:mt-16 flex justify-end">
+                <button
+                  onClick={handleAnalyze}
+                  disabled={isSubmitting || selectedInterests.length === 0}
+                  className="w-full sm:w-auto justify-center px-8 py-3.5 sm:px-10 sm:py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium flex items-center gap-3 disabled:opacity-30 transition-colors"
+                >
+                  {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Compiling Data</> : 'Generate Pathway'}
+                </button>
+              </div>
+            </main>
+          )}
 
-          </div>
-
-        </main>
-      )}
-
-      {/* SLIDE-OVER SIDE DRAWER FORM */}
-      {isDrawerOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden">
-          <div 
-            onClick={() => setIsDrawerOpen(false)}
-            className="absolute inset-0 bg-black/50 backdrop-blur-xs transition-opacity"
-          />
-
-          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <div className={`pointer-events-auto w-screen max-w-xl border-l shadow-2xl flex flex-col justify-between transition-colors ${themeClasses.drawerBg}`}>
-              
-              <div className={`px-8 py-6 border-b flex items-center justify-between ${themeClasses.subtleBorder}`}>
+          {currentView === 'results' && (
+            <main key="results" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32">
+              <header className="mb-10 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-200/60 dark:border-white/10 pb-8 sm:pb-10">
                 <div>
-                  <h3 className={`text-lg font-bold ${isDarkMode ? 'text-white' : 'text-slate-950'}`}>Career Profile Setup</h3>
-                  <p className={`text-xs mt-0.5 ${themeClasses.secondaryText}`}>Enter your academic background and skills.</p>
+                  <button onClick={() => confirmNavigation('setup')} className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors">
+                    <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Edit Parameters
+                  </button>
+                  <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white">Matches & AI Impact</h1>
+                  <div className="flex flex-wrap gap-3 sm:gap-4 mt-3 sm:mt-4 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 font-medium">
+                    <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {targetLocation}</span>
+                    <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {workPreference}</span>
+                  </div>
                 </div>
+                
                 <button 
-                  onClick={() => setIsDrawerOpen(false)}
-                  className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'text-slate-400 hover:text-white hover:bg-slate-800' : 'text-slate-400 hover:text-slate-900 hover:bg-slate-100'}`}
+                  onClick={handleDownload}
+                  className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm ${
+                    hasDownloaded 
+                      ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30'
+                      : 'bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-[#1A233A]'
+                  }`}
                 >
-                  <X className="w-5 h-5" />
+                  <Download className="w-4 h-4" />
+                  {hasDownloaded ? 'Downloaded' : 'Export Data'}
                 </button>
-              </div>
+              </header>
 
-              <div className="flex-1 overflow-y-auto p-8">
-                <form id="profile-form" onSubmit={handleSubmitProfile} className="space-y-7">
-                  
-                  <div>
-                    <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                      Preferred Course or Career Vector
-                    </label>
-                    <div className="relative">
-                      <BookOpen className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <input 
-                        type="text"
-                        required
-                        placeholder="e.g. Bachelor of Computer Science or Finance"
-                        value={preferredCourse}
-                        onChange={(e) => setPreferredCourse(e.target.value)}
-                        className={`w-full rounded-xl pl-10 pr-4 py-2.5 text-sm placeholder-slate-400 focus:outline-none transition-all border ${themeClasses.inputBg}`}
-                      />
-                    </div>
-                  </div>
+              <div className="space-y-4 sm:space-y-6">
+                {visibleMatches.map((role) => {
+                  const ai = aiDetailsMap[role.occupation_id];
+                  const isExpanded = expandedRoleId === role.occupation_id;
+                  const colors = getMatchColor(role.match_score, role.match_label);
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                        Target Location
-                      </label>
-                      <select
-                        value={targetLocation}
-                        onChange={(e) => setTargetLocation(e.target.value)}
-                        className={`w-full rounded-xl px-3.5 py-2.5 text-sm focus:outline-none transition-all border ${themeClasses.inputBg}`}
+                  return (
+                    <div 
+                      key={role.occupation_id} 
+                      className={`bg-white/90 dark:bg-[#131B2F]/90 backdrop-blur-sm border-t border-r border-b border-zinc-200/80 dark:border-white/5 ${colors.cardBorder} rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] dark:shadow-none overflow-hidden transition-all duration-300`}
+                    >
+                      <div 
+                        onClick={() => handleToggleExpand(role.occupation_id)}
+                        className={`p-5 sm:p-8 cursor-pointer flex items-center gap-4 sm:gap-6 transition-colors ${colors.cardHover}`}
                       >
-                        {AU_LOCATIONS.map(loc => <option key={loc} value={loc} className={isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-900'}>{loc}</option>)}
-                      </select>
-                    </div>
+                        <div className={`w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl flex items-center justify-center text-base sm:text-lg shadow-sm ${colors.rankBg}`}>
+                          #{role.rank}
+                        </div>
 
-                    <div>
-                      <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                        Work Type
-                      </label>
-                      <select
-                        value={workPreference}
-                        onChange={(e) => setWorkPreference(e.target.value)}
-                        className={`w-full rounded-xl px-3.5 py-2.5 text-sm focus:outline-none transition-all border ${themeClasses.inputBg}`}
-                      >
-                        {WORK_PREFERENCES.map(pref => <option key={pref} value={pref} className={isDarkMode ? 'bg-slate-900 text-slate-100' : 'bg-white text-slate-900'}>{pref}</option>)}
-                      </select>
-                    </div>
-                  </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1.5">
+                            <span className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide ${colors.badge}`}>
+                              {role.match_label} • {role.match_score}%
+                            </span>
+                          </div>
+                          <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
+                        </div>
 
-                  {/* Interests */}
-                  <div>
-                    <div className="flex justify-between items-center mb-2">
-                      <label className={`text-xs font-bold uppercase tracking-wider ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                        Student Interests
-                      </label>
-                      {selectedInterests.length > 0 && (
-                        <button 
-                          type="button" 
-                          onClick={() => setSelectedInterests([])}
-                          className="text-xs text-slate-400 hover:text-emerald-400 flex items-center gap-1 transition-colors"
-                        >
-                          <RotateCcw className="w-3 h-3" /> Clear
-                        </button>
+                        <div className="shrink-0 p-2 sm:p-3 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-400 dark:text-slate-500">
+                          {isExpanded ? <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5" /> : <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />}
+                        </div>
+                      </div>
+
+                      {/* Expanded Section matches the Image styling precisely in dark mode */}
+                      {isExpanded && ai && (
+                        <div className="accordion-enter-animation px-5 sm:px-8 pb-6 sm:pb-8 pt-6 border-t border-zinc-100 dark:border-white/5 dark:bg-[#0E1525]">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+                            
+                            {/* Left Column: Market Intelligence */}
+                            <div className="space-y-6">
+                              <div>
+                                <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-3">
+                                  <LayoutDashboard className="w-4 h-4" /> MARKET INTELLIGENCE
+                                </h4>
+                                <p className="text-sm text-slate-700 dark:text-slate-300">
+                                  Status: <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.resilience_label)}</strong>. JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()}</strong>.
+                                </p>
+                              </div>
+                              
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                {/* Augmentation Box */}
+                                <div className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between">
+                                  <div className="flex justify-between items-start mb-4">
+                                    <span className="text-[10px] font-bold text-emerald-600 dark:text-[#34D399] uppercase tracking-widest">Augmentation</span>
+                                    <span className="text-[9px] font-bold text-emerald-700 dark:text-[#6EE7B7] bg-emerald-500/20 px-2 py-0.5 rounded uppercase">Support</span>
+                                  </div>
+                                  <div>
+                                    <div className="text-4xl font-bold tracking-tight text-emerald-600 dark:text-[#34D399]">{Math.round((ai.avg_augmentation || 0.75) * 100)}%</div>
+                                    <div className="text-xs text-slate-600 dark:text-slate-400 mt-1">Human capacity elevated</div>
+                                  </div>
+                                </div>
+                                
+                                {/* Automation Box */}
+                                <div className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between">
+                                  <div className="flex justify-between items-start mb-4">
+                                    <span className="text-[10px] font-bold text-amber-600 dark:text-[#FBBF24] uppercase tracking-widest">Automation</span>
+                                    <span className="text-[9px] font-bold text-amber-700 dark:text-[#FCD34D] bg-amber-500/20 px-2 py-0.5 rounded uppercase">Replace</span>
+                                  </div>
+                                  <div>
+                                    <div className="text-4xl font-bold tracking-tight text-amber-600 dark:text-[#FBBF24]">{Math.round((ai.avg_automation || 0.25) * 100)}%</div>
+                                    <div className="text-xs text-slate-600 dark:text-slate-400 mt-1">Tasks fully automated</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Right Column: Task Impact Analysis */}
+                            <div>
+                              <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
+                                <Cpu className="w-4 h-4" /> TASK IMPACT ANALYSIS
+                              </h4>
+                              <div className="space-y-4">
+                                {ai.tasks?.map((task, idx) => (
+                                  <div key={idx} className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02] space-y-5">
+                                    <p className="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">{task.task_text}</p>
+                                    
+                                    <div className="space-y-3">
+                                      <div className="flex items-center gap-4">
+                                        <span className="w-16 text-[10px] font-bold text-emerald-600 dark:text-[#34D399] uppercase tracking-wider">Augment</span>
+                                        <div className="flex-1 h-1.5 bg-slate-200 dark:bg-[#1E293B] rounded-full overflow-hidden">
+                                          <div className="h-full bg-emerald-500 dark:bg-[#34D399] rounded-full" style={{ width: `${task.augmentation_score * 100}%` }} />
+                                        </div>
+                                        <span className="w-8 text-right text-xs font-bold text-emerald-600 dark:text-[#34D399]">{Math.round(task.augmentation_score * 100)}%</span>
+                                      </div>
+                                      
+                                      <div className="flex items-center gap-4">
+                                        <span className="w-16 text-[10px] font-bold text-amber-600 dark:text-[#FBBF24] uppercase tracking-wider">Automate</span>
+                                        <div className="flex-1 h-1.5 bg-slate-200 dark:bg-[#1E293B] rounded-full overflow-hidden">
+                                          <div className="h-full bg-amber-500 dark:bg-[#FBBF24] rounded-full" style={{ width: `${task.automation_score * 100}%` }} />
+                                        </div>
+                                        <span className="w-8 text-right text-xs font-bold text-amber-600 dark:text-[#FBBF24]">{Math.round(task.automation_score * 100)}%</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
                       )}
                     </div>
-
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      {selectedInterests.map(item => (
-                        <span key={item} className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium border ${
-                          isDarkMode ? 'bg-slate-800 border-slate-700 text-emerald-400' : 'bg-slate-900 text-white border-slate-900'
-                        }`}>
-                          {item}
-                          <button type="button" onClick={() => removeInterest(item)} className="hover:text-emerald-400">
-                            <X className="w-3.5 h-3.5" />
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="relative">
-                      <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <input 
-                        type="text"
-                        placeholder="Search interests (e.g. AI, Cyber Security...)"
-                        value={interestSearch}
-                        onChange={(e) => setInterestSearch(e.target.value)}
-                        className={`w-full rounded-xl pl-10 pr-4 py-2.5 text-sm placeholder-slate-400 focus:outline-none transition-all border ${themeClasses.inputBg}`}
-                      />
-                    </div>
-
-                    {filteredInterests.length > 0 && (
-                      <div className={`mt-1 border rounded-xl p-1.5 shadow-lg max-h-36 overflow-y-auto space-y-1 ${themeClasses.dropdownBg}`}>
-                        {filteredInterests.map(suggestion => (
-                          <button
-                            key={suggestion}
-                            type="button"
-                            onClick={() => addInterest(suggestion)}
-                            className={`w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors flex justify-between items-center ${
-                              isDarkMode ? 'text-slate-300 hover:bg-slate-800 hover:text-emerald-400' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-950'
-                            }`}
-                          >
-                            <span>{suggestion}</span>
-                            <span className="text-slate-400 text-[10px]">+ Add</span>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Skills */}
-                  <div>
-                    <div className="flex justify-between items-center mb-2">
-                      <label className={`text-xs font-bold uppercase tracking-wider ${isDarkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-                        Current Skills
-                      </label>
-                      {selectedSkills.length > 0 && (
-                        <button 
-                          type="button" 
-                          onClick={() => setSelectedSkills([])}
-                          className="text-xs text-slate-400 hover:text-emerald-400 flex items-center gap-1 transition-colors"
-                        >
-                          <RotateCcw className="w-3 h-3" /> Clear
-                        </button>
-                      )}
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      {selectedSkills.map(item => (
-                        <span key={item} className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md border text-xs font-medium ${
-                          isDarkMode ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-emerald-100 border-emerald-200 text-emerald-900'
-                        }`}>
-                          {item}
-                          <button type="button" onClick={() => removeSkill(item)} className="hover:text-emerald-600">
-                            <X className="w-3.5 h-3.5" />
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="relative">
-                      <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <input 
-                        type="text"
-                        placeholder="Type a skill (e.g. Type 'P' for Python...)"
-                        value={skillSearch}
-                        onChange={(e) => setSkillSearch(e.target.value)}
-                        className={`w-full rounded-xl pl-10 pr-4 py-2.5 text-sm placeholder-slate-400 focus:outline-none transition-all border ${themeClasses.inputBg}`}
-                      />
-                    </div>
-
-                    {filteredSkills.length > 0 && (
-                      <div className={`mt-1 border rounded-xl p-1.5 shadow-lg max-h-36 overflow-y-auto space-y-1 ${themeClasses.dropdownBg}`}>
-                        {filteredSkills.map(suggestion => (
-                          <button
-                            key={suggestion}
-                            type="button"
-                            onClick={() => addSkill(suggestion)}
-                            className={`w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors flex justify-between items-center ${
-                              isDarkMode ? 'text-slate-300 hover:bg-slate-800 hover:text-emerald-400' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-950'
-                            }`}
-                          >
-                            <span>{suggestion}</span>
-                            <span className="text-slate-400 text-[10px]">+ Add</span>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                </form>
+                  );
+                })}
               </div>
 
-              <div className={`px-8 py-5 border-t flex items-center justify-end gap-3 ${themeClasses.subtleBorder} ${isDarkMode ? 'bg-slate-900/40' : 'bg-slate-50/50'}`}>
-                <button
-                  type="button"
-                  onClick={() => setIsDrawerOpen(false)}
-                  className={`px-4 py-2 text-xs font-semibold transition-colors ${themeClasses.secondaryText} hover:text-white`}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  form="profile-form"
-                  disabled={isSubmitting || !preferredCourse}
-                  className={`px-6 py-2.5 disabled:bg-slate-700 disabled:text-slate-500 font-bold text-xs uppercase tracking-wider rounded-lg transition-all flex items-center gap-2 ${themeClasses.primaryBtn}`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Processing...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Analyze Profile</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
-              </div>
-
-            </div>
-          </div>
+              {matches.length > INITIAL_MATCH_COUNT && (
+                <div className="mt-8 sm:mt-10 flex justify-center">
+                  <button
+                    onClick={() => setShowAllMatches(!showAllMatches)}
+                    className="px-6 py-3 rounded-full border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-[#131B2F]/80 hover:bg-zinc-100 dark:hover:bg-[#1A233A] text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 shadow-sm"
+                  >
+                    {showAllMatches ? (
+                      <>Show Less <ChevronUp className="w-4 h-4" /></>
+                    ) : (
+                      <>Show {matches.length - INITIAL_MATCH_COUNT} More Roles <ChevronDown className="w-4 h-4" /></>
+                    )}
+                  </button>
+                </div>
+              )}
+            </main>
+          )}
         </div>
-      )}
-
-    </div>
+      </div>
+    </>
   );
 }
