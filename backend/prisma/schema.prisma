@@ -1,0 +1,229 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model course {
+  course_id String    @id @db.VarChar(50)
+  label     String    @db.VarChar(150)
+  profile   profile[]
+}
+
+model industry_sector {
+  sector_id             String                  @id @db.VarChar(50)
+  label                 String                  @db.VarChar(100)
+  occupation            occupation[]
+  profile_industry_pref profile_industry_pref[]
+}
+
+model interest {
+  interest_id         String                @id @db.VarChar(50)
+  label               String                @db.VarChar(100)
+  occupation_interest occupation_interest[]
+  profile_interest    profile_interest[]
+}
+
+model jsa_task_score {
+  jsa_task_id                Int      @id @default(autoincrement())
+  anzsco_unit_group          String   @db.VarChar(4)
+  task_text                  String
+  automation_score           Decimal? @db.Decimal(4, 3)
+  automation_justification   String?
+  augmentation_score         Decimal? @db.Decimal(4, 3)
+  augmentation_justification String?
+
+  @@index([anzsco_unit_group], map: "idx_jsa_task_score_unit_group")
+}
+
+model occupation {
+  occupation_id                String                         @id @db.VarChar(6)
+  sector_id                    String?                        @db.VarChar(50)
+  title                        String                         @db.VarChar(200)
+  is_curated                   Boolean                        @default(false)
+  industry_sector              industry_sector?               @relation(fields: [sector_id], references: [sector_id], onDelete: NoAction, onUpdate: NoAction)
+  occupation_interest          occupation_interest[]
+  profile_occupation_selection profile_occupation_selection[]
+
+  @@index([sector_id], map: "idx_occupation_sector")
+}
+
+model occupation_anzsco_match {
+  occupation_id                                                            String           @db.VarChar(6)
+  osca_unit_group                                                          String?          @db.VarChar(4)
+  anzsco_code                                                              String           @db.VarChar(30)
+  anzsco_unit_group                                                        String           @db.VarChar(10)
+  match_type                                                               match_type_enum
+  osca_unit_group_occupation_anzsco_match_osca_unit_groupToosca_unit_group osca_unit_group? @relation("occupation_anzsco_match_osca_unit_groupToosca_unit_group", fields: [osca_unit_group], references: [unit_group_code], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([occupation_id, anzsco_code])
+  @@index([anzsco_unit_group], map: "idx_anzsco_match_unit_group")
+}
+
+model occupation_interest {
+  occupation_id String     @db.VarChar(6)
+  interest_id   String     @db.VarChar(50)
+  interest      interest   @relation(fields: [interest_id], references: [interest_id], onUpdate: NoAction)
+  occupation    occupation @relation(fields: [occupation_id], references: [occupation_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([occupation_id, interest_id])
+  @@index([interest_id], map: "idx_occupation_interest")
+}
+
+model osca_unit_group {
+  unit_group_code                                                                  String                    @id @db.VarChar(4)
+  unit_group_title                                                                 String                    @db.VarChar(200)
+  occupation_anzsco_match_occupation_anzsco_match_osca_unit_groupToosca_unit_group occupation_anzsco_match[] @relation("occupation_anzsco_match_osca_unit_groupToosca_unit_group")
+}
+
+model postcode_region {
+  postcode        String          @id @db.VarChar(4)
+  state_code      String          @db.VarChar(3)
+  region_id       String          @db.VarChar(20)
+  region          region          @relation(fields: [region_id], references: [region_id], onDelete: NoAction, onUpdate: NoAction)
+  state_territory state_territory @relation(fields: [state_code], references: [state_code], onDelete: NoAction, onUpdate: NoAction)
+  profile         profile[]
+
+  @@index([region_id], map: "idx_postcode_region_region")
+}
+
+model profile {
+  profile_id                   String                         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at                   DateTime                       @default(now()) @db.Timestamptz(6)
+  postcode                     String?                        @db.VarChar(4)
+  course_id                    String?                        @db.VarChar(50)
+  year_level_id                String?                        @db.VarChar(20)
+  age_bracket                  age_bracket_enum?
+  sex                          sex_enum?
+  course                       course?                        @relation(fields: [course_id], references: [course_id], onDelete: NoAction, onUpdate: NoAction)
+  postcode_region              postcode_region?               @relation(fields: [postcode], references: [postcode], onDelete: NoAction, onUpdate: NoAction)
+  year_level                   year_level?                    @relation(fields: [year_level_id], references: [year_level_id], onDelete: NoAction, onUpdate: NoAction)
+  profile_industry_pref        profile_industry_pref[]
+  profile_interest             profile_interest[]
+  profile_occupation_selection profile_occupation_selection[]
+  profile_skill                profile_skill[]
+  profile_work_arrangement     profile_work_arrangement[]
+  profile_work_style           profile_work_style[]
+}
+
+model profile_industry_pref {
+  profile_id      String          @db.Uuid
+  sector_id       String          @db.VarChar(50)
+  profile         profile         @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+  industry_sector industry_sector @relation(fields: [sector_id], references: [sector_id], onUpdate: NoAction)
+
+  @@id([profile_id, sector_id])
+}
+
+model profile_interest {
+  profile_id  String   @db.Uuid
+  interest_id String   @db.VarChar(50)
+  interest    interest @relation(fields: [interest_id], references: [interest_id], onUpdate: NoAction)
+  profile     profile  @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([profile_id, interest_id])
+}
+
+model profile_occupation_selection {
+  selection_id  String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  profile_id    String     @db.Uuid
+  occupation_id String     @db.VarChar(6)
+  match_rank    Int        @default(1) @db.SmallInt
+  selected_at   DateTime   @default(now()) @db.Timestamptz(6)
+  occupation    occupation @relation(fields: [occupation_id], references: [occupation_id], onUpdate: NoAction)
+  profile       profile    @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([profile_id, occupation_id], map: "uq_profile_occupation")
+  @@unique([profile_id, match_rank], map: "uq_profile_rank")
+}
+
+model profile_skill {
+  profile_id String    @db.Uuid
+  skill_id   String    @db.VarChar(50)
+  profile    profile   @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+  skill_tag  skill_tag @relation(fields: [skill_id], references: [skill_id], onUpdate: NoAction)
+
+  @@id([profile_id, skill_id])
+}
+
+model profile_work_arrangement {
+  profile_id       String           @db.Uuid
+  arrangement_id   String           @db.VarChar(50)
+  work_arrangement work_arrangement @relation(fields: [arrangement_id], references: [arrangement_id], onUpdate: NoAction)
+  profile          profile          @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([profile_id, arrangement_id])
+}
+
+model profile_work_style {
+  profile_id    String     @db.Uuid
+  work_style_id String     @db.VarChar(50)
+  profile       profile    @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+  work_style    work_style @relation(fields: [work_style_id], references: [work_style_id], onUpdate: NoAction)
+
+  @@id([profile_id, work_style_id])
+}
+
+model region {
+  region_id       String            @id @db.VarChar(20)
+  label           String            @db.VarChar(100)
+  postcode_region postcode_region[]
+}
+
+model skill_tag {
+  skill_id      String              @id @db.VarChar(120)
+  label         String              @db.VarChar(120)
+  category      skill_category_enum
+  profile_skill profile_skill[]
+}
+
+model state_territory {
+  state_code      String            @id @db.VarChar(3)
+  label           String            @db.VarChar(50)
+  postcode_region postcode_region[]
+}
+
+model work_arrangement {
+  arrangement_id           String                     @id @db.VarChar(50)
+  label                    String                     @db.VarChar(100)
+  profile_work_arrangement profile_work_arrangement[]
+}
+
+model work_style {
+  work_style_id      String               @id @db.VarChar(50)
+  label              String               @db.VarChar(100)
+  profile_work_style profile_work_style[]
+}
+
+model year_level {
+  year_level_id String    @id @db.VarChar(20)
+  label         String    @db.VarChar(50)
+  profile       profile[]
+}
+
+enum age_bracket_enum {
+  age_18_20
+  age_21_23
+  age_24_plus
+}
+
+enum match_type_enum {
+  exact
+  partial
+}
+
+enum sex_enum {
+  male
+  female
+  other
+  prefer_not_to_say
+}
+
+enum skill_category_enum {
+  foundational
+  transferable
+  technical
+}
