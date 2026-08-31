@@ -37,7 +37,9 @@ WORK_STYLE_OUTPUT = OUTPUT_DIR / "workstyle_tag.csv"
 def slugify(label: str, prefix: str) -> str:
     slug = label.lower()
     slug = re.sub(r"[^a-z0-9]+", "_", slug).strip("_")
-    return f"{prefix}_{slug}"
+    return f"{prefix}_{slug}" #turn the skills into a readable human text
+                              #helps for merging too since convert everything
+                              #with prefix + skill name (label)
 
 
 def build_skill_tag():
@@ -59,7 +61,7 @@ def build_skill_tag():
     frames.append(tech_distinct)
 
     skills = pd.concat(frames, ignore_index=True).drop_duplicates(subset="label")
-    skills["skill_id"] = skills["label"].apply(lambda l: slugify(l, "skill"))
+    skills["skill_id"] = skills["label"].apply(lambda l: slugify(l, "skill")) #skill as prefix
 
     out = skills[["skill_id", "label", "category"]].sort_values("category")
     out.to_csv(SKILL_OUTPUT, index=False)
@@ -73,7 +75,7 @@ def build_work_style():
 
     distinct = df[["Element Name"]].drop_duplicates()
     distinct = distinct.rename(columns={"Element Name": "label"})
-    distinct["work_style_id"] = distinct["label"].apply(lambda l: slugify(l, "work_style"))
+    distinct["work_style_id"] = distinct["label"].apply(lambda l: slugify(l, "work_style")) #workstyle as prefix
 
     out = distinct[["work_style_id", "label"]].sort_values("label")
     out.to_csv(WORK_STYLE_OUTPUT, index=False)
