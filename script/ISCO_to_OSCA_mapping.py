@@ -39,6 +39,7 @@ def main():
 
     # Forward-fill the ISCO code/title into the blank continuation rows 
     # Reason is there's multiple occupations that can still match so next row gets filled with the previous row code
+    # The crosswalk map the occupations to an occupations and if the occupations can still match the leave blank row
     df["isco08_code"] = df["isco08_code"].ffill()
     df["isco08_title"] = df["isco08_title"].ffill()
 

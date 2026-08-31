@@ -21,7 +21,8 @@ OUTPUT.parent.mkdir(parents=True, exist_ok=True) #incase it doesn't exist
 
 
 def main():
-    df = pd.read_csv(DATA, encoding="utf-8-sig") #easier to read csv file
+    df = pd.read_csv(DATA, encoding="utf-8-sig") #Strips BOM characters, to avoid breaking
+                                                # any code by checking column exact name
     
     df = df.rename(columns={
         "Code": "onet_soc_code",

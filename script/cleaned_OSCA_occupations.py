@@ -24,7 +24,7 @@ OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)  #make an output folder to
 def main():
     df = pd.read_excel(
         DATA, sheet_name=SHEET_NAME, header=None, skiprows=HEADER_ROW,
-        usecols="C,E", names=["osca_code", "osca_title"],
+        usecols="C,E", names=["osca_code", "osca_title"], #specify column by both letters and location
     )
     df = df.dropna(how="all") # drop ALL NaN and Nulls
 
