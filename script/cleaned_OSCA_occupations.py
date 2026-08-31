@@ -13,7 +13,7 @@ import pandas as pd
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA = BASE_DIR.parent / "data" / "OSCA correspondence tables v2.xlsx" #where the data is olcated
+DATA = BASE_DIR.parent / "data" / "OSCA correspondence tables v2.xlsx" #where the data is located
 SHEET_NAME = "Table 1"
 HEADER_ROW = 5
 
