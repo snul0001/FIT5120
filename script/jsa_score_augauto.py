@@ -21,7 +21,7 @@ DATA = BASE_DIR.parent / "data" / "bespoke_table_tracker_20251003.xlsx"
 AUTOMATION = "Table_1" #where automation score lives
 AUGMENTATION = "Table_2" #where augmentatoin score lives
 
-OUTPUT = BASE_DIR.parent / "data" / "jsa_task_score.csv"
+OUTPUT = BASE_DIR.parent / "output" / "jsa_task_score.csv"
 
 HEADER_ROW = 0
 
