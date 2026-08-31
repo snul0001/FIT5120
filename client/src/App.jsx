@@ -187,37 +187,58 @@ export default function App() {
     }
   };
 
-  const handleDownload = () => {
-    const headers = [
-      "Rank", "Occupation Title", "Sector", "Match Score", "Match Level", 
-      "AI Resilience Score", "AI Resilience Label", "Market Demand", 
-      "Avg Augmentation (%)", "Avg Automation (%)"
-    ];
+const handleDownload = () => {
+    const separator = "=".repeat(75);
+    const subSeparator = "-".repeat(75);
+    
+    let textContent = `${separator}\n`;
+    textContent += `                         IResi AI CAREER PATHWAY REPORT\n`;
+    textContent += `${separator}\n\n`;
+    
+    textContent += `PARAMETERS & PREFERENCES:\n`;
+    textContent += `• Target Location : ${targetLocation}\n`;
+    textContent += `• Role Preference : ${workPreference}\n`;
+    textContent += `• Date Generated  : ${new Date().toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' })}\n\n`;
+    textContent += `${subSeparator}\n\n`;
+    textContent += `TOP CAREER MATCHES & AI IMPACT ANALYSIS:\n\n`;
 
-    const rows = matches.map(m => {
+    matches.forEach((m) => {
       const ai = aiDetailsMap[m.occupation_id] || {};
-      return [
-        m.rank,
-        `"${m.title}"`,
-        `"${m.sector || ''}"`,
-        m.match_score,
-        `"${m.match_label}"`,
-        ai.resilience_score ?? 'N/A',
-        `"${formatLabel(ai.resilience_label)}"`,
-        `"${formatLabel(ai.demand_label)}"`,
-        ai.avg_augmentation ? Math.round(ai.avg_augmentation * 100) : 'N/A',
-        ai.avg_automation ? Math.round(ai.avg_automation * 100) : 'N/A'
-      ].join(',');
+      textContent += `[Rank ${m.rank}] ${m.title.toUpperCase()}\n`;
+      textContent += `--------------------------------------------------\n`;
+      textContent += `• Sector              : ${m.sector || 'ICT'}\n`;
+      textContent += `• Match Fit           : ${m.match_score}% (${m.match_label})\n`;
+      textContent += `• AI Resilience Score : ${ai.resilience_score ?? 'N/A'}/100\n`;
+      textContent += `• Resilience Status   : ${formatLabel(ai.resilience_label)}\n`;
+      textContent += `• National Demand     : ${formatLabel(ai.demand_label)}\n`;
+      textContent += `• Avg Augmentation    : ${ai.avg_augmentation ? Math.round(ai.avg_augmentation * 100) : 'N/A'}%\n`;
+      textContent += `• Avg Automation      : ${ai.avg_automation ? Math.round(ai.avg_automation * 100) : 'N/A'}%\n\n`;
+      
+      if (ai.tasks && ai.tasks.length > 0) {
+        textContent += `  Granular Task Breakdown:\n`;
+        ai.tasks.forEach((t, i) => {
+          textContent += `    ${i + 1}. ${t.task_text}\n`;
+          textContent += `       - Augment Score : ${Math.round(t.augmentation_score * 100)}%\n`;
+          textContent += `       - Automate Score: ${Math.round(t.automation_score * 100)}%\n`;
+        });
+        textContent += `\n`;
+      }
+      textContent += `${subSeparator}\n\n`;
     });
 
-    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows].join('\n');
-    const encodedUri = encodeURI(csvContent);
+    textContent += `End of Report — Generated via IResi Career Platform\n`;
+
+    // Create a Blob and trigger download as a .txt file
+    const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "IResi_AI_Career_Matches.csv");
-    document.body.appendChild(link); 
+    link.setAttribute("href", url);
+    link.setAttribute("download", "IResi_Career_Pathway_Report.txt");
+    document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
     setHasDownloaded(true);
   };
 
