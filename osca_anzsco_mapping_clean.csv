@@ -1,0 +1,1349 @@
+osca_code,osca_occupation,anzsco_code,match_flag,anzsco_occupation
+111131,Corporate Services Manager,132111,,Corporate Services Manager
+111231,Finance Manager,132211,,Finance Manager
+111331,Human Resources Manager,132311,p,Human Resource Manager
+111431,Policy and Planning Manager,132411,,Policy and Planning Manager
+111531,Research and Development Manager,132511,,Research and Development Manager
+111631,Quality Assurance Manager,139916,,Quality Assurance Manager
+111632,Regulatory Affairs Manager,139917,,Regulatory Affairs Manager
+111633,Work Health and Safety Manager,132311,p,Human Resource Manager
+112131,Advertising Manager,131113,,Advertising Manager
+112132,Business Development Manager,131112,p,Sales and Marketing Manager
+112133,Sales and Marketing Manager,131112,p,Sales and Marketing Manager
+112231,Communications Manager (Public Relations),131114,,Public Relations Manager
+113131,Chief Information Officer,135111,p,Chief Information Officer
+113132,Chief Information Security Officer,135111,p,Chief Information Officer
+113231,ICT Operations Manager,135199,p,ICT Managers nec
+113232,ICT Project Manager,135112,,ICT Project Manager
+113233,ICT Service Delivery Manager,135199,p,ICT Managers nec
+113299,ICT Managers nec,135199,p,ICT Managers nec
+121131,Chief Executive or Managing Director,111111,,Chief Executive or Managing Director
+121231,Corporate General Manager,111211,,Corporate General Manager
+121232,Defence Force Senior Officer,111212,p,Defence Force Senior Officer
+121331,Local Government Legislator,111311,,Local Government Legislator
+121332,Member of Parliament,111312,,Member of Parliament
+121399,Legislators nec,111399,,Legislators nec
+131131,Construction Project Manager,133111,,Construction Project Manager
+131231,Engineering Manager,133211,,Engineering Manager
+131331,Project Builder,133112,,Project Builder
+131431,Property Developer,224511,p,Land Economist
+131931,Surveying Manager,139999,p,Specialist Managers nec
+131999,Construction and Engineering Managers nec,139999,p,Specialist Managers nec
+132131,Manufacturer,133411,,Manufacturer
+132231,Forest Manager,133511,,Production Manager (Forestry)
+132232,Production Manager (Manufacturing),133512,,Production Manager (Manufacturing)
+132232,Production Manager (Manufacturing),149999,p,"Hospitality, Retail and Service Managers nec"
+132233,Production Manager (Mining),133513,,Production Manager (Mining)
+133131,Importer or Exporter,133311,,Importer or Exporter
+133132,Wholesaler,133312,,Wholesaler
+133231,Procurement Manager,133612,,Procurement Manager
+133331,Supply and Distribution Manager,133611,,Supply and Distribution Manager
+141131,Assistant School Principal,134311,p,School Principal
+141132,School Principal,134311,p,School Principal
+141231,Children's Education and Care Service Director,134111,,Child Care Centre Manager
+141231,Children's Education and Care Service Director,241111,p,Early Childhood (Pre-primary School) Teacher
+141331,Aged Care Manager,134212,p,Nursing Clinical Director
+141331,Aged Care Manager,134299,p,Health and Welfare Services Managers nec
+141331,Aged Care Manager,254311,p,Nurse Manager
+141332,Director of Nursing / Midwifery,134212,p,Nursing Clinical Director
+141333,Medical Administrator,134211,,Medical Administrator / Medical Superintendent
+141334,Paramedic Manager,134299,p,Health and Welfare Services Managers nec
+141335,Welfare Centre Manager,134214,,Welfare Centre Manager
+141399,Health and Welfare Service Managers nec,134213,,Primary Health Organisation Manager
+141399,Health and Welfare Service Managers nec,134299,p,Health and Welfare Services Managers nec
+141431,Faculty Manager,134411,,Faculty Head
+141432,Regional Education Manager,134412,,Regional Education Manager
+141499,Education Managers nec,134499,,Education Managers nec
+149131,Arts Administrator or Manager,139911,,Arts Administrator or Manager
+149132,Library Services Manager,224611,p,Librarian
+149133,Sports Administrator,139915,,Sports Administrator
+149199,"Arts, Culture and Sports Administrators nec",139999,p,Specialist Managers nec
+149231,Commissioned Defence Force Officer,111212,p,Defence Force Senior Officer
+149231,Commissioned Defence Force Officer,139111,,Commissioned Defence Force Officer
+149232,Commissioned Fire Officer,139112,,Commissioned Fire Officer
+149233,Commissioned Police Officer,139113,,Commissioned Police Officer
+149331,Environmental Manager,139912,,Environmental Manager
+149332,Exploration Manager,139999,p,Specialist Managers nec
+149333,Laboratory Manager,139913,,Laboratory Manager
+149399,Scientific and Environmental Managers nec,139999,p,Specialist Managers nec
+149431,Senior Non-commissioned Defence Force Member,139211,,Senior Non-commissioned Defence Force Member
+149931,Airport Manager,139999,p,Specialist Managers nec
+149932,Correctional Facility Manager,139999,p,Specialist Managers nec
+149933,Emergency Management Officer,139999,p,Specialist Managers nec
+149999,Specialist Managers nec,139999,p,Specialist Managers nec
+151131,Cotton Grower,121511,,Cotton Grower
+151132,"Grain, Oilseed, Pulse or Pasture Grower",121512,,"Grain, Oilseed, Pulse or Pasture Grower / Field Crop Grower"
+151133,Sugar Cane Grower,121513,,Sugar Cane Grower
+151199,Broadacre Crop Growers nec,121599,,Broadacre Crop Growers nec
+151231,Flower Grower,121611,,Flower Grower
+151232,Fruit Grower,121612,,Fruit Grower
+151233,Nut Grower,121613,,Nut Grower
+151234,Production Nursery Grower,121614,,Production Nursery Grower
+151235,Turf Grower,121615,,Turf Grower
+151236,Vegetable Grower,121616,,Vegetable Grower (Aus) / Market Gardener (NZ)
+151237,Wine Grape Grower,121617,,Wine Grape Grower
+151299,Horticultural Crop Growers nec,121699,,Horticultural Crop Growers nec
+151331,Aquaculture Farmer,121111,,Aquaculture Farmer
+151332,Broadacre Crop and Livestock Farmer,121711,,Broadacre Crop and Livestock Farmer
+151399,Mixed Production and Aquaculture Farmers nec,121799,,Mixed Production Farmers nec
+152131,Beef Cattle Farmer,121312,,Beef Cattle Farmer
+152231,Dairy Cattle Farmer,121313,,Dairy Cattle Farmer
+152331,Mixed Cattle and Sheep Farmer,121323,,Mixed Cattle and Sheep Farmer
+152431,Sheep Farmer,121322,,Sheep Farmer
+152931,Apiarist,121311,,Apiarist
+152932,Goat Farmer,121315,,Goat Farmer
+152933,Horse Breeder,121316,,Horse Breeder
+152934,Pig Farmer,121318,,Pig Farmer
+152935,Poultry Farmer,121321,,Poultry Farmer
+152999,Livestock Farmers nec,121314,,Deer Farmer
+152999,Livestock Farmers nec,121399,,Livestock Farmers nec
+161131,Accommodation Service Manager,431411,p,Hotel Service Manager
+161231,Cafe or Restaurant Manager,141111,p,Cafe or Restaurant Manager
+161231,Cafe or Restaurant Manager,142111,p,Retail Manager (General)
+161232,Catering Manager,141111,p,Cafe or Restaurant Manager
+161331,Amusement Centre Manager,149111,,Amusement Centre Manager
+161332,Betting Agency Manager,142113,,Betting Agency Manager
+161333,Cinema or Theatre Manager,149912,,Cinema or Theatre Manager
+161334,Fitness Centre Manager,149112,,Fitness Centre Manager
+161335,Sports Centre Manager,149113,,Sports Centre Manager
+161399,"Entertainment, Fitness and Sports Venue Managers nec",149999,p,"Hospitality, Retail and Service Managers nec"
+161431,Hotel or Motel Manager,141311,,Hotel or Motel Manager
+161531,Licensed Club Manager,141411,,Licensed Club Manager
+161531,Licensed Club Manager,431311,p,Gaming Worker
+161631,Senior Chef,351311,p,Chef
+161931,Caravan Park and Camping Ground Manager,141211,,Caravan Park and Camping Ground Manager
+161932,Hosted Accommodation Operator,141911,,Bed and Breakfast Operator
+161933,Travel Agency Manager,142116,,Travel Agency Manager
+161999,"Hospitality, Tourism and Venue Managers nec",141999,,Accommodation and Hospitality Managers nec
+161999,"Hospitality, Tourism and Venue Managers nec",149999,p,"Hospitality, Retail and Service Managers nec"
+162131,Retail Manager (General),142111,p,Retail Manager (General)
+162132,Antique Dealer,142112,,Antique Dealer
+162133,Post Office Manager,142115,,Post Office Manager
+171131,Financial Institution Manager,149914,,Financial Institution Branch Manager
+171231,Office Manager,512111,,Office Manager
+171232,Payroll Manager,551311,p,Payroll Clerk
+171331,Health Practice Manager,512211,,Health Practice Manager
+171332,Legal Practice Manager,512299,p,Practice Managers nec
+171333,Veterinary Practice Manager,512299,p,Practice Managers nec
+171399,Practice Managers nec,512299,p,Practice Managers nec
+171431,Real Estate Agency Principal,612113,,Real Estate Agency Principal / Real Estate Agency Licensee
+172131,Call or Contact Centre Manager,149211,,Call or Contact Centre Manager
+172132,Customer Service Manager,149212,,Customer Service Manager
+172231,Event Manager,149311,,Conference and Event Organiser
+172331,Facilities Manager,149913,,Facilities Manager
+172431,Hair or Beauty Salon Manager,142114,,Hair or Beauty Salon Manager
+172499,"Hair, Body and Beauty Service Managers nec",149999,p,"Hospitality, Retail and Service Managers nec"
+172531,Fleet Manager,149411,,Fleet Manager
+172532,Railway Station Manager,149412,,Railway Station Manager
+172533,Transport Company Manager,149413,,Transport Company Manager
+172931,Boarding Kennel or Cattery Operator,149911,,Boarding Kennel or Cattery Operator
+172932,Equipment Hire Manager,149915,,Equipment Hire Manager
+172933,Retirement Village Manager,141912,,Retirement Village Manager
+172934,Security Manager (Non-ICT),139999,p,Specialist Managers nec
+172999,Service Managers nec,149999,p,"Hospitality, Retail and Service Managers nec"
+211131,Accountant (General),221111,p,Accountant (General)
+211132,Corporate Treasurer,221212,,Corporate Treasurer
+211133,Forensic Accountant,221111,p,Accountant (General)
+211134,Management Accountant,221112,,Management Accountant
+211135,Taxation Accountant,221113,,Taxation Accountant
+211231,External Auditor,221213,,External Auditor
+211232,Internal Auditor,221214,,Internal Auditor
+212131,Financial Adviser,222311,,Financial Investment Adviser
+212231,Financial Market Dealer,222211,,Financial Market Dealer
+212231,Financial Market Dealer,222212,,Futures Trader
+212232,Stockbroker,222213,p,Stockbroking Dealer
+212331,Capital Markets Specialist,222213,p,Stockbroking Dealer
+212332,Investment Analyst,222299,p,Financial Dealers nec
+212333,Investment Manager,222312,,Financial Investment Manager
+212931,Credit Risk Manager,222299,p,Financial Dealers nec
+212999,Financial Services and Investment Specialists nec,222299,p,Financial Dealers nec
+221131,Advertising Specialist,212112,p,Media Producer (excluding Video)
+221131,Advertising Specialist,225111,,Advertising Specialist
+221231,Communications Officer (Public Relations),225311,,Public Relations Professional
+221331,Electorate Officer,224911,,Electorate Officer
+221332,Liaison Officer,224912,,Liaison Officer
+221431,ICT Business Development Manager,225212,,ICT Business Development Manager
+221531,Content Creator (Marketing),225114,,Content Creator (Marketing)
+221532,Digital Marketing Analyst,225115,,Digital Marketing Analyst
+221533,Market Research Analyst,225112,,Market Research Analyst
+221534,Marketing Specialist,225113,,Marketing Specialist
+221631,ICT Account Manager,225211,,ICT Account Manager
+221632,ICT Sales Representative,225213,,ICT Sales Representative
+221633,Sales Representative (Industrial Products),225411,,Sales Representative (Industrial Products)
+221634,Sales Representative (Medical and Pharmaceutical Products),225412,,Sales Representative (Medical and Pharmaceutical Products)
+221699,Technical Sales Representatives nec,225499,,Technical Sales Representatives nec
+222131,Human Resources Adviser,223111,,Human Resource Adviser
+222132,Workplace Relations Adviser,223113,p,Workplace Relations Adviser
+222231,Recruitment Consultant,223112,p,Recruitment Consultant
+222331,Rehabilitation Consultant,251312,p,Occupational Health and Safety Adviser
+222331,Rehabilitation Consultant,272114,p,Rehabilitation Counsellor
+222332,Work Health and Safety Adviser,251312,p,Occupational Health and Safety Adviser
+222431,Training and Development Professional,223311,,Training and Development Professional
+222431,Training and Development Professional,242211,p,Vocational Education Teacher / Polytechnic Teacher
+223131,Actuary,224111,,Actuary
+223132,Mathematician,224112,,Mathematician
+223133,Statistician,224116,,Statistician
+223231,Data Analyst,224114,,Data Analyst
+223232,Data Architect,261313,p,Software Engineer
+223233,Data Engineer,261313,p,Software Engineer
+223234,Data Scientist,224115,,Data Scientist
+223331,Intelligence Analyst,224411,,Intelligence Officer
+223332,Policy Analyst,224412,,Policy Analyst
+223431,Enterprise Architect,261111,p,ICT Business Analyst
+223432,Management Consultant,224713,,Management Consultant
+223433,Organisation and Methods Analyst,224712,,Organisation and Methods Analyst
+223434,Supply Chain Analyst,224714,,Supply Chain Analyst
+223531,Asset Manager (Property),224511,p,Land Economist
+223532,Valuer,224512,,Valuer
+223931,Company Secretary,221211,,Company Secretary
+223932,Cost Controller,224999,p,Information and Organisation Professionals nec
+223933,Health Information Manager,224213,,Health Information Manager
+223934,Patents Examiner,224914,,Patents Examiner
+223935,Records or Information Manager,224214,,Records Manager
+223999,Information and Organisation Professionals nec,224999,p,Information and Organisation Professionals nec
+231131,Actor,211111,,Actor
+231132,Circus Performer or Trainer,211113,p,Entertainer or Variety Artist
+231132,Circus Performer or Trainer,211199,p,"Actors, Dancers and Other Entertainers nec"
+231133,Content Creator (Social Media),211199,p,"Actors, Dancers and Other Entertainers nec"
+231134,Dancer or Choreographer,211112,,Dancer or Choreographer
+231135,Entertainer or Variety Performer,211113,p,Entertainer or Variety Artist
+231199,"Actors, Dancers and Other Entertainers nec",211199,p,"Actors, Dancers and Other Entertainers nec"
+231231,Author,212211,,Author
+231232,Book or Script Editor,212212,,Book or Script Editor
+231331,Copywriter,212411,,Copywriter
+231332,Journalist,212413,,Print Journalist
+231332,Journalist,212414,,Radio Journalist
+231332,Journalist,212416,,Television Journalist
+231332,Journalist,212499,p,Journalists and Other Writers nec
+231333,Print or Digital Content Editor,212412,,Newspaper or Periodical Editor
+231333,Print or Digital Content Editor,599913,,Proof Reader
+231334,Technical Writer,212415,,Technical Writer
+231399,Journalists and Other Writers nec,212499,p,Journalists and Other Writers nec
+231431,Artistic Director,212111,,Artistic Director
+231432,Audio or Live Performance Director,212312,p,"Director (Film, Television, Radio or Stage)"
+231432,Audio or Live Performance Director,212399,p,"Film, Television, Radio and Stage Directors nec"
+231433,Cinematographer,212313,,Director of Photography
+231434,Film and Video Editor,212314,,Film and Video Editor
+231435,Production Manager (Screen or Live Performance),212112,p,Media Producer (excluding Video)
+231435,Production Manager (Screen or Live Performance),212316,,Stage Manager
+231436,Screen Director,212312,p,"Director (Film, Television, Radio or Stage)"
+231437,Screen or Live Performance Designer,212311,,"Art Director (Film, Television or Stage)"
+231437,Screen or Live Performance Designer,232311,p,Fashion Designer
+231438,Technical Director,212317,,Technical Director
+231438,Technical Director,212399,p,"Film, Television, Radio and Stage Directors nec"
+231499,Media Directors and Designers nec,212399,p,"Film, Television, Radio and Stage Directors nec"
+231531,Audio Producer,212112,p,Media Producer (excluding Video)
+231531,Audio Producer,212315,p,Program Director (Television or Radio)
+231532,Live Performance Producer,212112,p,Media Producer (excluding Video)
+231533,Screen Producer,212112,p,Media Producer (excluding Video)
+231533,Screen Producer,212315,p,Program Director (Television or Radio)
+231533,Screen Producer,212318,,Video Producer
+231631,Composer,211211,,Composer
+231632,Music Director,211212,,Music Director
+231633,Musician (Instrumental),211213,,Musician (Instrumental)
+231634,Singer,211214,,Singer
+231699,Music Professionals nec,211199,p,"Actors, Dancers and Other Entertainers nec"
+231699,Music Professionals nec,211299,,Music Professionals nec
+231699,Music Professionals nec,212113,p,Radio Presenter
+231731,Painter (Visual Arts),211411,,Painter (Visual Arts)
+231732,Potter or Ceramic Artist,211412,,Potter or Ceramic Artist
+231733,Sculptor,211413,,Sculptor
+231799,Visual Arts and Crafts Professionals nec,211499,,Visual Arts and Crafts Professionals nec
+231931,Community Arts Worker,272611,,Community Arts Worker
+231932,Media Presenter,212113,p,Radio Presenter
+231932,Media Presenter,212114,,Television Presenter
+232131,Librarian,224611,p,Librarian
+232231,Religious Leader,272211,,Minister of Religion
+232331,Archaeologist,272414,,Archaeologist
+232332,Archivist,224211,,Archivist
+232333,Economist,224311,,Economist
+232333,Economist,224511,p,Land Economist
+232334,Gallery or Museum Curator,224212,,Gallery or Museum Curator
+232335,Heritage Consultant,272499,p,Social Professionals nec
+232336,Historian,272411,,Historian
+232399,Social Science and Related Professionals nec,272499,p,Social Professionals nec
+241131,Architect,232111,,Architect
+241132,Landscape Architect,232112,p,Landscape Architect
+241133,Urban Designer,232112,p,Landscape Architect
+241133,Urban Designer,232611,p,Urban and Regional Planner
+241231,Cartographer,232213,,Cartographer
+241232,Engineering Surveyor,232212,p,Surveyor
+241233,Geospatial Specialist,232214,,Other Spatial Scientist
+241234,Land Surveyor,232212,p,Surveyor
+241235,Mine Surveyor,232212,p,Surveyor
+241299,Geospatial Information Professionals and Surveyors nec,232212,p,Surveyor
+241331,Urban and Regional Planner,232611,p,Urban and Regional Planner
+241931,Building Surveyor,312113,p,Building Inspector
+241932,Quantity Surveyor,233213,,Quantity Surveyor
+242131,Multimedia Designer,232413,p,Multimedia Designer
+242131,Multimedia Designer,261211,p,Multimedia Specialist
+242132,UI / UX Designer,261113,,User Experience Designer
+242133,Web Designer,232414,,Web Designer
+242231,Fashion Designer,232311,p,Fashion Designer
+242232,Industrial Designer,232312,p,Industrial Designer
+242233,Jewellery Designer,232313,,Jewellery Designer
+242234,Textile Designer,232312,p,Industrial Designer
+242331,Animator or Visual Effects Artist,232411,p,Graphic Designer
+242331,Animator or Visual Effects Artist,232412,p,Illustrator
+242331,Animator or Visual Effects Artist,232413,p,Multimedia Designer
+242332,Graphic Designer,232411,p,Graphic Designer
+242333,Illustrator,232412,p,Illustrator
+242431,Interior Designer,232511,,Interior Designer
+243131,Chemical Engineer,233111,,Chemical Engineer
+243132,Extractive Metallurgist,234912,p,Metallurgist
+243133,Materials Engineer,233112,,Materials Engineer
+243133,Materials Engineer,233999,p,Engineering Professionals nec
+243133,Materials Engineer,234912,p,Metallurgist
+243231,Civil Engineer,233211,p,Civil Engineer
+243231,Civil Engineer,233215,p,Transport Engineer
+243232,Geotechnical Engineer,233212,,Geotechnical Engineer
+243233,Rail Engineer,233215,p,Transport Engineer
+243234,Structural Engineer,233214,,Structural Engineer
+243235,Transport Engineer,233215,p,Transport Engineer
+243236,Water Engineer,233211,p,Civil Engineer
+243331,Electrical Engineer,233311,p,Electrical Engineer
+243332,Rail Signalling Engineer,233311,p,Electrical Engineer
+243431,Electronics Engineer,233411,,Electronics Engineer
+243531,Industrial Engineer,233511,,Industrial Engineer
+243532,Mechanical Engineer,233512,,Mechanical Engineer
+243533,Production or Plant Engineer,233513,,Production or Plant Engineer
+243631,Mining Engineer (excluding Petroleum),233611,,Mining Engineer (excluding Petroleum)
+243632,Petroleum Engineer,233612,,Petroleum Engineer
+243931,Acoustic Engineer,233999,p,Engineering Professionals nec
+243932,Aerospace Engineer,233911,,Aeronautical Engineer
+243933,Biomedical Engineer,233913,,Biomedical Engineer
+243934,Engineering Technologist,233914,,Engineering Technologist
+243935,Environmental Engineer,233915,,Environmental Engineer
+243936,Fire Safety Engineer,233999,p,Engineering Professionals nec
+243937,Mechatronics Engineer,233999,p,Engineering Professionals nec
+243938,Naval Architect,233916,,Naval Architect / Marine Designer
+243999,Engineering Professionals nec,233912,,Agricultural Engineer
+243999,Engineering Professionals nec,233999,p,Engineering Professionals nec
+244131,Agricultural Consultant,234111,,Agricultural Consultant
+244132,Agricultural Research Scientist,234114,,Agricultural Research Scientist
+244133,Agronomist,234115,,Agronomist
+244134,Aquaculture or Fisheries Scientist,234116,,Aquaculture or Fisheries Scientist
+244135,Forester,234113,,Forester / Forest Scientist
+244231,Chemist,234211,,Chemist
+244231,Chemist,251512,,Industrial Pharmacist
+244232,Food Technologist,234212,,Food Technologist
+244233,Winemaker,234213,,Wine Maker
+244331,Aboriginal and Torres Strait Islander Land and Sea Ranger,234314,p,Park Ranger
+244332,Conservation Officer,234311,,Conservation Officer
+244332,Conservation Officer,234312,p,Environmental Consultant
+244333,Ecologist,234313,p,Environmental Research Scientist
+244334,Park Ranger,234314,p,Park Ranger
+244431,Environmental Consultant,234312,p,Environmental Consultant
+244432,Environmental Research Scientist,234313,p,Environmental Research Scientist
+244499,Environmental Consultants and Scientists nec,234399,,Environmental Scientists nec
+244531,Geologist,234411,,Geologist
+244532,Geophysicist,234412,,Geophysicist
+244533,Hydrologist,234413,,Hydrogeologist
+244631,Biotechnologist,234514,,Biotechnologist
+244632,Botanist,234515,,Botanist
+244633,Entomologist,234521,,Entomologist
+244634,Marine Biologist,234516,,Marine Biologist
+244635,Microbiologist,234517,,Microbiologist
+244636,Zoologist,234522,,Zoologist
+244699,Life Scientists nec,234511,,Life Scientist (General)
+244699,Life Scientists nec,234513,,Biochemist
+244699,Life Scientists nec,234599,p,Life Scientists nec
+244731,Medical Laboratory Scientist,234611,,Medical Laboratory Scientist
+244732,Medical Physicist,234914,p,Physicist
+244931,Conservator,234911,,Conservator
+244932,Meteorologist,234913,,Meteorologist
+244933,Physicist,234914,p,Physicist
+244999,Natural and Physical Science Professionals nec,234999,,Natural and Physical Science Professionals nec
+251131,Early Childhood (Pre-primary School) Teacher,241111,p,Early Childhood (Pre-primary School) Teacher
+251131,Early Childhood (Pre-primary School) Teacher,241112,,Kaiako Kohanga Reo (Māori Language Nest Teacher)
+251231,Primary School Teacher,241211,p,Kaiako Kura Kaupapa Māori (Māori-medium Primary School Teacher)
+251231,Primary School Teacher,241212,p,Pouako Kura Kaupapa Māori (Māori-medium Primary School Senior Teacher)
+251231,Primary School Teacher,241213,p,Primary School Teacher
+251331,Secondary School Teacher,241311,,Middle School Teacher / Intermediate School Teacher
+251331,Secondary School Teacher,241411,p,Secondary School Teacher
+251431,Special Education Teacher,241511,p,Special Needs Teacher
+251432,Specialist Teacher (Vision Impairment),241513,,Teacher of the Sight Impaired
+251433,Teacher of the Deaf,241512,,Teacher of the Hearing Impaired
+251931,Teacher Librarian,241211,p,Kaiako Kura Kaupapa Māori (Māori-medium Primary School Teacher)
+251931,Teacher Librarian,241212,p,Pouako Kura Kaupapa Māori (Māori-medium Primary School Senior Teacher)
+251931,Teacher Librarian,241213,p,Primary School Teacher
+251931,Teacher Librarian,241411,p,Secondary School Teacher
+252131,University Lecturer,242111,,University Lecturer
+252132,University Tutor,242112,,University Tutor
+252231,Vocational Education Teacher,242211,p,Vocational Education Teacher / Polytechnic Teacher
+259131,Academic Tutor (Private Tuition),249299,p,Private Tutors and Teachers nec
+259231,Art Teacher (Private Tuition),249211,,Art Teacher (Private Tuition)
+259232,Dance Teacher (Private Tuition),249212,,Dance Teacher (Private Tuition)
+259233,Speech and Drama Teacher (Private Tuition),249213,,Drama Teacher (Private Tuition)
+259299,Arts and Personal Enrichment Teachers (Private Tuition) nec,249299,p,Private Tutors and Teachers nec
+259331,Education Adviser,232413,p,Multimedia Designer
+259331,Education Adviser,249111,,Education Adviser
+259332,Education Reviewer,249112,,Education Reviewer
+259431,Music Teacher (Private Tuition),249214,,Music Teacher (Private Tuition)
+259531,Teacher of English to Speakers of Other Languages,249311,,Teacher of English to Speakers of Other Languages
+259931,Adult Literacy / Numeracy Teacher,242211,p,Vocational Education Teacher / Polytechnic Teacher
+259932,Careers Adviser,272111,,Careers Counsellor
+259933,Student Services Adviser,272199,p,Counsellors nec
+259999,Education Professionals nec,241511,p,Special Needs Teacher
+259999,Education Professionals nec,241599,,Special Education Teachers nec
+259999,Education Professionals nec,249299,p,Private Tutors and Teachers nec
+261131,Counsellor (General),272199,p,Counsellors nec
+261132,Alcohol and Other Drugs Counsellor,272112,,Drug and Alcohol Counsellor
+261133,Family and Relationship Counsellor,272113,,Family and Marriage Counsellor
+261134,Psychotherapist,272314,p,Psychotherapist
+261135,Rehabilitation Counsellor,272114,p,Rehabilitation Counsellor
+261136,School Counsellor,272115,,Student Counsellor
+261231,Psychologist,272311,,Clinical Psychologist
+261231,Psychologist,272312,,Educational Psychologist
+261231,Psychologist,272313,,Organisational Psychologist
+261231,Psychologist,272399,,Psychologists nec
+261331,Social Worker,272511,,Social Worker
+261931,Arts Therapist,252299,p,Complementary Health Therapists nec
+261931,Arts Therapist,272314,p,Psychotherapist
+261932,Behaviour Support Practitioner,272314,p,Psychotherapist
+261933,Music Therapist,252299,p,Complementary Health Therapists nec
+261999,"Allied Health Counselling, Psychology, Social Work and Creative Therapy Professionals nec",251999,p,Health Diagnostic and Promotion Professionals nec
+261999,"Allied Health Counselling, Psychology, Social Work and Creative Therapy Professionals nec",252299,p,Complementary Health Therapists nec
+261999,"Allied Health Counselling, Psychology, Social Work and Creative Therapy Professionals nec",272199,p,Counsellors nec
+262131,Chiropractor,252111,,Chiropractor
+262231,Exercise Physiologist,234915,p,Exercise Physiologist
+262232,Exercise and Sports Scientist,234915,p,Exercise Physiologist
+262331,Occupational Therapist,252411,,Occupational Therapist
+262431,Physiotherapist,252511,,Physiotherapist
+262531,Podiatrist,252611,,Podiatrist
+262631,Speech Pathologist,252712,,Speech Pathologist / Speech Language Therapist
+262931,Orthotist / Prosthetist,251912,,Orthotist or Prosthetist
+262932,Osteopath,252112,,Osteopath
+262999,Allied Health Physical and Sensory Therapy Professionals nec,251999,p,Health Diagnostic and Promotion Professionals nec
+263131,Nuclear Medicine Technologist,251213,,Nuclear Medicine Technologist
+263132,Radiation Therapist,251212,,Medical Radiation Therapist
+263133,Radiographer,251211,,Medical Diagnostic Radiographer
+263231,Dietitian,251111,,Dietitian
+263232,Nutritionist,251112,,Nutritionist
+263331,Optometrist,251411,,Optometrist
+263431,Community Pharmacist,251513,,Retail Pharmacist
+263432,Hospital Pharmacist,251511,,Hospital Pharmacist
+263531,Sonographer,251214,p,Sonographer
+263931,Audiologist,252711,,Audiologist
+263932,Cardiac Physiologist,251214,p,Sonographer
+263932,Cardiac Physiologist,311212,,Cardiac Technician
+263933,Diabetes Educator,251911,p,Health Promotion Officer
+263934,Neurophysiology Scientist,234599,p,Life Scientists nec
+263935,Orthoptist,251412,,Orthoptist
+263936,Respiratory or Sleep Scientist,234612,,Respiratory Scientist
+263999,Allied Health Science Professionals nec,251999,p,Health Diagnostic and Promotion Professionals nec
+264131,Anaesthetist,253211,,Anaesthetist
+264231,General Practitioner,253111,,General Practitioner
+264331,General Medicine Physician,253311,,Specialist Physician (General Medicine)
+264332,Cardiologist,253312,,Cardiologist
+264333,Endocrinologist,253315,,Endocrinologist
+264333,Endocrinologist,253321,p,Paediatrician
+264334,Gastroenterologist,253316,,Gastroenterologist
+264335,Geriatrician,253399,p,Specialist Physicians nec
+264336,Haematologist,253313,,Clinical Haematologist
+264336,Haematologist,253321,p,Paediatrician
+264336,Haematologist,253915,p,Pathologist
+264337,Intensive Care Specialist,253317,,Intensive Care Specialist
+264337,Intensive Care Specialist,253321,p,Paediatrician
+264338,Medical Oncologist,253314,,Medical Oncologist
+264341,Nephrologist,253322,,Renal Medicine Specialist
+264342,Neurologist,253318,,Neurologist
+264343,Paediatrician,253321,p,Paediatrician
+264344,Public Health Physician,253399,p,Specialist Physicians nec
+264345,Respiratory Physician,253321,p,Paediatrician
+264345,Respiratory Physician,253324,,Thoracic Medicine Specialist
+264345,Respiratory Physician,253399,p,Specialist Physicians nec
+264346,Rheumatologist,253323,,Rheumatologist
+264399,Physicians nec,253399,p,Specialist Physicians nec
+264431,Psychiatrist,253411,,Psychiatrist
+264531,Resident Medical Officer,253112,,Resident Medical Officer
+264631,General Surgeon,253511,,Surgeon (General)
+264632,Cardiothoracic Surgeon,253512,,Cardiothoracic Surgeon
+264633,Neurosurgeon,253513,,Neurosurgeon
+264634,Orthopaedic Surgeon,253514,,Orthopaedic Surgeon
+264635,Otolaryngologist,253515,,Otorhinolaryngologist
+264636,Paediatric Surgeon,253516,,Paediatric Surgeon
+264637,Plastic and Reconstructive Surgeon,253517,,Plastic and Reconstructive Surgeon
+264638,Urologist,253518,,Urologist
+264641,Vascular Surgeon,253521,,Vascular Surgeon
+264931,Dermatologist,253911,,Dermatologist
+264932,Emergency Medicine Specialist,253912,,Emergency Medicine Specialist
+264933,Obstetrician and Gynaecologist,253913,,Obstetrician and Gynaecologist
+264934,Ophthalmologist,253914,,Ophthalmologist
+264935,Pathologist,253915,p,Pathologist
+264936,Radiation Oncologist,253918,,Radiation Oncologist
+264937,Radiologist,253917,,Diagnostic and Interventional Radiologist
+264937,Radiologist,253999,p,Medical Practitioners nec
+264999,Medical Practitioners nec,253999,p,Medical Practitioners nec
+265131,Midwife,251911,p,Health Promotion Officer
+265131,Midwife,254111,,Midwife
+265231,Nurse Educator,254211,,Nurse Educator
+265232,Nurse Researcher,254212,,Nurse Researcher
+265331,Nursing / Midwifery Unit Manager,254311,p,Nurse Manager
+265431,Nurse Practitioner,254411,,Nurse Practitioner
+265432,Registered Nurse (Acute Care),254415,,Registered Nurse (Critical Care and Emergency)
+265432,Registered Nurse (Acute Care),254417,p,Registered Nurse (Disability and Rehabilitation)
+265432,Registered Nurse (Acute Care),254418,,Registered Nurse (Medical)
+265432,Registered Nurse (Acute Care),254423,,Registered Nurse (Perioperative)
+265432,Registered Nurse (Acute Care),254424,,Registered Nurse (Surgical)
+265432,Registered Nurse (Acute Care),254425,,Registered Nurse (Paediatrics)
+265432,Registered Nurse (Acute Care),254499,p,Registered Nurses nec
+265433,Registered Nurse (Aged Care),254412,,Registered Nurse (Aged Care)
+265434,Registered Nurse (Mental Health),254422,,Registered Nurse (Mental Health)
+265435,Registered Nurse (Primary Health Care),254413,,Registered Nurse (Child and Family Health)
+265435,Registered Nurse (Primary Health Care),254414,,Registered Nurse (Community Health)
+265435,Registered Nurse (Primary Health Care),254416,,Registered Nurse (Developmental Disability)
+265435,Registered Nurse (Primary Health Care),254417,p,Registered Nurse (Disability and Rehabilitation)
+265435,Registered Nurse (Primary Health Care),254421,,Registered Nurse (Medical Practice)
+265435,Registered Nurse (Primary Health Care),254499,p,Registered Nurses nec
+265499,Registered Nurses nec,254499,p,Registered Nurses nec
+269131,Dental Hygienist,411211,,Dental Hygienist
+269132,Dental Prosthetist,411212,,Dental Prosthetist
+269133,Oral Health Therapist or Dental Therapist,411214,,Dental Therapist
+269231,Dental Specialist,252311,,Dental Specialist
+269232,Dentist,252312,,Dentist
+269331,Environmental Health Officer,251311,,Environmental Health Officer
+269332,Health Promotion Officer,251911,p,Health Promotion Officer
+269431,Critical Care Paramedic,411112,,Intensive Care Ambulance Paramedic (Aus) / Ambulance Paramedic (NZ)
+269432,Paramedic,411111,p,Ambulance Officer
+269531,Veterinarian,234711,,Veterinarian
+269532,Veterinary Technologist,311413,p,Life Science Technician
+269931,Acupuncturist,252211,,Acupuncturist
+269932,Chinese Medicine Practitioner,252214,,Traditional Chinese Medicine Practitioner
+269933,Naturopath,252213,,Naturopath
+269999,Health Professionals nec,251999,p,Health Diagnostic and Promotion Professionals nec
+269999,Health Professionals nec,252212,,Homoeopath
+269999,Health Professionals nec,252215,,Traditional Māori Health Practitioner
+269999,Health Professionals nec,252299,p,Complementary Health Therapists nec
+269999,Health Professionals nec,451513,,Herbalist (Western)
+271131,Cyber Governance Risk and Compliance Specialist,262114,,Cyber Governance Risk and Compliance Specialist
+271132,Cyber Security Advice and Assessment Specialist,262115,,Cyber Security Advice and Assessment Specialist
+271133,Cyber Security Analyst,262116,,Cyber Security Analyst
+271134,Cyber Security Architect,262117,,Cyber Security Architect
+271135,Cyber Security Engineer,261315,,Cyber Security Engineer
+271136,Cyber Security Operations Coordinator,262118,,Cyber Security Operations Coordinator
+271137,Penetration Tester,261317,,Penetration Tester
+271231,Database Administrator,262111,,Database Administrator
+271232,Systems Administrator,262113,,Systems Administrator
+272131,ICT Network and Systems Engineer,263111,,Computer Network and Systems Engineer
+272131,ICT Network and Systems Engineer,263113,p,Network Analyst
+272132,Network Administrator,263112,,Network Administrator
+272133,Network Architect,263113,p,Network Analyst
+272231,ICT Quality Assurance Engineer,263211,,ICT Quality Assurance Engineer
+272232,ICT Support Engineer,263212,,ICT Support Engineer
+272233,ICT Test Analyst,261314,,Software Tester
+272233,ICT Test Analyst,263213,,ICT Systems Test Engineer
+272233,ICT Test Analyst,263299,,ICT Support and Test Engineers nec
+272331,Telecommunications Engineer,263311,,Telecommunications Engineer
+272331,Telecommunications Engineer,263312,,Telecommunications Network Engineer
+273131,Digital Game Developer,232413,p,Multimedia Designer
+273131,Digital Game Developer,261211,p,Multimedia Specialist
+273132,Web Developer,261211,p,Multimedia Specialist
+273132,Web Developer,261212,p,Web Developer
+273231,Cloud Architect,261111,p,ICT Business Analyst
+273232,ICT Business Analyst,261111,p,ICT Business Analyst
+273233,Solution Architect,261111,p,ICT Business Analyst
+273233,Solution Architect,261112,p,Systems Analyst
+273233,Solution Architect,261313,p,Software Engineer
+273234,Systems Analyst,261112,p,Systems Analyst
+273331,Cloud Engineer,261316,p,DevOps Engineer
+273332,DevOps Engineer,261316,p,DevOps Engineer
+273333,Software Engineer,261212,p,Web Developer
+273333,Software Engineer,261311,,Analyst Programmer
+273333,Software Engineer,261312,,Developer Programmer
+273333,Software Engineer,261313,p,Software Engineer
+273333,Software Engineer,261399,,Software and Applications Programmers nec
+281131,Barrister,271111,p,Barrister
+281231,Family Dispute Resolution Practitioner,271299,p,Judicial and Other Legal Professionals nec
+281232,Intellectual Property Lawyer,271214,,Intellectual Property Lawyer
+281233,Judge,271211,,Judge
+281234,Judge's Associate,599214,p,Law Clerk
+281235,Magistrate,271212,,Magistrate
+281236,Migration Agent,224913,,Migration Agent / Immigration Consultant
+281237,Police Prosecutor,271111,p,Barrister
+281238,Tribunal Member,271213,,Tribunal Member
+281299,Judicial and Other Legal Professionals nec,271299,p,Judicial and Other Legal Professionals nec
+281331,Solicitor,271311,,Solicitor
+299131,Aeroplane Pilot,231111,,Aeroplane Pilot
+299132,Air Traffic Controller,231112,,Air Traffic Controller
+299133,Flight Instructor,231113,,Flying Instructor
+299134,Helicopter Pilot,231114,,Helicopter Pilot
+299199,Air Transport Professionals nec,231199,,Air Transport Professionals nec
+299231,Specialist Police Officer,441311,,Detective
+299231,Specialist Police Officer,441312,p,Police Officer
+311131,Agricultural and Agritech Technician,311112,,Agricultural and Agritech Technician
+311132,Animal Husbandry Technician,311113,,Animal Husbandry Technician
+311133,Aquaculture or Fisheries Technician,311114,,Aquaculture or Fisheries Technician
+311134,Biosecurity Officer,311313,,Biosecurity Officer
+311135,Fisheries Officer,311311,,Fisheries Officer
+311136,Irrigation Designer,311115,,Irrigation Designer
+311137,Meat Inspector,311312,,Meat Inspector
+311138,Primary Products Quality Assurance Officer,311314,,Primary Products Quality Assurance Officer
+311199,Agricultural Technicians and Inspection Officers nec,311399,,Primary Products Assurance and Inspection Officers nec
+311231,Anaesthetic Technician,311211,,Anaesthetic Technician
+311232,Dental Technician,411213,,Dental Technician
+311233,Medical Laboratory Technician,311213,,Medical Laboratory Technician
+311234,Operating Theatre Technician,311214,,Operating Theatre Technician
+311235,Respiratory Technician,311217,,Respiratory Technician
+311299,Medical and Dental Technicians nec,311299,p,Medical Technicians nec
+311331,Community Pharmacy Technician,311215,p,Pharmacy Technician
+311332,Hospital Pharmacy Technician,311215,p,Pharmacy Technician
+311431,Phlebotomist,311216,,Pathology Collector/Phlebotomist
+311531,Chemical Technician,311411,,Chemistry Technician
+311532,Earth Science Technician,311412,,Earth Science Technician
+311532,Earth Science Technician,821915,p,Surveyor's Assistant
+311533,Geospatial Technician,312116,p,Surveying or Spatial Science Technician
+311534,Hydrographer,311415,,Hydrographer
+311535,Life Science Technician,311413,p,Life Science Technician
+311536,School Laboratory Technician,311414,,School Laboratory Technician
+311599,Science Technicians nec,311499,,Science Technicians nec
+312131,Architectural Technician,312914,p,Other Draftsperson
+312132,Building Designer,312111,,Architectural Draftsperson
+312133,Detailer Drafter,312199,p,"Architectural, Building and Surveying Technicians nec"
+312134,Landscape Designer,232112,p,Landscape Architect
+312135,Surveying Technician,312116,p,Surveying or Spatial Science Technician
+312199,Building and Landscape Designers and Technicians nec,312199,p,"Architectural, Building and Surveying Technicians nec"
+312231,Building Inspector,312113,p,Building Inspector
+312232,Energy Assessor,312199,p,"Architectural, Building and Surveying Technicians nec"
+312233,Plumbing Inspector,312115,,Plumbing Inspector
+312234,Safety Inspector,312611,,Safety Inspector
+312331,Construction Estimator,312114,,Construction Estimator
+312431,Civil Construction Leading Hand,312112,p,Building Associate
+312431,Civil Construction Leading Hand,721211,p,Earthmoving Plant Operator (General)
+312432,Construction Site Supervisor,312112,p,Building Associate
+313131,Civil Engineering Draftsperson,312211,,Civil Engineering Draftsperson
+313132,Civil Engineering Technician,312212,,Civil Engineering Technician
+313231,Electrical Engineering Draftsperson,312311,,Electrical Engineering Draftsperson
+313232,Electrical Engineering Technician,312312,,Electrical Engineering Technician
+313331,Maintenance Planner,312911,,Maintenance Planner
+313431,Marine Engineer,231212,,Ship's Engineer
+313432,Marine Pilot,231213,p,Ship's Master
+313433,Marine Surveyor,231215,,Marine Surveyor
+313434,Master Fisher,231211,,Master Fisher
+313435,Ship's Master,231213,p,Ship's Master
+313436,Ship's Officer,231214,,Ship's Officer
+313499,"Marine Transport Masters, Officers and Technicians nec",231299,,Marine Transport Professionals nec
+313531,Mining Supervisor,312913,,Mine Deputy
+313931,Biomedical Technician,312999,p,Building and Engineering Technicians nec
+313932,Electronic Engineering Technician,312412,,Electronic Engineering Technician
+313933,Mechanical Engineering Draftsperson,312511,,Mechanical Engineering Draftsperson
+313934,Mechanical Engineering Technician,312512,,Mechanical Engineering Technician
+313935,Metallurgical or Materials Technician,312912,p,Metallurgical or Materials Technician
+313936,Non-destructive Testing Technician,312912,p,Metallurgical or Materials Technician
+313937,Other Draftsperson,312411,,Electronic Engineering Draftsperson
+313937,Other Draftsperson,312914,p,Other Draftsperson
+313999,Engineering Technicians nec,312999,p,Building and Engineering Technicians nec
+314131,ICT Hardware Technician,313111,,Hardware Technician
+314132,Radiocommunications Technician,313211,,Radiocommunications Technician
+314133,Telecommunications Field Engineer,313212,,Telecommunications Field Engineer
+314134,Telecommunications Network Designer,313213,,Telecommunications Network Planner
+314135,Telecommunications Technical Officer or Technologist,313214,,Telecommunications Technical Officer or Technologist
+314136,Web Administrator,313113,,Web Administrator
+314199,ICT and Telecommunications Technicians nec,313199,,ICT Support Technicians nec
+314231,ICT Customer Support Officer,313112,,ICT Customer Support Officer
+321131,Chef,351311,p,Chef
+322131,Baker,351111,,Baker
+322231,Butcher or Smallgoods Maker,351211,,Butcher or Smallgoods Maker
+322331,Cook,351411,,Cook
+322431,Pastrycook,351112,,Pastrycook
+331131,Metal Fabricator,322311,,Metal Fabricator
+331132,Pressure Welder,322312,,Pressure Welder
+331133,Welder (First Class),322313,,Welder (First Class) (Aus) / Welder (NZ)
+331931,Blacksmith,322111,,Blacksmith
+331932,Electroplater,322112,,Electroplater
+331933,Farrier,322113,,Farrier
+331934,Metal Casting Trades Worker,322114,,Metal Casting Trades Worker
+331935,Metal Polisher,322115,,Metal Polisher
+331936,Sheetmetal Worker,322211,,Sheetmetal Worker
+332131,Aircraft Maintenance Technician (Avionics),323111,p,Aircraft Maintenance Engineer (Avionics)
+332132,Aircraft Maintenance Technician (Mechanical),323112,p,Aircraft Maintenance Engineer (Mechanical)
+332133,Aircraft Maintenance Technician (Structures),323113,,Aircraft Maintenance Engineer (Structures)
+332134,Licensed Aircraft Maintenance Engineer,323111,p,Aircraft Maintenance Engineer (Avionics)
+332134,Licensed Aircraft Maintenance Engineer,323112,p,Aircraft Maintenance Engineer (Mechanical)
+332231,Fitter (General),323211,,Fitter (General)
+332232,Fitter and Turner,323212,,Fitter and Turner
+332233,Fitter-Welder,323213,,Fitter-Welder
+332234,Metal Machinist (First Class),323214,,Metal Machinist (First Class)
+332299,Metal Fitters and Machinists nec,323215,,"Textile, Clothing and Footwear Mechanic"
+332299,Metal Fitters and Machinists nec,323299,p,Metal Fitters and Machinists nec
+332331,Engineering Patternmaker,323411,,Engineering Patternmaker
+332332,Engraver,323311,,Engraver
+332333,Gunsmith,323312,,Gunsmith
+332334,Locksmith,323313,,Locksmith
+332335,Precision Instrument Maker and Repairer,323314,,Precision Instrument Maker and Repairer
+332336,Saw Technician,323315,,Saw Doctor
+332337,Toolmaker,323412,,Toolmaker
+332338,Watch and Clock Maker and Repairer,323316,,Watch and Clock Maker and Repairer
+341131,Dog Handler or Trainer,361111,,Dog Handler or Trainer
+341132,Horse Trainer,361112,,Horse Trainer
+341133,Track Rider,361116,,Track Rider
+341134,Zookeeper,361114,,Zookeeper
+341199,Animal Trainers and Zookeepers nec,361199,p,Animal Attendants and Trainers nec
+341231,Veterinary Nurse,361311,,Veterinary Nurse
+342131,Gardener (General),362611,,Gardener (General)
+342231,Arborist,362511,,Arborist
+342232,Tree Worker,362512,,Tree Worker
+342331,Florist,362111,,Florist
+342431,Irrigation Technician,362712,,Irrigation Technician
+342432,Landscape Gardener,362711,,Landscape Gardener
+342531,Sports Turf Manager,362312,,Sports Turf Manager
+342532,Sports Turf Trades Worker,362313,,Sports Turf Trades Worker
+342931,Nurseryperson,362411,,Nurseryperson
+343131,Aquaculture Supervisor,363111,,Aquaculture Supervisor
+343132,Fishing Leading Hand,363112,,Fishing Leading Hand
+343133,Forestry Operations Supervisor,363113,,Forestry Operations Supervisor
+343134,Horticultural Supervisor or Specialist,363114,,Horticultural Supervisor or Specialist
+343135,Senior Broadacre Crop and Livestock Farm Worker,363115,,Senior Broadacre Crop and Livestock Farm Worker
+343136,Senior Broadacre Crop Farm Worker,363116,,Senior Broadacre Crop Farm Worker
+343137,Vineyard Supervisor,363117,,Vineyard Supervisor
+343199,"Senior Aquaculture, Crop and Forestry Workers nec",363199,,"Senior Aquaculture, Crop and Forestry Workers nec"
+343231,Senior Beef Cattle Station Worker,363211,,Senior Beef Cattle Station Worker
+343232,Senior Cattle and Sheep Farm Worker,363212,,Senior Cattle and Sheep Farm Worker
+343233,Senior Dairy Cattle Farm Worker,363213,,Senior Dairy Cattle Farm Worker
+343234,Senior Horse Stable or Stud Worker,363299,p,Senior Livestock Farm Workers nec
+343235,Senior Piggery Stockperson,363214,,Senior Piggery Stockperson
+343236,Senior Sheep Farm Worker,363215,,Senior Sheep Farm Worker
+343299,Senior Livestock Farm Workers nec,363299,p,Senior Livestock Farm Workers nec
+343331,Shearer,363311,,Shearer
+343332,Wool Classer,363312,,Wool Classer
+351131,Automotive Technician (General),321211,p,Motor Mechanic (General)
+351231,Automotive Electrician,321111,p,Automotive Electrician
+351331,Panelbeater,324111,,Panelbeater
+351431,Agricultural Mechanic,323299,p,Metal Fitters and Machinists nec
+351432,Bicycle Technician,899911,,Bicycle Mechanic
+351433,Diesel Technician,321212,p,Diesel Motor Mechanic
+351434,Electric Vehicle Technician,321111,p,Automotive Electrician
+351435,Marine Technician,321211,p,Motor Mechanic (General)
+351435,Marine Technician,321212,p,Diesel Motor Mechanic
+351435,Marine Technician,321214,p,Small Engine Mechanic
+351436,Motorcycle Technician,321213,,Motorcycle Mechanic
+351437,Small Engine Technician,321214,p,Small Engine Mechanic
+351531,Vehicle Body Builder,324211,,Vehicle Body Builder
+351532,Vehicle Trimmer,324212,,Vehicle Trimmer
+351631,Vehicle Painter,324311,,Vehicle Painter
+361131,Floor Finisher,332111,,Floor Finisher
+361131,Floor Finisher,821211,p,Concreter
+361231,Painter,332211,,Painter
+362131,Glazier,333111,,Glazier
+362231,Plasterer (Wall and Ceiling),333211,,Plasterer (Wall and Ceiling)
+362232,Renderer (Solid Plaster),333212,,Renderer (Solid Plaster)
+362331,Roof Tiler,333311,,Roof Tiler
+362431,Wall and Floor Tiler,333411,,Wall and Floor Tiler
+363131,Plumber (General),334116,,Plumber (General)
+363231,Gasfitter,334114,p,Gasfitter
+363331,Roof Plumber,334115,,Roof Plumber
+363931,Drainer,334113,,Drainer
+363932,Fire Protection Plumber,334117,,Fire Protection Plumber
+363933,Mechanical Services Plumber,334112,,Airconditioning and Mechanical Services Plumber
+369131,Cabinet Maker,394112,,Cabinet Maker
+369931,Shopfitter,331211,p,Carpenter and Joiner
+369932,Swimming Pool and Spa Builder,821412,p,Home Improvement Installer
+369933,Waterproofer,821411,p,Building Insulation Installer
+371131,Bricklayer,331111,,Bricklayer
+371132,Stonemason,331112,,Stonemason
+371231,Concreter,821211,p,Concreter
+372131,Carpenter and Joiner,331211,p,Carpenter and Joiner
+372132,Carpenter,331212,,Carpenter
+372133,Joiner,331213,,Joiner
+381131,Electrical Distribution Trades Worker,342211,,Electrical Linesworker / Electrical Line Mechanic
+381131,Electrical Distribution Trades Worker,342212,,Technical Cable Jointer
+381231,Electrician (General),341111,p,Electrician (General)
+381231,Electrician (General),341112,,Electrician (Special Class)
+381232,Electrical Fitter,341111,p,Electrician (General)
+381233,Industrial Electrician,341111,p,Electrician (General)
+381234,Lift Mechanic,341113,,Lift Mechanic
+382131,Air Conditioning and Refrigeration Technician,342111,,Airconditioning and Refrigeration Mechanic
+382231,Communications Operator,342312,,Communications Operator
+382232,Electronic Equipment Trades Worker,342313,,Electronic Equipment Trades Worker
+382233,Electronic Instrument Technician,342314,,Electronic Instrument Trades Worker (General)
+382233,Electronic Instrument Technician,342315,,Electronic Instrument Trades Worker (Special Class)
+382234,Office Equipment Technician,342311,,Business Machine Mechanic
+382331,Cabler (Data and Telecommunications),342411,,Cabler (Data and Telecommunications)
+382332,Telecommunications Cable Technician,342412,,Telecommunications Cable Jointer
+382333,Telecommunications Linesworker,342413,,Telecommunications Linesworker / Telecommunications Line Mechanic
+382334,Telecommunications Technician,342414,,Telecommunications Technician
+391131,Gallery or Museum Technician,399311,,Gallery or Museum Technician
+391132,Library Technician,399312,,Library Technician
+391231,Audio Engineer,399516,,Sound Technician
+391232,Broadcast Technician,399511,,Broadcast Transmitter Operator
+391233,"Camera Operator (Film, Television or Video)",399512,,"Camera Operator (Film, Television or Video)"
+391234,Lighting Technician,399513,,Light Technician
+391299,Performing Arts Technicians nec,399517,,Television Equipment Operator
+391299,Performing Arts Technicians nec,399599,,Performing Arts Technicians nec
+391331,Photographer,211311,,Photographer
+391431,Graphic Pre-press Operator,392211,,Graphic Pre-press Trades Worker
+391432,Print Finisher,392111,,Print Finisher
+391432,Print Finisher,899512,,Printing Table Worker
+391433,Printing Machinist,392311,,Printing Machinist
+391433,Printing Machinist,392312,,Small Offset Printer
+391433,Printing Machinist,899511,,Printer's Assistant
+391434,Screen Printer,392112,,Screen Printer
+391531,Signwriter,399611,,Signwriter
+391931,Interior Decorator,399912,,Interior Decorator
+391932,Jeweller,399411,,Jeweller
+391933,Musical Instrument Maker or Repairer,399515,,Musical Instrument Maker or Repairer
+392131,Barber,391111,p,Hairdresser
+392132,Hairdresser,391111,p,Hairdresser
+399131,Chemical Plant Operator,399211,,Chemical Plant Operator
+399132,Gas or Petroleum Production Technician,399212,,Gas or Petroleum Operator
+399133,Power Generation Plant Operator,399213,,Power Generation Plant Operator
+399231,Driller,712211,,Driller
+399331,Pest Control Technician,843411,,Pest Control Technician
+399431,Apparel Cutter,393211,,Apparel Cutter
+399432,Canvas Goods Fabricator,393111,,Canvas Goods Fabricator
+399433,Dressmaker or Tailor,393213,,Dressmaker or Tailor
+399433,Dressmaker or Tailor,393299,p,Clothing Trades Workers nec
+399434,Garment Technician,393212,,Clothing Patternmaker
+399434,Garment Technician,393299,p,Clothing Trades Workers nec
+399435,Leather Goods Maker,393112,,Leather Goods Maker
+399436,Sail Maker,393113,,Sail Maker
+399437,Shoemaker,393114,,Shoemaker
+399438,Upholsterer,393311,,Upholsterer
+399531,Furniture Finisher,394211,,Furniture Finisher
+399532,Furniture Maker,394113,,Furniture Maker
+399533,Picture Framer,394212,,Picture Framer
+399534,Wood Machinist,394213,,Wood Machinist
+399534,Wood Machinist,394214,,Wood Turner
+399599,Wood Machinists and Other Wood Trades Workers nec,394299,,Wood Machinists and Other Wood Trades Workers nec
+399931,Boat Builder and Repairer,399111,,Boat Builder and Repairer
+399931,Boat Builder and Repairer,399999,p,Technicians and Trades Workers nec
+399932,Diver,399911,,Diver
+399933,Fire Protection Equipment Technician,399918,,Fire Protection Equipment Technician
+399934,Gas Network Technician,334114,p,Gasfitter
+399935,Optical Mechanic,399914,,Optical Mechanic
+399936,Plastics Technician,399916,,Plastics Technician
+399937,Railway Network Controller,712918,,Train Controller
+399938,Shipwright,399112,,Shipwright
+399999,Technicians and Trades Workers nec,399999,p,Technicians and Trades Workers nec
+411131,Child Protection Practitioner,272613,p,Welfare Worker
+411132,Family Violence Practitioner,272613,p,Welfare Worker
+411231,Community Development Officer,411711,p,Community Worker
+411232,Community Support Worker,411512,,Kaiāwhina (Hauora) (Māori Health Assistant)
+411232,Community Support Worker,411711,p,Community Worker
+411331,Diversional Therapist,411311,p,Diversional Therapist
+411332,Lifestyle Coordinator,411311,p,Diversional Therapist
+411333,Lifestyle Officer,411311,p,Diversional Therapist
+411431,Employment Consultant,223112,p,Recruitment Consultant
+411431,Employment Consultant,411712,p,Disabilities Services Officer
+411531,Interpreter,272412,,Interpreter
+411532,Translator,272413,,Translator
+411631,Community Corrections Officer,411714,,Parole or Probation Officer
+411632,Family Support Worker,411713,,Family Support Worker
+411633,Financial Counsellor (Community),272613,p,Welfare Worker
+411634,Housing Officer,411711,p,Community Worker
+411635,Refuge Worker,423413,,Refuge Worker
+411636,Welfare Worker,272613,p,Welfare Worker
+411731,Residential Youth Worker,411715,p,Residential Care Officer
+411731,Residential Youth Worker,423411,,Child or Youth Residential Care Assistant
+411732,Youth Justice Worker,411716,p,Youth Worker
+411733,Youth Worker,411716,p,Youth Worker
+411931,Recreation Officer,272612,,Recreation Officer/Recreation Coordinator
+411932,Sports Development Officer,452321,,Sports Development Officer
+411933,Volunteer Coordinator,411711,p,Community Worker
+421131,Aged Care Coordinator,411711,p,Community Worker
+421132,Aged Care Team Leader,423111,p,Aged or Disabled Carer
+421231,Community Aged Care Support Worker,423111,p,Aged or Disabled Carer
+421331,Residential Aged Care Worker,423313,p,Personal Care Assistant
+422131,Disability Services Officer,411712,p,Disabilities Services Officer
+422132,Residential Care Officer,411715,p,Residential Care Officer
+422231,Disability Support Worker,423111,p,Aged or Disabled Carer
+422232,Disability Team Leader,423111,p,Aged or Disabled Carer
+431131,Early Childhood Education Room Leader,421111,p,Child Care Worker
+431132,Early Childhood Educator,421111,p,Child Care Worker
+431132,Early Childhood Educator,422115,,Preschool Aide
+431231,Family Day Care Coordinator,411711,p,Community Worker
+431231,Family Day Care Coordinator,421112,p,Family Day Care Worker
+431232,Family Day Care Educator,421112,p,Family Day Care Worker
+431331,Nanny,421113,,Nanny
+431431,Out of School Hours Care Educator,421114,,Out of School Hours Care Worker
+432131,Inclusion Support Assistant,422112,,Integration Aide
+432231,Teaching Assistant,422113,,Kaiāwhina Kohanga Reo (Māori Language Nest Assistant)
+432231,Teaching Assistant,422114,,Kaiāwhina Kura Kaupapa Māori (Māori-medium School Assistant)
+432231,Teaching Assistant,422116,,Teachers' Aide
+432931,Aboriginal and Torres Strait Islander Education Officer,422111,,Aboriginal and Torres Strait Islander Education Worker
+432932,Boarding Supervisor,423412,,Hostel Parent
+441131,Enrolled Nurse,411411,,Enrolled Nurse
+441131,Enrolled Nurse,411412,,Mothercraft Nurse
+441231,Massage Therapist,411611,p,Massage Therapist
+441232,Myotherapist,411611,p,Massage Therapist
+441233,Remedial Massage Therapist,411611,p,Massage Therapist
+441331,Mental Health Worker,272613,p,Welfare Worker
+441931,Aboriginal and Torres Strait Islander Health Practitioner,411511,p,Aboriginal and Torres Strait Islander Health Worker
+441932,Aboriginal and Torres Strait Islander Health Worker,411511,p,Aboriginal and Torres Strait Islander Health Worker
+441933,Audiometrist,311299,p,Medical Technicians nec
+442131,Allied Health Assistant,423314,,Therapy Aide
+442231,Assistant in Nursing,423312,,Nursing Support Worker
+442331,Dental Assistant,423211,,Dental Assistant
+442431,Optical Dispenser,399913,,Optical Dispenser / Dispensing Optician
+442531,Patient Care Assistant,423313,p,Personal Care Assistant
+442532,Patient Services Assistant,423311,,Hospital Orderly
+442931,Patient Transport Officer,411111,p,Ambulance Officer
+442999,Patient and Health Care Assistants nec,451899,p,Personal Service Workers nec
+451131,Defence Force Member - Other Ranks,441111,,Defence Force Member - Other Ranks
+451231,Emergency Services Officer,441211,,Emergency Service Worker
+451232,Firefighter,441212,,Fire Fighter
+451331,General Duties Police Officer,441312,p,Police Officer
+451931,Border Enforcement Operations Officer,599511,,Customs Officer
+451931,Border Enforcement Operations Officer,599512,p,Immigration Officer
+452131,Correctional Officer,442111,,Prison Officer
+452231,"Alarm, Security or Surveillance Monitor",442211,,"Alarm, Security or Surveillance Monitor"
+452232,Cash In Transit Officer,442212,,Armoured Car Escort
+452233,Crowd Controller,442213,,Crowd Controller
+452234,Private Investigator,442214,,Private Investigator
+452235,Protective Services Officer,442217,p,Security Officer
+452236,Retail Loss Prevention Officer,442215,,Retail Loss Prevention Officer
+452237,Security Consultant,442216,,Security Consultant
+452237,Security Consultant,442299,,Security Officers and Guards nec
+452238,Security Officer,442217,p,Security Officer
+452241,Security Screening Officer,442217,p,Security Officer
+461131,Beauty Therapist,451111,p,Beauty Therapist
+461132,Dermal Therapist,451111,p,Beauty Therapist
+461231,Body Artist,451814,,Body Artist
+461232,Make-up Artist,399514,,Make Up Artist
+461331,Civil Celebrant,451811,,Civil Celebrant
+461332,Funeral Director,451311,,Funeral Director
+461333,Funeral Worker,451399,,Funeral Workers nec
+461333,Funeral Worker,731199,p,Automobile Drivers nec
+461431,Dog Walker,451899,p,Personal Service Workers nec
+461432,Domestic Animal Attendant,361115,,Kennel Hand
+461432,Domestic Animal Attendant,361199,p,Animal Attendants and Trainers nec
+461433,Pet Groomer,361113,,Pet Groomer
+461499,Domestic Animal Care Workers nec,361199,p,Animal Attendants and Trainers nec
+461531,Driving Instructor,451211,,Driving Instructor
+461631,Gallery or Museum Guide,451411,,Gallery or Museum Guide
+461632,Tour Guide,451412,,Tour Guide
+461633,Tourist Information Officer,451611,,Tourist Information Officer
+461731,Flight Attendant,451711,,Flight Attendant
+461799,Travel Attendants nec,451799,,Travel Attendants nec
+461831,Travel Consultant,451612,,Travel Consultant
+461931,Airline Customer Support Worker,639411,p,Ticket Seller
+461932,Fashion Stylist,639511,p,Visual Merchandiser
+461933,First Aid Trainer,451815,,First Aid Trainer
+461934,Hair or Beauty Salon Assistant,451812,,Hair or Beauty Salon Assistant
+461935,Natural Remedy Consultant,451511,,Natural Remedy Consultant
+461936,Photographer's Assistant,399915,,Photographer's Assistant
+461937,Religious Assistant,451816,,Religious Assistant
+461938,Sex Worker or Escort,451813,,Sex Worker or Escort
+461941,Weight Loss Consultant,451512,,Weight Loss Consultant
+461999,Personal Service and Travel Workers nec,451899,p,Personal Service Workers nec
+462131,Fitness Instructor (General),452111,p,Fitness Instructor
+462231,Pilates Instructor,452111,p,Fitness Instructor
+462232,Yoga Teacher,452111,p,Fitness Instructor
+462331,Lifeguard,452414,,Lifeguard
+462399,Sport and Recreation Safety Patrollers nec,452499,p,Sportspersons nec
+462431,Basketball Coach,452317,p,Other Sports Coach or Instructor
+462432,Diving Instructor (Open Water),452311,,Diving Instructor (Open Water)
+462433,Football Coach,452317,p,Other Sports Coach or Instructor
+462434,Gymnastics Coach or Instructor,452312,,Gymnastics Coach or Instructor
+462435,Horse Riding Coach or Instructor,452313,,Horse Riding Coach or Instructor
+462436,Martial Arts Instructor,452317,p,Other Sports Coach or Instructor
+462437,Netball Coach,452317,p,Other Sports Coach or Instructor
+462438,Outdoor Adventure Leader or Guide,452211,,Bungy Jump Master
+462438,Outdoor Adventure Leader or Guide,452212,,Fishing Guide
+462438,Outdoor Adventure Leader or Guide,452213,,Hunting Guide
+462438,Outdoor Adventure Leader or Guide,452214,,Mountain or Glacier Guide
+462438,Outdoor Adventure Leader or Guide,452215,,Outdoor Adventure Instructor
+462438,Outdoor Adventure Leader or Guide,452216,,Trekking Guide
+462438,Outdoor Adventure Leader or Guide,452217,,Whitewater Rafting Guide
+462438,Outdoor Adventure Leader or Guide,452299,,Outdoor Adventure Guides nec
+462441,Snowsport Instructor,452314,,Snowsport Instructor
+462442,Swimming Instructor or Coach,452315,,Swimming Coach or Instructor
+462443,Tennis Coach,452316,,Tennis Coach
+462499,Sports Coaches and Outdoor Adventure Guides nec,452317,p,Other Sports Coach or Instructor
+462531,Dog and Horse Racing Official,452318,,Dog and Horse Racing Official
+462532,Sports Umpire,452322,,Sports Umpire
+462599,Sports Officials and Umpires nec,452323,,Other Sports Official
+462631,Footballer,452411,,Footballer
+462632,Golfer,452412,,Golfer
+462633,Jockey,452413,,Jockey
+462699,Sportspersons nec,452499,p,Sportspersons nec
+471131,Bar Attendant,431111,p,Bar Attendant
+471231,Barista,431112,,Barista
+471331,Cafe Worker,431211,p,Cafe Worker
+471431,Gaming Attendant,631111,p,Checkout Operator
+471431,Gaming Attendant,631112,p,Office Cashier
+471431,Gaming Attendant,899711,p,Vending Machine Attendant
+471432,Gaming Dealer or Croupier,431311,p,Gaming Worker
+471531,Bar Supervisor,431111,p,Bar Attendant
+471532,Cafe or Restaurant Supervisor,431211,p,Cafe Worker
+471532,Cafe or Restaurant Supervisor,431511,p,Waiter
+471532,Cafe or Restaurant Supervisor,621511,p,Retail Supervisor
+471533,Front Office Supervisor (Accommodation),431411,p,Hotel Service Manager
+471534,Gaming Supervisor,431311,p,Gaming Worker
+471535,Housekeeping Supervisor,431411,p,Hotel Service Manager
+471631,Sommelier,431511,p,Waiter
+471632,Waiter,431511,p,Waiter
+471931,Bar Useful,431911,,Bar Useful or Busser
+471932,Doorperson or Porter,431912,,Doorperson or Luggage Porter
+471999,Hospitality Workers nec,431999,,Hospitality Workers nec
+511131,Contract Administrator,511111,,Contract Administrator
+511231,Program or Project Administrator,511112,,Program or Project Administrator
+521131,Conveyancer,599111,,Conveyancer
+521231,Clerk of Court,599211,,Clerk of Court
+521232,Court Bailiff or Sheriff,599212,,Court Bailiff or Sheriff (Aus) / Court Collections Officer (NZ)
+521233,Court Orderly,599213,,Court Orderly (Aus) / Court Registry Officer (NZ)
+521234,Law Clerk,599112,,Legal Executive
+521234,Law Clerk,599214,p,Law Clerk
+521235,Legal Secretary,521212,,Legal Secretary
+521236,Trust Officer,599215,,Trust Officer
+522131,Secretary (General),521211,,Secretary (General)
+522231,Executive Assistant,521111,,Personal Assistant
+531131,Bank Officer,552111,,Bank Worker
+531231,Credit or Loans Officer,552211,,Credit or Loans Officer (Aus) / Finance Clerk (NZ)
+531331,Business Broker,612111,,Business Broker
+531332,Commodities Trader,222111,,Commodities Trader
+531333,Finance Broker,222112,,Finance Broker
+531334,Insurance Broker,222113,,Insurance Broker
+531399,Financial and Insurance Brokers nec,222199,,Financial Brokers nec
+531431,Insurance Consultant,552312,,Insurance Consultant
+531531,Insurance Investigator,599611,,Insurance Investigator
+531532,Insurance Loss Adjuster,599612,,Insurance Loss Adjuster
+531533,Insurance Risk Surveyor,599613,,Insurance Risk Surveyor
+531931,Investment Administrator,552313,p,Money Market Clerk
+531932,Paraplanner,552313,p,Money Market Clerk
+541131,Accounts Clerk,551111,,Accounts Clerk
+541231,Estimator,551112,,Cost Clerk
+541331,Payroll Officer,551311,p,Payroll Clerk
+542131,Bookkeeper,551211,,Bookkeeper
+549131,Betting Clerk,561111,,Betting Agency Counter Clerk
+549131,Betting Clerk,561112,,Bookmaker's Clerk
+549131,Betting Clerk,561113,,Telephone Betting Clerk
+549131,Betting Clerk,561199,,Betting Clerks nec
+549132,Bookmaker,552311,,Bookmaker
+549133,Debt Collector,599311,,Debt Collector
+551131,Call or Contact Centre Operator,541112,,Call or Contact Centre Operator
+551132,Call or Contact Centre Team Leader,541111,,Call or Contact Centre Team Leader
+551231,Information Officer,541211,,Information Officer
+551232,Switchboard Operator,561611,,Switchboard Operator
+552131,Medical Receptionist,542114,,Medical Receptionist
+552231,Ward Clerk,542112,,Admissions Clerk
+553131,Receptionist (General),542111,,Receptionist (General)
+553231,Hotel or Motel Receptionist,542113,,Hotel or Motel Receptionist
+561131,General Clerk,531111,,General Clerk
+561231,Data Entry Operator,532111,,Data Entry Operator
+561232,Machine Shorthand Reporter,532112,,Machine Shorthand Reporter
+561233,Word Processing Operator,532113,,Word Processing Operator
+571131,Logistics Officer,591112,p,Production Clerk
+571131,Logistics Officer,591211,,Despatching and Receiving Clerk
+571231,Order Clerk,591117,,Order Clerk
+571331,Procurement Officer,591113,p,Purchasing Officer
+571332,Purchasing Officer,591113,p,Purchasing Officer
+571431,Stock Clerk,591115,,Stock Clerk
+571531,Warehouse Administrator,591116,,Warehouse Administrator
+571931,Freight Forwarder,591212,p,Import-Export Clerk
+571932,Production Coordinator (Logistics),591112,p,Production Clerk
+591131,Aerodrome Reporting Officer,599599,p,Inspectors and Regulatory Officers nec
+591132,Council Ranger,599599,p,Inspectors and Regulatory Officers nec
+591133,Electrical Asset Inspector,599599,p,Inspectors and Regulatory Officers nec
+591134,"Invasive Pest, Weed and Disease Inspector",599514,,"Invasive Pest, Weed and Disease Inspector"
+591135,Meter Reader,561912,,Meter Reader
+591136,Motor Vehicle Licence Examiner,599513,,Motor Vehicle Licence Examiner
+591137,Parking Officer,561913,,Parking Inspector
+591138,Transport Revenue Officer,599599,p,Inspectors and Regulatory Officers nec
+591141,Water Inspector,599521,,Water Inspector
+591231,Social Security Assessor,599515,,Social Security Assessor
+591232,Taxation Compliance Officer,599516,,Taxation Inspector
+591233,Visa and Citizenship Processing Officer,599512,p,Immigration Officer
+591999,Inspectors and Regulatory Officers nec,599517,,Train Examiner
+591999,Inspectors and Regulatory Officers nec,599518,,Transport Operations Inspector
+591999,Inspectors and Regulatory Officers nec,599599,p,Inspectors and Regulatory Officers nec
+591999,Inspectors and Regulatory Officers nec,821611,p,Railway Track Worker
+599131,Filing or Registry Clerk,561311,,Filing or Registry Clerk
+599132,Library Assistant,599711,,Library Assistant
+599231,Human Resources Administration Assistant,599411,p,Human Resource Clerk
+599232,Rostering Officer,599411,p,Human Resource Clerk
+599331,Mail Clerk,561411,,Mail Clerk
+599332,Postal Sorting Officer,561412,,Postal Sorting Officer
+599931,Clinical Coder,599915,,Clinical Coder
+599932,Customs Broker,591212,p,Import-Export Clerk
+599933,Facilities Administrator,599916,,Facilities Administrator
+599934,"Production Assistant (Audio, Screen or Live Performance)",599912,p,"Production Assistant (Film, Television, Radio or Stage)"
+599935,"Production Coordinator (Audio, Screen or Live Performance)",599912,p,"Production Assistant (Film, Television, Radio or Stage)"
+599936,Radio Dispatcher,599914,,Radio Dispatcher
+599937,Strata Manager,612112,p,Property Manager
+599938,Survey Interviewer,561511,,Survey Interviewer
+599941,Union Organiser,223113,p,Workplace Relations Adviser
+599999,Clerical and Administrative Workers nec,552314,,Statistical Clerk
+599999,Clerical and Administrative Workers nec,561911,,Classified Advertising Clerk
+599999,Clerical and Administrative Workers nec,561999,,Clerical and Office Support Workers nec
+599999,Clerical and Administrative Workers nec,599999,p,Clerical and Administrative Workers nec
+599999,Clerical and Administrative Workers nec,631112,p,Office Cashier
+611131,Checkout Operator,631111,p,Checkout Operator
+611131,Checkout Operator,631112,p,Office Cashier
+619131,Marketing Assistant,599999,p,Clerical and Administrative Workers nec
+619132,Model,639111,,Model
+619133,Sales Demonstrator,639112,,Sales Demonstrator
+619134,Telemarketer,639311,,Telemarketer
+619135,Visual Merchandiser,639511,p,Visual Merchandiser
+619931,Entertainment Venue Attendant,639411,p,Ticket Seller
+619931,Entertainment Venue Attendant,899921,,Ticket Collector or Usher
+619932,Merchandise Planner,639211,p,Retail Buyer
+619933,Personal Shopper,639911,p,Other Sales Support Worker
+619934,Reservations Agent,639411,p,Ticket Seller
+619935,Retail Buyer,639211,p,Retail Buyer
+619999,Sales Support Workers nec,639212,,Wool Buyer
+619999,Sales Support Workers nec,639412,p,Transport Conductor
+619999,Sales Support Workers nec,639911,p,Other Sales Support Worker
+621131,Insurance Agent,611211,,Insurance Agent
+621231,Sales Representative (Building and Plumbing Supplies),611311,,Sales Representative (Building and Plumbing Supplies)
+621232,Sales Representative (Business Services),611312,,Sales Representative (Business Services)
+621233,Sales Representative (Motor Vehicle Parts and Accessories),611313,,Sales Representative (Motor Vehicle Parts and Accessories)
+621234,Sales Representative (Personal and Household Goods),611314,,Sales Representative (Personal and Household Goods)
+621299,Sales Representatives nec,611399,,Sales Representatives nec
+622131,Property Manager,612112,p,Property Manager
+622231,Auctioneer,611111,,Auctioneer
+622232,Real Estate Agent,612114,,Real Estate Agent
+622233,Real Estate Representative,612115,,Real Estate Representative
+622234,Stock and Station Agent,611112,,Stock and Station Agent
+631131,Sales Assistant (General),621111,,Sales Assistant (General)
+631231,Community Pharmacy Sales Assistant,621411,,Pharmacy Sales Assistant
+631331,ICT Sales Assistant,621211,,ICT Sales Assistant
+631431,Motor Vehicle or Caravan Salesperson,621311,,Motor Vehicle or Caravan Salesperson
+631432,Motor Vehicle Parts Interpreter,621312,,Motor Vehicle Parts Interpreter / Automotive Parts Salesperson
+631531,Retail Supervisor,621511,p,Retail Supervisor
+631631,Service Station Attendant,621611,,Service Station Attendant
+631631,Service Station Attendant,631111,p,Checkout Operator
+631931,Door-to-door Salesperson,621712,,Door-to-door Salesperson
+631932,Materials Recycler,621911,,Materials Recycler
+631933,Rental Salesperson,621912,,Rental Salesperson
+631934,Street Vendor,621711,,Cash Van Salesperson
+631934,Street Vendor,621713,,Street Vendor
+631999,Sales Assistants and Salespersons nec,621999,,Sales Assistants and Salespersons nec
+711131,Chauffeur,731111,,Chauffeur
+711132,Oversize Load Pilot Escort,731199,p,Automobile Drivers nec
+711133,Rideshare Driver,731199,p,Automobile Drivers nec
+711134,Taxi Driver,731112,,Taxi Driver
+711199,Automobile Drivers nec,731199,p,Automobile Drivers nec
+711231,Bus Driver,731211,,Bus Driver
+711232,Charter and Tour Bus Driver,731212,,Charter and Tour Bus Driver
+711233,Passenger Coach Driver,731213,,Passenger Coach Driver
+711331,Freight Train Driver,731311,p,Train Driver
+711332,Passenger Train Driver,731311,p,Train Driver
+711333,Tram Driver,731312,,Tram Driver
+712131,Furniture Removalist,733113,,Furniture Removalist
+712231,Delivery Person,561211,,Courier
+712231,Delivery Person,732111,p,Delivery Driver
+712232,Postal Delivery Officer,561212,,Postal Delivery Officer
+712232,Postal Delivery Officer,732111,p,Delivery Driver
+713131,Truck Driver (General),733111,p,Truck Driver (General)
+713132,Tow Truck Driver,733115,,Tow Truck Driver
+713231,Articulated Truck Driver,733111,p,Truck Driver (General)
+713232,Tanker Truck Driver,733114,,Tanker Driver
+721131,Storeperson,741111,p,Storeperson
+721132,Warehouse Supervisor,741111,p,Storeperson
+731131,Industrial Spray Painter,711211,,Industrial Spraypainter
+731132,Sandblaster,711913,,Sandblaster
+731231,Paper and Pulp Production Operator,711311,,Paper Products Machine Operator
+731231,Paper and Pulp Production Operator,712916,,Paper and Pulp Mill Operator
+731232,Timber and Wood Production Operator,711313,,Sawmilling Operator
+731232,Timber and Wood Production Operator,711314,,Other Wood Processing Machine Operator
+731232,Timber and Wood Production Operator,712999,p,Stationary Plant Operators nec
+731331,Plastics Fabricator or Welder,711513,,Plastics Fabricator or Welder
+731332,Plastics Production Machine Operator,711511,,Plastic Cablemaking Machine Operator
+731332,Plastics Production Machine Operator,711512,,Plastic Compounding and Reclamation Machine Operator
+731332,Plastics Production Machine Operator,711514,,Plastics Production Machine Operator (General)
+731333,Reinforced Plastic and Composite Production Worker,711515,,Reinforced Plastic and Composite Production Worker
+731334,Rubber Production Machine Operator,711516,,Rubber Production Machine Operator
+731399,Plastics and Rubber Production Machine Operators nec,711599,,Plastics and Rubber Production Machine Operators nec
+731431,Sewing Machinist,711611,,Sewing Machinist
+731432,Textile or Footwear Production Machine Operator,711711,,Footwear Production Machine Operator
+731432,Textile or Footwear Production Machine Operator,711712,,Hide and Skin Processing Machine Operator
+731432,Textile or Footwear Production Machine Operator,711713,,Knitting Machine Operator
+731432,Textile or Footwear Production Machine Operator,711714,,Textile Dyeing and Finishing Machine Operator
+731432,Textile or Footwear Production Machine Operator,711715,,Weaving Machine Operator
+731432,Textile or Footwear Production Machine Operator,711716,,Yarn Carding and Spinning Machine Operator
+731432,Textile or Footwear Production Machine Operator,711799,,Textile and Footwear Production Machine Operators nec
+731931,Chemical Production Machine Operator,711911,,Chemical Production Machine Operator
+731932,Clay Products Machine Operator,711111,,Clay Products Machine Operator
+731933,Concrete Products Machine Operator,711112,,Concrete Products Machine Operator
+731934,Crushing Machine Operator,712913,p,Cement Production Plant Operator
+731934,Crushing Machine Operator,712999,p,Stationary Plant Operators nec
+731935,Glass Production Machine Operator,711113,,Glass Production Machine Operator
+731936,Photographic Print Processor,711411,,Photographic Developer and Printer
+731937,Sterilisation Technician,711914,,Sterilisation Technician
+731938,Stone Processing Machine Operator,711114,,Stone Processing Machine Operator
+731999,Machine Operators nec,711199,,"Clay, Concrete, Glass and Stone Processing Machine Operators nec"
+731999,Machine Operators nec,711912,,Motion Picture Projectionist
+731999,Machine Operators nec,711999,,Machine Operators nec
+732131,"Crane, Hoist or Lift Operator",712111,,"Crane, Hoist or Lift Operator"
+732231,Engineering Production Worker,712311,,Engineering Production Worker
+732331,Miner,712212,,Miner
+732332,Shot Firer,712213,,Shot Firer
+732431,Wastewater or Water Plant Operator,712921,,Waste Water or Water Plant Operator
+732931,Boiler or Engine Operator,712911,,Boiler or Engine Operator
+732932,Bulk Materials Handling Plant Operator,712912,,Bulk Materials Handling Plant Operator
+732933,Concrete Batching Plant Operator,712914,,Concrete Batching Plant Operator
+732934,Concrete Pump Operator,712915,,Concrete Pump Operator
+732935,Railway Signal Operator,712917,p,Railway Signal Operator
+732936,Weighbridge Operator,712922,,Weighbridge Operator
+732999,Stationary Plant Operators nec,712913,p,Cement Production Plant Operator
+732999,Stationary Plant Operators nec,712999,p,Stationary Plant Operators nec
+741131,Agricultural and Horticultural Mobile Plant Operator,721111,,Agricultural and Horticultural Mobile Plant Operator
+741132,Logging Plant Operator,721112,,Logging Plant Operator
+741132,Logging Plant Operator,843112,p,Logging Assistant
+741132,Logging Plant Operator,843113,,Tree Faller
+741231,Earthmoving Plant Operator (General),721211,p,Earthmoving Plant Operator (General)
+741232,Backhoe Operator,721212,,Backhoe Operator
+741233,Bulldozer Operator,721213,,Bulldozer Operator
+741234,Excavator Operator,721214,,Excavator Operator
+741235,Grader Operator,721215,,Grader Operator
+741236,Loader Operator,721216,,Loader Operator
+741237,Tunnel Constructor,721999,p,Mobile Plant Operators nec
+741331,Forklift Driver,721311,,Forklift Driver
+741931,Aircraft Baggage Handler and Ground Crew,721911,,Aircraft Baggage Handler and Airline Ground Crew
+741932,Aircraft Refueller,733112,p,Aircraft Refueller
+741933,Linemarker,721912,,Linemarker
+741934,Railway Shunter,712917,p,Railway Signal Operator
+741935,Railway Track Plant Operator,721914,,Railway Track Plant Operator
+741936,Road Roller Operator,721915,,Road Roller Operator
+741937,Stevedore,721999,p,Mobile Plant Operators nec
+741937,Stevedore,891113,,Waterside Worker
+741938,Streetsweeper Operator,721916,,Streetsweeper Operator
+741999,Mobile Plant Operators nec,721913,,Paving Plant Operator
+741999,Mobile Plant Operators nec,721999,p,Mobile Plant Operators nec
+741999,Mobile Plant Operators nec,733112,p,Aircraft Refueller
+811131,Commercial Cleaner,811211,,Commercial Cleaner
+811231,Domestic Cleaner,811311,,Domestic Cleaner
+811331,Drycleaner,811512,,Drycleaner
+811332,Laundry Worker,811511,,Laundry Worker (General)
+811332,Laundry Worker,811513,,Ironer or Presser
+811431,Commercial Housekeeper,811411,,Commercial Housekeeper
+811432,Domestic Housekeeper,811412,,Domestic Housekeeper
+811531,Vehicle Detailer,811111,,Car Detailer
+811931,Carpet Cleaner,811611,,Carpet Cleaner
+811932,Roof Gutter Cleaner,811699,p,Cleaners nec
+811933,Window Cleaner,811612,,Window Cleaner
+811999,Cleaners and Laundry Workers nec,811699,p,Cleaners nec
+821131,Asbestos Removalist,821111,p,Builder's Labourer
+821132,Builder's Labourer,821111,p,Builder's Labourer
+821133,Concreter's Labourer,821211,p,Concreter
+821134,Demolition Labourer,821111,p,Builder's Labourer
+821135,Earthmoving Labourer,821113,,Earthmoving Labourer
+821231,Construction Rigger,821711,,Construction Rigger
+821232,Dogger,821911,,Crane Chaser
+821331,Fencer,821311,,Fencer
+821431,Building Insulation Installer,821411,p,Building Insulation Installer
+821432,Garage Door Installer,821412,p,Home Improvement Installer
+821433,Shed Builder,821412,p,Home Improvement Installer
+821434,Window Furnishing Installer,821412,p,Home Improvement Installer
+821499,Home Improvement and Insulation Installers nec,821412,p,Home Improvement Installer
+821531,Paving and Surfacing Labourer,821511,,Paving and Surfacing Labourer
+821631,"Drainage, Sewerage and Stormwater Labourer",821112,,"Drainage, Sewerage and Stormwater Labourer"
+821632,Pipe Layer,821111,p,Builder's Labourer
+821633,Plumber's Assistant,821114,,Plumber's Assistant
+821731,Scaffolder,821712,,Scaffolder
+821732,Steel Fixer,821713,,Steel Fixer
+821733,Structural Steel Erector,821714,,Structural Steel Erector
+821931,Driller's Offsider,821912,,Driller's Assistant
+821932,Lagger,821913,,Lagger
+821933,Mining Support Worker,821914,,Mining Support Worker
+821934,Rail Protection Officer,821611,p,Railway Track Worker
+821935,Railway Track Worker,821611,p,Railway Track Worker
+821936,Surveyor's Assistant,821915,p,Surveyor's Assistant
+831131,Baking Factory Worker,831111,,Baking Factory Worker
+831132,Brewery Worker,831112,,Brewery Worker
+831133,Coffee Roaster,831199,p,Food and Drink Factory Workers nec
+831134,Confectionery Maker,831113,,Confectionery Maker
+831135,Dairy Products Factory Worker,831114,,Dairy Products Maker
+831135,Dairy Products Factory Worker,831199,p,Food and Drink Factory Workers nec
+831136,Fruit and Vegetable Factory Worker,831115,,Fruit and Vegetable Factory Worker
+831137,Grain Mill Worker,831116,,Grain Mill Worker
+831138,Sugar Mill Worker,831117,,Sugar Mill Worker
+831141,Winery Cellar Hand,831118,,Winery Cellar Hand
+831199,Food and Drink Factory Workers nec,831199,p,Food and Drink Factory Workers nec
+831231,Meat Boner and Slicer,831211,,Meat Boner and Slicer
+831232,Slaughterer,831212,,Slaughterer
+831331,Meat Process Worker,831311,,Meat Process Worker
+831332,Poultry Process Worker,831312,,Poultry Process Worker
+831333,Seafood Process Worker,831313,,Seafood Process Worker
+832131,Packer (General),832112,,Container Filler
+832131,Packer (General),832199,,Packers nec
+832132,Chocolate Packer,832111,,Chocolate Packer
+832133,Fruit and Vegetable Packer,832113,,Fruit and Vegetable Packer
+832134,Meat Packer,832114,,Meat Packer
+832135,Seafood Packer,832115,,Seafood Packer
+832231,Product Assembler,832211,,Product Assembler
+839131,Cement and Concrete Plant Worker,839911,,Cement and Concrete Plant Worker
+839132,Chemical Plant Worker,839912,,Chemical Plant Worker
+839133,Fabric and Textile Factory Worker,839914,,Fabric and Textile Factory Worker
+839134,Glass Processing Worker,839916,,Glass Processing Worker
+839135,Metal Engineering Process Worker,839111,,Metal Engineering Process Worker
+839136,Paper and Pulp Process Worker,839411,,Paper and Pulp Mill Worker
+839137,Plastics Factory Worker,839211,,Plastics Factory Worker
+839138,Recycling Worker,839918,,Recycling Worker
+839141,Timber and Wood Process Worker,839412,,Sawmill or Timber Yard Worker
+839141,Timber and Wood Process Worker,839413,,Wood and Wood Products Factory Worker
+839199,Materials and Chemical Process Workers nec,839212,,Rubber Factory Worker
+839199,Materials and Chemical Process Workers nec,839913,,Clay Processing Factory Worker
+839199,Materials and Chemical Process Workers nec,839915,,Footwear Factory Worker
+839199,Materials and Chemical Process Workers nec,839917,,Hide and Skin Processing Worker
+839199,Materials and Chemical Process Workers nec,839999,,Factory Process Workers nec
+839231,Product Examiner,839311,,Product Examiner
+839232,Product Grader,839312,,Product Grader
+839233,Product Tester,839313,,Product Tester
+841131,Cotton Farm Worker,842211,,Cotton Farm Worker
+841132,Fruit Farm Worker,842212,,Fruit Farm Worker
+841133,Fruit Picker,842213,,Fruit Picker
+841134,"Grain, Oilseed, Pulse and Pasture Farm Worker",842214,,"Grain, Oilseed, Pulse and Pasture Farm Worker (Aus) / Field Farm Worker (NZ)"
+841135,Mushroom Picker,842215,,Mushroom Picker
+841136,Nut Farm Worker,842216,,Nut Farm Worker
+841137,Sugar Cane Farm Worker,842217,,Sugar Cane Farm Worker
+841138,Vegetable Farm Worker,842218,,Vegetable Farm Worker (Aus) / Market Garden Worker (NZ)
+841141,Vegetable Picker,842221,,Vegetable Picker
+841142,Vineyard Worker,842222,,Vineyard Worker
+841199,Crop Farm Workers nec,842299,,Crop Farm Workers nec
+841231,Beef Cattle Farm Worker,842311,,Beef Cattle Farm Worker
+841232,Cattle and Sheep Farm Worker,842312,,Cattle and Sheep Farm Worker
+841233,Dairy Cattle Farm Worker,842313,,Dairy Cattle Farm Worker
+841234,Livestock Husbandry Worker,842314,,Livestock Husbandry Worker
+841235,Piggery Farm Worker,842315,,Piggery Farm Worker
+841236,Poultry Farm Worker,842316,,Poultry Farm Worker
+841237,Sheep Farm Worker,842317,,Sheep Farm Worker
+841238,Stablehand,842318,,Stablehand
+841241,Wool Handler,842321,,Wool Handler
+841299,Livestock Farm Workers nec,842399,,Livestock Farm Workers nec
+841331,Aquaculture Worker,842111,,Aquaculture Worker
+841332,Broadacre Crop and Livestock Farm Worker,842411,,Broadacre Crop and Livestock Farm Worker
+841399,Mixed Production and Aquaculture Farm Workers nec,842499,,Mixed Production Farm Workers nec
+842131,Garden Labourer,843211,,Garden Labourer
+842231,Horticultural Nursery Assistant,843311,,Horticultural Nursery Assistant
+842931,Bush Regenerator,843999,p,Forestry and Garden Workers nec
+842932,Forestry Worker,843111,,Forestry Worker
+842932,Forestry Worker,843112,p,Logging Assistant
+842933,Irrigation Assistant,843912,,Irrigation Assistant
+842999,Garden and Forestry Workers nec,843911,,Hunter-Trapper
+842999,Garden and Forestry Workers nec,843999,p,Forestry and Garden Workers nec
+851131,Fast Food Cook,851111,,Fast Food Cook
+851231,Kitchenhand (General),851311,p,Kitchenhand
+851232,Dishwasher,851311,p,Kitchenhand
+851233,Pastrycook's Assistant,851211,,Pastrycook's Assistant
+851299,Food Preparation Assistants nec,851299,,Food Trades Assistants nec
+891131,Freight Handler (Rail or Road),891111,,Freight Handler (Rail or Road)
+891132,Truck Driver's Offsider,891112,,Truck Driver's Offsider
+891231,Shelf Filler,891211,,Shelf Filler
+899131,Caretaker,899111,,Caretaker
+899231,Deck Hand,899211,,Deck Hand
+899232,Fishing Hand,899212,,Fishing Hand
+899331,Handyperson,899311,,Handyperson
+899431,Motor Vehicle Parts and Accessories Fitter (General),899411,,Motor Vehicle Parts and Accessories Fitter (General)
+899431,Motor Vehicle Parts and Accessories Fitter (General),899413,,Exhaust and Muffler Repairer
+899431,Motor Vehicle Parts and Accessories Fitter (General),899414,,Radiator Repairer
+899432,Autoglazier,899412,,Autoglazier
+899433,Mechanic's Assistant,899916,,Mechanic's Assistant
+899434,Tyre Fitter,899415,,Tyre Fitter
+899531,Rail Guard or Conductor,639412,p,Transport Conductor
+899531,Rail Guard or Conductor,899917,p,Railways Assistant
+899532,Railways Assistant,639411,p,Ticket Seller
+899532,Railways Assistant,899917,p,Railways Assistant
+899631,Road Traffic Controller,899923,,Road Traffic Controller
+899931,Car Park Attendant,899912,,Car Park Attendant
+899932,Crossing Supervisor,899913,,Crossing Supervisor
+899933,Electrical or Telecommunications Trades Assistant,899914,,Electrical or Telecommunications Trades Assistant
+899934,Leaflet or Newspaper Deliverer,899915,,Leaflet or Newspaper Deliverer
+899935,Recycling or Waste Collector,899611,,Recycling or Rubbish Collector
+899936,Sign Installer,899918,,Sign Erector
+899937,Swimming Pool or Spa Technician,811699,p,Cleaners nec
+899937,Swimming Pool or Spa Technician,899999,p,Labourers nec
+899938,Trolley Collector,899922,,Trolley Collector
+899941,Vending Machine Attendant,899711,p,Vending Machine Attendant
+899999,Labourers nec,899999,p,Labourers nec
