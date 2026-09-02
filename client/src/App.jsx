@@ -257,6 +257,16 @@ const handleDownload = () => {
         .dark .moving-pattern-bg { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 40L40 0M0 0l40 40' stroke='%23ffffff' stroke-width='1' stroke-opacity='0.12'/%3E%3C/svg%3E"); }
         .view-enter-animation { animation: pageFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .accordion-enter-animation { animation: accordionExpand 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        
+        /* Custom Scrollbar Styling */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #d4d4d8; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #a1a1aa; }
+        
+        /* Dark Mode Scrollbar */
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #3f3f46; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #52525b; }
       `}</style>
 
       <div className={`min-h-screen text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-500 relative overflow-hidden ${pageBackground}`}>
@@ -411,9 +421,45 @@ const handleDownload = () => {
                             <span className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide ${colors.badge}`}>
                               {role.match_label} • {role.match_score}%
                             </span>
+
                           </div>
                           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
                         </div>
+
+                        {/* Resilience Score box */}
+                        {ai && (
+                          <div className={`hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border ${
+                            ai.resilience_score >= 50 
+                              ? 'bg-emerald-500/5 border-emerald-500/20' 
+                              : 'bg-amber-500/5 border-amber-500/20'
+                          }`}>
+                            {/* Label is now INSIDE the box */}
+                            <span className={`text-[9px] font-bold uppercase tracking-widest mb-1 ${
+                              ai.resilience_score >= 50 
+                                ? 'text-emerald-700/80 dark:text-[#34D399]/80' 
+                                : 'text-amber-700/80 dark:text-[#FBBF24]/80'
+                            }`}>
+                              Resilience Score
+                            </span>
+                            
+                            <div className="flex items-baseline gap-1.5">
+                              <span className={`text-base font-bold leading-none ${
+                                ai.resilience_score >= 50 
+                                  ? 'text-emerald-600 dark:text-[#34D399]' 
+                                  : 'text-amber-600 dark:text-[#FBBF24]'
+                              }`}>
+                                {ai.resilience_score}%
+                              </span>
+                              <span className={`text-xs font-medium ${
+                                ai.resilience_score >= 50 
+                                  ? 'text-emerald-700 dark:text-[#6EE7B7]' 
+                                  : 'text-amber-700 dark:text-[#FCD34D]'
+                              }`}>
+                                ({formatLabel(ai.resilience_label)})
+                              </span>
+                            </div>
+                          </div>
+                        )}
 
                         <div className="shrink-0 p-2 sm:p-3 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-400 dark:text-slate-500">
                           {isExpanded ? <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5" /> : <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />}
@@ -432,10 +478,9 @@ const handleDownload = () => {
                                   <LayoutDashboard className="w-4 h-4" /> MARKET INTELLIGENCE
                                 </h4>
                                 <p className="text-sm text-slate-700 dark:text-slate-300">
-                                  Status: <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.resilience_label)}</strong>. JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()}</strong>.
+                                  JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()} demand</strong> for this occupation.
                                 </p>
                               </div>
-                              
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {/* Augmentation Box */}
                                 <div className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between">
@@ -468,7 +513,7 @@ const handleDownload = () => {
                               <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
                                 <Cpu className="w-4 h-4" /> TASK IMPACT ANALYSIS
                               </h4>
-                              <div className="space-y-4">
+                              <div className="space-y-4 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
                                 {ai.tasks?.map((task, idx) => (
                                   <div key={idx} className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02] space-y-5">
                                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">{task.task_text}</p>
