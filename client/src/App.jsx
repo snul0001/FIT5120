@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowRight, ArrowLeft, Loader2, Check, 
   MapPin, Briefcase, ChevronDown, ChevronUp,
@@ -81,6 +81,8 @@ const getMatchColor = (score, label = '') => {
 
 export default function App() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const [currentView, setCurrentView] = useState('home');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [expandedRoleId, setExpandedRoleId] = useState(null);
@@ -101,6 +103,25 @@ export default function App() {
     else root.classList.remove('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
+
+  // Handle scrollable navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Hide if scrolling down and past 80px. Show if scrolling up.
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setIsNavVisible(false);
+      } else {
+        setIsNavVisible(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const fetchInterests = async () => {
@@ -273,18 +294,46 @@ const handleDownload = () => {
         <div className="fixed inset-0 z-0 pointer-events-none moving-pattern-bg" />
         <div className="fixed -top-40 -left-40 w-[600px] h-[600px] bg-zinc-200/50 dark:bg-white/5 rounded-full blur-[140px] pointer-events-none" />
 
-        <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-colors duration-500 ${currentView === 'results' ? 'bg-white/70 dark:bg-[#0B1121]/70 border-zinc-200/50 dark:border-white/5' : 'bg-white/70 dark:bg-[#09090B]/70 border-zinc-200/50 dark:border-zinc-800/50'}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
+          currentView === 'results' 
+            ? 'bg-white dark:bg-[#0B1121] border-zinc-200 dark:border-white/10' 
+            : 'bg-white dark:bg-[#09090B] border-zinc-200 dark:border-zinc-800'
+          }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            
+            {/* 1. Brand / Logo Section (Left) */}
             <div onClick={() => confirmNavigation('home')} className="flex items-center gap-2 sm:gap-3 cursor-pointer group">
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#3B82F6] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
                 <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
               </div>
               <span className="font-bold tracking-tight text-base sm:text-lg">IResi</span>
             </div>
-            <div className="flex items-center gap-4 sm:gap-6">
-              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white transition-colors">
+
+            {/* 2. Navigation & Controls (Right) */}
+            <div className="flex items-center gap-2 sm:gap-4">
+              
+              <div className="hidden md:flex items-center gap-1 sm:gap-2">
+                <button 
+                  onClick={() => { /* Implemented later */ }}
+                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
+                >
+                  Regional Insights
+                </button>
+                <button 
+                  onClick={() => { /* Implemented later */ }}
+                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
+                >
+                  Career Simulator
+                </button>
+              </div>
+
+              <div className="hidden md:block w-px h-5 bg-zinc-300 dark:bg-zinc-700 mx-2"></div>
+
+              {/* 3. Theme Toggle Button */}
+              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200">
                 {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
+
             </div>
           </div>
         </nav>
