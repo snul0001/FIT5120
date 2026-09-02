@@ -43,3 +43,5 @@ ehthumbs.db
 # Temporary / Cache folders
 .cache
 .vite
+
+.env
