@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, ArrowLeft, Loader2, Check, 
   MapPin, Briefcase, ChevronDown, ChevronUp,
-  Cpu, LayoutDashboard, Zap, Sun, Moon, Download
+  Cpu, LayoutDashboard, Zap, Sun, Moon, Download, HelpCircle
 } from 'lucide-react';
 
 const BASE = '/api';
@@ -314,7 +314,22 @@ const handleDownload = () => {
               </button>
               <div className="space-y-12 sm:space-y-16">
                 <section>
-                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-6 sm:mb-8">1. Work Parameters</h2>
+                  <div className="flex items-center gap-2 mb-6 sm:mb-8">
+                    <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">1. Work Parameters</h2>
+                    
+                    {/* Tooltip Wrapper */}
+                    <div className="relative group flex items-center">
+                      <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-help transition-colors" />
+                      
+                      {/* Tooltip Box */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 sm:w-56 p-2.5 bg-zinc-800 dark:bg-white text-white dark:text-zinc-900 text-xs font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 text-center shadow-xl pointer-events-none">
+                        Set the boundaries for your job search, such as your location and preferred role type.
+                        
+                        {/* Tooltip Arrow */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800 dark:border-t-white"></div>
+                      </div>
+                    </div>
+                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">Region</label>
@@ -332,7 +347,23 @@ const handleDownload = () => {
                 </section>
                 <section>
                   <div className="flex items-end justify-between mb-6 sm:mb-8">
-                    <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">2. Career DNA</h2>
+                    <div className="flex items-center gap-2 mb-6 sm:mb-8">
+                      {/* Your original text is right here: */}
+                      <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">2. Career DNA</h2>
+                      
+                      {/* Tooltip Wrapper & Icon */}
+                      <div className="relative group flex items-center">
+                        <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-help transition-colors" />
+                        
+                        {/* Tooltip Box that appears on hover */}
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 sm:w-64 p-2.5 bg-zinc-800 dark:bg-white text-white dark:text-zinc-900 text-xs font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 text-center shadow-xl pointer-events-none">
+                          Select the core interests and tasks that best align with your natural working style.
+                          
+                          {/* Tooltip Arrow pointing down */}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800 dark:border-t-white"></div>
+                        </div>
+                      </div>
+                    </div>
                     <span className="text-xs sm:text-sm text-zinc-400 dark:text-zinc-500">{selectedInterests.length} selected</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
