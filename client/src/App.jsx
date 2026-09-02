@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 import { 
   ArrowRight, ArrowLeft, Loader2, Check, 
   MapPin, Briefcase, ChevronDown, ChevronUp,
@@ -208,59 +210,133 @@ export default function App() {
     }
   };
 
-const handleDownload = () => {
-    const separator = "=".repeat(75);
-    const subSeparator = "-".repeat(75);
-    
-    let textContent = `${separator}\n`;
-    textContent += `                         IResi AI CAREER PATHWAY REPORT\n`;
-    textContent += `${separator}\n\n`;
-    
-    textContent += `PARAMETERS & PREFERENCES:\n`;
-    textContent += `• Target Location : ${targetLocation}\n`;
-    textContent += `• Role Preference : ${workPreference}\n`;
-    textContent += `• Date Generated  : ${new Date().toLocaleDateString('en-AU', { year: 'numeric', month: 'long', day: 'numeric' })}\n\n`;
-    textContent += `${subSeparator}\n\n`;
-    textContent += `TOP CAREER MATCHES & AI IMPACT ANALYSIS:\n\n`;
-
-    matches.forEach((m) => {
-      const ai = aiDetailsMap[m.occupation_id] || {};
-      textContent += `[Rank ${m.rank}] ${m.title.toUpperCase()}\n`;
-      textContent += `--------------------------------------------------\n`;
-      textContent += `• Sector              : ${m.sector || 'ICT'}\n`;
-      textContent += `• Match Fit           : ${m.match_score}% (${m.match_label})\n`;
-      textContent += `• AI Resilience Score : ${ai.resilience_score ?? 'N/A'}/100\n`;
-      textContent += `• Resilience Status   : ${formatLabel(ai.resilience_label)}\n`;
-      textContent += `• National Demand     : ${formatLabel(ai.demand_label)}\n`;
-      textContent += `• Avg Augmentation    : ${ai.avg_augmentation ? Math.round(ai.avg_augmentation * 100) : 'N/A'}%\n`;
-      textContent += `• Avg Automation      : ${ai.avg_automation ? Math.round(ai.avg_automation * 100) : 'N/A'}%\n\n`;
-      
-      if (ai.tasks && ai.tasks.length > 0) {
-        textContent += `  Granular Task Breakdown:\n`;
-        ai.tasks.forEach((t, i) => {
-          textContent += `    ${i + 1}. ${t.task_text}\n`;
-          textContent += `       - Augment Score : ${Math.round(t.augmentation_score * 100)}%\n`;
-          textContent += `       - Automate Score: ${Math.round(t.automation_score * 100)}%\n`;
-        });
-        textContent += `\n`;
+  const handleDownload = () => {
+    try {
+      if (!matches || matches.length === 0) {
+        alert("No career matches available to export.");
+        return;
       }
-      textContent += `${subSeparator}\n\n`;
-    });
 
-    textContent += `End of Report — Generated via IResi Career Platform\n`;
+      const doc = new jsPDF();
+      const dateStr = new Date().toLocaleDateString('en-AU', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
 
-    // Create a Blob and trigger download as a .txt file
-    const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", "IResi_Career_Pathway_Report.txt");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-    
-    setHasDownloaded(true);
+      // 1. Header Banner
+      doc.setFillColor(11, 17, 33);
+      doc.rect(0, 0, 210, 25, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(16);
+      doc.text('IResi AI CAREER PATHWAY REPORT', 14, 16);
+
+      // 2. User Parameters
+      doc.setTextColor(40, 40, 40);
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.text('PARAMETERS & PREFERENCES', 14, 35);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.text(`• Target Location : ${targetLocation || 'Not specified'}`, 14, 42);
+      doc.text(`• Role Preference : ${workPreference || 'Not specified'}`, 14, 48);
+      doc.text(`• Date Generated  : ${dateStr}`, 14, 54);
+
+      let startY = 65;
+
+      // 3. Matches Loop
+      matches.forEach((m, index) => {
+        const ai = (aiDetailsMap && aiDetailsMap[m.occupation_id]) || {};
+
+        if (startY > 250) {
+          doc.addPage();
+          startY = 20;
+        }
+
+        // Title header bar for each role
+        doc.setFillColor(240, 244, 248);
+        doc.rect(14, startY - 4, 182, 9, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(11);
+        doc.setTextColor(15, 23, 42);
+        doc.text(`[Rank ${m.rank || index + 1}] ${(m.title || 'Career Match').toUpperCase()}`, 16, startY + 2);
+
+        startY += 10;
+
+        // Stats Table using autoTable(doc, options)
+        autoTable(doc, {
+          startY: startY,
+          theme: 'plain',
+          styles: { fontSize: 9.5, cellPadding: 2, textColor: [51, 65, 85] },
+          columnStyles: { 0: { fontStyle: 'bold', width: 45 } },
+          body: [
+            ['Sector', `: ${m.sector || 'ICT'}`],
+            ['Match Fit', `: ${m.match_score ?? 'N/A'}% (${m.match_label || 'Good Fit'})`],
+            ['AI Resilience Score', `: ${ai.resilience_score ?? 'N/A'}/100`],
+            ['Resilience Status', `: ${typeof formatLabel === 'function' ? formatLabel(ai.resilience_label) : (ai.resilience_label || 'N/A')}`],
+            ['National Demand', `: ${typeof formatLabel === 'function' ? formatLabel(ai.demand_label) : (ai.demand_label || 'N/A')}`],
+            ['Avg Augmentation', `: ${ai.avg_augmentation ? Math.round(ai.avg_augmentation * 100) : 'N/A'}%`],
+            ['Avg Automation', `: ${ai.avg_automation ? Math.round(ai.avg_automation * 100) : 'N/A'}%`],
+          ],
+          margin: { left: 14, right: 14 }
+        });
+
+        startY = doc.lastAutoTable.finalY + 4;
+
+        // Tasks Breakdown Table
+        if (ai.tasks && ai.tasks.length > 0) {
+          const taskRows = ai.tasks.map((t, i) => [
+            `${i + 1}. ${t.task_text}`,
+            `${Math.round((t.augmentation_score || 0) * 100)}%`,
+            `${Math.round((t.automation_score || 0) * 100)}%`
+          ]);
+
+          autoTable(doc, {
+            startY: startY,
+            head: [['Task Description', 'Augment', 'Automate']],
+            body: taskRows,
+            theme: 'striped',
+            headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255], fontStyle: 'bold' },
+            styles: { fontSize: 8.5, cellPadding: 3 },
+            columnStyles: {
+              0: { cellWidth: 120 },
+              1: { cellWidth: 31, halign: 'center' },
+              2: { cellWidth: 31, halign: 'center' }
+            },
+            margin: { left: 14, right: 14 }
+          });
+
+          startY = doc.lastAutoTable.finalY + 12;
+        } else {
+          startY += 8;
+        }
+      });
+
+      // 4. Page Numbering & Footer
+      const pageCount = doc.internal.getNumberOfPages();
+      for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        doc.setFontSize(8);
+        doc.setTextColor(150);
+        doc.text(
+          `End of Report — Generated via IResi Career Platform  |  Page ${i} of ${pageCount}`,
+          105,
+          288,
+          { align: 'center' }
+        );
+      }
+
+      // 5. Save PDF File
+      doc.save('IResi_Career_Pathway_Report.pdf');
+      if (typeof setHasDownloaded === 'function') {
+        setHasDownloaded(true);
+      }
+    } catch (error) {
+      console.error("Failed to generate PDF report:", error);
+      alert("An error occurred while building the PDF. Check console for details.");
+    }
   };
 
   const visibleMatches = showAllMatches ? matches : matches.slice(0, INITIAL_MATCH_COUNT);
