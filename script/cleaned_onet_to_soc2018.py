@@ -17,13 +17,15 @@ OUTPUT.parent.mkdir(parents=True, exist_ok=True) #incase it doesn't exist
 
 
 def main():
-    df = pd.read_excel(DATA, header=3)
+    df = pd.read_excel(DATA, header=3) #header starts at the 3rd row
+    print("Checking for any null \n",df.isna().sum())
+    print("Check for duplicates, returns: ",df.duplicated().any())
     out = df.rename(columns={
         "O*NET-SOC 2019 Code": "onet_soc_code",
         "2018 SOC Code": "soc_2018_code",
     })[["onet_soc_code", "soc_2018_code"]]
-    out = out.dropna().drop_duplicates()
-
+    out = out.dropna().drop_duplicates() #drop anyway incase of invisible
+    
     out.to_csv(OUTPUT, index=False)
     print(f"{len(out)} rows written to {OUTPUT}")
 

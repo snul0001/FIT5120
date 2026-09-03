@@ -29,7 +29,8 @@ def main():
         "Occupation": "onet_title",
     })
     out = df[["onet_soc_code", "onet_title"]].drop_duplicates()
-
+    check_duplicates = out.duplicated().any()
+    print(f"If there is duplicated row it should output True, the output is {check_duplicates}")
     out.to_csv(OUTPUT, index=False)
     print(f"{len(out)} O*NET occupations written to {OUTPUT}")
 
