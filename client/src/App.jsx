@@ -4,9 +4,12 @@ import autoTable from 'jspdf-autotable';
 import { 
   ArrowRight, ArrowLeft, Loader2, Check, 
   MapPin, Briefcase, ChevronDown, ChevronUp,
-  Cpu, LayoutDashboard, Zap, Sun, Moon, Download, HelpCircle
+  Cpu, LayoutDashboard, Zap, Sun, Moon, Download, HelpCircle,
+  BrainCircuit, Compass, Map, Sparkles
 } from 'lucide-react';
 
+
+import Intro from './components/Intro';
 const BASE = '/api';
 const INITIAL_MATCH_COUNT = 4;
 
@@ -157,6 +160,7 @@ export default function App() {
       if (!confirmLeave) return;
     }
     setCurrentView(targetView);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
   const toggleInterest = (id) => {
@@ -417,18 +421,9 @@ export default function App() {
         <div className="relative z-10">
           {currentView === 'home' && (
             <main key="home" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-32 sm:pt-48 pb-24 sm:pb-32 flex flex-col items-center text-center">
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter text-zinc-950 dark:text-white leading-[1.1] sm:leading-[1.05] max-w-4xl transition-colors duration-500">
-                Navigate the AI shift with <span className="text-zinc-400 dark:text-zinc-600 block sm:inline">precision.</span>
-              </h1>
-              <p className="mt-6 sm:mt-8 text-base sm:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl font-light leading-relaxed transition-colors duration-500">
-                Map your interests to high-resilience tech careers. We analyze official national data to show exactly where AI will automate or elevate your future role.
-              </p>
-              <button 
-                onClick={() => confirmNavigation('setup')}
-                className="mt-10 sm:mt-12 px-6 py-3 sm:px-8 sm:py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium flex items-center gap-3 hover:scale-[1.02] transition-all duration-300"
-              >
-                Configure Profile <ArrowRight className="w-4 h-4" />
-              </button>
+              <div key="home" className="view-enter-animation">
+                <Intro onConfigureProfile={() => confirmNavigation('setup')} />
+              </div>
             </main>
           )}
 
