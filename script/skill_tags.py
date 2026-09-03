@@ -46,6 +46,7 @@ def build_skill_tag():
     frames = []
     for filename, category in SKILL_CATEGORY_FILES.items():
         df = pd.read_csv(filename)
+        print(f"Length of dataframe {filename} is : {len(df)} ")
         distinct = df[["Element Name"]].drop_duplicates() #skills are reused many times
         distinct["category"] = category
         distinct = distinct.rename(columns={"Element Name": "label"}) #where the skills name are located

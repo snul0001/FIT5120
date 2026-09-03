@@ -84,7 +84,8 @@ def main():
                "candidate_onet_title", "match_type"]]
     out = out.drop_duplicates(subset=["occupation_id", "candidate_onet_soc_code"])
     out = out.sort_values(["occupation_id", "match_type"])
-
+    print(out.duplicated().any)
+    print(out.isnull().sum())
     out.to_csv(OUTPUT, index=False)
 
     no_candidates_count = osca[~osca["osca_code"].isin(out["occupation_id"])].shape[0] #check if any non candidate
