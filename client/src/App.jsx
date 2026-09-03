@@ -409,11 +409,19 @@ export default function App() {
 
               <div className="hidden md:block w-px h-5 bg-zinc-300 dark:bg-zinc-700 mx-2"></div>
 
-              {/* 3. Theme Toggle Button */}
-              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200">
-                {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
-              </button>
+              
+             
+            <button
+              onClick={() => confirmNavigation('setup')}
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-all"
+            >
+              Get started
+            </button>
 
+            {/* 3. Theme Toggle Button */}
+            <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200">
+            {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
+            </button>
             </div>
           </div>
         </nav>
