@@ -11,6 +11,8 @@ import {
 
 import Intro from './components/Intro';
 import PasswordGate from './components/PasswordGate';
+import WorkInProgress from './components/WorkInProgress';
+
 const BASE = '/api';
 const INITIAL_MATCH_COUNT = 4;
 
@@ -396,13 +398,17 @@ export default function App() {
               
               <div className="hidden md:flex items-center gap-1 sm:gap-2">
                 <button 
-                  onClick={() => { /* Implemented later */ }}
+                  onClick={() =>  /* Implemented later */ 
+                    confirmNavigation('wip')
+                  }
                   className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
                 >
                   Regional Insights
                 </button>
                 <button 
-                  onClick={() => { /* Implemented later */ }}
+                  onClick={() => /* Implemented later */ 
+                    confirmNavigation('wip')
+                  }
                   className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
                 >
                   Career Simulator
@@ -429,6 +435,12 @@ export default function App() {
         </nav>
 
         <div className="relative z-10">
+          {currentView === 'wip' && (
+            <div key="wip" className="view-enter-animation">
+              <WorkInProgress onBack={() => confirmNavigation('home')} />
+            </div>
+          )}
+
           {currentView === 'home' && (
             <main key="home" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-32 sm:pt-48 pb-24 sm:pb-32 flex flex-col items-center text-center">
               <div key="home" className="view-enter-animation">

@@ -8,6 +8,7 @@ const FEATURES = [
     description: "See which skills are likely to be automated and which will be augmented by AI tools in your desired tech field.",
     icon: <BrainCircuit className="w-6 h-6 text-blue-600 dark:text-blue-400" aria-hidden="true" />,
     linkText: "Explore AI Analysis",
+    targetView: "wip",
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ const FEATURES = [
     description: "We translate national data into tailored roadmaps, showing you where the most secure and high-growth opportunities lie.",
     icon: <Compass className="w-6 h-6 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />,
     linkText: "View Skill Mapping",
+    targetView: "wip",
   },
   {
     id: 3,
@@ -22,10 +24,12 @@ const FEATURES = [
     description: "Access real-time, official data on job demand and resilient tech roles specific to your city or desired relocation area.",
     icon: <Map className="w-6 h-6 text-teal-600 dark:text-teal-400" aria-hidden="true" />,
     linkText: "See Local Data",
-  }
+    targetView: "wip",
+  },
 ];
 
-const Intro = ({ onConfigureProfile }) => {
+// Added onNavigate to props
+const Intro = ({ onConfigureProfile, onNavigate }) => {
   return (
     <section className="relative w-full min-h-screen bg-transparent transition-colors duration-300 overflow-hidden font-sans flex flex-col items-center pt-20 pb-24">
       <div className="relative z-10 max-w-5xl mx-auto px-6 w-full flex flex-col items-center">
@@ -41,7 +45,7 @@ const Intro = ({ onConfigureProfile }) => {
           Map your interests to high-resilience tech careers. We analyze official national data to show exactly where AI will automate or elevate your future role.
         </p>
 
-        {/* Configure Profile CTA — right after tagline */}
+        {/* Configure Profile CTA */}
         <button
           onClick={onConfigureProfile}
           className="bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:scale-[1.02] active:scale-[0.98] transition-all rounded-full px-8 py-3.5 font-semibold text-sm flex items-center gap-2 shadow-lg dark:shadow-white/10 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-white/50 mb-24"
@@ -50,9 +54,10 @@ const Intro = ({ onConfigureProfile }) => {
           <ArrowRight className="w-4 h-4" aria-hidden="true" />
         </button>
 
-        {/* Feature Cards — pushed below fold */}
+        {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-          {FEATURES.map(({ id, title, description, icon, linkText }) => (
+          {/* Destructured targetView */}
+          {FEATURES.map(({ id, title, description, icon, linkText, targetView }) => (
             <div key={id} className="flex flex-col bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-7 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 group shadow-sm dark:shadow-none text-left">
               <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
                 {icon}
@@ -63,11 +68,15 @@ const Intro = ({ onConfigureProfile }) => {
               <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-grow">
                 {description}
               </p>
-              {/* Dummy skeleton button — no link, no action */}
-              <div className="inline-flex items-center gap-2 text-sm font-medium text-slate-400 dark:text-slate-600 cursor-not-allowed mt-auto w-max select-none">
+              
+              {/* Replaced dummy div with an active button hooked to onNavigate */}
+              <button
+                onClick={() => onNavigate(targetView)}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-all mt-auto w-max focus:outline-none group/btn"
+              >
                 {linkText}
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </div>
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" aria-hidden="true" />
+              </button>
             </div>
           ))}
         </div>
