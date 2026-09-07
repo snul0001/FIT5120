@@ -10,6 +10,9 @@ import {
 
 
 import Intro from './components/Intro';
+import PasswordGate from './components/PasswordGate';
+import WorkInProgress from './components/WorkInProgress';
+
 const BASE = '/api';
 const INITIAL_MATCH_COUNT = 4;
 
@@ -101,6 +104,8 @@ export default function App() {
   const [apiInterests, setApiInterests] = useState([]);
   const [matches, setMatches] = useState([]);
   const [aiDetailsMap, setAiDetailsMap] = useState({});
+
+  const [tooltipPos, setTooltipPos] = useState({ show: false, x: 0, y: 0 });
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -348,8 +353,36 @@ export default function App() {
   // Dynamic Background: Retains original #09090B on Home/Setup, switches to the deep navy #0B1121 on Results page.
   const pageBackground =  'bg-[#FAFAFA] dark:bg-[#0B1121]';
 
+  const handleShowTooltip = (e, title, text) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const tooltipWidth = 290;
+    const tooltipHeight = 140;
+
+    // Check if there is enough space on the left side of the element
+    const hasSpaceLeft = rect.left > tooltipWidth;
+    
+    // Calculate X position
+    const x = hasSpaceLeft ? rect.left - 12 : rect.right + 12;
+
+    // Calculate Y position and clamp it within viewport boundaries
+    let y = rect.top + rect.height / 2;
+    const minY = tooltipHeight / 2 + 12;
+    const maxY = window.innerHeight - tooltipHeight / 2 - 12;
+    y = Math.max(minY, Math.min(y, maxY));
+
+    setTooltipPos({
+      show: true,
+      x,
+      y,
+      position: hasSpaceLeft ? 'left' : 'right',
+      title,
+      text
+    });
+  };
+
   return (
     <>
+    <PasswordGate>
       <style>{`
         @keyframes continuousMove { 0% { background-position: 0 0; } 100% { background-position: 40px 40px; } }
         @keyframes pageFadeIn { 0% { opacity: 0; transform: translateY(10px) scale(0.99); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
@@ -394,13 +427,17 @@ export default function App() {
               
               <div className="hidden md:flex items-center gap-1 sm:gap-2">
                 <button 
-                  onClick={() => { /* Implemented later */ }}
+                  onClick={() =>  /* Implemented later */ 
+                    confirmNavigation('wip')
+                  }
                   className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
                 >
                   Regional Insights
                 </button>
                 <button 
-                  onClick={() => { /* Implemented later */ }}
+                  onClick={() => /* Implemented later */ 
+                    confirmNavigation('wip')
+                  }
                   className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
                 >
                   Career Simulator
@@ -427,10 +464,19 @@ export default function App() {
         </nav>
 
         <div className="relative z-10">
+          {currentView === 'wip' && (
+            <div key="wip" className="view-enter-animation">
+              <WorkInProgress onBack={() => confirmNavigation('home')} />
+            </div>
+          )}
+
           {currentView === 'home' && (
             <main key="home" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-32 sm:pt-48 pb-24 sm:pb-32 flex flex-col items-center text-center">
               <div key="home" className="view-enter-animation">
-                <Intro onConfigureProfile={() => confirmNavigation('setup')} />
+                <Intro 
+                  onConfigureProfile={() => confirmNavigation('setup')} 
+                  onNavigate={(target) => confirmNavigation(target)} 
+                />
               </div>
             </main>
           )}
@@ -585,14 +631,23 @@ export default function App() {
                           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
                         </div>
 
-                        {/* Resilience Score box */}
+                        {/* Resilience Score box with coordinate tracking */}
                         {ai && (
-                          <div className={`hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border ${
-                            ai.resilience_score >= 50 
-                              ? 'bg-emerald-500/5 border-emerald-500/20' 
-                              : 'bg-amber-500/5 border-amber-500/20'
-                          }`}>
-                            {/* Label is now INSIDE the box */}
+                          <div 
+                            // Resilience
+                            onMouseEnter={(e) => handleShowTooltip(
+                              e, 
+                              "Resilience Score", 
+                              "Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk."
+                            )}
+                            onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                            
+                            className={`cursor-help hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border transition-colors ${
+                              ai.resilience_score >= 50 
+                                ? 'bg-emerald-500/5 hover:bg-emerald-500/10 border-emerald-500/20' 
+                                : 'bg-amber-500/5 hover:bg-amber-500/10 border-amber-500/20'
+                            }`}
+                          >
                             <span className={`text-[9px] font-bold uppercase tracking-widest mb-1 ${
                               ai.resilience_score >= 50 
                                 ? 'text-emerald-700/80 dark:text-[#34D399]/80' 
@@ -642,7 +697,15 @@ export default function App() {
                               </div>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {/* Augmentation Box */}
-                                <div className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between">
+                                <div 
+                                onMouseEnter={(e) => handleShowTooltip(
+                                  e, 
+                                  "Augmentation Rate", 
+                                  "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely."
+                                )}
+                                onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                
+                                className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between">
                                   <div className="flex justify-between items-start mb-4">
                                     <span className="text-[10px] font-bold text-emerald-600 dark:text-[#34D399] uppercase tracking-widest">Augmentation</span>
                                     <span className="text-[9px] font-bold text-emerald-700 dark:text-[#6EE7B7] bg-emerald-500/20 px-2 py-0.5 rounded uppercase">Support</span>
@@ -654,7 +717,15 @@ export default function App() {
                                 </div>
                                 
                                 {/* Automation Box */}
-                                <div className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between">
+                                <div 
+                                onMouseEnter={(e) => handleShowTooltip(
+                                  e, 
+                                  "Automation Risk", 
+                                  "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention."
+                                )}
+                                onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                
+                                className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between">
                                   <div className="flex justify-between items-start mb-4">
                                     <span className="text-[10px] font-bold text-amber-600 dark:text-[#FBBF24] uppercase tracking-widest">Automation</span>
                                     <span className="text-[9px] font-bold text-amber-700 dark:text-[#FCD34D] bg-amber-500/20 px-2 py-0.5 rounded uppercase">Replace</span>
@@ -723,8 +794,33 @@ export default function App() {
               )}
             </main>
           )}
+
+          {/* Global Tooltip Rendered Outside Card Hierarchy */}
+          {tooltipPos.show && (
+            <div 
+              style={{ left: tooltipPos.x, top: tooltipPos.y }}
+              className={`fixed z-[9999] w-[280px] p-4 bg-white dark:bg-[#1A233A] rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] border border-zinc-200 dark:border-white/10 pointer-events-none text-left transition-transform duration-150 -translate-x-1/2 ${
+                tooltipPos.isTop ? '-translate-y-full' : ''
+              }`}
+            >
+              <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1.5 tracking-tight">
+                {tooltipPos.title}
+              </h4>
+              <p className="text-[12px] text-zinc-600 dark:text-slate-300 leading-relaxed">
+                {tooltipPos.text} 
+              </p>
+              
+              {tooltipPos.isTop ? (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-white dark:border-t-[#1A233A]"></div>
+              ) : (
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-b-white dark:border-b-[#1A233A]"></div>
+              )}
+            </div>
+          )}
+
         </div>
       </div>
+    </PasswordGate>
     </>
   );
 }
