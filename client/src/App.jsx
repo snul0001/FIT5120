@@ -353,6 +353,33 @@ export default function App() {
   // Dynamic Background: Retains original #09090B on Home/Setup, switches to the deep navy #0B1121 on Results page.
   const pageBackground =  'bg-[#FAFAFA] dark:bg-[#0B1121]';
 
+  const handleShowTooltip = (e, title, text) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const tooltipWidth = 290;
+    const tooltipHeight = 140;
+
+    // Check if there is enough space on the left side of the element
+    const hasSpaceLeft = rect.left > tooltipWidth;
+    
+    // Calculate X position
+    const x = hasSpaceLeft ? rect.left - 12 : rect.right + 12;
+
+    // Calculate Y position and clamp it within viewport boundaries
+    let y = rect.top + rect.height / 2;
+    const minY = tooltipHeight / 2 + 12;
+    const maxY = window.innerHeight - tooltipHeight / 2 - 12;
+    y = Math.max(minY, Math.min(y, maxY));
+
+    setTooltipPos({
+      show: true,
+      x,
+      y,
+      position: hasSpaceLeft ? 'left' : 'right',
+      title,
+      text
+    });
+  };
+
   return (
     <>
     <PasswordGate>
@@ -607,19 +634,14 @@ export default function App() {
                         {/* Resilience Score box with coordinate tracking */}
                         {ai && (
                           <div 
-                            onMouseEnter={(e) => {
-                              const rect = e.currentTarget.getBoundingClientRect();
-                              // Safe clearance height (220px) to prevent clipping under the navbar
-                              const hasSpaceAbove = rect.top > 220;
-
-                              setTooltipPos({ 
-                                show: true, 
-                                x: rect.left + rect.width / 2, 
-                                y: hasSpaceAbove ? rect.top + 20 : rect.bottom + 1000,
-                                isTop: hasSpaceAbove
-                              });
-                            }}
-                            onMouseLeave={() => setTooltipPos({ show: false, x: 0, y: 0 })}
+                            // Resilience
+                            onMouseEnter={(e) => handleShowTooltip(
+                              e, 
+                              "Resilience Score", 
+                              "Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk."
+                            )}
+                            onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                            
                             className={`cursor-help hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border transition-colors ${
                               ai.resilience_score >= 50 
                                 ? 'bg-emerald-500/5 hover:bg-emerald-500/10 border-emerald-500/20' 
@@ -675,7 +697,15 @@ export default function App() {
                               </div>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {/* Augmentation Box */}
-                                <div className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between">
+                                <div 
+                                onMouseEnter={(e) => handleShowTooltip(
+                                  e, 
+                                  "Augmentation Rate", 
+                                  "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely."
+                                )}
+                                onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                
+                                className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between">
                                   <div className="flex justify-between items-start mb-4">
                                     <span className="text-[10px] font-bold text-emerald-600 dark:text-[#34D399] uppercase tracking-widest">Augmentation</span>
                                     <span className="text-[9px] font-bold text-emerald-700 dark:text-[#6EE7B7] bg-emerald-500/20 px-2 py-0.5 rounded uppercase">Support</span>
@@ -687,7 +717,15 @@ export default function App() {
                                 </div>
                                 
                                 {/* Automation Box */}
-                                <div className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between">
+                                <div 
+                                onMouseEnter={(e) => handleShowTooltip(
+                                  e, 
+                                  "Automation Risk", 
+                                  "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention."
+                                )}
+                                onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                
+                                className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between">
                                   <div className="flex justify-between items-start mb-4">
                                     <span className="text-[10px] font-bold text-amber-600 dark:text-[#FBBF24] uppercase tracking-widest">Automation</span>
                                     <span className="text-[9px] font-bold text-amber-700 dark:text-[#FCD34D] bg-amber-500/20 px-2 py-0.5 rounded uppercase">Replace</span>
@@ -766,10 +804,10 @@ export default function App() {
               }`}
             >
               <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1.5 tracking-tight">
-                Resilience Score
+                {tooltipPos.title}
               </h4>
               <p className="text-[12px] text-zinc-600 dark:text-slate-300 leading-relaxed">
-                Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk.
+                {tooltipPos.text} 
               </p>
               
               {tooltipPos.isTop ? (
