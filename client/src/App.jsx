@@ -105,6 +105,8 @@ export default function App() {
   const [matches, setMatches] = useState([]);
   const [aiDetailsMap, setAiDetailsMap] = useState({});
 
+  const [tooltipPos, setTooltipPos] = useState({ show: false, x: 0, y: 0 });
+
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDark) root.classList.add('dark');
@@ -602,14 +604,28 @@ export default function App() {
                           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
                         </div>
 
-                        {/* Resilience Score box */}
+                        {/* Resilience Score box with coordinate tracking */}
                         {ai && (
-                          <div className={`hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border ${
-                            ai.resilience_score >= 50 
-                              ? 'bg-emerald-500/5 border-emerald-500/20' 
-                              : 'bg-amber-500/5 border-amber-500/20'
-                          }`}>
-                            {/* Label is now INSIDE the box */}
+                          <div 
+                            onMouseEnter={(e) => {
+                              const rect = e.currentTarget.getBoundingClientRect();
+                              // Safe clearance height (220px) to prevent clipping under the navbar
+                              const hasSpaceAbove = rect.top > 220;
+
+                              setTooltipPos({ 
+                                show: true, 
+                                x: rect.left + rect.width / 2, 
+                                y: hasSpaceAbove ? rect.top + 20 : rect.bottom + 1000,
+                                isTop: hasSpaceAbove
+                              });
+                            }}
+                            onMouseLeave={() => setTooltipPos({ show: false, x: 0, y: 0 })}
+                            className={`cursor-help hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border transition-colors ${
+                              ai.resilience_score >= 50 
+                                ? 'bg-emerald-500/5 hover:bg-emerald-500/10 border-emerald-500/20' 
+                                : 'bg-amber-500/5 hover:bg-amber-500/10 border-amber-500/20'
+                            }`}
+                          >
                             <span className={`text-[9px] font-bold uppercase tracking-widest mb-1 ${
                               ai.resilience_score >= 50 
                                 ? 'text-emerald-700/80 dark:text-[#34D399]/80' 
@@ -740,6 +756,30 @@ export default function App() {
               )}
             </main>
           )}
+
+          {/* Global Tooltip Rendered Outside Card Hierarchy */}
+          {tooltipPos.show && (
+            <div 
+              style={{ left: tooltipPos.x, top: tooltipPos.y }}
+              className={`fixed z-[9999] w-[280px] p-4 bg-white dark:bg-[#1A233A] rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] border border-zinc-200 dark:border-white/10 pointer-events-none text-left transition-transform duration-150 -translate-x-1/2 ${
+                tooltipPos.isTop ? '-translate-y-full' : ''
+              }`}
+            >
+              <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1.5 tracking-tight">
+                Resilience Score
+              </h4>
+              <p className="text-[12px] text-zinc-600 dark:text-slate-300 leading-relaxed">
+                Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk.
+              </p>
+              
+              {tooltipPos.isTop ? (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-white dark:border-t-[#1A233A]"></div>
+              ) : (
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-b-white dark:border-b-[#1A233A]"></div>
+              )}
+            </div>
+          )}
+
         </div>
       </div>
     </PasswordGate>
