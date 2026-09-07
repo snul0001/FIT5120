@@ -444,7 +444,10 @@ export default function App() {
           {currentView === 'home' && (
             <main key="home" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-32 sm:pt-48 pb-24 sm:pb-32 flex flex-col items-center text-center">
               <div key="home" className="view-enter-animation">
-                <Intro onConfigureProfile={() => confirmNavigation('setup')} />
+                <Intro 
+                  onConfigureProfile={() => confirmNavigation('setup')} 
+                  onNavigate={(target) => confirmNavigation(target)} 
+                />
               </div>
             </main>
           )}
