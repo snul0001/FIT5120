@@ -598,7 +598,7 @@ export default function App() {
                   }`}
                 >
                   <Download className="w-4 h-4" />
-                  {hasDownloaded ? 'Downloaded' : 'Export Data'}
+                  {hasDownloaded ? 'Downloaded' : 'Download Data'}
                 </button>
               </header>
 
