@@ -5,7 +5,7 @@ import {
   ArrowRight, ArrowLeft, Loader2, Check, 
   MapPin, Briefcase, ChevronDown, ChevronUp,
   Cpu, LayoutDashboard, Zap, Sun, Moon, Download, HelpCircle,
-  BrainCircuit, Compass, Map, Sparkles
+  BrainCircuit, Compass, Map, Sparkles, ExternalLink
 } from 'lucide-react';
 
 
@@ -355,26 +355,32 @@ export default function App() {
 
   const handleShowTooltip = (e, title, text) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const tooltipWidth = 290;
+    const tooltipWidth = 280;
     const tooltipHeight = 140;
+    const padding = 12;
 
-    // Check if there is enough space on the left side of the element
-    const hasSpaceLeft = rect.left > tooltipWidth;
-    
-    // Calculate X position
-    const x = hasSpaceLeft ? rect.left - 12 : rect.right + 12;
+    // 1. Vertical Check: Flip above if not enough room at the bottom
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const isTop = spaceBelow < tooltipHeight + padding && rect.top > tooltipHeight + padding;
+    const y = isTop ? rect.top - 12 : rect.bottom + 12;
 
-    // Calculate Y position and clamp it within viewport boundaries
-    let y = rect.top + rect.height / 2;
-    const minY = tooltipHeight / 2 + 12;
-    const maxY = window.innerHeight - tooltipHeight / 2 - 12;
-    y = Math.max(minY, Math.min(y, maxY));
+    // 2. Horizontal Clamping: Keep box inside left and right screen edges
+    const centerX = rect.left + rect.width / 2;
+    const halfWidth = tooltipWidth / 2;
+    const clampedX = Math.max(
+      halfWidth + padding,
+      Math.min(centerX, window.innerWidth - halfWidth - padding)
+    );
+
+    // 3. Arrow Offset: Keep arrow pointed at target even if box shifts
+    const arrowOffset = centerX - clampedX;
 
     setTooltipPos({
       show: true,
-      x,
+      x: clampedX,
       y,
-      position: hasSpaceLeft ? 'left' : 'right',
+      isTop,
+      arrowOffset,
       title,
       text
     });
@@ -442,6 +448,36 @@ export default function App() {
                 >
                   Career Simulator
                 </button>
+
+                {/* Data Sources Dropdown */}
+  <div className="relative group">
+    <button className="flex items-center gap-1.5 text-sm font-medium text-slate-300 hover:text-white transition-colors py-2">
+      <span>Data Sources</span>
+      <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200 group-hover:rotate-180" />
+    </button>
+
+    {/* Dropdown Menu */}
+    <div className="absolute right-0 top-full mt-1 w-64 py-2 bg-[#131B2F] dark:bg-[#1A233A] rounded-xl shadow-2xl border border-zinc-200/10 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[999]">
+      <a 
+        href="https://www.onetcenter.org/database.html" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+      >
+        <span>O*NET Database</span>
+        <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+      </a>
+      <a 
+        href="https://www.jobsandskills.gov.au/studies/generative-artificial-intelligence-capacity-study" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+      >
+        <span>Jobs & Skills Australia (JSA)</span>
+        <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+      </a>
+    </div>
+  </div>
               </div>
 
               <div className="hidden md:block w-px h-5 bg-zinc-300 dark:bg-zinc-700 mx-2"></div>
@@ -799,7 +835,7 @@ export default function App() {
           {tooltipPos.show && (
             <div 
               style={{ left: tooltipPos.x, top: tooltipPos.y }}
-              className={`fixed z-[9999] w-[280px] p-4 bg-white dark:bg-[#1A233A] rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] border border-zinc-200 dark:border-white/10 pointer-events-none text-left transition-transform duration-150 -translate-x-1/2 ${
+              className={`fixed z-[9999] w-[280px] p-4 bg-white dark:bg-[#1A233A] rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] border border-zinc-200 dark:border-white/10 pointer-events-none text-left -translate-x-1/2 transition-opacity duration-150 ${
                 tooltipPos.isTop ? '-translate-y-full' : ''
               }`}
             >
@@ -807,14 +843,18 @@ export default function App() {
                 {tooltipPos.title}
               </h4>
               <p className="text-[12px] text-zinc-600 dark:text-slate-300 leading-relaxed">
-                {tooltipPos.text} 
+                {tooltipPos.text}
               </p>
               
-              {tooltipPos.isTop ? (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-t-white dark:border-t-[#1A233A]"></div>
-              ) : (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 border-[6px] border-transparent border-b-white dark:border-b-[#1A233A]"></div>
-              )}
+              {/* Self-adjusting Arrow */}
+              <div 
+                style={{ transform: `translateX(calc(-50% + ${tooltipPos.arrowOffset || 0}px))` }}
+                className={`absolute left-1/2 border-[6px] border-transparent ${
+                  tooltipPos.isTop 
+                    ? 'top-full border-t-white dark:border-t-[#1A233A]' 
+                    : 'bottom-full border-b-white dark:border-b-[#1A233A]'
+                }`}
+              ></div>
             </div>
           )}
 
