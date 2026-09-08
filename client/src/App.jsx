@@ -433,48 +433,45 @@ export default function App() {
               
               <div className="hidden md:flex items-center gap-1 sm:gap-2">
                 <button 
-                  onClick={() =>  /* Implemented later */ 
-                    confirmNavigation('wip')
-                  }
-                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
+                  onClick={() => confirmNavigation('wip')}
+                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
                 >
                   Regional Insights
                 </button>
+                
                 <button 
-                  onClick={() => /* Implemented later */ 
-                    confirmNavigation('wip')
-                  }
-                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
+                  onClick={() => confirmNavigation('wip')}
+                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
                 >
                   Career Simulator
                 </button>
 
                 {/* Data Sources Dropdown */}
                 <div className="relative group">
-                  <button className="flex items-center gap-1.5 text-sm font-medium text-slate-300 hover:text-white transition-colors py-2">
+                  <button className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200 cursor-pointer">
                     <span>Data Sources</span>
-                    <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200 group-hover:rotate-180" />
+                    <ChevronDown className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400 transition-transform duration-200 group-hover:rotate-180" />
                   </button>
 
                   {/* Dropdown Menu */}
-                  <div className="absolute right-0 top-full mt-1 w-64 py-2 bg-[#131B2F] dark:bg-[#1A233A] rounded-xl shadow-2xl border border-zinc-200/10 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[999]">
+                  <div className="absolute right-0 top-full mt-1 w-64 py-2 bg-white dark:bg-[#131B2F] rounded-xl shadow-xl border border-zinc-200 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[999]">
                     <a 
                       href="https://www.onetcenter.org/database.html" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                      className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
                     >
                       <span>O*NET Database</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                      <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                     </a>
                     <a 
                       href="https://www.jobsandskills.gov.au/studies/generative-artificial-intelligence-capacity-study" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+                      className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
                     >
                       <span>Jobs & Skills Australia (JSA)</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                      <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                     </a>
                   </div>
                 </div>
