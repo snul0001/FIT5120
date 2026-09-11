@@ -1,0 +1,421 @@
+osca_id,osca_occupation_title,skill_type,top_rank,skill,score_field,score
+261111,ICT Business Analyst,software,1,Amazon Web Services AWS software,rank,1
+261111,ICT Business Analyst,software,2,Microsoft Azure software,rank,1
+261111,ICT Business Analyst,software,3,Microsoft Excel,rank,1
+261111,ICT Business Analyst,software,4,Microsoft Office software,rank,1
+261111,ICT Business Analyst,software,5,Microsoft Power BI,rank,1
+261111,ICT Business Analyst,software,6,Microsoft PowerPoint,rank,1
+261111,ICT Business Analyst,software,7,Python,rank,1
+261111,ICT Business Analyst,software,8,R,rank,1
+261111,ICT Business Analyst,software,9,Salesforce software,rank,1
+261111,ICT Business Analyst,software,10,SAP software,rank,1
+261112,Systems Analyst,software,1,Atlassian JIRA,rank,1
+261112,Systems Analyst,software,2,Microsoft Excel,rank,1
+261112,Systems Analyst,software,3,Microsoft Office software,rank,1
+261112,Systems Analyst,software,4,Microsoft Power BI,rank,1
+261112,Systems Analyst,software,5,Microsoft PowerPoint,rank,1
+261112,Systems Analyst,software,6,Python,rank,1
+261112,Systems Analyst,software,7,SAP software,rank,1
+261112,Systems Analyst,software,8,ServiceNow,rank,1
+261112,Systems Analyst,software,9,Structured query language SQL,rank,1
+261112,Systems Analyst,software,10,Microsoft SharePoint,rank,3
+261211,Game and Multimedia Developer,software,1,Adobe Photoshop,rank,1
+261211,Game and Multimedia Developer,software,2,C#,rank,1
+261211,Game and Multimedia Developer,software,3,C++,rank,1
+261211,Game and Multimedia Developer,software,4,Python,rank,1
+261211,Game and Multimedia Developer,software,5,Autodesk Maya,rank,2
+261211,Game and Multimedia Developer,software,6,Unity Technologies Unity,rank,2
+261211,Game and Multimedia Developer,software,7,Unreal Technology Unreal Engine,rank,2
+261211,Game and Multimedia Developer,software,8,Adobe After Effects,rank,3
+261211,Game and Multimedia Developer,software,9,Adobe Creative Cloud software,rank,3
+261211,Game and Multimedia Developer,software,10,Adobe Illustrator,rank,3
+261212,Web Developer,software,1,Atlassian JIRA,rank,1
+261212,Web Developer,software,2,Cascading style sheets CSS,rank,1
+261212,Web Developer,software,3,Google Angular,rank,1
+261212,Web Developer,software,4,GraphQL,rank,1
+261212,Web Developer,software,5,Hypertext markup language HTML,rank,1
+261212,Web Developer,software,6,JavaScript,rank,1
+261212,Web Developer,software,7,Jenkins CI,rank,1
+261212,Web Developer,software,8,Kubernetes,rank,1
+261212,Web Developer,software,9,React,rank,1
+261212,Web Developer,software,10,TypeScript,rank,1
+261312,Developer Programmer,software,1,C#,rank,1
+261312,Developer Programmer,software,2,C++,rank,1
+261312,Developer Programmer,software,3,Cascading style sheets CSS,rank,1
+261312,Developer Programmer,software,4,Extensible markup language XML,rank,1
+261312,Developer Programmer,software,5,Git,rank,1
+261312,Developer Programmer,software,6,Hypertext markup language HTML,rank,1
+261312,Developer Programmer,software,7,JavaScript,rank,1
+261312,Developer Programmer,software,8,Linux,rank,1
+261312,Developer Programmer,software,9,Microsoft Azure software,rank,1
+261312,Developer Programmer,software,10,Microsoft Excel,rank,1
+261313,Software Engineer,software,1,Amazon Web Services AWS software,rank,1
+261313,Software Engineer,software,2,Apache Kafka,rank,1
+261313,Software Engineer,software,3,Atlassian JIRA,rank,1
+261313,Software Engineer,software,4,C,rank,1
+261313,Software Engineer,software,5,C#,rank,1
+261313,Software Engineer,software,6,C++,rank,1
+261313,Software Engineer,software,7,Cascading style sheets CSS,rank,1
+261313,Software Engineer,software,8,Docker,rank,1
+261313,Software Engineer,software,9,Git,rank,1
+261313,Software Engineer,software,10,GitHub,rank,1
+261314,Software Tester,software,1,Amazon Web Services AWS software,rank,1
+261314,Software Tester,software,2,Atlassian JIRA,rank,1
+261314,Software Tester,software,3,C#,rank,1
+261314,Software Tester,software,4,C++,rank,1
+261314,Software Tester,software,5,Git,rank,1
+261314,Software Tester,software,6,GitHub,rank,1
+261314,Software Tester,software,7,JavaScript,rank,1
+261314,Software Tester,software,8,Jenkins CI,rank,1
+261314,Software Tester,software,9,Linux,rank,1
+261314,Software Tester,software,10,Microsoft Azure software,rank,1
+262111,Database Administrator,software,1,Amazon Web Services AWS software,rank,1
+262111,Database Administrator,software,2,Apache Kafka,rank,1
+262111,Database Administrator,software,3,Apache Spark,rank,1
+262111,Database Administrator,software,4,IBM Terraform,rank,1
+262111,Database Administrator,software,5,Kubernetes,rank,1
+262111,Database Administrator,software,6,Microsoft Azure software,rank,1
+262111,Database Administrator,software,7,Microsoft Power BI,rank,1
+262111,Database Administrator,software,8,Oracle Java,rank,1
+262111,Database Administrator,software,9,Python,rank,1
+262111,Database Administrator,software,10,Snowflake,rank,1
+262112,ICT Security Specialist,software,1,Amazon Web Services AWS software,rank,1
+262112,ICT Security Specialist,software,2,Linux,rank,1
+262112,ICT Security Specialist,software,3,Microsoft Azure software,rank,1
+262112,ICT Security Specialist,software,4,Microsoft PowerPoint,rank,1
+262112,ICT Security Specialist,software,5,Microsoft PowerShell,rank,1
+262112,ICT Security Specialist,software,6,Python,rank,1
+262112,ICT Security Specialist,software,7,Splunk Enterprise,rank,1
+262112,ICT Security Specialist,software,8,UNIX,rank,1
+262112,ICT Security Specialist,software,9,eMASS,rank,2
+262112,ICT Security Specialist,software,10,Firewall software,rank,2
+263111,Computer Network and Systems Engineer,software,1,Amazon Web Services AWS software,rank,1
+263111,Computer Network and Systems Engineer,software,2,Ansible software,rank,1
+263111,Computer Network and Systems Engineer,software,3,Border Gateway Protocol BGP,rank,1
+263111,Computer Network and Systems Engineer,software,4,IBM Terraform,rank,1
+263111,Computer Network and Systems Engineer,software,5,Linux,rank,1
+263111,Computer Network and Systems Engineer,software,6,Microsoft Azure software,rank,1
+263111,Computer Network and Systems Engineer,software,7,Microsoft Excel,rank,1
+263111,Computer Network and Systems Engineer,software,8,Microsoft Office software,rank,1
+263111,Computer Network and Systems Engineer,software,9,Microsoft PowerShell,rank,1
+263111,Computer Network and Systems Engineer,software,10,Oracle Java,rank,1
+263112,Network Administrator,software,1,Amazon Web Services AWS software,rank,1
+263112,Network Administrator,software,2,Ansible software,rank,1
+263112,Network Administrator,software,3,Bash,rank,1
+263112,Network Administrator,software,4,Linux,rank,1
+263112,Network Administrator,software,5,Microsoft Active Directory,rank,1
+263112,Network Administrator,software,6,Microsoft Azure software,rank,1
+263112,Network Administrator,software,7,Microsoft Excel,rank,1
+263112,Network Administrator,software,8,Microsoft Office software,rank,1
+263112,Network Administrator,software,9,Microsoft Outlook,rank,1
+263112,Network Administrator,software,10,Microsoft PowerShell,rank,1
+263311,Telecommunications Engineer,software,1,Autodesk AutoCAD,rank,1
+263311,Telecommunications Engineer,software,2,Autodesk Revit,rank,1
+263311,Telecommunications Engineer,software,3,Microsoft Excel,rank,1
+263311,Telecommunications Engineer,software,4,Microsoft Office software,rank,1
+263311,Telecommunications Engineer,software,5,Microsoft Outlook,rank,1
+263311,Telecommunications Engineer,software,6,Microsoft PowerPoint,rank,1
+263311,Telecommunications Engineer,software,7,Microsoft Visio,rank,1
+263311,Telecommunications Engineer,software,8,Microsoft Word,rank,1
+263311,Telecommunications Engineer,software,9,Autodesk Navisworks,rank,2
+263311,Telecommunications Engineer,software,10,Firewall software,rank,2
+313112,ICT Customer Support Officer,software,1,Apple macOS,rank,1
+313112,ICT Customer Support Officer,software,2,Linux,rank,1
+313112,ICT Customer Support Officer,software,3,Microsoft Active Directory,rank,1
+313112,ICT Customer Support Officer,software,4,Microsoft Excel,rank,1
+313112,ICT Customer Support Officer,software,5,Microsoft Office software,rank,1
+313112,ICT Customer Support Officer,software,6,Microsoft Outlook,rank,1
+313112,ICT Customer Support Officer,software,7,Microsoft Windows,rank,1
+313112,ICT Customer Support Officer,software,8,ServiceNow,rank,1
+313112,ICT Customer Support Officer,software,9,Apple iOS,rank,1
+313112,ICT Customer Support Officer,software,10,Firewall software,rank,2
+313113,Web Administrator,software,1,Adobe Photoshop,rank,1
+313113,Web Administrator,software,2,Cascading style sheets CSS,rank,1
+313113,Web Administrator,software,3,Google Analytics,rank,1
+313113,Web Administrator,software,4,Hypertext markup language HTML,rank,1
+313113,Web Administrator,software,5,JavaScript,rank,1
+313113,Web Administrator,software,6,Microsoft Access,rank,1
+313113,Web Administrator,software,7,Microsoft Active Directory,rank,1
+313113,Web Administrator,software,8,Microsoft Office software,rank,1
+313113,Web Administrator,software,9,Microsoft SharePoint,rank,1
+313113,Web Administrator,software,10,Microsoft SQL Server,rank,1
+261111,ICT Business Analyst,essential,1,Reading Comprehension,priority_score,68.91
+261111,ICT Business Analyst,essential,2,Critical Thinking,priority_score,67.19
+261111,ICT Business Analyst,essential,3,Active Learning,priority_score,66.4
+261111,ICT Business Analyst,essential,4,Active Listening,priority_score,65.67
+261111,ICT Business Analyst,essential,5,Speaking,priority_score,65.67
+261111,ICT Business Analyst,essential,6,Writing,priority_score,63.81
+261111,ICT Business Analyst,essential,7,Mathematics,priority_score,59.49
+261111,ICT Business Analyst,essential,8,Monitoring,priority_score,50.2
+261111,ICT Business Analyst,essential,9,Learning Strategies,priority_score,46.96
+261111,ICT Business Analyst,essential,10,Science,priority_score,13.46
+261112,Systems Analyst,essential,1,Reading Comprehension,priority_score,78.2
+261112,Systems Analyst,essential,2,Active Learning,priority_score,68.37
+261112,Systems Analyst,essential,3,Active Listening,priority_score,68.13
+261112,Systems Analyst,essential,4,Critical Thinking,priority_score,68.13
+261112,Systems Analyst,essential,5,Speaking,priority_score,67.39
+261112,Systems Analyst,essential,6,Writing,priority_score,67.39
+261112,Systems Analyst,essential,7,Learning Strategies,priority_score,63.81
+261112,Systems Analyst,essential,8,Monitoring,priority_score,61.94
+261112,Systems Analyst,essential,9,Mathematics,priority_score,49.27
+261112,Systems Analyst,essential,10,Science,priority_score,29.38
+261211,Game and Multimedia Developer,essential,1,Active Listening,priority_score,64.94
+261211,Game and Multimedia Developer,essential,2,Reading Comprehension,priority_score,63.81
+261211,Game and Multimedia Developer,essential,3,Critical Thinking,priority_score,63.08
+261211,Game and Multimedia Developer,essential,4,Active Learning,priority_score,57.91
+261211,Game and Multimedia Developer,essential,5,Writing,priority_score,55.9
+261211,Game and Multimedia Developer,essential,6,Speaking,priority_score,54.03
+261211,Game and Multimedia Developer,essential,7,Monitoring,priority_score,52.45
+261211,Game and Multimedia Developer,essential,8,Mathematics,priority_score,45.97
+261211,Game and Multimedia Developer,essential,9,Learning Strategies,priority_score,45.24
+261211,Game and Multimedia Developer,essential,10,Science,priority_score,8.5
+261212,Web Developer,essential,1,Critical Thinking,priority_score,63.08
+261212,Web Developer,essential,2,Reading Comprehension,priority_score,62.29
+261212,Web Developer,essential,3,Active Learning,priority_score,57.91
+261212,Web Developer,essential,4,Active Listening,priority_score,57.18
+261212,Web Developer,essential,5,Speaking,priority_score,52.07
+261212,Web Developer,essential,6,Writing,priority_score,51.72
+261212,Web Developer,essential,7,Monitoring,priority_score,50.99
+261212,Web Developer,essential,8,Learning Strategies,priority_score,45.97
+261212,Web Developer,essential,9,Mathematics,priority_score,42.64
+261212,Web Developer,essential,10,Science,priority_score,28.04
+261312,Developer Programmer,essential,1,Active Listening,priority_score,63.81
+261312,Developer Programmer,essential,2,Critical Thinking,priority_score,63.08
+261312,Developer Programmer,essential,3,Reading Comprehension,priority_score,55.45
+261312,Developer Programmer,essential,4,Writing,priority_score,52.07
+261312,Developer Programmer,essential,5,Speaking,priority_score,50.99
+261312,Developer Programmer,essential,6,Active Learning,priority_score,50.2
+261312,Developer Programmer,essential,7,Mathematics,priority_score,49.41
+261312,Developer Programmer,essential,8,Monitoring,priority_score,47.69
+261312,Developer Programmer,essential,9,Science,priority_score,41.85
+261312,Developer Programmer,essential,10,Learning Strategies,priority_score,35.75
+261313,Software Engineer,essential,1,Critical Thinking,priority_score,66.4
+261313,Software Engineer,essential,2,Reading Comprehension,priority_score,61.74
+261313,Software Engineer,essential,3,Active Learning,priority_score,57.91
+261313,Software Engineer,essential,4,Active Listening,priority_score,57.77
+261313,Software Engineer,essential,5,Writing,priority_score,54.32
+261313,Software Engineer,essential,6,Speaking,priority_score,52.45
+261313,Software Engineer,essential,7,Monitoring,priority_score,50.0
+261313,Software Engineer,essential,8,Mathematics,priority_score,44.89
+261313,Software Engineer,essential,9,Learning Strategies,priority_score,42.23
+261313,Software Engineer,essential,10,Science,priority_score,27.51
+261314,Software Tester,essential,1,Reading Comprehension,priority_score,68.13
+261314,Software Tester,essential,2,Active Listening,priority_score,65.67
+261314,Software Tester,essential,3,Speaking,priority_score,65.67
+261314,Software Tester,essential,4,Critical Thinking,priority_score,64.94
+261314,Software Tester,essential,5,Writing,priority_score,63.08
+261314,Software Tester,essential,6,Monitoring,priority_score,60.42
+261314,Software Tester,essential,7,Active Learning,priority_score,49.41
+261314,Software Tester,essential,8,Learning Strategies,priority_score,45.24
+261314,Software Tester,essential,9,Science,priority_score,44.1
+261314,Software Tester,essential,10,Mathematics,priority_score,41.85
+262111,Database Administrator,essential,1,Reading Comprehension,priority_score,66.4
+262111,Database Administrator,essential,2,Critical Thinking,priority_score,65.67
+262111,Database Administrator,essential,3,Active Listening,priority_score,63.08
+262111,Database Administrator,essential,4,Active Learning,priority_score,60.95
+262111,Database Administrator,essential,5,Speaking,priority_score,59.49
+262111,Database Administrator,essential,6,Writing,priority_score,55.9
+262111,Database Administrator,essential,7,Monitoring,priority_score,55.9
+262111,Database Administrator,essential,8,Mathematics,priority_score,50.0
+262111,Database Administrator,essential,9,Learning Strategies,priority_score,48.48
+262111,Database Administrator,essential,10,Science,priority_score,25.0
+262112,ICT Security Specialist,essential,1,Critical Thinking,priority_score,75.16
+262112,ICT Security Specialist,essential,2,Reading Comprehension,priority_score,70.44
+262112,ICT Security Specialist,essential,3,Writing,priority_score,68.13
+262112,ICT Security Specialist,essential,4,Active Listening,priority_score,65.67
+262112,ICT Security Specialist,essential,5,Active Learning,priority_score,62.67
+262112,ICT Security Specialist,essential,6,Speaking,priority_score,60.42
+262112,ICT Security Specialist,essential,7,Monitoring,priority_score,59.49
+262112,ICT Security Specialist,essential,8,Learning Strategies,priority_score,47.55
+262112,ICT Security Specialist,essential,9,Mathematics,priority_score,38.26
+262112,ICT Security Specialist,essential,10,Science,priority_score,22.49
+263111,Computer Network and Systems Engineer,essential,1,Critical Thinking,priority_score,69.85
+263111,Computer Network and Systems Engineer,essential,2,Reading Comprehension,priority_score,68.13
+263111,Computer Network and Systems Engineer,essential,3,Active Listening,priority_score,63.08
+263111,Computer Network and Systems Engineer,essential,4,Writing,priority_score,60.42
+263111,Computer Network and Systems Engineer,essential,5,Speaking,priority_score,59.49
+263111,Computer Network and Systems Engineer,essential,6,Active Learning,priority_score,55.9
+263111,Computer Network and Systems Engineer,essential,7,Monitoring,priority_score,50.99
+263111,Computer Network and Systems Engineer,essential,8,Mathematics,priority_score,50.0
+263111,Computer Network and Systems Engineer,essential,9,Learning Strategies,priority_score,47.69
+263111,Computer Network and Systems Engineer,essential,10,Science,priority_score,27.51
+263112,Network Administrator,essential,1,Active Listening,priority_score,67.39
+263112,Network Administrator,essential,2,Reading Comprehension,priority_score,65.67
+263112,Network Administrator,essential,3,Critical Thinking,priority_score,65.67
+263112,Network Administrator,essential,4,Monitoring,priority_score,65.67
+263112,Network Administrator,essential,5,Speaking,priority_score,54.32
+263112,Network Administrator,essential,6,Active Learning,priority_score,54.03
+263112,Network Administrator,essential,7,Writing,priority_score,50.0
+263112,Network Administrator,essential,8,Learning Strategies,priority_score,50.0
+263112,Network Administrator,essential,9,Mathematics,priority_score,41.85
+263112,Network Administrator,essential,10,Science,priority_score,28.24
+263311,Telecommunications Engineer,essential,1,Reading Comprehension,priority_score,65.67
+263311,Telecommunications Engineer,essential,2,Critical Thinking,priority_score,64.94
+263311,Telecommunications Engineer,essential,3,Active Listening,priority_score,61.21
+263311,Telecommunications Engineer,essential,4,Writing,priority_score,56.97
+263311,Telecommunications Engineer,essential,5,Speaking,priority_score,55.9
+263311,Telecommunications Engineer,essential,6,Active Learning,priority_score,55.9
+263311,Telecommunications Engineer,essential,7,Monitoring,priority_score,53.59
+263311,Telecommunications Engineer,essential,8,Learning Strategies,priority_score,46.23
+263311,Telecommunications Engineer,essential,9,Mathematics,priority_score,45.24
+263311,Telecommunications Engineer,essential,10,Science,priority_score,15.71
+313112,ICT Customer Support Officer,essential,1,Reading Comprehension,priority_score,67.39
+313112,ICT Customer Support Officer,essential,2,Active Listening,priority_score,67.39
+313112,ICT Customer Support Officer,essential,3,Speaking,priority_score,67.39
+313112,ICT Customer Support Officer,essential,4,Critical Thinking,priority_score,63.08
+313112,ICT Customer Support Officer,essential,5,Writing,priority_score,54.86
+313112,ICT Customer Support Officer,essential,6,Monitoring,priority_score,54.32
+313112,ICT Customer Support Officer,essential,7,Active Learning,priority_score,52.86
+313112,ICT Customer Support Officer,essential,8,Learning Strategies,priority_score,49.41
+313112,ICT Customer Support Officer,essential,9,Mathematics,priority_score,32.02
+313112,ICT Customer Support Officer,essential,10,Science,priority_score,21.76
+313113,Web Administrator,essential,1,Critical Thinking,priority_score,68.13
+313113,Web Administrator,essential,2,Reading Comprehension,priority_score,66.4
+313113,Web Administrator,essential,3,Active Listening,priority_score,63.08
+313113,Web Administrator,essential,4,Monitoring,priority_score,55.45
+313113,Web Administrator,essential,5,Speaking,priority_score,53.59
+313113,Web Administrator,essential,6,Active Learning,priority_score,53.24
+313113,Web Administrator,essential,7,Writing,priority_score,52.86
+313113,Web Administrator,essential,8,Learning Strategies,priority_score,46.96
+313113,Web Administrator,essential,9,Science,priority_score,30.56
+313113,Web Administrator,essential,10,Mathematics,priority_score,28.98
+261111,ICT Business Analyst,transferable,1,Judgment and Decision Making,priority_score,61.36
+261111,ICT Business Analyst,transferable,2,Complex Problem Solving,priority_score,56.57
+261111,ICT Business Analyst,transferable,3,Systems Analysis,priority_score,53.28
+261111,ICT Business Analyst,transferable,4,Systems Evaluation,priority_score,53.28
+261111,ICT Business Analyst,transferable,5,Time Management,priority_score,47.98
+261111,ICT Business Analyst,transferable,6,Coordination,priority_score,46.47
+261111,ICT Business Analyst,transferable,7,Instructing,priority_score,46.47
+261111,ICT Business Analyst,transferable,8,Persuasion,priority_score,44.95
+261111,ICT Business Analyst,transferable,9,Social Perceptiveness,priority_score,44.1
+261111,ICT Business Analyst,transferable,10,Service Orientation,priority_score,44.1
+261112,Systems Analyst,transferable,1,Complex Problem Solving,priority_score,68.53
+261112,Systems Analyst,transferable,2,Systems Evaluation,priority_score,64.77
+261112,Systems Analyst,transferable,3,Judgment and Decision Making,priority_score,64.65
+261112,Systems Analyst,transferable,4,Systems Analysis,priority_score,63.01
+261112,Systems Analyst,transferable,5,Coordination,priority_score,58.08
+261112,Systems Analyst,transferable,6,Instructing,priority_score,57.49
+261112,Systems Analyst,transferable,7,Programming,priority_score,56.69
+261112,Systems Analyst,transferable,8,Troubleshooting,priority_score,54.2
+261112,Systems Analyst,transferable,9,Time Management,priority_score,53.03
+261112,Systems Analyst,transferable,10,Social Perceptiveness,priority_score,52.36
+261211,Game and Multimedia Developer,transferable,1,Programming,priority_score,65.32
+261211,Game and Multimedia Developer,transferable,2,Complex Problem Solving,priority_score,60.52
+261211,Game and Multimedia Developer,transferable,3,Judgment and Decision Making,priority_score,58.68
+261211,Game and Multimedia Developer,transferable,4,Time Management,priority_score,54.8
+261211,Game and Multimedia Developer,transferable,5,Systems Evaluation,priority_score,54.0
+261211,Game and Multimedia Developer,transferable,6,Systems Analysis,priority_score,53.03
+261211,Game and Multimedia Developer,transferable,7,Coordination,priority_score,51.52
+261211,Game and Multimedia Developer,transferable,8,Social Perceptiveness,priority_score,47.31
+261211,Game and Multimedia Developer,transferable,9,Persuasion,priority_score,47.31
+261211,Game and Multimedia Developer,transferable,10,Instructing,priority_score,46.72
+261212,Web Developer,transferable,1,Programming,priority_score,69.45
+261212,Web Developer,transferable,2,Operations Analysis,priority_score,61.36
+261212,Web Developer,transferable,3,Complex Problem Solving,priority_score,58.68
+261212,Web Developer,transferable,4,Judgment and Decision Making,priority_score,55.47
+261212,Web Developer,transferable,5,Systems Analysis,priority_score,50.67
+261212,Web Developer,transferable,6,Systems Evaluation,priority_score,48.23
+261212,Web Developer,transferable,7,Time Management,priority_score,47.31
+261212,Web Developer,transferable,8,Coordination,priority_score,46.47
+261212,Web Developer,transferable,9,Persuasion,priority_score,45.8
+261212,Web Developer,transferable,10,Instructing,priority_score,45.08
+261312,Developer Programmer,transferable,1,Programming,priority_score,81.86
+261312,Developer Programmer,transferable,2,Complex Problem Solving,priority_score,62.16
+261312,Developer Programmer,transferable,3,Quality Control Analysis,priority_score,56.32
+261312,Developer Programmer,transferable,4,Operations Analysis,priority_score,53.28
+261312,Developer Programmer,transferable,5,Systems Analysis,priority_score,53.03
+261312,Developer Programmer,transferable,6,Systems Evaluation,priority_score,52.36
+261312,Developer Programmer,transferable,7,Judgment and Decision Making,priority_score,51.39
+261312,Developer Programmer,transferable,8,Time Management,priority_score,48.83
+261312,Developer Programmer,transferable,9,Social Perceptiveness,priority_score,47.98
+261312,Developer Programmer,transferable,10,Coordination,priority_score,45.62
+261313,Software Engineer,transferable,1,Programming,priority_score,67.02
+261313,Software Engineer,transferable,2,Judgment and Decision Making,priority_score,59.6
+261313,Software Engineer,transferable,3,Systems Evaluation,priority_score,59.18
+261313,Software Engineer,transferable,4,Systems Analysis,priority_score,59.0
+261313,Software Engineer,transferable,5,Technology Design,priority_score,55.65
+261313,Software Engineer,transferable,6,Complex Problem Solving,priority_score,54.8
+261313,Software Engineer,transferable,7,Operations Analysis,priority_score,50.47
+261313,Software Engineer,transferable,8,Time Management,priority_score,49.75
+261313,Software Engineer,transferable,9,Social Perceptiveness,priority_score,47.64
+261313,Software Engineer,transferable,10,Coordination,priority_score,47.31
+261314,Software Tester,transferable,1,Programming,priority_score,59.6
+261314,Software Tester,transferable,2,Quality Control Analysis,priority_score,55.65
+261314,Software Tester,transferable,3,Systems Evaluation,priority_score,53.16
+261314,Software Tester,transferable,4,Judgment and Decision Making,priority_score,52.36
+261314,Software Tester,transferable,5,Complex Problem Solving,priority_score,52.11
+261314,Software Tester,transferable,6,Operations Analysis,priority_score,50.67
+261314,Software Tester,transferable,7,Systems Analysis,priority_score,47.98
+261314,Software Tester,transferable,8,Coordination,priority_score,46.47
+261314,Software Tester,transferable,9,Time Management,priority_score,46.47
+261314,Software Tester,transferable,10,Troubleshooting,priority_score,44.95
+262111,Database Administrator,transferable,1,Complex Problem Solving,priority_score,65.5
+262111,Database Administrator,transferable,2,Judgment and Decision Making,priority_score,63.8
+262111,Database Administrator,transferable,3,Systems Analysis,priority_score,61.24
+262111,Database Administrator,transferable,4,Programming,priority_score,59.18
+262111,Database Administrator,transferable,5,Systems Evaluation,priority_score,55.05
+262111,Database Administrator,transferable,6,Instructing,priority_score,51.77
+262111,Database Administrator,transferable,7,Operations Analysis,priority_score,50.67
+262111,Database Administrator,transferable,8,Coordination,priority_score,47.31
+262111,Database Administrator,transferable,9,Social Perceptiveness,priority_score,46.47
+262111,Database Administrator,transferable,10,Service Orientation,priority_score,46.47
+262112,ICT Security Specialist,transferable,1,Programming,priority_score,65.5
+262112,ICT Security Specialist,transferable,2,Complex Problem Solving,priority_score,63.8
+262112,ICT Security Specialist,transferable,3,Systems Evaluation,priority_score,62.22
+262112,ICT Security Specialist,transferable,4,Judgment and Decision Making,priority_score,60.7
+262112,ICT Security Specialist,transferable,5,Systems Analysis,priority_score,58.08
+262112,ICT Security Specialist,transferable,6,Quality Control Analysis,priority_score,50.67
+262112,ICT Security Specialist,transferable,7,Time Management,priority_score,48.83
+262112,ICT Security Specialist,transferable,8,Operations Monitoring,priority_score,47.31
+262112,ICT Security Specialist,transferable,9,Coordination,priority_score,46.47
+262112,ICT Security Specialist,transferable,10,Instructing,priority_score,45.8
+263111,Computer Network and Systems Engineer,transferable,1,Complex Problem Solving,priority_score,65.5
+263111,Computer Network and Systems Engineer,transferable,2,Systems Evaluation,priority_score,63.8
+263111,Computer Network and Systems Engineer,transferable,3,Judgment and Decision Making,priority_score,63.01
+263111,Computer Network and Systems Engineer,transferable,4,Systems Analysis,priority_score,62.16
+263111,Computer Network and Systems Engineer,transferable,5,Programming,priority_score,61.96
+263111,Computer Network and Systems Engineer,transferable,6,Coordination,priority_score,57.16
+263111,Computer Network and Systems Engineer,transferable,7,Quality Control Analysis,priority_score,54.0
+263111,Computer Network and Systems Engineer,transferable,8,Instructing,priority_score,51.77
+263111,Computer Network and Systems Engineer,transferable,9,Technology Design,priority_score,50.67
+263111,Computer Network and Systems Engineer,transferable,10,Troubleshooting,priority_score,49.33
+263112,Network Administrator,transferable,1,Systems Evaluation,priority_score,68.85
+263112,Network Administrator,transferable,2,Troubleshooting,priority_score,67.02
+263112,Network Administrator,transferable,3,Judgment and Decision Making,priority_score,67.02
+263112,Network Administrator,transferable,4,Systems Analysis,priority_score,66.17
+263112,Network Administrator,transferable,5,Complex Problem Solving,priority_score,64.65
+263112,Network Administrator,transferable,6,Programming,priority_score,58.08
+263112,Network Administrator,transferable,7,Operations Monitoring,priority_score,58.08
+263112,Network Administrator,transferable,8,Quality Control Analysis,priority_score,56.57
+263112,Network Administrator,transferable,9,Equipment Maintenance,priority_score,52.36
+263112,Network Administrator,transferable,10,Time Management,priority_score,52.31
+263311,Telecommunications Engineer,transferable,1,Complex Problem Solving,priority_score,55.65
+263311,Telecommunications Engineer,transferable,2,Systems Analysis,priority_score,54.0
+263311,Telecommunications Engineer,transferable,3,Coordination,priority_score,52.31
+263311,Telecommunications Engineer,transferable,4,Judgment and Decision Making,priority_score,52.31
+263311,Telecommunications Engineer,transferable,5,Systems Evaluation,priority_score,51.52
+263311,Telecommunications Engineer,transferable,6,Time Management,priority_score,51.39
+263311,Telecommunications Engineer,transferable,7,Social Perceptiveness,priority_score,47.31
+263311,Telecommunications Engineer,transferable,8,Persuasion,priority_score,47.31
+263311,Telecommunications Engineer,transferable,9,Instructing,priority_score,47.31
+263311,Telecommunications Engineer,transferable,10,Quality Control Analysis,priority_score,47.31
+313112,ICT Customer Support Officer,transferable,1,Complex Problem Solving,priority_score,56.07
+313112,ICT Customer Support Officer,transferable,2,Judgment and Decision Making,priority_score,53.95
+313112,ICT Customer Support Officer,transferable,3,Instructing,priority_score,50.85
+313112,ICT Customer Support Officer,transferable,4,Systems Analysis,priority_score,50.67
+313112,ICT Customer Support Officer,transferable,5,Troubleshooting,priority_score,48.83
+313112,ICT Customer Support Officer,transferable,6,Service Orientation,priority_score,48.83
+313112,ICT Customer Support Officer,transferable,7,Systems Evaluation,priority_score,48.23
+313112,ICT Customer Support Officer,transferable,8,Operations Monitoring,priority_score,47.31
+313112,ICT Customer Support Officer,transferable,9,Time Management,priority_score,46.47
+313112,ICT Customer Support Officer,transferable,10,Social Perceptiveness,priority_score,46.22
+313113,Web Administrator,transferable,1,Complex Problem Solving,priority_score,62.16
+313113,Web Administrator,transferable,2,Judgment and Decision Making,priority_score,53.95
+313113,Web Administrator,transferable,3,Systems Evaluation,priority_score,53.95
+313113,Web Administrator,transferable,4,Systems Analysis,priority_score,52.31
+313113,Web Administrator,transferable,5,Instructing,priority_score,50.85
+313113,Web Administrator,transferable,6,Quality Control Analysis,priority_score,50.67
+313113,Web Administrator,transferable,7,Coordination,priority_score,48.23
+313113,Web Administrator,transferable,8,Time Management,priority_score,47.31
+313113,Web Administrator,transferable,9,Programming,priority_score,47.13
+313113,Web Administrator,transferable,10,Operations Analysis,priority_score,46.84

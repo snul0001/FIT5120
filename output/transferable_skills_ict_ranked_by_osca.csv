@@ -1,0 +1,476 @@
+soc_code,title,element_id,element_name,importance,level,importance_score,level_score,priority_score,osca_id,osca_occupation_title,osca_match_score
+15-2051.01,Business Intelligence Analysts,2.B.4.e,Judgment and Decision Making,3.62,4.0,65.5,57.14,61.36,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.2.i,Complex Problem Solving,3.38,3.75,59.5,53.57,56.57,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.4.g,Systems Analysis,3.12,3.75,53.0,53.57,53.28,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.4.h,Systems Evaluation,3.12,3.75,53.0,53.57,53.28,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.5.a,Time Management,3.12,3.0,53.0,42.86,47.98,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.1.b,Coordination,3.0,3.0,50.0,42.86,46.47,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.1.e,Instructing,3.0,3.0,50.0,42.86,46.47,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.1.c,Persuasion,2.88,3.0,47.0,42.86,44.95,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.1.a,Social Perceptiveness,2.88,2.88,47.0,41.14,44.1,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.1.f,Service Orientation,2.88,2.88,47.0,41.14,44.1,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.1.d,Negotiation,2.5,2.88,37.5,41.14,39.3,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.e,Programming,2.5,2.5,37.5,35.71,36.61,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.5.d,Management of Personnel Resources,2.12,2.0,28.0,28.57,28.28,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.5.b,Management of Financial Resources,1.88,1.75,22.0,25.0,23.48,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.m,Quality Control Analysis,2.0,1.5,25.0,21.43,23.23,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.a,Operations Analysis,1.88,1.62,22.0,23.14,22.56,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.5.c,Management of Material Resources,1.75,1.25,18.75,17.86,18.31,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.g,Operations Monitoring,1.75,1.12,18.75,16.0,17.39,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.b,Technology Design,1.62,0.88,15.5,12.57,14.05,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.h,Operation and Control,1.38,0.38,9.5,5.43,7.49,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.c,Equipment Selection,1.0,0.0,0.0,0.0,0.0,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.d,Installation,1.0,0.0,0.0,0.0,0.0,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.j,Equipment Maintenance,1.0,0.0,0.0,0.0,0.0,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.k,Troubleshooting,1.0,0.0,0.0,0.0,0.0,261111,ICT Business Analyst,93.5
+15-2051.01,Business Intelligence Analysts,2.B.3.l,Repairing,1.0,0.0,0.0,0.0,0.0,261111,ICT Business Analyst,93.5
+15-1211.01,Health Informatics Specialists,2.B.2.i,Complex Problem Solving,4.12,4.12,78.0,58.86,68.53,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.4.h,Systems Evaluation,3.75,4.25,68.75,60.71,64.77,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.4.e,Judgment and Decision Making,3.88,4.0,72.0,57.14,64.65,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.4.h,Systems Evaluation,3.75,4.12,68.75,58.86,63.86,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.4.g,Systems Analysis,3.75,4.0,68.75,57.14,63.01,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.4.g,Systems Analysis,3.75,4.0,68.75,57.14,63.01,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.4.e,Judgment and Decision Making,3.62,4.12,65.5,58.86,62.22,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.2.i,Complex Problem Solving,3.38,4.0,59.5,57.14,58.33,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.1.b,Coordination,3.5,3.75,62.5,53.57,58.08,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.1.e,Instructing,3.38,3.88,59.5,55.43,57.49,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.3.e,Programming,3.25,4.0,56.25,57.14,56.69,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.3.k,Troubleshooting,3.12,3.88,53.0,55.43,54.2,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.5.a,Time Management,3.38,3.25,59.5,46.43,53.03,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.1.a,Social Perceptiveness,3.12,3.62,53.0,51.71,52.36,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.3.a,Operations Analysis,3.0,3.75,50.0,53.57,51.77,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.1.f,Service Orientation,3.12,3.5,53.0,50.0,51.52,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.1.c,Persuasion,3.0,3.62,50.0,51.71,50.85,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.5.a,Time Management,3.12,3.38,53.0,48.29,50.67,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.3.m,Quality Control Analysis,3.0,3.5,50.0,50.0,50.0,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.1.b,Coordination,3.12,3.25,53.0,46.43,49.75,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.1.e,Instructing,2.88,3.62,47.0,51.71,49.33,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.1.a,Social Perceptiveness,3.12,3.12,53.0,44.57,48.83,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.5.d,Management of Personnel Resources,3.12,3.0,53.0,42.86,47.98,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.3.g,Operations Monitoring,3.0,3.12,50.0,44.57,47.31,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.1.f,Service Orientation,3.0,3.0,50.0,42.86,46.47,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.1.d,Negotiation,3.0,3.0,50.0,42.86,46.47,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.3.b,Technology Design,2.88,3.12,47.0,44.57,45.8,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.3.e,Programming,2.88,3.12,47.0,44.57,45.8,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.5.d,Management of Personnel Resources,2.88,3.0,47.0,42.86,44.95,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.1.c,Persuasion,2.75,3.0,43.75,42.86,43.31,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.3.m,Quality Control Analysis,2.75,3.0,43.75,42.86,43.31,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.3.a,Operations Analysis,2.75,2.88,43.75,41.14,42.46,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.3.b,Technology Design,2.75,2.88,43.75,41.14,42.46,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.3.g,Operations Monitoring,2.5,2.62,37.5,37.43,37.47,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.1.d,Negotiation,2.5,2.5,37.5,35.71,36.61,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.3.h,Operation and Control,2.5,2.5,37.5,35.71,36.61,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.3.c,Equipment Selection,2.25,2.38,31.25,34.0,32.61,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.3.k,Troubleshooting,2.12,2.12,28.0,30.29,29.13,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.5.b,Management of Financial Resources,2.12,2.12,28.0,30.29,29.13,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.5.b,Management of Financial Resources,2.12,2.0,28.0,28.57,28.28,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.5.c,Management of Material Resources,2.0,2.0,25.0,28.57,26.77,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.5.c,Management of Material Resources,2.0,1.75,25.0,25.0,25.0,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.3.c,Equipment Selection,1.75,1.5,18.75,21.43,20.08,261112,Systems Analyst,79.5
+15-1211.00,Computer Systems Analysts,2.B.3.l,Repairing,1.88,1.25,22.0,17.86,19.95,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.3.j,Equipment Maintenance,1.88,1.0,22.0,14.29,18.19,261112,Systems Analyst,97.0
+15-1211.00,Computer Systems Analysts,2.B.3.d,Installation,1.62,0.75,15.5,10.71,13.13,261112,Systems Analyst,97.0
+15-1211.01,Health Informatics Specialists,2.B.3.h,Operation and Control,1.62,0.75,15.5,10.71,13.13,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.3.d,Installation,1.38,0.5,9.5,7.14,8.33,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.3.j,Equipment Maintenance,1.0,0.0,0.0,0.0,0.0,261112,Systems Analyst,79.5
+15-1211.01,Health Informatics Specialists,2.B.3.l,Repairing,1.0,0.0,0.0,0.0,0.0,261112,Systems Analyst,79.5
+15-1255.01,Video Game Designers,2.B.3.e,Programming,4.0,3.88,75.0,55.43,65.32,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.2.i,Complex Problem Solving,3.62,3.88,65.5,55.43,60.52,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.4.e,Judgment and Decision Making,3.62,3.62,65.5,51.71,58.68,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.5.a,Time Management,3.38,3.5,59.5,50.0,54.8,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.4.h,Systems Evaluation,3.25,3.62,56.25,51.71,54.0,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.4.g,Systems Analysis,3.38,3.25,59.5,46.43,53.03,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.1.b,Coordination,3.12,3.5,53.0,50.0,51.52,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.1.a,Social Perceptiveness,3.0,3.12,50.0,44.57,47.31,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.1.c,Persuasion,3.0,3.12,50.0,44.57,47.31,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.1.e,Instructing,2.88,3.25,47.0,46.43,46.72,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.1.d,Negotiation,3.0,3.0,50.0,42.86,46.47,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.a,Operations Analysis,3.0,3.0,50.0,42.86,46.47,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.b,Technology Design,3.0,3.0,50.0,42.86,46.47,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.5.d,Management of Personnel Resources,2.75,3.0,43.75,42.86,43.31,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.1.f,Service Orientation,2.75,2.75,43.75,39.29,41.54,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.g,Operations Monitoring,2.25,2.5,31.25,35.71,33.46,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.m,Quality Control Analysis,2.0,1.88,25.0,26.86,25.92,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.5.c,Management of Material Resources,1.88,1.5,22.0,21.43,21.72,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.5.b,Management of Financial Resources,1.88,1.38,22.0,19.71,20.87,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.c,Equipment Selection,1.12,0.12,3.0,1.71,2.36,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.d,Installation,1.12,0.12,3.0,1.71,2.36,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.k,Troubleshooting,1.12,0.12,3.0,1.71,2.36,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.h,Operation and Control,1.0,0.0,0.0,0.0,0.0,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.j,Equipment Maintenance,1.0,0.0,0.0,0.0,0.0,261211,Game and Multimedia Developer,94.0
+15-1255.01,Video Game Designers,2.B.3.l,Repairing,1.0,0.0,0.0,0.0,0.0,261211,Game and Multimedia Developer,94.0
+15-1254.00,Web Developers,2.B.3.e,Programming,4.12,4.25,78.0,60.71,69.45,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.3.a,Operations Analysis,3.62,4.0,65.5,57.14,61.36,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.2.i,Complex Problem Solving,3.62,3.62,65.5,51.71,58.68,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.4.e,Judgment and Decision Making,3.5,3.38,62.5,48.29,55.47,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.2.i,Complex Problem Solving,3.38,3.5,59.5,50.0,54.8,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.4.e,Judgment and Decision Making,3.38,3.38,59.5,48.29,53.95,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.4.g,Systems Analysis,3.12,3.38,53.0,48.29,50.67,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.4.h,Systems Evaluation,3.0,3.25,50.0,46.43,48.23,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.4.h,Systems Evaluation,2.88,3.38,47.0,48.29,47.64,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.5.a,Time Management,3.0,3.12,50.0,44.57,47.31,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.e,Programming,3.25,2.62,56.25,37.43,46.94,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.1.b,Coordination,3.0,3.0,50.0,42.86,46.47,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.1.c,Persuasion,2.88,3.12,47.0,44.57,45.8,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.5.a,Time Management,3.0,2.88,50.0,41.14,45.62,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.1.e,Instructing,2.75,3.25,43.75,46.43,45.08,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.1.f,Service Orientation,2.88,3.0,47.0,42.86,44.95,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.a,Operations Analysis,3.0,2.75,50.0,39.29,44.7,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.4.g,Systems Analysis,2.75,3.12,43.75,44.57,44.16,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.1.f,Service Orientation,2.88,2.88,47.0,41.14,44.1,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.1.a,Social Perceptiveness,2.75,3.0,43.75,42.86,43.31,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.1.a,Social Perceptiveness,2.88,2.75,47.0,39.29,43.19,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.1.b,Coordination,2.88,2.75,47.0,39.29,43.19,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.1.d,Negotiation,2.75,2.75,43.75,39.29,41.54,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.3.m,Quality Control Analysis,2.75,2.75,43.75,39.29,41.54,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.1.c,Persuasion,2.75,2.62,43.75,37.43,40.62,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.1.e,Instructing,2.62,2.5,40.5,35.71,38.13,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.m,Quality Control Analysis,2.62,2.5,40.5,35.71,38.13,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.1.d,Negotiation,2.5,2.62,37.5,37.43,37.47,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.b,Technology Design,2.62,2.38,40.5,34.0,37.28,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.3.b,Technology Design,2.5,2.38,37.5,34.0,35.77,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.5.d,Management of Personnel Resources,2.38,2.25,34.5,32.14,33.33,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.g,Operations Monitoring,2.5,2.0,37.5,28.57,33.08,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.3.k,Troubleshooting,2.12,2.62,28.0,37.43,32.66,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.k,Troubleshooting,2.38,2.0,34.5,28.57,31.57,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.3.g,Operations Monitoring,2.25,2.12,31.25,30.29,30.78,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.5.d,Management of Personnel Resources,2.25,2.12,31.25,30.29,30.78,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.3.c,Equipment Selection,2.0,2.0,25.0,28.57,26.77,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.5.b,Management of Financial Resources,2.12,1.75,28.0,25.0,26.52,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.5.c,Management of Material Resources,2.12,1.75,28.0,25.0,26.52,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.5.c,Management of Material Resources,1.75,1.5,18.75,21.43,20.08,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.5.b,Management of Financial Resources,1.75,1.25,18.75,17.86,18.31,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.3.h,Operation and Control,1.62,0.62,15.5,8.86,12.22,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.c,Equipment Selection,1.25,1.0,6.25,14.29,10.23,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.l,Repairing,1.38,0.5,9.5,7.14,8.33,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.3.d,Installation,1.25,0.5,6.25,7.14,6.69,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.h,Operation and Control,1.25,0.38,6.25,5.43,5.84,261212,Web Developer,85.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.j,Equipment Maintenance,1.25,0.38,6.25,5.43,5.84,261212,Web Developer,85.0
+15-1254.00,Web Developers,2.B.3.j,Equipment Maintenance,1.0,0.0,0.0,0.0,0.0,261212,Web Developer,98.0
+15-1254.00,Web Developers,2.B.3.l,Repairing,1.0,0.0,0.0,0.0,0.0,261212,Web Developer,98.0
+15-1255.00,Web and Digital Interface Designers,2.B.3.d,Installation,1.0,0.0,0.0,0.0,0.0,261212,Web Developer,85.0
+15-1251.00,Computer Programmers,2.B.3.e,Programming,4.75,4.88,93.75,69.71,81.86,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.2.i,Complex Problem Solving,3.75,3.88,68.75,55.43,62.16,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.m,Quality Control Analysis,3.5,3.5,62.5,50.0,56.32,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.a,Operations Analysis,3.12,3.75,53.0,53.57,53.28,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.4.g,Systems Analysis,3.38,3.25,59.5,46.43,53.03,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.4.h,Systems Evaluation,3.12,3.62,53.0,51.71,52.36,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.4.e,Judgment and Decision Making,3.25,3.25,56.25,46.43,51.39,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.5.a,Time Management,3.12,3.12,53.0,44.57,48.83,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.1.a,Social Perceptiveness,3.12,3.0,53.0,42.86,47.98,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.1.b,Coordination,3.0,2.88,50.0,41.14,45.62,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.1.e,Instructing,2.5,3.12,37.5,44.57,41.0,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.1.c,Persuasion,2.62,2.75,40.5,39.29,39.9,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.5.d,Management of Personnel Resources,2.62,2.75,40.5,39.29,39.9,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.b,Technology Design,2.75,2.38,43.75,34.0,38.93,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.1.f,Service Orientation,2.25,2.88,31.25,41.14,36.14,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.g,Operations Monitoring,2.25,2.12,31.25,30.29,30.78,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.1.d,Negotiation,2.12,2.12,28.0,30.29,29.13,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.k,Troubleshooting,2.25,1.62,31.25,23.14,27.24,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.5.b,Management of Financial Resources,2.0,1.5,25.0,21.43,23.23,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.5.c,Management of Material Resources,2.0,1.25,25.0,17.86,21.47,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.d,Installation,1.25,0.38,6.25,5.43,5.84,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.h,Operation and Control,1.12,0.25,3.0,3.57,3.28,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.c,Equipment Selection,1.0,0.0,0.0,0.0,0.0,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.j,Equipment Maintenance,1.0,0.0,0.0,0.0,0.0,261312,Developer Programmer,94.5
+15-1251.00,Computer Programmers,2.B.3.l,Repairing,1.0,0.0,0.0,0.0,0.0,261312,Developer Programmer,94.5
+15-1252.00,Software Developers,2.B.3.e,Programming,4.0,4.12,75.0,58.86,67.02,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.4.e,Judgment and Decision Making,3.62,3.75,65.5,53.57,59.6,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.4.h,Systems Evaluation,3.38,4.12,59.5,58.86,59.18,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.4.g,Systems Analysis,3.5,3.88,62.5,55.43,59.0,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.b,Technology Design,3.38,3.62,59.5,51.71,55.65,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.2.i,Complex Problem Solving,3.38,3.5,59.5,50.0,54.8,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.a,Operations Analysis,3.25,3.12,56.25,44.57,50.47,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.5.a,Time Management,3.12,3.25,53.0,46.43,49.75,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.1.a,Social Perceptiveness,2.88,3.38,47.0,48.29,47.64,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.1.b,Coordination,3.0,3.12,50.0,44.57,47.31,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.1.e,Instructing,2.88,3.12,47.0,44.57,45.8,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.1.f,Service Orientation,2.88,3.0,47.0,42.86,44.95,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.1.c,Persuasion,2.75,3.12,43.75,44.57,44.16,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.m,Quality Control Analysis,2.75,2.75,43.75,39.29,41.54,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.1.d,Negotiation,2.62,2.88,40.5,41.14,40.82,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.g,Operations Monitoring,2.75,2.38,43.75,34.0,38.93,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.k,Troubleshooting,2.62,2.38,40.5,34.0,37.28,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.5.d,Management of Personnel Resources,2.25,2.62,31.25,37.43,34.31,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.c,Equipment Selection,2.12,1.75,28.0,25.0,26.52,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.h,Operation and Control,2.0,1.75,25.0,25.0,25.0,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.d,Installation,1.88,1.0,22.0,14.29,18.19,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.5.b,Management of Financial Resources,1.75,1.0,18.75,14.29,16.54,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.5.c,Management of Material Resources,1.62,1.0,15.5,14.29,14.9,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.j,Equipment Maintenance,1.25,0.25,6.25,3.57,4.92,261313,Software Engineer,96.0
+15-1252.00,Software Developers,2.B.3.l,Repairing,1.12,0.25,3.0,3.57,3.28,261313,Software Engineer,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.e,Programming,3.62,3.75,65.5,53.57,59.6,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.m,Quality Control Analysis,3.38,3.62,59.5,51.71,55.65,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.4.h,Systems Evaluation,3.25,3.5,56.25,50.0,53.16,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.4.e,Judgment and Decision Making,3.12,3.62,53.0,51.71,52.36,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.2.i,Complex Problem Solving,3.38,3.12,59.5,44.57,52.11,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.a,Operations Analysis,3.12,3.38,53.0,48.29,50.67,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.4.g,Systems Analysis,3.12,3.0,53.0,42.86,47.98,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.1.b,Coordination,3.0,3.0,50.0,42.86,46.47,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.5.a,Time Management,3.0,3.0,50.0,42.86,46.47,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.k,Troubleshooting,2.88,3.0,47.0,42.86,44.95,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.1.a,Social Perceptiveness,2.88,2.88,47.0,41.14,44.1,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.g,Operations Monitoring,3.0,2.62,50.0,37.43,43.78,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.1.e,Instructing,2.62,2.88,40.5,41.14,40.82,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.b,Technology Design,2.62,2.62,40.5,37.43,38.98,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.1.f,Service Orientation,2.5,2.75,37.5,39.29,38.39,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.1.c,Persuasion,2.5,2.62,37.5,37.43,37.47,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.1.d,Negotiation,2.12,2.12,28.0,30.29,29.13,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.5.d,Management of Personnel Resources,2.12,2.0,28.0,28.57,28.28,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.d,Installation,2.0,1.75,25.0,25.0,25.0,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.h,Operation and Control,1.88,1.38,22.0,19.71,20.87,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.c,Equipment Selection,1.75,1.12,18.75,16.0,17.39,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.5.b,Management of Financial Resources,1.5,0.62,12.5,8.86,10.7,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.5.c,Management of Material Resources,1.5,0.62,12.5,8.86,10.7,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.l,Repairing,1.12,0.12,3.0,1.71,2.36,261314,Software Tester,96.0
+15-1253.00,Software Quality Assurance Analysts and Testers,2.B.3.j,Equipment Maintenance,1.0,0.0,0.0,0.0,0.0,261314,Software Tester,96.0
+15-1242.00,Database Administrators,2.B.2.i,Complex Problem Solving,3.88,4.12,72.0,58.86,65.5,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.2.i,Complex Problem Solving,3.88,4.0,72.0,57.14,64.65,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.4.e,Judgment and Decision Making,3.88,3.88,72.0,55.43,63.8,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.4.e,Judgment and Decision Making,3.75,4.0,68.75,57.14,63.01,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.4.g,Systems Analysis,3.75,3.75,68.75,53.57,61.24,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.3.e,Programming,3.38,4.12,59.5,58.86,59.18,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.3.e,Programming,3.38,3.88,59.5,55.43,57.49,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.4.h,Systems Evaluation,3.12,4.0,53.0,57.14,55.05,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.4.h,Systems Evaluation,3.25,3.75,56.25,53.57,54.92,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.4.g,Systems Analysis,3.12,3.88,53.0,55.43,54.2,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.1.e,Instructing,3.0,3.75,50.0,53.57,51.77,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.3.a,Operations Analysis,3.12,3.38,53.0,48.29,50.67,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.3.a,Operations Analysis,3.12,3.25,53.0,46.43,49.75,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.1.e,Instructing,2.88,3.62,47.0,51.71,49.33,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.1.b,Coordination,3.0,3.12,50.0,44.57,47.31,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.1.b,Coordination,3.0,3.12,50.0,44.57,47.31,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.1.a,Social Perceptiveness,3.0,3.0,50.0,42.86,46.47,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.1.f,Service Orientation,3.0,3.0,50.0,42.86,46.47,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.3.b,Technology Design,3.0,3.0,50.0,42.86,46.47,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.5.a,Time Management,3.0,3.0,50.0,42.86,46.47,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.1.a,Social Perceptiveness,2.88,3.0,47.0,42.86,44.95,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.1.f,Service Orientation,2.88,3.0,47.0,42.86,44.95,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.1.c,Persuasion,2.88,3.0,47.0,42.86,44.95,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.5.a,Time Management,2.88,2.88,47.0,41.14,44.1,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.5.d,Management of Personnel Resources,2.75,3.0,43.75,42.86,43.31,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.3.g,Operations Monitoring,2.75,2.88,43.75,41.14,42.46,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.1.d,Negotiation,2.62,2.88,40.5,41.14,40.82,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.1.c,Persuasion,2.62,2.75,40.5,39.29,39.9,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.5.d,Management of Personnel Resources,2.5,2.75,37.5,39.29,38.39,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.3.k,Troubleshooting,2.5,2.5,37.5,35.71,36.61,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.3.m,Quality Control Analysis,2.5,2.5,37.5,35.71,36.61,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.3.b,Technology Design,2.38,2.38,34.5,34.0,34.25,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.3.g,Operations Monitoring,2.12,2.12,28.0,30.29,29.13,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.1.d,Negotiation,2.0,2.0,25.0,28.57,26.77,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.3.k,Troubleshooting,1.88,2.12,22.0,30.29,26.1,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.3.m,Quality Control Analysis,2.0,1.88,25.0,26.86,25.92,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.5.c,Management of Material Resources,1.88,1.62,22.0,23.14,22.56,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.5.b,Management of Financial Resources,2.0,1.25,25.0,17.86,21.47,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.5.c,Management of Material Resources,2.0,1.25,25.0,17.86,21.47,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.5.b,Management of Financial Resources,1.75,1.38,18.75,19.71,19.22,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.3.h,Operation and Control,1.75,1.38,18.75,19.71,19.22,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.3.c,Equipment Selection,1.62,0.75,15.5,10.71,13.13,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.3.d,Installation,1.62,0.75,15.5,10.71,13.13,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.3.c,Equipment Selection,1.5,0.88,12.5,12.57,12.53,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.3.h,Operation and Control,1.5,0.88,12.5,12.57,12.53,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.3.d,Installation,1.38,0.5,9.5,7.14,8.33,262111,Database Administrator,96.5
+15-1242.00,Database Administrators,2.B.3.l,Repairing,1.12,0.12,3.0,1.71,2.36,262111,Database Administrator,96.5
+15-1243.00,Database Architects,2.B.3.j,Equipment Maintenance,1.12,0.12,3.0,1.71,2.36,262111,Database Administrator,84.0
+15-1243.00,Database Architects,2.B.3.l,Repairing,1.12,0.12,3.0,1.71,2.36,262111,Database Administrator,84.0
+15-1242.00,Database Administrators,2.B.3.j,Equipment Maintenance,1.0,0.0,0.0,0.0,0.0,262111,Database Administrator,96.5
+15-1299.04,Penetration Testers,2.B.3.e,Programming,3.88,4.12,72.0,58.86,65.5,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.2.i,Complex Problem Solving,3.88,3.88,72.0,55.43,63.8,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.4.h,Systems Evaluation,3.62,4.12,65.5,58.86,62.22,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.4.e,Judgment and Decision Making,3.5,4.12,62.5,58.86,60.7,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.2.i,Complex Problem Solving,3.75,3.62,68.75,51.71,60.32,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.4.g,Systems Analysis,3.5,3.75,62.5,53.57,58.08,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.4.e,Judgment and Decision Making,3.38,3.62,59.5,51.71,55.65,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.4.g,Systems Analysis,3.38,3.38,59.5,48.29,53.95,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.3.m,Quality Control Analysis,3.12,3.38,53.0,48.29,50.67,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.4.h,Systems Evaluation,3.0,3.38,50.0,48.29,49.15,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.5.a,Time Management,3.12,3.12,53.0,44.57,48.83,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.3.g,Operations Monitoring,3.0,3.12,50.0,44.57,47.31,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.3.m,Quality Control Analysis,3.0,3.12,50.0,44.57,47.31,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.1.b,Coordination,3.0,3.0,50.0,42.86,46.47,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.5.a,Time Management,3.0,3.0,50.0,42.86,46.47,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.1.e,Instructing,2.88,3.12,47.0,44.57,45.8,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.1.b,Coordination,2.88,3.0,47.0,42.86,44.95,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.5.d,Management of Personnel Resources,2.88,2.88,47.0,41.14,44.1,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.1.a,Social Perceptiveness,2.75,3.0,43.75,42.86,43.31,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.1.c,Persuasion,2.75,3.0,43.75,42.86,43.31,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.1.f,Service Orientation,2.88,2.75,47.0,39.29,43.19,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.1.a,Social Perceptiveness,2.75,2.75,43.75,39.29,41.54,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.1.c,Persuasion,2.62,2.88,40.5,41.14,40.82,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.1.d,Negotiation,2.62,2.75,40.5,39.29,39.9,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.1.e,Instructing,2.62,2.62,40.5,37.43,38.98,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.1.f,Service Orientation,2.62,2.62,40.5,37.43,38.98,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.3.a,Operations Analysis,2.5,2.5,37.5,35.71,36.61,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.3.e,Programming,2.62,2.25,40.5,32.14,36.36,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.3.k,Troubleshooting,2.38,2.38,34.5,34.0,34.25,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.1.d,Negotiation,2.25,2.38,31.25,34.0,32.61,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.3.g,Operations Monitoring,2.38,2.12,34.5,30.29,32.42,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.3.b,Technology Design,2.12,2.12,28.0,30.29,29.13,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.3.k,Troubleshooting,2.12,1.88,28.0,26.86,27.44,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.5.d,Management of Personnel Resources,2.0,2.0,25.0,28.57,26.77,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.3.a,Operations Analysis,2.12,1.75,28.0,25.0,26.52,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.3.b,Technology Design,1.88,1.12,22.0,16.0,19.03,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.5.b,Management of Financial Resources,1.75,1.12,18.75,16.0,17.39,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.3.c,Equipment Selection,1.75,1.0,18.75,14.29,16.54,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.5.c,Management of Material Resources,1.75,1.0,18.75,14.29,16.54,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.3.j,Equipment Maintenance,1.75,1.0,18.75,14.29,16.54,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.3.h,Operation and Control,1.75,0.88,18.75,12.57,15.69,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.3.l,Repairing,1.62,1.0,15.5,14.29,14.9,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.3.j,Equipment Maintenance,1.62,0.88,15.5,12.57,14.05,262112,ICT Security Specialist,96.0
+15-1212.00,Information Security Analysts,2.B.3.l,Repairing,1.62,0.75,15.5,10.71,13.13,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.3.c,Equipment Selection,1.62,0.75,15.5,10.71,13.13,262112,ICT Security Specialist,87.5
+15-1212.00,Information Security Analysts,2.B.3.d,Installation,1.5,0.5,12.5,7.14,9.85,262112,ICT Security Specialist,96.0
+15-1299.04,Penetration Testers,2.B.5.b,Management of Financial Resources,1.38,0.5,9.5,7.14,8.33,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.3.h,Operation and Control,1.25,0.38,6.25,5.43,5.84,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.5.c,Management of Material Resources,1.25,0.25,6.25,3.57,4.92,262112,ICT Security Specialist,87.5
+15-1299.04,Penetration Testers,2.B.3.d,Installation,1.0,0.0,0.0,0.0,0.0,262112,ICT Security Specialist,87.5
+15-1241.00,Computer Network Architects,2.B.2.i,Complex Problem Solving,3.88,4.12,72.0,58.86,65.5,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.4.h,Systems Evaluation,3.88,3.88,72.0,55.43,63.8,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.4.e,Judgment and Decision Making,3.75,4.0,68.75,57.14,63.01,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.4.g,Systems Analysis,3.75,3.88,68.75,55.43,62.16,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.e,Programming,3.88,3.62,72.0,51.71,61.96,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.1.b,Coordination,3.5,3.62,62.5,51.71,57.16,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.m,Quality Control Analysis,3.25,3.62,56.25,51.71,54.0,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.1.e,Instructing,3.0,3.75,50.0,53.57,51.77,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.b,Technology Design,3.12,3.38,53.0,48.29,50.67,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.k,Troubleshooting,2.88,3.62,47.0,51.71,49.33,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.5.a,Time Management,3.12,3.12,53.0,44.57,48.83,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.1.c,Persuasion,3.0,3.25,50.0,46.43,48.23,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.1.d,Negotiation,3.0,3.12,50.0,44.57,47.31,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.1.f,Service Orientation,3.0,3.12,50.0,44.57,47.31,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.a,Operations Analysis,2.88,3.25,47.0,46.43,46.72,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.1.a,Social Perceptiveness,3.0,3.0,50.0,42.86,46.47,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.g,Operations Monitoring,3.0,3.0,50.0,42.86,46.47,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.5.d,Management of Personnel Resources,2.75,3.0,43.75,42.86,43.31,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.c,Equipment Selection,2.62,2.75,40.5,39.29,39.9,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.5.b,Management of Financial Resources,2.5,2.62,37.5,37.43,37.47,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.h,Operation and Control,2.62,2.38,40.5,34.0,37.28,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.5.c,Management of Material Resources,2.38,2.38,34.5,34.0,34.25,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.j,Equipment Maintenance,2.25,2.0,31.25,28.57,29.92,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.l,Repairing,2.12,1.88,28.0,26.86,27.44,263111,Computer Network and Systems Engineer,86.0
+15-1241.00,Computer Network Architects,2.B.3.d,Installation,1.75,1.5,18.75,21.43,20.08,263111,Computer Network and Systems Engineer,86.0
+15-1244.00,Network and Computer Systems Administrators,2.B.4.h,Systems Evaluation,4.0,4.38,75.0,62.57,68.85,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.k,Troubleshooting,4.0,4.12,75.0,58.86,67.02,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.4.e,Judgment and Decision Making,4.0,4.12,75.0,58.86,67.02,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.4.g,Systems Analysis,4.0,4.0,75.0,57.14,66.17,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.2.i,Complex Problem Solving,3.88,4.0,72.0,57.14,64.65,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.e,Programming,3.5,3.75,62.5,53.57,58.08,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.g,Operations Monitoring,3.5,3.75,62.5,53.57,58.08,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.m,Quality Control Analysis,3.38,3.75,59.5,53.57,56.57,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.j,Equipment Maintenance,3.12,3.62,53.0,51.71,52.36,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.5.a,Time Management,3.25,3.38,56.25,48.29,52.31,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.1.e,Instructing,3.0,3.75,50.0,53.57,51.77,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.a,Operations Analysis,3.0,3.62,50.0,51.71,50.85,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.h,Operation and Control,3.12,3.38,53.0,48.29,50.67,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.l,Repairing,3.12,3.12,53.0,44.57,48.83,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.c,Equipment Selection,2.88,3.38,47.0,48.29,47.64,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.1.b,Coordination,3.0,3.0,50.0,42.86,46.47,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.5.d,Management of Personnel Resources,2.88,3.0,47.0,42.86,44.95,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.1.a,Social Perceptiveness,2.88,2.88,47.0,41.14,44.1,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.b,Technology Design,2.75,3.0,43.75,42.86,43.31,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.1.f,Service Orientation,2.75,2.88,43.75,41.14,42.46,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.1.c,Persuasion,2.5,2.88,37.5,41.14,39.3,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.3.d,Installation,2.62,2.62,40.5,37.43,38.98,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.1.d,Negotiation,2.38,2.75,34.5,39.29,36.87,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.5.c,Management of Material Resources,2.25,2.25,31.25,32.14,31.69,263112,Network Administrator,95.0
+15-1244.00,Network and Computer Systems Administrators,2.B.5.b,Management of Financial Resources,1.75,1.38,18.75,19.71,19.22,263112,Network Administrator,95.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.2.i,Complex Problem Solving,3.38,3.62,59.5,51.71,55.65,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.4.g,Systems Analysis,3.25,3.62,56.25,51.71,54.0,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.1.b,Coordination,3.25,3.38,56.25,48.29,52.31,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.4.e,Judgment and Decision Making,3.25,3.38,56.25,48.29,52.31,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.4.h,Systems Evaluation,3.12,3.5,53.0,50.0,51.52,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.5.a,Time Management,3.25,3.25,56.25,46.43,51.39,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.1.a,Social Perceptiveness,3.0,3.12,50.0,44.57,47.31,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.1.c,Persuasion,3.0,3.12,50.0,44.57,47.31,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.1.e,Instructing,3.0,3.12,50.0,44.57,47.31,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.m,Quality Control Analysis,3.0,3.12,50.0,44.57,47.31,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.g,Operations Monitoring,3.0,3.0,50.0,42.86,46.47,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.1.f,Service Orientation,2.88,3.0,47.0,42.86,44.95,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.k,Troubleshooting,2.88,2.88,47.0,41.14,44.1,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.1.d,Negotiation,2.75,3.0,43.75,42.86,43.31,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.b,Technology Design,2.62,3.0,40.5,42.86,41.67,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.d,Installation,2.62,2.88,40.5,41.14,40.82,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.c,Equipment Selection,2.62,2.62,40.5,37.43,38.98,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.l,Repairing,2.62,2.62,40.5,37.43,38.98,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.a,Operations Analysis,2.5,2.75,37.5,39.29,38.39,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.5.d,Management of Personnel Resources,2.5,2.75,37.5,39.29,38.39,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.h,Operation and Control,2.62,2.5,40.5,35.71,38.13,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.5.c,Management of Material Resources,2.62,2.5,40.5,35.71,38.13,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.j,Equipment Maintenance,2.5,2.62,37.5,37.43,37.47,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.5.b,Management of Financial Resources,2.38,2.38,34.5,34.0,34.25,263311,Telecommunications Engineer,93.0
+15-1241.01,Telecommunications Engineering Specialists,2.B.3.e,Programming,2.12,2.0,28.0,28.57,28.28,263311,Telecommunications Engineer,93.0
+15-1232.00,Computer User Support Specialists,2.B.2.i,Complex Problem Solving,3.62,3.25,65.5,46.43,56.07,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.4.e,Judgment and Decision Making,3.38,3.38,59.5,48.29,53.95,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.2.i,Complex Problem Solving,3.25,3.25,56.25,46.43,51.39,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.1.e,Instructing,3.0,3.62,50.0,51.71,50.85,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.4.g,Systems Analysis,3.12,3.38,53.0,48.29,50.67,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.4.e,Judgment and Decision Making,3.25,3.0,56.25,42.86,49.63,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.3.k,Troubleshooting,3.12,3.12,53.0,44.57,48.83,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.1.f,Service Orientation,3.12,3.12,53.0,44.57,48.83,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.4.h,Systems Evaluation,3.0,3.25,50.0,46.43,48.23,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.3.g,Operations Monitoring,3.0,3.12,50.0,44.57,47.31,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.4.g,Systems Analysis,3.0,3.0,50.0,42.86,46.47,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.5.a,Time Management,3.0,3.0,50.0,42.86,46.47,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.1.a,Social Perceptiveness,3.12,2.75,53.0,39.29,46.22,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.3.m,Quality Control Analysis,2.88,3.12,47.0,44.57,45.8,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.3.g,Operations Monitoring,3.0,2.88,50.0,41.14,45.62,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.3.k,Troubleshooting,3.0,2.88,50.0,41.14,45.62,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.3.l,Repairing,2.88,3.0,47.0,42.86,44.95,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.3.m,Quality Control Analysis,2.88,3.0,47.0,42.86,44.95,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.4.h,Systems Evaluation,2.88,3.0,47.0,42.86,44.95,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.3.d,Installation,2.75,3.12,43.75,44.57,44.16,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.1.a,Social Perceptiveness,2.88,2.88,47.0,41.14,44.1,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.1.b,Coordination,2.88,2.88,47.0,41.14,44.1,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.3.h,Operation and Control,2.88,2.88,47.0,41.14,44.1,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.5.a,Time Management,3.0,2.62,50.0,37.43,43.78,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.1.e,Instructing,2.62,3.25,40.5,46.43,43.43,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.1.b,Coordination,2.75,2.75,43.75,39.29,41.54,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.3.j,Equipment Maintenance,2.62,2.75,40.5,39.29,39.9,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.1.f,Service Orientation,2.5,2.88,37.5,41.14,39.3,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.3.c,Equipment Selection,2.5,2.75,37.5,39.29,38.39,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.1.c,Persuasion,2.62,2.38,40.5,34.0,37.28,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.3.a,Operations Analysis,2.38,2.62,34.5,37.43,35.95,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.1.c,Persuasion,2.25,2.62,31.25,37.43,34.31,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.1.d,Negotiation,2.38,2.38,34.5,34.0,34.25,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.5.d,Management of Personnel Resources,2.38,2.38,34.5,34.0,34.25,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.5.d,Management of Personnel Resources,2.25,2.25,31.25,32.14,31.69,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.3.d,Installation,2.25,2.12,31.25,30.29,30.78,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.1.d,Negotiation,2.25,2.0,31.25,28.57,29.92,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.3.e,Programming,2.25,2.0,31.25,28.57,29.92,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.3.j,Equipment Maintenance,2.12,2.0,28.0,28.57,28.28,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.3.l,Repairing,2.12,2.0,28.0,28.57,28.28,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.3.e,Programming,2.25,1.75,31.25,25.0,28.16,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.3.h,Operation and Control,2.0,2.12,25.0,30.29,27.62,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.3.b,Technology Design,2.12,1.88,28.0,26.86,27.44,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.3.a,Operations Analysis,1.88,1.88,22.0,26.86,24.4,313112,ICT Customer Support Officer,83.5
+15-1231.00,Computer Network Support Specialists,2.B.5.c,Management of Material Resources,2.0,1.62,25.0,23.14,24.08,313112,ICT Customer Support Officer,83.5
+15-1232.00,Computer User Support Specialists,2.B.3.b,Technology Design,2.0,1.62,25.0,23.14,24.08,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.3.c,Equipment Selection,1.88,1.75,22.0,25.0,23.48,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.5.c,Management of Material Resources,1.88,1.0,22.0,14.29,18.19,313112,ICT Customer Support Officer,95.0
+15-1232.00,Computer User Support Specialists,2.B.5.b,Management of Financial Resources,1.62,0.62,15.5,8.86,12.22,313112,ICT Customer Support Officer,95.0
+15-1231.00,Computer Network Support Specialists,2.B.5.b,Management of Financial Resources,1.5,0.75,12.5,10.71,11.61,313112,ICT Customer Support Officer,83.5
+15-1299.01,Web Administrators,2.B.2.i,Complex Problem Solving,3.75,3.88,68.75,55.43,62.16,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.4.e,Judgment and Decision Making,3.38,3.38,59.5,48.29,53.95,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.4.h,Systems Evaluation,3.38,3.38,59.5,48.29,53.95,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.4.g,Systems Analysis,3.25,3.38,56.25,48.29,52.31,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.1.e,Instructing,3.0,3.62,50.0,51.71,50.85,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.m,Quality Control Analysis,3.12,3.38,53.0,48.29,50.67,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.1.b,Coordination,3.0,3.25,50.0,46.43,48.23,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.5.a,Time Management,3.0,3.12,50.0,44.57,47.31,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.e,Programming,3.12,2.88,53.0,41.14,47.13,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.a,Operations Analysis,2.75,3.5,43.75,50.0,46.84,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.1.a,Social Perceptiveness,2.88,3.0,47.0,42.86,44.95,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.1.f,Service Orientation,2.88,2.88,47.0,41.14,44.1,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.k,Troubleshooting,2.5,3.0,37.5,42.86,40.15,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.1.d,Negotiation,2.5,2.75,37.5,39.29,38.39,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.1.c,Persuasion,2.5,2.62,37.5,37.43,37.47,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.5.d,Management of Personnel Resources,2.62,2.12,40.5,30.29,35.45,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.b,Technology Design,2.38,2.25,34.5,32.14,33.33,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.g,Operations Monitoring,2.38,2.25,34.5,32.14,33.33,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.5.b,Management of Financial Resources,2.0,1.75,25.0,25.0,25.0,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.5.c,Management of Material Resources,1.88,1.38,22.0,19.71,20.87,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.c,Equipment Selection,1.75,1.38,18.75,19.71,19.22,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.h,Operation and Control,1.75,1.12,18.75,16.0,17.39,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.d,Installation,1.62,1.0,15.5,14.29,14.9,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.j,Equipment Maintenance,1.12,0.12,3.0,1.71,2.36,313113,Web Administrator,98.0
+15-1299.01,Web Administrators,2.B.3.l,Repairing,1.12,0.12,3.0,1.71,2.36,313113,Web Administrator,98.0

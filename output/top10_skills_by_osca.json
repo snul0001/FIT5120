@@ -1,0 +1,1822 @@
+[
+  {
+    "osca_id": "261111",
+    "osca_occupation_title": "ICT Business Analyst",
+    "software": [
+      {
+        "skill": "Amazon Web Services AWS software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Azure software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Excel",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Office software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Power BI",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft PowerPoint",
+        "rank": "1"
+      },
+      {
+        "skill": "Python",
+        "rank": "1"
+      },
+      {
+        "skill": "R",
+        "rank": "1"
+      },
+      {
+        "skill": "Salesforce software",
+        "rank": "1"
+      },
+      {
+        "skill": "SAP software",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "68.91"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "67.19"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "66.4"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "63.81"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "59.49"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "50.2"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "46.96"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "13.46"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "61.36"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "56.57"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "53.28"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "53.28"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "47.98"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Persuasion",
+        "priority_score": "44.95"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "44.1"
+      },
+      {
+        "skill": "Service Orientation",
+        "priority_score": "44.1"
+      }
+    ]
+  },
+  {
+    "osca_id": "261112",
+    "osca_occupation_title": "Systems Analyst",
+    "software": [
+      {
+        "skill": "Atlassian JIRA",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Excel",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Office software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Power BI",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft PowerPoint",
+        "rank": "1"
+      },
+      {
+        "skill": "Python",
+        "rank": "1"
+      },
+      {
+        "skill": "SAP software",
+        "rank": "1"
+      },
+      {
+        "skill": "ServiceNow",
+        "rank": "1"
+      },
+      {
+        "skill": "Structured query language SQL",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft SharePoint",
+        "rank": "3"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "78.2"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "68.37"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "68.13"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "68.13"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "67.39"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "67.39"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "63.81"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "61.94"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "49.27"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "29.38"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "68.53"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "64.77"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "64.65"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "63.01"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "58.08"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "57.49"
+      },
+      {
+        "skill": "Programming",
+        "priority_score": "56.69"
+      },
+      {
+        "skill": "Troubleshooting",
+        "priority_score": "54.2"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "53.03"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "52.36"
+      }
+    ]
+  },
+  {
+    "osca_id": "261211",
+    "osca_occupation_title": "Game and Multimedia Developer",
+    "software": [
+      {
+        "skill": "Adobe Photoshop",
+        "rank": "1"
+      },
+      {
+        "skill": "C#",
+        "rank": "1"
+      },
+      {
+        "skill": "C++",
+        "rank": "1"
+      },
+      {
+        "skill": "Python",
+        "rank": "1"
+      },
+      {
+        "skill": "Autodesk Maya",
+        "rank": "2"
+      },
+      {
+        "skill": "Unity Technologies Unity",
+        "rank": "2"
+      },
+      {
+        "skill": "Unreal Technology Unreal Engine",
+        "rank": "2"
+      },
+      {
+        "skill": "Adobe After Effects",
+        "rank": "3"
+      },
+      {
+        "skill": "Adobe Creative Cloud software",
+        "rank": "3"
+      },
+      {
+        "skill": "Adobe Illustrator",
+        "rank": "3"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Active Listening",
+        "priority_score": "64.94"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "63.81"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "57.91"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "55.9"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "54.03"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "52.45"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "45.97"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "45.24"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "8.5"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Programming",
+        "priority_score": "65.32"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "60.52"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "58.68"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "54.8"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "54.0"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "53.03"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "51.52"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Persuasion",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "46.72"
+      }
+    ]
+  },
+  {
+    "osca_id": "261212",
+    "osca_occupation_title": "Web Developer",
+    "software": [
+      {
+        "skill": "Atlassian JIRA",
+        "rank": "1"
+      },
+      {
+        "skill": "Cascading style sheets CSS",
+        "rank": "1"
+      },
+      {
+        "skill": "Google Angular",
+        "rank": "1"
+      },
+      {
+        "skill": "GraphQL",
+        "rank": "1"
+      },
+      {
+        "skill": "Hypertext markup language HTML",
+        "rank": "1"
+      },
+      {
+        "skill": "JavaScript",
+        "rank": "1"
+      },
+      {
+        "skill": "Jenkins CI",
+        "rank": "1"
+      },
+      {
+        "skill": "Kubernetes",
+        "rank": "1"
+      },
+      {
+        "skill": "React",
+        "rank": "1"
+      },
+      {
+        "skill": "TypeScript",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "62.29"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "57.91"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "57.18"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "52.07"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "51.72"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "50.99"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "45.97"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "42.64"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "28.04"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Programming",
+        "priority_score": "69.45"
+      },
+      {
+        "skill": "Operations Analysis",
+        "priority_score": "61.36"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "58.68"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "55.47"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "50.67"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "48.23"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Persuasion",
+        "priority_score": "45.8"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "45.08"
+      }
+    ]
+  },
+  {
+    "osca_id": "261312",
+    "osca_occupation_title": "Developer Programmer",
+    "software": [
+      {
+        "skill": "C#",
+        "rank": "1"
+      },
+      {
+        "skill": "C++",
+        "rank": "1"
+      },
+      {
+        "skill": "Cascading style sheets CSS",
+        "rank": "1"
+      },
+      {
+        "skill": "Extensible markup language XML",
+        "rank": "1"
+      },
+      {
+        "skill": "Git",
+        "rank": "1"
+      },
+      {
+        "skill": "Hypertext markup language HTML",
+        "rank": "1"
+      },
+      {
+        "skill": "JavaScript",
+        "rank": "1"
+      },
+      {
+        "skill": "Linux",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Azure software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Excel",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Active Listening",
+        "priority_score": "63.81"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "55.45"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "52.07"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "50.99"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "50.2"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "49.41"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "47.69"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "41.85"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "35.75"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Programming",
+        "priority_score": "81.86"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "62.16"
+      },
+      {
+        "skill": "Quality Control Analysis",
+        "priority_score": "56.32"
+      },
+      {
+        "skill": "Operations Analysis",
+        "priority_score": "53.28"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "53.03"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "52.36"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "51.39"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "48.83"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "47.98"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "45.62"
+      }
+    ]
+  },
+  {
+    "osca_id": "261313",
+    "osca_occupation_title": "Software Engineer",
+    "software": [
+      {
+        "skill": "Amazon Web Services AWS software",
+        "rank": "1"
+      },
+      {
+        "skill": "Apache Kafka",
+        "rank": "1"
+      },
+      {
+        "skill": "Atlassian JIRA",
+        "rank": "1"
+      },
+      {
+        "skill": "C",
+        "rank": "1"
+      },
+      {
+        "skill": "C#",
+        "rank": "1"
+      },
+      {
+        "skill": "C++",
+        "rank": "1"
+      },
+      {
+        "skill": "Cascading style sheets CSS",
+        "rank": "1"
+      },
+      {
+        "skill": "Docker",
+        "rank": "1"
+      },
+      {
+        "skill": "Git",
+        "rank": "1"
+      },
+      {
+        "skill": "GitHub",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "66.4"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "61.74"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "57.91"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "57.77"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "54.32"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "52.45"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "50.0"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "44.89"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "42.23"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "27.51"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Programming",
+        "priority_score": "67.02"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "59.6"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "59.18"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "59.0"
+      },
+      {
+        "skill": "Technology Design",
+        "priority_score": "55.65"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "54.8"
+      },
+      {
+        "skill": "Operations Analysis",
+        "priority_score": "50.47"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "49.75"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "47.64"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "47.31"
+      }
+    ]
+  },
+  {
+    "osca_id": "261314",
+    "osca_occupation_title": "Software Tester",
+    "software": [
+      {
+        "skill": "Amazon Web Services AWS software",
+        "rank": "1"
+      },
+      {
+        "skill": "Atlassian JIRA",
+        "rank": "1"
+      },
+      {
+        "skill": "C#",
+        "rank": "1"
+      },
+      {
+        "skill": "C++",
+        "rank": "1"
+      },
+      {
+        "skill": "Git",
+        "rank": "1"
+      },
+      {
+        "skill": "GitHub",
+        "rank": "1"
+      },
+      {
+        "skill": "JavaScript",
+        "rank": "1"
+      },
+      {
+        "skill": "Jenkins CI",
+        "rank": "1"
+      },
+      {
+        "skill": "Linux",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Azure software",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "68.13"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "64.94"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "60.42"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "49.41"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "45.24"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "44.1"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "41.85"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Programming",
+        "priority_score": "59.6"
+      },
+      {
+        "skill": "Quality Control Analysis",
+        "priority_score": "55.65"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "53.16"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "52.36"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "52.11"
+      },
+      {
+        "skill": "Operations Analysis",
+        "priority_score": "50.67"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "47.98"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Troubleshooting",
+        "priority_score": "44.95"
+      }
+    ]
+  },
+  {
+    "osca_id": "262111",
+    "osca_occupation_title": "Database Administrator",
+    "software": [
+      {
+        "skill": "Amazon Web Services AWS software",
+        "rank": "1"
+      },
+      {
+        "skill": "Apache Kafka",
+        "rank": "1"
+      },
+      {
+        "skill": "Apache Spark",
+        "rank": "1"
+      },
+      {
+        "skill": "IBM Terraform",
+        "rank": "1"
+      },
+      {
+        "skill": "Kubernetes",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Azure software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Power BI",
+        "rank": "1"
+      },
+      {
+        "skill": "Oracle Java",
+        "rank": "1"
+      },
+      {
+        "skill": "Python",
+        "rank": "1"
+      },
+      {
+        "skill": "Snowflake",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "66.4"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "60.95"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "59.49"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "55.9"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "55.9"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "50.0"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "48.48"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "25.0"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "65.5"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "63.8"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "61.24"
+      },
+      {
+        "skill": "Programming",
+        "priority_score": "59.18"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "55.05"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "51.77"
+      },
+      {
+        "skill": "Operations Analysis",
+        "priority_score": "50.67"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Service Orientation",
+        "priority_score": "46.47"
+      }
+    ]
+  },
+  {
+    "osca_id": "262112",
+    "osca_occupation_title": "ICT Security Specialist",
+    "software": [
+      {
+        "skill": "Amazon Web Services AWS software",
+        "rank": "1"
+      },
+      {
+        "skill": "Linux",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Azure software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft PowerPoint",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft PowerShell",
+        "rank": "1"
+      },
+      {
+        "skill": "Python",
+        "rank": "1"
+      },
+      {
+        "skill": "Splunk Enterprise",
+        "rank": "1"
+      },
+      {
+        "skill": "UNIX",
+        "rank": "1"
+      },
+      {
+        "skill": "eMASS",
+        "rank": "2"
+      },
+      {
+        "skill": "Firewall software",
+        "rank": "2"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "75.16"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "70.44"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "68.13"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "62.67"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "60.42"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "59.49"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "47.55"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "38.26"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "22.49"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Programming",
+        "priority_score": "65.5"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "63.8"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "62.22"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "60.7"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "58.08"
+      },
+      {
+        "skill": "Quality Control Analysis",
+        "priority_score": "50.67"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "48.83"
+      },
+      {
+        "skill": "Operations Monitoring",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "45.8"
+      }
+    ]
+  },
+  {
+    "osca_id": "263111",
+    "osca_occupation_title": "Computer Network and Systems Engineer",
+    "software": [
+      {
+        "skill": "Amazon Web Services AWS software",
+        "rank": "1"
+      },
+      {
+        "skill": "Ansible software",
+        "rank": "1"
+      },
+      {
+        "skill": "Border Gateway Protocol BGP",
+        "rank": "1"
+      },
+      {
+        "skill": "IBM Terraform",
+        "rank": "1"
+      },
+      {
+        "skill": "Linux",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Azure software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Excel",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Office software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft PowerShell",
+        "rank": "1"
+      },
+      {
+        "skill": "Oracle Java",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "69.85"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "68.13"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "60.42"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "59.49"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "55.9"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "50.99"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "50.0"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "47.69"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "27.51"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "65.5"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "63.8"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "63.01"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "62.16"
+      },
+      {
+        "skill": "Programming",
+        "priority_score": "61.96"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "57.16"
+      },
+      {
+        "skill": "Quality Control Analysis",
+        "priority_score": "54.0"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "51.77"
+      },
+      {
+        "skill": "Technology Design",
+        "priority_score": "50.67"
+      },
+      {
+        "skill": "Troubleshooting",
+        "priority_score": "49.33"
+      }
+    ]
+  },
+  {
+    "osca_id": "263112",
+    "osca_occupation_title": "Network Administrator",
+    "software": [
+      {
+        "skill": "Amazon Web Services AWS software",
+        "rank": "1"
+      },
+      {
+        "skill": "Ansible software",
+        "rank": "1"
+      },
+      {
+        "skill": "Bash",
+        "rank": "1"
+      },
+      {
+        "skill": "Linux",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Active Directory",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Azure software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Excel",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Office software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Outlook",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft PowerShell",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Active Listening",
+        "priority_score": "67.39"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "54.32"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "54.03"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "50.0"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "50.0"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "41.85"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "28.24"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "68.85"
+      },
+      {
+        "skill": "Troubleshooting",
+        "priority_score": "67.02"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "67.02"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "66.17"
+      },
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "64.65"
+      },
+      {
+        "skill": "Programming",
+        "priority_score": "58.08"
+      },
+      {
+        "skill": "Operations Monitoring",
+        "priority_score": "58.08"
+      },
+      {
+        "skill": "Quality Control Analysis",
+        "priority_score": "56.57"
+      },
+      {
+        "skill": "Equipment Maintenance",
+        "priority_score": "52.36"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "52.31"
+      }
+    ]
+  },
+  {
+    "osca_id": "263311",
+    "osca_occupation_title": "Telecommunications Engineer",
+    "software": [
+      {
+        "skill": "Autodesk AutoCAD",
+        "rank": "1"
+      },
+      {
+        "skill": "Autodesk Revit",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Excel",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Office software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Outlook",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft PowerPoint",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Visio",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Word",
+        "rank": "1"
+      },
+      {
+        "skill": "Autodesk Navisworks",
+        "rank": "2"
+      },
+      {
+        "skill": "Firewall software",
+        "rank": "2"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "65.67"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "64.94"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "61.21"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "56.97"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "55.9"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "55.9"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "53.59"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "46.23"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "45.24"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "15.71"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "55.65"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "54.0"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "52.31"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "52.31"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "51.52"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "51.39"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Persuasion",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Quality Control Analysis",
+        "priority_score": "47.31"
+      }
+    ]
+  },
+  {
+    "osca_id": "313112",
+    "osca_occupation_title": "ICT Customer Support Officer",
+    "software": [
+      {
+        "skill": "Apple macOS",
+        "rank": "1"
+      },
+      {
+        "skill": "Linux",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Active Directory",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Excel",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Office software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Outlook",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Windows",
+        "rank": "1"
+      },
+      {
+        "skill": "ServiceNow",
+        "rank": "1"
+      },
+      {
+        "skill": "Apple iOS",
+        "rank": "1"
+      },
+      {
+        "skill": "Firewall software",
+        "rank": "2"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "67.39"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "67.39"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "67.39"
+      },
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "54.86"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "54.32"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "52.86"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "49.41"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "32.02"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "21.76"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "56.07"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "53.95"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "50.85"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "50.67"
+      },
+      {
+        "skill": "Troubleshooting",
+        "priority_score": "48.83"
+      },
+      {
+        "skill": "Service Orientation",
+        "priority_score": "48.83"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "48.23"
+      },
+      {
+        "skill": "Operations Monitoring",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "46.47"
+      },
+      {
+        "skill": "Social Perceptiveness",
+        "priority_score": "46.22"
+      }
+    ]
+  },
+  {
+    "osca_id": "313113",
+    "osca_occupation_title": "Web Administrator",
+    "software": [
+      {
+        "skill": "Adobe Photoshop",
+        "rank": "1"
+      },
+      {
+        "skill": "Cascading style sheets CSS",
+        "rank": "1"
+      },
+      {
+        "skill": "Google Analytics",
+        "rank": "1"
+      },
+      {
+        "skill": "Hypertext markup language HTML",
+        "rank": "1"
+      },
+      {
+        "skill": "JavaScript",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Access",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Active Directory",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft Office software",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft SharePoint",
+        "rank": "1"
+      },
+      {
+        "skill": "Microsoft SQL Server",
+        "rank": "1"
+      }
+    ],
+    "essential": [
+      {
+        "skill": "Critical Thinking",
+        "priority_score": "68.13"
+      },
+      {
+        "skill": "Reading Comprehension",
+        "priority_score": "66.4"
+      },
+      {
+        "skill": "Active Listening",
+        "priority_score": "63.08"
+      },
+      {
+        "skill": "Monitoring",
+        "priority_score": "55.45"
+      },
+      {
+        "skill": "Speaking",
+        "priority_score": "53.59"
+      },
+      {
+        "skill": "Active Learning",
+        "priority_score": "53.24"
+      },
+      {
+        "skill": "Writing",
+        "priority_score": "52.86"
+      },
+      {
+        "skill": "Learning Strategies",
+        "priority_score": "46.96"
+      },
+      {
+        "skill": "Science",
+        "priority_score": "30.56"
+      },
+      {
+        "skill": "Mathematics",
+        "priority_score": "28.98"
+      }
+    ],
+    "transferable": [
+      {
+        "skill": "Complex Problem Solving",
+        "priority_score": "62.16"
+      },
+      {
+        "skill": "Judgment and Decision Making",
+        "priority_score": "53.95"
+      },
+      {
+        "skill": "Systems Evaluation",
+        "priority_score": "53.95"
+      },
+      {
+        "skill": "Systems Analysis",
+        "priority_score": "52.31"
+      },
+      {
+        "skill": "Instructing",
+        "priority_score": "50.85"
+      },
+      {
+        "skill": "Quality Control Analysis",
+        "priority_score": "50.67"
+      },
+      {
+        "skill": "Coordination",
+        "priority_score": "48.23"
+      },
+      {
+        "skill": "Time Management",
+        "priority_score": "47.31"
+      },
+      {
+        "skill": "Programming",
+        "priority_score": "47.13"
+      },
+      {
+        "skill": "Operations Analysis",
+        "priority_score": "46.84"
+      }
+    ]
+  }
+]
