@@ -1,0 +1,23 @@
+Interest Code,Job Zone,Code,Occupation,Featured,osca_id,osca_occupation_title,osca_match_score,riasec_category
+AI,4,15-1255.01,Video Game Designers,Y,261211,Game and Multimedia Developer,94.0,artistic
+IAC,4,15-1255.00,Web and Digital Interface Designers,Y,261212,Web Developer,85.0,artistic
+CRI,3,15-1232.00,Computer User Support Specialists,,313112,ICT Customer Support Officer,95.0,conventional
+CRI,3,15-1244.00,Network and Computer Systems Administrators,,263112,Network Administrator,95.0,conventional
+CRI,3,15-1241.01,Telecommunications Engineering Specialists,Y,263311,Telecommunications Engineer,93.0,conventional
+CI,3,15-1254.00,Web Developers,Y,261212,Web Developer,98.0,conventional
+CIE,4,15-2051.01,Business Intelligence Analysts,Y,261111,ICT Business Analyst,93.5,conventional
+CIR,4,15-1231.00,Computer Network Support Specialists,,313112,ICT Customer Support Officer,83.5,conventional
+CI,4,15-1251.00,Computer Programmers,,261312,Developer Programmer,94.5,conventional
+CI,4,15-1242.00,Database Administrators,,262111,Database Administrator,96.5,conventional
+CI,4,15-1243.00,Database Architects,Y,262111,Database Administrator,84.0,conventional
+CI,4,15-1212.00,Information Security Analysts,Y,262112,ICT Security Specialist,96.0,conventional
+CIE,4,15-1299.01,Web Administrators,Y,313113,Web Administrator,98.0,conventional
+ICS,5,15-1211.01,Health Informatics Specialists,Y,261112,Systems Analyst,79.5,conventional
+CI,3,15-1254.00,Web Developers,Y,261212,Web Developer,98.0,investigative
+ICR,4,15-1241.00,Computer Network Architects,Y,263111,Computer Network and Systems Engineer,86.0,investigative
+IC,4,15-1211.00,Computer Systems Analysts,Y,261112,Systems Analyst,97.0,investigative
+ICR,4,15-1299.04,Penetration Testers,Y,262112,ICT Security Specialist,87.5,investigative
+IC,4,15-1252.00,Software Developers,Y,261313,Software Engineer,96.0,investigative
+ICR,4,15-1253.00,Software Quality Assurance Analysts and Testers,Y,261314,Software Tester,96.0,investigative
+IAC,4,15-1255.00,Web and Digital Interface Designers,Y,261212,Web Developer,85.0,investigative
+ICS,5,15-1211.01,Health Informatics Specialists,Y,261112,Systems Analyst,79.5,investigative
