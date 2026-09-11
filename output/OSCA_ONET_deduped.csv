@@ -1,0 +1,20 @@
+OSCA_ID,Occupation Title,O*NET_ID,O*NET_Occupation title,Match_score
+261112,Systems Analyst,15-1211.00,Computer Systems Analysts,97.0
+261112,Systems Analyst,15-1211.01,Health Informatics Specialists,79.5
+262112,ICT Security Specialist,15-1212.00,Information Security Analysts,96.0
+313112,ICT Customer Support Officer,15-1231.00,Computer Network Support Specialists,83.5
+313112,ICT Customer Support Officer,15-1232.00,Computer User Support Specialists,95.0
+263111,Computer Network and Systems Engineer,15-1241.00,Computer Network Architects,86.0
+263311,Telecommunications Engineer,15-1241.01,Telecommunications Engineering Specialists,93.0
+262111,Database Administrator,15-1242.00,Database Administrators,96.5
+262111,Database Administrator,15-1243.00,Database Architects,84.0
+263112,Network Administrator,15-1244.00,Network and Computer Systems Administrators,95.0
+261312,Developer Programmer,15-1251.00,Computer Programmers,94.5
+261313,Software Engineer,15-1252.00,Software Developers,96.0
+261314,Software Tester,15-1253.00,Software Quality Assurance Analysts and Testers,96.0
+261212,Web Developer,15-1254.00,Web Developers,98.0
+261212,Web Developer,15-1255.00,Web and Digital Interface Designers,85.0
+261211,Game and Multimedia Developer,15-1255.01,Video Game Designers,94.0
+313113,Web Administrator,15-1299.01,Web Administrators,98.0
+262112,ICT Security Specialist,15-1299.04,Penetration Testers,87.5
+261111,ICT Business Analyst,15-2051.01,Business Intelligence Analysts,93.5
