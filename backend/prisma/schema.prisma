@@ -204,6 +204,49 @@ model year_level {
   profile       profile[]
 }
 
+model occupation_skill_requirement {
+  id               Int     @id @default(autoincrement())
+  occupation_id    String  @db.VarChar(10)
+  skill_id         String  @db.VarChar(100)
+  skill_name       String  @db.VarChar(200)
+  importance_score Decimal @db.Decimal(6, 4)
+  category         String  @db.VarChar(20)
+
+  @@unique([occupation_id, skill_id])
+}
+
+model regional_employment_demand {
+  id                        Int     @id @default(autoincrement())
+  month                     String  @db.VarChar(7)
+  state_name                String  @db.VarChar(50)
+  region_code               String  @db.VarChar(20)
+  region_name               String  @db.VarChar(100)
+  region_level              String  @db.VarChar(20)
+  anzsco2_code              Int
+  anzsco2_name              String  @db.VarChar(100)
+  vacancy_3m_moving_average Decimal @db.Decimal(10, 2)
+}
+
+model regional_employment_opportunity {
+  id               Int    @id @default(autoincrement())
+  month            String @db.VarChar(7)
+  state_name       String @db.VarChar(50)
+  sa4_code         Int
+  sa4_name         String @db.VarChar(100)
+  anzsco4_code     Int
+  anzsco4_name     String @db.VarChar(100)
+  anzsco2_code     Int
+  anzsco2_name     String @db.VarChar(100)
+  employment_value Int
+}
+
+model regional_ict_occupation_mapping {
+  anzsco4_code Int    @id
+  anzsco4_name String @db.VarChar(100)
+  anzsco2_code Int
+  anzsco2_name String @db.VarChar(100)
+}
+
 enum age_bracket_enum {
   age_18_20
   age_21_23

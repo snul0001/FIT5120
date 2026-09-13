@@ -4,6 +4,8 @@ import { config } from "dotenv"
 import { connectDB, disconnectDB } from "./config/db.js"
 import profileRoutes from "./routes/profileRoutes.js"
 import occupationRoutes from "./routes/occupationRoutes.js"
+import skillRoutes from "./routes/skillRoutes.js"
+import regionalRoutes from "./routes/regionalRoutes.js"
 
 config()
 
@@ -12,14 +14,18 @@ const app = express()
 app.use(cors({
   origin: process.env.FRONTEND_URL || "http://localhost:5173"
 }))
+app.use(express.json())
 
-app.use(express.json({ limit: '10kb' }))
 app.use(express.urlencoded({ extended: true }))
+
 
 app.get("/", (req, res) => res.json({ message: "FutureReady API is running 🚀" }))
 app.get("/health", (req, res) => res.json({ status: "ok" }))
 app.use("/api/profile", profileRoutes)
 app.use("/api/occupations", occupationRoutes)
+
+app.use("/api/skills", skillRoutes)
+app.use("/api/regional", regionalRoutes)
 
 const startServer = async () => {
   try {
