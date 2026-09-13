@@ -3,10 +3,9 @@ import { prisma } from "../config/db.js"
 
 const router = express.Router()
 
-// Get employment opportunity for a specific occupation group optionally filtered by state
 router.get("/opportunity", async (req, res) => {
   try {
-    const { anzsco4, state } = req.query
+    const { anzsco4, state, limit = 50 } = req.query
 
     if (!anzsco4) {
       return res.status(400).json({ error: "anzsco4 code is required" })
@@ -17,7 +16,8 @@ router.get("/opportunity", async (req, res) => {
 
     const data = await prisma.regional_employment_opportunity.findMany({
       where,
-      orderBy: { month: "asc" }
+      orderBy: { month: "desc" },
+      take: parseInt(limit)
     })
 
     if (!data.length) {
