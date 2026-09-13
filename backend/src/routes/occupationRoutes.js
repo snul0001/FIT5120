@@ -100,7 +100,6 @@ router.get("/:id/ai", async (req, res) => {
       })
     }
 
-    // Merge duplicate tasks
     const mergedMap = {}
     for (const t of tasks) {
       const key = t.task_text.toLowerCase().trim()
@@ -134,7 +133,6 @@ router.get("/:id/ai", async (req, res) => {
         : "AI may automate parts of this task"
     }))
 
-    // Calculate averages excluding nulls
     const autoScores = cleanedTasks.map(t => t.automation_score).filter(v => v != null)
     const augScores = cleanedTasks.map(t => t.augmentation_score).filter(v => v != null)
 
@@ -142,8 +140,8 @@ router.get("/:id/ai", async (req, res) => {
     const avg_augmentation = augScores.length ? augScores.reduce((a, b) => a + b, 0) / augScores.length : null
 
     const resilience_score = avg_augmentation != null && avg_automation != null
-      ? Math.round(((avg_augmentation - avg_automation + 1) / 2) * 100)
-      : null
+    ? Math.round((0.4 * (1 - avg_automation) + 0.6 * avg_augmentation) * 100)
+    : null
 
     const demand_label = getDemandLabel(unitGroups[0])
 
@@ -167,7 +165,7 @@ router.get("/:id/ai", async (req, res) => {
 
 router.post("/match", async (req, res) => {
   try {
-    const { interest_ids } = req.body
+    const { interest_ids, skill_ids, region } = req.body
 
     if (
       !Array.isArray(interest_ids) ||
@@ -178,13 +176,14 @@ router.post("/match", async (req, res) => {
     }
 
     const uniqueInterestIds = [...new Set(interest_ids)]
+    const hasSkills = Array.isArray(skill_ids) && skill_ids.length > 0
+    const hasRegion = !!region
 
+    // Step 1 — Interest matching (always runs)
     const matches = await prisma.occupation_interest.findMany({
       where: { interest_id: { in: uniqueInterestIds } },
       include: {
-        occupation: {
-          include: { industry_sector: true }
-        }
+        occupation: { include: { industry_sector: true } }
       }
     })
 
@@ -192,25 +191,115 @@ router.post("/match", async (req, res) => {
     for (const match of matches) {
       if (!match.occupation) continue
       const id = match.occupation_id
-      if (!scoreMap[id]) scoreMap[id] = { occupation: match.occupation, score: 0 }
-      scoreMap[id].score += 1
+      if (!scoreMap[id]) scoreMap[id] = {
+        occupation: match.occupation,
+        interest_score: 0,
+        skill_score: 0,
+        regional_score: 0
+      }
+      scoreMap[id].interest_score += 1
+    }
+
+    // Step 2 — Skill overlap scoring (optional)
+    if (hasSkills) {
+      const selectedLower = skill_ids.map(s => s.toLowerCase().trim())
+      for (const occupationId of Object.keys(scoreMap)) {
+        const requirements = await prisma.occupation_skill_requirement.findMany({
+          where: { occupation_id: occupationId }
+        })
+        if (requirements.length > 0) {
+          const matchedSkills = requirements.filter(r =>
+            selectedLower.some(s =>
+              s === r.skill_id || s === r.skill_name.toLowerCase().trim()
+            )
+          )
+          scoreMap[occupationId].skill_score = matchedSkills.length / requirements.length
+        }
+      }
+    }
+
+    // Step 3 — Regional demand scoring (optional)
+    if (hasRegion) {
+      const regionalData = await prisma.regional_employment_demand.findMany({
+        where: { state_name: region },
+        orderBy: { month: "desc" },
+        take: 100
+      })
+
+      const latestByGroup = {}
+      for (const row of regionalData) {
+        if (!latestByGroup[row.anzsco2_code]) {
+          latestByGroup[row.anzsco2_code] = Number(row.vacancy_3m_moving_average)
+        }
+      }
+
+      const occupationMappings = await prisma.regional_ict_occupation_mapping.findMany()
+      const anzsco4ToAnzsco2 = {}
+      for (const m of occupationMappings) {
+        anzsco4ToAnzsco2[m.anzsco4_code] = m.anzsco2_code
+      }
+
+      const maxVacancy = Math.max(...Object.values(latestByGroup), 1)
+
+      for (const occupationId of Object.keys(scoreMap)) {
+        const anzscoMatches = await prisma.occupation_anzsco_match.findMany({
+          where: { occupation_id: occupationId }
+        })
+        const unitGroups = [...new Set(anzscoMatches.map(m => m.anzsco_unit_group))]
+        for (const group of unitGroups) {
+          const anzsco4 = parseInt(group)
+          const anzsco2 = anzsco4ToAnzsco2[anzsco4]
+          if (anzsco2 && latestByGroup[anzsco2] !== undefined) {
+            scoreMap[occupationId].regional_score = latestByGroup[anzsco2] / maxVacancy
+            break
+          }
+        }
+      }
+    }
+
+    // Step 4 — Weighted final score
+    let interestWeight, skillWeight, regionalWeight
+
+    if (hasSkills && hasRegion) {
+      interestWeight = 0.5
+      skillWeight = 0.3
+      regionalWeight = 0.2
+    } else if (hasSkills) {
+      interestWeight = 0.7
+      skillWeight = 0.3
+      regionalWeight = 0
+    } else if (hasRegion) {
+      interestWeight = 0.7
+      skillWeight = 0
+      regionalWeight = 0.3
+    } else {
+      interestWeight = 1.0
+      skillWeight = 0
+      regionalWeight = 0
     }
 
     const ranked = Object.values(scoreMap)
-      .sort((a, b) => b.score - a.score)
-      .map((item, index) => {
-        const match_score = Math.round((item.score / uniqueInterestIds.length) * 100)
+      .map(item => {
+        const interest_pct = item.interest_score / uniqueInterestIds.length
+        const final_score = Math.round(
+          ((interest_pct * interestWeight) +
+          (item.skill_score * skillWeight) +
+          (item.regional_score * regionalWeight)) * 100
+        )
         return {
-          rank: index + 1,
           occupation_id: item.occupation.occupation_id,
           title: item.occupation.title,
           sector: item.occupation.industry_sector?.label || "ICT",
-          match_score,
-          match_label: getMatchLabel(match_score),
-          interests_matched: item.score,
-          total_interests: uniqueInterestIds.length
+          match_score: final_score,
+          match_label: getMatchLabel(final_score),
+          interests_matched: item.interest_score,
+          total_interests: uniqueInterestIds.length,
+          skill_match_pct: hasSkills ? Math.round(item.skill_score * 100) : null,
+          regional_demand_score: hasRegion ? Math.round(item.regional_score * 100) : null
         }
       })
+      .sort((a, b) => b.match_score - a.match_score)
+      .map((item, index) => ({ rank: index + 1, ...item }))
 
     res.json(ranked)
   } catch (error) {
