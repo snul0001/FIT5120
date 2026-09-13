@@ -301,7 +301,7 @@ router.post("/match", async (req, res) => {
       .sort((a, b) => b.match_score - a.match_score)
       .map((item, index) => ({ rank: index + 1, ...item }))
 
-    res.json(ranked)
+    res.json(ranked.slice(0, 10))
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: "Something went wrong. Please try again." })
