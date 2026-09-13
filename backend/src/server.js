@@ -17,13 +17,15 @@ app.use(cors({
 app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }))
-app.use("/api/skills", skillRoutes)
-app.use("/api/regional", regionalRoutes)
+
 
 app.get("/", (req, res) => res.json({ message: "FutureReady API is running 🚀" }))
 app.get("/health", (req, res) => res.json({ status: "ok" }))
 app.use("/api/profile", profileRoutes)
 app.use("/api/occupations", occupationRoutes)
+
+app.use("/api/skills", skillRoutes)
+app.use("/api/regional", regionalRoutes)
 
 const startServer = async () => {
   try {
