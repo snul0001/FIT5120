@@ -1,70 +1,135 @@
-const BASE_URL = 'https://iresi.duckdns.org/api';
+const BASE_URL = '/api';
 
-async function handleResponse(res) {
-  if (!res.ok) {
-    const errorData = await res.json().catch(() => ({}));
-    throw new Error(errorData.error || `HTTP error ${res.status}`);
+/**
+ * Core API request handler with logging and error checking
+ */
+async function request(endpoint, options = {}) {
+  const url = `${BASE_URL}${endpoint}`;
+  const method = options.method || 'GET';
+  
+  const headers = {
+    'Accept': 'application/json',
+    ...options.headers,
+  };
+
+  if (options.body && typeof options.body === 'object' && !(options.body instanceof FormData)) {
+    headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(options.body);
   }
-  return res.json();
+
+  const config = {
+    ...options,
+    method,
+    headers,
+  };
+
+  // 🚀 Log Outgoing Request
+  console.group(`🌐 [API Request] ${method} ${url}`);
+  console.log('📍 Endpoint:', endpoint);
+  console.log('🛠️ Headers:', headers);
+  if (config.body) {
+    try {
+      console.log('📦 Payload:', JSON.parse(config.body));
+    } catch {
+      console.log('📦 Payload (raw):', config.body);
+    }
+  }
+  console.groupEnd();
+
+  try {
+    const res = await fetch(url, config);
+    const isJson = res.headers.get('content-type')?.includes('application/json');
+    const data = isJson ? await res.json().catch(() => ({})) : null;
+
+    if (!res.ok) {
+      console.group(`❌ [API Error ${res.status}] ${method} ${url}`);
+      console.log('Error Data:', data?.error || data);
+      console.groupEnd();
+      throw new Error(data?.error || `HTTP error ${res.status}`);
+    }
+
+    // ✅ Log Incoming Response
+    console.group(`✅ [API Response ${res.status}] ${method} ${url}`);
+    console.log('Response Payload:', data);
+    console.groupEnd();
+
+    return data;
+  } catch (err) {
+    console.error(`💥 [API Network Error] ${method} ${url}`, err.message);
+    throw err;
+  }
 }
 
-// --- ITERATION 1 ENDPOINTS ---
+// --- ITERATION 1: CORE MATCHING & AI ---
 
 export async function getInterests() {
-  const res = await fetch(`${BASE_URL}/profile/interests`);
-  return handleResponse(res);
+  return request('/profile/interests');
+}
+
+// Endpoint to populate autocomplete suggestions when typing skills
+export async function getSkills() {
+  return request('/skills');
 }
 
 export async function matchOccupations({ interest_ids, skill_ids = [], region = '' }) {
   const payload = { interest_ids };
-  // Only attach optional fields if they contain data to prevent 400 errors
   if (skill_ids && skill_ids.length > 0) payload.skill_ids = skill_ids;
   if (region) payload.region = region;
 
-  const res = await fetch(`${BASE_URL}/occupations/match`, {
+  return request('/occupations/match', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: payload
   });
-  return handleResponse(res);
 }
 
 export async function getOccupationAI(occupationId) {
-  const res = await fetch(`${BASE_URL}/occupations/${occupationId}/ai`);
-  return handleResponse(res);
+  if (!occupationId) throw new Error("occupationId is required");
+  return request(`/occupations/${occupationId}/ai`);
 }
 
-// --- ITERATION 2 ENDPOINTS ---
+// --- ITERATION 2: DEEP DIVES (SKILL GAP & REGIONAL) ---
 
 export async function getSkillGap(occupationId, selectedSkills = []) {
-  const res = await fetch(`${BASE_URL}/skills/gap`, {
+  if (!occupationId) throw new Error("occupationId is required");
+  
+  return request('/skills/gap', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      occupation_id: occupationId,
+    body: {
+      occupation_id: String(occupationId),
       selected_skills: selectedSkills
-    })
+    }
   });
-  return handleResponse(res);
 }
 
 export async function getRegionalOccupations() {
-  const res = await fetch(`${BASE_URL}/regional/occupations`);
-  return handleResponse(res);
+  return request('/regional/occupations');
 }
 
 export async function getRegionalOpportunity(anzsco4Code, state = '', limit = 50) {
-  const params = new URLSearchParams({ anzsco4: anzsco4Code, limit });
+  if (!anzsco4Code) throw new Error("anzsco4Code is required");
+  
+  const params = new URLSearchParams({ anzsco4: String(anzsco4Code), limit: String(limit) });
   if (state) params.append('state', state);
 
-  const res = await fetch(`${BASE_URL}/regional/opportunity?${params.toString()}`);
-  return handleResponse(res);
+  return request(`/regional/opportunity?${params.toString()}`);
 }
 
 export async function getRegionalDemand(state = '') {
   const params = new URLSearchParams();
   if (state) params.append('state', state);
 
-  const res = await fetch(`${BASE_URL}/regional/demand?${params.toString()}`);
-  return handleResponse(res);
+  const queryString = params.toString() ? `?${params.toString()}` : '';
+  return request(`/regional/demand${queryString}`);
+}
+
+// HELPER: Fetch multiple regions concurrently for the comparison chart in the wireframe
+export async function getMultiRegionOpportunity(anzsco4Code, selectedStates = [], limit = 50) {
+  if (!selectedStates || selectedStates.length === 0) return [];
+  
+  const promises = selectedStates.map(state => 
+    getRegionalOpportunity(anzsco4Code, state, limit)
+  );
+  
+  const results = await Promise.all(promises);
+  return results.flat();
 }

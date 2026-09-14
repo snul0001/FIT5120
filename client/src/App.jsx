@@ -5,19 +5,19 @@ import {
   ArrowLeft, Loader2, Check, 
   MapPin, Briefcase, ChevronDown, ChevronUp,
   Cpu, LayoutDashboard, Zap, Sun, Moon, Download, HelpCircle,
-  ExternalLink
+  ExternalLink, Target, Sparkles
 } from 'lucide-react';
 
 import Intro from './components/Intro';
 import PasswordGate from './components/PasswordGate';
 import WorkInProgress from './components/WorkInProgress';
+import SkillGapCheck from './components/SkillGapCheck';
 import { matchOccupations, getOccupationAI } from './api/client';
 import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
 
 const INITIAL_MATCH_COUNT = 4;
 
 const AU_LOCATIONS = ['Victoria', 'New South Wales', 'Queensland', 'Western Australia', 'South Australia', 'Remote'];
-const WORK_PREFERENCES = ['Graduate Role', 'Part-time', 'Internship', 'Contract'];
 
 const SUGGESTED_SKILLS = [
   'Python', 'SQL', 'JavaScript', 'React', 'Project Management', 
@@ -87,15 +87,16 @@ export default function App() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
   const [isNavVisible, setIsNavVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const [currentView, setCurrentView] = useState('home');
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'quiz' | 'refine' | 'results' | 'skill-gap' | 'wip'
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [expandedRoleId, setExpandedRoleId] = useState(null);
   const [showAllMatches, setShowAllMatches] = useState(false);
   const [hasDownloaded, setHasDownloaded] = useState(false);
 
-  const [targetLocation, setTargetLocation] = useState('Victoria');
-  const [workPreference] = useState('Graduate Role');
+  // Active occupation context for Skill Gap view
+  const [activeOccupation, setActiveOccupation] = useState(null);
 
+  const [targetLocation, setTargetLocation] = useState('Victoria');
   const [matches, setMatches] = useState([]);
   const [aiDetailsMap, setAiDetailsMap] = useState({});
   const [tooltipPos, setTooltipPos] = useState({ show: false, x: 0, y: 0 });
@@ -157,6 +158,12 @@ export default function App() {
     setExpandedRoleId(prev => prev === occupationId ? null : occupationId);
   };
 
+  const openSkillGap = (role) => {
+    setActiveOccupation(role);
+    setCurrentView('skill-gap');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Quiz Handling
   const handleStartQuiz = () => {
     setQuizIndex(0);
@@ -208,7 +215,6 @@ export default function App() {
       aiResults.forEach(item => { aiMap[item.id] = item.data; });
       setAiDetailsMap(aiMap);
     } catch {
-      // FIX: Ensure AI mock data is loaded when API fails
       setMatches(MOCK_MATCHES);
       const mockAiMap = {};
       MOCK_MATCHES.forEach(role => {
@@ -410,8 +416,9 @@ export default function App() {
         <div className="fixed inset-0 z-0 pointer-events-none moving-pattern-bg" />
         <div className="fixed -top-40 -left-40 w-[600px] h-[600px] bg-zinc-200/50 dark:bg-white/5 rounded-full blur-[140px] pointer-events-none" />
 
+        {/* Navigation Bar */}
         <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
-          currentView === 'results' 
+          currentView === 'results' || currentView === 'skill-gap'
             ? 'bg-white dark:bg-[#0B1121] border-zinc-200 dark:border-white/10' 
             : 'bg-white dark:bg-[#09090B] border-zinc-200 dark:border-zinc-800'
           }`}>
@@ -427,7 +434,11 @@ export default function App() {
               <div className="hidden md:flex items-center gap-1 sm:gap-2">
                 <button 
                   onClick={() => confirmNavigation('wip')}
-                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200"
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    currentView === 'wip' 
+                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white' 
+                      : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10'
+                  }`}
                 >
                   Regional Insights
                 </button>
@@ -472,6 +483,7 @@ export default function App() {
           </div>
         </nav>
 
+        {/* View Routing */}
         <div className="relative z-10">
           {currentView === 'wip' && (
             <div key="wip" className="view-enter-animation">
@@ -701,14 +713,32 @@ export default function App() {
                         <div className="accordion-enter-animation px-5 sm:px-8 pb-6 sm:pb-8 pt-2 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0E1525]">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
                             <div className="space-y-6">
-                              <div>
-                                <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-3">
-                                  <LayoutDashboard className="w-4 h-4" /> MARKET INTELLIGENCE
-                                </h4>
-                                <p className="text-sm text-slate-700 dark:text-slate-300">
-                                  JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()} demand</strong> for this occupation.
-                                </p>
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-1">
+                                    <LayoutDashboard className="w-4 h-4" /> MARKET INTELLIGENCE
+                                  </h4>
+                                  <p className="text-sm text-slate-700 dark:text-slate-300">
+                                    JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()} demand</strong> for this occupation.
+                                  </p>
+                                </div>
                               </div>
+
+                              <div className="flex items-center gap-3">
+                                <button
+                                  onClick={() => openSkillGap(role)}
+                                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#3B82F6]/10 text-[#3B82F6] hover:bg-[#3B82F6]/20 border border-[#3B82F6]/30 transition-all cursor-pointer"
+                                >
+                                  <Target className="w-4 h-4" /> Check Skill Gap
+                                </button>
+                                <button
+                                  onClick={() => confirmNavigation('wip')}
+                                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-200/60 dark:bg-white/5 hover:bg-zinc-200 dark:hover:bg-white/10 text-zinc-700 dark:text-zinc-300 border border-zinc-300/50 dark:border-white/10 transition-all cursor-pointer"
+                                >
+                                  Regional Insights →
+                                </button>
+                              </div>
+
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div 
                                   onMouseEnter={(e) => handleShowTooltip(
@@ -801,6 +831,16 @@ export default function App() {
                   </button>
                 </div>
               )}
+            </main>
+          )}
+
+          {currentView === 'skill-gap' && (
+            <main key="skill-gap" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32">
+              <SkillGapCheck
+                targetOccupation={activeOccupation}
+                userSkills={userSkills}
+                onBack={() => setCurrentView('results')}
+              />
             </main>
           )}
 
