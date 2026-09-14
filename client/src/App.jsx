@@ -12,8 +12,8 @@ import {
 import Intro from './components/Intro';
 import PasswordGate from './components/PasswordGate';
 import WorkInProgress from './components/WorkInProgress';
+import { getInterests, matchOccupations, getOccupationAI } from './api/client';
 
-const BASE = '/api';
 const INITIAL_MATCH_COUNT = 4;
 
 const AU_LOCATIONS = ['Victoria', 'New South Wales', 'Queensland', 'Western Australia', 'South Australia', 'Remote'];
@@ -107,6 +107,9 @@ export default function App() {
 
   const [tooltipPos, setTooltipPos] = useState({ show: false, x: 0, y: 0 });
 
+  const [userSkills, setUserSkills] = useState([]); // Array of strings (e.g., ["python", "git"])
+  const [selectedRegion, setSelectedRegion] = useState(""); // String (e.g., "NSW")
+
   useEffect(() => {
     const root = window.document.documentElement;
     if (isDark) root.classList.add('dark');
@@ -134,17 +137,16 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const fetchInterests = async () => {
-      try {
-        const res = await fetch(`${BASE}/profile/interests`);
-        if (!res.ok) throw new Error();
-        setApiInterests(await res.json());
-      } catch {
-        setApiInterests(MOCK_INTERESTS);
-      }
-    };
-    fetchInterests();
-  }, []);
+  const fetchInterests = async () => {
+    try {
+      const data = await getInterests();
+      setApiInterests(data);
+    } catch {
+      setApiInterests(MOCK_INTERESTS);
+    }
+  };
+  fetchInterests();
+}, []);
 
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -183,24 +185,20 @@ export default function App() {
     setHasDownloaded(false);
 
     try {
-      const matchRes = await fetch(`${BASE}/occupations/match`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ interest_ids: selectedInterests })
+      const matchData = await matchOccupations({
+        interest_ids: selectedInterests,
+        skill_ids: userSkills,
+        region: selectedRegion
       });
-      if (!matchRes.ok) throw new Error();
-      const matchData = await matchRes.json();
       setMatches(matchData);
 
       const aiPromises = matchData.map(async (role) => {
         try {
-          const aiRes = await fetch(`${BASE}/occupations/${role.occupation_id}/ai`);
-          if (aiRes.ok) {
-            const aiData = await aiRes.json();
-            return { id: role.occupation_id, data: aiData };
-          }
-        } catch {}
-        return { id: role.occupation_id, data: MOCK_AI_DATA };
+          const aiData = await getOccupationAI(role.occupation_id);
+          return { id: role.occupation_id, data: aiData };
+        } catch {
+          return { id: role.occupation_id, data: MOCK_AI_DATA };
+        }
       });
 
       const aiResults = await Promise.all(aiPromises);
