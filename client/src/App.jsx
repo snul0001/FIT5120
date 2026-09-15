@@ -3,9 +3,9 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { 
   ArrowLeft, Loader2, Check, 
-  MapPin, Briefcase, ChevronDown, ChevronUp,
-  Cpu, LayoutDashboard, Zap, Sun, Moon, Download, HelpCircle,
-  ExternalLink, Target, Sparkles
+  MapPin, ChevronDown, ChevronUp,
+  Cpu, LayoutDashboard, Zap, Sun, Moon, Download,
+  ExternalLink, Target
 } from 'lucide-react';
 
 import Intro from './components/Intro';
@@ -24,7 +24,6 @@ const AU_LOCATIONS = [
   'Australian Capital Territory'
 ];
 
-// TODO: Add the API for skills
 const SUGGESTED_SKILLS = [
   'Python', 'SQL', 'JavaScript', 'React', 'Project Management', 
   'Data Analysis', 'Cyber Security', 'Cloud Computing', 'Git'
@@ -107,7 +106,7 @@ export default function App() {
   const [expandedRoleId, setExpandedRoleId] = useState(null);
   const [showAllMatches, setShowAllMatches] = useState(false);
   const [hasDownloaded, setHasDownloaded] = useState(false);
-  const [apiInterests, setApiInterests] = useState([]);
+  const [, setApiInterests] = useState([]);
 
   // Active occupation context for Skill Gap view
   const [activeOccupation, setActiveOccupation] = useState(null);
@@ -216,7 +215,6 @@ export default function App() {
       setQuizIndex(quizIndex + 1);
     } else {
       const computedCode = getTopHollandCodes(updatedAnswers);
-      console.log("Computed code:", computedCode)
       setHollandCode(computedCode);
       setCurrentView('refine');
     }
@@ -323,7 +321,7 @@ export default function App() {
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(10);
       doc.text(`• Target Location : ${targetLocation || 'Not specified'}`, 14, 42);
-      doc.text(`• Holland Code     : ${hollandCode || 'Not specified'}`, 14, 48);
+      doc.text(`• Code            : ${hollandCode || 'Not specified'}`, 14, 48);
       doc.text(`• Date Generated  : ${dateStr}`, 14, 54);
 
       let startY = 65;
@@ -467,7 +465,9 @@ export default function App() {
         <div className="fixed -top-40 -left-40 w-[600px] h-[600px] bg-zinc-200/50 dark:bg-white/5 rounded-full blur-[140px] pointer-events-none" />
 
         {/* Navigation Bar */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
+        <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+          isNavVisible ? 'translate-y-0' : '-translate-y-full'
+        } ${
           currentView === 'results' || currentView === 'skill-gap' || currentView === 'regional-insights'
             ? 'bg-white dark:bg-[#0B1121] border-zinc-200 dark:border-white/10' 
             : 'bg-white dark:bg-[#09090B] border-zinc-200 dark:border-zinc-800'
@@ -565,7 +565,6 @@ export default function App() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-semibold text-zinc-500 uppercase tracking-wider">
                   <span>Question {quizIndex + 1} of {RIASEC_QUESTIONS.length}</span>
-                  <span>Holland DNA Quiz</span>
                 </div>
                 <div className="w-full bg-zinc-200 dark:bg-zinc-800 h-2 rounded-full overflow-hidden">
                   <div 
@@ -586,9 +585,6 @@ export default function App() {
                     onClick={() => handleSelectOption(opt.letter)}
                     className="w-full text-left p-4 sm:p-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl hover:border-black dark:hover:border-white transition-all group"
                   >
-                    <span className="block text-[11px] font-semibold text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 mb-1 uppercase tracking-wider">
-                      {opt.role}
-                    </span>
                     <span className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200">
                       {opt.text}
                     </span>
@@ -602,11 +598,10 @@ export default function App() {
             <main key="refine" className="view-enter-animation max-w-2xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32 space-y-8">
               <div className="space-y-2">
                 <h2 className="text-2xl font-bold tracking-tight">Fine-tune Your Results</h2>
-                <p className="text-sm text-zinc-500">Both fields are completely optional.</p>
               </div>
 
               <div className="space-y-3">
-                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Current Skills</label>
+                <label className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Current Skills (Optional)</label>
                 <input 
                   type="text" 
                   value={skillInput}
@@ -647,7 +642,7 @@ export default function App() {
               </div>
 
               <div className="space-y-3">
-                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Target Region</label>
+                <label className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Target Region (Optional)</label>
                 <select 
                   value={targetLocation} 
                   onChange={(e) => setTargetLocation(e.target.value)}
@@ -677,8 +672,7 @@ export default function App() {
                   </button>
                   <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white">Matches & AI Impact</h1>
                   <div className="flex flex-wrap gap-3 sm:gap-4 mt-3 sm:mt-4 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 font-medium">
-                    <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {targetLocation}</span>
-                    <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Code: {hollandCode}</span>
+                    <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {targetLocation || 'All Australia'}</span>
                   </div>
                 </div>
 
@@ -717,7 +711,7 @@ export default function App() {
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1.5">
                             <span className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide ${colors.badge}`}>
-                              {role.match_label} • {role.match_score}%
+                              {role.match_label}
                             </span>
                           </div>
                           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
@@ -787,9 +781,18 @@ export default function App() {
                               <div className="flex items-center gap-3">
                                 <button
                                   onClick={() => openSkillGap(role)}
-                                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-[#3B82F6]/10 text-[#3B82F6] hover:bg-[#3B82F6]/20 border border-[#3B82F6]/30 transition-all cursor-pointer"
+                                  className="group inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 border border-slate-200/80 dark:bg-white/10 dark:hover:bg-white/15 dark:text-slate-200 dark:border-white/10 transition-all duration-200 cursor-pointer backdrop-blur-sm"
                                 >
-                                  <Target className="w-4 h-4" /> Check Skill Gap
+                                  <span>Check Skill Gap</span>
+                                  <svg 
+                                    className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-200 group-hover:translate-x-1" 
+                                    fill="none" 
+                                    viewBox="0 0 24 24" 
+                                    stroke="currentColor" 
+                                    strokeWidth="2.5"
+                                  >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                  </svg>
                                 </button>
                               </div>
 

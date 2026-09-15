@@ -24,7 +24,7 @@ const FEATURES = [
     description: "Access real-time, official data on job demand and resilient tech roles specific to your city or desired relocation area.",
     icon: <Map className="w-6 h-6 text-teal-600 dark:text-teal-400" aria-hidden="true" />,
     linkText: "See Local Data",
-    targetView: "wip",
+    url: "https://www.jobsandskills.gov.au/data",
   },
 ];
 
@@ -56,8 +56,8 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-          {/* Destructured targetView */}
-          {FEATURES.map(({ id, title, description, icon, linkText, targetView }) => (
+          {/* Destructure 'url' along with other properties */}
+          {FEATURES.map(({ id, title, description, icon, linkText, targetView, url }) => (
             <div key={id} className="flex flex-col bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-7 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 group shadow-sm dark:shadow-none text-left">
               <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
                 {icon}
@@ -69,14 +69,26 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
                 {description}
               </p>
               
-              {/* Replaced dummy div with an active button hooked to onNavigate */}
-              <button
-                onClick={() => onNavigate(targetView)}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-all mt-auto w-max focus:outline-none group/btn"
-              >
-                {linkText}
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" aria-hidden="true" />
-              </button>
+              {/* Conditional link: render <a> if 'url' exists, otherwise render <button> */}
+              {url ? (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-all mt-auto w-max focus:outline-none group/btn"
+                >
+                  {linkText}
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" aria-hidden="true" />
+                </a>
+              ) : (
+                <button
+                  onClick={() => onNavigate(targetView)}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 hover:underline transition-all mt-auto w-max focus:outline-none group/btn"
+                >
+                  {linkText}
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" aria-hidden="true" />
+                </button>
+              )}
             </div>
           ))}
         </div>

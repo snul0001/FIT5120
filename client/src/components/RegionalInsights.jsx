@@ -190,10 +190,14 @@ export default function RegionalInsights({ onBack }) {
                 const group = occupationGroups.find(g => String(g.anzsco4_code) === e.target.value);
                 setSelectedGroup(group || null);
               }}
-              className="w-full px-3 py-2.5 text-sm border border-zinc-300 dark:border-zinc-700 rounded-xl bg-transparent text-zinc-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2.5 text-sm border border-zinc-300 dark:border-zinc-700 rounded-xl bg-white dark:bg-[#131B2F] text-zinc-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500 [color-scheme:light_dark]"
             >
               {occupationGroups.map(group => (
-                <option key={group.anzsco4_code} value={group.anzsco4_code}>
+                <option 
+                  key={group.anzsco4_code} 
+                  value={group.anzsco4_code}
+                  className="bg-white dark:bg-[#131B2F] text-zinc-900 dark:text-white"
+                >
                   {group.anzsco4_name}
                 </option>
               ))}
