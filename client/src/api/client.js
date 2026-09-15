@@ -1,8 +1,23 @@
-const BASE_URL = '/api';
+export const BASE_URL = '/api';
 
-/**
- * Core API request handler with logging and error checking
- */
+// Map UI state abbreviations to strict API state names
+export const STATE_NAME_MAP = {
+  ACT: 'Australian Capital Territory',
+  NSW: 'NSW',
+  NT: 'Northern Territory',
+  QLD: 'Queensland',
+  SA: 'South Australia',
+  TAS: 'Tasmania',
+  VIC: 'Victoria',
+  WA: 'Western Australia'
+};
+
+export const REVERSE_STATE_MAP = Object.entries(STATE_NAME_MAP).reduce((acc, [abbr, full]) => {
+  acc[full] = abbr;
+  return acc;
+}, {});
+
+// Core API request handler
 async function request(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
   const method = options.method || 'GET';
@@ -23,58 +38,49 @@ async function request(endpoint, options = {}) {
     headers,
   };
 
-  // 🚀 Log Outgoing Request
-  console.group(`🌐 [API Request] ${method} ${url}`);
-  console.log('📍 Endpoint:', endpoint);
-  console.log('🛠️ Headers:', headers);
-  if (config.body) {
-    try {
-      console.log('📦 Payload:', JSON.parse(config.body));
-    } catch {
-      console.log('📦 Payload (raw):', config.body);
-    }
-  }
-  console.groupEnd();
-
   try {
     const res = await fetch(url, config);
     const isJson = res.headers.get('content-type')?.includes('application/json');
     const data = isJson ? await res.json().catch(() => ({})) : null;
 
     if (!res.ok) {
-      console.group(`❌ [API Error ${res.status}] ${method} ${url}`);
-      console.log('Error Data:', data?.error || data);
-      console.groupEnd();
-      throw new Error(data?.error || `HTTP error ${res.status}`);
+      const error = new Error(data?.error || `HTTP error ${res.status}`);
+      error.status = res.status;
+      error.data = data;
+      throw error;
     }
-
-    // ✅ Log Incoming Response
-    console.group(`✅ [API Response ${res.status}] ${method} ${url}`);
-    console.log('Response Payload:', data);
-    console.groupEnd();
 
     return data;
   } catch (err) {
-    console.error(`💥 [API Network Error] ${method} ${url}`, err.message);
+    console.error(`💥 [API Error] ${method} ${url}:`, err.message);
     throw err;
   }
 }
 
-// --- ITERATION 1: CORE MATCHING & AI ---
+// --- PROFILE & OCCUPATIONS ---
 
 export async function getInterests() {
   return request('/profile/interests');
 }
 
-// Endpoint to populate autocomplete suggestions when typing skills
-export async function getSkills() {
-  return request('/skills');
+export async function getSkills(page = 1, limit = 50, search = '') {
+  const params = new URLSearchParams({ page: String(page), limit: String(limit) });
+  if (search) params.append('search', search);
+  return request(`/profile/skills?${params.toString()}`);
 }
 
 export async function matchOccupations({ interest_ids, skill_ids = [], region = '' }) {
-  const payload = { interest_ids };
-  if (skill_ids && skill_ids.length > 0) payload.skill_ids = skill_ids;
-  if (region) payload.region = region;
+  const ids = Array.isArray(interest_ids) 
+    ? interest_ids 
+    : (interest_ids ? [String(interest_ids)] : []);
+
+  if (ids.length === 0) {
+    throw new Error('matchOccupations requires a non-empty array of interest_ids');
+  }
+
+  const payload = { interest_ids: ids };
+  if (skill_ids.length > 0) payload.skill_ids = skill_ids;
+  if (region) payload.region = STATE_NAME_MAP[region] || region;
 
   return request('/occupations/match', {
     method: 'POST',
@@ -87,19 +93,21 @@ export async function getOccupationAI(occupationId) {
   return request(`/occupations/${occupationId}/ai`);
 }
 
-// --- ITERATION 2: DEEP DIVES (SKILL GAP & REGIONAL) ---
+// --- SKILL GAP CHECK ---
 
 export async function getSkillGap(occupationId, selectedSkills = []) {
   if (!occupationId) throw new Error("occupationId is required");
   
-  return request('/skills/gap', {
+  return await request('/skills/gap', {
     method: 'POST',
     body: {
       occupation_id: String(occupationId),
-      selected_skills: selectedSkills
+      selected_skills: Array.isArray(selectedSkills) ? selectedSkills : [],
     }
   });
 }
+
+// --- REGIONAL INSIGHTS ---
 
 export async function getRegionalOccupations() {
   return request('/regional/occupations');
@@ -108,28 +116,46 @@ export async function getRegionalOccupations() {
 export async function getRegionalOpportunity(anzsco4Code, state = '', limit = 50) {
   if (!anzsco4Code) throw new Error("anzsco4Code is required");
   
+  const apiState = STATE_NAME_MAP[state] || state;
   const params = new URLSearchParams({ anzsco4: String(anzsco4Code), limit: String(limit) });
-  if (state) params.append('state', state);
+  if (apiState) params.append('state', apiState);
 
   return request(`/regional/opportunity?${params.toString()}`);
 }
 
 export async function getRegionalDemand(state = '') {
+  const apiState = STATE_NAME_MAP[state] || state;
   const params = new URLSearchParams();
-  if (state) params.append('state', state);
+  if (apiState) params.append('state', apiState);
 
   const queryString = params.toString() ? `?${params.toString()}` : '';
   return request(`/regional/demand${queryString}`);
 }
 
-// HELPER: Fetch multiple regions concurrently for the comparison chart in the wireframe
-export async function getMultiRegionOpportunity(anzsco4Code, selectedStates = [], limit = 50) {
+/**
+ * Aggregates employment numbers for selected regions to populate the comparison chart
+ */
+export async function getMultiRegionOpportunity(anzsco4Code, selectedStates = []) {
   if (!selectedStates || selectedStates.length === 0) return [];
   
-  const promises = selectedStates.map(state => 
-    getRegionalOpportunity(anzsco4Code, state, limit)
-  );
+  const promises = selectedStates.map(async (abbr) => {
+    const fullState = STATE_NAME_MAP[abbr] || abbr;
+    const records = await getRegionalOpportunity(anzsco4Code, fullState, 50);
+    
+    if (!records || records.length === 0) return { state: abbr, opportunities: 0 };
+    
+    // Extract most recent month in dataset
+    const latestMonth = records[0].month;
+    const latestRecords = records.filter(r => r.month === latestMonth);
+    const totalJobs = latestRecords.reduce((sum, r) => sum + (Number(r.employment_value) || 0), 0);
+    
+    return {
+      state: abbr,
+      fullState,
+      opportunities: totalJobs,
+      month: latestMonth
+    };
+  });
   
-  const results = await Promise.all(promises);
-  return results.flat();
+  return Promise.all(promises);
 }

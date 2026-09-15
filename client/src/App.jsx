@@ -12,13 +12,19 @@ import Intro from './components/Intro';
 import PasswordGate from './components/PasswordGate';
 import WorkInProgress from './components/WorkInProgress';
 import SkillGapCheck from './components/SkillGapCheck';
-import { matchOccupations, getOccupationAI } from './api/client';
+import RegionalInsights from './components/RegionalInsights';
+import { matchOccupations, getOccupationAI, BASE_URL } from './api/client';
 import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
 
 const INITIAL_MATCH_COUNT = 4;
 
-const AU_LOCATIONS = ['Victoria', 'New South Wales', 'Queensland', 'Western Australia', 'South Australia', 'Remote'];
+const AU_LOCATIONS = [
+  'NSW', 'Victoria', 'Queensland', 'Western Australia', 
+  'South Australia', 'Tasmania', 'Northern Territory', 
+  'Australian Capital Territory'
+];
 
+// TODO: Add the API for skills
 const SUGGESTED_SKILLS = [
   'Python', 'SQL', 'JavaScript', 'React', 'Project Management', 
   'Data Analysis', 'Cyber Security', 'Cloud Computing', 'Git'
@@ -29,6 +35,15 @@ const MOCK_MATCHES = [
   { occupation_id: "271134", rank: 2, title: "Cloud Solutions Architect", sector: "ICT", match_score: 88, match_label: "Strong Fit" },
   { occupation_id: "271135", rank: 3, title: "Data Engineer", sector: "ICT", match_score: 84, match_label: "Strong Fit" },
   { occupation_id: "271136", rank: 4, title: "DevOps Engineer", sector: "ICT", match_score: 81, match_label: "Moderate Fit" }
+];
+
+const MOCK_INTERESTS = [
+  { interest_id: "investigative", label: "Solving problems & analysing" },
+  { interest_id: "conventional", label: "Organising & planning" },
+  { interest_id: "artistic", label: "Creating & designing" },
+  { interest_id: "social", label: "Helping & working with people" },
+  { interest_id: "enterprising", label: "Leading & managing" },
+  { interest_id: "realistic", label: "Building & fixing systems" }
 ];
 
 const MOCK_AI_DATA = {
@@ -87,11 +102,12 @@ export default function App() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
   const [isNavVisible, setIsNavVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'quiz' | 'refine' | 'results' | 'skill-gap' | 'wip'
+  const [currentView, setCurrentView] = useState('home');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [expandedRoleId, setExpandedRoleId] = useState(null);
   const [showAllMatches, setShowAllMatches] = useState(false);
   const [hasDownloaded, setHasDownloaded] = useState(false);
+  const [apiInterests, setApiInterests] = useState([]);
 
   // Active occupation context for Skill Gap view
   const [activeOccupation, setActiveOccupation] = useState(null);
@@ -130,6 +146,25 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const fetchInterests = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/profile/interests`);
+        if (!res.ok) {
+          const err = new Error();
+          err.status = res.status;
+          throw err;
+        }
+        setApiInterests(await res.json());
+      } catch (err) {
+        if (err.status === 404) {
+          setApiInterests(MOCK_INTERESTS);
+        }
+      }
+    };
+    fetchInterests();
   }, []);
 
   useEffect(() => {
@@ -181,6 +216,7 @@ export default function App() {
       setQuizIndex(quizIndex + 1);
     } else {
       const computedCode = getTopHollandCodes(updatedAnswers);
+      console.log("Computed code:", computedCode)
       setHollandCode(computedCode);
       setCurrentView('refine');
     }
@@ -193,9 +229,15 @@ export default function App() {
     setExpandedRoleId(null);
     setHasDownloaded(false);
 
+    const letterToInterest = {
+      R: 'realistic', I: 'investigative', A: 'artistic',
+      S: 'social', E: 'enterprising', C: 'conventional'
+    };
+    const interest_ids = hollandCode.split('').map(char => letterToInterest[char]).filter(Boolean);
+
     try {
       const matchData = await matchOccupations({
-        holland_code: hollandCode,
+        interest_ids,
         skill_ids: userSkills,
         region: targetLocation
       });
@@ -205,22 +247,30 @@ export default function App() {
         try {
           const aiData = await getOccupationAI(role.occupation_id);
           return { id: role.occupation_id, data: aiData };
-        } catch {
-          return { id: role.occupation_id, data: MOCK_AI_DATA };
+        } catch (err) {
+          if (err.status === 404) {
+            return { id: role.occupation_id, data: MOCK_AI_DATA };
+          }
+          return { id: role.occupation_id, data: null };
         }
       });
 
       const aiResults = await Promise.all(aiPromises);
       const aiMap = {};
-      aiResults.forEach(item => { aiMap[item.id] = item.data; });
+      aiResults.forEach(item => { if (item.data) aiMap[item.id] = item.data; });
       setAiDetailsMap(aiMap);
-    } catch {
-      setMatches(MOCK_MATCHES);
-      const mockAiMap = {};
-      MOCK_MATCHES.forEach(role => {
-        mockAiMap[role.occupation_id] = MOCK_AI_DATA;
-      });
-      setAiDetailsMap(mockAiMap);
+    } catch (err) {
+      if (err.status === 404) {
+        setMatches(MOCK_MATCHES);
+        const mockAiMap = {};
+        MOCK_MATCHES.forEach(role => {
+          mockAiMap[role.occupation_id] = MOCK_AI_DATA;
+        });
+        setAiDetailsMap(mockAiMap);
+      } else {
+        setMatches([]);
+        setAiDetailsMap({});
+      }
     } finally {
       setIsSubmitting(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -418,7 +468,7 @@ export default function App() {
 
         {/* Navigation Bar */}
         <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
-          currentView === 'results' || currentView === 'skill-gap'
+          currentView === 'results' || currentView === 'skill-gap' || currentView === 'regional-insights'
             ? 'bg-white dark:bg-[#0B1121] border-zinc-200 dark:border-white/10' 
             : 'bg-white dark:bg-[#09090B] border-zinc-200 dark:border-zinc-800'
           }`}>
@@ -433,9 +483,9 @@ export default function App() {
             <div className="flex items-center gap-2 sm:gap-4">
               <div className="hidden md:flex items-center gap-1 sm:gap-2">
                 <button 
-                  onClick={() => confirmNavigation('wip')}
+                  onClick={() => confirmNavigation('regional-insights')}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    currentView === 'wip' 
+                    currentView === 'regional-insights' 
                       ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white' 
                       : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10'
                   }`}
@@ -444,7 +494,11 @@ export default function App() {
                 </button>
                 <button 
                   onClick={() => confirmNavigation('wip')}
-                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200"
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    currentView === 'wip' 
+                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white' 
+                      : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10'
+                  }`}
                 >
                   Career Simulator
                 </button>
@@ -459,7 +513,7 @@ export default function App() {
                       <span>O*NET Database</span>
                       <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                     </a>
-                    <a href="https://www.jobsandskills.gov.au/studies/generative-artificial-intelligence-capacity-study" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+                    <a href="https://www.jobsandskills.gov.au/data" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
                       <span>Jobs & Skills Australia (JSA)</span>
                       <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                     </a>
@@ -488,6 +542,12 @@ export default function App() {
           {currentView === 'wip' && (
             <div key="wip" className="view-enter-animation">
               <WorkInProgress onBack={() => confirmNavigation('home')} />
+            </div>
+          )}
+
+          {currentView === 'regional-insights' && (
+            <div key="regional-insights" className="view-enter-animation pt-20">
+              <RegionalInsights onBack={() => confirmNavigation('home')} />
             </div>
           )}
 
@@ -731,12 +791,6 @@ export default function App() {
                                 >
                                   <Target className="w-4 h-4" /> Check Skill Gap
                                 </button>
-                                <button
-                                  onClick={() => confirmNavigation('wip')}
-                                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-200/60 dark:bg-white/5 hover:bg-zinc-200 dark:hover:bg-white/10 text-zinc-700 dark:text-zinc-300 border border-zinc-300/50 dark:border-white/10 transition-all cursor-pointer"
-                                >
-                                  Regional Insights →
-                                </button>
                               </div>
 
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -840,6 +894,7 @@ export default function App() {
                 targetOccupation={activeOccupation}
                 userSkills={userSkills}
                 onBack={() => setCurrentView('results')}
+                onNavigate={(targetView) => confirmNavigation(targetView)}
               />
             </main>
           )}

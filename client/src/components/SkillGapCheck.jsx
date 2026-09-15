@@ -7,7 +7,7 @@ const CATEGORY_COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', 
 // Fallback Mock Data
 const MOCK_GAP_DATA = {
   occupation_title: 'Cyber Security Architect',
-  occupation_id: '271133',
+  occupation_id: '273333',
   matched: [
     { id: 'm1', name: 'Python Scripting' },
     { id: 'm2', name: 'Critical Thinking' },
@@ -35,15 +35,15 @@ const MOCK_GAP_DATA = {
   ]
 };
 
-// Computes category distribution dynamically from missing skills
+// Computes category distribution dynamically from missing skills API response
 const computeCategories = (missingList) => {
   if (!missingList || missingList.length === 0) return MOCK_GAP_DATA.categories;
 
   const counts = {};
   missingList.forEach((item) => {
-    const catName = typeof item === 'object' && item.category 
-      ? item.category 
-      : 'Core Requirements';
+    const rawCat = typeof item === 'object' && item.category ? item.category : 'General';
+    // Format category string (e.g. 'software' -> 'Software Requirements')
+    const catName = rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
     counts[catName] = (counts[catName] || 0) + 1;
   });
 
@@ -55,12 +55,13 @@ const computeCategories = (missingList) => {
   }));
 };
 
-export default function SkillGapCheck({ targetOccupation, userSkills = ['python', 'critical thinking', 'git'], onBack }) {
+export default function SkillGapCheck({ targetOccupation, userSkills = ['python', 'critical thinking', 'git'], onBack, onNavigate }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isUsingMock, setIsUsingMock] = useState(false);
   
-  const activeRole = targetOccupation?.title || MOCK_GAP_DATA.occupation_title;
-  const activeId = targetOccupation?.occupation_id || MOCK_GAP_DATA.occupation_id;
+  const activeRole = targetOccupation?.title || targetOccupation?.name || MOCK_GAP_DATA.occupation_title;
+  // Ensure we pass a valid 6-digit occupation_id to the API contract
+  const activeId = String(targetOccupation?.occupation_id || targetOccupation?.id || MOCK_GAP_DATA.occupation_id);
 
   const [data, setData] = useState(MOCK_GAP_DATA);
 
@@ -74,27 +75,49 @@ export default function SkillGapCheck({ targetOccupation, userSkills = ['python'
 
     try {
       const res = await getSkillGap(occId, userSkills);
+
+      // Handle 404 / error response objects from client.js
+      if (!res || res.error || (!res.matched && !res.missing)) {
+        throw new Error(res?.error || 'No skill data found');
+      }
+
+      const matchedItems = res.matched || [];
       const missingItems = res.missing || [];
-      
+
       setData({
         occupation_title: activeRole,
         occupation_id: occId,
-        matched: res.matched?.length ? res.matched.map((s, i) => ({ id: i, name: s.skill_name || s })) : MOCK_GAP_DATA.matched,
-        missing: missingItems.length ? missingItems.map((s, i) => ({ id: i, name: s.skill_name || s })) : MOCK_GAP_DATA.missing,
-        categories: missingItems.length ? computeCategories(missingItems) : MOCK_GAP_DATA.categories,
+        matched: matchedItems.length 
+          ? matchedItems.map((s, i) => ({ id: s.id || `m_${i}`, name: s.skill_name || s })) 
+          : [],
+        missing: missingItems.length 
+          ? missingItems.map((s, i) => ({ id: s.id || `x_${i}`, name: s.skill_name || s, category: s.category })) 
+          : [],
+        categories: missingItems.length 
+          ? computeCategories(missingItems) 
+          : MOCK_GAP_DATA.categories,
         priorities: missingItems.length 
           ? missingItems.map((s, idx) => ({
               rank: idx + 1,
               skill: s.skill_name || s,
-              rating: Math.max(1, 5 - Math.floor(idx / 2)),
+              // Convert API importance_score (0.0 - 1.0) directly to 1-5 star ratings
+              rating: typeof s.importance_score === 'number' 
+                ? Math.max(1, Math.round(s.importance_score * 5)) 
+                : Math.max(1, 5 - Math.floor(idx / 2)),
               link: '#'
             }))
           : MOCK_GAP_DATA.priorities
       });
     } catch (err) {
-      console.warn('⚠️ API fetch failed. Loading Mock Data UI state.', err);
-      setIsUsingMock(true);
-      setData(MOCK_GAP_DATA);
+      if (err.status === 404) {
+        console.warn('⚠️ API fetch failed. Displaying fallback mock preview data.', err);
+        setIsUsingMock(true);
+        setData(MOCK_GAP_DATA);
+      } else {
+        console.error('API Error:', err);
+        setIsUsingMock(false);
+        setData({ matched: [], missing: [], categories: [], priorities: [] });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -132,7 +155,7 @@ export default function SkillGapCheck({ targetOccupation, userSkills = ['python'
       {isUsingMock && (
         <div className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
           <ShieldAlert className="w-4 h-4 flex-shrink-0" />
-          <span>API disconnected or network blocked — displaying fallback preview data.</span>
+          <span>API disconnected or missing skill data for ID ({activeId}) — displaying fallback preview data.</span>
         </div>
       )}
 
@@ -177,81 +200,87 @@ export default function SkillGapCheck({ targetOccupation, userSkills = ['python'
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-zinc-200 dark:divide-zinc-800">
-          
-          {/* Matched Skills */}
-          <div className="space-y-4 pt-4 md:pt-0 md:pr-4">
-            <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
-              Matched skills
-            </h3>
-            <ol className="space-y-3 pl-2">
-              {data.matched.map((item, idx) => (
-                <li key={item.id} className="text-sm text-zinc-700 dark:text-zinc-300">
-                  <span className="font-semibold mr-2">{idx + 1}.</span> {item.name}
-                </li>
-              ))}
-            </ol>
+        {isLoading ? (
+          <div className="py-12 text-center text-zinc-400 text-sm animate-pulse">
+            Loading skill metrics from backend...
           </div>
-
-          {/* Missing Skills */}
-          <div className="space-y-4 pt-4 md:pt-0 md:px-4">
-            <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
-              Missing skills
-            </h3>
-            <ol className="space-y-3 pl-2">
-              {data.missing.map((item, idx) => (
-                <li key={item.id} className="text-sm text-zinc-700 dark:text-zinc-300">
-                  <span className="font-semibold mr-2">{idx + 1}.</span> {item.name}
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          {/* Dynamic Category Donut */}
-          <div className="space-y-4 pt-4 md:pt-0 md:pl-6 flex flex-col items-center">
-            <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
-              Overview of missing skill categories
-            </h3>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-zinc-200 dark:divide-zinc-800">
             
-            <div className="relative w-44 h-44 flex items-center justify-center my-2">
-              <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#E5E7EB" strokeWidth="4" />
-                {data.categories.reduce((acc, cat, idx) => {
-                  const strokeDasharray = `${cat.percentage} ${100 - cat.percentage}`;
-                  const strokeDashoffset = acc.offset;
-                  acc.offset -= cat.percentage;
-                  acc.elements.push(
-                    <circle
-                      key={idx}
-                      cx="18"
-                      cy="18"
-                      r="15.915"
-                      fill="transparent"
-                      stroke={cat.color}
-                      strokeWidth="4"
-                      strokeDasharray={strokeDasharray}
-                      strokeDashoffset={strokeDashoffset}
-                    />
-                  );
-                  return acc;
-                }, { offset: 25, elements: [] }).elements}
-              </svg>
+            {/* Matched Skills */}
+            <div className="space-y-4 pt-4 md:pt-0 md:pr-4">
+              <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
+                Matched skills
+              </h3>
+              <ol className="space-y-3 pl-2">
+                {data.matched.map((item, idx) => (
+                  <li key={item.id} className="text-sm text-zinc-700 dark:text-zinc-300">
+                    <span className="font-semibold mr-2">{idx + 1}.</span> {item.name}
+                  </li>
+                ))}
+              </ol>
             </div>
 
-            <div className="w-full space-y-1.5 text-xs">
-              {data.categories.map((cat, idx) => (
-                <div key={idx} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: cat.color }} />
-                    <span className="text-zinc-600 dark:text-zinc-400 truncate max-w-[170px]">{cat.name}</span>
+            {/* Missing Skills */}
+            <div className="space-y-4 pt-4 md:pt-0 md:px-4">
+              <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
+                Missing skills
+              </h3>
+              <ol className="space-y-3 pl-2">
+                {data.missing.map((item, idx) => (
+                  <li key={item.id} className="text-sm text-zinc-700 dark:text-zinc-300">
+                    <span className="font-semibold mr-2">{idx + 1}.</span> {item.name}
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {/* Dynamic Category Donut */}
+            <div className="space-y-4 pt-4 md:pt-0 md:pl-6 flex flex-col items-center">
+              <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
+                Overview of missing skill categories
+              </h3>
+              
+              <div className="relative w-44 h-44 flex items-center justify-center my-2">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                  <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#E5E7EB" strokeWidth="4" />
+                  {data.categories.reduce((acc, cat, idx) => {
+                    const strokeDasharray = `${cat.percentage} ${100 - cat.percentage}`;
+                    const strokeDashoffset = acc.offset;
+                    acc.offset -= cat.percentage;
+                    acc.elements.push(
+                      <circle
+                        key={idx}
+                        cx="18"
+                        cy="18"
+                        r="15.915"
+                        fill="transparent"
+                        stroke={cat.color}
+                        strokeWidth="4"
+                        strokeDasharray={strokeDasharray}
+                        strokeDashoffset={strokeDashoffset}
+                      />
+                    );
+                    return acc;
+                  }, { offset: 25, elements: [] }).elements}
+                </svg>
+              </div>
+
+              <div className="w-full space-y-1.5 text-xs">
+                {data.categories.map((cat, idx) => (
+                  <div key={idx} className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: cat.color }} />
+                      <span className="text-zinc-600 dark:text-zinc-400 truncate max-w-[170px]">{cat.name}</span>
+                    </div>
+                    <span className="font-semibold text-zinc-800 dark:text-zinc-200">{cat.percentage}%</span>
                   </div>
-                  <span className="font-semibold text-zinc-800 dark:text-zinc-200">{cat.percentage}%</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
-        </div>
+          </div>
+        )}
       </div>
 
       {/* STEP 3: Priority Skills Table */}
@@ -290,15 +319,13 @@ export default function SkillGapCheck({ targetOccupation, userSkills = ['python'
                     </div>
                   </td>
                   <td className="py-4 px-4 text-right">
-                    <a
-                      href={row.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-blue-500 hover:underline cursor-pointer"
+                    <button
+                        onClick={() => onNavigate('wip')}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-blue-500 hover:underline cursor-pointer bg-transparent border-none p-0"
                     >
-                      View resources &rarr;
-                    </a>
-                  </td>
+                        View resources &rarr;
+                    </button>
+                    </td>
                 </tr>
               ))}
             </tbody>

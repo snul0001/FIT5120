@@ -13,8 +13,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          // Use the variable from your .env file
-          target: env.VITE_API_TARGET || 'http://localhost:3000', 
+          target: env.VITE_API_TARGET || 'http://localhost:3000',
           changeOrigin: true,
           secure: false,
         },
