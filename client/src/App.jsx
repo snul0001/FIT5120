@@ -2,22 +2,36 @@ import React, { useState, useEffect, useRef } from 'react';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { 
-  ArrowRight, ArrowLeft, Loader2, Check, 
-  MapPin, Briefcase, ChevronDown, ChevronUp,
-  Cpu, LayoutDashboard, Zap, Sun, Moon, Download, HelpCircle,
-  BrainCircuit, Compass, Map, Sparkles, ExternalLink
+  ArrowLeft, Loader2, Check, 
+  MapPin, ChevronDown, ChevronUp,
+  Cpu, LayoutDashboard, Zap, Sun, Moon, Download,
+  ExternalLink, Target
 } from 'lucide-react';
-
 
 import Intro from './components/Intro';
 import PasswordGate from './components/PasswordGate';
 import WorkInProgress from './components/WorkInProgress';
+import SkillGapCheck from './components/SkillGapCheck';
+import RegionalInsights from './components/RegionalInsights';
+import { matchOccupations, getOccupationAI, getSkills, BASE_URL } from './api/client';
+import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
 
-const BASE = '/api';
 const INITIAL_MATCH_COUNT = 4;
 
-const AU_LOCATIONS = ['Victoria', 'New South Wales', 'Queensland', 'Western Australia', 'South Australia', 'Remote'];
-const WORK_PREFERENCES = ['Graduate Role', 'Part-time', 'Internship', 'Contract'];
+const AU_LOCATIONS = [
+  'NSW', 'Victoria', 'Queensland', 'Western Australia', 
+  'South Australia', 'Tasmania', 'Northern Territory', 
+  'Australian Capital Territory'
+];
+
+let SUGGESTED_SKILLS = [];
+
+const MOCK_MATCHES = [
+  { occupation_id: "271133", rank: 1, title: "Cyber Security Analyst", sector: "ICT", match_score: 96, match_label: "Exceptional Fit" },
+  { occupation_id: "271134", rank: 2, title: "Cloud Solutions Architect", sector: "ICT", match_score: 88, match_label: "Strong Fit" },
+  { occupation_id: "271135", rank: 3, title: "Data Engineer", sector: "ICT", match_score: 84, match_label: "Strong Fit" },
+  { occupation_id: "271136", rank: 4, title: "DevOps Engineer", sector: "ICT", match_score: 81, match_label: "Moderate Fit" }
+];
 
 const MOCK_INTERESTS = [
   { interest_id: "investigative", label: "Solving problems & analysing" },
@@ -26,13 +40,6 @@ const MOCK_INTERESTS = [
   { interest_id: "social", label: "Helping & working with people" },
   { interest_id: "enterprising", label: "Leading & managing" },
   { interest_id: "realistic", label: "Building & fixing systems" }
-];
-
-const MOCK_MATCHES = [
-  { occupation_id: "271133", rank: 1, title: "Cyber Security Analyst", sector: "ICT", match_score: 96, match_label: "Exceptional Fit" },
-  { occupation_id: "271134", rank: 2, title: "Cloud Solutions Architect", sector: "ICT", match_score: 88, match_label: "Strong Fit" },
-  { occupation_id: "271135", rank: 3, title: "Data Engineer", sector: "ICT", match_score: 84, match_label: "Strong Fit" },
-  { occupation_id: "271136", rank: 4, title: "DevOps Engineer", sector: "ICT", match_score: 81, match_label: "Moderate Fit" }
 ];
 
 const MOCK_AI_DATA = {
@@ -96,16 +103,38 @@ export default function App() {
   const [expandedRoleId, setExpandedRoleId] = useState(null);
   const [showAllMatches, setShowAllMatches] = useState(false);
   const [hasDownloaded, setHasDownloaded] = useState(false);
+  const [, setApiInterests] = useState([]);
+
+  // Active occupation context for Skill Gap view
+  const [activeOccupation, setActiveOccupation] = useState(null);
 
   const [targetLocation, setTargetLocation] = useState('Victoria');
-  const [workPreference, setWorkPreference] = useState('Graduate Role');
-  const [selectedInterests, setSelectedInterests] = useState([]);
-
-  const [apiInterests, setApiInterests] = useState([]);
   const [matches, setMatches] = useState([]);
   const [aiDetailsMap, setAiDetailsMap] = useState({});
-
   const [tooltipPos, setTooltipPos] = useState({ show: false, x: 0, y: 0 });
+
+  // Quiz & DNA States
+  const [quizIndex, setQuizIndex] = useState(0);
+  const [quizAnswers, setQuizAnswers] = useState({});
+  const [hollandCode, setHollandCode] = useState('');
+
+  // Skills States
+  const [skillInput, setSkillInput] = useState("");
+  const [userSkills, setUserSkills] = useState([]);
+  const [suggestedSkills, setSuggestedSkills] = useState(SUGGESTED_SKILLS);
+
+  // Fetches real time skills.
+  useEffect(() => {
+    const fetchAllSkills = async () => {
+      try {
+        const data = await getSkills(400);
+        setSuggestedSkills(data); 
+      } catch (err) {
+        console.error("Failed to fetch skills:", err);
+      }
+    };
+    fetchAllSkills();
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -114,18 +143,14 @@ export default function App() {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
 
-  // Handle scrollable navbar
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Hide if scrolling down and past 80px. Show if scrolling up.
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
         setIsNavVisible(false);
       } else {
         setIsNavVisible(true);
       }
-      
       lastScrollY.current = currentScrollY;
     };
 
@@ -136,11 +161,17 @@ export default function App() {
   useEffect(() => {
     const fetchInterests = async () => {
       try {
-        const res = await fetch(`${BASE}/profile/interests`);
-        if (!res.ok) throw new Error();
+        const res = await fetch(`${BASE_URL}/profile/interests`);
+        if (!res.ok) {
+          const err = new Error();
+          err.status = res.status;
+          throw err;
+        }
         setApiInterests(await res.json());
-      } catch {
-        setApiInterests(MOCK_INTERESTS);
+      } catch (err) {
+        if (err.status === 404) {
+          setApiInterests(MOCK_INTERESTS);
+        }
       }
     };
     fetchInterests();
@@ -168,50 +199,89 @@ export default function App() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
-  const toggleInterest = (id) => {
-    setSelectedInterests(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
-  };
-
   const handleToggleExpand = (occupationId) => {
     setExpandedRoleId(prev => prev === occupationId ? null : occupationId);
   };
 
+  const openSkillGap = (role) => {
+    setActiveOccupation(role);
+    setCurrentView('skill-gap');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Quiz Handling
+  const handleStartQuiz = () => {
+    setQuizIndex(0);
+    setQuizAnswers({});
+    setHollandCode('');
+    setCurrentView('quiz');
+    setUserSkills([]);
+    setSkillInput('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelectOption = (letter) => {
+    const updatedAnswers = { ...quizAnswers, [quizIndex]: letter };
+    setQuizAnswers(updatedAnswers);
+
+    if (quizIndex < RIASEC_QUESTIONS.length - 1) {
+      setQuizIndex(quizIndex + 1);
+    } else {
+      const computedCode = getTopHollandCodes(updatedAnswers);
+      setHollandCode(computedCode);
+      setCurrentView('refine');
+    }
+  };
+
+  // Analysis & Matching
   const handleAnalyze = async () => {
     setIsSubmitting(true);
     setShowAllMatches(false);
     setExpandedRoleId(null);
     setHasDownloaded(false);
 
+    const letterToInterest = {
+      R: 'realistic', I: 'investigative', A: 'artistic',
+      S: 'social', E: 'enterprising', C: 'conventional'
+    };
+    const interest_ids = hollandCode.split('').map(char => letterToInterest[char]).filter(Boolean);
+
     try {
-      const matchRes = await fetch(`${BASE}/occupations/match`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ interest_ids: selectedInterests })
+      const matchData = await matchOccupations({
+        interest_ids,
+        skill_ids: userSkills,
+        region: targetLocation
       });
-      if (!matchRes.ok) throw new Error();
-      const matchData = await matchRes.json();
       setMatches(matchData);
 
       const aiPromises = matchData.map(async (role) => {
         try {
-          const aiRes = await fetch(`${BASE}/occupations/${role.occupation_id}/ai`);
-          if (aiRes.ok) {
-            const aiData = await aiRes.json();
-            return { id: role.occupation_id, data: aiData };
+          const aiData = await getOccupationAI(role.occupation_id);
+          return { id: role.occupation_id, data: aiData };
+        } catch (err) {
+          if (err.status === 404) {
+            return { id: role.occupation_id, data: MOCK_AI_DATA };
           }
-        } catch {}
-        return { id: role.occupation_id, data: MOCK_AI_DATA };
+          return { id: role.occupation_id, data: null };
+        }
       });
 
       const aiResults = await Promise.all(aiPromises);
       const aiMap = {};
-      aiResults.forEach(item => { aiMap[item.id] = item.data; });
+      aiResults.forEach(item => { if (item.data) aiMap[item.id] = item.data; });
       setAiDetailsMap(aiMap);
-    } catch {
-      setMatches(MOCK_MATCHES);
-      const mockMap = {};
-      MOCK_MATCHES.forEach(m => { mockMap[m.occupation_id] = MOCK_AI_DATA; });
-      setAiDetailsMap(mockMap);
+    } catch (err) {
+      if (err.status === 404) {
+        setMatches(MOCK_MATCHES);
+        const mockAiMap = {};
+        MOCK_MATCHES.forEach(role => {
+          mockAiMap[role.occupation_id] = MOCK_AI_DATA;
+        });
+        setAiDetailsMap(mockAiMap);
+      } else {
+        setMatches([]);
+        setAiDetailsMap({});
+      }
     } finally {
       setIsSubmitting(false);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -219,6 +289,22 @@ export default function App() {
     }
   };
 
+  // Skill Management
+  const handleAddSkill = (e) => {
+    if (e.key === 'Enter' && skillInput.trim()) {
+      e.preventDefault();
+      if (!userSkills.includes(skillInput.trim().toLowerCase())) {
+        setUserSkills([...userSkills, skillInput.trim().toLowerCase()]);
+      }
+      setSkillInput("");
+    }
+  };
+
+  const removeSkill = (skillToRemove) => {
+    setUserSkills(userSkills.filter(skill => skill !== skillToRemove));
+  };
+
+  // PDF Export
   const handleDownload = () => {
     try {
       if (!matches || matches.length === 0) {
@@ -233,7 +319,6 @@ export default function App() {
         day: 'numeric' 
       });
 
-      // 1. Header Banner
       doc.setFillColor(11, 17, 33);
       doc.rect(0, 0, 210, 25, 'F');
       doc.setTextColor(255, 255, 255);
@@ -241,7 +326,6 @@ export default function App() {
       doc.setFontSize(16);
       doc.text('IResi AI CAREER PATHWAY REPORT', 14, 16);
 
-      // 2. User Parameters
       doc.setTextColor(40, 40, 40);
       doc.setFontSize(11);
       doc.setFont('helvetica', 'bold');
@@ -250,12 +334,11 @@ export default function App() {
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(10);
       doc.text(`• Target Location : ${targetLocation || 'Not specified'}`, 14, 42);
-      doc.text(`• Role Preference : ${workPreference || 'Not specified'}`, 14, 48);
+      doc.text(`• Code            : ${hollandCode || 'Not specified'}`, 14, 48);
       doc.text(`• Date Generated  : ${dateStr}`, 14, 54);
 
       let startY = 65;
 
-      // 3. Matches Loop
       matches.forEach((m, index) => {
         const ai = (aiDetailsMap && aiDetailsMap[m.occupation_id]) || {};
 
@@ -264,7 +347,6 @@ export default function App() {
           startY = 20;
         }
 
-        // Title header bar for each role
         doc.setFillColor(240, 244, 248);
         doc.rect(14, startY - 4, 182, 9, 'F');
         doc.setFont('helvetica', 'bold');
@@ -274,7 +356,6 @@ export default function App() {
 
         startY += 10;
 
-        // Stats Table using autoTable(doc, options)
         autoTable(doc, {
           startY: startY,
           theme: 'plain',
@@ -284,8 +365,8 @@ export default function App() {
             ['Sector', `: ${m.sector || 'ICT'}`],
             ['Match Fit', `: ${m.match_score ?? 'N/A'}% (${m.match_label || 'Good Fit'})`],
             ['AI Resilience Score', `: ${ai.resilience_score ?? 'N/A'}/100`],
-            ['Resilience Status', `: ${typeof formatLabel === 'function' ? formatLabel(ai.resilience_label) : (ai.resilience_label || 'N/A')}`],
-            ['National Demand', `: ${typeof formatLabel === 'function' ? formatLabel(ai.demand_label) : (ai.demand_label || 'N/A')}`],
+            ['Resilience Status', `: ${formatLabel(ai.resilience_label)}`],
+            ['National Demand', `: ${formatLabel(ai.demand_label)}`],
             ['Avg Augmentation', `: ${ai.avg_augmentation ? Math.round(ai.avg_augmentation * 100) : 'N/A'}%`],
             ['Avg Automation', `: ${ai.avg_automation ? Math.round(ai.avg_automation * 100) : 'N/A'}%`],
           ],
@@ -294,7 +375,6 @@ export default function App() {
 
         startY = doc.lastAutoTable.finalY + 4;
 
-        // Tasks Breakdown Table
         if (ai.tasks && ai.tasks.length > 0) {
           const taskRows = ai.tasks.map((t, i) => [
             `${i + 1}. ${t.task_text}`,
@@ -323,7 +403,6 @@ export default function App() {
         }
       });
 
-      // 4. Page Numbering & Footer
       const pageCount = doc.internal.getNumberOfPages();
       for (let i = 1; i <= pageCount; i++) {
         doc.setPage(i);
@@ -337,21 +416,16 @@ export default function App() {
         );
       }
 
-      // 5. Save PDF File
       doc.save('IResi_Career_Pathway_Report.pdf');
-      if (typeof setHasDownloaded === 'function') {
-        setHasDownloaded(true);
-      }
+      setHasDownloaded(true);
     } catch (error) {
       console.error("Failed to generate PDF report:", error);
-      alert("An error occurred while building the PDF. Check console for details.");
+      alert("An error occurred while building the PDF.");
     }
   };
 
   const visibleMatches = showAllMatches ? matches : matches.slice(0, INITIAL_MATCH_COUNT);
-
-  // Dynamic Background: Retains original #09090B on Home/Setup, switches to the deep navy #0B1121 on Results page.
-  const pageBackground =  'bg-[#FAFAFA] dark:bg-[#0B1121]';
+  const pageBackground = 'bg-[#FAFAFA] dark:bg-[#0B1121]';
 
   const handleShowTooltip = (e, title, text) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -359,12 +433,10 @@ export default function App() {
     const tooltipHeight = 140;
     const padding = 12;
 
-    // 1. Vertical Check: Flip above if not enough room at the bottom
     const spaceBelow = window.innerHeight - rect.bottom;
     const isTop = spaceBelow < tooltipHeight + padding && rect.top > tooltipHeight + padding;
     const y = isTop ? rect.top - 12 : rect.bottom + 12;
 
-    // 2. Horizontal Clamping: Keep box inside left and right screen edges
     const centerX = rect.left + rect.width / 2;
     const halfWidth = tooltipWidth / 2;
     const clampedX = Math.max(
@@ -372,7 +444,6 @@ export default function App() {
       Math.min(centerX, window.innerWidth - halfWidth - padding)
     );
 
-    // 3. Arrow Offset: Keep arrow pointed at target even if box shifts
     const arrowOffset = centerX - clampedX;
 
     setTooltipPos({
@@ -387,7 +458,6 @@ export default function App() {
   };
 
   return (
-    <>
     <PasswordGate>
       <style>{`
         @keyframes continuousMove { 0% { background-position: 0 0; } 100% { background-position: 40px 40px; } }
@@ -397,30 +467,25 @@ export default function App() {
         .dark .moving-pattern-bg { background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 40L40 0M0 0l40 40' stroke='%23ffffff' stroke-width='1' stroke-opacity='0.12'/%3E%3C/svg%3E"); }
         .view-enter-animation { animation: pageFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .accordion-enter-animation { animation: accordionExpand 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        
-        /* Custom Scrollbar Styling */
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #d4d4d8; border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #a1a1aa; }
-        
-        /* Dark Mode Scrollbar */
         .dark .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #3f3f46; }
-        .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover { background-color: #52525b; }
       `}</style>
 
       <div className={`min-h-screen text-zinc-900 dark:text-zinc-100 font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-500 relative overflow-hidden ${pageBackground}`}>
         <div className="fixed inset-0 z-0 pointer-events-none moving-pattern-bg" />
         <div className="fixed -top-40 -left-40 w-[600px] h-[600px] bg-zinc-200/50 dark:bg-white/5 rounded-full blur-[140px] pointer-events-none" />
 
-        <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500 ${
-          currentView === 'results' 
+        {/* Navigation Bar */}
+        <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+          isNavVisible ? 'translate-y-0' : '-translate-y-full'
+        } ${
+          currentView === 'results' || currentView === 'skill-gap' || currentView === 'regional-insights'
             ? 'bg-white dark:bg-[#0B1121] border-zinc-200 dark:border-white/10' 
             : 'bg-white dark:bg-[#09090B] border-zinc-200 dark:border-zinc-800'
           }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-            
-            {/* 1. Brand / Logo Section (Left) */}
             <div onClick={() => confirmNavigation('home')} className="flex items-center gap-2 sm:gap-3 cursor-pointer group">
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#3B82F6] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
                 <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />
@@ -428,48 +493,40 @@ export default function App() {
               <span className="font-bold tracking-tight text-base sm:text-lg">IResi</span>
             </div>
 
-            {/* 2. Navigation & Controls (Right) */}
             <div className="flex items-center gap-2 sm:gap-4">
-              
               <div className="hidden md:flex items-center gap-1 sm:gap-2">
                 <button 
-                  onClick={() => confirmNavigation('wip')}
-                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
+                  onClick={() => confirmNavigation('regional-insights')}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    currentView === 'regional-insights' 
+                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white' 
+                      : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10'
+                  }`}
                 >
                   Regional Insights
                 </button>
-                
                 <button 
                   onClick={() => confirmNavigation('wip')}
-                  className="px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200"
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    currentView === 'wip' 
+                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white' 
+                      : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10'
+                  }`}
                 >
                   Career Simulator
                 </button>
 
-                {/* Data Sources Dropdown */}
                 <div className="relative group">
-                  <button className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 hover:text-zinc-900 dark:hover:text-white transition-all duration-200 cursor-pointer">
+                  <button className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200 cursor-pointer">
                     <span>Data Sources</span>
-                    <ChevronDown className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400 transition-transform duration-200 group-hover:rotate-180" />
+                    <ChevronDown className="w-3.5 h-3.5 text-zinc-500 transition-transform duration-200 group-hover:rotate-180" />
                   </button>
-
-                  {/* Dropdown Menu */}
                   <div className="absolute right-0 top-full mt-1 w-64 py-2 bg-white dark:bg-[#131B2F] rounded-xl shadow-xl border border-zinc-200 dark:border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[999]">
-                    <a 
-                      href="https://www.onetcenter.org/database.html" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
-                    >
+                    <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
                       <span>O*NET Database</span>
                       <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                     </a>
-                    <a 
-                      href="https://www.jobsandskills.gov.au/studies/generative-artificial-intelligence-capacity-study" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
-                    >
+                    <a href="https://www.jobsandskills.gov.au/data" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between px-4 py-2.5 text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
                       <span>Jobs & Skills Australia (JSA)</span>
                       <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                     </a>
@@ -479,23 +536,21 @@ export default function App() {
 
               <div className="hidden md:block w-px h-5 bg-zinc-300 dark:bg-zinc-700 mx-2"></div>
 
-              
-             
-            <button
-              onClick={() => confirmNavigation('setup')}
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-all"
-            >
-              Get started
-            </button>
+              <button
+                onClick={handleStartQuiz}
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition-all"
+              >
+                Get started
+              </button>
 
-            {/* 3. Theme Toggle Button */}
-            <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200">
-            {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
-            </button>
+              <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200">
+                {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
+              </button>
             </div>
           </div>
         </nav>
 
+        {/* View Routing */}
         <div className="relative z-10">
           {currentView === 'wip' && (
             <div key="wip" className="view-enter-animation">
@@ -503,108 +558,121 @@ export default function App() {
             </div>
           )}
 
+          {currentView === 'regional-insights' && (
+            <div key="regional-insights" className="view-enter-animation pt-20">
+              <RegionalInsights onBack={() => confirmNavigation('home')} />
+            </div>
+          )}
+
           {currentView === 'home' && (
             <main key="home" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-32 sm:pt-48 pb-24 sm:pb-32 flex flex-col items-center text-center">
-              <div key="home" className="view-enter-animation">
-                <Intro 
-                  onConfigureProfile={() => confirmNavigation('setup')} 
-                  onNavigate={(target) => confirmNavigation(target)} 
-                />
+              <Intro 
+                onConfigureProfile={handleStartQuiz} 
+                onNavigate={(target) => confirmNavigation(target)} 
+              />
+            </main>
+          )}
+
+          {currentView === 'quiz' && (
+            <main key="quiz" className="view-enter-animation max-w-2xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32 space-y-8">
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+                  <span>Question {quizIndex + 1} of {RIASEC_QUESTIONS.length}</span>
+                </div>
+                <div className="w-full bg-zinc-200 dark:bg-zinc-800 h-2 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-black dark:bg-white h-full transition-all duration-300"
+                    style={{ width: `${((quizIndex + 1) / RIASEC_QUESTIONS.length) * 100}%` }}
+                  />
+                </div>
+              </div>
+
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white leading-snug">
+                {RIASEC_QUESTIONS[quizIndex].question}
+              </h2>
+
+              <div className="space-y-3">
+                {RIASEC_QUESTIONS[quizIndex].options.map((opt) => (
+                  <button
+                    key={opt.letter}
+                    onClick={() => handleSelectOption(opt.letter)}
+                    className="w-full text-left p-4 sm:p-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl hover:border-black dark:hover:border-white transition-all group"
+                  >
+                    <span className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200">
+                      {opt.text}
+                    </span>
+                  </button>
+                ))}
               </div>
             </main>
           )}
 
-          {currentView === 'setup' && (
-            <main key="setup" className="view-enter-animation max-w-4xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32">
-              <button onClick={() => confirmNavigation('home')} className="mb-8 sm:mb-12 inline-flex items-center gap-2 text-xs sm:text-sm text-zinc-400 dark:text-zinc-500 hover:text-black dark:hover:text-white transition-colors">
-                <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Go back
-              </button>
-              <div className="space-y-12 sm:space-y-16">
-                <section>
-                  <div className="flex items-center gap-2 mb-6 sm:mb-8">
-                    <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">1. Work Parameters</h2>
-                    
-                    {/* Tooltip Wrapper */}
-                    <div className="relative group flex items-center">
-                      <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-help transition-colors" />
-                      
-                      {/* Tooltip Box */}
-                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 sm:w-56 p-2.5 bg-zinc-800 dark:bg-white text-white dark:text-zinc-900 text-xs font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 text-center shadow-xl pointer-events-none">
-                        Set the boundaries for your job search, such as your location and preferred role type.
-                        
-                        {/* Tooltip Arrow */}
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800 dark:border-t-white"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    <div className="space-y-2">
-                      <label className="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">Region</label>
-                      <select value={targetLocation} onChange={(e) => setTargetLocation(e.target.value)} className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-zinc-800 text-zinc-900 dark:text-white rounded-xl sm:rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 text-sm focus:ring-2 focus:ring-black dark:focus:ring-white outline-none cursor-pointer appearance-none">
-                        {AU_LOCATIONS.map(loc => <option key={loc}>{loc}</option>)}
-                      </select>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-[10px] sm:text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">Role Type</label>
-                      <select value={workPreference} onChange={(e) => setWorkPreference(e.target.value)} className="w-full bg-white dark:bg-zinc-900 border border-transparent dark:border-zinc-800 text-zinc-900 dark:text-white rounded-xl sm:rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 text-sm focus:ring-2 focus:ring-black dark:focus:ring-white outline-none cursor-pointer appearance-none">
-                        {WORK_PREFERENCES.map(pref => <option key={pref}>{pref}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                </section>
-                <section>
-                  <div className="flex items-end justify-between mb-6 sm:mb-8">
-                    <div className="flex items-center gap-2 mb-6 sm:mb-8">
-                      {/* Your original text is right here: */}
-                      <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">2. Career DNA</h2>
-                      
-                      {/* Tooltip Wrapper & Icon */}
-                      <div className="relative group flex items-center">
-                        <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-help transition-colors" />
-                        
-                        {/* Tooltip Box that appears on hover */}
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 sm:w-64 p-2.5 bg-zinc-800 dark:bg-white text-white dark:text-zinc-900 text-xs font-medium rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 text-center shadow-xl pointer-events-none">
-                          Select the core interests and tasks that best align with your natural working style.
-                          
-                          {/* Tooltip Arrow pointing down */}
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800 dark:border-t-white"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <span className="text-xs sm:text-sm text-zinc-400 dark:text-zinc-500">{selectedInterests.length} selected</span>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-                    {apiInterests.map((item) => {
-                      const isSelected = selectedInterests.includes(item.interest_id);
-                      return (
-                        <div
-                          key={item.interest_id}
-                          onClick={() => toggleInterest(item.interest_id)}
-                          className={`relative p-5 sm:p-6 rounded-2xl sm:rounded-3xl cursor-pointer transition-all duration-300 ease-out flex flex-col gap-3 sm:gap-4 border ${
-                            isSelected 
-                              ? 'bg-black dark:bg-white text-white dark:text-black border-black dark:border-white shadow-lg sm:scale-[1.02]' 
-                              : 'bg-white/80 dark:bg-zinc-900/80 text-zinc-700 dark:text-zinc-300 border-transparent dark:border-zinc-800'
-                          }`}
+          {currentView === 'refine' && (
+            <main key="refine" className="view-enter-animation max-w-2xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32 space-y-8">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-bold tracking-tight">Fine-tune Your Results</h2>
+              </div>
+
+              <div className="space-y-3">
+                <label className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Current Skills (Optional)</label>
+                <input 
+                  type="text" 
+                  value={skillInput}
+                  onChange={(e) => setSkillInput(e.target.value)}
+                  onKeyDown={handleAddSkill}
+                  placeholder="Type a skill (e.g., Python, Project Management) and press Enter..." 
+                  className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+                />
+
+                {skillInput.trim() && (
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {suggestedSkills
+                      .filter(s => s && s.toLowerCase().includes(skillInput.toLowerCase()) && !userSkills.includes(s.toLowerCase()))
+                      .slice(0, 4)
+                      .map(suggestion => (
+                        <button
+                          key={suggestion}
+                          type="button"
+                          onClick={() => { setUserSkills([...userSkills, suggestion.toLowerCase()]); setSkillInput(''); }}
+                          className="px-3 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-zinc-700 dark:text-zinc-300 rounded-full transition-colors"
                         >
-                          <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center border transition-colors ${isSelected ? 'border-zinc-700 bg-zinc-800 dark:border-zinc-300 dark:bg-zinc-200' : 'border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950'}`}>
-                            {isSelected && <Check className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${isDark ? 'text-black' : 'text-white'}`} strokeWidth={3} />}
-                          </div>
-                          <span className="font-medium text-xs sm:text-sm leading-snug">{item.label}</span>
-                        </div>
-                      );
-                    })}
+                          + {suggestion}
+                        </button>
+                      ))}
                   </div>
-                </section>
+                )}
+
+                {userSkills.length > 0 && (
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {userSkills.map(skill => (
+                      <span key={skill} className="px-3 py-1.5 rounded-full text-xs font-medium bg-black dark:bg-white text-white dark:text-black flex items-center gap-1.5">
+                        {skill}
+                        <button onClick={() => removeSkill(skill)} className="hover:opacity-70 focus:outline-none">×</button>
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div className="mt-12 sm:mt-16 flex justify-end">
-                <button
-                  onClick={handleAnalyze}
-                  disabled={isSubmitting || selectedInterests.length === 0}
-                  className="w-full sm:w-auto justify-center px-8 py-3.5 sm:px-10 sm:py-4 bg-black dark:bg-white text-white dark:text-black rounded-full text-sm font-medium flex items-center gap-3 disabled:opacity-30 transition-colors"
+
+              <div className="space-y-3">
+                <label className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Target Region (Optional)</label>
+                <select 
+                  value={targetLocation} 
+                  onChange={(e) => setTargetLocation(e.target.value)}
+                  className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3.5 text-sm outline-none cursor-pointer"
                 >
-                  {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Compiling Data</> : 'Generate Pathway'}
-                </button>
+                  <option value="">All Australia / National</option>
+                  {AU_LOCATIONS.map(loc => <option key={loc} value={loc}>{loc}</option>)}
+                </select>
               </div>
+
+              <button 
+                onClick={handleAnalyze} 
+                disabled={isSubmitting}
+                className="w-full py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full text-sm flex items-center justify-center gap-2 transition-opacity disabled:opacity-50 cursor-pointer"
+              >
+                {isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Matching Occupations...</> : 'Show Matching Pathways'}
+              </button>
             </main>
           )}
 
@@ -612,19 +680,18 @@ export default function App() {
             <main key="results" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32">
               <header className="mb-10 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-200/60 dark:border-white/10 pb-8 sm:pb-10">
                 <div>
-                  <button onClick={() => confirmNavigation('setup')} className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors">
+                  <button onClick={() => confirmNavigation('refine')} className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer">
                     <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> Edit Parameters
                   </button>
                   <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white">Matches & AI Impact</h1>
                   <div className="flex flex-wrap gap-3 sm:gap-4 mt-3 sm:mt-4 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 font-medium">
-                    <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {targetLocation}</span>
-                    <span className="flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {workPreference}</span>
+                    <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> {targetLocation || 'All Australia'}</span>
                   </div>
                 </div>
-                
+
                 <button 
                   onClick={handleDownload}
-                  className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm ${
+                  className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors shadow-sm cursor-pointer ${
                     hasDownloaded 
                       ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30'
                       : 'bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-[#1A233A]'
@@ -657,24 +724,20 @@ export default function App() {
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1.5">
                             <span className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide ${colors.badge}`}>
-                              {role.match_label} • {role.match_score}%
+                              {role.match_label}
                             </span>
-
                           </div>
                           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
                         </div>
 
-                        {/* Resilience Score box with coordinate tracking */}
                         {ai && (
                           <div 
-                            // Resilience
                             onMouseEnter={(e) => handleShowTooltip(
                               e, 
                               "Resilience Score", 
                               "Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk."
                             )}
                             onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
-                            
                             className={`cursor-help hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border transition-colors ${
                               ai.resilience_score >= 50 
                                 ? 'bg-emerald-500/5 hover:bg-emerald-500/10 border-emerald-500/20' 
@@ -713,32 +776,49 @@ export default function App() {
                         </div>
                       </div>
 
-                      {/* Expanded Section matches the Image styling precisely in dark mode */}
                       {isExpanded && ai && (
                         <div className="accordion-enter-animation px-5 sm:px-8 pb-6 sm:pb-8 pt-2 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0E1525]">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
-                            
-                            {/* Left Column: Market Intelligence */}
                             <div className="space-y-6">
-                              <div>
-                                <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-3">
-                                  <LayoutDashboard className="w-4 h-4" /> MARKET INTELLIGENCE
-                                </h4>
-                                <p className="text-sm text-slate-700 dark:text-slate-300">
-                                  JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()} demand</strong> for this occupation.
-                                </p>
+                              <div className="flex items-center justify-between">
+                                <div>
+                                  <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-1">
+                                    <LayoutDashboard className="w-4 h-4" /> MARKET INTELLIGENCE
+                                  </h4>
+                                  <p className="text-sm text-slate-700 dark:text-slate-300">
+                                    JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()} demand</strong> for this occupation.
+                                  </p>
+                                </div>
                               </div>
+
+                              <div className="flex items-center gap-3">
+                                <button
+                                  onClick={() => openSkillGap(role)}
+                                  className="group inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 border border-slate-200/80 dark:bg-white/10 dark:hover:bg-white/15 dark:text-slate-200 dark:border-white/10 transition-all duration-200 cursor-pointer backdrop-blur-sm"
+                                >
+                                  <span>Check Skill Gap</span>
+                                  <svg 
+                                    className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 transition-transform duration-200 group-hover:translate-x-1" 
+                                    fill="none" 
+                                    viewBox="0 0 24 24" 
+                                    stroke="currentColor" 
+                                    strokeWidth="2.5"
+                                  >
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                                  </svg>
+                                </button>
+                              </div>
+
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {/* Augmentation Box */}
                                 <div 
-                                onMouseEnter={(e) => handleShowTooltip(
-                                  e, 
-                                  "Augmentation Rate", 
-                                  "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely."
-                                )}
-                                onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
-                                
-                                className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between">
+                                  onMouseEnter={(e) => handleShowTooltip(
+                                    e, 
+                                    "Augmentation Rate", 
+                                    "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely."
+                                  )}
+                                  onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                  className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between"
+                                >
                                   <div className="flex justify-between items-start mb-4">
                                     <span className="text-[10px] font-bold text-emerald-600 dark:text-[#34D399] uppercase tracking-widest">Augmentation</span>
                                     <span className="text-[9px] font-bold text-emerald-700 dark:text-[#6EE7B7] bg-emerald-500/20 px-2 py-0.5 rounded uppercase">Support</span>
@@ -749,16 +829,15 @@ export default function App() {
                                   </div>
                                 </div>
                                 
-                                {/* Automation Box */}
                                 <div 
-                                onMouseEnter={(e) => handleShowTooltip(
-                                  e, 
-                                  "Automation Risk", 
-                                  "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention."
-                                )}
-                                onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
-                                
-                                className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between">
+                                  onMouseEnter={(e) => handleShowTooltip(
+                                    e, 
+                                    "Automation Risk", 
+                                    "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention."
+                                  )}
+                                  onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                  className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between"
+                                >
                                   <div className="flex justify-between items-start mb-4">
                                     <span className="text-[10px] font-bold text-amber-600 dark:text-[#FBBF24] uppercase tracking-widest">Automation</span>
                                     <span className="text-[9px] font-bold text-amber-700 dark:text-[#FCD34D] bg-amber-500/20 px-2 py-0.5 rounded uppercase">Replace</span>
@@ -771,7 +850,6 @@ export default function App() {
                               </div>
                             </div>
 
-                            {/* Right Column: Task Impact Analysis */}
                             <div>
                               <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4">
                                 <Cpu className="w-4 h-4" /> TASK IMPACT ANALYSIS
@@ -780,7 +858,6 @@ export default function App() {
                                 {ai.tasks?.map((task, idx) => (
                                   <div key={idx} className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02] space-y-5">
                                     <p className="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">{task.task_text}</p>
-                                    
                                     <div className="space-y-3">
                                       <div className="flex items-center gap-4">
                                         <span className="w-16 text-[10px] font-bold text-emerald-600 dark:text-[#34D399] uppercase tracking-wider">Augment</span>
@@ -802,7 +879,6 @@ export default function App() {
                                 ))}
                               </div>
                             </div>
-
                           </div>
                         </div>
                       )}
@@ -815,7 +891,7 @@ export default function App() {
                 <div className="mt-8 sm:mt-10 flex justify-center">
                   <button
                     onClick={() => setShowAllMatches(!showAllMatches)}
-                    className="px-6 py-3 rounded-full border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-[#131B2F]/80 hover:bg-zinc-100 dark:hover:bg-[#1A233A] text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 shadow-sm"
+                    className="px-6 py-3 rounded-full border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-[#131B2F]/80 hover:bg-zinc-100 dark:hover:bg-[#1A233A] text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 shadow-sm cursor-pointer"
                   >
                     {showAllMatches ? (
                       <>Show Less <ChevronUp className="w-4 h-4" /></>
@@ -828,7 +904,17 @@ export default function App() {
             </main>
           )}
 
-          {/* Global Tooltip Rendered Outside Card Hierarchy */}
+          {currentView === 'skill-gap' && (
+            <main key="skill-gap" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32">
+              <SkillGapCheck
+                targetOccupation={activeOccupation}
+                userSkills={userSkills}
+                onBack={() => setCurrentView('results')}
+                onNavigate={(targetView) => confirmNavigation(targetView)}
+              />
+            </main>
+          )}
+
           {tooltipPos.show && (
             <div 
               style={{ left: tooltipPos.x, top: tooltipPos.y }}
@@ -843,7 +929,6 @@ export default function App() {
                 {tooltipPos.text}
               </p>
               
-              {/* Self-adjusting Arrow */}
               <div 
                 style={{ transform: `translateX(calc(-50% + ${tooltipPos.arrowOffset || 0}px))` }}
                 className={`absolute left-1/2 border-[6px] border-transparent ${
@@ -854,10 +939,8 @@ export default function App() {
               ></div>
             </div>
           )}
-
         </div>
       </div>
     </PasswordGate>
-    </>
   );
 }
