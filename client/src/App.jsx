@@ -215,6 +215,8 @@ export default function App() {
     setQuizAnswers({});
     setHollandCode('');
     setCurrentView('quiz');
+    setUserSkills([]);
+    setSkillInput('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
