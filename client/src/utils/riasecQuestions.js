@@ -1,122 +1,122 @@
 export const RIASEC_QUESTIONS = [
   {
     id: 1,
-    question: "Your uni's network drops mid-presentation. What's your role in fixing it?",
+    question: "Your afternoon just opened up. Nothing is due and nobody is telling you what to do. What catches your attention?",
     options: [
-      { letter: 'R', role: 'Computer Network Support Specialist', text: 'Physically check the switches and routers' },
-      { letter: 'I', role: 'Computer Network Architect', text: 'Trace the root cause through the network logs' },
-      { letter: 'A', role: 'Web and Digital Interface Designer', text: "Redesign the clunky status page everyone's staring at" },
-      { letter: 'S', role: 'IT Support', text: 'Calmly help panicking classmates find a workaround' },
-      { letter: 'E', role: 'IT Consultant', text: 'Message IT proposing how they could prevent this next time' },
-      { letter: 'C', role: 'Database Administrator', text: 'Log the incident with timestamps for the report' }
+      { letter: 'R', role: 'Field Technician / Engineer', text: 'Take apart a broken gadget and try to fix it.' },
+      { letter: 'I', role: 'Researcher / Analyst', text: 'Go down a rabbit hole researching a strange question.' },
+      { letter: 'A', role: 'Content Creator / Designer', text: 'Turn an idea into a poster, video or story.' },
+      { letter: 'S', role: 'Counselor / Advisor', text: 'Help a friend think through an important decision.' },
+      { letter: 'E', role: 'Project Initiator / Entrepreneur', text: 'Bring people together and start something exciting.' },
+      { letter: 'C', role: 'Operations / Planner', text: 'Sort out your plans so everything feels under control.' }
     ]
   },
   {
     id: 2,
-    question: "You're handed a messy, undocumented group project codebase:",
+    question: "The group project begins. Everyone is waiting for someone to make the first move. Where do you naturally step in?",
     options: [
-      { letter: 'R', role: 'Telecom Engineering Specialist', text: "Check if it's actually a hardware/config issue" },
-      { letter: 'I', role: 'Software Developer', text: 'Trace the logic line by line to understand what it does' },
-      { letter: 'A', role: 'Video Game Designer', text: 'Mock up how much better this could look and feel' },
-      { letter: 'S', role: 'Team Lead / Support', text: 'Get the group together to agree on next steps' },
-      { letter: 'E', role: 'Project Manager', text: 'Push to cut scope so the team actually ships' },
-      { letter: 'C', role: 'Software QA Tester', text: 'Write a proper README and start testing systematically' }
+      { letter: 'R', role: 'Prototyper / Builder', text: 'Start building a rough version of the idea.' },
+      { letter: 'I', role: 'Critical Thinker / Analyst', text: 'Question the assumptions and check the evidence.' },
+      { letter: 'A', role: 'Art Director / Designer', text: 'Shape how the final project will look and feel.' },
+      { letter: 'S', role: 'Facilitator / Supporter', text: 'Make sure everyone gets heard and included.' },
+      { letter: 'E', role: 'Team Leader / Director', text: 'Give the team direction and get people moving.' },
+      { letter: 'C', role: 'Project Coordinator / Organizer', text: 'Turn the chaos into tasks, roles and deadlines.' }
     ]
   },
   {
     id: 3,
-    question: "Your team's 24-hour hackathon project just crashed with 2 hours left:",
+    question: "Which challenge would you be most curious to try?",
     options: [
-      { letter: 'R', role: 'Systems Administrator', text: 'Check if the server/hosting just fell over' },
-      { letter: 'I', role: 'Computer Systems Analyst', text: 'Trace back through the code to find exactly where it broke' },
-      { letter: 'A', role: 'Web Developer', text: "Focus on making sure the demo UI still looks finished" },
-      { letter: 'S', role: 'Team Coordinator', text: "Check in on the team to manage stress and keep morale up" },
-      { letter: 'E', role: 'ICT Business Analyst', text: "Rework the pitch so the crash doesn't sink the demo" },
-      { letter: 'C', role: 'Web Administrator', text: 'Make a rapid checklist of what absolutely must work' }
+      { letter: 'R', role: 'Maker / Engineer', text: 'Make something useful using tools or technology.' },
+      { letter: 'I', role: 'Investigator / Analyst', text: 'Solve a mystery using clues, patterns and data.' },
+      { letter: 'A', role: 'Innovator / Creator', text: 'Create something people have never seen before.' },
+      { letter: 'S', role: 'Support Specialist / Coach', text: 'Help someone overcome a difficult situation.' },
+      { letter: 'E', role: 'Project Manager / Founder', text: 'Turn a small idea into a successful project.' },
+      { letter: 'C', role: 'System Designer / Administrator', text: 'Design a system that keeps everything running smoothly.' }
     ]
   },
   {
     id: 4,
-    question: "You have to choose ONE elective and can never take the others:",
+    question: "Your team’s idea has failed its first test. Which response feels most like you?",
     options: [
-      { letter: 'R', role: 'Telecommunications', text: 'Hands-on labs wiring and configuring real network gear' },
-      { letter: 'I', role: 'Penetration Testing', text: 'Breaking into systems legally to find weaknesses' },
-      { letter: 'A', role: 'Game & Multimedia Dev', text: 'Designing and building a playable game from scratch' },
-      { letter: 'S', role: 'IT Training & Support', text: 'Learning to teach non-technical people how systems work' },
-      { letter: 'E', role: 'ICT Business Analysis', text: 'Translating business problems into tech requirements and pitching' },
-      { letter: 'C', role: 'Database Systems', text: 'Designing and maintaining data structures everything runs on' }
+      { letter: 'R', role: 'Troubleshooter / Technician', text: 'Get hands-on and test what can be repaired.' },
+      { letter: 'I', role: 'Diagnostic Analyst', text: 'Dig into the problem until the real cause makes sense.' },
+      { letter: 'A', role: 'Creative Director / Visionary', text: 'Scrap the old approach and imagine a fresh one.' },
+      { letter: 'S', role: 'Team Care Coordinator', text: 'Check how everyone is coping before continuing.' },
+      { letter: 'E', role: 'Crisis Manager / Leader', text: 'Make a quick decision and restore the team’s confidence.' },
+      { letter: 'C', role: 'Quality Assurance / Auditor', text: 'Review every step to find what was missed.' }
     ]
   },
   {
     id: 5,
-    question: "A friend's laptop is glitching before an exam:",
+    question: "You’ve joined a project you know almost nothing about. What do you do first?",
     options: [
-      { letter: 'R', role: 'User Support Specialist', text: 'Physically inspect the machine' },
-      { letter: 'I', role: 'Information Security Analyst', text: "Check if it's actually been compromised" },
-      { letter: 'A', role: 'UI/UX Designer', text: "Suggest a cleaner reinstall/setup while you're in there" },
-      { letter: 'S', role: 'IT Support Specialist', text: 'Patiently walk them through it, no judgment' },
-      { letter: 'E', role: 'IT Sales / Advisor', text: 'Tell them which new laptop to just buy' },
-      { letter: 'C', role: 'Database Architect', text: 'Back everything up methodically first' }
+      { letter: 'R', role: 'Hands-on Learner / Practitioner', text: 'Try it myself and learn through practice.' },
+      { letter: 'I', role: 'Researcher / Investigator', text: 'Read, question and understand how everything connects.' },
+      { letter: 'A', role: 'Experimental Creator', text: 'Experiment freely and see what ideas emerge.' },
+      { letter: 'S', role: 'Community Liaison / Interviewer', text: 'Talk to people who have experienced it firsthand.' },
+      { letter: 'E', role: 'Networker / Business Developer', text: 'Find the key people and opportunities involved.' },
+      { letter: 'C', role: 'Operations Planner', text: 'Create a clear plan for getting up to speed.' }
     ]
   },
   {
     id: 6,
-    question: "Career fair—which booth do you linger at?",
+    question: "Your university offers funding for one student-led initiative. Which part would you claim?",
     options: [
-      { letter: 'R', role: 'Telecom / Infrastructure', text: 'Network/Telecom Infrastructure team' },
-      { letter: 'I', role: 'Security / Hacking', text: 'Security / Penetration Testing team' },
-      { letter: 'A', role: 'Media / Design', text: 'Game & Multimedia Development team' },
-      { letter: 'S', role: 'Support / Training', text: 'ICT Customer Support / Training team' },
-      { letter: 'E', role: 'Business / Analytics', text: 'Business Intelligence / Analyst team' },
-      { letter: 'C', role: 'Database / Admin', text: 'Systems/Database Administration team' }
+      { letter: 'R', role: 'Implementation Specialist', text: 'Build or set up the solution in the real world.' },
+      { letter: 'I', role: 'Research Lead', text: 'Investigate the issue before deciding what will help.' },
+      { letter: 'A', role: 'Campaign Director', text: 'Create a campaign people will remember.' },
+      { letter: 'S', role: 'Student Support Advocate', text: 'Work directly with the students who need support.' },
+      { letter: 'E', role: 'Initiative Director / Leader', text: 'Lead the initiative and win people’s backing.' },
+      { letter: 'C', role: 'Operations / Finance Manager', text: 'Manage the budget, registrations and progress.' }
     ]
   },
   {
     id: 7,
-    question: "Your club needs a working sign-up system by Friday:",
+    question: "Which moment would leave you thinking, “That was a good day”?",
     options: [
-      { letter: 'R', role: 'Network Specialist', text: 'Make sure the server/form can handle traffic' },
-      { letter: 'I', role: 'Systems Analyst', text: "Check last year's data to predict turnout" },
-      { letter: 'A', role: 'Video Game / Web Designer', text: 'Design something people actually enjoy using' },
-      { letter: 'S', role: 'Community Lead', text: 'Ask members what annoyed them about last year system' },
-      { letter: 'E', role: 'ICT Business Analyst', text: 'Pitch sponsors to fund a better tool' },
-      { letter: 'C', role: 'Web Administrator', text: "Build the checklist so nothing's missed" }
+      { letter: 'R', role: 'Builder / Maker', text: 'Watching something I built finally work.' },
+      { letter: 'I', role: 'Problem Solver / Analyst', text: 'Finding the answer to a problem nobody could explain.' },
+      { letter: 'A', role: 'Creator / Designer', text: 'Seeing people connect with something I created.' },
+      { letter: 'S', role: 'Mentor / Helper', text: 'Knowing someone moved forward because I helped.' },
+      { letter: 'E', role: 'Achiever / Leader', text: 'Turning an ambitious idea into a real achievement.' },
+      { letter: 'C', role: 'Organizer / Coordinator', text: 'Seeing a messy situation become clear and organised.' }
     ]
   },
   {
     id: 8,
-    question: "What made your best uni project satisfying?",
+    question: "You can spend tomorrow in any one of these places. Which ones pull you in?",
     options: [
-      { letter: 'R', role: 'Hardware / Infra', text: 'It ran reliably under pressure, hardware and all' },
-      { letter: 'I', role: 'QA Tester', text: 'You found the bug nobody else could' },
-      { letter: 'A', role: 'Designer', text: 'People said it genuinely looked good' },
-      { letter: 'S', role: 'Mentor', text: 'You helped a teammate get unstuck' },
-      { letter: 'E', role: 'Product Lead', text: 'It could actually become something real' },
-      { letter: 'C', role: 'DBA / Admin', text: 'Everything was clean, tested, and documented' }
+      { letter: 'R', role: 'Workshop Technician', text: 'A hands-on space filled with equipment and working prototypes.' },
+      { letter: 'I', role: 'Research Lab / Study', text: 'A quiet space for exploring ideas, evidence and difficult questions.' },
+      { letter: 'A', role: 'Creative Studio', text: 'A flexible studio where unusual ideas are welcome.' },
+      { letter: 'S', role: 'Collaborative Hub', text: 'A collaborative space where people learn from one another.' },
+      { letter: 'E', role: 'Dynamic Workplace', text: 'A fast-moving space where decisions and opportunities happen.' },
+      { letter: 'C', role: 'Structured Office', text: 'A structured space where everything has a clear place and purpose.' }
     ]
   },
   {
     id: 9,
-    question: "It's 11pm, 2 days before a major group assignment is due and files are missing. What do you do?",
+    question: "The deadline suddenly moves to tonight. What role do you fall into?",
     options: [
-      { letter: 'R', role: 'Support Specialist', text: "Hop on a call and check everyone's setup to see what went wrong technically" },
-      { letter: 'I', role: 'Systems Analyst', text: 'Go through the folder piece by piece to figure out exactly what is missing and why' },
-      { letter: 'A', role: 'Web Developer', text: 'Rebuild the folder/doc into something clean and easy to navigate' },
-      { letter: 'S', role: 'Support Lead', text: 'Message the teammate who sounds most stressed to check they are okay' },
-      { letter: 'E', role: 'Business Analyst', text: 'Take charge and assign who is finishing what so it gets done' },
-      { letter: 'C', role: 'Database Admin', text: "Create a proper file-naming system and tracker so this doesn't happen again" }
+      { letter: 'R', role: 'Practical Executor', text: 'Take on the unfinished practical work.' },
+      { letter: 'I', role: 'Troubleshooter', text: 'Find the one problem slowing everyone down.' },
+      { letter: 'A', role: 'Creative Innovator', text: 'Invent a workaround when the original plan becomes impossible.' },
+      { letter: 'S', role: 'Team Anchor / Supporter', text: 'Keep the team calm and working together.' },
+      { letter: 'E', role: 'Closer / Director', text: 'Make the tough calls and push towards the finish line.' },
+      { letter: 'C', role: 'Detail Controller / Reviewer', text: 'Reorder the priorities and check every requirement.' }
     ]
   },
   {
     id: 10,
-    question: "LinkedIn headline you'd want after graduating:",
+    question: "Ignore job titles for a moment. Which future sounds genuinely interesting?",
     options: [
-      { letter: 'R', role: 'Infrastructure', text: '"Keeping infrastructure running at scale"' },
-      { letter: 'I', role: 'Architect / Security', text: '"Finding what others miss"' },
-      { letter: 'A', role: 'UI/UX Designer', text: '"Building products people love using"' },
-      { letter: 'S', role: 'IT Support', text: '"Helping people get unstuck with tech"' },
-      { letter: 'E', role: 'Business Analyst', text: '"Turning ideas into business wins"' },
-      { letter: 'C', role: 'Database Admin', text: '"Making sure nothing falls through the cracks"' }
+      { letter: 'R', role: 'Technology Specialist', text: 'I regularly build, repair or work with real-world technology.' },
+      { letter: 'I', role: 'Investigator / Analyst', text: 'I spend my time investigating questions and uncovering answers.' },
+      { letter: 'A', role: 'Creative Professional', text: 'I have the freedom to create and express original ideas.' },
+      { letter: 'S', role: 'Educator / Mentor', text: 'My work directly helps other people learn or improve.' },
+      { letter: 'E', role: 'Leader / Strategist', text: 'I lead ideas, influence decisions and create opportunities.' },
+      { letter: 'C', role: 'Systems Manager', text: 'I make complicated systems reliable and easy to manage.' }
     ]
   }
 ];
