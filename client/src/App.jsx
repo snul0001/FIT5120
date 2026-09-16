@@ -13,7 +13,7 @@ import PasswordGate from './components/PasswordGate';
 import WorkInProgress from './components/WorkInProgress';
 import SkillGapCheck from './components/SkillGapCheck';
 import RegionalInsights from './components/RegionalInsights';
-import { matchOccupations, getOccupationAI, BASE_URL } from './api/client';
+import { matchOccupations, getOccupationAI, getSkills, BASE_URL } from './api/client';
 import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
 
 const INITIAL_MATCH_COUNT = 4;
@@ -24,10 +24,7 @@ const AU_LOCATIONS = [
   'Australian Capital Territory'
 ];
 
-const SUGGESTED_SKILLS = [
-  'Python', 'SQL', 'JavaScript', 'React', 'Project Management', 
-  'Data Analysis', 'Cyber Security', 'Cloud Computing', 'Git'
-];
+let SUGGESTED_SKILLS = [];
 
 const MOCK_MATCHES = [
   { occupation_id: "271133", rank: 1, title: "Cyber Security Analyst", sector: "ICT", match_score: 96, match_label: "Exceptional Fit" },
@@ -124,6 +121,20 @@ export default function App() {
   // Skills States
   const [skillInput, setSkillInput] = useState("");
   const [userSkills, setUserSkills] = useState([]);
+  const [suggestedSkills, setSuggestedSkills] = useState(SUGGESTED_SKILLS);
+
+  // Fetches real time skills.
+  useEffect(() => {
+    const fetchAllSkills = async () => {
+      try {
+        const data = await getSkills(400);
+        setSuggestedSkills(data); 
+      } catch (err) {
+        console.error("Failed to fetch skills:", err);
+      }
+    };
+    fetchAllSkills();
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -613,8 +624,8 @@ export default function App() {
 
                 {skillInput.trim() && (
                   <div className="flex flex-wrap gap-2 pt-1">
-                    {SUGGESTED_SKILLS
-                      .filter(s => s.toLowerCase().includes(skillInput.toLowerCase()) && !userSkills.includes(s.toLowerCase()))
+                    {suggestedSkills
+                      .filter(s => s && s.toLowerCase().includes(skillInput.toLowerCase()) && !userSkills.includes(s.toLowerCase()))
                       .slice(0, 4)
                       .map(suggestion => (
                         <button

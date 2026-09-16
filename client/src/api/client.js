@@ -17,6 +17,8 @@ export const REVERSE_STATE_MAP = Object.entries(STATE_NAME_MAP).reduce((acc, [ab
   return acc;
 }, {});
 
+
+
 // Core API request handler
 async function request(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
@@ -63,10 +65,20 @@ export async function getInterests() {
   return request('/profile/interests');
 }
 
-export async function getSkills(page = 1, limit = 50, search = '') {
-  const params = new URLSearchParams({ page: String(page), limit: String(limit) });
-  if (search) params.append('search', search);
-  return request(`/profile/skills?${params.toString()}`);
+export async function getSkills(limit = 400, search = '') {
+  let page = 1;
+  let suggested_skills = [];
+  let hasNextPage = true;
+  do {
+    let params = new URLSearchParams({ page: String(page), limit: String(limit) });
+    const newReqData = await request(`/profile/skills?${params.toString()}`);
+    const newReq = newReqData?.skills ? newReqData.skills.map(skill => skill.label) : [];
+
+    if (newReq.length == 0) { hasNextPage = false; }
+    else {hasNextPage = true; suggested_skills.push(...newReq); page += 1;}
+  } while (hasNextPage);
+
+  return suggested_skills;
 }
 
 export async function matchOccupations({ interest_ids, skill_ids = [], region = '' }) {

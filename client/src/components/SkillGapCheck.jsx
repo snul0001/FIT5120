@@ -319,13 +319,16 @@ export default function SkillGapCheck({ targetOccupation, userSkills = ['python'
                     </div>
                   </td>
                   <td className="py-4 px-4 text-right">
-                    <button
-                        onClick={() => onNavigate('wip')}
+                    <a
+                        /* Replace 'https://your-specific-url.com/search?q=' with your actual base URL */
+                        href={`https://www.google.com/search?udm=50&q=Can+you+please+give+me+relevant+resources+with+links+to+learn+${encodeURIComponent(row.skill)}`}
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-xs font-semibold text-blue-500 hover:underline cursor-pointer bg-transparent border-none p-0"
                     >
                         View resources &rarr;
-                    </button>
-                    </td>
+                    </a>
+                  </td>
                 </tr>
               ))}
             </tbody>
