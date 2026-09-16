@@ -143,9 +143,9 @@ export default function RegionalInsights({ onBack }) {
     }
 
     const ratio = data.opportunities / maxOpps;
-    if (ratio > 0.8) return 'fill-blue-500 stroke-blue-300';
-    if (ratio > 0.5) return 'fill-blue-600/80 stroke-blue-400';
-    return 'fill-blue-900/70 stroke-blue-600/50';
+    if (ratio > 0.8) return 'fill-blue-900 stroke-blue-700';       // High: Dark blue
+    if (ratio > 0.5) return 'fill-blue-600/90 stroke-blue-400';    // Medium: Mid blue
+    return 'fill-blue-300/80 stroke-blue-400/50';                  // Low: Light blue
   };
 
   return (
@@ -308,7 +308,8 @@ export default function RegionalInsights({ onBack }) {
             <div className="lg:col-span-5 bg-zinc-50 dark:bg-zinc-900/60 rounded-2xl p-6 relative flex flex-col items-center justify-center min-h-[340px] border border-zinc-200 dark:border-white/5">
               <div className="absolute top-4 right-4 bg-white/90 dark:bg-[#131B2F]/90 backdrop-blur-sm p-3 rounded-xl border border-zinc-200 dark:border-white/10 shadow-sm z-10">
                 <p className="text-[10px] font-bold uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">Employment Level</p>
-                <div className="h-2 w-28 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-400 rounded-full mb-1" />
+                <div className="h-2 w-28 rounded-full mb-1" 
+                    style={{ background: 'linear-gradient(to right, #93c5fd, #2563eb, #1e3a8a)' }}  />
                 <div className="flex justify-between text-[10px] font-semibold text-zinc-500 dark:text-zinc-400">
                   <span>Low</span>
                   <span>High</span>

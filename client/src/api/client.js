@@ -2,14 +2,14 @@ export const BASE_URL = '/api';
 
 // Map UI state abbreviations to strict API state names
 export const STATE_NAME_MAP = {
-  ACT: 'Australian Capital Territory',
+  ACT: 'ACT',
   NSW: 'NSW',
-  NT: 'Northern Territory',
-  QLD: 'Queensland',
-  SA: 'South Australia',
-  TAS: 'Tasmania',
-  VIC: 'Victoria',
-  WA: 'Western Australia'
+  NT: 'NT',
+  QLD: 'QLD',
+  SA: 'SA',
+  TAS: 'TAS',
+  VIC: 'VIC',
+  WA: 'WA'
 };
 
 export const REVERSE_STATE_MAP = Object.entries(STATE_NAME_MAP).reduce((acc, [abbr, full]) => {
