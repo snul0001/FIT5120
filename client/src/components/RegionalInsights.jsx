@@ -4,14 +4,14 @@ import { getRegionalOccupations, getMultiRegionOpportunity } from '../api/client
 
 // Map UI short codes to the full state names expected by the API endpoint.
 const REGION_CODE_TO_API_NAME = {
-  ACT: 'Australian Capital Territory',
+  ACT: 'ACT',
   NSW: 'NSW',
-  NT: 'Northern Territory',
-  QLD: 'Queensland',
-  SA: 'South Australia',
-  TAS: 'Tasmania',
-  VIC: 'Victoria',
-  WA: 'Western Australia'
+  NT: 'NT',
+  QLD: 'QLD',
+  SA: 'SA',
+  TAS: 'TAS',
+  VIC: 'VIC',
+  WA: 'WA'
 };
 const ALL_REGIONS = Object.keys(REGION_CODE_TO_API_NAME);
 
@@ -100,18 +100,15 @@ export default function RegionalInsights({ onBack }) {
     setIsUsingMock(false);
 
     try {
-      // 1. Pass the raw abbreviations directly to the client.
-      // client.js already handles the mapping to full API state names and aggregates the totals.
       const results = await getMultiRegionOpportunity(selectedGroup.anzsco4_code, selectedRegions);
       
-      // 2. Map the client's pre-aggregated results directly to the chart format.
       const aggregated = results.map(data => ({
-        state: data.state, // This is the state abbreviation returned by the client
+        state: data.state,
         opportunities: data.opportunities || 0
       }));
 
       const hasRealData = aggregated.some(d => d.opportunities > 0);
-      if (!hasRealData) throw { status: 404 }; // Force mock fallback logic below if empty
+      if (!hasRealData) throw { status: 404 };
       
       setChartData(aggregated);
     } catch (err) {
@@ -136,16 +133,20 @@ export default function RegionalInsights({ onBack }) {
   const maxOpps = chartData ? Math.max(...chartData.map(d => d.opportunities), 1) : 1;
   const totalOpps = chartData ? chartData.reduce((acc, curr) => acc + curr.opportunities, 0) : 0;
 
-  const getStateFill = (stateCode) => {
+  const getStateFillStyle = (stateCode) => {
     const data = chartData?.find(d => d.state === stateCode);
     if (!data || !selectedRegions.includes(stateCode)) {
-      return 'fill-zinc-200 dark:fill-zinc-800/40 stroke-zinc-300 dark:stroke-zinc-700/50';
+      return { fill: '#3f3f46', fillOpacity: 0.3 };
     }
 
-    const ratio = data.opportunities / maxOpps;
-    if (ratio > 0.8) return 'fill-blue-900 stroke-blue-700';       // High: Dark blue
-    if (ratio > 0.5) return 'fill-blue-600/90 stroke-blue-400';    // Medium: Mid blue
-    return 'fill-blue-300/80 stroke-blue-400/50';                  // Low: Light blue
+    const ratio = Math.min(Math.max(data.opportunities / maxOpps, 0), 1);
+
+    // Continuous RGB interpolation from Light Blue (147, 197, 253) to Dark Navy (30, 58, 138)
+    const r = Math.round(147 + (30 - 147) * ratio);
+    const g = Math.round(197 + (58 - 197) * ratio);
+    const b = Math.round(253 + (138 - 253) * ratio);
+
+    return { fill: `rgb(${r}, ${g}, ${b})` };
   };
 
   return (
@@ -308,8 +309,10 @@ export default function RegionalInsights({ onBack }) {
             <div className="lg:col-span-5 bg-zinc-50 dark:bg-zinc-900/60 rounded-2xl p-6 relative flex flex-col items-center justify-center min-h-[340px] border border-zinc-200 dark:border-white/5">
               <div className="absolute top-4 right-4 bg-white/90 dark:bg-[#131B2F]/90 backdrop-blur-sm p-3 rounded-xl border border-zinc-200 dark:border-white/10 shadow-sm z-10">
                 <p className="text-[10px] font-bold uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">Employment Level</p>
-                <div className="h-2 w-28 rounded-full mb-1" 
-                    style={{ background: 'linear-gradient(to right, #93c5fd, #2563eb, #1e3a8a)' }}  />
+                <div 
+                  className="h-2 w-28 rounded-full mb-1" 
+                  style={{ background: 'linear-gradient(to right, #93c5fd, #2563eb, #1e3a8a)' }} 
+                />
                 <div className="flex justify-between text-[10px] font-semibold text-zinc-500 dark:text-zinc-400">
                   <span>Low</span>
                   <span>High</span>
@@ -326,7 +329,8 @@ export default function RegionalInsights({ onBack }) {
                       d={path}
                       onMouseEnter={() => setHoveredState(code)}
                       onMouseLeave={() => setHoveredState(null)}
-                      className={`transition-all duration-300 cursor-pointer ${getStateFill(code)} ${
+                      style={getStateFillStyle(code)}
+                      className={`transition-all duration-300 cursor-pointer stroke-blue-900/30 dark:stroke-zinc-700/50 ${
                         isHovered ? 'brightness-125 stroke-white stroke-2 scale-[1.01]' : 'stroke-1'
                       }`}
                     >
