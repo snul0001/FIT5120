@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Loader2, MapPin, TrendingUp, ShieldAlert } from 'lucide-react';
-import { getRegionalOccupations, getMultiRegionOpportunity } from '../api/client';
+import { getRegionalOccupations, getMultiRegionOpportunity, getRegionalDemand } from '../api/client';
 
-// Map UI short codes to the full state names expected by the API endpoint.
 const REGION_CODE_TO_API_NAME = {
   ACT: 'ACT',
   NSW: 'NSW',
@@ -50,17 +49,6 @@ const AU_STATE_PATHS = {
   }
 };
 
-function summariseByState(records, regionCode) {
-  const stateName = REGION_CODE_TO_API_NAME[regionCode];
-  const rows = records.filter(r => r.state_name === stateName || r.state_name === regionCode);
-  if (rows.length === 0) return 0;
-
-  const latestMonth = rows.reduce((max, r) => (r.month > max ? r.month : max), rows[0].month);
-  return rows
-    .filter(r => r.month === latestMonth)
-    .reduce((sum, r) => sum + (r.employment_value || 0), 0);
-}
-
 export default function RegionalInsights({ onBack }) {
   const [occupationGroups, setOccupationGroups] = useState([]);
   const [isLoadingGroups, setIsLoadingGroups] = useState(true);
@@ -70,6 +58,7 @@ export default function RegionalInsights({ onBack }) {
   const [isUsingMock, setIsUsingMock] = useState(false);
   const [hoveredState, setHoveredState] = useState(null);
   const [chartData, setChartData] = useState(null);
+  const [demandMap, setDemandMap] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -100,8 +89,37 @@ export default function RegionalInsights({ onBack }) {
     setIsUsingMock(false);
 
     try {
-      const results = await getMultiRegionOpportunity(selectedGroup.anzsco4_code, selectedRegions);
-      
+      const [results, demandResults] = await Promise.all([
+        getMultiRegionOpportunity(selectedGroup.anzsco4_code, selectedRegions),
+        Promise.all(
+          selectedRegions.map(async (region) => {
+            try {
+              const res = await getRegionalDemand(region);
+              const records = Array.isArray(res) ? res : (res ? [res] : []);
+              if (records.length === 0) return { region, vacancies: null };
+
+              // Extract the record corresponding to the latest month
+              const latestRecord = records.reduce((latest, current) => 
+                (current.month > latest.month) ? current : latest, records[0]
+              );
+
+              return {
+                region,
+                vacancies: latestRecord?.vacancy_3m_moving_average ? Number(latestRecord.vacancy_3m_moving_average) : null
+              };
+            } catch {
+              return { region, vacancies: null };
+            }
+          })
+        )
+      ]);
+
+      const newDemandMap = {};
+      demandResults.forEach(item => {
+        if (item.vacancies !== null) newDemandMap[item.region] = item.vacancies;
+      });
+      setDemandMap(newDemandMap);
+
       const aggregated = results.map(data => ({
         state: data.state,
         opportunities: data.opportunities || 0
@@ -141,7 +159,6 @@ export default function RegionalInsights({ onBack }) {
 
     const ratio = Math.min(Math.max(data.opportunities / maxOpps, 0), 1);
 
-    // Continuous RGB interpolation from Light Blue (147, 197, 253) to Dark Navy (30, 58, 138)
     const r = Math.round(147 + (30 - 147) * ratio);
     const g = Math.round(197 + (58 - 197) * ratio);
     const b = Math.round(253 + (138 - 253) * ratio);
@@ -340,24 +357,41 @@ export default function RegionalInsights({ onBack }) {
                 })}
               </svg>
 
-              {hoveredState && (
-                <div className="absolute bottom-4 left-4 right-4 bg-white dark:bg-[#1A233A] p-3 rounded-xl shadow-lg border border-zinc-200 dark:border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-blue-500 dark:text-blue-400" />
-                    <div>
-                      <p className="text-xs font-bold text-zinc-900 dark:text-white">
-                        {AU_STATE_PATHS[hoveredState]?.name || hoveredState}
-                      </p>
-                      <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
-                        {(chartData.find(d => d.state === hoveredState)?.opportunities ?? 0).toLocaleString()} employed
-                      </p>
+              {hoveredState && (() => {
+                const stateOpps = chartData?.find(d => d.state === hoveredState)?.opportunities ?? 0;
+                const vacancies = demandMap[hoveredState];
+                const share = totalOpps > 0 ? Math.round((stateOpps / totalOpps) * 100) : 0;
+
+                return (
+                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-[#1A233A]/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-zinc-200 dark:border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex-shrink-0">
+                        <MapPin className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-bold text-zinc-900 dark:text-white">
+                          {AU_STATE_PATHS[hoveredState]?.name || hoveredState}
+                        </p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-[11px] font-medium text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-zinc-200 dark:border-white/10">
+                            <strong className="font-bold text-zinc-900 dark:text-white">{stateOpps.toLocaleString()}</strong> Employed
+                          </span>
+
+                          {vacancies !== undefined && vacancies !== null && (
+                            <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
+                              <strong className="font-bold">{vacancies.toLocaleString()}</strong> Openings
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
+                    
+                    <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/20">
+                      {share}% Share
+                    </span>
                   </div>
-                  <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-md">
-                    {totalOpps > 0 ? Math.round(((chartData.find(d => d.state === hoveredState)?.opportunities || 0) / totalOpps) * 100) : 0}% Share
-                  </span>
-                </div>
-              )}
+                );
+              })()}
             </div>
           </div>
         </div>
