@@ -724,7 +724,7 @@ export default function App() {
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1.5">
                             <span className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide ${colors.badge}`}>
-                              {role.match_label}
+                              {role.match_label} {role.match_score ? `• ${role.match_score}%` : ''}
                             </span>
                           </div>
                           <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
