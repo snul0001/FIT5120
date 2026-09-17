@@ -1,0 +1,35 @@
+OSCA_ID,Occupation Title,O*NET_ID,O*NET_Occupation title,Match_score
+261315,Cyber Security Engineer,15-1299.05,Information Security Engineers,95.0
+261317,Penetration Tester,15-1299.04,Penetration Testers,98.0
+262114,Cyber Governance Risk and Compliance Specialist,15-1212.00,Information Security Analysts,86.0
+262115,Cyber Security Advice and Assessment Specialist,15-1212.00,Information Security Analysts,88.0
+262116,Cyber Security Analyst,15-1212.00,Information Security Analysts,98.0
+262117,Cyber Security Architect,15-1299.06,Information Security Architects,96.0
+262118,Cyber Security Operations Coordinator,15-1212.00,Information Security Analysts,84.0
+224999,"Information and Organisation Professionals NEC (Data Scientist)",15-2051.00,Data Scientists,85.0
+224114,Data Analyst,15-2051.01,Business Intelligence Analysts,92.0
+224115,Data Scientist,15-2051.00,Data Scientists,99.0
+135111,Chief Information Officer,11-3021.00,Computer and Information Systems Managers,92.0
+135112,ICT Project Manager,15-1299.09,Information Technology Project Managers,96.0
+135199,ICT Managers NEC,11-3021.00,Computer and Information Systems Managers,85.0
+223211,ICT Trainers,13-1151.00,Training and Development Specialists,89.0
+261111,ICT Business Analyst,15-1211.00,Computer Systems Analysts,90.0
+261112,Systems Analyst,15-1211.00,Computer Systems Analysts,97.0
+261211,Multimedia Specialist,15-1255.00,Web and Digital Interface Designers,88.0
+261212,Web Developer,15-1254.00,Web Developers,98.0
+261311,Analyst Programmer,15-1251.00,Computer Programmers,91.0
+261312,Developer Programmer,15-1251.00,Computer Programmers,93.0
+261313,Software Engineer,15-1252.00,Software Developers,96.0
+261316,DevOps Engineer,15-1299.08,Computer Systems Engineers/Architects,90.0
+261314,Software Tester,15-1253.00,Software Quality Assurance Analysts and Testers,95.0
+262111,Database Administrator,15-1242.00,Database Administrators,98.0
+262113,Systems Administrator,15-1244.00,Network and Computer Systems Administrators,95.0
+262112,ICT Security Specialist,15-1212.00,Information Security Analysts,93.0
+263111,Computer Network and Systems Engineer,15-1241.00,Computer Network Architects,91.0
+263112,Network Administrator,15-1244.00,Network and Computer Systems Administrators,96.0
+263113,Network Analyst,15-1232.00,Computer Network Support Specialists,90.0
+263211,ICT Quality Assurance Engineer,15-1253.00,Software Quality Assurance Analysts and Testers,94.0
+263212,ICT Support Engineer,15-1231.00,Computer User Support Specialists,91.0
+263213,ICT Systems Test Engineer,15-1253.00,Software Quality Assurance Analysts and Testers,93.0
+263299,ICT Support and Test Engineer NEC,15-1299.00,Computer Occupations, All Other,85.0
+313113,Web Administrator,15-1299.01,Web Administrators,98.0
