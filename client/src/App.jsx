@@ -122,6 +122,19 @@ export default function App() {
   const [skillInput, setSkillInput] = useState("");
   const [userSkills, setUserSkills] = useState([]);
   const [suggestedSkills, setSuggestedSkills] = useState(SUGGESTED_SKILLS);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close skill dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Fetches real time skills.
   useEffect(() => {
@@ -290,14 +303,19 @@ export default function App() {
   };
 
   // Skill Management
-  const handleAddSkill = (e) => {
-    if (e.key === 'Enter' && skillInput.trim()) {
-      e.preventDefault();
-      if (!userSkills.includes(skillInput.trim().toLowerCase())) {
-        setUserSkills([...userSkills, skillInput.trim().toLowerCase()]);
-      }
-      setSkillInput("");
+  const filteredSkills = suggestedSkills.filter(s =>
+    s &&
+    s.toLowerCase().includes(skillInput.trim().toLowerCase()) &&
+    !userSkills.includes(s.toLowerCase())
+  );
+
+  const selectSkill = (skill) => {
+    const normalized = skill.toLowerCase();
+    if (!userSkills.includes(normalized)) {
+      setUserSkills([...userSkills, normalized]);
     }
+    setSkillInput("");
+    setIsDropdownOpen(false);
   };
 
   const removeSkill = (skillToRemove) => {
@@ -613,41 +631,62 @@ export default function App() {
                 <h2 className="text-2xl font-bold tracking-tight">Fine-tune Your Results</h2>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3 relative" ref={dropdownRef}>
                 <label className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Current Skills (Optional)</label>
-                <input 
-                  type="text" 
-                  value={skillInput}
-                  onChange={(e) => setSkillInput(e.target.value)}
-                  onKeyDown={handleAddSkill}
-                  placeholder="Type a skill (e.g., Python, Project Management) and press Enter..." 
-                  className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
-                />
+                
+                <div className="relative">
+                  <input 
+                    type="text" 
+                    value={skillInput}
+                    onFocus={() => setIsDropdownOpen(true)}
+                    onChange={(e) => {
+                      setSkillInput(e.target.value);
+                      setIsDropdownOpen(true);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        e.preventDefault();
+                        if (filteredSkills.length > 0) {
+                          selectSkill(filteredSkills[0]);
+                        }
+                      }
+                    }}
+                    placeholder="Search and select existing skills..." 
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-black dark:focus:ring-white pr-10"
+                  />
+                  <ChevronDown className="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
+                </div>
 
-                {skillInput.trim() && (
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    {suggestedSkills
-                      .filter(s => s && s.toLowerCase().includes(skillInput.toLowerCase()) && !userSkills.includes(s.toLowerCase()))
-                      .slice(0, 4)
-                      .map(suggestion => (
+                {/* Searchable Dropdown Menu */}
+                {isDropdownOpen && (
+                  <div className="absolute left-0 right-0 top-full mt-1 bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-xl shadow-xl max-h-56 overflow-y-auto custom-scrollbar z-50 py-1">
+                    {filteredSkills.length > 0 ? (
+                      filteredSkills.map(skill => (
                         <button
-                          key={suggestion}
+                          key={skill}
                           type="button"
-                          onClick={() => { setUserSkills([...userSkills, suggestion.toLowerCase()]); setSkillInput(''); }}
-                          className="px-3 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 text-zinc-700 dark:text-zinc-300 rounded-full transition-colors"
+                          onClick={() => selectSkill(skill)}
+                          className="w-full text-left px-4 py-2.5 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors flex items-center justify-between cursor-pointer"
                         >
-                          + {suggestion}
+                          <span className="capitalize">{skill}</span>
+                          <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">+ Select</span>
                         </button>
-                      ))}
+                      ))
+                    ) : (
+                      <div className="px-4 py-3 text-xs text-zinc-500 dark:text-zinc-400 text-center">
+                        {skillInput.trim() ? "No matching skills found in database" : "Type to search available skills"}
+                      </div>
+                    )}
                   </div>
                 )}
 
+                {/* Selected Skills List */}
                 {userSkills.length > 0 && (
                   <div className="flex flex-wrap gap-2 pt-2">
                     {userSkills.map(skill => (
-                      <span key={skill} className="px-3 py-1.5 rounded-full text-xs font-medium bg-black dark:bg-white text-white dark:text-black flex items-center gap-1.5">
+                      <span key={skill} className="px-3 py-1.5 rounded-full text-xs font-medium bg-black dark:bg-white text-white dark:text-black flex items-center gap-1.5 capitalize">
                         {skill}
-                        <button onClick={() => removeSkill(skill)} className="hover:opacity-70 focus:outline-none">×</button>
+                        <button onClick={() => removeSkill(skill)} className="hover:opacity-70 focus:outline-none cursor-pointer">×</button>
                       </span>
                     ))}
                   </div>
