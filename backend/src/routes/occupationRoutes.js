@@ -181,11 +181,11 @@ router.post("/match", async (req, res) => {
 
     // Step 1 — Interest matching (always runs)
     const matches = await prisma.occupation_interest.findMany({
-      where: { interest_id: { in: uniqueInterestIds } },
-      include: {
-        occupation: { include: { industry_sector: true } }
-      }
-    })
+    where: { interest_id: { in: uniqueInterestIds } },
+    include: {
+    occupation: true
+  }
+})
 
     const scoreMap = {}
     for (const match of matches) {
@@ -220,42 +220,40 @@ router.post("/match", async (req, res) => {
 
     // Step 3 — Regional demand scoring (optional)
     if (hasRegion) {
-      const regionalData = await prisma.regional_employment_demand.findMany({
-        where: { state_name: region },
-        orderBy: { month: "desc" },
-        take: 100
-      })
+  // Step 1 — Fetch latest vacancy data for ALL states not just Jordan's state
+  // We need all states so we can compare Jordan's state against the national maximum
+  const allRegionalData = await prisma.regional_employment_demand.findMany({
+    orderBy: { month: "desc" },
+    take: 1000
+  })
 
-      const latestByGroup = {}
-      for (const row of regionalData) {
-        if (!latestByGroup[row.anzsco2_code]) {
-          latestByGroup[row.anzsco2_code] = Number(row.vacancy_3m_moving_average)
-        }
-      }
-
-      const occupationMappings = await prisma.regional_ict_occupation_mapping.findMany()
-      const anzsco4ToAnzsco2 = {}
-      for (const m of occupationMappings) {
-        anzsco4ToAnzsco2[m.anzsco4_code] = m.anzsco2_code
-      }
-
-      const maxVacancy = Math.max(...Object.values(latestByGroup), 1)
-
-      for (const occupationId of Object.keys(scoreMap)) {
-        const anzscoMatches = await prisma.occupation_anzsco_match.findMany({
-          where: { occupation_id: occupationId }
-        })
-        const unitGroups = [...new Set(anzscoMatches.map(m => m.anzsco_unit_group))]
-        for (const group of unitGroups) {
-          const anzsco4 = parseInt(group)
-          const anzsco2 = anzsco4ToAnzsco2[anzsco4]
-          if (anzsco2 && latestByGroup[anzsco2] !== undefined) {
-            scoreMap[occupationId].regional_score = latestByGroup[anzsco2] / maxVacancy
-            break
-          }
-        }
-      }
+  // Step 2 — Get the most recent vacancy number per state
+  // Data is ordered by month descending so first time we see a state = most recent month
+  const latestByState = {}
+  for (const row of allRegionalData) {
+    if (!latestByState[row.state_name]) {
+      latestByState[row.state_name] = Number(row.vacancy_3m_moving_average)
     }
+  }
+
+  // Step 3 — Find the national maximum across all states
+  // This is used to normalise Jordan's chosen state against the best performing state
+  const maxVacancy = Math.max(...Object.values(latestByState), 1)
+
+  // Step 4 — Calculate Jordan's state score as a fraction of the national maximum
+  // NSW = 1994/1994 = 1.0 (highest)
+  // VIC = 1542/1994 = 0.77
+  // QLD = 860/1994  = 0.43
+  // TAS = 91/1994   = 0.046 (lowest)
+  const stateScore = (latestByState[region] || 0) / maxVacancy
+
+  // Step 5 — Apply same state score to all occupations
+  // Every occupation in the same state gets the same regional score
+  // because JSA vacancy data is at the broad ICT group level not individual occupation level
+  for (const occupationId of Object.keys(scoreMap)) {
+    scoreMap[occupationId].regional_score = stateScore
+  }
+}
 
     // Step 4 — Weighted final score
     let interestWeight, skillWeight, regionalWeight
@@ -289,7 +287,7 @@ router.post("/match", async (req, res) => {
         return {
           occupation_id: item.occupation.occupation_id,
           title: item.occupation.title,
-          sector: item.occupation.industry_sector?.label || "ICT",
+          sector: "Information and Communications Technology",
           match_score: final_score,
           match_label: getMatchLabel(final_score),
           interests_matched: item.interest_score,
