@@ -54,7 +54,7 @@ async function request(endpoint, options = {}) {
 
     return data;
   } catch (err) {
-    console.error(`💥 [API Error] ${method} ${url}:`, err.message);
+    console.error(`[API Error] ${method} ${url}:`, err.message);
     throw err;
   }
 }

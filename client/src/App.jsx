@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { 
   ArrowLeft, Loader2, Check, 
   MapPin, ChevronDown, ChevronUp,
   Cpu, LayoutDashboard, Zap, Sun, Moon, Download,
-  ExternalLink, Target
+  ExternalLink, Target, Menu, X
 } from 'lucide-react';
 
 import Intro from './components/Intro';
@@ -13,7 +14,7 @@ import PasswordGate from './components/PasswordGate';
 import WorkInProgress from './components/WorkInProgress';
 import SkillGapCheck from './components/SkillGapCheck';
 import RegionalInsights from './components/RegionalInsights';
-import { matchOccupations, getOccupationAI, getSkills, BASE_URL } from './api/client';
+import { matchOccupations, getOccupationAI, getSkills, getSkillGap, BASE_URL } from './api/client';
 import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
 
 const INITIAL_MATCH_COUNT = 4;
@@ -53,6 +54,38 @@ const MOCK_AI_DATA = {
   demand_label: "High",
   avg_augmentation: 0.71,
   avg_automation: 0.48
+};
+
+const getSkillResourceUrl = (skill) => {
+  return `https://www.google.com/search?udm=50&q=Can+you+please+give+me+relevant+resources+with+links+to+learn+${encodeURIComponent(skill)}`;
+};
+
+const computeSkillGapCategories = (missingItems = []) => {
+  if (!missingItems.length) return [];
+
+  const counts = {};
+  missingItems.forEach((item) => {
+    const rawCat = typeof item === 'object' && item?.category
+      ? item.category
+      : 'General';
+
+    const catName = rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
+    counts[catName] = (counts[catName] || 0) + 1;
+  });
+
+  const total = missingItems.length;
+  return Object.entries(counts).map(([name, count]) => ({
+    name,
+    percentage: Math.round((count / total) * 100)
+  }));
+};
+
+const getSkillGapRating = (item, index) => {
+  if (typeof item?.importance_score === 'number') {
+    return Math.max(1, Math.round(item.importance_score * 5));
+  }
+
+  return Math.max(1, 5 - Math.floor(index / 2));
 };
 
 const formatLabel = (label) => {
@@ -97,6 +130,8 @@ const getMatchColor = (score, label = '') => {
 export default function App() {
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
   const [isNavVisible, setIsNavVisible] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileSourcesOpen, setIsMobileSourcesOpen] = useState(false);
   const lastScrollY = useRef(0);
   const [currentView, setCurrentView] = useState('home');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -111,7 +146,16 @@ export default function App() {
   const [targetLocation, setTargetLocation] = useState('Victoria');
   const [matches, setMatches] = useState([]);
   const [aiDetailsMap, setAiDetailsMap] = useState({});
-  const [tooltipPos, setTooltipPos] = useState({ show: false, x: 0, y: 0 });
+  const [tooltipPos, setTooltipPos] = useState({
+    show: false,
+    x: 0,
+    y: 0,
+    width: 280,
+    isTop: false,
+    arrowOffset: 0,
+    title: '',
+    text: ''
+  });
 
   // Quiz & DNA States
   const [quizIndex, setQuizIndex] = useState(0);
@@ -209,6 +253,8 @@ export default function App() {
       if (!confirmLeave) return;
     }
     setCurrentView(targetView);
+    setIsMobileMenuOpen(false);
+    setIsMobileSourcesOpen(false);
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   };
 
@@ -224,6 +270,8 @@ export default function App() {
 
   // Quiz Handling
   const handleStartQuiz = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobileSourcesOpen(false);
     setQuizIndex(0);
     setQuizAnswers({});
     setHollandCode('');
@@ -323,7 +371,7 @@ export default function App() {
   };
 
   // PDF Export
-  const handleDownload = () => {
+  const handleDownload = async () => {
     try {
       if (!matches || matches.length === 0) {
         alert("No career matches available to export.");
@@ -331,10 +379,10 @@ export default function App() {
       }
 
       const doc = new jsPDF();
-      const dateStr = new Date().toLocaleDateString('en-AU', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+      const dateStr = new Date().toLocaleDateString('en-AU', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
       });
 
       doc.setFillColor(11, 17, 33);
@@ -357,28 +405,70 @@ export default function App() {
 
       let startY = 65;
 
-      matches.forEach((m, index) => {
+      // Keep the PDF aligned with the roles currently visible in the Results screen.
+      const reportMatches = showAllMatches
+        ? matches
+        : matches.slice(0, INITIAL_MATCH_COUNT);
+
+      // Fetch skill-gap data for the same roles without changing the existing UI layout.
+      const skillGapEntries = await Promise.all(
+        reportMatches.map(async (role) => {
+          try {
+            const result = await getSkillGap(role.occupation_id, userSkills);
+            if (!result || result.error || (!result.matched && !result.missing)) {
+              return { id: role.occupation_id, data: null };
+            }
+            return { id: role.occupation_id, data: result };
+          } catch (error) {
+            console.warn(`Skill gap data unavailable for ${role.title}:`, error);
+            return { id: role.occupation_id, data: null };
+          }
+        })
+      );
+
+      const skillGapMap = {};
+      skillGapEntries.forEach(({ id, data }) => {
+        if (data) skillGapMap[id] = data;
+      });
+
+      reportMatches.forEach((m, index) => {
         const ai = (aiDetailsMap && aiDetailsMap[m.occupation_id]) || {};
+        const skillGap = skillGapMap[m.occupation_id];
 
         if (startY > 250) {
           doc.addPage();
           startY = 20;
         }
 
+        // Career section header — retained from the original PDF format.
         doc.setFillColor(240, 244, 248);
         doc.rect(14, startY - 4, 182, 9, 'F');
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(11);
         doc.setTextColor(15, 23, 42);
-        doc.text(`[Rank ${m.rank || index + 1}] ${(m.title || 'Career Match').toUpperCase()}`, 16, startY + 2);
+        doc.text(
+          `[Rank ${m.rank || index + 1}] ${(m.title || 'Career Match').toUpperCase()}`,
+          16,
+          startY + 2
+        );
 
         startY += 10;
 
+        // Core career / AI summary — same original table format.
         autoTable(doc, {
-          startY: startY,
+          startY,
           theme: 'plain',
-          styles: { fontSize: 9.5, cellPadding: 2, textColor: [51, 65, 85] },
-          columnStyles: { 0: { fontStyle: 'bold', width: 45 } },
+          styles: {
+            fontSize: 9.5,
+            cellPadding: 2,
+            textColor: [51, 65, 85],
+            overflow: 'linebreak',
+            valign: 'top'
+          },
+          columnStyles: {
+            0: { fontStyle: 'bold', width: 45 },
+            1: { cellWidth: 135 }
+          },
           body: [
             ['Sector', `: ${m.sector || 'ICT'}`],
             ['Match Fit', `: ${m.match_score ?? 'N/A'}% (${m.match_label || 'Good Fit'})`],
@@ -393,6 +483,7 @@ export default function App() {
 
         startY = doc.lastAutoTable.finalY + 4;
 
+        // AI task impact — retained as the original striped table.
         if (ai.tasks && ai.tasks.length > 0) {
           const taskRows = ai.tasks.map((t, i) => [
             `${i + 1}. ${t.task_text}`,
@@ -401,23 +492,195 @@ export default function App() {
           ]);
 
           autoTable(doc, {
-            startY: startY,
+            startY,
             head: [['Task Description', 'Augment', 'Automate']],
             body: taskRows,
             theme: 'striped',
-            headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255], fontStyle: 'bold' },
-            styles: { fontSize: 8.5, cellPadding: 3 },
+            headStyles: {
+              fillColor: [59, 130, 246],
+              textColor: [255, 255, 255],
+              fontStyle: 'bold'
+            },
+            styles: {
+              fontSize: 8.5,
+              cellPadding: 3,
+              overflow: 'linebreak',
+              valign: 'top'
+            },
             columnStyles: {
-              0: { cellWidth: 120 },
+              0: { cellWidth: 120, overflow: 'linebreak' },
               1: { cellWidth: 31, halign: 'center' },
               2: { cellWidth: 31, halign: 'center' }
             },
-            margin: { left: 14, right: 14 }
+            margin: { left: 14, right: 14 },
+            rowPageBreak: 'avoid'
           });
 
-          startY = doc.lastAutoTable.finalY + 12;
+          startY = doc.lastAutoTable.finalY + 10;
         } else {
           startY += 8;
+        }
+
+        // -------------------------------------------------------------
+        // Skill Gap Check — added without changing the established PDF format.
+        // -------------------------------------------------------------
+        if (skillGap) {
+          if (startY > 250) {
+            doc.addPage();
+            startY = 20;
+          }
+
+          doc.setFillColor(240, 244, 248);
+          doc.rect(14, startY - 4, 182, 9, 'F');
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(11);
+          doc.setTextColor(15, 23, 42);
+          doc.text('SKILL GAP CHECK', 16, startY + 2);
+
+          startY += 10;
+
+          const matchedItems = Array.isArray(skillGap.matched)
+            ? skillGap.matched
+            : [];
+          const missingItems = Array.isArray(skillGap.missing)
+            ? skillGap.missing
+            : [];
+
+          // Matched vs missing skills — same simple table language as the report.
+          const maxSkillRows = Math.max(matchedItems.length, missingItems.length);
+          if (maxSkillRows > 0) {
+            const skillComparisonRows = Array.from(
+              { length: maxSkillRows },
+              (_, rowIndex) => {
+                const matched = matchedItems[rowIndex];
+                const missing = missingItems[rowIndex];
+
+                return [
+                  matched?.skill_name || matched?.name || (matched ? String(matched) : ''),
+                  missing?.skill_name || missing?.name || (missing ? String(missing) : '')
+                ];
+              }
+            );
+
+            autoTable(doc, {
+              startY,
+              head: [['Matched Skills', 'Missing Skills']],
+              body: skillComparisonRows,
+              theme: 'striped',
+              headStyles: {
+                fillColor: [59, 130, 246],
+                textColor: [255, 255, 255],
+                fontStyle: 'bold'
+              },
+              styles: {
+                fontSize: 8.5,
+                cellPadding: 3,
+                overflow: 'linebreak',
+                valign: 'top'
+              },
+              columnStyles: {
+                0: { cellWidth: 91, overflow: 'linebreak' },
+                1: { cellWidth: 91, overflow: 'linebreak' }
+              },
+              margin: { left: 14, right: 14 },
+              rowPageBreak: 'avoid'
+            });
+
+            startY = doc.lastAutoTable.finalY + 5;
+          }
+
+          // Missing skill category percentages.
+          const categories = computeSkillGapCategories(missingItems);
+          if (categories.length > 0) {
+            autoTable(doc, {
+              startY,
+              head: [['Missing Skill Category', 'Share of Gaps']],
+              body: categories.map((category) => [
+                category.name,
+                `${category.percentage}%`
+              ]),
+              theme: 'plain',
+              headStyles: {
+                fillColor: [240, 244, 248],
+                textColor: [15, 23, 42],
+                fontStyle: 'bold'
+              },
+              styles: {
+                fontSize: 8.5,
+                cellPadding: 2.5,
+                textColor: [51, 65, 85],
+                overflow: 'linebreak',
+                valign: 'top'
+              },
+              columnStyles: {
+                0: { cellWidth: 145, overflow: 'linebreak' },
+                1: { cellWidth: 37, halign: 'center' }
+              },
+              margin: { left: 14, right: 14 },
+              rowPageBreak: 'avoid'
+            });
+
+            startY = doc.lastAutoTable.finalY + 5;
+          }
+
+          // Priority skills with the same resource links used by the application.
+          if (missingItems.length > 0) {
+            const priorityRows = missingItems.map((item, idx) => {
+              const skill = item?.skill_name || item?.name || String(item);
+              return [
+                String(idx + 1),
+                skill,
+                `${getSkillGapRating(item, idx)}/5`,
+                'View resources'
+              ];
+            });
+
+            autoTable(doc, {
+              startY,
+              head: [['Rank', 'Priority Skill', 'Rating', 'Suggestions']],
+              body: priorityRows,
+              theme: 'striped',
+              headStyles: {
+                fillColor: [59, 130, 246],
+                textColor: [255, 255, 255],
+                fontStyle: 'bold'
+              },
+              styles: {
+                fontSize: 8.5,
+                cellPadding: 3,
+                overflow: 'linebreak',
+                valign: 'top'
+              },
+              columnStyles: {
+                0: { cellWidth: 15, halign: 'center' },
+                1: { cellWidth: 89, overflow: 'linebreak' },
+                2: { cellWidth: 24, halign: 'center' },
+                3: { cellWidth: 54, halign: 'center' }
+              },
+              margin: { left: 14, right: 14 },
+              rowPageBreak: 'avoid',
+              didDrawCell: (data) => {
+                if (data.section !== 'body' || data.column.index !== 3) return;
+
+                const skill = priorityRows[data.row.index]?.[1];
+                if (!skill) return;
+
+                const url = getSkillResourceUrl(skill);
+                const linkText = 'View resources';
+                const linkWidth = doc.getTextWidth(linkText);
+                const x = data.cell.x + (data.cell.width - linkWidth) / 2;
+                const y = data.cell.y + data.cell.height / 2 + 2.5;
+
+                doc.setTextColor(37, 99, 235);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(8.5);
+                doc.text(linkText, x, y);
+                doc.link(x, data.cell.y + 1, linkWidth, Math.max(data.cell.height - 2, 6), { url });
+              }
+            });
+
+            startY = doc.lastAutoTable.finalY + 10;
+          }
         }
       });
 
@@ -445,35 +708,171 @@ export default function App() {
   const visibleMatches = showAllMatches ? matches : matches.slice(0, INITIAL_MATCH_COUNT);
   const pageBackground = 'bg-[#FAFAFA] dark:bg-[#0B1121]';
 
-  const handleShowTooltip = (e, title, text) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const tooltipWidth = 280;
-    const tooltipHeight = 140;
-    const padding = 12;
+  const canHover = () => {
+    return (
+      typeof window !== 'undefined' &&
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    );
+  };
 
-    const spaceBelow = window.innerHeight - rect.bottom;
-    const isTop = spaceBelow < tooltipHeight + padding && rect.top > tooltipHeight + padding;
-    const y = isTop ? rect.top - 12 : rect.bottom + 12;
+  const handleShowTooltip = (e, title, text) => {
+    if (typeof window === 'undefined') return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    // Touch devices use a bottom information card instead of a floating tooltip.
+    if (!canHover()) {
+      setTooltipPos({
+        show: true,
+        x: 12,
+        y: 0,
+        width: Math.max(0, window.innerWidth - 24),
+        isTop: false,
+        arrowOffset: 0,
+        title,
+        text
+      });
+      return;
+    }
+
+    const padding = 16;
+    const gap = 12;
+    const tooltipWidth = Math.min(
+      320,
+      Math.max(240, window.innerWidth - padding * 2)
+    );
+    const tooltipHeight = 150;
 
     const centerX = rect.left + rect.width / 2;
     const halfWidth = tooltipWidth / 2;
+
     const clampedX = Math.max(
       halfWidth + padding,
-      Math.min(centerX, window.innerWidth - halfWidth - padding)
+      Math.min(
+        centerX,
+        window.innerWidth - halfWidth - padding
+      )
     );
 
-    const arrowOffset = centerX - clampedX;
+    const spaceAbove = rect.top;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const isTop =
+      spaceBelow < tooltipHeight + gap &&
+      spaceAbove > tooltipHeight + gap;
+
+    const y = isTop
+      ? rect.top - gap
+      : rect.bottom + gap;
+
+    const arrowOffset = Math.max(
+      -(halfWidth - 18),
+      Math.min(
+        halfWidth - 18,
+        centerX - clampedX
+      )
+    );
 
     setTooltipPos({
       show: true,
       x: clampedX,
       y,
+      width: tooltipWidth,
       isTop,
       arrowOffset,
       title,
       text
     });
   };
+
+  const handleTooltipEnter = (e, title, text) => {
+    if (canHover()) {
+      handleShowTooltip(e, title, text);
+    }
+  };
+
+  const handleTooltipLeave = () => {
+    if (canHover()) {
+      setTooltipPos(prev => ({ ...prev, show: false }));
+    }
+  };
+
+  const handleTooltipClick = (e, title, text) => {
+    e.stopPropagation();
+
+    // Desktop uses hover; touch devices use tap.
+    if (canHover()) return;
+
+    if (
+      tooltipPos.show &&
+      tooltipPos.title === title
+    ) {
+      setTooltipPos(prev => ({
+        ...prev,
+        show: false
+      }));
+    } else {
+      handleShowTooltip(e, title, text);
+    }
+  };
+
+  const handleTooltipKeyDown = (e, title, text) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleTooltipClick(e, title, text);
+    }
+  };
+
+  useEffect(() => {
+    if (!tooltipPos.show) return;
+
+    const closeTooltip = () => {
+      setTooltipPos(prev => ({
+        ...prev,
+        show: false
+      }));
+    };
+
+    // Prevent a tooltip from becoming detached from its trigger while scrolling.
+    window.addEventListener('scroll', closeTooltip, true);
+    window.addEventListener('resize', closeTooltip);
+
+    return () => {
+      window.removeEventListener('scroll', closeTooltip, true);
+      window.removeEventListener('resize', closeTooltip);
+    };
+  }, [tooltipPos.show]);
+
+  useEffect(() => {
+    const closeOnOutsidePointer = (event) => {
+      if (
+        event.target instanceof Element &&
+        (
+          event.target.closest('[data-tooltip-trigger="true"]') ||
+          event.target.closest('#app-tooltip')
+        )
+      ) {
+        return;
+      }
+
+      setTooltipPos(prev =>
+        prev.show
+          ? { ...prev, show: false }
+          : prev
+      );
+    };
+
+    document.addEventListener(
+      'pointerdown',
+      closeOnOutsidePointer
+    );
+
+    return () => {
+      document.removeEventListener(
+        'pointerdown',
+        closeOnOutsidePointer
+      );
+    };
+  }, []);
 
   return (
     <PasswordGate>
@@ -496,8 +895,8 @@ export default function App() {
         <div className="fixed -top-40 -left-40 w-[600px] h-[600px] bg-zinc-200/50 dark:bg-white/5 rounded-full blur-[140px] pointer-events-none" />
 
         {/* Navigation Bar */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-          isNavVisible ? 'translate-y-0' : '-translate-y-full'
+        <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-transform duration-300 ${
+          isNavVisible ? 'translate-y-0' : 'translate-y-0 md:-translate-y-full'
         } ${
           currentView === 'results' || currentView === 'skill-gap' || currentView === 'regional-insights'
             ? 'bg-white dark:bg-[#0B1121] border-zinc-200 dark:border-white/10' 
@@ -561,11 +960,100 @@ export default function App() {
                 Get started
               </button>
 
+              {/* Mobile menu trigger */}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileMenuOpen(prev => !prev);
+                  setIsMobileSourcesOpen(false);
+                }}
+                aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={isMobileMenuOpen}
+                className="md:hidden p-2.5 rounded-full text-zinc-500 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 active:bg-zinc-200 dark:active:bg-white/15 transition-colors"
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+
               <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200">
                 {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
             </div>
           </div>
+
+          {/* Mobile navigation panel */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden absolute top-full left-0 right-0 border-t border-zinc-200 dark:border-white/10 bg-white/95 dark:bg-[#0B1121]/95 backdrop-blur-xl shadow-xl">
+              <div className="max-w-7xl mx-auto px-4 py-3 space-y-1">
+                <button
+                  onClick={() => confirmNavigation('regional-insights')}
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-left transition-colors ${
+                    currentView === 'regional-insights'
+                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white'
+                      : 'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'
+                  }`}
+                >
+                  <span>Regional Insights</span>
+                  {currentView === 'regional-insights' && <span className="text-blue-500">●</span>}
+                </button>
+
+                <button
+                  onClick={() => confirmNavigation('wip')}
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-left transition-colors ${
+                    currentView === 'wip'
+                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white'
+                      : 'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'
+                  }`}
+                >
+                  <span>Career Simulator</span>
+                  {currentView === 'wip' && <span className="text-blue-500">●</span>}
+                </button>
+
+                <div className="rounded-xl border border-zinc-200 dark:border-white/10 overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileSourcesOpen(prev => !prev)}
+                    className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors"
+                    aria-expanded={isMobileSourcesOpen}
+                  >
+                    <span>Data Sources</span>
+                    {isMobileSourcesOpen ? <ChevronUp className="w-4 h-4 text-zinc-400" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
+                  </button>
+
+                  {isMobileSourcesOpen && (
+                    <div className="border-t border-zinc-200 dark:border-white/10 bg-zinc-50/70 dark:bg-white/[0.03]">
+                      <a
+                        href="https://www.onetcenter.org/database.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center justify-between px-4 py-3 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5"
+                      >
+                        <span>O*NET Database</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+                      </a>
+                      <a
+                        href="https://www.jobsandskills.gov.au/data"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center justify-between px-4 py-3 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5"
+                      >
+                        <span>Jobs & Skills Australia (JSA)</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+                      </a>
+                    </div>
+                  )}
+                </div>
+
+                <button
+                  onClick={handleStartQuiz}
+                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-black dark:bg-white text-white dark:text-black active:opacity-80 transition-opacity"
+                >
+                  Get started
+                </button>
+              </div>
+            </div>
+          )}
         </nav>
 
         {/* View Routing */}
@@ -771,12 +1259,13 @@ export default function App() {
 
                         {ai && (
                           <div 
-                            onMouseEnter={(e) => handleShowTooltip(
-                              e, 
-                              "Resilience Score", 
-                              "Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk."
-                            )}
-                            onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                            onMouseEnter={(e) => handleTooltipEnter(e, "Resilience Score", "Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk.")}
+                            onMouseLeave={handleTooltipLeave}
+                            onClick={(e) => handleTooltipClick(e, "Resilience Score", "Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk.")}
+                            onKeyDown={(e) => handleTooltipKeyDown(e, "Resilience Score", "Measures how adaptable a role is to AI disruption based on high task augmentation versus lower overall automation risk.")}
+                            data-tooltip-trigger="true"
+                            role="button"
+                            tabIndex={0}
                             className={`cursor-help hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border transition-colors ${
                               ai.resilience_score >= 50 
                                 ? 'bg-emerald-500/5 hover:bg-emerald-500/10 border-emerald-500/20' 
@@ -850,12 +1339,13 @@ export default function App() {
 
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div 
-                                  onMouseEnter={(e) => handleShowTooltip(
-                                    e, 
-                                    "Augmentation Rate", 
-                                    "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely."
-                                  )}
-                                  onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                  onMouseEnter={(e) => handleTooltipEnter(e, "Augmentation Rate", "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely.")}
+                                  onMouseLeave={handleTooltipLeave}
+                                  onClick={(e) => handleTooltipClick(e, "Augmentation Rate", "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely.")}
+                                  onKeyDown={(e) => handleTooltipKeyDown(e, "Augmentation Rate", "The percentage of tasks where AI boosts human capability and productivity rather than displacing the job entirely.")}
+                                  data-tooltip-trigger="true"
+                                  role="button"
+                                  tabIndex={0}
                                   className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex flex-col justify-between"
                                 >
                                   <div className="flex justify-between items-start mb-4">
@@ -869,12 +1359,13 @@ export default function App() {
                                 </div>
                                 
                                 <div 
-                                  onMouseEnter={(e) => handleShowTooltip(
-                                    e, 
-                                    "Automation Risk", 
-                                    "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention."
-                                  )}
-                                  onMouseLeave={() => setTooltipPos(prev => ({ ...prev, show: false }))}
+                                  onMouseEnter={(e) => handleTooltipEnter(e, "Automation Risk", "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention.")}
+                                  onMouseLeave={handleTooltipLeave}
+                                  onClick={(e) => handleTooltipClick(e, "Automation Risk", "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention.")}
+                                  onKeyDown={(e) => handleTooltipKeyDown(e, "Automation Risk", "The percentage of core role tasks that can be fully performed by automated systems without direct human intervention.")}
+                                  data-tooltip-trigger="true"
+                                  role="button"
+                                  tabIndex={0}
                                   className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col justify-between"
                                 >
                                   <div className="flex justify-between items-start mb-4">
@@ -954,29 +1445,73 @@ export default function App() {
             </main>
           )}
 
-          {tooltipPos.show && (
-            <div 
-              style={{ left: tooltipPos.x, top: tooltipPos.y }}
-              className={`fixed z-[9999] w-[280px] p-4 bg-white dark:bg-[#1A233A] rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] border border-zinc-200 dark:border-white/10 pointer-events-none text-left -translate-x-1/2 transition-opacity duration-150 ${
-                tooltipPos.isTop ? '-translate-y-full' : ''
-              }`}
-            >
-              <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1.5 tracking-tight">
-                {tooltipPos.title}
-              </h4>
-              <p className="text-[12px] text-zinc-600 dark:text-slate-300 leading-relaxed">
-                {tooltipPos.text}
-              </p>
-              
-              <div 
-                style={{ transform: `translateX(calc(-50% + ${tooltipPos.arrowOffset || 0}px))` }}
-                className={`absolute left-1/2 border-[6px] border-transparent ${
-                  tooltipPos.isTop 
-                    ? 'top-full border-t-white dark:border-t-[#1A233A]' 
-                    : 'bottom-full border-b-white dark:border-b-[#1A233A]'
+          {tooltipPos.show && typeof document !== 'undefined' && createPortal(
+            canHover() ? (
+              <div
+                id="app-tooltip"
+                role="tooltip"
+                style={{
+                  left: tooltipPos.x,
+                  top: tooltipPos.y,
+                  width: `${tooltipPos.width || 280}px`
+                }}
+                className={`fixed z-[10000] max-w-[calc(100vw-32px)] p-4 bg-white dark:bg-[#1A233A] rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] border border-zinc-200 dark:border-white/10 text-left -translate-x-1/2 transition-opacity duration-150 ${
+                  tooltipPos.isTop ? '-translate-y-full' : ''
                 }`}
-              ></div>
-            </div>
+              >
+                <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1.5 tracking-tight">
+                  {tooltipPos.title}
+                </h4>
+                <p className="text-[12px] text-zinc-600 dark:text-slate-300 leading-relaxed">
+                  {tooltipPos.text}
+                </p>
+
+                <div
+                  style={{
+                    transform: `translateX(calc(-50% + ${tooltipPos.arrowOffset || 0}px))`
+                  }}
+                  className={`absolute left-1/2 border-[6px] border-transparent ${
+                    tooltipPos.isTop
+                      ? 'top-full border-t-white dark:border-t-[#1A233A]'
+                      : 'bottom-full border-b-white dark:border-b-[#1A233A]'
+                  }`}
+                />
+              </div>
+            ) : (
+              <div
+                id="app-tooltip"
+                role="dialog"
+                aria-label={tooltipPos.title}
+                className="fixed left-3 right-3 bottom-3 z-[10000] rounded-2xl bg-white dark:bg-[#1A233A] border border-zinc-200 dark:border-white/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.45)] p-4"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">
+                      {tooltipPos.title}
+                    </h4>
+                    <p className="text-[13px] text-zinc-600 dark:text-slate-300 leading-relaxed">
+                      {tooltipPos.text}
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setTooltipPos(prev => ({
+                        ...prev,
+                        show: false
+                      }));
+                    }}
+                    className="shrink-0 w-8 h-8 rounded-full border border-zinc-200 dark:border-white/10 flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-white/10 active:bg-zinc-200 dark:active:bg-white/15 transition-colors"
+                    aria-label="Close information"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            ),
+            document.body
           )}
         </div>
       </div>
