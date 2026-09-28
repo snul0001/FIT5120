@@ -13,7 +13,7 @@ import PasswordGate from './components/PasswordGate';
 import WorkInProgress from './components/WorkInProgress';
 import SkillGapCheck from './components/SkillGapCheck';
 import RegionalInsights from './components/RegionalInsights';
-import { matchOccupations, getOccupationAI, getSkills, BASE_URL } from './api/client';
+import { matchOccupations, getOccupationAI, getSkills, getSkillGap, BASE_URL } from './api/client';
 import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
 
 const INITIAL_MATCH_COUNT = 4;
@@ -53,6 +53,38 @@ const MOCK_AI_DATA = {
   demand_label: "High",
   avg_augmentation: 0.71,
   avg_automation: 0.48
+};
+
+const getSkillResourceUrl = (skill) => {
+  return `https://www.google.com/search?udm=50&q=Can+you+please+give+me+relevant+resources+with+links+to+learn+${encodeURIComponent(skill)}`;
+};
+
+const computeSkillGapCategories = (missingItems = []) => {
+  if (!missingItems.length) return [];
+
+  const counts = {};
+  missingItems.forEach((item) => {
+    const rawCat = typeof item === 'object' && item?.category
+      ? item.category
+      : 'General';
+
+    const catName = rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
+    counts[catName] = (counts[catName] || 0) + 1;
+  });
+
+  const total = missingItems.length;
+  return Object.entries(counts).map(([name, count]) => ({
+    name,
+    percentage: Math.round((count / total) * 100)
+  }));
+};
+
+const getSkillGapRating = (item, index) => {
+  if (typeof item?.importance_score === 'number') {
+    return Math.max(1, Math.round(item.importance_score * 5));
+  }
+
+  return Math.max(1, 5 - Math.floor(index / 2));
 };
 
 const formatLabel = (label) => {
@@ -323,7 +355,7 @@ export default function App() {
   };
 
   // PDF Export
-  const handleDownload = () => {
+  const handleDownload = async () => {
     try {
       if (!matches || matches.length === 0) {
         alert("No career matches available to export.");
@@ -331,10 +363,10 @@ export default function App() {
       }
 
       const doc = new jsPDF();
-      const dateStr = new Date().toLocaleDateString('en-AU', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+      const dateStr = new Date().toLocaleDateString('en-AU', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
       });
 
       doc.setFillColor(11, 17, 33);
@@ -357,28 +389,70 @@ export default function App() {
 
       let startY = 65;
 
-      matches.forEach((m, index) => {
+      // Keep the PDF aligned with the roles currently visible in the Results screen.
+      const reportMatches = showAllMatches
+        ? matches
+        : matches.slice(0, INITIAL_MATCH_COUNT);
+
+      // Fetch skill-gap data for the same roles without changing the existing UI layout.
+      const skillGapEntries = await Promise.all(
+        reportMatches.map(async (role) => {
+          try {
+            const result = await getSkillGap(role.occupation_id, userSkills);
+            if (!result || result.error || (!result.matched && !result.missing)) {
+              return { id: role.occupation_id, data: null };
+            }
+            return { id: role.occupation_id, data: result };
+          } catch (error) {
+            console.warn(`Skill gap data unavailable for ${role.title}:`, error);
+            return { id: role.occupation_id, data: null };
+          }
+        })
+      );
+
+      const skillGapMap = {};
+      skillGapEntries.forEach(({ id, data }) => {
+        if (data) skillGapMap[id] = data;
+      });
+
+      reportMatches.forEach((m, index) => {
         const ai = (aiDetailsMap && aiDetailsMap[m.occupation_id]) || {};
+        const skillGap = skillGapMap[m.occupation_id];
 
         if (startY > 250) {
           doc.addPage();
           startY = 20;
         }
 
+        // Career section header — retained from the original PDF format.
         doc.setFillColor(240, 244, 248);
         doc.rect(14, startY - 4, 182, 9, 'F');
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(11);
         doc.setTextColor(15, 23, 42);
-        doc.text(`[Rank ${m.rank || index + 1}] ${(m.title || 'Career Match').toUpperCase()}`, 16, startY + 2);
+        doc.text(
+          `[Rank ${m.rank || index + 1}] ${(m.title || 'Career Match').toUpperCase()}`,
+          16,
+          startY + 2
+        );
 
         startY += 10;
 
+        // Core career / AI summary — same original table format.
         autoTable(doc, {
-          startY: startY,
+          startY,
           theme: 'plain',
-          styles: { fontSize: 9.5, cellPadding: 2, textColor: [51, 65, 85] },
-          columnStyles: { 0: { fontStyle: 'bold', width: 45 } },
+          styles: {
+            fontSize: 9.5,
+            cellPadding: 2,
+            textColor: [51, 65, 85],
+            overflow: 'linebreak',
+            valign: 'top'
+          },
+          columnStyles: {
+            0: { fontStyle: 'bold', width: 45 },
+            1: { cellWidth: 135 }
+          },
           body: [
             ['Sector', `: ${m.sector || 'ICT'}`],
             ['Match Fit', `: ${m.match_score ?? 'N/A'}% (${m.match_label || 'Good Fit'})`],
@@ -393,6 +467,7 @@ export default function App() {
 
         startY = doc.lastAutoTable.finalY + 4;
 
+        // AI task impact — retained as the original striped table.
         if (ai.tasks && ai.tasks.length > 0) {
           const taskRows = ai.tasks.map((t, i) => [
             `${i + 1}. ${t.task_text}`,
@@ -401,23 +476,194 @@ export default function App() {
           ]);
 
           autoTable(doc, {
-            startY: startY,
+            startY,
             head: [['Task Description', 'Augment', 'Automate']],
             body: taskRows,
             theme: 'striped',
-            headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255], fontStyle: 'bold' },
-            styles: { fontSize: 8.5, cellPadding: 3 },
+            headStyles: {
+              fillColor: [59, 130, 246],
+              textColor: [255, 255, 255],
+              fontStyle: 'bold'
+            },
+            styles: {
+              fontSize: 8.5,
+              cellPadding: 3,
+              overflow: 'linebreak',
+              valign: 'top'
+            },
             columnStyles: {
-              0: { cellWidth: 120 },
+              0: { cellWidth: 120, overflow: 'linebreak' },
               1: { cellWidth: 31, halign: 'center' },
               2: { cellWidth: 31, halign: 'center' }
             },
-            margin: { left: 14, right: 14 }
+            margin: { left: 14, right: 14 },
+            rowPageBreak: 'avoid'
           });
 
-          startY = doc.lastAutoTable.finalY + 12;
+          startY = doc.lastAutoTable.finalY + 10;
         } else {
           startY += 8;
+        }
+
+        // -------------------------------------------------------------
+        // Skill Gap Check — added without changing the established PDF format.
+        // -------------------------------------------------------------
+        if (skillGap) {
+          if (startY > 250) {
+            doc.addPage();
+            startY = 20;
+          }
+
+          doc.setFillColor(240, 244, 248);
+          doc.rect(14, startY - 4, 182, 9, 'F');
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(11);
+          doc.setTextColor(15, 23, 42);
+          doc.text('SKILL GAP CHECK', 16, startY + 2);
+
+          startY += 10;
+
+          const matchedItems = Array.isArray(skillGap.matched)
+            ? skillGap.matched
+            : [];
+          const missingItems = Array.isArray(skillGap.missing)
+            ? skillGap.missing
+            : [];
+
+          // Matched vs missing skills — same simple table language as the report.
+          const maxSkillRows = Math.max(matchedItems.length, missingItems.length);
+          if (maxSkillRows > 0) {
+            const skillComparisonRows = Array.from(
+              { length: maxSkillRows },
+              (_, rowIndex) => {
+                const matched = matchedItems[rowIndex];
+                const missing = missingItems[rowIndex];
+
+                return [
+                  matched?.skill_name || matched?.name || (matched ? String(matched) : ''),
+                  missing?.skill_name || missing?.name || (missing ? String(missing) : '')
+                ];
+              }
+            );
+
+            autoTable(doc, {
+              startY,
+              head: [['Matched Skills', 'Missing Skills']],
+              body: skillComparisonRows,
+              theme: 'striped',
+              headStyles: {
+                fillColor: [59, 130, 246],
+                textColor: [255, 255, 255],
+                fontStyle: 'bold'
+              },
+              styles: {
+                fontSize: 8.5,
+                cellPadding: 3,
+                overflow: 'linebreak',
+                valign: 'top'
+              },
+              columnStyles: {
+                0: { cellWidth: 91, overflow: 'linebreak' },
+                1: { cellWidth: 91, overflow: 'linebreak' }
+              },
+              margin: { left: 14, right: 14 },
+              rowPageBreak: 'avoid'
+            });
+
+            startY = doc.lastAutoTable.finalY + 5;
+          }
+
+          // Missing skill category percentages.
+          const categories = computeSkillGapCategories(missingItems);
+          if (categories.length > 0) {
+            autoTable(doc, {
+              startY,
+              head: [['Missing Skill Category', 'Share of Gaps']],
+              body: categories.map((category) => [
+                category.name,
+                `${category.percentage}%`
+              ]),
+              theme: 'plain',
+              headStyles: {
+                fillColor: [240, 244, 248],
+                textColor: [15, 23, 42],
+                fontStyle: 'bold'
+              },
+              styles: {
+                fontSize: 8.5,
+                cellPadding: 2.5,
+                textColor: [51, 65, 85],
+                overflow: 'linebreak',
+                valign: 'top'
+              },
+              columnStyles: {
+                0: { cellWidth: 145, overflow: 'linebreak' },
+                1: { cellWidth: 37, halign: 'center' }
+              },
+              margin: { left: 14, right: 14 },
+              rowPageBreak: 'avoid'
+            });
+
+            startY = doc.lastAutoTable.finalY + 5;
+          }
+
+          // Priority skills with the same resource links used by the application.
+          if (missingItems.length > 0) {
+            const priorityRows = missingItems.map((item, idx) => {
+              const skill = item?.skill_name || item?.name || String(item);
+              return [
+                String(idx + 1),
+                skill,
+                `${getSkillGapRating(item, idx)}/5`,
+              ];
+            });
+
+            autoTable(doc, {
+              startY,
+              head: [['Rank', 'Priority Skill', 'Rating', 'Suggestions']],
+              body: priorityRows,
+              theme: 'striped',
+              headStyles: {
+                fillColor: [59, 130, 246],
+                textColor: [255, 255, 255],
+                fontStyle: 'bold'
+              },
+              styles: {
+                fontSize: 8.5,
+                cellPadding: 3,
+                overflow: 'linebreak',
+                valign: 'top'
+              },
+              columnStyles: {
+                0: { cellWidth: 15, halign: 'center' },
+                1: { cellWidth: 89, overflow: 'linebreak' },
+                2: { cellWidth: 24, halign: 'center' },
+                3: { cellWidth: 54, halign: 'center' }
+              },
+              margin: { left: 14, right: 14 },
+              rowPageBreak: 'avoid',
+              didDrawCell: (data) => {
+                if (data.section !== 'body' || data.column.index !== 3) return;
+
+                const skill = priorityRows[data.row.index]?.[1];
+                if (!skill) return;
+
+                const url = getSkillResourceUrl(skill);
+                const linkText = 'View resources';
+                const linkWidth = doc.getTextWidth(linkText);
+                const x = data.cell.x + (data.cell.width - linkWidth) / 2;
+                const y = data.cell.y + data.cell.height / 2 + 2.5;
+
+                doc.setTextColor(37, 99, 235);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(8.5);
+                doc.text(linkText, x, y);
+                doc.link(x, data.cell.y + 1, linkWidth, Math.max(data.cell.height - 2, 6), { url });
+              }
+            });
+
+            startY = doc.lastAutoTable.finalY + 10;
+          }
         }
       });
 
