@@ -400,15 +400,18 @@ export default function App() {
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(10);
       doc.text(`• Target Location : ${targetLocation || 'Not specified'}`, 14, 42);
-      doc.text(`• Code            : ${hollandCode || 'Not specified'}`, 14, 48);
-      doc.text(`• Date Generated  : ${dateStr}`, 14, 54);
+      // doc.text(`• Code            : ${hollandCode || 'Not specified'}`, 14, 48);
+      doc.text(`• Date Generated  : ${dateStr}`, 14, 48);
 
       let startY = 65;
 
-      // Keep the PDF aligned with the roles currently visible in the Results screen.
-      const reportMatches = showAllMatches
-        ? matches
-        : matches.slice(0, INITIAL_MATCH_COUNT);
+      const reportMatches = [...matches]
+      .sort(
+        (a, b) =>
+          (a.rank ?? 999) -
+          (b.rank ?? 999)
+      )
+      .slice(0, 5);
 
       // Fetch skill-gap data for the same roles without changing the existing UI layout.
       const skillGapEntries = await Promise.all(
@@ -631,7 +634,6 @@ export default function App() {
                 String(idx + 1),
                 skill,
                 `${getSkillGapRating(item, idx)}/5`,
-                'View resources'
               ];
             });
 
