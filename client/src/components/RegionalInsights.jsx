@@ -278,61 +278,12 @@ export default function RegionalInsights({ onBack }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Bar Chart */}
-            <div className="lg:col-span-7 relative pt-8 pb-4 pl-16 pr-4 border-l-2 border-b-2 border-zinc-400 dark:border-zinc-600 flex items-end">
-
-              {/* Chart Grid + Y Axis */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute left-0 right-4 top-8 bottom-12">
-                  {(() => {
-                    const chartMax = Math.max(
-                      Math.ceil(maxOpps / 5000) * 5000,
-                      5000
-                    );
-
-                    const tickStep = 5000;
-                    const ticks = [];
-
-                    for (
-                      let value = chartMax;
-                      value >= 0;
-                      value -= tickStep
-                    ) {
-                      ticks.push(value);
-                    }
-
-                    return ticks.map((value) => {
-                      const position =
-                        100 - (value / chartMax) * 100;
-
-                      return (
-                        <div
-                          key={value}
-                          className="absolute left-0 right-0"
-                          style={{ top: `${position}%` }}
-                        >
-                          {/* Grid line starts after Y-axis labels */}
-                          <div className="absolute left-16 right-0 border-t border-zinc-200/80 dark:border-zinc-700/60" />
-
-                          {/* Y-axis value */}
-                          <span className="absolute left-0 -translate-y-1/2 w-14 text-right text-[11px] font-medium text-zinc-500 dark:text-zinc-400 tabular-nums">
-                            {value.toLocaleString()}
-                          </span>
-                        </div>
-                      );
-                    });
-                  })()}
-                </div>
-
-                {/* Y-axis title sits outside the numbers */}
-                <div
-                  className="absolute left-2 top-1/2 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-[0.15em] whitespace-nowrap"
-                  style={{
-                    writingMode: 'vertical-rl',
-                    transform: 'translateY(-50%) rotate(180deg)'
-                  }}
-                >
-                  Employed (Latest Month)
-                </div>
+            <div className="lg:col-span-7 relative pt-8 pb-4 pl-14 pr-4 border-l border-b border-zinc-200 dark:border-zinc-800 flex items-end">
+              <div
+                className="absolute left-1 top-1/2 -translate-y-1/2 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest whitespace-nowrap pointer-events-none"
+                style={{ transform: 'translate(-40%, -50%) rotate(-90deg)' }}
+              >
+                EMPLOYED (LATEST MONTH)
               </div>
 
               <div className="flex items-end justify-between h-64 w-full gap-3">
@@ -347,16 +298,16 @@ export default function RegionalInsights({ onBack }) {
                       onMouseLeave={() => setHoveredState(null)}
                       className="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer"
                     >
-                      <span className={`text-[11px] sm:text-xs font-bold transition-colors tabular-nums ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
+                      <span className={`text-xs font-bold transition-colors ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
                         {data.opportunities.toLocaleString()}
                       </span>
 
                       <div className="w-full bg-zinc-100 dark:bg-zinc-800/80 rounded-t-lg h-full max-h-[200px] flex items-end p-1">
                         <div
-                          className={`w-full rounded-md transition-all duration-300 border ${
+                          className={`w-full rounded-md transition-all duration-300 ${
                             isHovered
-                              ? 'bg-blue-400 border-blue-500 shadow-lg shadow-blue-500/30'
-                              : 'bg-zinc-400 dark:bg-zinc-700 border-zinc-500/40 dark:border-zinc-600'
+                              ? 'bg-blue-400 shadow-lg shadow-blue-500/30'
+                              : 'bg-zinc-400 dark:bg-zinc-700'
                           }`}
                           style={{ height: `${Math.max(heightPercent, 5)}%` }}
                         />
