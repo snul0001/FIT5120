@@ -278,43 +278,7 @@ export default function RegionalInsights({ onBack }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Bar Chart */}
-            <div className="lg:col-span-7 relative pt-8 pb-4 pl-14 pr-4 border-l-2 border-b-2 border-zinc-400 dark:border-zinc-600 flex items-end">
-              {/* Chart Grid + Y Axis Labels */}
-              <div className="absolute left-0 right-4 top-8 bottom-12 pointer-events-none">
-
-                {(() => {
-                  // Round the maximum up to a clean 5,000 interval.
-                  const chartMax = Math.max(
-                    Math.ceil(maxOpps / 5000) * 5000,
-                    5000
-                  );
-
-                  const tickStep = 5000;
-                  const ticks = [];
-
-                  for (let value = chartMax; value >= 0; value -= tickStep) {
-                    ticks.push(value);
-                  }
-
-                  return ticks.map((value) => {
-                    const position = 100 - (value / chartMax) * 100;
-
-                    return (
-                      <div
-                        key={value}
-                        className="absolute left-0 right-0 border-t border-zinc-200/80 dark:border-zinc-700/60"
-                        style={{ top: `${position}%` }}
-                      >
-                        <span className="absolute -left-8 -translate-y-1/2 w-10 text-right text-[10px] font-semibold text-zinc-400 dark:text-zinc-500">
-                          {value.toLocaleString()}
-                        </span>
-                      </div>
-                    );
-                  });
-                })()}
-
-</div>
-
+            <div className="lg:col-span-7 relative pt-8 pb-4 pl-14 pr-4 border-l border-b border-zinc-200 dark:border-zinc-800 flex items-end">
               <div
                 className="absolute left-1 top-1/2 -translate-y-1/2 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest whitespace-nowrap pointer-events-none"
                 style={{ transform: 'translate(-40%, -50%) rotate(-90deg)' }}
@@ -340,10 +304,10 @@ export default function RegionalInsights({ onBack }) {
 
                       <div className="w-full bg-zinc-100 dark:bg-zinc-800/80 rounded-t-lg h-full max-h-[200px] flex items-end p-1">
                         <div
-                          className={`w-full rounded-md transition-all duration-300 border ${
+                          className={`w-full rounded-md transition-all duration-300 ${
                             isHovered
-                              ? 'bg-blue-400 border-blue-500 shadow-lg shadow-blue-500/30'
-                              : 'bg-zinc-400 dark:bg-zinc-700 border-zinc-500/40 dark:border-zinc-600'
+                              ? 'bg-blue-400 shadow-lg shadow-blue-500/30'
+                              : 'bg-zinc-400 dark:bg-zinc-700'
                           }`}
                           style={{ height: `${Math.max(heightPercent, 5)}%` }}
                         />
