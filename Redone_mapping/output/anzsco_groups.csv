@@ -1,0 +1,82 @@
+ANZSCO_code,ANZSCO_title,sector,n_tasks
+2611,ICT Business and Systems Analysts,ICT,9
+2612,Multimedia Specialists and Web Developers,ICT,5
+2613,Software and Applications Programmers,ICT,6
+2621,"Database and Systems Administrators, and ICT Security Specialists",ICT,10
+2631,Computer Network Professionals,ICT,8
+2632,ICT Support and Test Engineers,ICT,10
+2633,Telecommunications Engineering Professionals,ICT,11
+3131,ICT Support Technicians,ICT,9
+3132,Telecommunications Technical Specialists,ICT,7
+2241,"Actuaries, Mathematicians and Statisticians",ICT,10
+2232,ICT Trainers,ICT,10
+2252,ICT Sales Professionals,ICT,10
+6212,ICT Sales Assistants,ICT,6
+2511,Nutrition Professionals,Health,8
+2512,Medical Imaging Professionals,Health,8
+2515,Pharmacists,Health,12
+2523,Dental Practitioners,Health,9
+2524,Occupational Therapists,Health,8
+2525,Physiotherapists,Health,9
+2527,Audiologists and Speech Pathologists / Therapists,Health,10
+2544,Registered Nurses,Health,6
+2541,Midwives,Health,6
+2346,Medical Laboratory Scientists,Health,8
+2723,Psychologists and Psychotherapists,Health,10
+4111,Ambulance Officers and Paramedics,Health,10
+4112,"Dental Hygienists, Technicians and Therapists",Health,10
+3112,Medical Technicians,Health,8
+4114,Enrolled and Mothercraft Nurses,Health,7
+4231,Aged and Disabled Carers,Health,9
+4232,Dental Assistants,Health,9
+4233,Nursing Support and Personal Care Workers,Health,7
+3613,Veterinary Nurses,Health,10
+2211,Accountants,Business,11
+2212,"Auditors, Company Secretaries and Corporate Treasurers",Business,12
+2221,Financial Brokers,Business,10
+2223,Financial Investment Advisers and Managers,Business,10
+2231,Human Resource Professionals,Business,10
+2243,Economists,Business,8
+2244,Intelligence and Policy Analysts,Business,10
+2247,Management and Organisation Analysts,Business,10
+2251,Advertising and Marketing Professionals,Business,9
+2253,Public Relations Professionals,Business,9
+5111,"Contract, Program and Project Administrators",Business,9
+5511,Accounting Clerks,Business,12
+5512,Bookkeepers,Business,7
+5211,Personal Assistants,Business,9
+5311,General Clerks,Business,9
+5521,Bank Workers,Business,8
+5522,Credit and Loans Officers,Business,8
+5994,Human Resource Clerks,Business,8
+5911,Purchasing and Supply Logistics Clerks,Business,10
+6121,Real Estate Sales Agents,Business,9
+2111,"Actors, Dancers and Other Entertainers",Creative,9
+2112,Music Professionals,Creative,9
+2113,Photographers,Creative,9
+2114,Visual Arts and Crafts Professionals,Creative,10
+2121,"Artistic Directors, Media Producers and Presenters",Creative,9
+2122,"Authors, and Book and Script Editors",Creative,8
+2124,Journalists and Other Writers,Creative,8
+2323,"Fashion, Industrial and Jewellery Designers",Creative,9
+2324,"Graphic and Web Designers, and Illustrators",Creative,9
+2325,Interior Designers,Creative,8
+3995,Performing Arts Technicians,Creative,8
+3312,Carpenters and Joiners,Trades,10
+3341,Plumbers,Trades,10
+3311,Bricklayers and Stonemasons,Trades,10
+3322,Painting Trades Workers,Trades,8
+3411,Electricians,Trades,9
+3421,Airconditioning and Refrigeration Mechanics,Trades,10
+3423,Electronics Trades Workers,Trades,8
+3424,Telecommunications Trades Workers,Trades,8
+3211,Automotive Electricians,Trades,8
+3212,Motor Mechanics,Trades,8
+3232,Metal Fitters and Machinists,Trades,9
+3223,Structural Steel and Welding Trades Workers,Trades,9
+3231,Aircraft Maintenance Engineers,Trades,8
+3513,Chefs,Trades,8
+3514,Cooks,Trades,9
+3941,Cabinetmakers,Trades,9
+3911,Hairdressers,Trades,9
+3622,Gardeners,Trades,11
