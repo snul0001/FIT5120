@@ -1,0 +1,82 @@
+ANZSCO_code,ANZSCO_title,Realistic,Investigative,Artistic,Social,Enterprising,Conventional,Primary_RIASEC,Secondary_RIASEC,Tertiary_RIASEC
+2111,"Actors, Dancers and Other Entertainers",3.514,1.9195000000000002,6.7865,3.8994999999999997,3.6555,1.82,Artistic,Social,Enterprising
+2112,Music Professionals,2.4699999999999998,1.9049999999999998,6.83,3.225,4.12,2.4,Artistic,Enterprising,Social
+2113,Photographers,5.5249999999999995,2.165,4.572,1.6909999999999998,1.9289999999999998,3.902,Realistic,Artistic,Conventional
+2114,Visual Arts and Crafts Professionals,4.786,2.3480000000000003,6.572,2.04,2.566,2.468,Artistic,Realistic,Enterprising
+2121,"Artistic Directors, Media Producers and Presenters",1.9184999999999999,2.1365000000000003,5.933,3.309,5.15,3.3575,Artistic,Enterprising,Conventional
+2122,"Authors, and Book and Script Editors",1.0150000000000001,3.075,6.035,2.71,4.4399999999999995,4.01,Artistic,Enterprising,Conventional
+2124,Journalists and Other Writers,1.6155,3.6085,5.253,2.5664999999999996,3.6510000000000002,4.208,Artistic,Conventional,Enterprising
+2211,Accountants,1.4489999999999998,3.2129999999999996,1.056,2.1689999999999996,3.723,6.936999999999999,Conventional,Enterprising,Investigative
+2212,"Auditors, Company Secretaries and Corporate Treasurers",1.6415,3.862,1.129,2.4450000000000003,4.2375,6.3405000000000005,Conventional,Enterprising,Investigative
+2221,Financial Brokers,1.25,2.3619999999999997,1.114,3.4939999999999998,5.601,5.651,Conventional,Enterprising,Social
+2223,Financial Investment Advisers and Managers,1.052,3.659,1.637,3.324,5.668,5.521,Enterprising,Conventional,Investigative
+2231,Human Resource Professionals,1.142,2.7520000000000002,1.4940000000000002,3.7560000000000002,5.662,5.156000000000001,Enterprising,Conventional,Social
+2232,ICT Trainers,2.255,3.928,3.502,4.550999999999999,3.167,4.228,Social,Conventional,Investigative
+2241,"Actuaries, Mathematicians and Statisticians",2.266,5.833,1.879,2.082,2.2465,5.884,Conventional,Investigative,Realistic
+2243,Economists,1.35,7.0,2.43,2.4,3.93,4.53,Investigative,Conventional,Enterprising
+2244,Intelligence and Policy Analysts,1.7315,6.193,2.902,2.5895,3.7365000000000004,4.5375000000000005,Investigative,Conventional,Enterprising
+2247,Management and Organisation Analysts,1.37,5.44,1.63,2.82,4.81,6.05,Conventional,Investigative,Enterprising
+2251,Advertising and Marketing Professionals,1.056,4.353999999999999,2.7609999999999997,2.557,5.526,4.638,Enterprising,Conventional,Investigative
+2252,ICT Sales Professionals,3.032,3.322,1.568,3.0,5.474,4.888,Enterprising,Conventional,Investigative
+2253,Public Relations Professionals,1.0,2.43,4.1325,4.095,6.115,3.8275000000000006,Enterprising,Artistic,Social
+2323,"Fashion, Industrial and Jewellery Designers",5.0145,3.0335,5.591,1.816,3.2435,3.2545,Artistic,Realistic,Conventional
+2324,"Graphic and Web Designers, and Illustrators",3.271,3.522,6.118,2.204,3.06,3.693,Artistic,Conventional,Investigative
+2325,Interior Designers,4.12,3.07,5.56,2.68,3.7,3.82,Artistic,Realistic,Conventional
+2346,Medical Laboratory Scientists,5.688,6.402,1.3239999999999998,2.636,1.33,4.796,Investigative,Realistic,Conventional
+2511,Nutrition Professionals,3.186,4.53,2.428,5.41,3.25,3.444,Social,Investigative,Conventional
+2512,Medical Imaging Professionals,5.7225,4.9375,1.1280000000000001,3.7885,1.3335,4.9765,Realistic,Conventional,Investigative
+2515,Pharmacists,3.255,6.069,1.762,4.403,2.5,4.302,Investigative,Social,Conventional
+2523,Dental Practitioners,5.4265,5.5249999999999995,1.3215,4.377,1.8319999999999999,3.767,Investigative,Realistic,Social
+2524,Occupational Therapists,3.57,4.23,3.07,6.08,1.83,3.12,Social,Investigative,Realistic
+2525,Physiotherapists,4.33,4.87,2.17,5.91,2.49,3.07,Social,Investigative,Realistic
+2527,Audiologists and Speech Pathologists / Therapists,3.3,5.75,2.59,6.005,1.625,4.0,Social,Investigative,Conventional
+2541,Midwives,3.6100000000000003,3.895,1.9249999999999998,6.0,2.835,3.33,Social,Investigative,Realistic
+2544,Registered Nurses,3.46,4.71,1.34,5.57,2.38,4.75,Social,Conventional,Investigative
+2611,ICT Business and Systems Analysts,2.6999999999999997,6.105,1.8749999999999998,2.183,3.0039999999999996,5.965999999999999,Investigative,Conventional,Enterprising
+2612,Multimedia Specialists and Web Developers,3.026,4.4045,4.57,2.2030000000000003,2.9345,4.3345,Artistic,Investigative,Conventional
+2613,Software and Applications Programmers,3.564,5.6594999999999995,2.283,1.8135,1.887,5.735,Conventional,Investigative,Realistic
+2621,"Database and Systems Administrators, and ICT Security Specialists",3.5250000000000004,4.7245,1.172,2.2115,3.0949999999999998,6.3004999999999995,Conventional,Investigative,Realistic
+2631,Computer Network Professionals,4.183,4.526,1.375,2.217,3.218,5.6979999999999995,Conventional,Investigative,Realistic
+2632,ICT Support and Test Engineers,3.965,4.765,1.345,2.42,1.9649999999999999,5.845,Conventional,Investigative,Realistic
+2633,Telecommunications Engineering Professionals,5.220000000000001,4.898,1.952,2.0220000000000002,2.49,4.8420000000000005,Realistic,Investigative,Conventional
+2723,Psychologists and Psychotherapists,1.04,5.3919999999999995,3.1310000000000002,5.836,3.302,3.8310000000000004,Social,Investigative,Conventional
+3112,Medical Technicians,5.5925,4.4685,1.0,3.614,1.5465,5.234999999999999,Realistic,Conventional,Investigative
+3131,ICT Support Technicians,4.64,3.4339999999999997,1.0,2.8419999999999996,2.189,5.863999999999999,Conventional,Realistic,Investigative
+3132,Telecommunications Technical Specialists,6.0075,3.2855,1.0150000000000001,1.7955,1.7880000000000003,4.8950000000000005,Realistic,Conventional,Investigative
+3211,Automotive Electricians,7.0,3.503,1.0,1.3675000000000002,1.27,4.321,Realistic,Conventional,Investigative
+3212,Motor Mechanics,7.000000000000001,3.5180000000000002,1.0,1.468,1.5380000000000003,4.194,Realistic,Conventional,Investigative
+3223,Structural Steel and Welding Trades Workers,7.0,2.378,1.501,1.074,1.349,3.7439999999999998,Realistic,Conventional,Investigative
+3231,Aircraft Maintenance Engineers,6.805,3.985,1.056,1.3345,1.5670000000000002,4.5985,Realistic,Conventional,Investigative
+3232,Metal Fitters and Machinists,7.0,3.3895,1.5270000000000001,1.088,1.192,4.368500000000001,Realistic,Conventional,Investigative
+3311,Bricklayers and Stonemasons,6.9725,2.0740000000000003,2.2235,1.4475000000000002,1.246,3.451,Realistic,Conventional,Artistic
+3312,Carpenters and Joiners,6.824999999999999,1.952,2.276,1.6629999999999998,1.6219999999999999,3.436,Realistic,Conventional,Artistic
+3322,Painting Trades Workers,6.715,1.3525,2.625,1.34,1.035,3.6,Realistic,Conventional,Artistic
+3341,Plumbers,7.0,2.2,1.0,1.16,1.0,3.72,Realistic,Conventional,Investigative
+3411,Electricians,7.0,2.7,1.24,1.32,1.81,4.09,Realistic,Conventional,Investigative
+3421,Airconditioning and Refrigeration Mechanics,6.96,2.82,1.04,1.47,1.2,4.29,Realistic,Conventional,Investigative
+3423,Electronics Trades Workers,6.919,3.7319999999999998,1.015,1.111,1.416,5.048,Realistic,Conventional,Investigative
+3424,Telecommunications Trades Workers,6.452500000000001,2.4515000000000002,1.0,1.7065000000000001,1.7845,4.533,Realistic,Conventional,Investigative
+3513,Chefs,4.84,1.68,2.72,2.95,5.13,4.35,Enterprising,Realistic,Conventional
+3514,Cooks,5.711,1.641,2.4999999999999996,2.967,3.5309999999999997,3.965,Realistic,Conventional,Enterprising
+3613,Veterinary Nurses,6.615,5.0075,1.0,3.1425,1.0,4.41,Realistic,Investigative,Conventional
+3622,Gardeners,7.0,1.7729999999999997,1.63,1.552,1.633,3.272,Realistic,Conventional,Investigative
+3911,Hairdressers,5.396999999999999,1.378,3.0809999999999995,3.678,3.34,3.9109999999999996,Realistic,Conventional,Social
+3941,Cabinetmakers,7.0,1.9,2.6075,1.145,1.1724999999999999,3.2525000000000004,Realistic,Conventional,Artistic
+3995,Performing Arts Technicians,5.3375,2.0175,4.6475,1.9325,2.3675,3.7475,Realistic,Artistic,Conventional
+4111,Ambulance Officers and Paramedics,5.304,4.846,1.0,5.518,1.77,3.556,Social,Realistic,Investigative
+4112,"Dental Hygienists, Technicians and Therapists",5.739,4.499,1.26,4.412,1.4745,4.2435,Realistic,Investigative,Social
+4114,Enrolled and Mothercraft Nurses,3.9955000000000003,3.152,1.9075,5.779999999999999,2.3225,4.146,Social,Conventional,Realistic
+4231,Aged and Disabled Carers,3.87,2.49,1.635,6.26,2.16,3.715,Social,Realistic,Conventional
+4232,Dental Assistants,4.48,3.55,1.0,4.37,1.34,5.43,Conventional,Realistic,Social
+4233,Nursing Support and Personal Care Workers,4.384,2.9560000000000004,1.1800000000000002,5.972,1.81,4.0760000000000005,Social,Realistic,Conventional
+5111,"Contract, Program and Project Administrators",1.892,2.878,1.342,3.1799999999999997,5.412,5.862,Conventional,Enterprising,Social
+5211,Personal Assistants,1.5179999999999998,1.769,1.2449999999999999,3.841,5.111,6.572,Conventional,Enterprising,Social
+5311,General Clerks,2.7645,1.8590000000000002,1.267,2.9705000000000004,3.091,6.709,Conventional,Enterprising,Social
+5511,Accounting Clerks,2.266,2.2030000000000003,1.024,1.518,3.193,6.888,Conventional,Enterprising,Realistic
+5512,Bookkeepers,1.7919999999999998,2.24,1.0,1.7209999999999999,3.0229999999999997,6.936999999999999,Conventional,Enterprising,Investigative
+5521,Bank Workers,2.0,1.5669999999999997,1.0,2.806,4.328,6.874,Conventional,Enterprising,Social
+5522,Credit and Loans Officers,1.1505,2.1515,1.0,3.485,4.707000000000001,6.646,Conventional,Enterprising,Social
+5911,Purchasing and Supply Logistics Clerks,3.4815,1.3944999999999999,1.035,1.646,3.917,6.73,Conventional,Enterprising,Realistic
+5994,Human Resource Clerks,1.626,1.336,1.002,3.0020000000000007,3.48,7.000000000000001,Conventional,Enterprising,Social
+6121,Real Estate Sales Agents,2.2675,1.4825,1.69,3.365,6.465,5.145,Enterprising,Conventional,Social
+6212,ICT Sales Assistants,3.2,1.0,1.98,2.96,6.13,5.17,Enterprising,Conventional,Realistic
