@@ -1073,7 +1073,7 @@ export default function App() {
           )}
 
           {currentView === 'home' && (
-            <main key="home" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-32 sm:pt-48 pb-24 sm:pb-32 flex flex-col items-center text-center">
+            <main key="home" className="view-enter-animation w-full px-4 sm:px-6 pt-8 sm:pt-12 pb-24 sm:pb-32">
               <Intro 
                 onConfigureProfile={handleStartQuiz} 
                 onNavigate={(target) => confirmNavigation(target)} 
