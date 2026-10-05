@@ -3,10 +3,10 @@ import { createPortal } from 'react-dom';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { 
-  ArrowLeft, Loader2, Check, 
+  ArrowLeft, ArrowRight, Loader2, Check, 
   MapPin, ChevronDown, ChevronUp,
   Cpu, LayoutDashboard, Zap, Sun, Moon, Download,
-  ExternalLink, Target, Menu, X
+  ExternalLink, Target, X
 } from 'lucide-react';
 
 import Intro from './components/Intro';
@@ -971,9 +971,17 @@ export default function App() {
                 }}
                 aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 aria-expanded={isMobileMenuOpen}
-                className="md:hidden p-2.5 rounded-full text-zinc-500 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 active:bg-zinc-200 dark:active:bg-white/15 transition-colors"
+                className="md:hidden w-10 h-10 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-[#131B2F] flex items-center justify-center text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10 active:scale-[0.98] transition-all"
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMobileMenuOpen ? (
+                  <X className="w-5 h-5" strokeWidth={2} />
+                ) : (
+                  <span className="flex flex-col gap-[4px]" aria-hidden="true">
+                    <span className="block w-5 h-[2px] rounded-full bg-current" />
+                    <span className="block w-5 h-[2px] rounded-full bg-current" />
+                    <span className="block w-5 h-[2px] rounded-full bg-current" />
+                  </span>
+                )}
               </button>
 
               <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full text-zinc-400 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/10 transition-all duration-200">
@@ -984,78 +992,113 @@ export default function App() {
 
           {/* Mobile navigation panel */}
           {isMobileMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 right-0 border-t border-zinc-200 dark:border-white/10 bg-white/95 dark:bg-[#0B1121]/95 backdrop-blur-xl shadow-xl">
-              <div className="max-w-7xl mx-auto px-4 py-3 space-y-1">
-                <button
-                  onClick={() => confirmNavigation('regional-insights')}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-left transition-colors ${
-                    currentView === 'regional-insights'
-                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white'
-                      : 'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'
-                  }`}
-                >
-                  <span>Regional Insights</span>
-                  {currentView === 'regional-insights' && <span className="text-blue-500">●</span>}
-                </button>
+            <div className="md:hidden absolute top-full left-0 right-0 border-t border-zinc-200 dark:border-white/10 bg-white dark:bg-[#0B1121] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)]">
+              <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-4 py-4">
 
-                <button
-                  onClick={() => confirmNavigation('wip')}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium text-left transition-colors ${
-                    currentView === 'wip'
-                      ? 'bg-zinc-100 dark:bg-white/10 text-black dark:text-white'
-                      : 'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'
-                  }`}
-                >
-                  <span>Career Simulator</span>
-                  {currentView === 'wip' && <span className="text-blue-500">●</span>}
-                </button>
-
-                <div className="rounded-xl border border-zinc-200 dark:border-white/10 overflow-hidden">
-                  <button
-                    type="button"
-                    onClick={() => setIsMobileSourcesOpen(prev => !prev)}
-                    className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors"
-                    aria-expanded={isMobileSourcesOpen}
-                  >
-                    <span>Data Sources</span>
-                    {isMobileSourcesOpen ? <ChevronUp className="w-4 h-4 text-zinc-400" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
-                  </button>
-
-                  {isMobileSourcesOpen && (
-                    <div className="border-t border-zinc-200 dark:border-white/10 bg-zinc-50/70 dark:bg-white/[0.03]">
-                      <a
-                        href="https://www.onetcenter.org/database.html"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center justify-between px-4 py-3 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5"
-                      >
-                        <span>O*NET Database</span>
-                        <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
-                      </a>
-                      <a
-                        href="https://www.jobsandskills.gov.au/data"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center justify-between px-4 py-3 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5"
-                      >
-                        <span>Jobs & Skills Australia (JSA)</span>
-                        <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
-                      </a>
-                    </div>
-                  )}
+                <div className="flex items-center justify-between px-1 pb-3">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-400 dark:text-zinc-500">
+                    Menu
+                  </span>
                 </div>
 
-                <button
-                  onClick={handleStartQuiz}
-                  className="w-full mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-black dark:bg-white text-white dark:text-black active:opacity-80 transition-opacity"
-                >
-                  Get started
-                </button>
+                <div className="space-y-2">
+
+                  <button
+                    type="button"
+                    onClick={() => confirmNavigation('regional-insights')}
+                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-semibold text-left border transition-colors ${
+                      currentView === 'regional-insights'
+                        ? 'bg-blue-500/10 border-blue-500/20 text-blue-700 dark:text-blue-300'
+                        : 'border-transparent text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'
+                    }`}
+                  >
+                    <span>Regional Insights</span>
+                    {currentView === 'regional-insights' && (
+                      <span className="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true" />
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => confirmNavigation('wip')}
+                    className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-semibold text-left border transition-colors ${
+                      currentView === 'wip'
+                        ? 'bg-blue-500/10 border-blue-500/20 text-blue-700 dark:text-blue-300'
+                        : 'border-transparent text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'
+                    }`}
+                  >
+                    <span>Career Simulator</span>
+                    {currentView === 'wip' && (
+                      <span className="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true" />
+                    )}
+                  </button>
+
+                  <div className="rounded-xl border border-zinc-200 dark:border-white/10 overflow-hidden">
+
+                    <button
+                      type="button"
+                      onClick={() => setIsMobileSourcesOpen(prev => !prev)}
+                      className="w-full flex items-center justify-between px-4 py-3.5 text-sm font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors"
+                      aria-expanded={isMobileSourcesOpen}
+                    >
+                      <span>Data Sources</span>
+
+                      {isMobileSourcesOpen ? (
+                        <ChevronUp className="w-4 h-4 text-zinc-400" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-zinc-400" />
+                      )}
+                    </button>
+
+                    {isMobileSourcesOpen && (
+                      <div className="border-t border-zinc-200 dark:border-white/10 bg-zinc-50/70 dark:bg-white/[0.03]">
+
+                        <a
+                          href="https://www.onetcenter.org/database.html"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            setIsMobileSourcesOpen(false);
+                          }}
+                          className="flex items-center justify-between px-4 py-3 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5"
+                        >
+                          <span>O*NET Database</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+                        </a>
+
+                        <a
+                          href="https://www.jobsandskills.gov.au/data"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
+                            setIsMobileSourcesOpen(false);
+                          }}
+                          className="flex items-center justify-between px-4 py-3 text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5"
+                        >
+                          <span>Jobs &amp; Skills Australia (JSA)</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+                        </a>
+
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleStartQuiz}
+                    className="w-full mt-3 inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl text-sm font-semibold bg-black dark:bg-white text-white dark:text-black hover:opacity-85 active:scale-[0.99] transition-all"
+                  >
+                    Get started
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                </div>
               </div>
             </div>
           )}
+
         </nav>
 
         {/* View Routing */}

@@ -272,21 +272,21 @@ export default function RegionalInsights({ onBack }) {
 
       {chartData && (
         <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
-          <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-8">
+          <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mb-6 sm:mb-8">
             Comparison results for {selectedGroup?.anzsco4_name}
           </h3>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start min-w-0">
             {/* Left Bar Chart */}
-            <div className="lg:col-span-7 relative pt-8 pb-4 pl-14 pr-4 border-l border-b border-zinc-200 dark:border-zinc-800 flex items-end">
+            <div className="lg:col-span-7 min-w-0 relative pt-4 sm:pt-8 pb-4 pl-0 sm:pl-14 pr-0 sm:pr-4 border-b sm:border-l border-zinc-200 dark:border-zinc-800 flex items-end overflow-hidden">
               <div
-                className="absolute left-1 top-1/2 -translate-y-1/2 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest whitespace-nowrap pointer-events-none"
+                className="hidden sm:block absolute left-1 top-1/2 -translate-y-1/2 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest whitespace-nowrap pointer-events-none"
                 style={{ transform: 'translate(-40%, -50%) rotate(-90deg)' }}
               >
-                EMPLOYED (LATEST MONTH)
+                EMPLOYMENT (LATEST MONTH)
               </div>
 
-              <div className="flex items-end justify-between h-64 w-full gap-3">
+              <div className="flex items-end justify-between h-56 sm:h-64 w-full min-w-0 gap-1.5 sm:gap-3">
                 {chartData.map((data) => {
                   const heightPercent = maxOpps > 0 ? (data.opportunities / maxOpps) * 100 : 0;
                   const isHovered = hoveredState === data.state;
@@ -296,9 +296,9 @@ export default function RegionalInsights({ onBack }) {
                       key={data.state}
                       onMouseEnter={() => setHoveredState(data.state)}
                       onMouseLeave={() => setHoveredState(null)}
-                      className="flex flex-col items-center gap-2 flex-1 h-full justify-end group cursor-pointer"
+                      className="flex flex-col items-center gap-1.5 sm:gap-2 flex-1 min-w-0 h-full justify-end group cursor-pointer"
                     >
-                      <span className={`text-xs font-bold transition-colors ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
+                      <span className={`text-[10px] sm:text-xs font-bold transition-colors tabular-nums ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
                         {data.opportunities.toLocaleString()}
                       </span>
 
@@ -313,7 +313,7 @@ export default function RegionalInsights({ onBack }) {
                         />
                       </div>
 
-                      <span className={`text-xs font-bold uppercase transition-colors ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-500 dark:text-zinc-400'}`}>
+                      <span className={`text-[10px] sm:text-xs font-bold uppercase transition-colors ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-500 dark:text-zinc-400'}`}>
                         {data.state}
                       </span>
                     </div>
@@ -323,8 +323,8 @@ export default function RegionalInsights({ onBack }) {
             </div>
 
             {/* Right Geographic Australia Map */}
-            <div className="lg:col-span-5 bg-zinc-50 dark:bg-zinc-900/60 rounded-2xl p-6 relative flex flex-col items-center justify-center min-h-[340px] border border-zinc-200 dark:border-white/5">
-              <div className="absolute top-4 right-4 bg-white/90 dark:bg-[#131B2F]/90 backdrop-blur-sm p-3 rounded-xl border border-zinc-200 dark:border-white/10 shadow-sm z-10">
+            <div className="lg:col-span-5 min-w-0 bg-zinc-50 dark:bg-zinc-900/60 rounded-2xl p-4 sm:p-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[340px] border border-zinc-200 dark:border-white/5 overflow-hidden">
+              <div className="static sm:absolute top-4 right-4 self-end mb-2 sm:mb-0 bg-white/90 dark:bg-[#131B2F]/90 backdrop-blur-sm p-3 rounded-xl border border-zinc-200 dark:border-white/10 shadow-sm z-10 max-w-full">
                 <p className="text-[10px] font-bold uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">Employment Level</p>
                 <div 
                   className="h-2 w-28 rounded-full mb-1" 
@@ -336,7 +336,7 @@ export default function RegionalInsights({ onBack }) {
                 </div>
               </div>
 
-              <svg viewBox="0 0 500 480" className="w-full h-auto max-h-[280px] drop-shadow-xl">
+              <svg viewBox="0 0 500 480" preserveAspectRatio="xMidYMid meet" className="block w-full max-w-[430px] h-auto max-h-[250px] sm:max-h-[280px] drop-shadow-xl">
                 {Object.entries(AU_STATE_PATHS).map(([code, { name, path }]) => {
                   const isHovered = hoveredState === code;
 
@@ -346,6 +346,18 @@ export default function RegionalInsights({ onBack }) {
                       d={path}
                       onMouseEnter={() => setHoveredState(code)}
                       onMouseLeave={() => setHoveredState(null)}
+                      onClick={() =>
+                        setHoveredState(prev => (prev === code ? null : code))
+                      }
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setHoveredState(prev => (prev === code ? null : code));
+                        }
+                      }}
+                      aria-label={`${name} regional data`}
                       style={getStateFillStyle(code)}
                       className={`transition-all duration-300 cursor-pointer ${
                         isHovered
@@ -365,7 +377,7 @@ export default function RegionalInsights({ onBack }) {
                 const share = totalOpps > 0 ? Math.round((stateOpps / totalOpps) * 100) : 0;
 
                 return (
-                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-[#1A233A]/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-zinc-200 dark:border-white/10 flex items-center justify-between pointer-events-none">
+                  <div className="static sm:absolute bottom-4 left-4 right-4 mt-3 sm:mt-0 w-full sm:w-auto bg-white/95 dark:bg-[#1A233A]/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-zinc-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 justify-between pointer-events-none">
                     <div className="flex items-center gap-3">
                       <div className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex-shrink-0">
                         <MapPin className="w-4 h-4" />
@@ -374,14 +386,14 @@ export default function RegionalInsights({ onBack }) {
                         <p className="text-xs font-bold text-zinc-900 dark:text-white">
                           {AU_STATE_PATHS[hoveredState]?.name || hoveredState}
                         </p>
-                        <div className="flex items-center gap-2 mt-1">
+                        <div className="flex flex-wrap items-center gap-2 mt-1">
                           <span className="text-[11px] font-medium text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-zinc-200 dark:border-white/10">
-                            <strong className="font-bold text-zinc-900 dark:text-white">{stateOpps.toLocaleString()}</strong> Employed
+                            <strong className="font-bold text-zinc-900 dark:text-white">{stateOpps.toLocaleString()}</strong> Employment
                           </span>
 
                           {vacancies !== undefined && vacancies !== null && (
                             <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
-                              <strong className="font-bold">{vacancies.toLocaleString()}</strong> Openings
+                              <strong className="font-bold">{vacancies.toLocaleString()}</strong> Vacancies
                             </span>
                           )}
                         </div>
@@ -389,7 +401,7 @@ export default function RegionalInsights({ onBack }) {
                     </div>
                     
                     <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/20">
-                      {share}% Share
+                      {share}% of selected employment
                     </span>
                   </div>
                 );
