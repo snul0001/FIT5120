@@ -1,0 +1,39 @@
+Paste at most 5 major group ANZSCO 4 digits per prompt after gemini responds, it should respond with: 
+
+Gemini Response:
+Please provide the ANZSCO code, title, and list of tasks you would like mapped to the candidate list.
+
+Example prompt from anzsco_tasks_for_gemini.txt:
+
+ANZSCO unit group: 2611 | ICT Business and Systems Analysts
+Tasks:
+T1. Working with users to formulate and document business requirements
+T2. Identifying, investigating, and analysing business processes, procedures and work practices
+T3. Identifying and evaluating inefficiencies and recommending optimal business practices, and system functionality and behaviour
+T4. Using project management methodologies, principles and techniques to develop project plans and to cost, resource and manage projects
+T5. Taking responsibility for deploying functional solutions, such as creating, adopting and implementing system test plans, which ensure acceptable quality and integrity of the system
+T6. Creating user and training documentation, and conducting formal training classes
+T7. Developing functional specifications for use by system developers
+T8. Using data and process modelling techniques to create clear system specifications for the design and development of system software
+T9. Acting as a central reference and information source, providing guidance and assistance in the system project decision making process
+
+---
+
+ANZSCO unit group: 2612 | Multimedia Specialists and Web Developers
+Tasks:
+T1. Analysing, designing and developing internet sites applying a mixture of artistry and creativity with software programming and scripting languages and interfacing with operating environments
+T2. Designing and developing digital animations, imaging, presentations, games, audio and video clips, and internet applications using multimedia software, tools and utilities, interactive graphics and programming languages
+T3. Communicating with network specialists regarding web-related issues, such as security and hosting web sites, to control and enforce internet and web server security, space allocation, user access, business continuity, web site backup and disaster recovery planning
+T4. Designing, developing and integrating computer code with other specialised inputs, such as image files, audio files and scripting languages, to produce, maintain and support web sites
+T5. Assisting in analysing, specifying and developing internet strategies, web-based methodologies and development plans
+
+---
+
+ANZSCO unit group: 2613 | Software and Applications Programmers
+Tasks:
+T1. Researching, consulting, analysing and evaluating system program needs
+T2. Identifying technology limitations and deficiencies in existing systems and associated processes, procedures and methods
+T3. Testing, debugging, diagnosing and correcting errors and faults in an applications programming language within established testing protocols, guidelines and quality standards to ensure programs and applications perform to specification
+T4. Writing and maintaining program code to meet system requirements, system designs and technical specifications in accordance with quality accredited standards
+T5. Writing, updating and maintaining technical program, end user documentation and operational procedures
+T6. Providing advice, guidance and expertise in developing proposals and strategies for software design activities such as financial evaluation and costings for recommending software purchases and upgrades

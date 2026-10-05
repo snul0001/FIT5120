@@ -1,0 +1,15 @@
+Manually verify check betewen anzsco_task_for_gemini.txt and the matching candidate through O*Net website.
+
+Example output from gemini should look like this format:
+
+ANZSCO_code,ANZSCO_title,ONET_code,ONET_title,Match_score,Confidence,Rationale
+"2611","ICT Business and Systems Analysts","15-1211.00","Computer Systems Analysts",0.70,"high","Both analyze user requirements, procedures, and data processing problems to design system specifications and functional solutions."
+"2611","ICT Business and Systems Analysts","13-1111.00","Management Analysts",0.30,"high","Both analyze organizational workflows, business practices, and operating procedures to identify inefficiencies and recommend improvements."
+"2612","Multimedia Specialists and Web Developers","15-1254.00","Web Developers",0.40,"high","Both write code, integrate scripts and multimedia, and develop technical site architecture and functionality."
+"2612","Multimedia Specialists and Web Developers","15-1255.00","Web and Digital Interface Designers",0.35,"high","Both design visual layouts, interactive digital media, user interfaces, and multimedia elements across websites and applications."
+
+After receiving from gemini, add a new header called review, and each data row should include "matches" or "partia" at the end to represent csv file output.
+
+Rinse and repeat 1st step -> 3rd step until all occupations are verified.
+
+
