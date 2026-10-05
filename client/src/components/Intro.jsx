@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { matchOccupations, getOccupationAI, getRegionalDemand } from '../api/client';
 import { ArrowRight, UserRound, MapPin, ShieldCheck } from 'lucide-react';
 
+// These values power the live example shown on the landing page.
 const EXAMPLE_INTERESTS = ['investigative', 'conventional'];
 const EXAMPLE_REGION = 'VIC';
 const EXAMPLE_REGION_LABEL = 'Victoria';
@@ -13,6 +14,7 @@ const INTEREST_LABELS = {
 const exampleInterestLabels = EXAMPLE_INTERESTS.map(id => INTEREST_LABELS[id] || id).join(', ');
 const toPercent = v => typeof v === 'number' ? (v <= 1 ? Math.round(v * 100) : Math.round(v)) : null;
 
+// Reused for the smaller text-style actions throughout the page.
 const Button = ({ onClick, children = 'Get started', className = '' }) => (
   <button type="button" onClick={onClick} className={`inline-flex items-center gap-1.5 text-sm font-semibold text-[#176BC0] dark:text-blue-300 hover:text-[#0F4F96] dark:hover:text-blue-200 transition-colors ${className}`}>
     {children}<ArrowRight className="w-4 h-4" />
@@ -25,6 +27,7 @@ const PrimaryButton = ({ onClick, children = 'Get started', className = '' }) =>
   </button>
 );
 
+// Keeps the four story sections consistent without repeating the same layout.
 const Chapter = ({ reverse = false, first = false, shadow = false, label, title, text, action, onClick, children }) => (
   <section className={`${first ? '' : 'mt-5'} rounded-2xl border border-[#DDE8F1] dark:border-white/10 bg-white/80 dark:bg-[#111B2D]/70 overflow-hidden`}>
     <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -41,6 +44,7 @@ const Chapter = ({ reverse = false, first = false, shadow = false, label, title,
   </section>
 );
 
+// Shared progress bar used for the AI impact numbers.
 const Metric = ({ label, value, color = 'bg-[#347FE5]' }) => (
   <div>
     <div className="flex items-center justify-between gap-4">
@@ -65,6 +69,7 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
   const [regionalDemand, setRegionalDemand] = useState([]), [isLoadingPreview, setIsLoadingPreview] = useState(true);
   const [previewError, setPreviewError] = useState(false);
 
+  // Load real backend data once so the example stays in sync with the app.
   useEffect(() => {
     let cancelled = false;
     const loadExample = async () => {
@@ -85,6 +90,7 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
     return () => { cancelled = true; };
   }, []);
 
+  // Sort the regional data before using the latest value and charting it.
   const sortedDemand = [...regionalDemand].filter(Boolean).sort((a, b) => String(a.month || '').localeCompare(String(b.month || '')));
   const latestDemand = sortedDemand[sortedDemand.length - 1] || null;
   const vacancyAverage = latestDemand?.vacancy_3m_moving_average != null ? Number(latestDemand.vacancy_3m_moving_average) : null;
@@ -101,6 +107,7 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
 
   return (
     <section className="w-full bg-transparent text-[#10233F] dark:text-white">
+      {/* Hero: introduces IResi and sends visitors into the profile flow. */}
       <div className="relative overflow-hidden bg-transparent">
         <div className="absolute inset-0 pointer-events-none"><div className="absolute -right-28 -top-40 w-[580px] h-[580px] rounded-full bg-blue-500/5 dark:bg-blue-500/5 blur-[120px]" /></div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
@@ -119,6 +126,7 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
         </div>
       </div>
 
+      {/* The four chapters explain what the user gets after configuring a profile. */}
       <div className="relative bg-transparent">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-14 sm:pt-16 pb-16 sm:pb-20">
           <div className="max-w-2xl mb-10 sm:mb-12">
@@ -171,6 +179,7 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
         </div>
       </div>
 
+      {/* Keep source links visible so the data behind the analysis is clear. */}
       <div id="iresi-about" className="bg-transparent border-t border-[#EDF2F7]/60 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-9 sm:py-10"><div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div><div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#6F879F]" /><p className="text-sm font-semibold text-[#10233F] dark:text-white">This analysis uses data from</p></div><p className="mt-1.5 text-xs font-medium text-[#4E637B] dark:text-slate-500">Career and labour-market information used throughout IResi.</p></div>
@@ -178,6 +187,7 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
         </div></div>
       </div>
 
+      {/* Final CTA mirrors the hero action at the bottom of the page. */}
       <div className="relative overflow-hidden bg-transparent border-t border-[#E1EBF4]/50 dark:border-white/5">
         <div className="absolute inset-0 pointer-events-none"><div className="absolute -left-20 -bottom-44 w-[430px] h-[430px] rounded-full bg-blue-500/5 dark:bg-blue-500/5 blur-3xl" /><div className="absolute -right-20 -top-44 w-[430px] h-[430px] rounded-full bg-indigo-500/5 dark:bg-indigo-500/5 blur-3xl" /></div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 py-20 sm:py-24 text-center">
