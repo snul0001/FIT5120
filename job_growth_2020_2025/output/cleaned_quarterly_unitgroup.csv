@@ -1,0 +1,1945 @@
+category,code,unit_group,year,quarter,employed_k
+Business,2211,Accountants,2020,February,176.92740057999998
+Business,2211,Accountants,2020,May,183.96310653000003
+Business,2211,Accountants,2020,August,189.07063062
+Business,2211,Accountants,2020,November,199.37832614
+Business,2211,Accountants,2021,February,206.50148167999998
+Business,2211,Accountants,2021,May,194.26810068
+Business,2211,Accountants,2021,August,193.31272326
+Business,2211,Accountants,2021,November,191.05327005
+Business,2211,Accountants,2022,February,219.51479894
+Business,2211,Accountants,2022,May,210.09391085
+Business,2211,Accountants,2022,August,200.26941405999997
+Business,2211,Accountants,2022,November,205.23016572
+Business,2211,Accountants,2023,February,207.43282399
+Business,2211,Accountants,2023,May,203.99232908999997
+Business,2211,Accountants,2023,August,201.51936267999997
+Business,2211,Accountants,2023,November,193.19177860999991
+Business,2211,Accountants,2024,February,207.62239618
+Business,2211,Accountants,2024,May,198.00453416000005
+Business,2211,Accountants,2024,August,201.71922960999996
+Business,2211,Accountants,2024,November,186.32131217
+Business,2211,Accountants,2025,February,223.72281831999996
+Business,2211,Accountants,2025,May,216.13958840000004
+Business,2211,Accountants,2025,August,219.54295011
+Business,2211,Accountants,2025,November,233.8931872
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2020,February,28.537986440000005
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2020,May,27.051487809999998
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2020,August,32.40163948
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2020,November,28.790731810000004
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2021,February,25.10297995
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2021,May,32.36908418
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2021,August,28.546165520000002
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2021,November,33.82878123
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2022,February,33.066691940000005
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2022,May,29.416131859999997
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2022,August,27.186013549999995
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2022,November,26.641086509999994
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2023,February,39.058815679999995
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2023,May,30.463979109999997
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2023,August,35.16071377
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2023,November,33.92784012999999
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2024,February,35.16400416
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2024,May,31.55804943
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2024,August,37.10884351
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2024,November,32.430211899999996
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2025,February,30.91160111
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2025,May,26.575382200000004
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2025,August,30.26133539
+Business,2212,"Auditors, Company Secretaries and Corporate Treasurers",2025,November,34.52528138000001
+Business,2221,Financial Brokers,2020,February,30.543721469999994
+Business,2221,Financial Brokers,2020,May,33.87837247
+Business,2221,Financial Brokers,2020,August,37.609529099999996
+Business,2221,Financial Brokers,2020,November,28.41828494
+Business,2221,Financial Brokers,2021,February,33.64160639
+Business,2221,Financial Brokers,2021,May,34.29408479
+Business,2221,Financial Brokers,2021,August,44.37255427999999
+Business,2221,Financial Brokers,2021,November,37.591381319999996
+Business,2221,Financial Brokers,2022,February,36.87378510999999
+Business,2221,Financial Brokers,2022,May,44.72490068999998
+Business,2221,Financial Brokers,2022,August,37.554266049999995
+Business,2221,Financial Brokers,2022,November,43.18954182
+Business,2221,Financial Brokers,2023,February,56.75936262
+Business,2221,Financial Brokers,2023,May,50.765320069999994
+Business,2221,Financial Brokers,2023,August,41.95341524
+Business,2221,Financial Brokers,2023,November,40.461654540000005
+Business,2221,Financial Brokers,2024,February,42.37823864
+Business,2221,Financial Brokers,2024,May,44.20198183000001
+Business,2221,Financial Brokers,2024,August,37.69790175000001
+Business,2221,Financial Brokers,2024,November,44.58708152
+Business,2221,Financial Brokers,2025,February,47.02584829
+Business,2221,Financial Brokers,2025,May,59.07714725
+Business,2221,Financial Brokers,2025,August,51.47550963999999
+Business,2221,Financial Brokers,2025,November,55.364906639999994
+Business,2223,Financial Investment Advisers and Managers,2020,February,50.87771736
+Business,2223,Financial Investment Advisers and Managers,2020,May,53.89555543
+Business,2223,Financial Investment Advisers and Managers,2020,August,54.04438667000001
+Business,2223,Financial Investment Advisers and Managers,2020,November,54.32816514
+Business,2223,Financial Investment Advisers and Managers,2021,February,39.057744899999996
+Business,2223,Financial Investment Advisers and Managers,2021,May,53.26653018000001
+Business,2223,Financial Investment Advisers and Managers,2021,August,49.77197832999999
+Business,2223,Financial Investment Advisers and Managers,2021,November,54.83596717
+Business,2223,Financial Investment Advisers and Managers,2022,February,65.21132433
+Business,2223,Financial Investment Advisers and Managers,2022,May,70.95279937000001
+Business,2223,Financial Investment Advisers and Managers,2022,August,60.808220289999994
+Business,2223,Financial Investment Advisers and Managers,2022,November,67.18353357
+Business,2223,Financial Investment Advisers and Managers,2023,February,57.1599874
+Business,2223,Financial Investment Advisers and Managers,2023,May,59.66043924
+Business,2223,Financial Investment Advisers and Managers,2023,August,60.28215206000001
+Business,2223,Financial Investment Advisers and Managers,2023,November,65.20954947999999
+Business,2223,Financial Investment Advisers and Managers,2024,February,63.233546119999986
+Business,2223,Financial Investment Advisers and Managers,2024,May,63.20661894
+Business,2223,Financial Investment Advisers and Managers,2024,August,61.55315993999999
+Business,2223,Financial Investment Advisers and Managers,2024,November,52.67542479000001
+Business,2223,Financial Investment Advisers and Managers,2025,February,56.46327235
+Business,2223,Financial Investment Advisers and Managers,2025,May,70.26936362999999
+Business,2223,Financial Investment Advisers and Managers,2025,August,55.00342420000001
+Business,2223,Financial Investment Advisers and Managers,2025,November,65.2088407
+Business,2231,Human Resource Professionals,2020,February,75.17979899
+Business,2231,Human Resource Professionals,2020,May,61.33449574000001
+Business,2231,Human Resource Professionals,2020,August,59.5399022
+Business,2231,Human Resource Professionals,2020,November,68.58722529
+Business,2231,Human Resource Professionals,2021,February,68.17749881999998
+Business,2231,Human Resource Professionals,2021,May,76.73597909
+Business,2231,Human Resource Professionals,2021,August,86.30475573000001
+Business,2231,Human Resource Professionals,2021,November,80.67270131
+Business,2231,Human Resource Professionals,2022,February,90.15787255000002
+Business,2231,Human Resource Professionals,2022,May,80.55593094
+Business,2231,Human Resource Professionals,2022,August,82.91295217999999
+Business,2231,Human Resource Professionals,2022,November,93.00767646999999
+Business,2231,Human Resource Professionals,2023,February,79.42941547000001
+Business,2231,Human Resource Professionals,2023,May,84.90338588
+Business,2231,Human Resource Professionals,2023,August,87.72792119999998
+Business,2231,Human Resource Professionals,2023,November,84.70827234000002
+Business,2231,Human Resource Professionals,2024,February,85.27726919
+Business,2231,Human Resource Professionals,2024,May,90.92361460000001
+Business,2231,Human Resource Professionals,2024,August,81.62224641
+Business,2231,Human Resource Professionals,2024,November,86.45906429000001
+Business,2231,Human Resource Professionals,2025,February,96.89735489
+Business,2231,Human Resource Professionals,2025,May,83.62753815
+Business,2231,Human Resource Professionals,2025,August,80.60404575000001
+Business,2231,Human Resource Professionals,2025,November,77.79081930000001
+Business,2243,Economists,2020,February,3.403476570000001
+Business,2243,Economists,2020,May,3.92239271
+Business,2243,Economists,2020,August,4.17222007
+Business,2243,Economists,2020,November,4.4745969599999995
+Business,2243,Economists,2021,February,6.02678675
+Business,2243,Economists,2021,May,6.7249660800000015
+Business,2243,Economists,2021,August,6.5477966200000015
+Business,2243,Economists,2021,November,6.813176979999999
+Business,2243,Economists,2022,February,6.98829713
+Business,2243,Economists,2022,May,5.034616890000001
+Business,2243,Economists,2022,August,8.24581392
+Business,2243,Economists,2022,November,4.46842286
+Business,2243,Economists,2023,February,2.8428957500000003
+Business,2243,Economists,2023,May,6.043378199999999
+Business,2243,Economists,2023,August,6.600848340000001
+Business,2243,Economists,2023,November,5.58665654
+Business,2243,Economists,2024,February,4.4393144499999995
+Business,2243,Economists,2024,May,3.6645827999999994
+Business,2243,Economists,2024,August,5.88966084
+Business,2243,Economists,2024,November,2.5731525900000003
+Business,2243,Economists,2025,February,6.66251131
+Business,2243,Economists,2025,May,4.565860439999999
+Business,2243,Economists,2025,August,4.793113310000001
+Business,2243,Economists,2025,November,5.49031893
+Business,2244,Intelligence and Policy Analysts,2020,February,24.962519119999996
+Business,2244,Intelligence and Policy Analysts,2020,May,25.33519851
+Business,2244,Intelligence and Policy Analysts,2020,August,30.919059869999998
+Business,2244,Intelligence and Policy Analysts,2020,November,37.681474169999994
+Business,2244,Intelligence and Policy Analysts,2021,February,31.93726859
+Business,2244,Intelligence and Policy Analysts,2021,May,31.659001009999997
+Business,2244,Intelligence and Policy Analysts,2021,August,30.248384390000002
+Business,2244,Intelligence and Policy Analysts,2021,November,29.688687689999995
+Business,2244,Intelligence and Policy Analysts,2022,February,27.873064480000004
+Business,2244,Intelligence and Policy Analysts,2022,May,29.80697704
+Business,2244,Intelligence and Policy Analysts,2022,August,31.957179680000003
+Business,2244,Intelligence and Policy Analysts,2022,November,30.428489590000005
+Business,2244,Intelligence and Policy Analysts,2023,February,30.34058578
+Business,2244,Intelligence and Policy Analysts,2023,May,38.78436621
+Business,2244,Intelligence and Policy Analysts,2023,August,47.50389862
+Business,2244,Intelligence and Policy Analysts,2023,November,34.155947530000006
+Business,2244,Intelligence and Policy Analysts,2024,February,39.35427665
+Business,2244,Intelligence and Policy Analysts,2024,May,41.442336999999995
+Business,2244,Intelligence and Policy Analysts,2024,August,38.52960223
+Business,2244,Intelligence and Policy Analysts,2024,November,47.849706309999995
+Business,2244,Intelligence and Policy Analysts,2025,February,45.27016558
+Business,2244,Intelligence and Policy Analysts,2025,May,48.094308489999996
+Business,2244,Intelligence and Policy Analysts,2025,August,39.46132956
+Business,2244,Intelligence and Policy Analysts,2025,November,39.105675039999994
+Business,2247,Management and Organisation Analysts,2020,February,78.70684297000003
+Business,2247,Management and Organisation Analysts,2020,May,75.26400066
+Business,2247,Management and Organisation Analysts,2020,August,81.88087844
+Business,2247,Management and Organisation Analysts,2020,November,84.98452028999999
+Business,2247,Management and Organisation Analysts,2021,February,76.05140022999998
+Business,2247,Management and Organisation Analysts,2021,May,98.12132785
+Business,2247,Management and Organisation Analysts,2021,August,88.56675566000001
+Business,2247,Management and Organisation Analysts,2021,November,79.4579725
+Business,2247,Management and Organisation Analysts,2022,February,90.59778829
+Business,2247,Management and Organisation Analysts,2022,May,92.7109425
+Business,2247,Management and Organisation Analysts,2022,August,101.19913575999999
+Business,2247,Management and Organisation Analysts,2022,November,109.14472860000001
+Business,2247,Management and Organisation Analysts,2023,February,111.02486505
+Business,2247,Management and Organisation Analysts,2023,May,119.14643486
+Business,2247,Management and Organisation Analysts,2023,August,108.28997256000002
+Business,2247,Management and Organisation Analysts,2023,November,122.69734059000001
+Business,2247,Management and Organisation Analysts,2024,February,113.46913497
+Business,2247,Management and Organisation Analysts,2024,May,113.12522214
+Business,2247,Management and Organisation Analysts,2024,August,105.10579442000002
+Business,2247,Management and Organisation Analysts,2024,November,100.55278029
+Business,2247,Management and Organisation Analysts,2025,February,105.77817287000003
+Business,2247,Management and Organisation Analysts,2025,May,91.38418959
+Business,2247,Management and Organisation Analysts,2025,August,104.97656024999999
+Business,2247,Management and Organisation Analysts,2025,November,107.89676869
+Business,2251,Advertising and Marketing Professionals,2020,February,87.57271827999999
+Business,2251,Advertising and Marketing Professionals,2020,May,78.07810835000001
+Business,2251,Advertising and Marketing Professionals,2020,August,84.93318181000001
+Business,2251,Advertising and Marketing Professionals,2020,November,81.05059924
+Business,2251,Advertising and Marketing Professionals,2021,February,90.42200184
+Business,2251,Advertising and Marketing Professionals,2021,May,83.73043564000001
+Business,2251,Advertising and Marketing Professionals,2021,August,66.55582937000001
+Business,2251,Advertising and Marketing Professionals,2021,November,74.01496632
+Business,2251,Advertising and Marketing Professionals,2022,February,80.42499726999999
+Business,2251,Advertising and Marketing Professionals,2022,May,101.38323703
+Business,2251,Advertising and Marketing Professionals,2022,August,90.21341889
+Business,2251,Advertising and Marketing Professionals,2022,November,88.26939551999999
+Business,2251,Advertising and Marketing Professionals,2023,February,90.55380572000001
+Business,2251,Advertising and Marketing Professionals,2023,May,96.13085961999998
+Business,2251,Advertising and Marketing Professionals,2023,August,96.77028499999997
+Business,2251,Advertising and Marketing Professionals,2023,November,99.95059888999998
+Business,2251,Advertising and Marketing Professionals,2024,February,100.83464749999997
+Business,2251,Advertising and Marketing Professionals,2024,May,98.43384073
+Business,2251,Advertising and Marketing Professionals,2024,August,110.97857289999999
+Business,2251,Advertising and Marketing Professionals,2024,November,101.83955433999998
+Business,2251,Advertising and Marketing Professionals,2025,February,106.45494763
+Business,2251,Advertising and Marketing Professionals,2025,May,99.63319154999998
+Business,2251,Advertising and Marketing Professionals,2025,August,97.16124898999999
+Business,2251,Advertising and Marketing Professionals,2025,November,101.6733163
+Business,2253,Public Relations Professionals,2020,February,32.72325727
+Business,2253,Public Relations Professionals,2020,May,27.581441090000002
+Business,2253,Public Relations Professionals,2020,August,22.641910319999997
+Business,2253,Public Relations Professionals,2020,November,20.607331150000004
+Business,2253,Public Relations Professionals,2021,February,22.2285237
+Business,2253,Public Relations Professionals,2021,May,23.575162319999997
+Business,2253,Public Relations Professionals,2021,August,24.446083329999997
+Business,2253,Public Relations Professionals,2021,November,21.4987746
+Business,2253,Public Relations Professionals,2022,February,27.052077399999998
+Business,2253,Public Relations Professionals,2022,May,24.003010049999997
+Business,2253,Public Relations Professionals,2022,August,22.041927790000006
+Business,2253,Public Relations Professionals,2022,November,23.070524500000005
+Business,2253,Public Relations Professionals,2023,February,33.946624789999994
+Business,2253,Public Relations Professionals,2023,May,39.123262309999994
+Business,2253,Public Relations Professionals,2023,August,31.091643050000005
+Business,2253,Public Relations Professionals,2023,November,34.99208077
+Business,2253,Public Relations Professionals,2024,February,28.566282929999996
+Business,2253,Public Relations Professionals,2024,May,26.34964331
+Business,2253,Public Relations Professionals,2024,August,28.910401069999995
+Business,2253,Public Relations Professionals,2024,November,29.769800580000002
+Business,2253,Public Relations Professionals,2025,February,28.813276979999998
+Business,2253,Public Relations Professionals,2025,May,28.643974620000005
+Business,2253,Public Relations Professionals,2025,August,31.765963719999995
+Business,2253,Public Relations Professionals,2025,November,35.5372064
+Business,5111,"Contract, Program and Project Administrators",2020,February,118.87979398999998
+Business,5111,"Contract, Program and Project Administrators",2020,May,133.37520937
+Business,5111,"Contract, Program and Project Administrators",2020,August,125.88023122
+Business,5111,"Contract, Program and Project Administrators",2020,November,129.5148739
+Business,5111,"Contract, Program and Project Administrators",2021,February,105.61880375
+Business,5111,"Contract, Program and Project Administrators",2021,May,120.20875687999998
+Business,5111,"Contract, Program and Project Administrators",2021,August,121.79451935
+Business,5111,"Contract, Program and Project Administrators",2021,November,137.73355706
+Business,5111,"Contract, Program and Project Administrators",2022,February,136.32524225
+Business,5111,"Contract, Program and Project Administrators",2022,May,138.78750907999998
+Business,5111,"Contract, Program and Project Administrators",2022,August,113.36284898999999
+Business,5111,"Contract, Program and Project Administrators",2022,November,138.96630007000002
+Business,5111,"Contract, Program and Project Administrators",2023,February,161.68939921999996
+Business,5111,"Contract, Program and Project Administrators",2023,May,155.67876064
+Business,5111,"Contract, Program and Project Administrators",2023,August,133.40037156
+Business,5111,"Contract, Program and Project Administrators",2023,November,158.32562848999999
+Business,5111,"Contract, Program and Project Administrators",2024,February,156.76574071
+Business,5111,"Contract, Program and Project Administrators",2024,May,151.29717802
+Business,5111,"Contract, Program and Project Administrators",2024,August,150.41245887
+Business,5111,"Contract, Program and Project Administrators",2024,November,168.363193
+Business,5111,"Contract, Program and Project Administrators",2025,February,158.54784774
+Business,5111,"Contract, Program and Project Administrators",2025,May,149.39110727
+Business,5111,"Contract, Program and Project Administrators",2025,August,161.23626589
+Business,5111,"Contract, Program and Project Administrators",2025,November,143.24882308
+Business,5211,Personal Assistants,2020,February,46.77514188
+Business,5211,Personal Assistants,2020,May,41.91605551
+Business,5211,Personal Assistants,2020,August,40.50118047999999
+Business,5211,Personal Assistants,2020,November,49.954934959999996
+Business,5211,Personal Assistants,2021,February,50.055431410000004
+Business,5211,Personal Assistants,2021,May,51.979124729999995
+Business,5211,Personal Assistants,2021,August,48.70679672000001
+Business,5211,Personal Assistants,2021,November,48.72540900999999
+Business,5211,Personal Assistants,2022,February,44.68624453999999
+Business,5211,Personal Assistants,2022,May,48.13892932
+Business,5211,Personal Assistants,2022,August,53.44517408
+Business,5211,Personal Assistants,2022,November,38.51443264
+Business,5211,Personal Assistants,2023,February,49.632709850000005
+Business,5211,Personal Assistants,2023,May,52.58175349
+Business,5211,Personal Assistants,2023,August,54.99107536
+Business,5211,Personal Assistants,2023,November,58.11789182
+Business,5211,Personal Assistants,2024,February,50.59214602
+Business,5211,Personal Assistants,2024,May,53.487685969999994
+Business,5211,Personal Assistants,2024,August,61.15220526
+Business,5211,Personal Assistants,2024,November,53.66576147
+Business,5211,Personal Assistants,2025,February,47.36539018
+Business,5211,Personal Assistants,2025,May,39.88837135000001
+Business,5211,Personal Assistants,2025,August,47.801759849999996
+Business,5211,Personal Assistants,2025,November,46.49600045999999
+Business,5311,General Clerks,2020,February,316.58691096
+Business,5311,General Clerks,2020,May,301.8366014399999
+Business,5311,General Clerks,2020,August,312.35364259
+Business,5311,General Clerks,2020,November,309.97553266
+Business,5311,General Clerks,2021,February,297.19782737
+Business,5311,General Clerks,2021,May,295.45392474000005
+Business,5311,General Clerks,2021,August,283.82714468999995
+Business,5311,General Clerks,2021,November,278.64545652
+Business,5311,General Clerks,2022,February,303.18352615
+Business,5311,General Clerks,2022,May,293.25397596000005
+Business,5311,General Clerks,2022,August,289.59715558000005
+Business,5311,General Clerks,2022,November,294.1715065799999
+Business,5311,General Clerks,2023,February,283.39176417
+Business,5311,General Clerks,2023,May,298.47959992
+Business,5311,General Clerks,2023,August,291.75713335999995
+Business,5311,General Clerks,2023,November,296.27600577999993
+Business,5311,General Clerks,2024,February,275.14527073000005
+Business,5311,General Clerks,2024,May,281.2553965
+Business,5311,General Clerks,2024,August,282.98181542000003
+Business,5311,General Clerks,2024,November,262.9488927
+Business,5311,General Clerks,2025,February,272.04010089999997
+Business,5311,General Clerks,2025,May,299.90421084
+Business,5311,General Clerks,2025,August,308.79566559
+Business,5311,General Clerks,2025,November,265.48192909000005
+Business,5511,Accounting Clerks,2020,February,140.31899807
+Business,5511,Accounting Clerks,2020,May,137.37587636
+Business,5511,Accounting Clerks,2020,August,149.27166552999998
+Business,5511,Accounting Clerks,2020,November,141.13157911000002
+Business,5511,Accounting Clerks,2021,February,127.05322829
+Business,5511,Accounting Clerks,2021,May,141.86310296000002
+Business,5511,Accounting Clerks,2021,August,130.90567883000003
+Business,5511,Accounting Clerks,2021,November,121.6363192
+Business,5511,Accounting Clerks,2022,February,123.30490942000002
+Business,5511,Accounting Clerks,2022,May,128.45007113999998
+Business,5511,Accounting Clerks,2022,August,110.00527659
+Business,5511,Accounting Clerks,2022,November,133.78730586999995
+Business,5511,Accounting Clerks,2023,February,130.00234651
+Business,5511,Accounting Clerks,2023,May,140.35105477999997
+Business,5511,Accounting Clerks,2023,August,149.85007126
+Business,5511,Accounting Clerks,2023,November,155.8165894
+Business,5511,Accounting Clerks,2024,February,152.97379526999998
+Business,5511,Accounting Clerks,2024,May,146.46112544
+Business,5511,Accounting Clerks,2024,August,144.19754154000003
+Business,5511,Accounting Clerks,2024,November,152.36666516000003
+Business,5511,Accounting Clerks,2025,February,134.36643879000002
+Business,5511,Accounting Clerks,2025,May,131.70661648
+Business,5511,Accounting Clerks,2025,August,149.39129225
+Business,5511,Accounting Clerks,2025,November,141.93749042000002
+Business,5512,Bookkeepers,2020,February,92.69392953
+Business,5512,Bookkeepers,2020,May,100.10059199000001
+Business,5512,Bookkeepers,2020,August,113.73479332999999
+Business,5512,Bookkeepers,2020,November,97.79771492999998
+Business,5512,Bookkeepers,2021,February,96.41454669
+Business,5512,Bookkeepers,2021,May,97.74788924
+Business,5512,Bookkeepers,2021,August,99.88484883
+Business,5512,Bookkeepers,2021,November,96.23636146
+Business,5512,Bookkeepers,2022,February,102.27683415000001
+Business,5512,Bookkeepers,2022,May,92.77866962
+Business,5512,Bookkeepers,2022,August,102.59943778000002
+Business,5512,Bookkeepers,2022,November,99.32824939
+Business,5512,Bookkeepers,2023,February,82.85222868999999
+Business,5512,Bookkeepers,2023,May,94.39601482
+Business,5512,Bookkeepers,2023,August,87.02229709
+Business,5512,Bookkeepers,2023,November,107.40707332000001
+Business,5512,Bookkeepers,2024,February,100.60627481
+Business,5512,Bookkeepers,2024,May,97.52961493000002
+Business,5512,Bookkeepers,2024,August,89.89371476999999
+Business,5512,Bookkeepers,2024,November,89.2629276
+Business,5512,Bookkeepers,2025,February,79.30844025
+Business,5512,Bookkeepers,2025,May,86.52188597
+Business,5512,Bookkeepers,2025,August,92.48072419999998
+Business,5512,Bookkeepers,2025,November,91.56113489
+Business,5521,Bank Workers,2020,February,54.24497788000001
+Business,5521,Bank Workers,2020,May,43.86578782
+Business,5521,Bank Workers,2020,August,43.92001227999999
+Business,5521,Bank Workers,2020,November,45.89360945999999
+Business,5521,Bank Workers,2021,February,40.18257569000001
+Business,5521,Bank Workers,2021,May,40.620369600000004
+Business,5521,Bank Workers,2021,August,37.87269097000001
+Business,5521,Bank Workers,2021,November,31.58151984
+Business,5521,Bank Workers,2022,February,31.254769710000005
+Business,5521,Bank Workers,2022,May,40.68782378
+Business,5521,Bank Workers,2022,August,39.819677170000006
+Business,5521,Bank Workers,2022,November,40.17482330000001
+Business,5521,Bank Workers,2023,February,44.05516312
+Business,5521,Bank Workers,2023,May,55.02348152000001
+Business,5521,Bank Workers,2023,August,54.82620324
+Business,5521,Bank Workers,2023,November,47.685189380000004
+Business,5521,Bank Workers,2024,February,47.84799623000001
+Business,5521,Bank Workers,2024,May,45.60514305
+Business,5521,Bank Workers,2024,August,40.62721957
+Business,5521,Bank Workers,2024,November,46.19919702
+Business,5521,Bank Workers,2025,February,46.10463153
+Business,5521,Bank Workers,2025,May,35.84183197
+Business,5521,Bank Workers,2025,August,31.95259962
+Business,5521,Bank Workers,2025,November,27.924092849999997
+Business,5522,Credit and Loans Officers,2020,February,28.972075859999997
+Business,5522,Credit and Loans Officers,2020,May,33.68255749000001
+Business,5522,Credit and Loans Officers,2020,August,29.62725734
+Business,5522,Credit and Loans Officers,2020,November,28.397701669999996
+Business,5522,Credit and Loans Officers,2021,February,36.15561823
+Business,5522,Credit and Loans Officers,2021,May,30.51478509
+Business,5522,Credit and Loans Officers,2021,August,35.3610955
+Business,5522,Credit and Loans Officers,2021,November,34.50014219
+Business,5522,Credit and Loans Officers,2022,February,42.956033290000015
+Business,5522,Credit and Loans Officers,2022,May,43.422850600000004
+Business,5522,Credit and Loans Officers,2022,August,39.45363436
+Business,5522,Credit and Loans Officers,2022,November,38.49616954
+Business,5522,Credit and Loans Officers,2023,February,41.477435150000005
+Business,5522,Credit and Loans Officers,2023,May,30.54916361
+Business,5522,Credit and Loans Officers,2023,August,37.641522359999996
+Business,5522,Credit and Loans Officers,2023,November,44.857789589999996
+Business,5522,Credit and Loans Officers,2024,February,40.2342249
+Business,5522,Credit and Loans Officers,2024,May,32.271091350000006
+Business,5522,Credit and Loans Officers,2024,August,37.73450845000001
+Business,5522,Credit and Loans Officers,2024,November,44.00374737
+Business,5522,Credit and Loans Officers,2025,February,37.284403270000006
+Business,5522,Credit and Loans Officers,2025,May,29.439781160000003
+Business,5522,Credit and Loans Officers,2025,August,31.170697210000007
+Business,5522,Credit and Loans Officers,2025,November,39.87601665
+Business,5911,Purchasing and Supply Logistics Clerks,2020,February,86.17456843000002
+Business,5911,Purchasing and Supply Logistics Clerks,2020,May,95.63395148999999
+Business,5911,Purchasing and Supply Logistics Clerks,2020,August,93.91036627999998
+Business,5911,Purchasing and Supply Logistics Clerks,2020,November,93.87213738000001
+Business,5911,Purchasing and Supply Logistics Clerks,2021,February,86.90500811999999
+Business,5911,Purchasing and Supply Logistics Clerks,2021,May,94.44914953000001
+Business,5911,Purchasing and Supply Logistics Clerks,2021,August,84.84857278999999
+Business,5911,Purchasing and Supply Logistics Clerks,2021,November,97.68462715000001
+Business,5911,Purchasing and Supply Logistics Clerks,2022,February,90.17764453
+Business,5911,Purchasing and Supply Logistics Clerks,2022,May,102.58001754
+Business,5911,Purchasing and Supply Logistics Clerks,2022,August,94.82424602
+Business,5911,Purchasing and Supply Logistics Clerks,2022,November,101.00011269
+Business,5911,Purchasing and Supply Logistics Clerks,2023,February,103.29525111999997
+Business,5911,Purchasing and Supply Logistics Clerks,2023,May,95.40378505
+Business,5911,Purchasing and Supply Logistics Clerks,2023,August,100.46767829000001
+Business,5911,Purchasing and Supply Logistics Clerks,2023,November,125.36475799
+Business,5911,Purchasing and Supply Logistics Clerks,2024,February,146.52100996000001
+Business,5911,Purchasing and Supply Logistics Clerks,2024,May,98.75819744
+Business,5911,Purchasing and Supply Logistics Clerks,2024,August,109.10077798000003
+Business,5911,Purchasing and Supply Logistics Clerks,2024,November,156.84735045999997
+Business,5911,Purchasing and Supply Logistics Clerks,2025,February,113.92865843000001
+Business,5911,Purchasing and Supply Logistics Clerks,2025,May,109.51003290000001
+Business,5911,Purchasing and Supply Logistics Clerks,2025,August,125.08175389999998
+Business,5911,Purchasing and Supply Logistics Clerks,2025,November,135.37019580999998
+Business,5994,Human Resource Clerks,2020,February,13.75825436
+Business,5994,Human Resource Clerks,2020,May,13.265489399999998
+Business,5994,Human Resource Clerks,2020,August,14.478500200000001
+Business,5994,Human Resource Clerks,2020,November,13.476184480000002
+Business,5994,Human Resource Clerks,2021,February,12.993706229999997
+Business,5994,Human Resource Clerks,2021,May,10.447879729999999
+Business,5994,Human Resource Clerks,2021,August,14.18778816
+Business,5994,Human Resource Clerks,2021,November,12.934994960000001
+Business,5994,Human Resource Clerks,2022,February,22.160917259999998
+Business,5994,Human Resource Clerks,2022,May,25.413335779999997
+Business,5994,Human Resource Clerks,2022,August,16.30542312
+Business,5994,Human Resource Clerks,2022,November,26.25900314
+Business,5994,Human Resource Clerks,2023,February,30.328781559999996
+Business,5994,Human Resource Clerks,2023,May,24.641493900000007
+Business,5994,Human Resource Clerks,2023,August,21.635784499999996
+Business,5994,Human Resource Clerks,2023,November,22.35445835
+Business,5994,Human Resource Clerks,2024,February,17.53533472
+Business,5994,Human Resource Clerks,2024,May,27.07877485
+Business,5994,Human Resource Clerks,2024,August,27.679292359999998
+Business,5994,Human Resource Clerks,2024,November,16.973958519999996
+Business,5994,Human Resource Clerks,2025,February,20.897643319999997
+Business,5994,Human Resource Clerks,2025,May,22.165122219999997
+Business,5994,Human Resource Clerks,2025,August,18.90835722
+Business,5994,Human Resource Clerks,2025,November,20.45175965
+Business,6121,Real Estate Sales Agents,2020,February,95.03307299000001
+Business,6121,Real Estate Sales Agents,2020,May,98.37673131
+Business,6121,Real Estate Sales Agents,2020,August,88.41100427999999
+Business,6121,Real Estate Sales Agents,2020,November,85.42851368000001
+Business,6121,Real Estate Sales Agents,2021,February,87.73075879
+Business,6121,Real Estate Sales Agents,2021,May,95.62374763999999
+Business,6121,Real Estate Sales Agents,2021,August,99.79395905000001
+Business,6121,Real Estate Sales Agents,2021,November,103.52022828999999
+Business,6121,Real Estate Sales Agents,2022,February,100.90834116
+Business,6121,Real Estate Sales Agents,2022,May,97.83973237
+Business,6121,Real Estate Sales Agents,2022,August,90.12758199000001
+Business,6121,Real Estate Sales Agents,2022,November,90.23764702999999
+Business,6121,Real Estate Sales Agents,2023,February,86.92705164000002
+Business,6121,Real Estate Sales Agents,2023,May,96.22361183
+Business,6121,Real Estate Sales Agents,2023,August,103.07057401000002
+Business,6121,Real Estate Sales Agents,2023,November,87.43323815999997
+Business,6121,Real Estate Sales Agents,2024,February,101.99703896999998
+Business,6121,Real Estate Sales Agents,2024,May,109.21242668999997
+Business,6121,Real Estate Sales Agents,2024,August,103.63714556999997
+Business,6121,Real Estate Sales Agents,2024,November,124.15368351000001
+Business,6121,Real Estate Sales Agents,2025,February,117.00235041
+Business,6121,Real Estate Sales Agents,2025,May,114.94266693
+Business,6121,Real Estate Sales Agents,2025,August,94.13899953
+Business,6121,Real Estate Sales Agents,2025,November,99.90879165
+Creative,2111,"Actors, Dancers and Other Entertainers",2020,February,6.57539759
+Creative,2111,"Actors, Dancers and Other Entertainers",2020,May,4.43507224
+Creative,2111,"Actors, Dancers and Other Entertainers",2020,August,5.383273099999999
+Creative,2111,"Actors, Dancers and Other Entertainers",2020,November,5.59582914
+Creative,2111,"Actors, Dancers and Other Entertainers",2021,February,10.16899746
+Creative,2111,"Actors, Dancers and Other Entertainers",2021,May,7.236205719999999
+Creative,2111,"Actors, Dancers and Other Entertainers",2021,August,4.63573497
+Creative,2111,"Actors, Dancers and Other Entertainers",2021,November,4.04073552
+Creative,2111,"Actors, Dancers and Other Entertainers",2022,February,6.48197963
+Creative,2111,"Actors, Dancers and Other Entertainers",2022,May,6.119747650000002
+Creative,2111,"Actors, Dancers and Other Entertainers",2022,August,7.019497630000001
+Creative,2111,"Actors, Dancers and Other Entertainers",2022,November,4.8786798099999995
+Creative,2111,"Actors, Dancers and Other Entertainers",2023,February,4.90801418
+Creative,2111,"Actors, Dancers and Other Entertainers",2023,May,5.3277298800000015
+Creative,2111,"Actors, Dancers and Other Entertainers",2023,August,5.82820473
+Creative,2111,"Actors, Dancers and Other Entertainers",2023,November,6.626406209999999
+Creative,2111,"Actors, Dancers and Other Entertainers",2024,February,9.318684279999998
+Creative,2111,"Actors, Dancers and Other Entertainers",2024,May,6.297753770000001
+Creative,2111,"Actors, Dancers and Other Entertainers",2024,August,9.30616556
+Creative,2111,"Actors, Dancers and Other Entertainers",2024,November,11.47536786
+Creative,2111,"Actors, Dancers and Other Entertainers",2025,February,9.77772318
+Creative,2111,"Actors, Dancers and Other Entertainers",2025,May,8.802038099999999
+Creative,2111,"Actors, Dancers and Other Entertainers",2025,August,9.80028259
+Creative,2111,"Actors, Dancers and Other Entertainers",2025,November,7.767191430000001
+Creative,2112,Music Professionals,2020,February,10.812906419999997
+Creative,2112,Music Professionals,2020,May,7.363138480000002
+Creative,2112,Music Professionals,2020,August,5.90836629
+Creative,2112,Music Professionals,2020,November,7.0280698600000004
+Creative,2112,Music Professionals,2021,February,12.43137608
+Creative,2112,Music Professionals,2021,May,12.561385569999999
+Creative,2112,Music Professionals,2021,August,8.927214799999998
+Creative,2112,Music Professionals,2021,November,19.85604216
+Creative,2112,Music Professionals,2022,February,12.14342023
+Creative,2112,Music Professionals,2022,May,8.235036070000001
+Creative,2112,Music Professionals,2022,August,10.786322489999998
+Creative,2112,Music Professionals,2022,November,9.33013319
+Creative,2112,Music Professionals,2023,February,9.30047891
+Creative,2112,Music Professionals,2023,May,14.096662779999997
+Creative,2112,Music Professionals,2023,August,11.619440769999999
+Creative,2112,Music Professionals,2023,November,13.695060669999997
+Creative,2112,Music Professionals,2024,February,11.725997800000002
+Creative,2112,Music Professionals,2024,May,11.232757620000001
+Creative,2112,Music Professionals,2024,August,8.42630007
+Creative,2112,Music Professionals,2024,November,7.197617450000001
+Creative,2112,Music Professionals,2025,February,10.87244524
+Creative,2112,Music Professionals,2025,May,9.739887550000002
+Creative,2112,Music Professionals,2025,August,9.82042855
+Creative,2112,Music Professionals,2025,November,12.976147369999998
+Creative,2113,Photographers,2020,February,13.16499774
+Creative,2113,Photographers,2020,May,16.285579979999998
+Creative,2113,Photographers,2020,August,15.93082787
+Creative,2113,Photographers,2020,November,13.01491713
+Creative,2113,Photographers,2021,February,15.12391448
+Creative,2113,Photographers,2021,May,15.89982625
+Creative,2113,Photographers,2021,August,8.994830489999998
+Creative,2113,Photographers,2021,November,14.57537321
+Creative,2113,Photographers,2022,February,16.616931979999997
+Creative,2113,Photographers,2022,May,16.55408915
+Creative,2113,Photographers,2022,August,12.84596506
+Creative,2113,Photographers,2022,November,14.385128490000003
+Creative,2113,Photographers,2023,February,14.422475400000001
+Creative,2113,Photographers,2023,May,11.625432040000002
+Creative,2113,Photographers,2023,August,12.09268527
+Creative,2113,Photographers,2023,November,13.153936210000001
+Creative,2113,Photographers,2024,February,14.814445780000002
+Creative,2113,Photographers,2024,May,17.394882680000002
+Creative,2113,Photographers,2024,August,18.850989399999992
+Creative,2113,Photographers,2024,November,13.324822880000003
+Creative,2113,Photographers,2025,February,14.411935970000004
+Creative,2113,Photographers,2025,May,13.85064116
+Creative,2113,Photographers,2025,August,11.22052523
+Creative,2113,Photographers,2025,November,14.476126529999998
+Creative,2114,Visual Arts and Crafts Professionals,2020,February,13.352021609999998
+Creative,2114,Visual Arts and Crafts Professionals,2020,May,11.55808242
+Creative,2114,Visual Arts and Crafts Professionals,2020,August,12.28108035
+Creative,2114,Visual Arts and Crafts Professionals,2020,November,13.258736360000002
+Creative,2114,Visual Arts and Crafts Professionals,2021,February,9.09825116
+Creative,2114,Visual Arts and Crafts Professionals,2021,May,11.82538234
+Creative,2114,Visual Arts and Crafts Professionals,2021,August,13.86395508
+Creative,2114,Visual Arts and Crafts Professionals,2021,November,15.291933400000003
+Creative,2114,Visual Arts and Crafts Professionals,2022,February,14.450298149999998
+Creative,2114,Visual Arts and Crafts Professionals,2022,May,11.554169890000002
+Creative,2114,Visual Arts and Crafts Professionals,2022,August,9.37332172
+Creative,2114,Visual Arts and Crafts Professionals,2022,November,8.744997249999999
+Creative,2114,Visual Arts and Crafts Professionals,2023,February,7.377614589999999
+Creative,2114,Visual Arts and Crafts Professionals,2023,May,9.521493079999999
+Creative,2114,Visual Arts and Crafts Professionals,2023,August,11.182028570000002
+Creative,2114,Visual Arts and Crafts Professionals,2023,November,10.64938381
+Creative,2114,Visual Arts and Crafts Professionals,2024,February,14.011960069999999
+Creative,2114,Visual Arts and Crafts Professionals,2024,May,13.88756305
+Creative,2114,Visual Arts and Crafts Professionals,2024,August,14.106922100000002
+Creative,2114,Visual Arts and Crafts Professionals,2024,November,10.526129290000002
+Creative,2114,Visual Arts and Crafts Professionals,2025,February,12.54665847
+Creative,2114,Visual Arts and Crafts Professionals,2025,May,11.805193000000001
+Creative,2114,Visual Arts and Crafts Professionals,2025,August,17.4603222
+Creative,2114,Visual Arts and Crafts Professionals,2025,November,16.96240767
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2020,February,17.449211549999998
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2020,May,12.555627620000001
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2020,August,10.72486156
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2020,November,10.300626749999998
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2021,February,13.343290969999998
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2021,May,13.19810042
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2021,August,15.784340109999997
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2021,November,12.20273908
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2022,February,12.251826000000001
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2022,May,16.70128406
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2022,August,11.06590788
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2022,November,10.340252799999998
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2023,February,15.04164778
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2023,May,14.441221479999998
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2023,August,12.13150282
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2023,November,12.711579110000004
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2024,February,11.89763166
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2024,May,15.35538849
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2024,August,17.173685619999997
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2024,November,15.58336315
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2025,February,15.764173389999998
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2025,May,12.665550399999997
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2025,August,14.279426400000002
+Creative,2121,"Artistic Directors, and Media Producers and Presenters",2025,November,12.228208849999998
+Creative,2122,"Authors, and Book and Script Editors",2020,February,8.547501950000001
+Creative,2122,"Authors, and Book and Script Editors",2020,May,6.28299882
+Creative,2122,"Authors, and Book and Script Editors",2020,August,7.609746240000001
+Creative,2122,"Authors, and Book and Script Editors",2020,November,10.799910739999998
+Creative,2122,"Authors, and Book and Script Editors",2021,February,5.9833536
+Creative,2122,"Authors, and Book and Script Editors",2021,May,7.7217079800000015
+Creative,2122,"Authors, and Book and Script Editors",2021,August,9.18687553
+Creative,2122,"Authors, and Book and Script Editors",2021,November,7.485690699999998
+Creative,2122,"Authors, and Book and Script Editors",2022,February,6.674663750000001
+Creative,2122,"Authors, and Book and Script Editors",2022,May,3.6155791500000003
+Creative,2122,"Authors, and Book and Script Editors",2022,August,7.09506309
+Creative,2122,"Authors, and Book and Script Editors",2022,November,8.153389930000001
+Creative,2122,"Authors, and Book and Script Editors",2023,February,5.278739460000001
+Creative,2122,"Authors, and Book and Script Editors",2023,May,3.7513636200000002
+Creative,2122,"Authors, and Book and Script Editors",2023,August,2.8971054600000006
+Creative,2122,"Authors, and Book and Script Editors",2023,November,6.636942740000001
+Creative,2122,"Authors, and Book and Script Editors",2024,February,9.604610670000001
+Creative,2122,"Authors, and Book and Script Editors",2024,May,5.67038771
+Creative,2122,"Authors, and Book and Script Editors",2024,August,9.528082120000002
+Creative,2122,"Authors, and Book and Script Editors",2024,November,4.2730742
+Creative,2122,"Authors, and Book and Script Editors",2025,February,6.43409727
+Creative,2122,"Authors, and Book and Script Editors",2025,May,4.74730498
+Creative,2122,"Authors, and Book and Script Editors",2025,August,5.073895129999999
+Creative,2122,"Authors, and Book and Script Editors",2025,November,8.97400568
+Creative,2124,Journalists and Other Writers,2020,February,22.81478895
+Creative,2124,Journalists and Other Writers,2020,May,22.16096462
+Creative,2124,Journalists and Other Writers,2020,August,25.89630321
+Creative,2124,Journalists and Other Writers,2020,November,32.35286127
+Creative,2124,Journalists and Other Writers,2021,February,32.32633738
+Creative,2124,Journalists and Other Writers,2021,May,24.80916555
+Creative,2124,Journalists and Other Writers,2021,August,17.628664320000002
+Creative,2124,Journalists and Other Writers,2021,November,17.687186819999997
+Creative,2124,Journalists and Other Writers,2022,February,19.948778030000003
+Creative,2124,Journalists and Other Writers,2022,May,18.7049951
+Creative,2124,Journalists and Other Writers,2022,August,23.823524149999997
+Creative,2124,Journalists and Other Writers,2022,November,27.780305719999994
+Creative,2124,Journalists and Other Writers,2023,February,29.51355266
+Creative,2124,Journalists and Other Writers,2023,May,26.61207288
+Creative,2124,Journalists and Other Writers,2023,August,22.35983954
+Creative,2124,Journalists and Other Writers,2023,November,30.24891145
+Creative,2124,Journalists and Other Writers,2024,February,25.404740409999995
+Creative,2124,Journalists and Other Writers,2024,May,24.60009562
+Creative,2124,Journalists and Other Writers,2024,August,21.52908594
+Creative,2124,Journalists and Other Writers,2024,November,23.35276875
+Creative,2124,Journalists and Other Writers,2025,February,23.189273690000004
+Creative,2124,Journalists and Other Writers,2025,May,17.083584540000004
+Creative,2124,Journalists and Other Writers,2025,August,21.989709230000003
+Creative,2124,Journalists and Other Writers,2025,November,20.72285779
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2020,February,9.415833489999999
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2020,May,13.72875682
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2020,August,12.739885880000003
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2020,November,17.817913130000004
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2021,February,13.422590799999998
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2021,May,12.298078569999998
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2021,August,10.723747159999999
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2021,November,12.55320765
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2022,February,11.7701241
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2022,May,7.519321650000001
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2022,August,12.231092880000002
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2022,November,13.69080516
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2023,February,16.25005765
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2023,May,20.36606801
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2023,August,16.9262597
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2023,November,13.102796250000003
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2024,February,12.917814830000003
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2024,May,14.82909195
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2024,August,7.1360709799999995
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2024,November,11.539870250000003
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2025,February,15.69294225
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2025,May,14.341375960000004
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2025,August,10.300414620000002
+Creative,2323,"Fashion, Industrial and Jewellery Designers",2025,November,13.910097260000002
+Creative,2324,"Graphic and Web Designers, and Illustrators",2020,February,48.803078789999994
+Creative,2324,"Graphic and Web Designers, and Illustrators",2020,May,58.816843739999996
+Creative,2324,"Graphic and Web Designers, and Illustrators",2020,August,59.671036750000006
+Creative,2324,"Graphic and Web Designers, and Illustrators",2020,November,55.80148018
+Creative,2324,"Graphic and Web Designers, and Illustrators",2021,February,48.58127441999999
+Creative,2324,"Graphic and Web Designers, and Illustrators",2021,May,53.03996148999999
+Creative,2324,"Graphic and Web Designers, and Illustrators",2021,August,48.897898689999984
+Creative,2324,"Graphic and Web Designers, and Illustrators",2021,November,60.14418474
+Creative,2324,"Graphic and Web Designers, and Illustrators",2022,February,70.66429380000001
+Creative,2324,"Graphic and Web Designers, and Illustrators",2022,May,54.38469482999999
+Creative,2324,"Graphic and Web Designers, and Illustrators",2022,August,53.72655653
+Creative,2324,"Graphic and Web Designers, and Illustrators",2022,November,47.14055221000001
+Creative,2324,"Graphic and Web Designers, and Illustrators",2023,February,48.081200649999985
+Creative,2324,"Graphic and Web Designers, and Illustrators",2023,May,46.77168611
+Creative,2324,"Graphic and Web Designers, and Illustrators",2023,August,52.22866406999999
+Creative,2324,"Graphic and Web Designers, and Illustrators",2023,November,53.75663299000001
+Creative,2324,"Graphic and Web Designers, and Illustrators",2024,February,58.75293628
+Creative,2324,"Graphic and Web Designers, and Illustrators",2024,May,60.18878483
+Creative,2324,"Graphic and Web Designers, and Illustrators",2024,August,47.278493049999994
+Creative,2324,"Graphic and Web Designers, and Illustrators",2024,November,49.91676731999999
+Creative,2324,"Graphic and Web Designers, and Illustrators",2025,February,49.23750522
+Creative,2324,"Graphic and Web Designers, and Illustrators",2025,May,62.41672828
+Creative,2324,"Graphic and Web Designers, and Illustrators",2025,August,62.40166892000001
+Creative,2324,"Graphic and Web Designers, and Illustrators",2025,November,63.322274869999994
+Creative,2325,Interior Designers,2020,February,11.14331869
+Creative,2325,Interior Designers,2020,May,14.240556719999999
+Creative,2325,Interior Designers,2020,August,13.974059180000003
+Creative,2325,Interior Designers,2020,November,15.492953970000002
+Creative,2325,Interior Designers,2021,February,19.29347147
+Creative,2325,Interior Designers,2021,May,20.569365710000003
+Creative,2325,Interior Designers,2021,August,22.249587119999997
+Creative,2325,Interior Designers,2021,November,19.482902400000004
+Creative,2325,Interior Designers,2022,February,16.741802699999994
+Creative,2325,Interior Designers,2022,May,18.58653035
+Creative,2325,Interior Designers,2022,August,12.29604579
+Creative,2325,Interior Designers,2022,November,15.702459840000003
+Creative,2325,Interior Designers,2023,February,17.200819349999996
+Creative,2325,Interior Designers,2023,May,18.43203391
+Creative,2325,Interior Designers,2023,August,13.497259889999999
+Creative,2325,Interior Designers,2023,November,12.9689671
+Creative,2325,Interior Designers,2024,February,12.319949570000002
+Creative,2325,Interior Designers,2024,May,15.14867102
+Creative,2325,Interior Designers,2024,August,14.54658884
+Creative,2325,Interior Designers,2024,November,19.597339039999998
+Creative,2325,Interior Designers,2025,February,19.434219499999998
+Creative,2325,Interior Designers,2025,May,19.32865548
+Creative,2325,Interior Designers,2025,August,21.581486449999996
+Creative,2325,Interior Designers,2025,November,16.44718223
+Creative,3995,Performing Arts Technicians,2020,February,15.418817869999998
+Creative,3995,Performing Arts Technicians,2020,May,10.515667120000002
+Creative,3995,Performing Arts Technicians,2020,August,15.948285160000003
+Creative,3995,Performing Arts Technicians,2020,November,15.710743889999998
+Creative,3995,Performing Arts Technicians,2021,February,16.86415967
+Creative,3995,Performing Arts Technicians,2021,May,16.3440807
+Creative,3995,Performing Arts Technicians,2021,August,17.081509099999998
+Creative,3995,Performing Arts Technicians,2021,November,17.669456810000003
+Creative,3995,Performing Arts Technicians,2022,February,13.40901621
+Creative,3995,Performing Arts Technicians,2022,May,13.13489345
+Creative,3995,Performing Arts Technicians,2022,August,17.57192735
+Creative,3995,Performing Arts Technicians,2022,November,18.492041269999998
+Creative,3995,Performing Arts Technicians,2023,February,18.46744458
+Creative,3995,Performing Arts Technicians,2023,May,16.61291945
+Creative,3995,Performing Arts Technicians,2023,August,13.786420910000002
+Creative,3995,Performing Arts Technicians,2023,November,9.147469980000004
+Creative,3995,Performing Arts Technicians,2024,February,13.92604799
+Creative,3995,Performing Arts Technicians,2024,May,17.942747009999994
+Creative,3995,Performing Arts Technicians,2024,August,15.29299549
+Creative,3995,Performing Arts Technicians,2024,November,19.72653275
+Creative,3995,Performing Arts Technicians,2025,February,21.655791469999993
+Creative,3995,Performing Arts Technicians,2025,May,20.378302220000002
+Creative,3995,Performing Arts Technicians,2025,August,15.999267700000003
+Creative,3995,Performing Arts Technicians,2025,November,17.841265149999995
+Health,2346,Medical Laboratory Scientists,2020,February,19.88131583
+Health,2346,Medical Laboratory Scientists,2020,May,24.98631727
+Health,2346,Medical Laboratory Scientists,2020,August,18.9795691
+Health,2346,Medical Laboratory Scientists,2020,November,22.220929220000002
+Health,2346,Medical Laboratory Scientists,2021,February,26.06735852
+Health,2346,Medical Laboratory Scientists,2021,May,29.77843456
+Health,2346,Medical Laboratory Scientists,2021,August,26.985883539999996
+Health,2346,Medical Laboratory Scientists,2021,November,26.521062040000004
+Health,2346,Medical Laboratory Scientists,2022,February,34.35984534
+Health,2346,Medical Laboratory Scientists,2022,May,25.091757670000003
+Health,2346,Medical Laboratory Scientists,2022,August,30.335081849999998
+Health,2346,Medical Laboratory Scientists,2022,November,27.455178770000003
+Health,2346,Medical Laboratory Scientists,2023,February,27.70282976
+Health,2346,Medical Laboratory Scientists,2023,May,26.339915749999996
+Health,2346,Medical Laboratory Scientists,2023,August,29.40557476
+Health,2346,Medical Laboratory Scientists,2023,November,33.205375430000004
+Health,2346,Medical Laboratory Scientists,2024,February,26.557564659999993
+Health,2346,Medical Laboratory Scientists,2024,May,31.54034262
+Health,2346,Medical Laboratory Scientists,2024,August,28.254718839999995
+Health,2346,Medical Laboratory Scientists,2024,November,29.064446840000006
+Health,2346,Medical Laboratory Scientists,2025,February,30.93180858
+Health,2346,Medical Laboratory Scientists,2025,May,38.14158548000001
+Health,2346,Medical Laboratory Scientists,2025,August,37.802602230000005
+Health,2346,Medical Laboratory Scientists,2025,November,37.95424489
+Health,2511,Nutrition Professionals,2020,February,10.436745389999999
+Health,2511,Nutrition Professionals,2020,May,8.5451787
+Health,2511,Nutrition Professionals,2020,August,7.242692589999999
+Health,2511,Nutrition Professionals,2020,November,7.468752899999999
+Health,2511,Nutrition Professionals,2021,February,6.95196323
+Health,2511,Nutrition Professionals,2021,May,9.229706179999999
+Health,2511,Nutrition Professionals,2021,August,5.408784430000001
+Health,2511,Nutrition Professionals,2021,November,8.39949345
+Health,2511,Nutrition Professionals,2022,February,11.14239088
+Health,2511,Nutrition Professionals,2022,May,11.112525210000001
+Health,2511,Nutrition Professionals,2022,August,8.076235610000003
+Health,2511,Nutrition Professionals,2022,November,8.720031810000004
+Health,2511,Nutrition Professionals,2023,February,12.69330556
+Health,2511,Nutrition Professionals,2023,May,13.436887510000002
+Health,2511,Nutrition Professionals,2023,August,8.503139880000003
+Health,2511,Nutrition Professionals,2023,November,6.74884031
+Health,2511,Nutrition Professionals,2024,February,6.584556940000001
+Health,2511,Nutrition Professionals,2024,May,9.05614457
+Health,2511,Nutrition Professionals,2024,August,8.08050734
+Health,2511,Nutrition Professionals,2024,November,8.59294253
+Health,2511,Nutrition Professionals,2025,February,6.577597620000001
+Health,2511,Nutrition Professionals,2025,May,12.385012710000002
+Health,2511,Nutrition Professionals,2025,August,15.959602829999998
+Health,2511,Nutrition Professionals,2025,November,12.688228270000002
+Health,2512,Medical Imaging Professionals,2020,February,15.326807520000001
+Health,2512,Medical Imaging Professionals,2020,May,18.73005463
+Health,2512,Medical Imaging Professionals,2020,August,21.068955809999995
+Health,2512,Medical Imaging Professionals,2020,November,20.12971952
+Health,2512,Medical Imaging Professionals,2021,February,17.976037839999996
+Health,2512,Medical Imaging Professionals,2021,May,17.092623779999997
+Health,2512,Medical Imaging Professionals,2021,August,11.481701619999999
+Health,2512,Medical Imaging Professionals,2021,November,16.154277990000004
+Health,2512,Medical Imaging Professionals,2022,February,20.864531750000005
+Health,2512,Medical Imaging Professionals,2022,May,21.387269280000005
+Health,2512,Medical Imaging Professionals,2022,August,17.81410627
+Health,2512,Medical Imaging Professionals,2022,November,22.25172285
+Health,2512,Medical Imaging Professionals,2023,February,30.35125483
+Health,2512,Medical Imaging Professionals,2023,May,25.635133120000003
+Health,2512,Medical Imaging Professionals,2023,August,24.33265548
+Health,2512,Medical Imaging Professionals,2023,November,19.334775800000003
+Health,2512,Medical Imaging Professionals,2024,February,18.84601212
+Health,2512,Medical Imaging Professionals,2024,May,18.485118189999998
+Health,2512,Medical Imaging Professionals,2024,August,22.731606319999997
+Health,2512,Medical Imaging Professionals,2024,November,22.825853779999996
+Health,2512,Medical Imaging Professionals,2025,February,22.88213612
+Health,2512,Medical Imaging Professionals,2025,May,21.29418067
+Health,2512,Medical Imaging Professionals,2025,August,28.085837119999997
+Health,2512,Medical Imaging Professionals,2025,November,31.20085838
+Health,2515,Pharmacists,2020,February,23.59917542
+Health,2515,Pharmacists,2020,May,26.05439375
+Health,2515,Pharmacists,2020,August,35.43575986
+Health,2515,Pharmacists,2020,November,35.93576065
+Health,2515,Pharmacists,2021,February,37.248010019999995
+Health,2515,Pharmacists,2021,May,39.904428939999995
+Health,2515,Pharmacists,2021,August,33.44271269000001
+Health,2515,Pharmacists,2021,November,35.808723289999996
+Health,2515,Pharmacists,2022,February,32.25439871
+Health,2515,Pharmacists,2022,May,37.16245553
+Health,2515,Pharmacists,2022,August,36.61822514000001
+Health,2515,Pharmacists,2022,November,36.642059710000005
+Health,2515,Pharmacists,2023,February,40.207633089999995
+Health,2515,Pharmacists,2023,May,41.167468389999996
+Health,2515,Pharmacists,2023,August,40.227774769999996
+Health,2515,Pharmacists,2023,November,34.74538561000001
+Health,2515,Pharmacists,2024,February,38.05783469
+Health,2515,Pharmacists,2024,May,40.221328289999995
+Health,2515,Pharmacists,2024,August,42.2289972
+Health,2515,Pharmacists,2024,November,46.33342189
+Health,2515,Pharmacists,2025,February,44.72945614000001
+Health,2515,Pharmacists,2025,May,42.17319386999999
+Health,2515,Pharmacists,2025,August,48.182825519999994
+Health,2515,Pharmacists,2025,November,48.85980210000001
+Health,2523,Dental Practitioners,2020,February,18.31862661
+Health,2523,Dental Practitioners,2020,May,14.488149889999997
+Health,2523,Dental Practitioners,2020,August,13.859804169999999
+Health,2523,Dental Practitioners,2020,November,11.13522538
+Health,2523,Dental Practitioners,2021,February,15.132851989999999
+Health,2523,Dental Practitioners,2021,May,20.388516049999996
+Health,2523,Dental Practitioners,2021,August,24.09024382
+Health,2523,Dental Practitioners,2021,November,15.838281069999999
+Health,2523,Dental Practitioners,2022,February,17.950160109999995
+Health,2523,Dental Practitioners,2022,May,18.364490489999998
+Health,2523,Dental Practitioners,2022,August,19.20082854
+Health,2523,Dental Practitioners,2022,November,18.914433429999995
+Health,2523,Dental Practitioners,2023,February,11.792166580000002
+Health,2523,Dental Practitioners,2023,May,14.0282212
+Health,2523,Dental Practitioners,2023,August,18.764036759999993
+Health,2523,Dental Practitioners,2023,November,21.525990119999996
+Health,2523,Dental Practitioners,2024,February,19.41821213
+Health,2523,Dental Practitioners,2024,May,21.61160155
+Health,2523,Dental Practitioners,2024,August,21.672451189999997
+Health,2523,Dental Practitioners,2024,November,24.062284809999998
+Health,2523,Dental Practitioners,2025,February,24.096615430000003
+Health,2523,Dental Practitioners,2025,May,29.127326870000005
+Health,2523,Dental Practitioners,2025,August,26.524527140000004
+Health,2523,Dental Practitioners,2025,November,23.80285316
+Health,2524,Occupational Therapists,2020,February,24.30231476
+Health,2524,Occupational Therapists,2020,May,23.78629314
+Health,2524,Occupational Therapists,2020,August,23.03515244
+Health,2524,Occupational Therapists,2020,November,22.613289430000002
+Health,2524,Occupational Therapists,2021,February,23.26036851
+Health,2524,Occupational Therapists,2021,May,17.451892750000003
+Health,2524,Occupational Therapists,2021,August,23.667832250000004
+Health,2524,Occupational Therapists,2021,November,24.4633528
+Health,2524,Occupational Therapists,2022,February,26.781281640000003
+Health,2524,Occupational Therapists,2022,May,23.84521849
+Health,2524,Occupational Therapists,2022,August,21.37336819
+Health,2524,Occupational Therapists,2022,November,24.42770317
+Health,2524,Occupational Therapists,2023,February,26.3501465
+Health,2524,Occupational Therapists,2023,May,28.059342
+Health,2524,Occupational Therapists,2023,August,31.024744079999998
+Health,2524,Occupational Therapists,2023,November,30.250604439999996
+Health,2524,Occupational Therapists,2024,February,28.187777340000004
+Health,2524,Occupational Therapists,2024,May,31.109721729999997
+Health,2524,Occupational Therapists,2024,August,30.849451980000005
+Health,2524,Occupational Therapists,2024,November,27.38095738
+Health,2524,Occupational Therapists,2025,February,26.728990239999998
+Health,2524,Occupational Therapists,2025,May,34.174093830000004
+Health,2524,Occupational Therapists,2025,August,40.97316063
+Health,2524,Occupational Therapists,2025,November,39.19465545
+Health,2525,Physiotherapists,2020,February,30.076143549999998
+Health,2525,Physiotherapists,2020,May,27.209355979999998
+Health,2525,Physiotherapists,2020,August,24.671885879999998
+Health,2525,Physiotherapists,2020,November,24.004883689999996
+Health,2525,Physiotherapists,2021,February,28.56578895
+Health,2525,Physiotherapists,2021,May,33.821176230000006
+Health,2525,Physiotherapists,2021,August,36.66242071
+Health,2525,Physiotherapists,2021,November,31.508784720000005
+Health,2525,Physiotherapists,2022,February,29.79131245
+Health,2525,Physiotherapists,2022,May,35.81218646000001
+Health,2525,Physiotherapists,2022,August,33.699555430000004
+Health,2525,Physiotherapists,2022,November,38.9877414
+Health,2525,Physiotherapists,2023,February,41.63275551000001
+Health,2525,Physiotherapists,2023,May,36.04017862
+Health,2525,Physiotherapists,2023,August,42.96165553
+Health,2525,Physiotherapists,2023,November,45.66005093
+Health,2525,Physiotherapists,2024,February,44.63587662
+Health,2525,Physiotherapists,2024,May,46.58265939999999
+Health,2525,Physiotherapists,2024,August,51.983655230000004
+Health,2525,Physiotherapists,2024,November,47.83969173
+Health,2525,Physiotherapists,2025,February,45.435325670000005
+Health,2525,Physiotherapists,2025,May,45.09134726
+Health,2525,Physiotherapists,2025,August,49.227540080000004
+Health,2525,Physiotherapists,2025,November,39.7215028
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2020,February,7.686394529999999
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2020,May,12.809104549999997
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2020,August,13.376286370000003
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2020,November,14.27290803
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2021,February,13.058447899999997
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2021,May,19.00223728
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2021,August,15.62672182
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2021,November,12.72777802
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2022,February,19.160521819999996
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2022,May,16.64002152
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2022,August,17.533685689999995
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2022,November,14.193352359999999
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2023,February,18.06508684
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2023,May,17.860334069999997
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2023,August,20.81165477
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2023,November,22.056330270000004
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2024,February,22.755657120000006
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2024,May,20.109143940000003
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2024,August,22.51600715
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2024,November,28.89919529
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2025,February,28.16962194
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2025,May,26.11768577
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2025,August,19.32007868
+Health,2527,Audiologists and Speech Pathologists \ Therapists,2025,November,17.197157750000002
+Health,2541,Midwives,2020,February,21.52935271
+Health,2541,Midwives,2020,May,21.904846990000003
+Health,2541,Midwives,2020,August,24.658346089999995
+Health,2541,Midwives,2020,November,18.64881337
+Health,2541,Midwives,2021,February,27.174164809999997
+Health,2541,Midwives,2021,May,26.00392685
+Health,2541,Midwives,2021,August,24.759895930000003
+Health,2541,Midwives,2021,November,15.667154339999998
+Health,2541,Midwives,2022,February,15.10853547
+Health,2541,Midwives,2022,May,17.06890791
+Health,2541,Midwives,2022,August,19.037332729999996
+Health,2541,Midwives,2022,November,21.87747263
+Health,2541,Midwives,2023,February,21.355872899999998
+Health,2541,Midwives,2023,May,15.146939300000001
+Health,2541,Midwives,2023,August,15.591825459999999
+Health,2541,Midwives,2023,November,17.38975743
+Health,2541,Midwives,2024,February,19.13443111
+Health,2541,Midwives,2024,May,21.738857850000002
+Health,2541,Midwives,2024,August,22.210941889999997
+Health,2541,Midwives,2024,November,21.910757169999997
+Health,2541,Midwives,2025,February,24.92277989
+Health,2541,Midwives,2025,May,22.41345797
+Health,2541,Midwives,2025,August,17.153849549999997
+Health,2541,Midwives,2025,November,17.28660672
+Health,2544,Registered Nurses,2020,February,296.38567481999996
+Health,2544,Registered Nurses,2020,May,292.88619929
+Health,2544,Registered Nurses,2020,August,298.4869604
+Health,2544,Registered Nurses,2020,November,294.17308775000004
+Health,2544,Registered Nurses,2021,February,283.88730155
+Health,2544,Registered Nurses,2021,May,302.78539181
+Health,2544,Registered Nurses,2021,August,302.67835024000004
+Health,2544,Registered Nurses,2021,November,288.10686265
+Health,2544,Registered Nurses,2022,February,308.88186673
+Health,2544,Registered Nurses,2022,May,319.6032889
+Health,2544,Registered Nurses,2022,August,299.36869038000003
+Health,2544,Registered Nurses,2022,November,332.64911736999994
+Health,2544,Registered Nurses,2023,February,321.52612931000004
+Health,2544,Registered Nurses,2023,May,341.08490388
+Health,2544,Registered Nurses,2023,August,346.78052691
+Health,2544,Registered Nurses,2023,November,350.12501235999997
+Health,2544,Registered Nurses,2024,February,353.75635818999996
+Health,2544,Registered Nurses,2024,May,325.92484595
+Health,2544,Registered Nurses,2024,August,328.45894482
+Health,2544,Registered Nurses,2024,November,345.6121294299999
+Health,2544,Registered Nurses,2025,February,346.0068740500001
+Health,2544,Registered Nurses,2025,May,372.87457172999996
+Health,2544,Registered Nurses,2025,August,365.67565858999995
+Health,2544,Registered Nurses,2025,November,359.85985836000003
+Health,2723,Psychologists,2020,February,36.09537365
+Health,2723,Psychologists,2020,May,25.308904379999998
+Health,2723,Psychologists,2020,August,32.7954838
+Health,2723,Psychologists,2020,November,34.42670186
+Health,2723,Psychologists,2021,February,35.232759789999996
+Health,2723,Psychologists,2021,May,27.864655069999998
+Health,2723,Psychologists,2021,August,28.36786621
+Health,2723,Psychologists,2021,November,31.963561000000002
+Health,2723,Psychologists,2022,February,34.68732758
+Health,2723,Psychologists,2022,May,39.74621139
+Health,2723,Psychologists,2022,August,40.62314501
+Health,2723,Psychologists,2022,November,47.80376434
+Health,2723,Psychologists,2023,February,48.771301689999994
+Health,2723,Psychologists,2023,May,42.28764448
+Health,2723,Psychologists,2023,August,38.13366268
+Health,2723,Psychologists,2023,November,35.69936372
+Health,2723,Psychologists,2024,February,51.94580965000001
+Health,2723,Psychologists,2024,May,50.78396496999999
+Health,2723,Psychologists,2024,August,55.05684592
+Health,2723,Psychologists,2024,November,54.48123515999999
+Health,2723,Psychologists,2025,February,50.43772980000001
+Health,2723,Psychologists,2025,May,50.30135046
+Health,2723,Psychologists,2025,August,52.591783590000006
+Health,2723,Psychologists,2025,November,52.88756754999999
+Health,3112,Medical Technicians,2020,February,36.86285714
+Health,3112,Medical Technicians,2020,May,30.817180340000004
+Health,3112,Medical Technicians,2020,August,35.20825583
+Health,3112,Medical Technicians,2020,November,32.954091000000005
+Health,3112,Medical Technicians,2021,February,31.092875670000005
+Health,3112,Medical Technicians,2021,May,29.546716049999997
+Health,3112,Medical Technicians,2021,August,33.32068935
+Health,3112,Medical Technicians,2021,November,35.702324850000004
+Health,3112,Medical Technicians,2022,February,32.972713719999994
+Health,3112,Medical Technicians,2022,May,35.19040953
+Health,3112,Medical Technicians,2022,August,34.204203070000005
+Health,3112,Medical Technicians,2022,November,35.90727061
+Health,3112,Medical Technicians,2023,February,28.548017570000003
+Health,3112,Medical Technicians,2023,May,34.72246673000001
+Health,3112,Medical Technicians,2023,August,37.13963143
+Health,3112,Medical Technicians,2023,November,37.08208267
+Health,3112,Medical Technicians,2024,February,42.50865774
+Health,3112,Medical Technicians,2024,May,40.810977099999995
+Health,3112,Medical Technicians,2024,August,33.06919873
+Health,3112,Medical Technicians,2024,November,32.612731759999996
+Health,3112,Medical Technicians,2025,February,40.09584468999999
+Health,3112,Medical Technicians,2025,May,48.98698472
+Health,3112,Medical Technicians,2025,August,37.16676306
+Health,3112,Medical Technicians,2025,November,37.22306526999999
+Health,3613,Veterinary Nurses,2020,February,23.235194069999995
+Health,3613,Veterinary Nurses,2020,May,19.289539499999997
+Health,3613,Veterinary Nurses,2020,August,13.96601748
+Health,3613,Veterinary Nurses,2020,November,10.632939319999998
+Health,3613,Veterinary Nurses,2021,February,10.759674760000001
+Health,3613,Veterinary Nurses,2021,May,12.58380765
+Health,3613,Veterinary Nurses,2021,August,13.406212060000001
+Health,3613,Veterinary Nurses,2021,November,14.303121840000001
+Health,3613,Veterinary Nurses,2022,February,15.488397899999999
+Health,3613,Veterinary Nurses,2022,May,14.97790088
+Health,3613,Veterinary Nurses,2022,August,16.416305690000005
+Health,3613,Veterinary Nurses,2022,November,11.10934849
+Health,3613,Veterinary Nurses,2023,February,10.8005833
+Health,3613,Veterinary Nurses,2023,May,15.52906377
+Health,3613,Veterinary Nurses,2023,August,20.242906859999998
+Health,3613,Veterinary Nurses,2023,November,16.82242567
+Health,3613,Veterinary Nurses,2024,February,13.43763819
+Health,3613,Veterinary Nurses,2024,May,8.143354230000002
+Health,3613,Veterinary Nurses,2024,August,12.882077279999999
+Health,3613,Veterinary Nurses,2024,November,18.56508257
+Health,3613,Veterinary Nurses,2025,February,20.04527941
+Health,3613,Veterinary Nurses,2025,May,23.88092118
+Health,3613,Veterinary Nurses,2025,August,21.135889460000005
+Health,3613,Veterinary Nurses,2025,November,14.11056598
+Health,4111,Ambulance Officers and Paramedics,2020,February,15.587279020000002
+Health,4111,Ambulance Officers and Paramedics,2020,May,19.840294220000004
+Health,4111,Ambulance Officers and Paramedics,2020,August,16.705108439999997
+Health,4111,Ambulance Officers and Paramedics,2020,November,18.130054910000002
+Health,4111,Ambulance Officers and Paramedics,2021,February,19.04782132
+Health,4111,Ambulance Officers and Paramedics,2021,May,17.22839093
+Health,4111,Ambulance Officers and Paramedics,2021,August,15.681978120000002
+Health,4111,Ambulance Officers and Paramedics,2021,November,20.92142364
+Health,4111,Ambulance Officers and Paramedics,2022,February,22.948862720000005
+Health,4111,Ambulance Officers and Paramedics,2022,May,20.70729255
+Health,4111,Ambulance Officers and Paramedics,2022,August,20.080699999999997
+Health,4111,Ambulance Officers and Paramedics,2022,November,25.89408063
+Health,4111,Ambulance Officers and Paramedics,2023,February,29.26665504
+Health,4111,Ambulance Officers and Paramedics,2023,May,26.854110409999997
+Health,4111,Ambulance Officers and Paramedics,2023,August,24.363080899999996
+Health,4111,Ambulance Officers and Paramedics,2023,November,21.214267139999997
+Health,4111,Ambulance Officers and Paramedics,2024,February,26.302509049999998
+Health,4111,Ambulance Officers and Paramedics,2024,May,28.961388469999996
+Health,4111,Ambulance Officers and Paramedics,2024,August,27.740170869999996
+Health,4111,Ambulance Officers and Paramedics,2024,November,31.770620630000003
+Health,4111,Ambulance Officers and Paramedics,2025,February,27.46178728
+Health,4111,Ambulance Officers and Paramedics,2025,May,26.22346261
+Health,4111,Ambulance Officers and Paramedics,2025,August,25.43251575
+Health,4111,Ambulance Officers and Paramedics,2025,November,21.926897949999997
+Health,4112,"Dental Hygienists, Technicians and Therapists",2020,February,6.250876879999999
+Health,4112,"Dental Hygienists, Technicians and Therapists",2020,May,7.33454874
+Health,4112,"Dental Hygienists, Technicians and Therapists",2020,August,8.31843138
+Health,4112,"Dental Hygienists, Technicians and Therapists",2020,November,7.730244310000001
+Health,4112,"Dental Hygienists, Technicians and Therapists",2021,February,8.63250167
+Health,4112,"Dental Hygienists, Technicians and Therapists",2021,May,8.53870676
+Health,4112,"Dental Hygienists, Technicians and Therapists",2021,August,8.2582342
+Health,4112,"Dental Hygienists, Technicians and Therapists",2021,November,6.52325251
+Health,4112,"Dental Hygienists, Technicians and Therapists",2022,February,10.54055945
+Health,4112,"Dental Hygienists, Technicians and Therapists",2022,May,7.47200993
+Health,4112,"Dental Hygienists, Technicians and Therapists",2022,August,6.72504656
+Health,4112,"Dental Hygienists, Technicians and Therapists",2022,November,5.54289564
+Health,4112,"Dental Hygienists, Technicians and Therapists",2023,February,10.73962443
+Health,4112,"Dental Hygienists, Technicians and Therapists",2023,May,9.648656379999998
+Health,4112,"Dental Hygienists, Technicians and Therapists",2023,August,9.359003780000002
+Health,4112,"Dental Hygienists, Technicians and Therapists",2023,November,10.811298709999999
+Health,4112,"Dental Hygienists, Technicians and Therapists",2024,February,8.11962278
+Health,4112,"Dental Hygienists, Technicians and Therapists",2024,May,8.297733840000001
+Health,4112,"Dental Hygienists, Technicians and Therapists",2024,August,9.302357980000002
+Health,4112,"Dental Hygienists, Technicians and Therapists",2024,November,8.52699109
+Health,4112,"Dental Hygienists, Technicians and Therapists",2025,February,6.50589114
+Health,4112,"Dental Hygienists, Technicians and Therapists",2025,May,7.990440490000002
+Health,4112,"Dental Hygienists, Technicians and Therapists",2025,August,10.490382819999999
+Health,4112,"Dental Hygienists, Technicians and Therapists",2025,November,9.809142679999999
+Health,4114,Enrolled and Mothercraft Nurses,2020,February,23.576036130000006
+Health,4114,Enrolled and Mothercraft Nurses,2020,May,20.65382794
+Health,4114,Enrolled and Mothercraft Nurses,2020,August,21.89976436
+Health,4114,Enrolled and Mothercraft Nurses,2020,November,35.17707239
+Health,4114,Enrolled and Mothercraft Nurses,2021,February,27.84429986
+Health,4114,Enrolled and Mothercraft Nurses,2021,May,27.53750823
+Health,4114,Enrolled and Mothercraft Nurses,2021,August,18.232770740000003
+Health,4114,Enrolled and Mothercraft Nurses,2021,November,24.587606749999996
+Health,4114,Enrolled and Mothercraft Nurses,2022,February,24.466901850000003
+Health,4114,Enrolled and Mothercraft Nurses,2022,May,24.272277969999998
+Health,4114,Enrolled and Mothercraft Nurses,2022,August,23.07554093
+Health,4114,Enrolled and Mothercraft Nurses,2022,November,21.103478
+Health,4114,Enrolled and Mothercraft Nurses,2023,February,18.05877926
+Health,4114,Enrolled and Mothercraft Nurses,2023,May,23.078723819999997
+Health,4114,Enrolled and Mothercraft Nurses,2023,August,20.87693827
+Health,4114,Enrolled and Mothercraft Nurses,2023,November,24.04240073
+Health,4114,Enrolled and Mothercraft Nurses,2024,February,20.551135839999997
+Health,4114,Enrolled and Mothercraft Nurses,2024,May,22.402043320000004
+Health,4114,Enrolled and Mothercraft Nurses,2024,August,21.4242519
+Health,4114,Enrolled and Mothercraft Nurses,2024,November,14.913572570000001
+Health,4114,Enrolled and Mothercraft Nurses,2025,February,20.508845819999998
+Health,4114,Enrolled and Mothercraft Nurses,2025,May,24.798979799999998
+Health,4114,Enrolled and Mothercraft Nurses,2025,August,18.77992414
+Health,4114,Enrolled and Mothercraft Nurses,2025,November,22.422210879999994
+Health,4231,Aged and Disabled Carers,2020,February,222.36018722
+Health,4231,Aged and Disabled Carers,2020,May,215.31767605000005
+Health,4231,Aged and Disabled Carers,2020,August,223.04003847
+Health,4231,Aged and Disabled Carers,2020,November,219.96521068
+Health,4231,Aged and Disabled Carers,2021,February,229.40215243000003
+Health,4231,Aged and Disabled Carers,2021,May,236.8385894
+Health,4231,Aged and Disabled Carers,2021,August,244.42601694
+Health,4231,Aged and Disabled Carers,2021,November,268.56101228
+Health,4231,Aged and Disabled Carers,2022,February,288.98414592999995
+Health,4231,Aged and Disabled Carers,2022,May,284.26854231000004
+Health,4231,Aged and Disabled Carers,2022,August,275.34060028
+Health,4231,Aged and Disabled Carers,2022,November,285.30065641
+Health,4231,Aged and Disabled Carers,2023,February,274.99617185000005
+Health,4231,Aged and Disabled Carers,2023,May,288.30030029
+Health,4231,Aged and Disabled Carers,2023,August,273.76985070999996
+Health,4231,Aged and Disabled Carers,2023,November,296.51458993999995
+Health,4231,Aged and Disabled Carers,2024,February,316.62341855
+Health,4231,Aged and Disabled Carers,2024,May,347.66899616
+Health,4231,Aged and Disabled Carers,2024,August,332.90985239
+Health,4231,Aged and Disabled Carers,2024,November,336.5306876900001
+Health,4231,Aged and Disabled Carers,2025,February,371.55773880000004
+Health,4231,Aged and Disabled Carers,2025,May,374.80161398000007
+Health,4231,Aged and Disabled Carers,2025,August,342.49929914000006
+Health,4231,Aged and Disabled Carers,2025,November,346.54019031
+Health,4232,Dental Assistants,2020,February,22.05961159
+Health,4232,Dental Assistants,2020,May,23.443474180000003
+Health,4232,Dental Assistants,2020,August,26.35710313
+Health,4232,Dental Assistants,2020,November,20.19092718
+Health,4232,Dental Assistants,2021,February,22.66373802
+Health,4232,Dental Assistants,2021,May,22.438956060000002
+Health,4232,Dental Assistants,2021,August,36.38816876
+Health,4232,Dental Assistants,2021,November,35.01077915000001
+Health,4232,Dental Assistants,2022,February,29.61032236
+Health,4232,Dental Assistants,2022,May,29.003438100000004
+Health,4232,Dental Assistants,2022,August,33.30737695
+Health,4232,Dental Assistants,2022,November,31.548413390000004
+Health,4232,Dental Assistants,2023,February,33.14710955
+Health,4232,Dental Assistants,2023,May,27.906034979999998
+Health,4232,Dental Assistants,2023,August,28.42372659
+Health,4232,Dental Assistants,2023,November,35.777733430000005
+Health,4232,Dental Assistants,2024,February,35.739759480000004
+Health,4232,Dental Assistants,2024,May,31.5618304
+Health,4232,Dental Assistants,2024,August,26.647600969999996
+Health,4232,Dental Assistants,2024,November,27.681494649999998
+Health,4232,Dental Assistants,2025,February,32.821344509999996
+Health,4232,Dental Assistants,2025,May,27.766998759999996
+Health,4232,Dental Assistants,2025,August,25.837114579999998
+Health,4232,Dental Assistants,2025,November,37.224354000000005
+Health,4233,Nursing Support and Personal Care Workers,2020,February,102.03894936
+Health,4233,Nursing Support and Personal Care Workers,2020,May,85.57579016000001
+Health,4233,Nursing Support and Personal Care Workers,2020,August,87.08413947000001
+Health,4233,Nursing Support and Personal Care Workers,2020,November,82.26192451
+Health,4233,Nursing Support and Personal Care Workers,2021,February,90.03322283
+Health,4233,Nursing Support and Personal Care Workers,2021,May,87.52337191
+Health,4233,Nursing Support and Personal Care Workers,2021,August,95.94690922000001
+Health,4233,Nursing Support and Personal Care Workers,2021,November,100.31773483
+Health,4233,Nursing Support and Personal Care Workers,2022,February,98.90229166000002
+Health,4233,Nursing Support and Personal Care Workers,2022,May,102.71997173999999
+Health,4233,Nursing Support and Personal Care Workers,2022,August,95.81361654999999
+Health,4233,Nursing Support and Personal Care Workers,2022,November,82.94985326999999
+Health,4233,Nursing Support and Personal Care Workers,2023,February,81.67689499000001
+Health,4233,Nursing Support and Personal Care Workers,2023,May,86.58336603
+Health,4233,Nursing Support and Personal Care Workers,2023,August,101.26727142000001
+Health,4233,Nursing Support and Personal Care Workers,2023,November,116.49783260999999
+Health,4233,Nursing Support and Personal Care Workers,2024,February,110.72245160000001
+Health,4233,Nursing Support and Personal Care Workers,2024,May,110.91088343000001
+Health,4233,Nursing Support and Personal Care Workers,2024,August,104.15637691999999
+Health,4233,Nursing Support and Personal Care Workers,2024,November,101.94536536999999
+Health,4233,Nursing Support and Personal Care Workers,2025,February,106.55952767
+Health,4233,Nursing Support and Personal Care Workers,2025,May,131.01473877
+Health,4233,Nursing Support and Personal Care Workers,2025,August,117.78713482999999
+Health,4233,Nursing Support and Personal Care Workers,2025,November,109.78073804
+ICT,2232,ICT Trainers,2020,February,3.70391441
+ICT,2232,ICT Trainers,2020,May,1.7172565100000001
+ICT,2232,ICT Trainers,2020,August,3.47712973
+ICT,2232,ICT Trainers,2020,November,1.3058682300000002
+ICT,2232,ICT Trainers,2021,February,1.0811908799999999
+ICT,2232,ICT Trainers,2021,May,2.7944370500000004
+ICT,2232,ICT Trainers,2021,August,1.3023908499999999
+ICT,2232,ICT Trainers,2021,November,1.0564549600000002
+ICT,2232,ICT Trainers,2022,February,1.6774608999999998
+ICT,2232,ICT Trainers,2022,May,3.9302088900000003
+ICT,2232,ICT Trainers,2022,August,4.943607940000001
+ICT,2232,ICT Trainers,2022,November,3.49221395
+ICT,2232,ICT Trainers,2023,February,3.6824611500000004
+ICT,2232,ICT Trainers,2023,May,0.6271627799999999
+ICT,2232,ICT Trainers,2023,August,1.27570383
+ICT,2232,ICT Trainers,2023,November,4.6889788900000005
+ICT,2232,ICT Trainers,2024,February,2.57855314
+ICT,2232,ICT Trainers,2024,May,2.6982558899999995
+ICT,2232,ICT Trainers,2024,August,3.21600031
+ICT,2232,ICT Trainers,2024,November,2.9767115399999997
+ICT,2232,ICT Trainers,2025,February,2.53018542
+ICT,2232,ICT Trainers,2025,May,2.5832294799999995
+ICT,2232,ICT Trainers,2025,August,1.47728701
+ICT,2232,ICT Trainers,2025,November,4.9159855100000005
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2020,February,9.142112530000002
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2020,May,15.648630110000003
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2020,August,15.01229956
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2020,November,8.703031900000001
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2021,February,9.02861117
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2021,May,12.287518200000001
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2021,August,15.161892099999998
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2021,November,15.125835690000002
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2022,February,6.660710019999998
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2022,May,7.48736011
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2022,August,10.306305499999999
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2022,November,11.62242571
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2023,February,13.053531819999998
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2023,May,10.9945288
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2023,August,8.355182249999999
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2023,November,9.6943574
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2024,February,8.8587434
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2024,May,8.22979434
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2024,August,9.587505059999996
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2024,November,12.352105439999999
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2025,February,10.439627320000003
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2025,May,13.428178559999997
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2025,August,10.090580009999996
+ICT,2241,"Actuaries, Mathematicians and Statisticians",2025,November,10.975488329999997
+ICT,2252,ICT Sales Professionals,2020,February,17.489713569999992
+ICT,2252,ICT Sales Professionals,2020,May,14.591692099999994
+ICT,2252,ICT Sales Professionals,2020,August,14.842459579999996
+ICT,2252,ICT Sales Professionals,2020,November,11.74183091
+ICT,2252,ICT Sales Professionals,2021,February,19.599012170000005
+ICT,2252,ICT Sales Professionals,2021,May,20.28099537
+ICT,2252,ICT Sales Professionals,2021,August,18.855180439999998
+ICT,2252,ICT Sales Professionals,2021,November,13.366520819999998
+ICT,2252,ICT Sales Professionals,2022,February,12.515733449999999
+ICT,2252,ICT Sales Professionals,2022,May,15.53803386
+ICT,2252,ICT Sales Professionals,2022,August,16.697509020000005
+ICT,2252,ICT Sales Professionals,2022,November,18.85702214
+ICT,2252,ICT Sales Professionals,2023,February,20.605425829999998
+ICT,2252,ICT Sales Professionals,2023,May,18.49784405
+ICT,2252,ICT Sales Professionals,2023,August,24.343391170000007
+ICT,2252,ICT Sales Professionals,2023,November,23.653671850000002
+ICT,2252,ICT Sales Professionals,2024,February,26.111109610000007
+ICT,2252,ICT Sales Professionals,2024,May,22.36884367
+ICT,2252,ICT Sales Professionals,2024,August,19.972495939999998
+ICT,2252,ICT Sales Professionals,2024,November,15.33059086
+ICT,2252,ICT Sales Professionals,2025,February,14.799438240000002
+ICT,2252,ICT Sales Professionals,2025,May,21.251930249999997
+ICT,2252,ICT Sales Professionals,2025,August,14.9705417
+ICT,2252,ICT Sales Professionals,2025,November,20.965063100000002
+ICT,2611,ICT Business and Systems Analysts,2020,February,42.893490840000005
+ICT,2611,ICT Business and Systems Analysts,2020,May,36.95198128
+ICT,2611,ICT Business and Systems Analysts,2020,August,30.487687970000003
+ICT,2611,ICT Business and Systems Analysts,2020,November,34.525473739999995
+ICT,2611,ICT Business and Systems Analysts,2021,February,43.0192101
+ICT,2611,ICT Business and Systems Analysts,2021,May,39.878240620000014
+ICT,2611,ICT Business and Systems Analysts,2021,August,34.48067971
+ICT,2611,ICT Business and Systems Analysts,2021,November,44.81265931
+ICT,2611,ICT Business and Systems Analysts,2022,February,43.73968382
+ICT,2611,ICT Business and Systems Analysts,2022,May,57.837849260000006
+ICT,2611,ICT Business and Systems Analysts,2022,August,48.25192306000001
+ICT,2611,ICT Business and Systems Analysts,2022,November,53.344833830000006
+ICT,2611,ICT Business and Systems Analysts,2023,February,50.840856190000004
+ICT,2611,ICT Business and Systems Analysts,2023,May,53.26120821
+ICT,2611,ICT Business and Systems Analysts,2023,August,42.265536129999994
+ICT,2611,ICT Business and Systems Analysts,2023,November,49.661436900000005
+ICT,2611,ICT Business and Systems Analysts,2024,February,54.752505060000004
+ICT,2611,ICT Business and Systems Analysts,2024,May,56.36677808000001
+ICT,2611,ICT Business and Systems Analysts,2024,August,41.66202771
+ICT,2611,ICT Business and Systems Analysts,2024,November,42.747666880000004
+ICT,2611,ICT Business and Systems Analysts,2025,February,36.76529153999999
+ICT,2611,ICT Business and Systems Analysts,2025,May,51.13686640000002
+ICT,2611,ICT Business and Systems Analysts,2025,August,42.36752249999999
+ICT,2611,ICT Business and Systems Analysts,2025,November,52.88912807
+ICT,2612,Multimedia Specialists and Web Developers,2020,February,5.23811886
+ICT,2612,Multimedia Specialists and Web Developers,2020,May,15.854862329999998
+ICT,2612,Multimedia Specialists and Web Developers,2020,August,10.78339948
+ICT,2612,Multimedia Specialists and Web Developers,2020,November,18.30890682
+ICT,2612,Multimedia Specialists and Web Developers,2021,February,19.932890450000002
+ICT,2612,Multimedia Specialists and Web Developers,2021,May,18.626212170000002
+ICT,2612,Multimedia Specialists and Web Developers,2021,August,15.780421389999999
+ICT,2612,Multimedia Specialists and Web Developers,2021,November,12.316628209999998
+ICT,2612,Multimedia Specialists and Web Developers,2022,February,18.923449289999997
+ICT,2612,Multimedia Specialists and Web Developers,2022,May,11.507630800000001
+ICT,2612,Multimedia Specialists and Web Developers,2022,August,14.759145900000004
+ICT,2612,Multimedia Specialists and Web Developers,2022,November,14.226468879999999
+ICT,2612,Multimedia Specialists and Web Developers,2023,February,16.288711069999998
+ICT,2612,Multimedia Specialists and Web Developers,2023,May,11.041072500000002
+ICT,2612,Multimedia Specialists and Web Developers,2023,August,13.5397053
+ICT,2612,Multimedia Specialists and Web Developers,2023,November,16.74775052
+ICT,2612,Multimedia Specialists and Web Developers,2024,February,11.790757349999998
+ICT,2612,Multimedia Specialists and Web Developers,2024,May,14.231673510000004
+ICT,2612,Multimedia Specialists and Web Developers,2024,August,12.512578570000004
+ICT,2612,Multimedia Specialists and Web Developers,2024,November,14.249520950000003
+ICT,2612,Multimedia Specialists and Web Developers,2025,February,12.054702400000007
+ICT,2612,Multimedia Specialists and Web Developers,2025,May,11.57460021
+ICT,2612,Multimedia Specialists and Web Developers,2025,August,10.804605390000003
+ICT,2612,Multimedia Specialists and Web Developers,2025,November,10.132870110000002
+ICT,2613,Software and Applications Programmers,2020,February,126.16517644
+ICT,2613,Software and Applications Programmers,2020,May,136.94725007999998
+ICT,2613,Software and Applications Programmers,2020,August,144.53716221000002
+ICT,2613,Software and Applications Programmers,2020,November,141.39929039999998
+ICT,2613,Software and Applications Programmers,2021,February,145.29164462999998
+ICT,2613,Software and Applications Programmers,2021,May,145.42576344
+ICT,2613,Software and Applications Programmers,2021,August,142.99096917999998
+ICT,2613,Software and Applications Programmers,2021,November,147.97543460999998
+ICT,2613,Software and Applications Programmers,2022,February,144.87308846999997
+ICT,2613,Software and Applications Programmers,2022,May,147.56041546999998
+ICT,2613,Software and Applications Programmers,2022,August,156.58752090999997
+ICT,2613,Software and Applications Programmers,2022,November,185.25316060999998
+ICT,2613,Software and Applications Programmers,2023,February,178.23404536
+ICT,2613,Software and Applications Programmers,2023,May,156.08460936999995
+ICT,2613,Software and Applications Programmers,2023,August,158.40999851999996
+ICT,2613,Software and Applications Programmers,2023,November,163.15358002
+ICT,2613,Software and Applications Programmers,2024,February,194.81883215999997
+ICT,2613,Software and Applications Programmers,2024,May,179.02859999999998
+ICT,2613,Software and Applications Programmers,2024,August,189.1091909
+ICT,2613,Software and Applications Programmers,2024,November,189.36815679
+ICT,2613,Software and Applications Programmers,2025,February,173.49821815999996
+ICT,2613,Software and Applications Programmers,2025,May,173.74620733999998
+ICT,2613,Software and Applications Programmers,2025,August,206.08019026
+ICT,2613,Software and Applications Programmers,2025,November,200.44247037
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2020,February,39.86774404
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2020,May,43.58041464000001
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2020,August,48.33299518999999
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2020,November,49.26074862
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2021,February,53.57720277000001
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2021,May,51.48063114
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2021,August,66.66340456000002
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2021,November,73.19413236000003
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2022,February,68.96071470000001
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2022,May,60.94827857000001
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2022,August,59.21856004000001
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2022,November,58.04229693000001
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2023,February,64.99282052999999
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2023,May,61.923444820000014
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2023,August,68.94936525999998
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2023,November,65.27166867
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2024,February,61.65625610000001
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2024,May,58.18659637999999
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2024,August,62.58043255000002
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2024,November,83.81056823
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2025,February,60.293519
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2025,May,64.99037915
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2025,August,73.9138739
+ICT,2621,"Database and Systems Administrators, and ICT Security Specialists",2025,November,73.13260474
+ICT,2631,Computer Network Professionals,2020,February,42.22917079
+ICT,2631,Computer Network Professionals,2020,May,36.68825575
+ICT,2631,Computer Network Professionals,2020,August,41.71018326
+ICT,2631,Computer Network Professionals,2020,November,48.761651820000004
+ICT,2631,Computer Network Professionals,2021,February,48.29761157000001
+ICT,2631,Computer Network Professionals,2021,May,35.551972600000006
+ICT,2631,Computer Network Professionals,2021,August,36.95888031
+ICT,2631,Computer Network Professionals,2021,November,37.43785376000001
+ICT,2631,Computer Network Professionals,2022,February,38.91726454
+ICT,2631,Computer Network Professionals,2022,May,45.01709056
+ICT,2631,Computer Network Professionals,2022,August,38.823503769999995
+ICT,2631,Computer Network Professionals,2022,November,29.815413449999998
+ICT,2631,Computer Network Professionals,2023,February,33.80163622
+ICT,2631,Computer Network Professionals,2023,May,40.14971087000001
+ICT,2631,Computer Network Professionals,2023,August,40.65631878000001
+ICT,2631,Computer Network Professionals,2023,November,48.184680160000006
+ICT,2631,Computer Network Professionals,2024,February,48.5178991
+ICT,2631,Computer Network Professionals,2024,May,40.805294300000014
+ICT,2631,Computer Network Professionals,2024,August,42.98849428000001
+ICT,2631,Computer Network Professionals,2024,November,42.0684823
+ICT,2631,Computer Network Professionals,2025,February,44.336757000000006
+ICT,2631,Computer Network Professionals,2025,May,45.62821069
+ICT,2631,Computer Network Professionals,2025,August,47.32687003000001
+ICT,2631,Computer Network Professionals,2025,November,53.25400244999999
+ICT,2632,ICT Support and Test Engineers,2020,February,14.029377919999998
+ICT,2632,ICT Support and Test Engineers,2020,May,11.639129109999999
+ICT,2632,ICT Support and Test Engineers,2020,August,19.741130119999994
+ICT,2632,ICT Support and Test Engineers,2020,November,13.413807279999999
+ICT,2632,ICT Support and Test Engineers,2021,February,16.05527343
+ICT,2632,ICT Support and Test Engineers,2021,May,15.936817079999997
+ICT,2632,ICT Support and Test Engineers,2021,August,18.78188746
+ICT,2632,ICT Support and Test Engineers,2021,November,11.127733319999997
+ICT,2632,ICT Support and Test Engineers,2022,February,16.69199897
+ICT,2632,ICT Support and Test Engineers,2022,May,17.34071909
+ICT,2632,ICT Support and Test Engineers,2022,August,14.67914526
+ICT,2632,ICT Support and Test Engineers,2022,November,13.867131289999998
+ICT,2632,ICT Support and Test Engineers,2023,February,16.92261932
+ICT,2632,ICT Support and Test Engineers,2023,May,8.741014260000002
+ICT,2632,ICT Support and Test Engineers,2023,August,16.131528770000003
+ICT,2632,ICT Support and Test Engineers,2023,November,10.789360960000002
+ICT,2632,ICT Support and Test Engineers,2024,February,14.45910464
+ICT,2632,ICT Support and Test Engineers,2024,May,16.07432785
+ICT,2632,ICT Support and Test Engineers,2024,August,16.628665809999998
+ICT,2632,ICT Support and Test Engineers,2024,November,12.590146270000004
+ICT,2632,ICT Support and Test Engineers,2025,February,17.13334168
+ICT,2632,ICT Support and Test Engineers,2025,May,16.822471339999996
+ICT,2632,ICT Support and Test Engineers,2025,August,16.88125852
+ICT,2632,ICT Support and Test Engineers,2025,November,20.68493699
+ICT,2633,Telecommunications Engineering Professionals,2020,February,17.621723870000004
+ICT,2633,Telecommunications Engineering Professionals,2020,May,12.84645436
+ICT,2633,Telecommunications Engineering Professionals,2020,August,13.521761399999997
+ICT,2633,Telecommunications Engineering Professionals,2020,November,14.146710800000005
+ICT,2633,Telecommunications Engineering Professionals,2021,February,10.621566990000002
+ICT,2633,Telecommunications Engineering Professionals,2021,May,12.963761659999998
+ICT,2633,Telecommunications Engineering Professionals,2021,August,17.113985469999996
+ICT,2633,Telecommunications Engineering Professionals,2021,November,19.12299548
+ICT,2633,Telecommunications Engineering Professionals,2022,February,14.95687743
+ICT,2633,Telecommunications Engineering Professionals,2022,May,14.971362449999997
+ICT,2633,Telecommunications Engineering Professionals,2022,August,17.58857662
+ICT,2633,Telecommunications Engineering Professionals,2022,November,14.940001720000001
+ICT,2633,Telecommunications Engineering Professionals,2023,February,11.081069750000003
+ICT,2633,Telecommunications Engineering Professionals,2023,May,17.283031560000005
+ICT,2633,Telecommunications Engineering Professionals,2023,August,10.031590850000002
+ICT,2633,Telecommunications Engineering Professionals,2023,November,8.17923172
+ICT,2633,Telecommunications Engineering Professionals,2024,February,9.46068219
+ICT,2633,Telecommunications Engineering Professionals,2024,May,11.71835947
+ICT,2633,Telecommunications Engineering Professionals,2024,August,14.12060231
+ICT,2633,Telecommunications Engineering Professionals,2024,November,14.250933450000002
+ICT,2633,Telecommunications Engineering Professionals,2025,February,17.54121614
+ICT,2633,Telecommunications Engineering Professionals,2025,May,20.4974364
+ICT,2633,Telecommunications Engineering Professionals,2025,August,13.237453249999998
+ICT,2633,Telecommunications Engineering Professionals,2025,November,13.01940487
+ICT,3131,ICT Support Technicians,2020,February,73.28676169000002
+ICT,3131,ICT Support Technicians,2020,May,63.341871409999996
+ICT,3131,ICT Support Technicians,2020,August,70.58052219
+ICT,3131,ICT Support Technicians,2020,November,83.26967694
+ICT,3131,ICT Support Technicians,2021,February,74.41389062
+ICT,3131,ICT Support Technicians,2021,May,59.44386162
+ICT,3131,ICT Support Technicians,2021,August,61.308808500000005
+ICT,3131,ICT Support Technicians,2021,November,82.21088026999999
+ICT,3131,ICT Support Technicians,2022,February,71.26713842000001
+ICT,3131,ICT Support Technicians,2022,May,73.98278467
+ICT,3131,ICT Support Technicians,2022,August,67.03056569
+ICT,3131,ICT Support Technicians,2022,November,71.08531285000001
+ICT,3131,ICT Support Technicians,2023,February,72.52666839
+ICT,3131,ICT Support Technicians,2023,May,65.17210069000001
+ICT,3131,ICT Support Technicians,2023,August,76.26492381999998
+ICT,3131,ICT Support Technicians,2023,November,70.54905971999999
+ICT,3131,ICT Support Technicians,2024,February,72.26913390999998
+ICT,3131,ICT Support Technicians,2024,May,70.06434628
+ICT,3131,ICT Support Technicians,2024,August,86.23565305000002
+ICT,3131,ICT Support Technicians,2024,November,63.56915117
+ICT,3131,ICT Support Technicians,2025,February,77.86314664000001
+ICT,3131,ICT Support Technicians,2025,May,74.07668130000002
+ICT,3131,ICT Support Technicians,2025,August,74.82448124000001
+ICT,3131,ICT Support Technicians,2025,November,69.30539247
+ICT,3132,Telecommunications Technical Specialists,2020,February,2.8177762900000003
+ICT,3132,Telecommunications Technical Specialists,2020,May,3.3911851100000003
+ICT,3132,Telecommunications Technical Specialists,2020,August,3.3907100199999998
+ICT,3132,Telecommunications Technical Specialists,2020,November,2.19284035
+ICT,3132,Telecommunications Technical Specialists,2021,February,2.0708455800000003
+ICT,3132,Telecommunications Technical Specialists,2021,May,0.6696871900000001
+ICT,3132,Telecommunications Technical Specialists,2021,August,3.4914880600000004
+ICT,3132,Telecommunications Technical Specialists,2021,November,4.28753099
+ICT,3132,Telecommunications Technical Specialists,2022,February,7.67333874
+ICT,3132,Telecommunications Technical Specialists,2022,May,4.2815398
+ICT,3132,Telecommunications Technical Specialists,2022,August,3.03786943
+ICT,3132,Telecommunications Technical Specialists,2022,November,4.75320727
+ICT,3132,Telecommunications Technical Specialists,2023,February,3.53324886
+ICT,3132,Telecommunications Technical Specialists,2023,May,2.8853571099999997
+ICT,3132,Telecommunications Technical Specialists,2023,August,3.2172684300000003
+ICT,3132,Telecommunications Technical Specialists,2023,November,3.32208917
+ICT,3132,Telecommunications Technical Specialists,2024,February,6.1118489700000005
+ICT,3132,Telecommunications Technical Specialists,2024,May,5.53481631
+ICT,3132,Telecommunications Technical Specialists,2024,August,3.8508043700000005
+ICT,3132,Telecommunications Technical Specialists,2024,November,2.59596946
+ICT,3132,Telecommunications Technical Specialists,2025,February,5.273908269999999
+ICT,3132,Telecommunications Technical Specialists,2025,May,2.80626645
+ICT,3132,Telecommunications Technical Specialists,2025,August,0.8867576700000002
+ICT,3132,Telecommunications Technical Specialists,2025,November,5.1805558099999995
+ICT,6212,ICT Sales Assistants,2020,February,16.555249580000005
+ICT,6212,ICT Sales Assistants,2020,May,13.226538629999999
+ICT,6212,ICT Sales Assistants,2020,August,13.222910030000001
+ICT,6212,ICT Sales Assistants,2020,November,16.19639872
+ICT,6212,ICT Sales Assistants,2021,February,17.20019526
+ICT,6212,ICT Sales Assistants,2021,May,15.583634379999998
+ICT,6212,ICT Sales Assistants,2021,August,17.97863938
+ICT,6212,ICT Sales Assistants,2021,November,21.44937474
+ICT,6212,ICT Sales Assistants,2022,February,18.78236798
+ICT,6212,ICT Sales Assistants,2022,May,13.25731455
+ICT,6212,ICT Sales Assistants,2022,August,7.995897979999999
+ICT,6212,ICT Sales Assistants,2022,November,14.944873999999997
+ICT,6212,ICT Sales Assistants,2023,February,21.202757610000003
+ICT,6212,ICT Sales Assistants,2023,May,16.18107964
+ICT,6212,ICT Sales Assistants,2023,August,19.79169506
+ICT,6212,ICT Sales Assistants,2023,November,18.891975000000002
+ICT,6212,ICT Sales Assistants,2024,February,16.83531748
+ICT,6212,ICT Sales Assistants,2024,May,14.711941599999998
+ICT,6212,ICT Sales Assistants,2024,August,18.07492691
+ICT,6212,ICT Sales Assistants,2024,November,15.7687239
+ICT,6212,ICT Sales Assistants,2025,February,15.022810759999999
+ICT,6212,ICT Sales Assistants,2025,May,13.730976919999998
+ICT,6212,ICT Sales Assistants,2025,August,13.16757204
+ICT,6212,ICT Sales Assistants,2025,November,12.700492179999998
+Trades,3211,Automotive Electricians,2020,February,9.52439664
+Trades,3211,Automotive Electricians,2020,May,6.8926903
+Trades,3211,Automotive Electricians,2020,August,3.37353039
+Trades,3211,Automotive Electricians,2020,November,3.31450341
+Trades,3211,Automotive Electricians,2021,February,5.67370534
+Trades,3211,Automotive Electricians,2021,May,8.52795835
+Trades,3211,Automotive Electricians,2021,August,9.969827679999998
+Trades,3211,Automotive Electricians,2021,November,8.84987131
+Trades,3211,Automotive Electricians,2022,February,7.55787206
+Trades,3211,Automotive Electricians,2022,May,9.7393934
+Trades,3211,Automotive Electricians,2022,August,8.63262248
+Trades,3211,Automotive Electricians,2022,November,6.685859399999999
+Trades,3211,Automotive Electricians,2023,February,8.37984086
+Trades,3211,Automotive Electricians,2023,May,12.92657221
+Trades,3211,Automotive Electricians,2023,August,12.922533720000004
+Trades,3211,Automotive Electricians,2023,November,18.318727980000002
+Trades,3211,Automotive Electricians,2024,February,17.68681863
+Trades,3211,Automotive Electricians,2024,May,12.434594830000002
+Trades,3211,Automotive Electricians,2024,August,10.232524650000002
+Trades,3211,Automotive Electricians,2024,November,10.91992502
+Trades,3211,Automotive Electricians,2025,February,9.67262333
+Trades,3211,Automotive Electricians,2025,May,8.27558806
+Trades,3211,Automotive Electricians,2025,August,10.113562100000001
+Trades,3211,Automotive Electricians,2025,November,9.85385165
+Trades,3212,Motor Mechanics,2020,February,104.79453856
+Trades,3212,Motor Mechanics,2020,May,84.52745088
+Trades,3212,Motor Mechanics,2020,August,81.41305819000002
+Trades,3212,Motor Mechanics,2020,November,103.70693069000002
+Trades,3212,Motor Mechanics,2021,February,103.62693855000002
+Trades,3212,Motor Mechanics,2021,May,103.90852862999999
+Trades,3212,Motor Mechanics,2021,August,108.37531475
+Trades,3212,Motor Mechanics,2021,November,117.29884218
+Trades,3212,Motor Mechanics,2022,February,116.51768018
+Trades,3212,Motor Mechanics,2022,May,109.95012292000001
+Trades,3212,Motor Mechanics,2022,August,102.90889445000002
+Trades,3212,Motor Mechanics,2022,November,102.39739478
+Trades,3212,Motor Mechanics,2023,February,112.88515624
+Trades,3212,Motor Mechanics,2023,May,110.36978901999997
+Trades,3212,Motor Mechanics,2023,August,113.78887344000002
+Trades,3212,Motor Mechanics,2023,November,107.96903255000001
+Trades,3212,Motor Mechanics,2024,February,100.24432643000002
+Trades,3212,Motor Mechanics,2024,May,105.56647349
+Trades,3212,Motor Mechanics,2024,August,103.85862458999999
+Trades,3212,Motor Mechanics,2024,November,107.88031378000001
+Trades,3212,Motor Mechanics,2025,February,112.01401660999998
+Trades,3212,Motor Mechanics,2025,May,116.24954872999999
+Trades,3212,Motor Mechanics,2025,August,110.53911162999997
+Trades,3212,Motor Mechanics,2025,November,109.87599041999998
+Trades,3223,Structural Steel and Welding Trades Workers,2020,February,76.89455996
+Trades,3223,Structural Steel and Welding Trades Workers,2020,May,82.90217942999998
+Trades,3223,Structural Steel and Welding Trades Workers,2020,August,81.75409402
+Trades,3223,Structural Steel and Welding Trades Workers,2020,November,75.83668236000001
+Trades,3223,Structural Steel and Welding Trades Workers,2021,February,77.45865285000001
+Trades,3223,Structural Steel and Welding Trades Workers,2021,May,75.72710091999998
+Trades,3223,Structural Steel and Welding Trades Workers,2021,August,65.73172771000002
+Trades,3223,Structural Steel and Welding Trades Workers,2021,November,73.75907288
+Trades,3223,Structural Steel and Welding Trades Workers,2022,February,70.60199114
+Trades,3223,Structural Steel and Welding Trades Workers,2022,May,79.10782057000002
+Trades,3223,Structural Steel and Welding Trades Workers,2022,August,75.84806735999999
+Trades,3223,Structural Steel and Welding Trades Workers,2022,November,66.18735456
+Trades,3223,Structural Steel and Welding Trades Workers,2023,February,78.53941745
+Trades,3223,Structural Steel and Welding Trades Workers,2023,May,80.69653760000001
+Trades,3223,Structural Steel and Welding Trades Workers,2023,August,74.15660693000002
+Trades,3223,Structural Steel and Welding Trades Workers,2023,November,70.63326047000002
+Trades,3223,Structural Steel and Welding Trades Workers,2024,February,72.36143496
+Trades,3223,Structural Steel and Welding Trades Workers,2024,May,79.79217847
+Trades,3223,Structural Steel and Welding Trades Workers,2024,August,82.01972014999998
+Trades,3223,Structural Steel and Welding Trades Workers,2024,November,81.05750687999999
+Trades,3223,Structural Steel and Welding Trades Workers,2025,February,78.48174402999999
+Trades,3223,Structural Steel and Welding Trades Workers,2025,May,69.60294173999999
+Trades,3223,Structural Steel and Welding Trades Workers,2025,August,76.40773446
+Trades,3223,Structural Steel and Welding Trades Workers,2025,November,87.66730271
+Trades,3231,Aircraft Maintenance Engineers,2020,February,9.416778789999997
+Trades,3231,Aircraft Maintenance Engineers,2020,May,6.599038350000001
+Trades,3231,Aircraft Maintenance Engineers,2020,August,12.016128609999997
+Trades,3231,Aircraft Maintenance Engineers,2020,November,14.955315529999998
+Trades,3231,Aircraft Maintenance Engineers,2021,February,14.459016249999996
+Trades,3231,Aircraft Maintenance Engineers,2021,May,11.631600469999997
+Trades,3231,Aircraft Maintenance Engineers,2021,August,13.312338620000004
+Trades,3231,Aircraft Maintenance Engineers,2021,November,9.949753050000002
+Trades,3231,Aircraft Maintenance Engineers,2022,February,11.872945369999997
+Trades,3231,Aircraft Maintenance Engineers,2022,May,11.977058189999996
+Trades,3231,Aircraft Maintenance Engineers,2022,August,12.526090399999996
+Trades,3231,Aircraft Maintenance Engineers,2022,November,10.799514839999992
+Trades,3231,Aircraft Maintenance Engineers,2023,February,8.967432479999996
+Trades,3231,Aircraft Maintenance Engineers,2023,May,11.765061859999998
+Trades,3231,Aircraft Maintenance Engineers,2023,August,15.127787839999998
+Trades,3231,Aircraft Maintenance Engineers,2023,November,14.252421389999999
+Trades,3231,Aircraft Maintenance Engineers,2024,February,12.667401139999996
+Trades,3231,Aircraft Maintenance Engineers,2024,May,9.739061499999996
+Trades,3231,Aircraft Maintenance Engineers,2024,August,8.341618509999996
+Trades,3231,Aircraft Maintenance Engineers,2024,November,6.778600370000001
+Trades,3231,Aircraft Maintenance Engineers,2025,February,11.475819729999998
+Trades,3231,Aircraft Maintenance Engineers,2025,May,9.089007349999997
+Trades,3231,Aircraft Maintenance Engineers,2025,August,12.328352409999999
+Trades,3231,Aircraft Maintenance Engineers,2025,November,9.607893879999995
+Trades,3232,Metal Fitters and Machinists,2020,February,112.90545429000001
+Trades,3232,Metal Fitters and Machinists,2020,May,107.93293191
+Trades,3232,Metal Fitters and Machinists,2020,August,124.19349075999999
+Trades,3232,Metal Fitters and Machinists,2020,November,107.18040545
+Trades,3232,Metal Fitters and Machinists,2021,February,111.63090622
+Trades,3232,Metal Fitters and Machinists,2021,May,112.0170759
+Trades,3232,Metal Fitters and Machinists,2021,August,123.60151413
+Trades,3232,Metal Fitters and Machinists,2021,November,116.1469846
+Trades,3232,Metal Fitters and Machinists,2022,February,99.92156845
+Trades,3232,Metal Fitters and Machinists,2022,May,113.78169593999998
+Trades,3232,Metal Fitters and Machinists,2022,August,108.63987672
+Trades,3232,Metal Fitters and Machinists,2022,November,123.46036424
+Trades,3232,Metal Fitters and Machinists,2023,February,121.24263395000001
+Trades,3232,Metal Fitters and Machinists,2023,May,122.25118473999999
+Trades,3232,Metal Fitters and Machinists,2023,August,115.79273526
+Trades,3232,Metal Fitters and Machinists,2023,November,114.77841571
+Trades,3232,Metal Fitters and Machinists,2024,February,117.94383555
+Trades,3232,Metal Fitters and Machinists,2024,May,114.07663436
+Trades,3232,Metal Fitters and Machinists,2024,August,120.68818219999997
+Trades,3232,Metal Fitters and Machinists,2024,November,127.25205387
+Trades,3232,Metal Fitters and Machinists,2025,February,128.43809036999997
+Trades,3232,Metal Fitters and Machinists,2025,May,122.85929565000002
+Trades,3232,Metal Fitters and Machinists,2025,August,124.79922427
+Trades,3232,Metal Fitters and Machinists,2025,November,112.06726405000003
+Trades,3311,Bricklayers and Stonemasons,2020,February,29.848960080000005
+Trades,3311,Bricklayers and Stonemasons,2020,May,28.011471
+Trades,3311,Bricklayers and Stonemasons,2020,August,20.792907380000006
+Trades,3311,Bricklayers and Stonemasons,2020,November,21.01215863
+Trades,3311,Bricklayers and Stonemasons,2021,February,23.28054155
+Trades,3311,Bricklayers and Stonemasons,2021,May,23.945355619999997
+Trades,3311,Bricklayers and Stonemasons,2021,August,22.863141969999997
+Trades,3311,Bricklayers and Stonemasons,2021,November,24.34221652
+Trades,3311,Bricklayers and Stonemasons,2022,February,28.015645179999996
+Trades,3311,Bricklayers and Stonemasons,2022,May,29.053689329999997
+Trades,3311,Bricklayers and Stonemasons,2022,August,38.989608499999996
+Trades,3311,Bricklayers and Stonemasons,2022,November,32.25239154
+Trades,3311,Bricklayers and Stonemasons,2023,February,32.33152389999999
+Trades,3311,Bricklayers and Stonemasons,2023,May,24.929673779999998
+Trades,3311,Bricklayers and Stonemasons,2023,August,31.815682190000004
+Trades,3311,Bricklayers and Stonemasons,2023,November,28.01866732
+Trades,3311,Bricklayers and Stonemasons,2024,February,31.20479396
+Trades,3311,Bricklayers and Stonemasons,2024,May,26.687918299999996
+Trades,3311,Bricklayers and Stonemasons,2024,August,25.35038877
+Trades,3311,Bricklayers and Stonemasons,2024,November,22.188327440000002
+Trades,3311,Bricklayers and Stonemasons,2025,February,21.996058
+Trades,3311,Bricklayers and Stonemasons,2025,May,21.419557359999995
+Trades,3311,Bricklayers and Stonemasons,2025,August,18.993962030000002
+Trades,3311,Bricklayers and Stonemasons,2025,November,30.456509869999998
+Trades,3312,Carpenters and Joiners,2020,February,129.27276823
+Trades,3312,Carpenters and Joiners,2020,May,111.6319008
+Trades,3312,Carpenters and Joiners,2020,August,116.60926990000002
+Trades,3312,Carpenters and Joiners,2020,November,124.44022522000003
+Trades,3312,Carpenters and Joiners,2021,February,128.34429163
+Trades,3312,Carpenters and Joiners,2021,May,142.54163891999997
+Trades,3312,Carpenters and Joiners,2021,August,142.81147097
+Trades,3312,Carpenters and Joiners,2021,November,132.48269978000002
+Trades,3312,Carpenters and Joiners,2022,February,147.92429363999997
+Trades,3312,Carpenters and Joiners,2022,May,147.8630295
+Trades,3312,Carpenters and Joiners,2022,August,136.49874835000006
+Trades,3312,Carpenters and Joiners,2022,November,146.16704206
+Trades,3312,Carpenters and Joiners,2023,February,139.83279479000004
+Trades,3312,Carpenters and Joiners,2023,May,139.233814
+Trades,3312,Carpenters and Joiners,2023,August,152.48770265
+Trades,3312,Carpenters and Joiners,2023,November,143.79949661000003
+Trades,3312,Carpenters and Joiners,2024,February,140.78174413000005
+Trades,3312,Carpenters and Joiners,2024,May,143.17168133000007
+Trades,3312,Carpenters and Joiners,2024,August,137.25690410000004
+Trades,3312,Carpenters and Joiners,2024,November,147.63744031000004
+Trades,3312,Carpenters and Joiners,2025,February,155.62139371000004
+Trades,3312,Carpenters and Joiners,2025,May,153.19715757000003
+Trades,3312,Carpenters and Joiners,2025,August,139.29657691000003
+Trades,3312,Carpenters and Joiners,2025,November,154.13595805999998
+Trades,3322,Painting Trades Workers,2020,February,55.032688070000006
+Trades,3322,Painting Trades Workers,2020,May,54.609191110000005
+Trades,3322,Painting Trades Workers,2020,August,44.89187226999999
+Trades,3322,Painting Trades Workers,2020,November,39.13761791
+Trades,3322,Painting Trades Workers,2021,February,38.05986034000001
+Trades,3322,Painting Trades Workers,2021,May,43.206219049999994
+Trades,3322,Painting Trades Workers,2021,August,35.73656192
+Trades,3322,Painting Trades Workers,2021,November,46.757487389999994
+Trades,3322,Painting Trades Workers,2022,February,49.67961358000001
+Trades,3322,Painting Trades Workers,2022,May,62.137336120000015
+Trades,3322,Painting Trades Workers,2022,August,54.707913739999995
+Trades,3322,Painting Trades Workers,2022,November,57.13647054
+Trades,3322,Painting Trades Workers,2023,February,55.427490070000005
+Trades,3322,Painting Trades Workers,2023,May,62.36497855999999
+Trades,3322,Painting Trades Workers,2023,August,55.45511584999999
+Trades,3322,Painting Trades Workers,2023,November,58.025282620000006
+Trades,3322,Painting Trades Workers,2024,February,55.03507997999999
+Trades,3322,Painting Trades Workers,2024,May,62.28637974
+Trades,3322,Painting Trades Workers,2024,August,59.14833542
+Trades,3322,Painting Trades Workers,2024,November,55.88683181
+Trades,3322,Painting Trades Workers,2025,February,44.969288250000005
+Trades,3322,Painting Trades Workers,2025,May,49.437089670000006
+Trades,3322,Painting Trades Workers,2025,August,42.58841189000002
+Trades,3322,Painting Trades Workers,2025,November,40.40664467000001
+Trades,3341,Plumbers,2020,February,84.64761791
+Trades,3341,Plumbers,2020,May,97.54508706000001
+Trades,3341,Plumbers,2020,August,89.91916496
+Trades,3341,Plumbers,2020,November,85.79731332000003
+Trades,3341,Plumbers,2021,February,85.04526713
+Trades,3341,Plumbers,2021,May,88.71287426999999
+Trades,3341,Plumbers,2021,August,81.79688409999999
+Trades,3341,Plumbers,2021,November,88.73212269
+Trades,3341,Plumbers,2022,February,98.91574074000002
+Trades,3341,Plumbers,2022,May,97.26321726
+Trades,3341,Plumbers,2022,August,101.97876300999998
+Trades,3341,Plumbers,2022,November,93.19643802999998
+Trades,3341,Plumbers,2023,February,95.46047080999999
+Trades,3341,Plumbers,2023,May,91.08904086
+Trades,3341,Plumbers,2023,August,82.83988515
+Trades,3341,Plumbers,2023,November,82.32233108000001
+Trades,3341,Plumbers,2024,February,106.15043646999999
+Trades,3341,Plumbers,2024,May,98.50338441
+Trades,3341,Plumbers,2024,August,104.29490301
+Trades,3341,Plumbers,2024,November,114.43070814
+Trades,3341,Plumbers,2025,February,96.56143537000001
+Trades,3341,Plumbers,2025,May,104.31346984000001
+Trades,3341,Plumbers,2025,August,115.93884917
+Trades,3341,Plumbers,2025,November,117.01741668000001
+Trades,3411,Electricians,2020,February,156.84602163999995
+Trades,3411,Electricians,2020,May,134.63479940000005
+Trades,3411,Electricians,2020,August,145.57272081000002
+Trades,3411,Electricians,2020,November,175.04425531000004
+Trades,3411,Electricians,2021,February,164.53329832000003
+Trades,3411,Electricians,2021,May,169.74258487
+Trades,3411,Electricians,2021,August,158.56969992000006
+Trades,3411,Electricians,2021,November,150.10443564000002
+Trades,3411,Electricians,2022,February,147.29480519000003
+Trades,3411,Electricians,2022,May,176.61169659000004
+Trades,3411,Electricians,2022,August,185.58666118000005
+Trades,3411,Electricians,2022,November,172.67039892000003
+Trades,3411,Electricians,2023,February,185.37888553999997
+Trades,3411,Electricians,2023,May,181.03210054000004
+Trades,3411,Electricians,2023,August,180.94559574999997
+Trades,3411,Electricians,2023,November,180.37018689000004
+Trades,3411,Electricians,2024,February,194.43656865999998
+Trades,3411,Electricians,2024,May,185.27775688
+Trades,3411,Electricians,2024,August,182.67461723
+Trades,3411,Electricians,2024,November,179.50821659000002
+Trades,3411,Electricians,2025,February,192.42432474
+Trades,3411,Electricians,2025,May,197.43274078000005
+Trades,3411,Electricians,2025,August,193.60479350000003
+Trades,3411,Electricians,2025,November,197.51059164999998
+Trades,3421,Airconditioning and Refrigeration Mechanics,2020,February,25.771266709999995
+Trades,3421,Airconditioning and Refrigeration Mechanics,2020,May,26.55193233
+Trades,3421,Airconditioning and Refrigeration Mechanics,2020,August,25.054225190000007
+Trades,3421,Airconditioning and Refrigeration Mechanics,2020,November,28.800377440000002
+Trades,3421,Airconditioning and Refrigeration Mechanics,2021,February,32.85460376
+Trades,3421,Airconditioning and Refrigeration Mechanics,2021,May,30.697695990000003
+Trades,3421,Airconditioning and Refrigeration Mechanics,2021,August,34.81126726999999
+Trades,3421,Airconditioning and Refrigeration Mechanics,2021,November,28.782621389999996
+Trades,3421,Airconditioning and Refrigeration Mechanics,2022,February,27.98211576
+Trades,3421,Airconditioning and Refrigeration Mechanics,2022,May,25.399359370000003
+Trades,3421,Airconditioning and Refrigeration Mechanics,2022,August,32.25308648
+Trades,3421,Airconditioning and Refrigeration Mechanics,2022,November,25.60137963
+Trades,3421,Airconditioning and Refrigeration Mechanics,2023,February,26.577716739999996
+Trades,3421,Airconditioning and Refrigeration Mechanics,2023,May,28.626511649999994
+Trades,3421,Airconditioning and Refrigeration Mechanics,2023,August,28.815653740000005
+Trades,3421,Airconditioning and Refrigeration Mechanics,2023,November,28.697621299999998
+Trades,3421,Airconditioning and Refrigeration Mechanics,2024,February,31.74963912
+Trades,3421,Airconditioning and Refrigeration Mechanics,2024,May,24.918363969999998
+Trades,3421,Airconditioning and Refrigeration Mechanics,2024,August,32.685925659999995
+Trades,3421,Airconditioning and Refrigeration Mechanics,2024,November,28.69302196
+Trades,3421,Airconditioning and Refrigeration Mechanics,2025,February,39.49466498999999
+Trades,3421,Airconditioning and Refrigeration Mechanics,2025,May,37.99383564
+Trades,3421,Airconditioning and Refrigeration Mechanics,2025,August,37.995951119999994
+Trades,3421,Airconditioning and Refrigeration Mechanics,2025,November,34.884725440000004
+Trades,3423,Electronics Trades Workers,2020,February,28.99816879
+Trades,3423,Electronics Trades Workers,2020,May,34.69465237
+Trades,3423,Electronics Trades Workers,2020,August,29.663143500000004
+Trades,3423,Electronics Trades Workers,2020,November,31.097697299999997
+Trades,3423,Electronics Trades Workers,2021,February,27.2867516
+Trades,3423,Electronics Trades Workers,2021,May,26.48275013
+Trades,3423,Electronics Trades Workers,2021,August,18.38537330999999
+Trades,3423,Electronics Trades Workers,2021,November,20.6736299
+Trades,3423,Electronics Trades Workers,2022,February,27.966775870000003
+Trades,3423,Electronics Trades Workers,2022,May,26.005456729999995
+Trades,3423,Electronics Trades Workers,2022,August,26.916967900000003
+Trades,3423,Electronics Trades Workers,2022,November,27.754453820000005
+Trades,3423,Electronics Trades Workers,2023,February,21.780921069999998
+Trades,3423,Electronics Trades Workers,2023,May,28.41294792
+Trades,3423,Electronics Trades Workers,2023,August,21.890614170000003
+Trades,3423,Electronics Trades Workers,2023,November,25.358797340000002
+Trades,3423,Electronics Trades Workers,2024,February,26.30745255
+Trades,3423,Electronics Trades Workers,2024,May,32.740834289999995
+Trades,3423,Electronics Trades Workers,2024,August,30.859065780000005
+Trades,3423,Electronics Trades Workers,2024,November,35.57615685
+Trades,3423,Electronics Trades Workers,2025,February,34.49297482999999
+Trades,3423,Electronics Trades Workers,2025,May,25.9527549
+Trades,3423,Electronics Trades Workers,2025,August,29.26101584
+Trades,3423,Electronics Trades Workers,2025,November,37.347893039999995
+Trades,3424,Telecommunications Trades Workers,2020,February,28.15498669
+Trades,3424,Telecommunications Trades Workers,2020,May,26.581401250000006
+Trades,3424,Telecommunications Trades Workers,2020,August,24.62006256
+Trades,3424,Telecommunications Trades Workers,2020,November,23.470181480000004
+Trades,3424,Telecommunications Trades Workers,2021,February,24.62216107
+Trades,3424,Telecommunications Trades Workers,2021,May,15.411275949999999
+Trades,3424,Telecommunications Trades Workers,2021,August,15.99806427
+Trades,3424,Telecommunications Trades Workers,2021,November,15.223673020000001
+Trades,3424,Telecommunications Trades Workers,2022,February,17.274557629999997
+Trades,3424,Telecommunications Trades Workers,2022,May,18.3695303
+Trades,3424,Telecommunications Trades Workers,2022,August,13.170702170000002
+Trades,3424,Telecommunications Trades Workers,2022,November,20.93337024
+Trades,3424,Telecommunications Trades Workers,2023,February,22.766516459999995
+Trades,3424,Telecommunications Trades Workers,2023,May,18.37569801
+Trades,3424,Telecommunications Trades Workers,2023,August,27.35799986
+Trades,3424,Telecommunications Trades Workers,2023,November,24.13542252
+Trades,3424,Telecommunications Trades Workers,2024,February,17.47065714
+Trades,3424,Telecommunications Trades Workers,2024,May,22.790658780000005
+Trades,3424,Telecommunications Trades Workers,2024,August,19.3622778
+Trades,3424,Telecommunications Trades Workers,2024,November,17.186288859999998
+Trades,3424,Telecommunications Trades Workers,2025,February,13.96805273
+Trades,3424,Telecommunications Trades Workers,2025,May,13.084997440000002
+Trades,3424,Telecommunications Trades Workers,2025,August,15.48581173
+Trades,3424,Telecommunications Trades Workers,2025,November,14.872358930000003
+Trades,3513,Chefs,2020,February,107.44226972000001
+Trades,3513,Chefs,2020,May,75.47426506000002
+Trades,3513,Chefs,2020,August,81.91781726
+Trades,3513,Chefs,2020,November,103.22325615
+Trades,3513,Chefs,2021,February,83.80401664000001
+Trades,3513,Chefs,2021,May,91.91156346000001
+Trades,3513,Chefs,2021,August,88.36339545000001
+Trades,3513,Chefs,2021,November,92.4739528
+Trades,3513,Chefs,2022,February,111.20909446999998
+Trades,3513,Chefs,2022,May,113.11432903000001
+Trades,3513,Chefs,2022,August,101.56544074
+Trades,3513,Chefs,2022,November,108.02543747000001
+Trades,3513,Chefs,2023,February,116.51885295
+Trades,3513,Chefs,2023,May,121.20168984000001
+Trades,3513,Chefs,2023,August,112.92210468000002
+Trades,3513,Chefs,2023,November,113.96136148000002
+Trades,3513,Chefs,2024,February,126.32602237
+Trades,3513,Chefs,2024,May,136.42135244000002
+Trades,3513,Chefs,2024,August,133.48899652999998
+Trades,3513,Chefs,2024,November,113.28698258000003
+Trades,3513,Chefs,2025,February,117.15037596999998
+Trades,3513,Chefs,2025,May,118.22507992
+Trades,3513,Chefs,2025,August,138.51412262
+Trades,3513,Chefs,2025,November,135.13305084
+Trades,3514,Cooks,2020,February,39.84807354
+Trades,3514,Cooks,2020,May,36.24870414
+Trades,3514,Cooks,2020,August,36.07050674999999
+Trades,3514,Cooks,2020,November,34.49747272
+Trades,3514,Cooks,2021,February,36.555994029999994
+Trades,3514,Cooks,2021,May,45.07329924
+Trades,3514,Cooks,2021,August,31.42494341
+Trades,3514,Cooks,2021,November,40.468158020000004
+Trades,3514,Cooks,2022,February,40.29021961000001
+Trades,3514,Cooks,2022,May,42.041282259999996
+Trades,3514,Cooks,2022,August,39.09440179999999
+Trades,3514,Cooks,2022,November,48.51986581
+Trades,3514,Cooks,2023,February,36.76328988
+Trades,3514,Cooks,2023,May,32.66179226999999
+Trades,3514,Cooks,2023,August,33.33067722999999
+Trades,3514,Cooks,2023,November,42.85929230000001
+Trades,3514,Cooks,2024,February,38.80915266000001
+Trades,3514,Cooks,2024,May,38.05164018
+Trades,3514,Cooks,2024,August,37.13049747
+Trades,3514,Cooks,2024,November,42.341546959999995
+Trades,3514,Cooks,2025,February,39.38622867
+Trades,3514,Cooks,2025,May,36.17736473
+Trades,3514,Cooks,2025,August,27.16472229
+Trades,3514,Cooks,2025,November,23.48678927
+Trades,3622,Gardeners,2020,February,65.81932269999999
+Trades,3622,Gardeners,2020,May,76.93336500000002
+Trades,3622,Gardeners,2020,August,69.46846343
+Trades,3622,Gardeners,2020,November,85.90986873000001
+Trades,3622,Gardeners,2021,February,78.10592054
+Trades,3622,Gardeners,2021,May,80.98080959999997
+Trades,3622,Gardeners,2021,August,79.09090803999997
+Trades,3622,Gardeners,2021,November,77.85647141999996
+Trades,3622,Gardeners,2022,February,83.26675974000004
+Trades,3622,Gardeners,2022,May,82.68294221999997
+Trades,3622,Gardeners,2022,August,79.2764301
+Trades,3622,Gardeners,2022,November,82.84534961
+Trades,3622,Gardeners,2023,February,90.04234483000002
+Trades,3622,Gardeners,2023,May,77.95582336000001
+Trades,3622,Gardeners,2023,August,74.95902188000001
+Trades,3622,Gardeners,2023,November,87.58517875999999
+Trades,3622,Gardeners,2024,February,87.27421812000001
+Trades,3622,Gardeners,2024,May,100.72015667000001
+Trades,3622,Gardeners,2024,August,77.85728177
+Trades,3622,Gardeners,2024,November,79.70071623
+Trades,3622,Gardeners,2025,February,85.19451541999999
+Trades,3622,Gardeners,2025,May,78.07741546
+Trades,3622,Gardeners,2025,August,92.70721376999998
+Trades,3622,Gardeners,2025,November,88.6183019
+Trades,3911,Hairdressers,2020,February,58.48555919000001
+Trades,3911,Hairdressers,2020,May,59.354262549999994
+Trades,3911,Hairdressers,2020,August,50.50759677
+Trades,3911,Hairdressers,2020,November,58.1757283
+Trades,3911,Hairdressers,2021,February,71.26926134
+Trades,3911,Hairdressers,2021,May,67.83602659000002
+Trades,3911,Hairdressers,2021,August,55.906439340000006
+Trades,3911,Hairdressers,2021,November,61.43997367
+Trades,3911,Hairdressers,2022,February,66.87758806
+Trades,3911,Hairdressers,2022,May,73.79619595
+Trades,3911,Hairdressers,2022,August,69.24758810000002
+Trades,3911,Hairdressers,2022,November,62.13016829
+Trades,3911,Hairdressers,2023,February,69.84262121
+Trades,3911,Hairdressers,2023,May,58.39307249000001
+Trades,3911,Hairdressers,2023,August,46.24554044
+Trades,3911,Hairdressers,2023,November,56.221993999999995
+Trades,3911,Hairdressers,2024,February,57.983300719999995
+Trades,3911,Hairdressers,2024,May,68.8578515
+Trades,3911,Hairdressers,2024,August,65.00112926
+Trades,3911,Hairdressers,2024,November,60.96743563
+Trades,3911,Hairdressers,2025,February,65.82368274
+Trades,3911,Hairdressers,2025,May,67.78424444999999
+Trades,3911,Hairdressers,2025,August,76.44072283000001
+Trades,3911,Hairdressers,2025,November,75.79028792999999
+Trades,3941,Cabinetmakers,2020,February,23.56772123
+Trades,3941,Cabinetmakers,2020,May,27.489057859999996
+Trades,3941,Cabinetmakers,2020,August,23.79320194
+Trades,3941,Cabinetmakers,2020,November,25.938093000000002
+Trades,3941,Cabinetmakers,2021,February,31.43424604000001
+Trades,3941,Cabinetmakers,2021,May,27.03315601
+Trades,3941,Cabinetmakers,2021,August,24.11225291
+Trades,3941,Cabinetmakers,2021,November,26.379571729999995
+Trades,3941,Cabinetmakers,2022,February,22.367538489999998
+Trades,3941,Cabinetmakers,2022,May,26.28911485
+Trades,3941,Cabinetmakers,2022,August,25.270540529999998
+Trades,3941,Cabinetmakers,2022,November,29.143958989999998
+Trades,3941,Cabinetmakers,2023,February,26.200768059999998
+Trades,3941,Cabinetmakers,2023,May,30.279020380000002
+Trades,3941,Cabinetmakers,2023,August,26.609424320000002
+Trades,3941,Cabinetmakers,2023,November,27.177525390000003
+Trades,3941,Cabinetmakers,2024,February,27.171008289999996
+Trades,3941,Cabinetmakers,2024,May,29.30015335
+Trades,3941,Cabinetmakers,2024,August,38.54702375000001
+Trades,3941,Cabinetmakers,2024,November,42.203358099999996
+Trades,3941,Cabinetmakers,2025,February,38.33290030999999
+Trades,3941,Cabinetmakers,2025,May,38.143875169999994
+Trades,3941,Cabinetmakers,2025,August,32.79456271
+Trades,3941,Cabinetmakers,2025,November,23.765966189999993
