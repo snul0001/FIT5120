@@ -6,6 +6,7 @@ import profileRoutes from "./routes/profileRoutes.js"
 import occupationRoutes from "./routes/occupationRoutes.js"
 import skillRoutes from "./routes/skillRoutes.js"
 import regionalRoutes from "./routes/regionalRoutes.js"
+import chatRoutes from "./routes/chatRoutes.js"
 
 config()
 
@@ -26,6 +27,10 @@ app.use("/api/occupations", occupationRoutes)
 
 app.use("/api/skills", skillRoutes)
 app.use("/api/regional", regionalRoutes)
+
+app.use("/api/chat", chatRoutes)                   
+
+
 
 const startServer = async () => {
   try {

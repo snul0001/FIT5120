@@ -1,32 +1,188 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  schemas  = ["Iteration3", "public"]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model occupation_employment {
+  anzsco_code String      @db.Char(4)
+  year        Int         @db.SmallInt
+  employed_k  Decimal     @db.Decimal(9, 4)
+  occupations occupations @relation(fields: [anzsco_code], references: [anzsco_code], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([anzsco_code, year])
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model occupation_interests {
+  anzsco_code   String      @db.Char(4)
+  position      Int         @db.SmallInt
+  interest_type String      @db.Char(1)
+  occupations   occupations @relation(fields: [anzsco_code], references: [anzsco_code], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([anzsco_code, position])
+  @@unique([anzsco_code, interest_type])
+  @@index([interest_type, position], map: "idx_it3_occupation_interests_type")
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model occupation_onet {
+  anzsco_code      String           @db.Char(4)
+  onet_code        String           @db.Char(10)
+  match_score      Decimal          @db.Decimal(3, 2)
+  review           String           @db.VarChar(7)
+  rationale        String
+  occupations      occupations      @relation(fields: [anzsco_code], references: [anzsco_code], onDelete: NoAction, onUpdate: NoAction)
+  onet_occupations onet_occupations @relation(fields: [onet_code], references: [onet_code], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([anzsco_code, onet_code])
+  @@index([onet_code], map: "idx_it3_occupation_onet_onet")
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model occupation_skills {
+  anzsco_code String      @db.Char(4)
+  skill_id    Int
+  position    Int?        @db.SmallInt
+  score_type  String?     @db.VarChar(14)
+  score       Decimal?    @db.Decimal(5, 2)
+  stars       Decimal?    @db.Decimal(2, 1)
+  occupations occupations @relation(fields: [anzsco_code], references: [anzsco_code], onDelete: NoAction, onUpdate: NoAction)
+  skills      skills      @relation(fields: [skill_id], references: [skill_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([anzsco_code, skill_id])
+  @@index([skill_id], map: "idx_it3_occupation_skills_skill")
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model occupations {
+  anzsco_code               String                  @id @db.Char(4)
+  name                      String                  @unique @db.VarChar(100)
+  category                  String                  @db.VarChar(10)
+  interest_code             String?                 @db.VarChar(3)
+  interest_source_onet_code String?                 @db.Char(10)
+  interest_selection_status String?                 @db.VarChar(15)
+  occupation_employment     occupation_employment[]
+  occupation_interests      occupation_interests[]
+  occupation_onet           occupation_onet[]
+  occupation_skills         occupation_skills[]
+  onet_occupations          onet_occupations?       @relation(fields: [interest_source_onet_code], references: [onet_code], onDelete: NoAction, onUpdate: NoAction)
+  regional_employment       regional_employment[]
+  tasks                     tasks[]
+
+  @@schema("Iteration3")
+}
+
+model onet_occupations {
+  onet_code       String            @id @db.Char(10)
+  title           String            @db.VarChar(150)
+  occupation_onet occupation_onet[]
+  occupations     occupations[]
+
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model regional_employment {
+  month       DateTime    @db.Date
+  region_code String      @db.VarChar(5)
+  anzsco_code String      @db.Char(4)
+  employed    Int
+  occupations occupations @relation(fields: [anzsco_code], references: [anzsco_code], onDelete: NoAction, onUpdate: NoAction)
+  regions     regions     @relation(fields: [region_code], references: [region_code], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([anzsco_code, region_code, month])
+  @@index([region_code, month], map: "idx_it3_regional_employment_region")
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model regional_vacancies {
+  month            DateTime @db.Date
+  region_code      String   @db.VarChar(5)
+  anzsco2_code     String   @db.Char(2)
+  vacancies_3m_avg Int
+  regions          regions  @relation(fields: [region_code], references: [region_code], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([anzsco2_code, region_code, month])
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model regions {
+  region_code         String                @id @db.VarChar(5)
+  name                String                @db.VarChar(50)
+  level               String                @db.VarChar(5)
+  state               String                @db.VarChar(3)
+  parent_region_code  String?               @db.VarChar(5)
+  regional_employment regional_employment[]
+  regional_vacancies  regional_vacancies[]
+  regions             regions?              @relation("regionsToregions", fields: [parent_region_code], references: [region_code], onDelete: NoAction, onUpdate: NoAction)
+  other_regions       regions[]             @relation("regionsToregions")
+
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model skills {
+  skill_id          Int                 @id @default(autoincrement())
+  name              String              @unique @db.VarChar(100)
+  skill_type        String              @db.VarChar(12)
+  occupation_skills occupation_skills[]
+
+  @@schema("Iteration3")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model tasks {
+  task_id           Int         @id @default(autoincrement())
+  anzsco_code       String      @db.Char(4)
+  task_core         String      @db.VarChar(255)
+  impact_group      String      @db.VarChar(12)
+  impact_level      String      @db.VarChar(6)
+  human_need_type   String      @db.VarChar(25)
+  short_explanation String
+  occupations       occupations @relation(fields: [anzsco_code], references: [anzsco_code], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([anzsco_code], map: "idx_it3_tasks_occupation")
+  @@schema("Iteration3")
 }
 
 model course {
   course_id String    @id @db.VarChar(50)
   label     String    @db.VarChar(150)
   profile   profile[]
+
+  @@schema("public")
 }
 
 model industry_sector {
   sector_id             String                  @id @db.VarChar(50)
   label                 String                  @db.VarChar(100)
-  occupation            occupation[]
   profile_industry_pref profile_industry_pref[]
+
+  @@schema("public")
 }
 
 model interest {
-  interest_id         String                @id @db.VarChar(50)
-  label               String                @db.VarChar(100)
-  occupation_interest occupation_interest[]
-  profile_interest    profile_interest[]
+  interest_id      String             @id @db.VarChar(50)
+  label            String             @db.VarChar(100)
+  profile_interest profile_interest[]
+
+  @@schema("public")
 }
 
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model jsa_task_score {
   jsa_task_id                Int      @id @default(autoincrement())
   anzsco_unit_group          String   @db.VarChar(4)
@@ -37,18 +193,17 @@ model jsa_task_score {
   augmentation_justification String?
 
   @@index([anzsco_unit_group], map: "idx_jsa_task_score_unit_group")
+  @@schema("public")
 }
 
 model occupation {
-  occupation_id                String                         @id @db.VarChar(6)
-  sector_id                    String?                        @db.VarChar(50)
+  occupation_id                String                         @id @db.VarChar(10)
   title                        String                         @db.VarChar(200)
-  is_curated                   Boolean                        @default(false)
-  industry_sector              industry_sector?               @relation(fields: [sector_id], references: [sector_id], onDelete: NoAction, onUpdate: NoAction)
+  is_curated                   Boolean?                       @default(false)
   occupation_interest          occupation_interest[]
   profile_occupation_selection profile_occupation_selection[]
 
-  @@index([sector_id], map: "idx_occupation_sector")
+  @@schema("public")
 }
 
 model occupation_anzsco_match {
@@ -61,147 +216,17 @@ model occupation_anzsco_match {
 
   @@id([occupation_id, anzsco_code])
   @@index([anzsco_unit_group], map: "idx_anzsco_match_unit_group")
+  @@schema("public")
 }
 
 model occupation_interest {
-  occupation_id String     @db.VarChar(6)
-  interest_id   String     @db.VarChar(50)
-  interest      interest   @relation(fields: [interest_id], references: [interest_id], onUpdate: NoAction)
-  occupation    occupation @relation(fields: [occupation_id], references: [occupation_id], onDelete: Cascade, onUpdate: NoAction)
+  id            Int         @id @default(autoincrement())
+  occupation_id String?     @db.VarChar(10)
+  interest_id   String      @db.VarChar(20)
+  occupation    occupation? @relation(fields: [occupation_id], references: [occupation_id], onDelete: NoAction, onUpdate: NoAction)
 
-  @@id([occupation_id, interest_id])
-  @@index([interest_id], map: "idx_occupation_interest")
-}
-
-model osca_unit_group {
-  unit_group_code                                                                  String                    @id @db.VarChar(4)
-  unit_group_title                                                                 String                    @db.VarChar(200)
-  occupation_anzsco_match_occupation_anzsco_match_osca_unit_groupToosca_unit_group occupation_anzsco_match[] @relation("occupation_anzsco_match_osca_unit_groupToosca_unit_group")
-}
-
-model postcode_region {
-  postcode        String          @id @db.VarChar(4)
-  state_code      String          @db.VarChar(3)
-  region_id       String          @db.VarChar(20)
-  region          region          @relation(fields: [region_id], references: [region_id], onDelete: NoAction, onUpdate: NoAction)
-  state_territory state_territory @relation(fields: [state_code], references: [state_code], onDelete: NoAction, onUpdate: NoAction)
-  profile         profile[]
-
-  @@index([region_id], map: "idx_postcode_region_region")
-}
-
-model profile {
-  profile_id                   String                         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  created_at                   DateTime                       @default(now()) @db.Timestamptz(6)
-  postcode                     String?                        @db.VarChar(4)
-  course_id                    String?                        @db.VarChar(50)
-  year_level_id                String?                        @db.VarChar(20)
-  age_bracket                  age_bracket_enum?
-  sex                          sex_enum?
-  course                       course?                        @relation(fields: [course_id], references: [course_id], onDelete: NoAction, onUpdate: NoAction)
-  postcode_region              postcode_region?               @relation(fields: [postcode], references: [postcode], onDelete: NoAction, onUpdate: NoAction)
-  year_level                   year_level?                    @relation(fields: [year_level_id], references: [year_level_id], onDelete: NoAction, onUpdate: NoAction)
-  profile_industry_pref        profile_industry_pref[]
-  profile_interest             profile_interest[]
-  profile_occupation_selection profile_occupation_selection[]
-  profile_skill                profile_skill[]
-  profile_work_arrangement     profile_work_arrangement[]
-  profile_work_style           profile_work_style[]
-}
-
-model profile_industry_pref {
-  profile_id      String          @db.Uuid
-  sector_id       String          @db.VarChar(50)
-  profile         profile         @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
-  industry_sector industry_sector @relation(fields: [sector_id], references: [sector_id], onUpdate: NoAction)
-
-  @@id([profile_id, sector_id])
-}
-
-model profile_interest {
-  profile_id  String   @db.Uuid
-  interest_id String   @db.VarChar(50)
-  interest    interest @relation(fields: [interest_id], references: [interest_id], onUpdate: NoAction)
-  profile     profile  @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@id([profile_id, interest_id])
-}
-
-model profile_occupation_selection {
-  selection_id  String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  profile_id    String     @db.Uuid
-  occupation_id String     @db.VarChar(6)
-  match_rank    Int        @default(1) @db.SmallInt
-  selected_at   DateTime   @default(now()) @db.Timestamptz(6)
-  occupation    occupation @relation(fields: [occupation_id], references: [occupation_id], onUpdate: NoAction)
-  profile       profile    @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@unique([profile_id, occupation_id], map: "uq_profile_occupation")
-  @@unique([profile_id, match_rank], map: "uq_profile_rank")
-}
-
-model profile_skill {
-  profile_id String    @db.Uuid
-  skill_id   String    @db.VarChar(50)
-  profile    profile   @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
-  skill_tag  skill_tag @relation(fields: [skill_id], references: [skill_id], onUpdate: NoAction)
-
-  @@id([profile_id, skill_id])
-}
-
-model profile_work_arrangement {
-  profile_id       String           @db.Uuid
-  arrangement_id   String           @db.VarChar(50)
-  work_arrangement work_arrangement @relation(fields: [arrangement_id], references: [arrangement_id], onUpdate: NoAction)
-  profile          profile          @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@id([profile_id, arrangement_id])
-}
-
-model profile_work_style {
-  profile_id    String     @db.Uuid
-  work_style_id String     @db.VarChar(50)
-  profile       profile    @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
-  work_style    work_style @relation(fields: [work_style_id], references: [work_style_id], onUpdate: NoAction)
-
-  @@id([profile_id, work_style_id])
-}
-
-model region {
-  region_id       String            @id @db.VarChar(20)
-  label           String            @db.VarChar(100)
-  postcode_region postcode_region[]
-}
-
-model skill_tag {
-  skill_id      String              @id @db.VarChar(120)
-  label         String              @db.VarChar(120)
-  category      skill_category_enum
-  profile_skill profile_skill[]
-}
-
-model state_territory {
-  state_code      String            @id @db.VarChar(3)
-  label           String            @db.VarChar(50)
-  postcode_region postcode_region[]
-}
-
-model work_arrangement {
-  arrangement_id           String                     @id @db.VarChar(50)
-  label                    String                     @db.VarChar(100)
-  profile_work_arrangement profile_work_arrangement[]
-}
-
-model work_style {
-  work_style_id      String               @id @db.VarChar(50)
-  label              String               @db.VarChar(100)
-  profile_work_style profile_work_style[]
-}
-
-model year_level {
-  year_level_id String    @id @db.VarChar(20)
-  label         String    @db.VarChar(50)
-  profile       profile[]
+  @@unique([occupation_id, interest_id])
+  @@schema("public")
 }
 
 model occupation_skill_requirement {
@@ -213,6 +238,116 @@ model occupation_skill_requirement {
   category         String  @db.VarChar(20)
 
   @@unique([occupation_id, skill_id])
+  @@schema("public")
+}
+
+model osca_unit_group {
+  unit_group_code                                                                  String                    @id @db.VarChar(4)
+  unit_group_title                                                                 String                    @db.VarChar(200)
+  occupation_anzsco_match_occupation_anzsco_match_osca_unit_groupToosca_unit_group occupation_anzsco_match[] @relation("occupation_anzsco_match_osca_unit_groupToosca_unit_group")
+
+  @@schema("public")
+}
+
+model postcode_region {
+  postcode        String          @id @db.VarChar(4)
+  state_code      String          @db.VarChar(3)
+  region_id       String          @db.VarChar(20)
+  region          region          @relation(fields: [region_id], references: [region_id], onDelete: NoAction, onUpdate: NoAction)
+  state_territory state_territory @relation(fields: [state_code], references: [state_code], onDelete: NoAction, onUpdate: NoAction)
+  profile         profile[]
+
+  @@index([region_id], map: "idx_postcode_region_region")
+  @@schema("public")
+}
+
+model profile {
+  profile_id               String                     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  created_at               DateTime                   @default(now()) @db.Timestamptz(6)
+  postcode                 String?                    @db.VarChar(4)
+  course_id                String?                    @db.VarChar(50)
+  year_level_id            String?                    @db.VarChar(20)
+  age_bracket              age_bracket_enum?
+  sex                      sex_enum?
+  course                   course?                    @relation(fields: [course_id], references: [course_id], onDelete: NoAction, onUpdate: NoAction)
+  postcode_region          postcode_region?           @relation(fields: [postcode], references: [postcode], onDelete: NoAction, onUpdate: NoAction)
+  year_level               year_level?                @relation(fields: [year_level_id], references: [year_level_id], onDelete: NoAction, onUpdate: NoAction)
+  profile_industry_pref    profile_industry_pref[]
+  profile_interest         profile_interest[]
+  profile_skill            profile_skill[]
+  profile_work_arrangement profile_work_arrangement[]
+  profile_work_style       profile_work_style[]
+
+  @@schema("public")
+}
+
+model profile_industry_pref {
+  profile_id      String          @db.Uuid
+  sector_id       String          @db.VarChar(50)
+  profile         profile         @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+  industry_sector industry_sector @relation(fields: [sector_id], references: [sector_id], onUpdate: NoAction)
+
+  @@id([profile_id, sector_id])
+  @@schema("public")
+}
+
+model profile_interest {
+  profile_id  String   @db.Uuid
+  interest_id String   @db.VarChar(50)
+  interest    interest @relation(fields: [interest_id], references: [interest_id], onUpdate: NoAction)
+  profile     profile  @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([profile_id, interest_id])
+  @@schema("public")
+}
+
+model profile_occupation_selection {
+  selection_id  String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  profile_id    String      @db.Uuid
+  occupation_id String?     @db.VarChar(10)
+  match_rank    Int?        @db.SmallInt
+  selected_at   DateTime?   @default(now()) @db.Timestamptz(6)
+  occupation    occupation? @relation(fields: [occupation_id], references: [occupation_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@schema("public")
+}
+
+model profile_skill {
+  profile_id String    @db.Uuid
+  skill_id   String    @db.VarChar(50)
+  profile    profile   @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+  skill_tag  skill_tag @relation(fields: [skill_id], references: [skill_id], onUpdate: NoAction)
+
+  @@id([profile_id, skill_id])
+  @@schema("public")
+}
+
+model profile_work_arrangement {
+  profile_id       String           @db.Uuid
+  arrangement_id   String           @db.VarChar(50)
+  work_arrangement work_arrangement @relation(fields: [arrangement_id], references: [arrangement_id], onUpdate: NoAction)
+  profile          profile          @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([profile_id, arrangement_id])
+  @@schema("public")
+}
+
+model profile_work_style {
+  profile_id    String     @db.Uuid
+  work_style_id String     @db.VarChar(50)
+  profile       profile    @relation(fields: [profile_id], references: [profile_id], onDelete: Cascade, onUpdate: NoAction)
+  work_style    work_style @relation(fields: [work_style_id], references: [work_style_id], onUpdate: NoAction)
+
+  @@id([profile_id, work_style_id])
+  @@schema("public")
+}
+
+model region {
+  region_id       String            @id @db.VarChar(20)
+  label           String            @db.VarChar(100)
+  postcode_region postcode_region[]
+
+  @@schema("public")
 }
 
 model regional_employment_demand {
@@ -225,6 +360,8 @@ model regional_employment_demand {
   anzsco2_code              Int
   anzsco2_name              String  @db.VarChar(100)
   vacancy_3m_moving_average Decimal @db.Decimal(10, 2)
+
+  @@schema("public")
 }
 
 model regional_employment_opportunity {
@@ -238,6 +375,8 @@ model regional_employment_opportunity {
   anzsco2_code     Int
   anzsco2_name     String @db.VarChar(100)
   employment_value Int
+
+  @@schema("public")
 }
 
 model regional_ict_occupation_mapping {
@@ -245,17 +384,64 @@ model regional_ict_occupation_mapping {
   anzsco4_name String @db.VarChar(100)
   anzsco2_code Int
   anzsco2_name String @db.VarChar(100)
+
+  @@schema("public")
+}
+
+model skill_tag {
+  skill_id      String              @id @db.VarChar(120)
+  label         String              @db.VarChar(120)
+  category      skill_category_enum
+  profile_skill profile_skill[]
+
+  @@schema("public")
+}
+
+model state_territory {
+  state_code      String            @id @db.VarChar(3)
+  label           String            @db.VarChar(50)
+  postcode_region postcode_region[]
+
+  @@schema("public")
+}
+
+model work_arrangement {
+  arrangement_id           String                     @id @db.VarChar(50)
+  label                    String                     @db.VarChar(100)
+  profile_work_arrangement profile_work_arrangement[]
+
+  @@schema("public")
+}
+
+model work_style {
+  work_style_id      String               @id @db.VarChar(50)
+  label              String               @db.VarChar(100)
+  profile_work_style profile_work_style[]
+
+  @@schema("public")
+}
+
+model year_level {
+  year_level_id String    @id @db.VarChar(20)
+  label         String    @db.VarChar(50)
+  profile       profile[]
+
+  @@schema("public")
 }
 
 enum age_bracket_enum {
   age_18_20
   age_21_23
   age_24_plus
+
+  @@schema("public")
 }
 
 enum match_type_enum {
   exact
   partial
+
+  @@schema("public")
 }
 
 enum sex_enum {
@@ -263,10 +449,14 @@ enum sex_enum {
   female
   other
   prefer_not_to_say
+
+  @@schema("public")
 }
 
 enum skill_category_enum {
   foundational
   transferable
   technical
+
+  @@schema("public")
 }
