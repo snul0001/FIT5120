@@ -8,6 +8,9 @@ import skillRoutes from "./routes/skillRoutes.js"
 import regionalRoutes from "./routes/regionalRoutes.js"
 import chatRoutes from "./routes/chatRoutes.js"
 
+import occupationRoutesV3 from "./routes/v3/occupationRoutes.js"
+import skillRoutesV3 from "./routes/v3/skillRoutes.js"
+
 config()
 
 const app = express()
@@ -28,7 +31,10 @@ app.use("/api/occupations", occupationRoutes)
 app.use("/api/skills", skillRoutes)
 app.use("/api/regional", regionalRoutes)
 
-app.use("/api/chat", chatRoutes)                   
+app.use("/api/chat", chatRoutes)      
+
+app.use("/api/v3/occupations", occupationRoutesV3)
+app.use("/api/v3/skills", skillRoutesV3)
 
 
 
