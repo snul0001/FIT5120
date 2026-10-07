@@ -38,7 +38,6 @@ router.post("/gap", async (req, res) => {
     }
 
     res.json({
-<<<<<<< Updated upstream
   occupation_id,
   total_required: requirements.length,
   matched_count: matched.length,
@@ -47,16 +46,6 @@ router.post("/gap", async (req, res) => {
   matched,
   missing: missing.slice(0, 10)
 })
-=======
-      occupation_id,
-      total_required: requirements.length,
-      matched_count: matched.length,
-      missing_count: missing.length,
-      match_percentage: Math.round((matched.length / requirements.length) * 100),
-      matched,
-      missing: missing.slice(0, 10)
-    })
->>>>>>> Stashed changes
 
   } catch (error) {
     console.error(error)
