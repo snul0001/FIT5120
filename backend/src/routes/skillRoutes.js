@@ -38,14 +38,14 @@ router.post("/gap", async (req, res) => {
     }
 
     res.json({
-      occupation_id,
-      total_required: requirements.length,
-      matched_count: matched.length,
-      missing_count: missing.length,
-      match_percentage: Math.round((matched.length / requirements.length) * 100),
-      matched,
-      missing
-    })
+  occupation_id,
+  total_required: requirements.length,
+  matched_count: matched.length,
+  missing_count: missing.length,
+  match_percentage: Math.round((matched.length / requirements.length) * 100),
+  matched,
+  missing: missing.slice(0, 10)
+})
 
   } catch (error) {
     console.error(error)
