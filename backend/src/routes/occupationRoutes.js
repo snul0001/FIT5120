@@ -181,11 +181,19 @@ router.post("/match", async (req, res) => {
 
     // Step 1 — Interest matching (always runs)
     const matches = await prisma.occupation_interest.findMany({
+<<<<<<< Updated upstream
     where: { interest_id: { in: uniqueInterestIds } },
     include: {
     occupation: true
   }
 })
+=======
+  	where: { interest_id: { in: uniqueInterestIds } },
+  	include: {
+    	occupation: true
+  	}
+	})
+>>>>>>> Stashed changes
 
     const scoreMap = {}
     for (const match of matches) {
