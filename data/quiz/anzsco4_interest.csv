@@ -1,0 +1,82 @@
+ANZSCO_code,ANZSCO_title,Interest_Code,source_ONET_code,source_ONET_title,source_Match_score,selection_status
+2111,"Actors, Dancers and Other Entertainers",ASE,27-2011.00,Actors,0.4,unique_highest
+2112,Music Professionals,AE,27-2041.00,Music Directors and Composers,0.5,team_confirmed
+2113,Photographers,RA,27-4021.00,Photographers,0.7,unique_highest
+2114,Visual Arts and Crafts Professionals,AR,27-1013.00,"Fine Artists, Including Painters, Sculptors, and Illustrators",0.6,unique_highest
+2121,"Artistic Directors, Media Producers and Presenters",AE,27-2012.00,Producers and Directors,0.55,unique_highest
+2122,"Authors, and Book and Script Editors",ACE,27-3041.00,Editors,0.5,team_confirmed
+2124,Journalists and Other Writers,AIE,27-3023.00,"News Analysts, Reporters, and Journalists",0.35,unique_highest
+2211,Accountants,CEI,13-2011.00,Accountants and Auditors,0.7,unique_highest
+2212,"Auditors, Company Secretaries and Corporate Treasurers",CEI,13-2011.00,Accountants and Auditors,0.45,unique_highest
+2221,Financial Brokers,CES,13-2072.00,Loan Officers,0.4,unique_highest
+2223,Financial Investment Advisers and Managers,ECS,13-2052.00,Personal Financial Advisors,0.5,unique_highest
+2231,Human Resource Professionals,ECS,13-1071.00,Human Resources Specialists,0.6,unique_highest
+2232,ICT Trainers,SI,13-1151.00,Training and Development Specialists,0.7,unique_highest
+2241,"Actuaries, Mathematicians and Statisticians",CIE,15-2011.00,Actuaries,0.4,unique_highest
+2243,Economists,ICE,19-3011.00,Economists,1.0,unique_highest
+2244,Intelligence and Policy Analysts,ICE,33-3021.06,Intelligence Analysts,0.55,unique_highest
+2247,Management and Organisation Analysts,CIE,13-1111.00,Management Analysts,1.0,unique_highest
+2251,Advertising and Marketing Professionals,ECI,13-1161.00,Market Research Analysts and Marketing Specialists,0.7,unique_highest
+2252,ICT Sales Professionals,EC,41-4011.00,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",0.6,unique_highest
+2253,Public Relations Professionals,EAS,27-3031.00,Public Relations Specialists,0.75,unique_highest
+2323,"Fashion, Industrial and Jewellery Designers",ARI,27-1021.00,Commercial and Industrial Designers,0.4,unique_highest
+2324,"Graphic and Web Designers, and Illustrators",AC,27-1024.00,Graphic Designers,0.4,unique_highest
+2325,Interior Designers,AR,27-1025.00,Interior Designers,1.0,unique_highest
+2346,Medical Laboratory Scientists,IRC,29-2011.00,Medical and Clinical Laboratory Technologists,0.6,unique_highest
+2511,Nutrition Professionals,SI,29-1031.00,Dietitians and Nutritionists,0.8,unique_highest
+2512,Medical Imaging Professionals,RCI,29-2034.00,Radiologic Technologists and Technicians,0.35,unique_highest
+2515,Pharmacists,ISC,29-1051.00,Pharmacists,0.7,unique_highest
+2523,Dental Practitioners,IRS,29-1021.00,"Dentists, General",0.7,unique_highest
+2524,Occupational Therapists,SI,29-1122.00,Occupational Therapists,1.0,unique_highest
+2525,Physiotherapists,SIR,29-1123.00,Physical Therapists,1.0,unique_highest
+2527,Audiologists and Speech Pathologists / Therapists,IS,29-1181.00,Audiologists,0.5,team_confirmed
+2541,Midwives,SR,29-9099.01,Midwives,0.5,team_confirmed
+2544,Registered Nurses,SCI,29-1141.00,Registered Nurses,1.0,unique_highest
+2611,ICT Business and Systems Analysts,IC,15-1211.00,Computer Systems Analysts,0.7,unique_highest
+2612,Multimedia Specialists and Web Developers,CI,15-1254.00,Web Developers,0.4,unique_highest
+2613,Software and Applications Programmers,IC,15-1252.00,Software Developers,0.45,unique_highest
+2621,"Database and Systems Administrators, and ICT Security Specialists",CI,15-1242.00,Database Administrators,0.35,team_confirmed
+2631,Computer Network Professionals,CRI,15-1244.00,Network and Computer Systems Administrators,0.5,unique_highest
+2632,ICT Support and Test Engineers,ICR,15-1253.00,Software Quality Assurance Analysts and Testers,0.5,team_confirmed
+2633,Telecommunications Engineering Professionals,CRI,15-1241.01,Telecommunications Engineering Specialists,0.6,unique_highest
+2723,Psychologists and Psychotherapists,SI,19-3033.00,Clinical and Counseling Psychologists,0.5,unique_highest
+3112,Medical Technicians,RIC,29-2031.00,Cardiovascular Technologists and Technicians,0.3,unique_highest
+3131,ICT Support Technicians,CRI,15-1232.00,Computer User Support Specialists,0.7,unique_highest
+3132,Telecommunications Technical Specialists,RC,49-2022.00,"Telecommunications Equipment Installers and Repairers, Except Line Installers",0.45,unique_highest
+3211,Automotive Electricians,RCI,49-2096.00,"Electronic Equipment Installers and Repairers, Motor Vehicles",0.55,unique_highest
+3212,Motor Mechanics,RCI,49-3023.00,Automotive Service Technicians and Mechanics,0.8,unique_highest
+3223,Structural Steel and Welding Trades Workers,RC,51-4121.00,"Welders, Cutters, Solderers, and Brazers",0.5,unique_highest
+3231,Aircraft Maintenance Engineers,RCI,49-3011.00,Aircraft Mechanics and Service Technicians,0.65,unique_highest
+3232,Metal Fitters and Machinists,RCI,51-4041.00,Machinists,0.55,unique_highest
+3311,Bricklayers and Stonemasons,RC,47-2021.00,Brickmasons and Blockmasons,0.55,unique_highest
+3312,Carpenters and Joiners,RC,47-2031.00,Carpenters,0.7,unique_highest
+3322,Painting Trades Workers,RC,47-2141.00,"Painters, Construction and Maintenance",0.75,unique_highest
+3341,Plumbers,RC,47-2152.00,"Plumbers, Pipefitters, and Steamfitters",1.0,unique_highest
+3411,Electricians,RC,47-2111.00,Electricians,1.0,unique_highest
+3421,Airconditioning and Refrigeration Mechanics,RC,49-9021.00,"Heating, Air Conditioning, and Refrigeration Mechanics and Installers",1.0,unique_highest
+3423,Electronics Trades Workers,RCI,49-2094.00,"Electrical and Electronics Repairers, Commercial and Industrial Equipment",0.7,unique_highest
+3424,Telecommunications Trades Workers,RC,49-2022.00,"Telecommunications Equipment Installers and Repairers, Except Line Installers",0.55,unique_highest
+3513,Chefs,ERC,35-1011.00,Chefs and Head Cooks,1.0,unique_highest
+3514,Cooks,RCE,35-2014.00,"Cooks, Restaurant",0.7,unique_highest
+3613,Veterinary Nurses,RIC,29-2056.00,Veterinary Technologists and Technicians,0.75,unique_highest
+3622,Gardeners,RC,37-3011.00,Landscaping and Groundskeeping Workers,0.7,unique_highest
+3911,Hairdressers,RCS,39-5012.00,"Hairdressers, Hairstylists, and Cosmetologists",0.7,unique_highest
+3941,Cabinetmakers,RC,51-7011.00,Cabinetmakers and Bench Carpenters,0.75,unique_highest
+3995,Performing Arts Technicians,RAC,27-4014.00,Sound Engineering Technicians,0.25,team_confirmed
+4111,Ambulance Officers and Paramedics,SRI,29-2043.00,Paramedics,0.6,unique_highest
+4112,"Dental Hygienists, Technicians and Therapists",SRI,29-1292.00,Dental Hygienists,0.65,unique_highest
+4114,Enrolled and Mothercraft Nurses,SCR,29-2061.00,Licensed Practical and Licensed Vocational Nurses,0.65,unique_highest
+4231,Aged and Disabled Carers,SCR,31-1122.00,Personal Care Aides,0.5,team_confirmed
+4232,Dental Assistants,CRS,31-9091.00,Dental Assistants,1.0,unique_highest
+4233,Nursing Support and Personal Care Workers,SRC,31-1131.00,Nursing Assistants,0.6,unique_highest
+5111,"Contract, Program and Project Administrators",EC,13-1082.00,Project Management Specialists,0.6,unique_highest
+5211,Personal Assistants,CES,43-6011.00,Executive Secretaries and Executive Administrative Assistants,0.7,unique_highest
+5311,General Clerks,C,43-9061.00,"Office Clerks, General",0.65,unique_highest
+5511,Accounting Clerks,CE,43-3031.00,"Bookkeeping, Accounting, and Auditing Clerks",0.5,unique_highest
+5512,Bookkeepers,CE,43-3031.00,"Bookkeeping, Accounting, and Auditing Clerks",0.7,unique_highest
+5521,Bank Workers,CE,43-3071.00,Tellers,0.7,unique_highest
+5522,Credit and Loans Officers,CES,43-4131.00,Loan Interviewers and Clerks,0.4,unique_highest
+5911,Purchasing and Supply Logistics Clerks,CRE,43-5071.00,"Shipping, Receiving, and Inventory Clerks",0.4,unique_highest
+5994,Human Resource Clerks,CES,43-4161.00,"Human Resources Assistants, Except Payroll and Timekeeping",0.8,unique_highest
+6121,Real Estate Sales Agents,ECS,41-9022.00,Real Estate Sales Agents,0.75,unique_highest
+6212,ICT Sales Assistants,EC,41-2031.00,Retail Salespersons,1.0,unique_highest

@@ -1,0 +1,339 @@
+IResi Interest Code pipeline validation
+Project ranking scores; no percentages or official O*NET quiz scoring.
+
+Input: /Users/xuer/Desktop/5120/iteration3/quiz/quiz_questions_riasec.csv — 60 rows, 6 columns
+question_id      object
+question         object
+answer_id        object
+answer_text      object
+riasec_code      object
+display_order     int64
+PASS: 10 questions, six answers each, one of every RIASEC label, no missing labels, unique answer IDs.
+PASS: Q1 reads 'Which activity sounds most interesting to you?' in all six answer rows.
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Realistic.csv — 404 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Investigative.csv — 147 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Artistic.csv — 65 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Social.csv — 139 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Enterprising.csv — 114 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Conventional.csv — 180 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Combined interest rows: 1049
+Missing interest fields: {'ONET_code': 0, 'ONET_title': 0, 'Interest_Code': 0, 'Job_Zone': 0}
+Conflicting official Interest Codes: None
+Repeated occupation/Interest Code rows removed: 126
+Unique O*NET occupations: 923
+Official code lengths: {np.int64(1): 20, np.int64(2): 413, np.int64(3): 490}
+PASS: one official Interest Code per O*NET occupation.
+
+Input: /Users/xuer/Desktop/5120/iteration3/quiz/preprocessed_mapping.csv — 179 rows, 7 columns
+ANZSCO_code     string[python]
+ANZSCO_title            object
+ONET_code       string[python]
+ONET_title              object
+Match_score            float64
+Rationale               object
+Review                  object
+
+Mapping missing values: {'ANZSCO_code': 0, 'ANZSCO_title': 0, 'ONET_code': 0, 'ONET_title': 0, 'Match_score': 0, 'Rationale': 0, 'Review': 0}
+Exact duplicate mapping rows: 0
+Repeated ANZSCO/O*NET pairs: 0
+Review counts (all retained): {'matches': 118, 'partial': 61}
+Mapped O*NET coverage: 159/159 unique occupations; 179/179 rows
+ANZSCO group coverage: 81/81
+Unmatched O*NET codes: None
+Joined missing values: {'ANZSCO_code': 0, 'ANZSCO_title': 0, 'ONET_code': 0, 'ONET_title': 0, 'Match_score': 0, 'Rationale': 0, 'Review': 0, 'Interest_Code': 0}
+Mapping weight sums:
+ANZSCO_code
+2111    1.0
+2112    1.0
+2113    1.0
+2114    1.0
+2121    1.0
+2122    1.0
+2124    1.0
+2211    1.0
+2212    1.0
+2221    1.0
+2223    1.0
+2231    1.0
+2232    1.0
+2241    1.0
+2243    1.0
+2244    1.0
+2247    1.0
+2251    1.0
+2252    1.0
+2253    1.0
+2323    1.0
+2324    1.0
+2325    1.0
+2346    1.0
+2511    1.0
+2512    1.0
+2515    1.0
+2523    1.0
+2524    1.0
+2525    1.0
+2527    1.0
+2541    1.0
+2544    1.0
+2611    1.0
+2612    1.0
+2613    1.0
+2621    1.0
+2631    1.0
+2632    1.0
+2633    1.0
+2723    1.0
+3112    1.0
+3131    1.0
+3132    1.0
+3211    1.0
+3212    1.0
+3223    1.0
+3231    1.0
+3232    1.0
+3311    1.0
+3312    1.0
+3322    1.0
+3341    1.0
+3411    1.0
+3421    1.0
+3423    1.0
+3424    1.0
+3513    1.0
+3514    1.0
+3613    1.0
+3622    1.0
+3911    1.0
+3941    1.0
+3995    1.0
+4111    1.0
+4112    1.0
+4114    1.0
+4231    1.0
+4232    1.0
+4233    1.0
+5111    1.0
+5211    1.0
+5311    1.0
+5511    1.0
+5512    1.0
+5521    1.0
+5522    1.0
+5911    1.0
+5994    1.0
+6121    1.0
+6212    1.0
+
+Synthetic responses are software validation inputs only, not saved dataset rows.
+
+Strong Realistic: counts={'R': 10, 'I': 0, 'A': 0, 'S': 0, 'E': 0, 'C': 0}; user Interest Code=R
+2113 | Photographers | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+2512 | Medical Imaging Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+3211 | Automotive Electricians | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+3212 | Motor Mechanics | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+3223 | Structural Steel and Welding Trades Workers | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Realistic -> R; O*NET codes without R score zero.
+
+Strong Investigative: counts={'R': 0, 'I': 10, 'A': 0, 'S': 0, 'E': 0, 'C': 0}; user Interest Code=I
+2243 | Economists | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2244 | Intelligence and Policy Analysts | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2346 | Medical Laboratory Scientists | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2515 | Pharmacists | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2523 | Dental Practitioners | ANZSCO interest score=3.8500
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Investigative -> I; O*NET codes without I score zero.
+
+Strong Artistic: counts={'R': 0, 'I': 0, 'A': 10, 'S': 0, 'E': 0, 'C': 0}; user Interest Code=A
+2111 | Actors, Dancers and Other Entertainers | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2112 | Music Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2114 | Visual Arts and Crafts Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2121 | Artistic Directors, Media Producers and Presenters | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2122 | Authors, and Book and Script Editors | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Artistic -> A; O*NET codes without A score zero.
+
+Strong Social: counts={'R': 0, 'I': 0, 'A': 0, 'S': 10, 'E': 0, 'C': 0}; user Interest Code=S
+2511 | Nutrition Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2524 | Occupational Therapists | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2525 | Physiotherapists | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2541 | Midwives | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2544 | Registered Nurses | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Social -> S; O*NET codes without S score zero.
+
+Strong Enterprising: counts={'R': 0, 'I': 0, 'A': 0, 'S': 0, 'E': 10, 'C': 0}; user Interest Code=E
+2231 | Human Resource Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+2251 | Advertising and Marketing Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+2252 | ICT Sales Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+2253 | Public Relations Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+3513 | Chefs | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Enterprising -> E; O*NET codes without E score zero.
+
+Strong Conventional: counts={'R': 0, 'I': 0, 'A': 0, 'S': 0, 'E': 0, 'C': 10}; user Interest Code=C
+2211 | Accountants | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+2212 | Auditors, Company Secretaries and Corporate Treasurers | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+2247 | Management and Organisation Analysts | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+2621 | Database and Systems Administrators, and ICT Security Specialists | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+4232 | Dental Assistants | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Conventional -> C; O*NET codes without C score zero.
+
+Mixed 1: counts={'R': 2, 'I': 4, 'A': 0, 'S': 1, 'E': 1, 'C': 2}; user Interest Code=ICR
+2346 | Medical Laboratory Scientists | ANZSCO interest score=10.0000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2632 | ICT Support and Test Engineers | ANZSCO interest score=10.0000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2631 | Computer Network Professionals | ANZSCO interest score=9.6000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2613 | Software and Applications Programmers | ANZSCO interest score=8.1000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2243 | Economists | ANZSCO interest score=8.0000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+
+Mixed 2: counts={'R': 0, 'I': 0, 'A': 4, 'S': 3, 'E': 2, 'C': 1}; user Interest Code=ASE
+2111 | Actors, Dancers and Other Entertainers | ANZSCO interest score=9.2500
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Social, Enterprising interests in the mapped O*NET occupations.
+2121 | Artistic Directors, Media Producers and Presenters | ANZSCO interest score=8.3500
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Social, Enterprising interests in the mapped O*NET occupations.
+2122 | Authors, and Book and Script Editors | ANZSCO interest score=7.5000
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Enterprising interests in the mapped O*NET occupations.
+2253 | Public Relations Professionals | ANZSCO interest score=7.2500
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Social, Enterprising interests in the mapped O*NET occupations.
+2112 | Music Professionals | ANZSCO interest score=7.0000
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Enterprising interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+
+Mixed 3: counts={'R': 3, 'I': 1, 'A': 0, 'S': 1, 'E': 2, 'C': 3}; user Interest Code=CRE
+5911 | Purchasing and Supply Logistics Clerks | ANZSCO interest score=10.0500
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic, Enterprising interests in the mapped O*NET occupations.
+3514 | Cooks | ANZSCO interest score=8.8000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic, Enterprising interests in the mapped O*NET occupations.
+2247 | Management and Organisation Analysts | ANZSCO interest score=8.0000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Enterprising interests in the mapped O*NET occupations.
+3513 | Chefs | ANZSCO interest score=8.0000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic, Enterprising interests in the mapped O*NET occupations.
+4232 | Dental Assistants | ANZSCO interest score=8.0000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+
+Strong-profile ranking comparisons:
+Strong Realistic / Strong Investigative: top-five overlap 0/5
+Strong Realistic / Strong Artistic: top-five overlap 0/5
+Strong Realistic / Strong Social: top-five overlap 0/5
+Strong Realistic / Strong Enterprising: top-five overlap 0/5
+Strong Realistic / Strong Conventional: top-five overlap 0/5
+Strong Investigative / Strong Artistic: top-five overlap 0/5
+Strong Investigative / Strong Social: top-five overlap 0/5
+Strong Investigative / Strong Enterprising: top-five overlap 0/5
+Strong Investigative / Strong Conventional: top-five overlap 0/5
+Strong Artistic / Strong Social: top-five overlap 0/5
+Strong Artistic / Strong Enterprising: top-five overlap 0/5
+Strong Artistic / Strong Conventional: top-five overlap 0/5
+Strong Social / Strong Enterprising: top-five overlap 0/5
+Strong Social / Strong Conventional: top-five overlap 0/5
+Strong Enterprising / Strong Conventional: top-five overlap 0/5
+PASS: 6 distinct top-five lists across six strong profiles.
+PASS: rejected incomplete quiz: Incomplete or invalid quiz: exactly one answer to each of Q1–Q10 is required.
+PASS: rejected duplicate selection: Duplicate answer selection for one question.
+PASS: rejected invalid answer ID: Invalid answer ID 'INVALID' for Q1.
+PASS: rejected wrong question answer: Invalid answer ID 'Q2_3' for Q1.
+PASS: code/tie test RRRIIISSCC -> IRC; reversed submission order gives same result.
+PASS: code/tie test IIIRRRCCSS -> RIS; reversed submission order gives same result.
+PASS: code/tie test SSSSSSSSSS -> S; reversed submission order gives same result.
+PASS: code/tie test IIIIIIICCC -> IC; reversed submission order gives same result.
+PASS: code/tie test IIIIICCCCC -> CI; reversed submission order gives same result.
+PASS: code/tie test CCCCCIIIII -> IC; reversed submission order gives same result.
+PASS: hand-calculated position scores for one-, two- and three-letter user and occupation codes.
+PASS: empty, repeated-letter, overlength and invalid-letter user codes rejected.
+
+PASS: exported CSVs reread correctly; all source hashes unchanged; quiz text never rewritten.
+Source SHA-256 hashes:
+/Users/xuer/Desktop/5120/iteration3/quiz/quiz_questions_riasec.csv f6f4809753d2df5bd53bcd6532232bbe50bcb024db3df9889f36bf19e9496f8a
+/Users/xuer/Desktop/5120/iteration3/quiz/preprocessed_mapping.csv 2887ebe99efd88da635e2fb6d5ac2f7699acde13555ac3873bb636b06830725a
+/Users/xuer/Desktop/5120/iteration3/data/raw/Realistic.csv 4d5ea1a24ddb4cb17cd18efec8b6a9c4ff243684b1451a5d25d2004fc5b969c8
+/Users/xuer/Desktop/5120/iteration3/data/raw/Investigative.csv c2d4f1954bea4fc4da2ed8a2ac5175ea1f193029671adf4f5590f7c71b9ae0c1
+/Users/xuer/Desktop/5120/iteration3/data/raw/Artistic.csv 49ce73340fe9d6e3d1591ea887752962fba53567847260ed880545094c109ea6
+/Users/xuer/Desktop/5120/iteration3/data/raw/Social.csv ecec49353145b1d0fbde4c49864981daf7f0450577471b90e76b8cb035bd7ad2
+/Users/xuer/Desktop/5120/iteration3/data/raw/Enterprising.csv 2f1c99e44ec0412b66fc9e77a39e020becadf62f7b969c44fb2fba5bfd59824f
+/Users/xuer/Desktop/5120/iteration3/data/raw/Conventional.csv c5a1f1b525a1bcbdd4c6beda4cd4bc372660fa674026bc00202d066c9ef4645e
+OVERALL PASS: all required checks passed. Review any coverage warnings above.
