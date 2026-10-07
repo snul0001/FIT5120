@@ -365,7 +365,7 @@ export default function RegionalInsights({ onBack }) {
                 const share = totalOpps > 0 ? Math.round((stateOpps / totalOpps) * 100) : 0;
 
                 return (
-                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-[#1A233A]/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-zinc-200 dark:border-white/10 flex items-center justify-between">
+                  <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-[#1A233A]/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-zinc-200 dark:border-white/10 flex items-center justify-between pointer-events-none">
                     <div className="flex items-center gap-3">
                       <div className="p-2 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex-shrink-0">
                         <MapPin className="w-4 h-4" />
