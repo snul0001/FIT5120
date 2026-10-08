@@ -10,6 +10,9 @@ import chatRoutes from "./routes/chatRoutes.js"
 
 import occupationRoutesV3 from "./routes/v3/occupationRoutes.js"
 import skillRoutesV3 from "./routes/v3/skillRoutes.js"
+import planRoutes from "./routes/v3/planRoutes.js"
+
+import regionalRoutesV3 from "./routes/v3/regionalRoutesV3.js"
 
 config()
 
@@ -35,6 +38,9 @@ app.use("/api/chat", chatRoutes)
 
 app.use("/api/v3/occupations", occupationRoutesV3)
 app.use("/api/v3/skills", skillRoutesV3)
+
+app.use("/api/v3/plans", planRoutes)
+app.use("/api/v3/regional", regionalRoutesV3)
 
 
 
