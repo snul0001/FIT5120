@@ -68,16 +68,8 @@ export default function Chatbot({
   useEffect(() => {
     if (!visible) {
       setIsOpen(false);
-      previousVisible.current = false;
-      return;
     }
-
-    if (!previousVisible.current && currentPage === 'results') {
-      setIsOpen(true);
-    }
-
-    previousVisible.current = true;
-  }, [visible, currentPage]);
+  }, [visible]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
