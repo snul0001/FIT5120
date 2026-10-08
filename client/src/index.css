@@ -1,1 +1,14 @@
 @import "tailwindcss";
+/* The scroll background being blank issue solved here */
+html,
+body,
+#root {
+  min-height: 100%;
+  background: #FAFAFA;
+}
+
+.dark,
+.dark body,
+.dark #root {
+  background: #0B1121;
+}
