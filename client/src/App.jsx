@@ -14,6 +14,7 @@ import SkillGapCheck from './components/SkillGapCheck';
 import RegionalInsights from './components/RegionalInsights';
 import { matchOccupations, getOccupationAI, getSkills, getSkillGap, BASE_URL } from './api/client';
 import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
+import Chatbot from './components/Chatbot';
 
 const INITIAL_MATCH_COUNT = 4;
 const AU_LOCATIONS = [
@@ -244,6 +245,7 @@ export default function App() {
   const [suggestedSkills, setSuggestedSkills] = useState(SUGGESTED_SKILLS);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [chatSessionId, setChatSessionId] = useState(0);
 
   useEffect(() => {
     const close = e => dropdownRef.current && !dropdownRef.current.contains(e.target) && setIsDropdownOpen(false);
@@ -292,43 +294,189 @@ export default function App() {
   };
 
   const handleStartQuiz = () => {
-    setIsMobileMenuOpen(false); setIsMobileSourcesOpen(false); setQuizIndex(0); setQuizAnswers({}); setHollandCode('');
-    setCurrentView('quiz'); setUserSkills([]); setSkillInput(''); window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
+    setIsMobileSourcesOpen(false);
+    setQuizIndex(0);
+    setQuizAnswers({});
+    setHollandCode('');
+    setMatches([]);
+    setAiDetailsMap({});
+    setExpandedRoleId(null);
+    setShowAllMatches(false);
+    setChatSessionId((id) => id + 1);
+    setCurrentView('quiz');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectOption = letter => {
-    const answers = { ...quizAnswers, [quizIndex]: letter };
-    setQuizAnswers(answers);
-    if (quizIndex < RIASEC_QUESTIONS.length - 1) setQuizIndex(quizIndex + 1);
-    else { setHollandCode(getTopHollandCodes(answers)); setCurrentView('refine'); }
-  };
+  const handleMatchCareers = async (code) => {
+    setIsSubmitting(true);
+    setShowAllMatches(false);
+    setExpandedRoleId(null);
+    setHasDownloaded(false);
 
-  // Matching first gets the careers; AI details are fetched in parallel for each one.
-  const handleAnalyze = async () => {
-    setIsSubmitting(true); setShowAllMatches(false); setExpandedRoleId(null); setHasDownloaded(false);
-    const map = { R: 'realistic', I: 'investigative', A: 'artistic', S: 'social', E: 'enterprising', C: 'conventional' };
-    const interest_ids = hollandCode.split('').map(c => map[c]).filter(Boolean);
+    const map = {
+      R: 'realistic',
+      I: 'investigative',
+      A: 'artistic',
+      S: 'social',
+      E: 'enterprising',
+      C: 'conventional'
+    };
+
+    const interest_ids = code
+      .split('')
+      .map(letter => map[letter])
+      .filter(Boolean);
+
     try {
-      const data = await matchOccupations({ interest_ids, skill_ids: userSkills, region: targetLocation });
-      setMatches(data);
-      const ai = await Promise.all(data.map(async role => {
-        try { return { id: role.occupation_id, data: await getOccupationAI(role.occupation_id) }; }
-        catch (err) { return { id: role.occupation_id, data: err.status === 404 ? MOCK_AI_DATA : null }; }
-      }));
-      setAiDetailsMap(Object.fromEntries(ai.filter(x => x.data).map(x => [x.id, x.data])));
+      // Step 1: match careers using the RIASEC result only.
+      const data = await matchOccupations({ interest_ids });
+
+      setMatches(Array.isArray(data) ? data : []);
+
+      // AI details will be replaced with the v3 task/occupation endpoints
+      // as part of the next Results-page iteration.
+      const ai = await Promise.all(
+        (Array.isArray(data) ? data : []).map(async role => {
+          try {
+            return {
+              id: role.occupation_id,
+              data: await getOccupationAI(role.occupation_id)
+            };
+          } catch (err) {
+            return {
+              id: role.occupation_id,
+              data: err.status === 404 ? MOCK_AI_DATA : null
+            };
+          }
+        })
+      );
+
+      setAiDetailsMap(
+        Object.fromEntries(
+          ai
+            .filter(item => item.data)
+            .map(item => [item.id, item.data])
+        )
+      );
+
+      setCurrentView('results');
     } catch (err) {
       if (err.status === 404) {
         setMatches(MOCK_MATCHES);
-        setAiDetailsMap(Object.fromEntries(MOCK_MATCHES.map(role => [role.occupation_id, MOCK_AI_DATA])));
-      } else { setMatches([]); setAiDetailsMap({}); }
+        setAiDetailsMap(
+          Object.fromEntries(
+            MOCK_MATCHES.map(role => [role.occupation_id, MOCK_AI_DATA])
+          )
+        );
+        setCurrentView('results');
+      } else {
+        setMatches([]);
+        setAiDetailsMap({});
+        setCurrentView('results');
+      }
     } finally {
-      setIsSubmitting(false); window.scrollTo({ top: 0, behavior: 'smooth' }); setCurrentView('results');
+      setIsSubmitting(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  const filteredSkills = suggestedSkills.filter(s => s && s.toLowerCase().includes(skillInput.trim().toLowerCase()) && !userSkills.includes(s.toLowerCase()));
-  const selectSkill = skill => { const value = skill.toLowerCase(); if (!userSkills.includes(value)) setUserSkills([...userSkills, value]); setSkillInput(''); setIsDropdownOpen(false); };
-  const removeSkill = skill => setUserSkills(userSkills.filter(x => x !== skill));
+  const handleSelectOption = async (letter) => {
+    const answers = { ...quizAnswers, [quizIndex]: letter };
+    setQuizAnswers(answers);
+
+    if (quizIndex < RIASEC_QUESTIONS.length - 1) {
+      setQuizIndex((index) => index + 1);
+      return;
+    }
+
+    const code = getTopHollandCodes(answers);
+    setHollandCode(code);
+
+    await handleMatchCareers(code);
+  };
+
+  // Matching first gets the careers; AI details are fetched in parallel for each one.
+  const handleAnalyze = async (code = hollandCode) => {
+  setIsSubmitting(true);
+  setShowAllMatches(false);
+  setExpandedRoleId(null);
+  setHasDownloaded(false);
+
+  const map = {
+    R: 'realistic',
+    I: 'investigative',
+    A: 'artistic',
+    S: 'social',
+    E: 'enterprising',
+    C: 'conventional'
+  };
+
+  const interest_ids = code
+    .split('')
+    .map((letter) => map[letter])
+    .filter(Boolean);
+
+  try {
+    const data = await matchOccupations({
+      interest_ids
+    });
+
+    setMatches(Array.isArray(data) ? data : []);
+
+    // Temporary compatibility with the current Results screen.
+    // We'll replace this with the new v3 task endpoint next.
+    const ai = await Promise.all(
+      (Array.isArray(data) ? data : []).map(async (role) => {
+        try {
+          return {
+            id: role.occupation_id,
+            data: await getOccupationAI(role.occupation_id)
+          };
+        } catch (err) {
+          return {
+            id: role.occupation_id,
+            data: err.status === 404 ? MOCK_AI_DATA : null
+          };
+        }
+      })
+    );
+
+    setAiDetailsMap(
+      Object.fromEntries(
+        ai
+          .filter((item) => item.data)
+          .map((item) => [item.id, item.data])
+      )
+    );
+  } catch (err) {
+    if (err.status === 404) {
+      setMatches(MOCK_MATCHES);
+
+      setAiDetailsMap(
+        Object.fromEntries(
+          MOCK_MATCHES.map((role) => [
+            role.occupation_id,
+            MOCK_AI_DATA
+          ])
+        )
+      );
+    } else {
+      setMatches([]);
+      setAiDetailsMap({});
+    }
+  } finally {
+    setIsSubmitting(false);
+    setCurrentView('results');
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+};
+
   const openSkillGap = role => { setActiveOccupation(role); setCurrentView('skill-gap'); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const visibleMatches = showAllMatches ? matches : matches.slice(0, INITIAL_MATCH_COUNT);
   const pageBackground = 'bg-[#FAFAFA] dark:bg-[#0B1121]';
@@ -485,25 +633,30 @@ export default function App() {
             </main>
           )}
 
-          {currentView === 'refine' && (
-            <main key="refine" className="view-enter-animation max-w-2xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32 space-y-8">
-              <h2 className="text-2xl font-bold tracking-tight">Fine-tune Your Results</h2>
-              <div className="space-y-3 relative" ref={dropdownRef}>
-                <label className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Current Skills (Optional)</label>
-                <div className="relative"><input type="text" value={skillInput} onFocus={() => setIsDropdownOpen(true)} onChange={e => { setSkillInput(e.target.value); setIsDropdownOpen(true); }} onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); filteredSkills[0] && selectSkill(filteredSkills[0]); } }} placeholder="Search and select existing skills..." className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-black dark:focus:ring-white pr-10" /><ChevronDown className="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" /></div>
-                {isDropdownOpen && <div className="absolute left-0 right-0 top-full mt-1 bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-xl shadow-xl max-h-56 overflow-y-auto custom-scrollbar z-50 py-1">{filteredSkills.length ? filteredSkills.map(skill => <button key={skill} type="button" onClick={() => selectSkill(skill)} className="w-full text-left px-4 py-2.5 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 flex items-center justify-between"><span className="capitalize">{skill}</span><span className="text-xs text-blue-600 dark:text-blue-400 font-medium">+ Select</span></button>) : <div className="px-4 py-3 text-xs text-zinc-500 dark:text-zinc-400 text-center">{skillInput.trim() ? 'No matching skills found in database' : 'Type to search available skills'}</div>}</div>}
-                {!!userSkills.length && <div className="flex flex-wrap gap-2 pt-2">{userSkills.map(skill => <span key={skill} className="px-3 py-1.5 rounded-full text-xs font-medium bg-black dark:bg-white text-white dark:text-black flex items-center gap-1.5 capitalize">{skill}<button onClick={() => removeSkill(skill)} className="hover:opacity-70 focus:outline-none">×</button></span>)}</div>}
-              </div>
-              <div className="space-y-3"><label className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Target Region (Optional)</label><select value={targetLocation} onChange={e => setTargetLocation(e.target.value)} className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3.5 text-sm outline-none cursor-pointer"><option value="">All Australia / National</option>{AU_LOCATIONS.map(loc => <option key={loc} value={loc}>{loc}</option>)}</select></div>
-              <button onClick={handleAnalyze} disabled={isSubmitting} className="w-full py-4 bg-black dark:bg-white text-white dark:text-black font-medium rounded-full text-sm flex items-center justify-center gap-2 disabled:opacity-50">{isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Matching Occupations...</> : 'Show Matching Pathways'}</button>
-            </main>
-          )}
-
           {currentView === 'results' && (
             <main key="results" className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32">
               <header className="mb-10 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-200/60 dark:border-white/10 pb-8 sm:pb-10">
-                <div><button onClick={() => confirmNavigation('refine')} className="mb-4 sm:mb-6 inline-flex items-center gap-2 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 hover:text-black dark:hover:text-white"><ArrowLeft className="w-3.5 h-3.5" /> Edit Parameters</button><h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white">Matches & AI Impact</h1><div className="flex gap-3 mt-3 text-xs sm:text-sm text-zinc-500 dark:text-slate-400 font-medium"><span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5" /> {targetLocation || 'All Australia'}</span></div></div>
-                <button onClick={handleDownload} className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium shadow-sm ${hasDownloaded ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30' : 'bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-slate-300'}`}><Download className="w-4 h-4" /> {hasDownloaded ? 'Downloaded' : 'Download Data'}</button>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-2">
+                    Your Career Matches
+                  </p>
+
+                  <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white">
+                    Matches & AI Impact
+                  </h1>
+
+                  <p className="mt-3 text-xs sm:text-sm text-zinc-500 dark:text-slate-400">
+                    Based on your RIASEC profile
+                  </p>
+                </div>
+
+                <button
+                  onClick={handleDownload}
+                  className="..."
+                >
+                  <Download className="w-4 h-4" />
+                  {hasDownloaded ? 'Downloaded' : 'Download Data'}
+                </button>
               </header>
               <div className="space-y-4 sm:space-y-6">{visibleMatches.map(role => <ResultCard key={role.occupation_id} role={role} ai={aiDetailsMap[role.occupation_id]} expanded={expandedRoleId === role.occupation_id} colors={getMatchColor(role.match_score, role.match_label)} onToggle={id => setExpandedRoleId(p => p === id ? null : id)} onSkillGap={openSkillGap} tooltip={tooltip} />)}</div>
               {matches.length > INITIAL_MATCH_COUNT && <div className="mt-8 sm:mt-10 flex justify-center"><button onClick={() => setShowAllMatches(v => !v)} className="px-6 py-3 rounded-full border border-zinc-200 dark:border-white/10 bg-white/80 dark:bg-[#131B2F]/80 text-xs sm:text-sm font-medium flex items-center gap-2">{showAllMatches ? <>Show Less <ChevronUp className="w-4 h-4" /></> : <>Show {matches.length - INITIAL_MATCH_COUNT} More Roles <ChevronDown className="w-4 h-4" /></>}</button></div>}
@@ -514,6 +667,15 @@ export default function App() {
         </div>
         <Tooltip info={{ ...tooltipPos, close: () => setTooltipPos(p => ({ ...p, show: false })) }} />
       </div>
+      <Chatbot
+        visible={!['home', 'quiz'].includes(currentView)}
+        currentPage={currentView}
+        matchedCareers={matches}
+        selectedOccupation={activeOccupation}
+        skillGap={null}
+        region={null}
+        sessionId={chatSessionId}
+      />
     </PasswordGate>
   );
 }

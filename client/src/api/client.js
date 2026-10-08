@@ -171,3 +171,23 @@ export async function getMultiRegionOpportunity(anzsco4Code, selectedStates = []
   
   return Promise.all(promises);
 }
+
+// Chatbot
+export async function sendChat({
+  message,
+  conversationHistory = [],
+  profileContext = {}
+}) {
+  if (!message?.trim()) {
+    throw new Error('message is required');
+  }
+
+  return request('/chat', {
+    method: 'POST',
+    body: {
+      message: message.trim(),
+      conversationHistory,
+      profileContext
+    }
+  });
+}
