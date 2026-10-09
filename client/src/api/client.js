@@ -122,6 +122,17 @@ export async function getRegionalVacancies(anzscoCode) {
   return request(`/v3/regional/${String(anzscoCode).slice(0, 2)}/vacancies`);
 }
 
+// Regional Insights page (RegionalInsights.jsx)
+// TODO: these three are imported by RegionalInsights.jsx but no v3 routes were provided,
+// so they fail loudly instead of guessing an endpoint. Replace each body with the real request, e.g.
+//   return request(`/v3/...`);
+const regionalNotConfigured = name => {
+  throw new Error(`${name}: API route not configured in api/client.js`);
+};
+export async function getRegionalOccupations() { return regionalNotConfigured('getRegionalOccupations'); }
+export async function getMultiRegionOpportunity(/* anzsco4Code, regions */) { return regionalNotConfigured('getMultiRegionOpportunity'); }
+export async function getRegionalDemand(/* regionCode */) { return regionalNotConfigured('getRegionalDemand'); }
+
 // Step 7 — Chatbot
 export async function sendChat({ message, conversationHistory = [], profileContext = {} }) {
   if (!message?.trim()) throw new Error('message is required');

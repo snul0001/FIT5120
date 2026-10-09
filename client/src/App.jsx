@@ -13,8 +13,9 @@ import WorkInProgress from './components/WorkInProgress';
 import SkillGapCheck from './components/SkillGapCheck';
 import LearningPlan from './components/LearningPlan';
 import ProgressTracker from './components/ProgressTracker';
+import RegionalInsights from './components/RegionalInsights';
 import Chatbot from './components/Chatbot';
-import { matchOccupations, getOccupationAI, getSkillGap } from './api/client';
+import { matchOccupations, getOccupationAI, getSkillGap, getOccupationTasks } from './api/client';
 import { RIASEC_QUESTIONS, getTopHollandCodes } from './utils/riasecQuestions';
 
 const BASE_URL = 'https://iresi.duckdns.org/api';
@@ -46,6 +47,80 @@ const TOOLTIP_TEXT = {
 
 const formatLabel = label =>
   !label || label.includes('Not available') || label === 'Pending Data' ? 'N/A' : label.split(/[—–-]/)[0].trim();
+
+// ─── Task helpers ─────────────────────────────────────────────────────────────
+// The API can return tasks as strings or objects with different field names,
+// and scores as 0-1 or 0-100. Normalise everything to one shape for the UI and PDF.
+const pickFirst = (obj, keys) => {
+  for (const key of keys) {
+    const value = obj?.[key];
+    if (value != null && value !== '') return value;
+  }
+  return null;
+};
+
+const toUnit = value => {
+  const n = Number(value);
+  if (value == null || value === '' || !Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(1, n > 1 ? n / 100 : n));
+};
+
+const extractTaskList = res => {
+  if (Array.isArray(res)) return res;
+  const payload = res?.data ?? res;
+  if (Array.isArray(payload)) return payload;
+
+  // Tasks endpoint shape: { total, grouped: { 'Human-led': [], 'AI-assisted': [...], ... } }
+  const grouped = payload?.grouped;
+  if (grouped && typeof grouped === 'object' && !Array.isArray(grouped)) {
+    return Object.entries(grouped).flatMap(([group, items]) =>
+      Array.isArray(items)
+        ? items.map(item => (item && typeof item === 'object' ? { impact_group: group, ...item } : item))
+        : []
+    );
+  }
+
+  for (const key of ['tasks', 'items', 'results', 'data']) {
+    if (Array.isArray(payload?.[key])) return payload[key];
+  }
+  return [];
+};
+
+const normalizeTasks = list =>
+  list
+    .map((raw, index) => {
+      if (typeof raw === 'string') {
+        return { id: `task_${index}`, task_text: raw.trim(), category: null, augmentation_score: null, automation_score: null };
+      }
+      const t = { ...raw, ...(raw?.scores || {}) };
+      const text = pickFirst(t, ['plain_english', 'short_explanation', 'task_text', 'task_description', 'description', 'statement', 'task', 'text', 'task_core', 'task_name', 'name', 'title']);
+      const core = pickFirst(t, ['task_core']);
+      const need = pickFirst(t, ['human_need_type']);
+      return {
+        ...raw,
+        id: raw?.id ?? raw?.task_id ?? `task_${index}`,
+        task_text: text ? String(text).trim() : '',
+        task_core: core ? String(core).trim() : '',
+        impact_level: pickFirst(t, ['impact_level']),
+        human_need_type: need && !/^none stated$/i.test(String(need)) ? String(need).trim() : '',
+        category: pickFirst(t, ['impact_group', 'category', 'task_category', 'ai_impact', 'impact_type', 'classification']),
+        augmentation_score: toUnit(pickFirst(t, ['augmentation_score', 'augmentation', 'augment_score', 'ai_augmentation'])),
+        automation_score: toUnit(pickFirst(t, ['automation_score', 'automation', 'automate_score', 'ai_automation']))
+      };
+    })
+    .filter(task => task.task_text);
+
+const capitalise = text => (text ? text.charAt(0).toUpperCase() + text.slice(1) : '');
+
+const getImpactStyle = category => {
+  const c = String(category || '').toLowerCase();
+  if (c.includes('automat')) return 'bg-amber-500/15 text-amber-700 dark:text-amber-300';
+  if (c.includes('assist') || c.includes('augment')) return 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300';
+  if (c.includes('human')) return 'bg-blue-500/15 text-blue-700 dark:text-blue-300';
+  return 'bg-slate-500/15 text-slate-700 dark:text-slate-300';
+};
+
+const formatCategory = category => String(category).replace(/[_]+/g, ' ').trim();
 
 const getSkillName = item => item?.skill_name || item?.name || (item ? String(item) : '');
 
@@ -82,15 +157,18 @@ const NavItem = ({ label, active, onClick }) => (
   </button>
 );
 
-const ProgressBar = ({ label, value, color = 'bg-emerald-500', textColor = 'text-emerald-600 dark:text-[#34D399]' }) => (
-  <div className="flex items-center gap-4">
-    <span className={`w-16 text-[10px] font-bold uppercase tracking-wider ${textColor}`}>{label}</span>
-    <div className="flex-1 h-1.5 bg-slate-200 dark:bg-[#1E293B] rounded-full overflow-hidden">
-      <div className={`h-full ${color} rounded-full`} style={{ width: `${value * 100}%` }} />
+const ProgressBar = ({ label, value, color = 'bg-emerald-500', textColor = 'text-emerald-600 dark:text-[#34D399]' }) => {
+  const pct = Math.round(Math.max(0, Math.min(1, Number(value) || 0)) * 100);
+  return (
+    <div className="flex items-center gap-3">
+      <span className={`w-16 shrink-0 text-[10px] font-bold uppercase tracking-wider ${textColor}`}>{label}</span>
+      <div className="flex-1 h-1.5 bg-slate-200 dark:bg-[#1E293B] rounded-full overflow-hidden">
+        <div className={`h-full ${color} rounded-full`} style={{ width: `${pct}%` }} />
+      </div>
+      <span className={`w-10 shrink-0 text-right text-xs font-bold tabular-nums ${textColor}`}>{pct}%</span>
     </div>
-    <span className={`w-8 text-right text-xs font-bold ${textColor}`}>{Math.round(value * 100)}%</span>
-  </div>
-);
+  );
+};
 
 const ResultCard = ({
   role, ai, expanded, colors, onToggle, onSkillGap, tooltip,
@@ -178,18 +256,47 @@ const ResultCard = ({
                 <div>
                   <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4"><Cpu className="w-4 h-4" /> TASK IMPACT ANALYSIS</h4>
                   {tasks.length ? (
-                    <div className="space-y-4 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
-                      {tasks.map((task, idx) => (
-                        <div key={task.id || idx} className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02] space-y-5">
-                          <p className="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">{task.task_text || task.description || task.name || `Task ${idx + 1}`}</p>
-                          <div className="space-y-3">
-                            {task.augmentation_score != null && <ProgressBar label="Augment" value={task.augmentation_score} />}
-                            {task.automation_score != null && <ProgressBar label="Automate" value={task.automation_score} color="bg-amber-500" textColor="text-amber-600 dark:text-[#FBBF24]" />}
-                            {task.augmentation_score == null && task.automation_score == null && <p className="text-xs text-slate-500">Task-level scores are not available.</p>}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2 mb-4">
+                        {tasks.length} task{tasks.length === 1 ? '' : 's'} in this role, grouped by how AI may change them.
+                      </p>
+                      <ol className="space-y-3 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
+                        {tasks.map((task, idx) => (
+                          <li key={task.id ?? idx} className="flex gap-3 p-4 rounded-xl border border-slate-200 dark:border-white/5 bg-white/70 dark:bg-white/[0.02]">
+                            <span className="shrink-0 w-6 h-6 mt-0.5 rounded-full bg-slate-200 dark:bg-white/10 text-[11px] font-bold text-slate-600 dark:text-slate-300 flex items-center justify-center">
+                              {idx + 1}
+                            </span>
+                            <div className="min-w-0 flex-1 space-y-2.5">
+                              <div className="flex flex-wrap items-center gap-2">
+                                {task.category && (
+                                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide ${getImpactStyle(task.category)}`}>
+                                    {formatCategory(task.category)}
+                                  </span>
+                                )}
+                                {task.impact_level && (
+                                  <span className="px-2 py-0.5 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-400 text-[10px] font-semibold uppercase tracking-wide">
+                                    {task.impact_level} impact
+                                  </span>
+                                )}
+                              </div>
+                              {task.task_core && task.task_core !== task.task_text && (
+                                <p className="text-sm font-semibold text-slate-900 dark:text-white leading-snug break-words">{capitalise(task.task_core)}</p>
+                              )}
+                              <p className={`leading-relaxed break-words ${task.task_core && task.task_core !== task.task_text ? 'text-[13px] text-slate-600 dark:text-slate-400' : 'text-sm font-medium text-slate-800 dark:text-slate-200'}`}>{task.task_text}</p>
+                              {task.human_need_type && (
+                                <p className="text-xs text-slate-500 dark:text-slate-400"><span className="font-semibold">Human role:</span> {task.human_need_type}</p>
+                              )}
+                              {(task.augmentation_score != null || task.automation_score != null) && (
+                                <div className="space-y-2 pt-1">
+                                  {task.augmentation_score != null && <ProgressBar label="Augment" value={task.augmentation_score} />}
+                                  {task.automation_score != null && <ProgressBar label="Automate" value={task.automation_score} color="bg-amber-500" textColor="text-amber-600 dark:text-[#FBBF24]" />}
+                                </div>
+                              )}
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    </>
                   ) : (
                     <div className="rounded-xl border border-slate-200 dark:border-white/5 bg-white/60 dark:bg-white/[0.02] p-5">
                       <p className="text-sm text-slate-600 dark:text-slate-300">Individual task descriptions are not included in this response.</p>
@@ -279,8 +386,8 @@ const AppNav = ({ isDark, currentView, mobileMenu, mobileSources, actions, quizD
 
       <div className="flex items-center gap-2 sm:gap-4">
         <div className="hidden md:flex items-center gap-1 sm:gap-2">
-          {quizDone && <NavItem label="Progress Tracker" active={currentView === 'progress-tracker'} onClick={() => actions.navigate('progress-tracker')} />}
-          <NavItem label="Career Simulator" active={currentView === 'wip'} onClick={() => actions.navigate('wip')} />
+          <NavItem label="Progress Tracker" active={currentView === 'progress-tracker'} onClick={() => actions.navigate('progress-tracker')} />
+          <NavItem label="Regional Insights" active={currentView === 'regional-insights'} onClick={() => actions.navigate('regional-insights')} />
           <div className="relative group">
             <button className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 transition-all">
               <span>Data Sources</span><ChevronDown className="w-3.5 h-3.5 text-zinc-500 group-hover:rotate-180 transition-transform" />
@@ -307,13 +414,11 @@ const AppNav = ({ isDark, currentView, mobileMenu, mobileSources, actions, quizD
       <div className="md:hidden absolute top-full left-0 right-0 border-t border-zinc-200 dark:border-white/10 bg-white dark:bg-[#0B1121] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.35)]">
         <div className="max-h-[calc(100vh-4rem)] overflow-y-auto px-4 py-4">
           <div className="space-y-2">
-            {quizDone && (
-              <button type="button" onClick={() => actions.navigate('progress-tracker')} className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-semibold text-left border transition-colors ${currentView === 'progress-tracker' ? 'bg-blue-500/10 border-blue-500/20 text-blue-700 dark:text-blue-300' : 'border-transparent text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'}`}>
+            <button type="button" onClick={() => actions.navigate('progress-tracker')} className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-semibold text-left border transition-colors ${currentView === 'progress-tracker' ? 'bg-blue-500/10 border-blue-500/20 text-blue-700 dark:text-blue-300' : 'border-transparent text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'}`}>
                 Progress Tracker
               </button>
-            )}
-            <button type="button" onClick={() => actions.navigate('wip')} className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-semibold text-left border transition-colors ${currentView === 'wip' ? 'bg-blue-500/10 border-blue-500/20 text-blue-700 dark:text-blue-300' : 'border-transparent text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'}`}>
-              Career Simulator
+            <button type="button" onClick={() => actions.navigate('regional-insights')} className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-semibold text-left border transition-colors ${currentView === 'regional-insights' ? 'bg-blue-500/10 border-blue-500/20 text-blue-700 dark:text-blue-300' : 'border-transparent text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10'}`}>
+              Regional Insights
             </button>
             <div className="rounded-xl border border-zinc-200 dark:border-white/10 overflow-hidden">
               <button type="button" onClick={actions.toggleSources} className="w-full flex items-center justify-between px-4 py-3.5 text-sm font-semibold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10">
@@ -332,13 +437,24 @@ const AppNav = ({ isDark, currentView, mobileMenu, mobileSources, actions, quizD
   </nav>
 );
 
+// ─── Deep link ────────────────────────────────────────────────────────────────
+// e.g. https://your-site/?view=progress-tracker&code=252-6M-U25P (used by the plan PDF)
+const getDeepLink = () => {
+  if (typeof window === 'undefined') return null;
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('view') !== 'progress-tracker') return null;
+  const code = (params.get('code') || '').trim().toUpperCase();
+  return { view: 'progress-tracker', planCode: /^[A-Z0-9-]{4,32}$/.test(code) ? code : '' };
+};
+
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
+  const [deepLink] = useState(getDeepLink);
   const [isDark, setIsDark] = useState(() => localStorage.getItem('theme') === 'dark');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileSourcesOpen, setIsMobileSourcesOpen] = useState(false);
-  const [currentView, setCurrentView] = useState('home');
-  const [navContext, setNavContext] = useState(null);
+  const [currentView, setCurrentView] = useState(deepLink?.view || 'home');
+  const [navContext, setNavContext] = useState(deepLink?.planCode ? { planCode: deepLink.planCode } : null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [expandedRoleId, setExpandedRoleId] = useState(null);
   const [showAllMatches, setShowAllMatches] = useState(false);
@@ -355,6 +471,11 @@ export default function App() {
   const [hollandCode, setHollandCode] = useState('');
   const [quizDone, setQuizDone] = useState(false);
   const [chatSessionId, setChatSessionId] = useState(0);
+
+  // The deep link has been used; remove it from the address bar so a refresh doesn't re-trigger it.
+  useEffect(() => {
+    if (deepLink) window.history.replaceState({}, '', window.location.pathname);
+  }, [deepLink]);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
@@ -547,7 +668,17 @@ export default function App() {
       }
 
       const taskCounts = payload.task_counts || {};
-      const tasks = Array.isArray(payload.tasks) ? payload.tasks : [];
+      let tasks = normalizeTasks(extractTaskList(payload.tasks));
+
+      // The occupation endpoint may only return counts, so fall back to the tasks endpoint.
+      if (!tasks.length) {
+        try {
+          const taskResponse = await getOccupationTasks(code);
+          tasks = normalizeTasks(extractTaskList(taskResponse));
+        } catch (taskError) {
+          console.warn('[IResi] Could not load task descriptions:', taskError);
+        }
+      }
 
       const normalized = {
         ...payload,
@@ -558,12 +689,19 @@ export default function App() {
         demand_label: payload.demand_label || payload.demand || 'Not available',
         avg_augmentation: payload.avg_augmentation ?? null,
         avg_automation: payload.avg_automation ?? null,
-        task_counts: {
-          total: taskCounts.total ?? tasks.length,
-          human_led: taskCounts.human_led ?? 0,
-          ai_assisted: taskCounts.ai_assisted ?? 0,
-          ai_automated: taskCounts.ai_automated ?? 0
-        },
+        task_counts: Number(taskCounts.total) > 0
+          ? {
+              total: taskCounts.total,
+              human_led: taskCounts.human_led ?? 0,
+              ai_assisted: taskCounts.ai_assisted ?? 0,
+              ai_automated: taskCounts.ai_automated ?? 0
+            }
+          : {
+              total: tasks.length,
+              human_led: tasks.filter(t => /human/i.test(t.category || '')).length,
+              ai_assisted: tasks.filter(t => /assist|augment/i.test(t.category || '')).length,
+              ai_automated: tasks.filter(t => /automat/i.test(t.category || '')).length
+            },
         tasks,
         employment_trend: Array.isArray(payload.employment_trend)
           ? payload.employment_trend
@@ -666,94 +804,403 @@ export default function App() {
   }, []);
 
   // PDF export
-  const handleDownload = async () => {
-    try {
-      if (!matches.length) return alert('No matches to export.');
 
-      const doc = new jsPDF();
-      const date = new Date().toLocaleDateString('en-AU', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+  const handleDownload = async () => {
+    if (!matches.length) {
+      alert('No career matches are available to export.');
+      return;
+    }
+
+    try {
+      const doc = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
       });
 
-      doc.setFillColor(11, 17, 33);
-      doc.rect(0, 0, 210, 25, 'F');
-      doc.setTextColor(255, 255, 255);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(16);
-      doc.text('IResi AI CAREER PATHWAY REPORT', 14, 16);
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
 
-      doc.setTextColor(40, 40, 40);
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`Date Generated: ${date}`, 14, 35);
+      const margin = 16;
+      const contentWidth = pageWidth - margin * 2;
 
-      let startY = 50;
-      const reportMatches = [...matches]
-        .sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999))
-        .slice(0, 5);
+      const ink = [15, 23, 42];
+      const muted = [100, 116, 139];
+      const blue = [59, 130, 246];
+      const pale = [241, 245, 249];
+      const border = [226, 232, 240];
+      const green = [5, 150, 105];
+      const amber = [217, 119, 6];
 
-      const ensurePage = () => {
-        if (startY > 250) {
+      const date = new Date().toLocaleDateString('en-AU', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      let y = margin;
+
+      const textOrNA = value =>
+        value === null || value === undefined || value === ''
+          ? 'Not available'
+          : String(value);
+
+      const percentOrNA = value =>
+        value === null || value === undefined || !Number.isFinite(Number(value))
+          ? 'Not available'
+          : `${Math.round(Number(value) * 100)}%`;
+
+      const writeSectionTitle = title => {
+        if (y > pageHeight - 35) {
           doc.addPage();
-          startY = 20;
+          y = margin;
+        }
+
+        doc.setFillColor(...pale);
+        doc.roundedRect(margin, y, contentWidth, 9, 1.5, 1.5, 'F');
+
+        doc.setTextColor(...ink);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.text(title.toUpperCase(), margin + 3, y + 6);
+
+        y += 14;
+      };
+
+      const writeParagraph = (text, options = {}) => {
+        const fontSize = options.fontSize || 9;
+        const lineHeight = options.lineHeight || 4.5;
+        const maxWidth = contentWidth - (options.indent || 0);
+        const lines = doc.splitTextToSize(String(text), maxWidth);
+        const needed = lines.length * lineHeight + 2;
+
+        if (y + needed > pageHeight - 18) {
+          doc.addPage();
+          y = margin;
+        }
+
+        doc.setFont('helvetica', options.bold ? 'bold' : 'normal');
+        doc.setFontSize(fontSize);
+        doc.setTextColor(...(options.color || ink));
+        doc.text(lines, margin + (options.indent || 0), y);
+
+        y += needed;
+      };
+
+      const addFooter = () => {
+        const pageCount = doc.internal.getNumberOfPages();
+
+        for (let page = 1; page <= pageCount; page++) {
+          doc.setPage(page);
+
+          doc.setDrawColor(...border);
+          doc.setLineWidth(0.25);
+          doc.line(margin, pageHeight - 13, pageWidth - margin, pageHeight - 13);
+
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(8);
+          doc.setTextColor(...muted);
+
+          doc.text('IResi | Career Pathway Report', margin, pageHeight - 7);
+          doc.text(
+            `Page ${page} of ${pageCount}`,
+            pageWidth - margin,
+            pageHeight - 7,
+            { align: 'right' }
+          );
         }
       };
 
-      const sectionHeader = text => {
-        ensurePage();
-        doc.setFillColor(240, 244, 248);
-        doc.rect(14, startY - 4, 182, 9, 'F');
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(11);
-        doc.setTextColor(15, 23, 42);
-        doc.text(text, 16, startY + 2);
-        startY += 10;
+      const addTable = (head, body, options = {}) => {
+        autoTable(doc, {
+          startY: y,
+          head: [head],
+          body,
+          margin: {
+            left: margin,
+            right: margin,
+            bottom: 20
+          },
+          theme: 'grid',
+          styles: {
+            font: 'helvetica',
+            fontSize: 8.5,
+            cellPadding: 3,
+            textColor: ink,
+            lineColor: border,
+            lineWidth: 0.2,
+            overflow: 'linebreak',
+            valign: 'middle'
+          },
+          headStyles: {
+            fillColor: ink,
+            textColor: [255, 255, 255],
+            fontStyle: 'bold'
+          },
+          alternateRowStyles: {
+            fillColor: [248, 250, 252]
+          },
+          columnStyles: options.columnStyles || {},
+          ...options.tableOptions
+        });
+
+        y = doc.lastAutoTable.finalY + 8;
       };
 
-      for (const [i, m] of reportMatches.entries()) {
-        const ai = aiDetailsMap[m.anzsco_code] || {};
+      // ── COVER / REPORT HEADER ──────────────────────────────
 
-        sectionHeader(`[Rank ${m.rank || i + 1}] ${(m.title || '').toUpperCase()}`);
+      doc.setFillColor(...ink);
+      doc.rect(0, 0, pageWidth, 49, 'F');
 
-        autoTable(doc, {
-          startY,
-          margin: { left: 14, right: 14 },
-          body: [
-            ['Match Fit', `${m.match_score ?? 'N/A'}% (${m.match_label || ''})`],
-            ['AI Resilience', `${ai.resilience_score ?? 'N/A'}/100`],
-            ['Demand', formatLabel(ai.demand_label)],
-            ['Augmentation', `${ai.avg_augmentation != null ? Math.round(ai.avg_augmentation * 100) : 'N/A'}%`],
-            ['Automation', `${ai.avg_automation != null ? Math.round(ai.avg_automation * 100) : 'N/A'}%`]
-          ],
-          theme: 'plain',
-          styles: { fontSize: 9.5, cellPadding: 2, textColor: [51, 65, 85] },
+      doc.setFillColor(...blue);
+      doc.roundedRect(margin, 11, 10, 10, 2, 2, 'F');
+
+      doc.setTextColor(255, 255, 255);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(15);
+      doc.text('IResi', margin + 14, 18);
+
+      doc.setFontSize(19);
+      doc.text('Career Pathway Report', margin, 33);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      doc.setTextColor(203, 213, 225);
+      doc.text(`Generated ${date}`, margin, 41);
+
+      y = 59;
+
+      writeParagraph(
+        'Your career matches, AI task impact, and employment indicators in one report.',
+        { fontSize: 10, color: muted }
+      );
+
+      // ── MATCH SUMMARY ──────────────────────────────────────
+
+      writeSectionTitle('Career match summary');
+
+      const orderedMatches = [...matches].sort(
+        (a, b) => (a.rank ?? 999) - (b.rank ?? 999)
+      );
+
+      addTable(
+        ['Rank', 'Occupation', 'Category', 'Match score', 'Match label'],
+        orderedMatches.map(role => [
+          role.rank ?? '—',
+          role.title || role.name || 'Unnamed occupation',
+          role.sector || role.category || 'Not available',
+          role.match_score == null ? 'Not available' : `${role.match_score}%`,
+          role.match_label || 'Not available'
+        ]),
+        {
           columnStyles: {
-            0: { fontStyle: 'bold', cellWidth: 45 },
-            1: { cellWidth: 135 }
+            0: { cellWidth: 13 },
+            1: { cellWidth: 51 },
+            2: { cellWidth: 30 },
+            3: { cellWidth: 25 },
+            4: { cellWidth: 'auto' }
           }
-        });
+        }
+      );
 
-        startY = doc.lastAutoTable.finalY + 10;
-      }
+      // ── INDIVIDUAL OCCUPATION DETAILS ───────────────────────
 
-      const pages = doc.internal.getNumberOfPages();
+      for (const role of orderedMatches) {
+        const code = role.anzsco_code || role.occupation_id;
+        const ai = aiDetailsMap[code] || {};
+        const taskCounts = ai.task_counts || {};
+        const tasks = Array.isArray(ai.tasks) ? ai.tasks : [];
+        const trend = Array.isArray(ai.employment_trend)
+          ? ai.employment_trend
+          : [];
 
-      for (let i = 1; i <= pages; i++) {
-        doc.setPage(i);
+        doc.addPage();
+        y = margin;
+
+        doc.setFillColor(...ink);
+        doc.roundedRect(margin, y, contentWidth, 25, 2, 2, 'F');
+
+        doc.setTextColor(255, 255, 255);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(13);
+
+        const titleLines = doc.splitTextToSize(
+          role.title || role.name || 'Occupation',
+          contentWidth - 8
+        );
+
+        doc.text(titleLines.slice(0, 2), margin + 4, y + 8);
+
+        doc.setFont('helvetica', 'normal');
         doc.setFontSize(8);
-        doc.setTextColor(150);
-        doc.text(`IResi Career Platform  |  Page ${i} of ${pages}`, 105, 288, {
-          align: 'center'
-        });
+        doc.setTextColor(203, 213, 225);
+
+        doc.text(
+          `Rank ${role.rank ?? '—'}  |  ANZSCO ${textOrNA(code)}  |  Match ${role.match_score == null ? 'N/A' : `${role.match_score}%`}`,
+          margin + 4,
+          y + 20
+        );
+
+        y += 33;
+
+        writeSectionTitle('AI impact and resilience');
+
+        addTable(
+          ['Indicator', 'Value', 'Interpretation'],
+          [
+            [
+              'Resilience score',
+              ai.resilience_score == null ? 'Not available' : `${ai.resilience_score}`,
+              textOrNA(ai.resilience_label)
+            ],
+            [
+              'AI augmentation',
+              percentOrNA(ai.avg_augmentation),
+              'Tasks supported or enhanced by AI'
+            ],
+            [
+              'AI automation',
+              percentOrNA(ai.avg_automation),
+              'Tasks that may be automated'
+            ],
+            [
+              'Market demand',
+              textOrNA(ai.demand_label),
+              'Demand indicator returned by the API'
+            ]
+          ],
+          {
+            columnStyles: {
+              0: { cellWidth: 38 },
+              1: { cellWidth: 33 },
+              2: { cellWidth: 'auto' }
+            }
+          }
+        );
+
+        writeSectionTitle('Task breakdown');
+
+        addTable(
+          ['Task category', 'Number of tasks'],
+          [
+            ['Human-led', taskCounts.human_led ?? 0],
+            ['AI-assisted', taskCounts.ai_assisted ?? 0],
+            ['AI-automated', taskCounts.ai_automated ?? 0],
+            ['Total tasks', taskCounts.total ?? tasks.length]
+          ],
+          {
+            columnStyles: {
+              0: { cellWidth: 75 },
+              1: { cellWidth: 'auto' }
+            }
+          }
+        );
+
+        if (tasks.length > 0) {
+          writeSectionTitle('Individual task details');
+
+          const taskRows = tasks.map((task, index) => [
+            index + 1,
+            task.task_text ||
+              task.description ||
+              task.task_description ||
+              task.name ||
+              task.title ||
+              'Task description not provided',
+            task.category ||
+              task.task_category ||
+              task.ai_impact ||
+              task.impact_type ||
+              'Unclassified',
+            task.augmentation_score == null
+              ? 'N/A'
+              : percentOrNA(task.augmentation_score),
+            task.automation_score == null
+              ? 'N/A'
+              : percentOrNA(task.automation_score)
+          ]);
+
+          addTable(
+            ['#', 'Task description', 'Category', 'Augment', 'Automate'],
+            taskRows,
+            {
+              columnStyles: {
+                0: { cellWidth: 9 },
+                1: { cellWidth: 77 },
+                2: { cellWidth: 31 },
+                3: { cellWidth: 25 },
+                4: { cellWidth: 'auto' }
+              }
+            }
+          );
+        } else {
+          writeParagraph(
+            'Individual task descriptions were not included in the API response. This report therefore shows the available category counts without inventing task names.',
+            { fontSize: 9, color: muted }
+          );
+          y += 2;
+        }
+
+        if (trend.length > 0) {
+          writeSectionTitle('Employment trend');
+
+          addTable(
+            ['Year', 'Employment (thousands)'],
+            trend.map(item => [
+              item.year ?? '—',
+              item.employed_k == null ||
+              !Number.isFinite(Number(item.employed_k))
+                ? 'Not available'
+                : Number(item.employed_k).toFixed(1)
+            ]),
+            {
+              columnStyles: {
+                0: { cellWidth: 45 },
+                1: { cellWidth: 'auto' }
+              }
+            }
+          );
+        }
       }
+
+      // ── DATA SOURCES / METHODOLOGY ─────────────────────────
+
+      doc.addPage();
+      y = margin;
+
+      writeSectionTitle('Sources and notes');
+
+      writeParagraph(
+        'This report reflects the occupation match and AI-impact data available from the IResi application at the time of export.'
+      );
+
+      y += 2;
+
+      writeParagraph(
+        'Unavailable or null values are shown as “Not available”. Task descriptions and scores are included only when returned by the API.'
+      );
+
+      y += 4;
+
+      writeParagraph('Reference sources:', { bold: true });
+
+      writeParagraph('O*NET Database — https://www.onetcenter.org/database.html', {
+        fontSize: 9,
+        color: blue
+      });
+
+      writeParagraph('Jobs and Skills Australia — https://www.jobsandskills.gov.au/data', {
+        fontSize: 9,
+        color: blue
+      });
+
+      addFooter();
 
       doc.save('IResi_Career_Pathway_Report.pdf');
       setHasDownloaded(true);
-    } catch (err) {
-      console.error(err);
-      alert('PDF export failed.');
+    } catch (error) {
+      console.error('[IResi] PDF export error:', error);
+      alert('The PDF could not be generated. Please try again.');
     }
   };
 
@@ -847,6 +1294,16 @@ export default function App() {
             <div key="wip" className="view-enter-animation">
               <WorkInProgress onBack={() => confirmNavigation('home')} />
             </div>
+          )}
+
+          {/* Regional Insights */}
+          {currentView === 'regional-insights' && (
+            <main
+              key="regional-insights"
+              className="view-enter-animation max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32"
+            >
+              <RegionalInsights onBack={() => confirmNavigation(quizDone ? 'results' : 'home')} />
+            </main>
           )}
 
           {/* RIASEC Quiz */}
@@ -1018,6 +1475,7 @@ export default function App() {
             >
               <SkillGapCheck
                 targetOccupation={activeOccupation}
+                ai={aiDetailsMap[activeOccupation?.anzsco_code]}
                 onBack={() => confirmNavigation('results')}
                 onNavigate={confirmNavigation}
               />
