@@ -70,7 +70,7 @@ function normalizeResponse(raw) {
 }
 
 export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) {
-  const anzscoCode   = String(targetOccupation?.occupation_id || targetOccupation?.id || '271133');
+  const anzscoCode   = String(targetOccupation?.anzsco_code || targetOccupation?.anzsco_code || '271133');
   const occupationTitle = targetOccupation?.title || targetOccupation?.name || 'Selected Career';
 
   const [isLoading,  setIsLoading]  = useState(true);

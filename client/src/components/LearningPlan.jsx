@@ -246,7 +246,7 @@ function exportPDF(plan, occupationTitle, planCode) {
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function LearningPlan({ config, onBack, onNavigate }) {
   const { occupation, missingSkills = [], duration = 6, hrsPerWeek = 5 } = config || {};
-  const anzscoCode      = String(occupation?.occupation_id || occupation?.id || '');
+  const anzscoCode      = String(occupation?.anzsco_code || occupation?.id || '');
   const occupationTitle = occupation?.title || occupation?.name || 'Career';
 
   const [isLoading, setIsLoading] = useState(true);
