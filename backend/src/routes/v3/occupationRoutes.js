@@ -3,7 +3,6 @@ import { prisma } from "../../config/db.js"
 
 const router = express.Router()
 
-// ── Label helpers (same as it2) 
 const getResilienceLabel = (score) => {
   if (score >= 70) return "High — AI is more likely to enhance this role"
   if (score >= 40) return "Medium — AI will change parts of this role"
@@ -22,8 +21,7 @@ const getMatchLabel = (score) => {
   return "Possible match"
 }
 
-// ── GET /api/v3/occupations 
-// Returns all occupations — optional ?category=ICT filter
+// ── GET /api/v3/occupations
 router.get("/", async (req, res) => {
   try {
     const { category } = req.query
@@ -47,8 +45,7 @@ router.get("/", async (req, res) => {
   }
 })
 
-// ── POST /api/v3/occupations/match 
-
+// ── POST /api/v3/occupations/match
 router.post("/match", async (req, res) => {
   try {
     const { interest_codes, skill_names, state } = req.body
@@ -61,8 +58,6 @@ router.post("/match", async (req, res) => {
     const hasSkills = Array.isArray(skill_names) && skill_names.length > 0
     const hasRegion = !!state
 
-    // Step 1 — Interest matching via occupation_interests
-    // occupation_interests has (anzsco_code, position, interest_type) where interest_type is a single RIASEC letter
     const interestMatches = await prisma.occupation_interests.findMany({
       where: { interest_type: { in: uniqueCodes } },
       include: {
@@ -90,7 +85,6 @@ router.post("/match", async (req, res) => {
       return res.json([])
     }
 
-    // Step 2 — Skill overlap scoring (optional)
     if (hasSkills) {
       const selectedLower = skill_names.map(s => s.toLowerCase().trim())
       for (const anzsco_code of Object.keys(scoreMap)) {
@@ -110,10 +104,7 @@ router.post("/match", async (req, res) => {
       }
     }
 
-    // Step 3 — Regional demand scoring using it3 regional_vacancies table
-    // Same logic as it2 but using new table — normalize by max vacancies across states
     if (hasRegion) {
-      // Get latest month's vacancy total per state across all ANZSCO2 groups
       const latestVacancies = await prisma.regional_vacancies.findMany({
         orderBy: { month: "desc" },
         take: 2000,
@@ -122,17 +113,6 @@ router.post("/match", async (req, res) => {
         },
       })
 
-      // Get most recent vacancy per state (first occurrence = most recent due to orderBy desc)
-      const latestByState = {}
-      for (const row of latestVacancies) {
-        const st = row.regions?.state
-        if (!st) continue
-        if (!latestByState[st]) latestByState[st] = 0
-        latestByState[st] += parseFloat(row.vacancies_3m_avg)
-      }
-
-      // But deduplicate: only count the latest month per state
-      // Re-do: group by state, take only rows from the single most recent month
       const latestMonth = latestVacancies[0]?.month?.toISOString().slice(0, 7)
       const latestMonthByState = {}
       for (const row of latestVacancies) {
@@ -152,7 +132,6 @@ router.post("/match", async (req, res) => {
       }
     }
 
-    // Step 4 — Weighted final score (same weights as it2)
     let interestWeight, skillWeight, regionalWeight
     if (hasSkills && hasRegion) {
       interestWeight = 0.5; skillWeight = 0.3; regionalWeight = 0.2
@@ -196,8 +175,7 @@ router.post("/match", async (req, res) => {
   }
 })
 
-// ── GET /api/v3/occupations/:anzsco_code 
-// Single occupation with resilience score — same formula as it2
+// ── GET /api/v3/occupations/:anzsco_code
 router.get("/:anzsco_code", async (req, res) => {
   try {
     const { anzsco_code } = req.params
@@ -214,8 +192,6 @@ router.get("/:anzsco_code", async (req, res) => {
       return res.status(404).json({ error: "Occupation not found" })
     }
 
-    // AI Resilience Score — same formula as it2
-    // Pulls from public.jsa_task_score using 4-digit unit group
     const unitGroup = anzsco_code.slice(0, 4)
     const jsaScores = await prisma.$queryRaw`
       SELECT automation_score, augmentation_score
@@ -233,17 +209,11 @@ router.get("/:anzsco_code", async (req, res) => {
     if (jsaScores.length > 0) {
       avgAutomation = jsaScores.reduce((sum, r) => sum + parseFloat(r.automation_score), 0) / jsaScores.length
       avgAugmentation = jsaScores.reduce((sum, r) => sum + parseFloat(r.augmentation_score), 0) / jsaScores.length
-      // Exact it2 formula: 0.4 × (1 - avg_automation) + 0.6 × avg_augmentation
       resilienceScore = Math.round((0.4 * (1 - avgAutomation) + 0.6 * avgAugmentation) * 100)
       resilienceLabel = getResilienceLabel(resilienceScore)
     }
 
-    // Task counts from it3 tasks table
     const tasks = occupation.tasks
-    const totalTasks = tasks.length
-    const humanLed = tasks.filter(t => t.impact_group === "Human-led").length
-    const aiAssisted = tasks.filter(t => t.impact_group === "AI-assisted").length
-    const aiAutomated = tasks.filter(t => t.impact_group === "AI-automated").length
 
     res.json({
       anzsco_code: occupation.anzsco_code,
@@ -255,10 +225,10 @@ router.get("/:anzsco_code", async (req, res) => {
       avg_automation: avgAutomation != null ? Math.round(avgAutomation * 100) / 100 : null,
       avg_augmentation: avgAugmentation != null ? Math.round(avgAugmentation * 100) / 100 : null,
       task_counts: {
-        total: totalTasks,
-        human_led: humanLed,
-        ai_assisted: aiAssisted,
-        ai_automated: aiAutomated,
+        total: tasks.length,
+        human_led: tasks.filter(t => t.impact_group === "Human-led").length,
+        ai_assisted: tasks.filter(t => t.impact_group === "AI-assisted").length,
+        ai_automated: tasks.filter(t => t.impact_group === "AI-automated").length,
       },
       employment_trend: occupation.occupation_employment.map(e => ({
         year: e.year,
@@ -271,9 +241,7 @@ router.get("/:anzsco_code", async (req, res) => {
   }
 })
 
-// ── GET /api/v3/occupations/:anzsco_code/tasks 
-// Returns tasks grouped by impact + enriched with it2-style labels
-// Also joins jsa_task_score scores where available for automation/augmentation details
+// ── GET /api/v3/occupations/:anzsco_code/tasks
 router.get("/:anzsco_code/tasks", async (req, res) => {
   try {
     const { anzsco_code } = req.params
@@ -287,7 +255,6 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
       return res.status(404).json({ error: "No tasks found for this occupation" })
     }
 
-    // Pull jsa scores for enrichment (same as it2 /ai endpoint)
     const unitGroup = anzsco_code.slice(0, 4)
     const jsaScores = await prisma.$queryRaw`
       SELECT task_text, automation_score, augmentation_score,
@@ -296,13 +263,11 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
       WHERE anzsco_unit_group = ${unitGroup}
     `
 
-    // Build lookup by lowercase task text
     const jsaMap = {}
     for (const row of jsaScores) {
       jsaMap[row.task_text.toLowerCase().trim()] = row
     }
 
-    // Enrich tasks with jsa scores where available + it2-style labels
     const enrichedTasks = tasks.map(t => {
       const jsa = jsaMap[t.task_core.toLowerCase().trim()]
       const autoScore = jsa?.automation_score != null ? parseFloat(jsa.automation_score) : null
@@ -327,16 +292,14 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
       }
     })
 
-    const grouped = {
-      "Human-led": enrichedTasks.filter(t => t.impact_group === "Human-led"),
-      "AI-assisted": enrichedTasks.filter(t => t.impact_group === "AI-assisted"),
-      "AI-automated": enrichedTasks.filter(t => t.impact_group === "AI-automated"),
-    }
-
     res.json({
       anzsco_code,
       total: tasks.length,
-      grouped,
+      grouped: {
+        "Human-led": enrichedTasks.filter(t => t.impact_group === "Human-led"),
+        "AI-assisted": enrichedTasks.filter(t => t.impact_group === "AI-assisted"),
+        "AI-automated": enrichedTasks.filter(t => t.impact_group === "AI-automated"),
+      },
     })
   } catch (error) {
     console.error("GET /api/v3/occupations/:anzsco_code/tasks error:", error)
@@ -345,7 +308,10 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
 })
 
 // ── GET /api/v3/occupations/:anzsco_code/skills
-// Top skills ordered by position (importance)
+// software skills first, then transferable, then essential
+// score_display: null for software (use stars), percentage string for others
+const SKILL_TYPE_ORDER = { software: 0, transferable: 1, essential: 2 }
+
 router.get("/:anzsco_code/skills", async (req, res) => {
   try {
     const { anzsco_code } = req.params
@@ -360,14 +326,19 @@ router.get("/:anzsco_code/skills", async (req, res) => {
       return res.status(404).json({ error: "No skills found for this occupation" })
     }
 
-    const skills = occSkills.map(os => ({
-      skill_id: os.skill_id,
-      name: os.skills.name,
-      skill_type: os.skills.skill_type,
-      position: os.position,
-      score: os.score ? parseFloat(os.score) : null,
-      stars: os.stars ? parseFloat(os.stars) : null,
-    }))
+    const skills = occSkills
+      .map(os => ({
+        skill_id: os.skill_id,
+        name: os.skills.name,
+        skill_type: os.skills.skill_type,
+        position: os.position,
+        score: os.score ? parseFloat(os.score) : null,
+        stars: os.stars ? parseFloat(os.stars) : null,
+        score_display: os.skills.skill_type === "software"
+          ? null
+          : (os.score ? `${Math.round(parseFloat(os.score))}%` : null),
+      }))
+      .sort((a, b) => (SKILL_TYPE_ORDER[a.skill_type] ?? 3) - (SKILL_TYPE_ORDER[b.skill_type] ?? 3))
 
     res.json({ anzsco_code, skills })
   } catch (error) {
@@ -376,8 +347,7 @@ router.get("/:anzsco_code/skills", async (req, res) => {
   }
 })
 
-// ── GET /api/v3/occupations/:anzsco_code/employment 
-// Employment trend with growth stats
+// ── GET /api/v3/occupations/:anzsco_code/employment
 router.get("/:anzsco_code/employment", async (req, res) => {
   try {
     const { anzsco_code } = req.params
