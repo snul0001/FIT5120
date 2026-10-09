@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { matchOccupations, getOccupationAI, getRegionalDemand } from '../api/client';
+import { matchOccupations, getOccupationAI } from '../api/client';
 import { ArrowRight, UserRound, MapPin, ShieldCheck } from 'lucide-react';
 
 // These values power the live example shown on the landing page.
@@ -78,9 +78,9 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
         const matches = await matchOccupations({ interest_ids: EXAMPLE_INTERESTS, region: EXAMPLE_REGION });
         if (!Array.isArray(matches) || !matches.length) throw new Error('No occupation returned');
         const role = [...matches].sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999))[0];
-        const [ai, demand] = await Promise.all([getOccupationAI(role.occupation_id), getRegionalDemand(EXAMPLE_REGION)]);
+        const ai = await getOccupationAI(role.anzsco_code);
         if (cancelled) return;
-        setExampleRole(role); setAiData(ai || null); setRegionalDemand(Array.isArray(demand) ? demand : demand ? [demand] : []);
+        setExampleRole(role); setAiData(ai || null); setRegionalDemand([]);
       } catch (error) {
         console.error('Landing-page example data unavailable:', error);
         if (!cancelled) { setExampleRole(null); setAiData(null); setRegionalDemand([]); setPreviewError(true); }

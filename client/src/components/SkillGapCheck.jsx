@@ -11,6 +11,7 @@ const tierStyle = (score) => {
 
 // ─── Resilience colour ────────────────────────────────────────────────────────
 const resilienceStyle = (score) => {
+  if (score == null) return { bar: 'bg-zinc-400', text: 'text-zinc-500 dark:text-zinc-400', bg: 'bg-zinc-500/5 border-zinc-500/20', label: 'Not available' };
   if (score >= 70) return { bar: 'bg-emerald-500', text: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20', label: 'Highly Resilient' };
   if (score >= 50) return { bar: 'bg-blue-500',    text: 'text-blue-600 dark:text-blue-400',    bg: 'bg-blue-500/10 border-blue-500/20',    label: 'Moderately Resilient' };
   return              { bar: 'bg-amber-500',        text: 'text-amber-600 dark:text-amber-400',  bg: 'bg-amber-500/10 border-amber-500/20',  label: 'Needs Attention' };
@@ -18,28 +19,6 @@ const resilienceStyle = (score) => {
 
 const DURATION_OPTIONS = [3, 6, 9];
 const HOURS_OPTIONS    = [3, 5, 8, 12];
-
-// ─── Fallback mock ────────────────────────────────────────────────────────────
-const MOCK_DATA = {
-  all_skills: [
-    { id: 's1',  name: 'AWS Security',         importance: 9.2, category: 'Cloud Security' },
-    { id: 's2',  name: 'Incident Response',    importance: 8.8, category: 'Security Operations' },
-    { id: 's3',  name: 'Network Forensics',    importance: 8.1, category: 'Network Security' },
-    { id: 's4',  name: 'SIEM Tools',           importance: 7.5, category: 'Security Operations' },
-    { id: 's5',  name: 'Penetration Testing',  importance: 7.2, category: 'Offensive Security' },
-    { id: 's6',  name: 'Linux Security',       importance: 6.9, category: 'System Security' },
-    { id: 's7',  name: 'Threat Intelligence',  importance: 6.5, category: 'Security Operations' },
-    { id: 's8',  name: 'Cloud Security',       importance: 6.2, category: 'Cloud Security' },
-    { id: 's9',  name: 'Python',               importance: 5.8, category: 'Programming' },
-    { id: 's10', name: 'Risk Management',      importance: 5.5, category: 'Governance' },
-    { id: 's11', name: 'Cryptography',         importance: 5.0, category: 'Security Architecture' },
-    { id: 's12', name: 'Firewall Management',  importance: 4.8, category: 'Network Security' },
-  ],
-  resilience_score: 78,
-  resilience_label: 'Medium-High',
-  avg_augmentation: 0.71,
-  avg_automation: 0.48,
-};
 
 // ─── Normalize API response → internal shape ──────────────────────────────────
 function normalizeResponse(raw) {
@@ -62,19 +41,19 @@ function normalizeResponse(raw) {
 
   return {
     all_skills,
-    resilience_score: raw.resilience_score ?? MOCK_DATA.resilience_score,
-    resilience_label: raw.resilience_label ?? MOCK_DATA.resilience_label,
-    avg_augmentation: raw.avg_augmentation ?? MOCK_DATA.avg_augmentation,
-    avg_automation:   raw.avg_automation   ?? MOCK_DATA.avg_automation,
+    resilience_score: raw.resilience_score ?? null,
+    resilience_label: raw.resilience_label ?? null,
+    avg_augmentation: raw.avg_augmentation ?? null,
+    avg_automation:   raw.avg_automation   ?? null,
   };
 }
 
-export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) {
-  const anzscoCode   = String(targetOccupation?.occupation_id || targetOccupation?.id || '271133');
+export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate }) {
+  const anzscoCode   = targetOccupation?.anzsco_code ? String(targetOccupation.anzsco_code) : '';
   const occupationTitle = targetOccupation?.title || targetOccupation?.name || 'Selected Career';
 
   const [isLoading,  setIsLoading]  = useState(true);
-  const [isMock,     setIsMock]     = useState(false);
+  const [error,      setError]      = useState('');
   const [data,       setData]       = useState(null);
   const [selected,   setSelected]   = useState(new Set()); // skill ids user has
   const [duration,   setDuration]   = useState(6);
@@ -83,15 +62,16 @@ export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) 
   // ─── Fetch ──────────────────────────────────────────────────────────────────
   const fetchGap = useCallback(async () => {
     setIsLoading(true);
-    setIsMock(false);
+    setError('');
     try {
+      if (!anzscoCode) throw new Error('No occupation was selected.');
       const res = await getSkillGap(anzscoCode, []);
-      if (!res || res.error) throw new Error('empty response');
+      if (!res || res.error) throw new Error(res?.error || 'The API returned an empty response.');
       setData(normalizeResponse(res));
     } catch (err) {
-      console.warn('[SkillGapCheck] API unavailable, using mock data', err);
-      setData(MOCK_DATA);
-      setIsMock(true);
+      console.warn('[SkillGapCheck] Could not load skill gap data', err);
+      setData(normalizeResponse({}));
+      setError(err?.message || 'Could not load skill data.');
     } finally {
       setIsLoading(false);
     }
@@ -102,7 +82,16 @@ export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) 
   // ─── Derived ─────────────────────────────────────────────────────────────────
   const haveSkills    = data?.all_skills.filter(s => selected.has(s.id))  || [];
   const missingSkills = data?.all_skills.filter(s => !selected.has(s.id)) || [];
-  const rs            = data ? resilienceStyle(data.resilience_score) : null;
+  // Use the real AI data from the results page; never substitute placeholder numbers.
+  const metrics = {
+    resilience_score: ai?.resilience_score ?? data?.resilience_score ?? null,
+    avg_augmentation: ai?.avg_augmentation ?? data?.avg_augmentation ?? null,
+    avg_automation:   ai?.avg_automation   ?? data?.avg_automation   ?? null,
+  };
+  const toPct = (v) => (v == null || !Number.isFinite(Number(v)) ? null : Math.round(Math.max(0, Math.min(1, Number(v))) * 100));
+  const augPct = toPct(metrics.avg_augmentation);
+  const autoPct = toPct(metrics.avg_automation);
+  const rs = resilienceStyle(metrics.resilience_score);
 
   const totalWeeks   = duration * 4.33;
   const totalHours   = Math.round(totalWeeks * hrsPerWeek);
@@ -150,11 +139,12 @@ export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) 
         <ArrowLeft className="w-4 h-4" /> Back to results
       </button>
 
-      {/* Mock warning */}
-      {isMock && (
-        <div className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
+      {/* Load error */}
+      {error && (
+        <div role="alert" className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
           <ShieldAlert className="w-4 h-4 shrink-0" />
-          Preview data — API unavailable for this occupation.
+          <span className="flex-1">Skill data could not be loaded for this occupation ({error}).</span>
+          <button onClick={fetchGap} className="font-semibold underline underline-offset-2 shrink-0">Try again</button>
         </div>
       )}
 
@@ -172,7 +162,7 @@ export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) 
           <div className="flex items-center gap-6 shrink-0">
             {/* Resilience score */}
             <div className="text-center">
-              <div className={`text-4xl font-bold tabular-nums ${rs.text}`}>{data.resilience_score}</div>
+              <div className={`text-4xl font-bold tabular-nums ${rs.text}`}>{metrics.resilience_score ?? 'N/A'}</div>
               <div className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mt-0.5">Resilience</div>
               <div className={`text-xs font-medium mt-0.5 ${rs.text}`}>{rs.label}</div>
             </div>
@@ -181,19 +171,19 @@ export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) 
               <div>
                 <div className="flex justify-between text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
                   <span>Augmentation</span>
-                  <span className="text-emerald-600 dark:text-emerald-400">{Math.round(data.avg_augmentation * 100)}%</span>
+                  <span className="text-emerald-600 dark:text-emerald-400">{augPct != null ? `${augPct}%` : 'N/A'}</span>
                 </div>
                 <div className="h-1.5 rounded-full bg-zinc-200/60 dark:bg-white/10 overflow-hidden">
-                  <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${data.avg_augmentation * 100}%` }} />
+                  <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${augPct ?? 0}%` }} />
                 </div>
               </div>
               <div>
                 <div className="flex justify-between text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
                   <span>Automation</span>
-                  <span className="text-amber-600 dark:text-amber-400">{Math.round(data.avg_automation * 100)}%</span>
+                  <span className="text-amber-600 dark:text-amber-400">{autoPct != null ? `${autoPct}%` : 'N/A'}</span>
                 </div>
                 <div className="h-1.5 rounded-full bg-zinc-200/60 dark:bg-white/10 overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: `${data.avg_automation * 100}%` }} />
+                  <div className="h-full bg-amber-500 rounded-full" style={{ width: `${autoPct ?? 0}%` }} />
                 </div>
               </div>
             </div>
@@ -219,6 +209,12 @@ export default function SkillGapCheck({ targetOccupation, onBack, onNavigate }) 
             </button>
           )}
         </div>
+
+        {data.all_skills.length === 0 && (
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            {error ? 'Skills could not be loaded for this occupation.' : 'No skill data is available for this occupation.'}
+          </p>
+        )}
 
         <div className="flex flex-wrap gap-2.5">
           {data.all_skills.map(skill => {
