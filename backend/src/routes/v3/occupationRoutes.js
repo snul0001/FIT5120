@@ -308,37 +308,46 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
 })
 
 // ── GET /api/v3/occupations/:anzsco_code/skills
-// software skills first, then transferable, then essential
-// score_display: null for software (use stars), percentage string for others
+// For ICT occupations: software skills first, then transferable, then essential
+// For all others: original position-based order
+// score_display: null for software (use stars only), percentage string for others
 const SKILL_TYPE_ORDER = { software: 0, transferable: 1, essential: 2 }
 
 router.get("/:anzsco_code/skills", async (req, res) => {
   try {
     const { anzsco_code } = req.params
 
-    const occSkills = await prisma.occupation_skills.findMany({
-      where: { anzsco_code, position: { not: null } },
-      include: { skills: true },
-      orderBy: { position: "asc" },
-    })
+    const [occ, occSkills] = await Promise.all([
+      prisma.occupations.findUnique({
+        where: { anzsco_code },
+        select: { category: true },
+      }),
+      prisma.occupation_skills.findMany({
+        where: { anzsco_code, position: { not: null } },
+        include: { skills: true },
+        orderBy: { position: "asc" },
+      }),
+    ])
 
     if (!occSkills.length) {
       return res.status(404).json({ error: "No skills found for this occupation" })
     }
 
-    const skills = occSkills
-      .map(os => ({
-        skill_id: os.skill_id,
-        name: os.skills.name,
-        skill_type: os.skills.skill_type,
-        position: os.position,
-        score: os.score ? parseFloat(os.score) : null,
-        stars: os.stars ? parseFloat(os.stars) : null,
-        score_display: os.skills.skill_type === "software"
-          ? null
-          : (os.score ? `${Math.round(parseFloat(os.score))}%` : null),
-      }))
-      .sort((a, b) => (SKILL_TYPE_ORDER[a.skill_type] ?? 3) - (SKILL_TYPE_ORDER[b.skill_type] ?? 3))
+    const skills = occSkills.map(os => ({
+      skill_id: os.skill_id,
+      name: os.skills.name,
+      skill_type: os.skills.skill_type,
+      position: os.position,
+      score: os.score ? parseFloat(os.score) : null,
+      stars: os.stars ? parseFloat(os.stars) : null,
+      score_display: os.skills.skill_type === "software"
+        ? null
+        : (os.score ? `${Math.round(parseFloat(os.score))}%` : null),
+    }))
+
+    if (occ?.category === "ICT") {
+      skills.sort((a, b) => (SKILL_TYPE_ORDER[a.skill_type] ?? 3) - (SKILL_TYPE_ORDER[b.skill_type] ?? 3))
+    }
 
     res.json({ anzsco_code, skills })
   } catch (error) {
