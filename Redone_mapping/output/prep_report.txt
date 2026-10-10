@@ -1,3 +1,4 @@
 ANZSCO: 81 of 81 requested groups written
 O*NET: 1016 occupations -> 916 after removing management, military and first-line supervisors (100 removed)
 NOTE: 69 occupations have no Job Zone (shown as 'n/a'); they are kept.
+O*NET candidate list: 916 lines

@@ -12,7 +12,6 @@ Usage:
       bespoke bespoke_table_tracker_20251003.xlsx \
       onet-occupations "Occupation Data.txt" \
       onet-jobzones "Job Zones.txt" \
-      onet-tasks task_statements.csv
 
 The O*NET files can be the tab-separated .txt files from the O*NET database
 download, or .csv / .xlsx versions. Use the same database release for all of them.
@@ -48,7 +47,6 @@ OUT_DIR = BASE_DIR / "output"
 BESPOKE_FILE = DATA_DIR / "bespoke_table_tracker_20251003.xlsx"
 ONET_OCCUPATIONS_FILE = DATA_DIR / "occupation_data.csv"
 ONET_JOBZONES_FILE = DATA_DIR / "job_zones.csv"
-ONET_TASKS_FILE = DATA_DIR / "task_statements.csv"
 
 # Function to help  
 def clean(text):
@@ -121,7 +119,7 @@ def build_anzsco_outputs(table1_path, out, report):
 
 
 # O*NET
-def build_onet_outputs(occ_path, jz_path, tasks_path, out, report):
+def build_onet_outputs(occ_path, jz_path, out, report):
     occ = read_any(occ_path)
     code_c = find_col(occ, "O*NET-SOC Code")
     title_c = find_col(occ, "Title")
@@ -164,12 +162,10 @@ def main():
     for f in (BESPOKE_FILE, ONET_OCCUPATIONS_FILE, ONET_JOBZONES_FILE):
         if not Path(f).exists():
             raise FileNotFoundError(f"Missing input file: {f}")
-    tasks_file = ONET_TASKS_FILE if ONET_TASKS_FILE and Path(ONET_TASKS_FILE).exists() else None
- 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     report = []
     build_anzsco_outputs(BESPOKE_FILE, OUT_DIR, report)
-    build_onet_outputs(ONET_OCCUPATIONS_FILE, ONET_JOBZONES_FILE, tasks_file, OUT_DIR, report)
+    build_onet_outputs(ONET_OCCUPATIONS_FILE, ONET_JOBZONES_FILE, OUT_DIR, report)
     (OUT_DIR / "prep_report.txt").write_text("\n".join(report), encoding="utf-8")
     print("\n".join(report))
     print(f"\nFiles written to {OUT_DIR}")
