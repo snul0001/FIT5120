@@ -3,12 +3,158 @@ import { prisma } from "../../config/db.js"
 
 const router = express.Router()
 
-// GET /api/v3/occupations
-// Returns all 81 occupations — optional ?category=ICT filter
+const getResilienceLabel = (score) => {
+  if (score >= 70) return "High — AI is more likely to enhance this role"
+  if (score >= 40) return "Medium — AI will change parts of this role"
+  return "Low — AI may significantly automate this role"
+}
+
+const getTaskLabel = (score) => {
+  if (score >= 0.67) return "High exposure"
+  if (score >= 0.34) return "Moderate exposure"
+  return "Low exposure"
+}
+
+const getMatchLabel = (score) => {
+  if (score >= 80) return "Strong match"
+  if (score >= 50) return "Good match"
+  return "Possible match"
+}
+
+// ── POST /api/v3/occupations/match
+router.post("/match", async (req, res) => {
+  try {
+    const { interest_codes, skill_names, state } = req.body
+
+    if (!Array.isArray(interest_codes) || interest_codes.length === 0) {
+      return res.status(400).json({ error: "interest_codes must be a non-empty array of RIASEC letters" })
+    }
+
+    const uniqueCodes = [...new Set(interest_codes.map(c => c.toUpperCase().trim()))]
+    const hasSkills = Array.isArray(skill_names) && skill_names.length > 0
+    const hasRegion = !!state
+
+    const interestMatches = await prisma.occupation_interests.findMany({
+      where: { interest_type: { in: uniqueCodes } },
+      include: {
+        occupations: {
+          select: { anzsco_code: true, name: true, category: true, interest_code: true },
+        },
+      },
+    })
+
+    const scoreMap = {}
+    for (const match of interestMatches) {
+      const code = match.anzsco_code
+      if (!scoreMap[code]) {
+        scoreMap[code] = {
+          occupation: match.occupations,
+          interest_score: 0,
+          skill_score: 0,
+          regional_score: 0,
+        }
+      }
+      scoreMap[code].interest_score += 1
+    }
+
+    if (Object.keys(scoreMap).length === 0) {
+      return res.json([])
+    }
+
+    if (hasSkills) {
+      const selectedLower = skill_names.map(s => s.toLowerCase().trim())
+      for (const anzsco_code of Object.keys(scoreMap)) {
+        const occSkills = await prisma.occupation_skills.findMany({
+          where: { anzsco_code, position: { not: null } },
+          include: { skills: { select: { name: true } } },
+        })
+        if (occSkills.length > 0) {
+          const matched = occSkills.filter(os =>
+            selectedLower.some(s => {
+              const skillName = os.skills.name.toLowerCase().trim()
+              return s === skillName || skillName.includes(s) || s.includes(skillName)
+            })
+          )
+          scoreMap[anzsco_code].skill_score = matched.length / occSkills.length
+        }
+      }
+    }
+
+    if (hasRegion) {
+      const latestVacancies = await prisma.regional_vacancies.findMany({
+        orderBy: { month: "desc" },
+        take: 2000,
+        include: {
+          regions: { select: { state: true } },
+        },
+      })
+
+      const latestMonth = latestVacancies[0]?.month?.toISOString().slice(0, 7)
+      const latestMonthByState = {}
+      for (const row of latestVacancies) {
+        const rowMonth = row.month?.toISOString().slice(0, 7)
+        if (rowMonth !== latestMonth) continue
+        const st = row.regions?.state
+        if (!st) continue
+        if (!latestMonthByState[st]) latestMonthByState[st] = 0
+        latestMonthByState[st] += parseFloat(row.vacancies_3m_avg)
+      }
+
+      const maxVacancy = Math.max(...Object.values(latestMonthByState), 1)
+      const stateScore = (latestMonthByState[state.toUpperCase()] || 0) / maxVacancy
+
+      for (const code of Object.keys(scoreMap)) {
+        scoreMap[code].regional_score = stateScore
+      }
+    }
+
+    let interestWeight, skillWeight, regionalWeight
+    if (hasSkills && hasRegion) {
+      interestWeight = 0.5; skillWeight = 0.3; regionalWeight = 0.2
+    } else if (hasSkills) {
+      interestWeight = 0.7; skillWeight = 0.3; regionalWeight = 0
+    } else if (hasRegion) {
+      interestWeight = 0.7; skillWeight = 0; regionalWeight = 0.3
+    } else {
+      interestWeight = 1.0; skillWeight = 0; regionalWeight = 0
+    }
+
+    const ranked = Object.values(scoreMap)
+      .map(item => {
+        const interest_pct = item.interest_score / uniqueCodes.length
+        const final_score = Math.round(
+          (interest_pct * interestWeight +
+           item.skill_score * skillWeight +
+           item.regional_score * regionalWeight) * 100
+        )
+        return {
+          anzsco_code: item.occupation.anzsco_code,
+          name: item.occupation.name,
+          category: item.occupation.category,
+          interest_code: item.occupation.interest_code,
+          match_score: final_score,
+          match_label: getMatchLabel(final_score),
+          interests_matched: item.interest_score,
+          total_interests: uniqueCodes.length,
+          skill_match_pct: hasSkills ? Math.round(item.skill_score * 100) : null,
+          regional_demand_score: hasRegion ? Math.round(item.regional_score * 100) : null,
+        }
+      })
+      .filter(item => item.match_score > 0)
+      .sort((a, b) => b.match_score - a.match_score)
+      .map((item, index) => ({ rank: index + 1, ...item }))
+
+    res.json(ranked.slice(0, 10))
+  } catch (error) {
+    console.error("POST /api/v3/occupations/match error:", error)
+    res.status(500).json({ error: "Something went wrong. Please try again." })
+  }
+})
+
+// ── GET /api/v3/occupations
 router.get("/", async (req, res) => {
   try {
     const { category } = req.query
-
     const where = category ? { category } : {}
 
     const occupations = await prisma.occupations.findMany({
@@ -17,6 +163,7 @@ router.get("/", async (req, res) => {
         anzsco_code: true,
         name: true,
         category: true,
+        interest_code: true,
       },
       orderBy: { name: "asc" },
     })
@@ -28,8 +175,7 @@ router.get("/", async (req, res) => {
   }
 })
 
-// GET /api/v3/occupations/:anzsco_code
-// Returns a single occupation with employment trend and AI resilience score
+// ── GET /api/v3/occupations/:anzsco_code
 router.get("/:anzsco_code", async (req, res) => {
   try {
     const { anzsco_code } = req.params
@@ -37,9 +183,7 @@ router.get("/:anzsco_code", async (req, res) => {
     const occupation = await prisma.occupations.findUnique({
       where: { anzsco_code },
       include: {
-        occupation_employment: {
-          orderBy: { year: "asc" },
-        },
+        occupation_employment: { orderBy: { year: "asc" } },
         tasks: true,
       },
     })
@@ -48,33 +192,43 @@ router.get("/:anzsco_code", async (req, res) => {
       return res.status(404).json({ error: "Occupation not found" })
     }
 
-    // Calculate AI resilience score from tasks
+    const unitGroup = anzsco_code.slice(0, 4)
+    const jsaScores = await prisma.$queryRaw`
+      SELECT automation_score, augmentation_score
+      FROM jsa_task_score
+      WHERE anzsco_unit_group = ${unitGroup}
+        AND automation_score IS NOT NULL
+        AND augmentation_score IS NOT NULL
+    `
+
+    let resilienceScore = null
+    let resilienceLabel = "Not available"
+    let avgAutomation = null
+    let avgAugmentation = null
+
+    if (jsaScores.length > 0) {
+      avgAutomation = jsaScores.reduce((sum, r) => sum + parseFloat(r.automation_score), 0) / jsaScores.length
+      avgAugmentation = jsaScores.reduce((sum, r) => sum + parseFloat(r.augmentation_score), 0) / jsaScores.length
+      resilienceScore = Math.round((0.4 * (1 - avgAutomation) + 0.6 * avgAugmentation) * 100)
+      resilienceLabel = getResilienceLabel(resilienceScore)
+    }
+
     const tasks = occupation.tasks
-    const totalTasks = tasks.length
-    const humanLed = tasks.filter(t => t.impact_group === "Human-led").length
-    const aiAssisted = tasks.filter(t => t.impact_group === "AI-assisted").length
-    const aiAutomated = tasks.filter(t => t.impact_group === "AI-automated").length
-
-    // Resilience = % of tasks that are human-led or AI-assisted (not fully automated)
-    const resilienceScore = totalTasks > 0
-      ? Math.round(((humanLed + aiAssisted * 0.5) / totalTasks) * 100)
-      : 0
-
-    const augmentationPct = totalTasks > 0 ? Math.round((aiAssisted / totalTasks) * 100) : 0
-    const automationPct = totalTasks > 0 ? Math.round((aiAutomated / totalTasks) * 100) : 0
 
     res.json({
       anzsco_code: occupation.anzsco_code,
       name: occupation.name,
       category: occupation.category,
+      interest_code: occupation.interest_code,
       resilience_score: resilienceScore,
-      augmentation_pct: augmentationPct,
-      automation_pct: automationPct,
+      resilience_label: resilienceLabel,
+      avg_automation: avgAutomation != null ? Math.round(avgAutomation * 100) / 100 : null,
+      avg_augmentation: avgAugmentation != null ? Math.round(avgAugmentation * 100) / 100 : null,
       task_counts: {
-        total: totalTasks,
-        human_led: humanLed,
-        ai_assisted: aiAssisted,
-        ai_automated: aiAutomated,
+        total: tasks.length,
+        human_led: tasks.filter(t => t.impact_group === "Human-led").length,
+        ai_assisted: tasks.filter(t => t.impact_group === "AI-assisted").length,
+        ai_automated: tasks.filter(t => t.impact_group === "AI-automated").length,
       },
       employment_trend: occupation.occupation_employment.map(e => ({
         year: e.year,
@@ -87,8 +241,7 @@ router.get("/:anzsco_code", async (req, res) => {
   }
 })
 
-// GET /api/v3/occupations/:anzsco_code/tasks
-// Returns all tasks for an occupation grouped by AI impact category
+// ── GET /api/v3/occupations/:anzsco_code/tasks
 router.get("/:anzsco_code/tasks", async (req, res) => {
   try {
     const { anzsco_code } = req.params
@@ -102,16 +255,51 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
       return res.status(404).json({ error: "No tasks found for this occupation" })
     }
 
-    const grouped = {
-      "Human-led": tasks.filter(t => t.impact_group === "Human-led"),
-      "AI-assisted": tasks.filter(t => t.impact_group === "AI-assisted"),
-      "AI-automated": tasks.filter(t => t.impact_group === "AI-automated"),
+    const unitGroup = anzsco_code.slice(0, 4)
+    const jsaScores = await prisma.$queryRaw`
+      SELECT task_text, automation_score, augmentation_score,
+             automation_justification, augmentation_justification
+      FROM jsa_task_score
+      WHERE anzsco_unit_group = ${unitGroup}
+    `
+
+    const jsaMap = {}
+    for (const row of jsaScores) {
+      jsaMap[row.task_text.toLowerCase().trim()] = row
     }
+
+    const enrichedTasks = tasks.map(t => {
+      const jsa = jsaMap[t.task_core.toLowerCase().trim()]
+      const autoScore = jsa?.automation_score != null ? parseFloat(jsa.automation_score) : null
+      const augScore = jsa?.augmentation_score != null ? parseFloat(jsa.augmentation_score) : null
+
+      return {
+        task_id: t.task_id,
+        task_core: t.task_core,
+        impact_group: t.impact_group,
+        impact_level: t.impact_level,
+        human_need_type: t.human_need_type,
+        short_explanation: t.short_explanation,
+        automation_score: autoScore,
+        augmentation_score: augScore,
+        automation_label: autoScore != null ? getTaskLabel(autoScore) : "Not available",
+        augmentation_label: augScore != null ? getTaskLabel(augScore) : "Not available",
+        plain_english: augScore != null && autoScore != null
+          ? augScore > autoScore
+            ? "AI is more likely to help with this task"
+            : "AI may automate parts of this task"
+          : null,
+      }
+    })
 
     res.json({
       anzsco_code,
       total: tasks.length,
-      grouped,
+      grouped: {
+        "Human-led": enrichedTasks.filter(t => t.impact_group === "Human-led"),
+        "AI-assisted": enrichedTasks.filter(t => t.impact_group === "AI-assisted"),
+        "AI-automated": enrichedTasks.filter(t => t.impact_group === "AI-automated"),
+      },
     })
   } catch (error) {
     console.error("GET /api/v3/occupations/:anzsco_code/tasks error:", error)
@@ -119,22 +307,24 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
   }
 })
 
-// GET /api/v3/occupations/:anzsco_code/skills
-// Returns top 10 skills for an occupation ordered by importance
+// ── GET /api/v3/occupations/:anzsco_code/skills
+const SKILL_TYPE_ORDER = { software: 0, transferable: 1, essential: 2 }
+
 router.get("/:anzsco_code/skills", async (req, res) => {
   try {
     const { anzsco_code } = req.params
 
-    const occSkills = await prisma.occupation_skills.findMany({
-      where: {
-        anzsco_code,
-        position: { not: null },
-      },
-      include: {
-        skills: true,
-      },
-      orderBy: { position: "asc" },
-    })
+    const [occ, occSkills] = await Promise.all([
+      prisma.occupations.findUnique({
+        where: { anzsco_code },
+        select: { category: true },
+      }),
+      prisma.occupation_skills.findMany({
+        where: { anzsco_code, position: { not: null } },
+        include: { skills: true },
+        orderBy: { position: "asc" },
+      }),
+    ])
 
     if (!occSkills.length) {
       return res.status(404).json({ error: "No skills found for this occupation" })
@@ -147,7 +337,14 @@ router.get("/:anzsco_code/skills", async (req, res) => {
       position: os.position,
       score: os.score ? parseFloat(os.score) : null,
       stars: os.stars ? parseFloat(os.stars) : null,
+      score_display: os.skills.skill_type === "software"
+        ? null
+        : (os.score ? `${Math.round(parseFloat(os.score))}%` : null),
     }))
+
+    if (occ?.category === "ICT") {
+      skills.sort((a, b) => (SKILL_TYPE_ORDER[a.skill_type] ?? 3) - (SKILL_TYPE_ORDER[b.skill_type] ?? 3))
+    }
 
     res.json({ anzsco_code, skills })
   } catch (error) {
@@ -156,8 +353,7 @@ router.get("/:anzsco_code/skills", async (req, res) => {
   }
 })
 
-// GET /api/v3/occupations/:anzsco_code/employment
-// Returns employment trend 2020-2025 with growth stats
+// ── GET /api/v3/occupations/:anzsco_code/employment
 router.get("/:anzsco_code/employment", async (req, res) => {
   try {
     const { anzsco_code } = req.params
@@ -176,7 +372,6 @@ router.get("/:anzsco_code/employment", async (req, res) => {
       employed_k: parseFloat(e.employed_k),
     }))
 
-    // Calculate growth stats
     const first = trend[0].employed_k
     const last = trend[trend.length - 1].employed_k
     const totalChange = last - first

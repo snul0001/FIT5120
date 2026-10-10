@@ -14,6 +14,9 @@ import planRoutes from "./routes/v3/planRoutes.js"
 
 import regionalRoutesV3 from "./routes/v3/regionalRoutesV3.js"
 
+import projectionRoutes from "./routes/v3/projectionRoutes.js"
+
+
 config()
 
 const app = express()
@@ -41,6 +44,7 @@ app.use("/api/v3/skills", skillRoutesV3)
 
 app.use("/api/v3/plans", planRoutes)
 app.use("/api/v3/regional", regionalRoutesV3)
+app.use("/api/v3/occupations", projectionRoutes)
 
 
 
