@@ -150,8 +150,13 @@ def build_onet_outputs(occ_path, jz_path, tasks_path, out, report):
         report.append(f"NOTE: {len(no_zone)} occupations have no Job Zone "
                       f"(shown as 'n/a'); they are kept.")
     df["job_zone"] = df["job_zone"].fillna("n/a")
+    
+  # Write the closed candidate list, one line per occupation for faster prompting
+    df = df.sort_values("code")
+    lines = [f"{r.code} | {r.title} | {r.job_zone} | {r.desc}" for r in df.itertuples()]
+    (out / "onet_candidates.txt").write_text("\n".join(lines), encoding="utf-8")
+    report.append(f"O*NET candidate list: {len(lines)} lines")
 
-  
 
 
 # main
