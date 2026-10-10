@@ -21,30 +21,6 @@ const getMatchLabel = (score) => {
   return "Possible match"
 }
 
-// ── GET /api/v3/occupations
-router.get("/", async (req, res) => {
-  try {
-    const { category } = req.query
-    const where = category ? { category } : {}
-
-    const occupations = await prisma.occupations.findMany({
-      where,
-      select: {
-        anzsco_code: true,
-        name: true,
-        category: true,
-        interest_code: true,
-      },
-      orderBy: { name: "asc" },
-    })
-
-    res.json({ occupations })
-  } catch (error) {
-    console.error("GET /api/v3/occupations error:", error)
-    res.status(500).json({ error: "Something went wrong. Please try again." })
-  }
-})
-
 // ── POST /api/v3/occupations/match
 router.post("/match", async (req, res) => {
   try {
@@ -171,6 +147,30 @@ router.post("/match", async (req, res) => {
     res.json(ranked.slice(0, 10))
   } catch (error) {
     console.error("POST /api/v3/occupations/match error:", error)
+    res.status(500).json({ error: "Something went wrong. Please try again." })
+  }
+})
+
+// ── GET /api/v3/occupations
+router.get("/", async (req, res) => {
+  try {
+    const { category } = req.query
+    const where = category ? { category } : {}
+
+    const occupations = await prisma.occupations.findMany({
+      where,
+      select: {
+        anzsco_code: true,
+        name: true,
+        category: true,
+        interest_code: true,
+      },
+      orderBy: { name: "asc" },
+    })
+
+    res.json({ occupations })
+  } catch (error) {
+    console.error("GET /api/v3/occupations error:", error)
     res.status(500).json({ error: "Something went wrong. Please try again." })
   }
 })
@@ -308,9 +308,6 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
 })
 
 // ── GET /api/v3/occupations/:anzsco_code/skills
-// For ICT occupations: software skills first, then transferable, then essential
-// For all others: original position-based order
-// score_display: null for software (use stars only), percentage string for others
 const SKILL_TYPE_ORDER = { software: 0, transferable: 1, essential: 2 }
 
 router.get("/:anzsco_code/skills", async (req, res) => {
