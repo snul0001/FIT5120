@@ -3,16 +3,12 @@ import { prisma } from "../../config/db.js"
 
 const router = express.Router()
 
+const IMPACT_WEIGHT = { High: 1.0, Medium: 0.5, Low: 0.25 }
+
 const getResilienceLabel = (score) => {
   if (score >= 70) return "High — AI is more likely to enhance this role"
   if (score >= 40) return "Medium — AI will change parts of this role"
   return "Low — AI may significantly automate this role"
-}
-
-const getTaskLabel = (score) => {
-  if (score >= 0.67) return "High exposure"
-  if (score >= 0.34) return "Moderate exposure"
-  return "Low exposure"
 }
 
 const getMatchLabel = (score) => {
@@ -20,6 +16,51 @@ const getMatchLabel = (score) => {
   if (score >= 50) return "Good match"
   return "Possible match"
 }
+
+const calcScores = (tasks) => {
+  let automationW = 0, augmentationW = 0, humanW = 0, totalW = 0
+
+  for (const t of tasks) {
+    const w = IMPACT_WEIGHT[t.impact_level] ?? 0.25
+    totalW += w
+    if (t.impact_group === "AI-automated") automationW += w
+    else if (t.impact_group === "AI-assisted") augmentationW += w
+    else if (t.impact_group === "Human-led") humanW += w
+  }
+
+  if (totalW === 0) return { resilienceScore: null, resilienceLabel: "Not available", avgAutomation: null, avgAugmentation: null }
+
+  const avgAutomation = Math.round((automationW / totalW) * 100) / 100
+  const avgAugmentation = Math.round((augmentationW / totalW) * 100) / 100
+  const resilienceScore = Math.round(((humanW + augmentationW) / totalW) * 100)
+  const resilienceLabel = getResilienceLabel(resilienceScore)
+
+  return { resilienceScore, resilienceLabel, avgAutomation, avgAugmentation }
+}
+
+// ── GET /api/v3/occupations
+router.get("/", async (req, res) => {
+  try {
+    const { category } = req.query
+    const where = category ? { category } : {}
+
+    const occupations = await prisma.occupations.findMany({
+      where,
+      select: {
+        anzsco_code: true,
+        name: true,
+        category: true,
+        interest_code: true,
+      },
+      orderBy: { name: "asc" },
+    })
+
+    res.json({ occupations })
+  } catch (error) {
+    console.error("GET /api/v3/occupations error:", error)
+    res.status(500).json({ error: "Something went wrong. Please try again." })
+  }
+})
 
 // ── POST /api/v3/occupations/match
 router.post("/match", async (req, res) => {
@@ -151,30 +192,6 @@ router.post("/match", async (req, res) => {
   }
 })
 
-// ── GET /api/v3/occupations
-router.get("/", async (req, res) => {
-  try {
-    const { category } = req.query
-    const where = category ? { category } : {}
-
-    const occupations = await prisma.occupations.findMany({
-      where,
-      select: {
-        anzsco_code: true,
-        name: true,
-        category: true,
-        interest_code: true,
-      },
-      orderBy: { name: "asc" },
-    })
-
-    res.json({ occupations })
-  } catch (error) {
-    console.error("GET /api/v3/occupations error:", error)
-    res.status(500).json({ error: "Something went wrong. Please try again." })
-  }
-})
-
 // ── GET /api/v3/occupations/:anzsco_code
 router.get("/:anzsco_code", async (req, res) => {
   try {
@@ -192,27 +209,7 @@ router.get("/:anzsco_code", async (req, res) => {
       return res.status(404).json({ error: "Occupation not found" })
     }
 
-    const unitGroup = anzsco_code.slice(0, 4)
-    const jsaScores = await prisma.$queryRaw`
-      SELECT automation_score, augmentation_score
-      FROM jsa_task_score
-      WHERE anzsco_unit_group = ${unitGroup}
-        AND automation_score IS NOT NULL
-        AND augmentation_score IS NOT NULL
-    `
-
-    let resilienceScore = null
-    let resilienceLabel = "Not available"
-    let avgAutomation = null
-    let avgAugmentation = null
-
-    if (jsaScores.length > 0) {
-      avgAutomation = jsaScores.reduce((sum, r) => sum + parseFloat(r.automation_score), 0) / jsaScores.length
-      avgAugmentation = jsaScores.reduce((sum, r) => sum + parseFloat(r.augmentation_score), 0) / jsaScores.length
-      resilienceScore = Math.round((0.4 * (1 - avgAutomation) + 0.6 * avgAugmentation) * 100)
-      resilienceLabel = getResilienceLabel(resilienceScore)
-    }
-
+    const { resilienceScore, resilienceLabel, avgAutomation, avgAugmentation } = calcScores(occupation.tasks)
     const tasks = occupation.tasks
 
     res.json({
@@ -222,8 +219,8 @@ router.get("/:anzsco_code", async (req, res) => {
       interest_code: occupation.interest_code,
       resilience_score: resilienceScore,
       resilience_label: resilienceLabel,
-      avg_automation: avgAutomation != null ? Math.round(avgAutomation * 100) / 100 : null,
-      avg_augmentation: avgAugmentation != null ? Math.round(avgAugmentation * 100) / 100 : null,
+      avg_automation: avgAutomation,
+      avg_augmentation: avgAugmentation,
       task_counts: {
         total: tasks.length,
         human_led: tasks.filter(t => t.impact_group === "Human-led").length,
@@ -255,46 +252,28 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
       return res.status(404).json({ error: "No tasks found for this occupation" })
     }
 
-    const unitGroup = anzsco_code.slice(0, 4)
-    const jsaScores = await prisma.$queryRaw`
-      SELECT task_text, automation_score, augmentation_score,
-             automation_justification, augmentation_justification
-      FROM jsa_task_score
-      WHERE anzsco_unit_group = ${unitGroup}
-    `
-
-    const jsaMap = {}
-    for (const row of jsaScores) {
-      jsaMap[row.task_text.toLowerCase().trim()] = row
-    }
+    const { resilienceScore, resilienceLabel, avgAutomation, avgAugmentation } = calcScores(tasks)
 
     const enrichedTasks = tasks.map(t => {
-      const jsa = jsaMap[t.task_core.toLowerCase().trim()]
-      const autoScore = jsa?.automation_score != null ? parseFloat(jsa.automation_score) : null
-      const augScore = jsa?.augmentation_score != null ? parseFloat(jsa.augmentation_score) : null
-
+      const w = IMPACT_WEIGHT[t.impact_level] ?? 0.25
       return {
         task_id: t.task_id,
         task_core: t.task_core,
         impact_group: t.impact_group,
         impact_level: t.impact_level,
+        impact_weight: w,
         human_need_type: t.human_need_type,
         short_explanation: t.short_explanation,
-        automation_score: autoScore,
-        augmentation_score: augScore,
-        automation_label: autoScore != null ? getTaskLabel(autoScore) : "Not available",
-        augmentation_label: augScore != null ? getTaskLabel(augScore) : "Not available",
-        plain_english: augScore != null && autoScore != null
-          ? augScore > autoScore
-            ? "AI is more likely to help with this task"
-            : "AI may automate parts of this task"
-          : null,
       }
     })
 
     res.json({
       anzsco_code,
       total: tasks.length,
+      resilience_score: resilienceScore,
+      resilience_label: resilienceLabel,
+      avg_automation: avgAutomation,
+      avg_augmentation: avgAugmentation,
       grouped: {
         "Human-led": enrichedTasks.filter(t => t.impact_group === "Human-led"),
         "AI-assisted": enrichedTasks.filter(t => t.impact_group === "AI-assisted"),
@@ -308,6 +287,9 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
 })
 
 // ── GET /api/v3/occupations/:anzsco_code/skills
+// For ICT occupations: software skills first, then transferable, then essential
+// For all others: original position-based order
+// score_display: null for software (use stars only), percentage string for others
 const SKILL_TYPE_ORDER = { software: 0, transferable: 1, essential: 2 }
 
 router.get("/:anzsco_code/skills", async (req, res) => {
