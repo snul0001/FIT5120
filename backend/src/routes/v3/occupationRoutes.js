@@ -290,6 +290,7 @@ router.get("/:anzsco_code/tasks", async (req, res) => {
 // For ICT occupations: software skills first, then transferable, then essential
 // For all others: original position-based order
 // score_display: null for software (use stars only), percentage string for others
+// score is normalised to 0-100 (higher = better) regardless of original score_type
 const SKILL_TYPE_ORDER = { software: 0, transferable: 1, essential: 2 }
 
 router.get("/:anzsco_code/skills", async (req, res) => {
@@ -312,17 +313,34 @@ router.get("/:anzsco_code/skills", async (req, res) => {
       return res.status(404).json({ error: "No skills found for this occupation" })
     }
 
-    const skills = occSkills.map(os => ({
-      skill_id: os.skill_id,
-      name: os.skills.name,
-      skill_type: os.skills.skill_type,
-      position: os.position,
-      score: os.score ? parseFloat(os.score) : null,
-      stars: os.stars ? parseFloat(os.stars) : null,
-      score_display: os.skills.skill_type === "software"
-        ? null
-        : (os.score ? `${Math.round(parseFloat(os.score))}%` : null),
-    }))
+    const skills = occSkills.map(os => {
+      const rawScore = os.score ? parseFloat(os.score) : null
+      const scoreType = os.score_type
+
+      // Normalise to 0–100 where higher = better
+      let normalised = null
+      if (rawScore !== null) {
+        if (scoreType === "rank") {
+          // rank 1–10, lower is better → invert to 0–100
+          normalised = Math.round(((10 - rawScore) / 9) * 100)
+        } else {
+          // priority_score 0–100, already correct scale
+          normalised = Math.round(rawScore)
+        }
+      }
+
+      return {
+        skill_id: os.skill_id,
+        name: os.skills.name,
+        skill_type: os.skills.skill_type,
+        position: os.position,
+        score: normalised,
+        stars: os.stars ? parseFloat(os.stars) : null,
+        score_display: os.skills.skill_type === "software"
+          ? null
+          : (normalised !== null ? `${normalised}%` : null),
+      }
+    })
 
     if (occ?.category === "ICT") {
       skills.sort((a, b) => (SKILL_TYPE_ORDER[a.skill_type] ?? 3) - (SKILL_TYPE_ORDER[b.skill_type] ?? 3))
