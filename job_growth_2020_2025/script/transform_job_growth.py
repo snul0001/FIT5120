@@ -3,7 +3,7 @@
 
 Input: cleaned_quarterly_unitgroup.csv, global_variable.py 
 Reads   output/cleaned_quarterly_unitgroup.csv
-Writes  output/job_growth_unitgroup_2020_2025.csv   (paths set in config.py)
+Writes  output/job_growth_unitgroup_2020_2025.csv   (paths set in global_variable.py)
 
 Method:
     - Annual level = mean of the four quarterly estimates (Feb, May, Aug, Nov), thousand persons.
