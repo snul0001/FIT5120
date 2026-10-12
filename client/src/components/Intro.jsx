@@ -221,7 +221,7 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
           <div className="grid grid-cols-1 lg:grid-cols-[0.96fr_1.04fr] min-h-[520px] sm:min-h-[560px] items-center gap-4 lg:gap-10 pt-20 sm:pt-24">
             <div className="max-w-[560px] py-12 sm:py-16">
               <h1 className="text-[3rem] sm:text-[3.65rem] lg:text-[4rem] leading-[1.04] tracking-[-0.05em] font-bold text-[#10233F] dark:text-white">Navigate the AI shift with precision.</h1>
-              <p className="mt-6 max-w-[545px] text-base sm:text-lg leading-7 sm:leading-8 text-[#294665] dark:text-slate-400">Discover tech careers that fit your interests, understand how AI is changing the work, and get a learning plan you can follow.</p>
+              <p className="mt-6 max-w-[545px] text-base sm:text-lg leading-7 sm:leading-8 text-[#294665] dark:text-slate-400">Discover careers that fit your interests, understand how AI is changing the work, and get a learning plan you can follow.</p>
               <PrimaryButton onClick={onConfigureProfile} className="mt-8">Get started</PrimaryButton>
             </div>
             <div className="relative min-h-[300px] sm:min-h-[380px] flex items-center justify-center lg:justify-end">
@@ -254,14 +254,24 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
                   </div>
                   {example.role.match_score !== null && <span className="rounded-full bg-[#E7F7ED] border border-[#BFE8CC] px-2.5 py-1 text-[10px] font-semibold text-[#168247] shrink-0">{example.role.match_score}% match</span>}
                 </div>
-                <div className="mt-5 pt-4 border-t border-[#E2EAF1] dark:border-white/10">
+                <div className="mt-5 pt-4 border-t border-[#E2EAF1] dark:border-white/10 text-center">
+                <div className="flex justify-center">
                   <Label>What this match uses</Label>
-                  <div className="mt-3 grid grid-cols-3 gap-3">
-                    {[['Interests', exampleInterestLabels], ['Skills', 'Optional'], ['Region', EXAMPLE_REGION_LABEL]].map(([label, value]) => (
-                      <div key={label}><p className="text-[10px] text-[#7C91A6] dark:text-slate-500">{label}</p><p className="mt-1 text-xs font-semibold leading-snug text-[#173A5E] dark:text-slate-200">{value}</p></div>
-                    ))}
-                  </div>
                 </div>
+
+                <div className="mt-3 grid grid-cols-1 gap-3 justify-items-center">
+                  {[['Interests', exampleInterestLabels]].map(([label, value]) => (
+                    <div key={label} className="text-center">
+                      <p className="text-s text-[#7C91A6] dark:text-slate-500">
+                        {label}
+                      </p>
+                      <p className="mt-1 text-xs font-semibold leading-snug text-[#173A5E] dark:text-slate-200">
+                        {value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
               </>
             ) : <Skeleton rows={5} pulse={loading} />}
           </Chapter>
@@ -272,9 +282,9 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
               <>
                 <Label>AI impact · {example.role.title}</Label>
                 <div className="mt-4 space-y-4">
-                  <Metric label="Augmentation" value={example.metrics.augmentation} />
-                  <Metric label="Automation risk" value={example.metrics.automation} color="bg-[#735CE6]" />
-                  <Metric label="Resilience score" value={example.metrics.resilience} />
+                  <Metric label="AI Augmentation score" value={example.metrics.augmentation} />
+                  <Metric label="AI Automation risk score" value={example.metrics.automation} color="bg-[#735CE6]" />
+                  <Metric label="AI Resilience score" value={example.metrics.resilience} />
                 </div>
                 <div className="mt-5 pt-4 border-t border-[#E2EAF1] dark:border-white/10 space-y-2.5">
                   <Label>How its tasks are affected</Label>
@@ -309,22 +319,8 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
             ) : <Skeleton rows={6} pulse={loading} />}
           </Chapter>
 
-          {/* 4. Learning plan: a structural illustration (generating a real plan here would write to your database) */}
-          <Chapter reverse label="CHAPTER 04 · LEARNING PLAN" title="Turn the gap into a plan" text="Choose 3, 6 or 9 months and 3 to 12 hours a week. IResi builds a phased plan with course search links, and you can download it as a PDF." action="Build my plan" onClick={onConfigureProfile}>
-            <Label>How it works</Label>
-            <div className="mt-4 space-y-2.5">
-              {[['1', 'Choose your pace', '3, 6 or 9 months · 3 to 12 hours a week'], ['2', 'Get a phased plan', 'Foundation first, then the next phases'], ['3', 'Take it with you', 'Download a PDF or track progress online']].map(([n, title, copy]) => (
-                <div key={n} className="flex items-center gap-3 rounded-lg border border-[#E2EAF1] dark:border-white/10 px-3 py-2.5">
-                  <span className="w-6 h-6 rounded-full bg-[#EDF5FC] dark:bg-blue-500/10 text-[11px] font-bold text-[#176BC0] dark:text-blue-300 flex items-center justify-center shrink-0">{n}</span>
-                  <div className="min-w-0"><p className="text-xs font-semibold text-[#173A5E] dark:text-white">{title}</p><p className="text-[11px] text-[#7C91A6] dark:text-slate-500">{copy}</p></div>
-                </div>
-              ))}
-            </div>
-            {example && <p className="mt-4 text-[11px] text-[#7A8EA2] dark:text-slate-500">Built from the {example.skills.total} skills for {example.role.title}.</p>}
-          </Chapter>
-
-          {/* 5. Regional insights */}
-          <Chapter label="CHAPTER 05 · REGIONAL INSIGHTS" title="Find where the opportunity is" text="See employment trends by year, and compare employment and vacancies across states and territories." action="Explore Regional Insights" onClick={() => onNavigate?.('regional-insights')}>
+          {/* 4. Regional insights */}
+          <Chapter label="CHAPTER 04 · REGIONAL INSIGHTS" title="Find where the opportunity is" text="See employment trends by year, and compare employment and vacancies across states and territories." action="Explore Regional Insights" onClick={() => onNavigate?.('regional-insights')}>
             {example && (example.states.length || example.trend.length) ? (
               <>
                 <div className="flex items-center gap-3">
@@ -355,6 +351,20 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
             ) : <Skeleton rows={5} pulse={loading} />}
           </Chapter>
 
+          {/* 5. Learning plan: a structural illustration (generating a real plan here would write to your database) */}
+          <Chapter reverse label="CHAPTER 05 · LEARNING PLAN" title="Turn the gap into a plan" text="Choose 3, 6 or 9 months and 3 to 12 hours a week. IResi builds a phased plan with course search links, and you can download it as a PDF." action="Build my plan" onClick={onConfigureProfile}>
+            <Label>How it works</Label>
+            <div className="mt-4 space-y-2.5">
+              {[['1', 'Choose your pace', '3, 6 or 9 months · 3 to 12 hours a week'], ['2', 'Get a phased plan', 'Foundation first, then the next phases'], ['3', 'Take it with you', 'Download a PDF or track progress online']].map(([n, title, copy]) => (
+                <div key={n} className="flex items-center gap-3 rounded-lg border border-[#E2EAF1] dark:border-white/10 px-3 py-2.5">
+                  <span className="w-6 h-6 rounded-full bg-[#EDF5FC] dark:bg-blue-500/10 text-[11px] font-bold text-[#176BC0] dark:text-blue-300 flex items-center justify-center shrink-0">{n}</span>
+                  <div className="min-w-0"><p className="text-xs font-semibold text-[#173A5E] dark:text-white">{title}</p><p className="text-[11px] text-[#7C91A6] dark:text-slate-500">{copy}</p></div>
+                </div>
+              ))}
+            </div>
+            {example && <p className="mt-4 text-[11px] text-[#7A8EA2] dark:text-slate-500">Built from the {example.skills.total} skills for {example.role.title}.</p>}
+          </Chapter>
+
           {/* 6. Progress tracker: a neutral illustration */}
           <Chapter reverse label="CHAPTER 06 · PROGRESS TRACKER" title="Keep going, one skill at a time" text="Every plan comes with a code. Enter it in the Progress Tracker any time to restore your plan and tick off skills as you learn." action="Open Progress Tracker" onClick={() => onNavigate?.('progress-tracker')}>
             <Label>Restore your plan</Label>
@@ -372,22 +382,22 @@ const Intro = ({ onConfigureProfile, onNavigate }) => {
         </div>
       </div>
 
+      {/* Final CTA */}
+      <div className="relative overflow-hidden bg-transparent border-t border-[#E1EBF4]/50 dark:border-white/5">
+        <div className="absolute inset-0 pointer-events-none"><div className="absolute -left-20 -bottom-44 w-[430px] h-[430px] rounded-full bg-blue-500/5 dark:bg-blue-500/5 blur-3xl" /><div className="absolute -right-20 -top-44 w-[430px] h-[430px] rounded-full bg-indigo-500/5 dark:bg-indigo-500/5 blur-3xl" /></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6 py-14 sm:py-16 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.04em] text-[#10233F] dark:text-white">Make your next career move with more clarity.</h2>
+          <p className="mt-4 text-sm sm:text-base leading-7 text-[#536C86] dark:text-slate-400 max-w-xl mx-auto">Take the interest quiz to see your career matches, AI impact, skill gaps, regional demand and a learning plan.</p>
+          <PrimaryButton onClick={onConfigureProfile} className="mt-7">Get started</PrimaryButton>
+        </div>
+      </div>
+
       {/* Sources */}
       <div id="iresi-about" className="bg-transparent border-t border-[#EDF2F7]/60 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-9 sm:py-10"><div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div><div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#6F879F]" /><p className="text-sm font-semibold text-[#10233F] dark:text-white">This analysis uses data from</p></div><p className="mt-1.5 text-xs font-medium text-[#4E637B] dark:text-slate-500">Career and labour-market information used throughout IResi.</p></div>
           <div className="flex flex-wrap items-center gap-2.5">{[['https://www.jobsandskills.gov.au/data', 'Jobs & Skills Australia'], ['https://www.onetcenter.org/database.html', 'O*NET Database']].map(([href, label]) => <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center rounded-full border border-[#D4E2EE] dark:border-white/10 bg-white/70 dark:bg-white/[0.03] px-3.5 py-2 text-xs font-medium text-[#1762B1] dark:text-blue-300 hover:bg-[#F4F8FC] dark:hover:bg-white/[0.06] transition-colors">{label}</a>)}</div>
         </div></div>
-      </div>
-
-      {/* Final CTA */}
-      <div className="relative overflow-hidden bg-transparent border-t border-[#E1EBF4]/50 dark:border-white/5">
-        <div className="absolute inset-0 pointer-events-none"><div className="absolute -left-20 -bottom-44 w-[430px] h-[430px] rounded-full bg-blue-500/5 dark:bg-blue-500/5 blur-3xl" /><div className="absolute -right-20 -top-44 w-[430px] h-[430px] rounded-full bg-indigo-500/5 dark:bg-indigo-500/5 blur-3xl" /></div>
-        <div className="relative z-10 max-w-3xl mx-auto px-6 py-20 sm:py-24 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.04em] text-[#10233F] dark:text-white">Make your next career move with more clarity.</h2>
-          <p className="mt-4 text-sm sm:text-base leading-7 text-[#536C86] dark:text-slate-400 max-w-xl mx-auto">Take the interest quiz to see your career matches, AI impact, skill gaps, regional demand and a learning plan.</p>
-          <PrimaryButton onClick={onConfigureProfile} className="mt-7">Get started</PrimaryButton>
-        </div>
       </div>
     </section>
   );

@@ -74,7 +74,7 @@ function LoadingScreen() {
         <div className="w-16 h-16 rounded-2xl bg-zinc-900 dark:bg-white flex items-center justify-center">
           <BookOpen className="w-7 h-7 text-white dark:text-zinc-900" />
         </div>
-        <Loader2 className="absolute -bottom-2 -right-2 w-6 h-6 animate-spin text-zinc-500" />
+        {/* <Loader2 className="absolute -bottom-2 -right-2 w-6 h-6 animate-spin text-zinc-500" /> */}
       </div>
       <div className="space-y-1.5">
         <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Building your plan</h3>

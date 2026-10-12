@@ -12,6 +12,7 @@ const REGION_CODE_TO_API_NAME = {
   VIC: 'VIC',
   WA: 'WA'
 };
+
 const ALL_REGIONS = Object.keys(REGION_CODE_TO_API_NAME);
 
 const AU_STATE_PATHS = {
@@ -51,9 +52,10 @@ const AU_STATE_PATHS = {
 
 // ─── Line graph ───────────────────────────────────────────────────────────────
 // lines: [{ id, label, color, points: [{ x: '2024', y: 123 }] }]
+
 const LINE_COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#06B6D4', '#EF4444', '#84CC16'];
 
-function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat = v => v.toLocaleString(), tipFormat, showLegend = true, ariaLabel }) {
+function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat = v => v.toLocaleString(), tipFormat, showLegend = true, ariaLabel, notes = [] }) {
   const [hover, setHover] = useState(null); // { id, i } = the point under the mouse / finger
   const W = 640, H = 270, P = { l: 56, r: 18, t: 18, b: 34 };
   const xs = Array.from(new Set(lines.flatMap(l => l.points.map(p => p.x)))).sort();
@@ -65,7 +67,6 @@ function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat 
   const mag = Math.pow(10, Math.floor(Math.log10(rawStep)));
   const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= rawStep) || rawStep;
   const top = step * 4;
-
   const x = i => P.l + (xs.length <= 1 ? 0 : (i / (xs.length - 1)) * (W - P.l - P.r));
   const y = v => P.t + (1 - v / top) * (H - P.t - P.b);
   const tickEvery = Math.max(1, Math.ceil(xs.length / 6));
@@ -92,7 +93,6 @@ function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat 
       </g>
     );
   };
-
   return (
     <div>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={ariaLabel} onMouseLeave={() => setHover(null)}>
@@ -105,7 +105,17 @@ function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat 
         {xs.map((label, i) => (i % tickEvery === 0 || i === xs.length - 1) && (
           <text key={label} x={x(i)} y={H - 10} textAnchor="middle" className="fill-zinc-400 text-[10px]">{String(label).slice(0, 7)}</text>
         ))}
-
+        {(() => {
+          const fi = xs.findIndex(l => Number(l) > new Date().getFullYear());
+          if (fi < 0) return null;
+          const x0 = fi > 0 ? (x(fi - 1) + x(fi)) / 2 : P.l;
+          return (
+            <g pointerEvents="none">
+              <rect x={x0} y={P.t} width={W - P.r - x0} height={H - P.t - P.b} className="fill-blue-500/10" />
+              <text x={W - P.r - 6} y={P.t + 12} textAnchor="end" className="fill-blue-400 text-[10px] font-semibold uppercase tracking-wider">Projected</text>
+            </g>
+          );
+        })()}
         {lines.map(line => {
           const pts = line.points.map(p => ({ i: xs.indexOf(p.x), v: p.y })).filter(p => p.i >= 0);
           if (!pts.length) return null;
@@ -130,6 +140,24 @@ function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat 
             </g>
           );
         })}
+
+        {notes.map(n => {
+          const i = xs.indexOf(n.x);
+          const pt = lines[0]?.points.find(p => p.x === n.x);
+          if (i < 0 || !pt) return null;
+          const px = x(i), py = y(pt.y);
+          const tx = Math.min(Math.max(px, P.l + 55), W - P.r - 55);
+          const below = py - 52 < P.t + 8;
+          const ty = below ? py + 56 : py - 46;
+          return (
+            <g key={n.x} pointerEvents="none">
+              <circle cx={px} cy={py} r="9" fill="none" strokeWidth="1.5" strokeDasharray="2 2" className="stroke-amber-500 dark:stroke-amber-300" />
+              <path d={`M${tx},${below ? ty - 16 : ty + 6} Q${(tx + px) / 2 + 12},${(ty + py) / 2} ${px},${below ? py + 10 : py - 10}`} fill="none" strokeWidth="1.5" strokeLinecap="round" className="stroke-amber-500 dark:stroke-amber-300" />
+              <text x={tx} y={ty} textAnchor="middle" className="fill-amber-600 dark:fill-amber-300" style={{ fontFamily: "'Caveat','Bradley Hand','Segoe Print','Comic Sans MS',cursive", fontSize: 18 }}>{n.text}</text>
+            </g>
+          );
+        })}
+
         {renderTooltip()}
       </svg>
 
@@ -154,12 +182,12 @@ function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat 
   );
 }
 
-export default function RegionalInsights({ onBack, initialGroupCode }) {
+export default function RegionalInsights({ onBack, initialGroupCode, shortlist }) {
   const [occupationGroups, setOccupationGroups] = useState([]);
   const [isLoadingGroups, setIsLoadingGroups] = useState(true);
   const [groupsError, setGroupsError] = useState('');
   const [selectedGroup, setSelectedGroup] = useState(null);
-  const [selectedRegions, setSelectedRegions] = useState([...ALL_REGIONS]);
+  const [selectedRegions, setSelectedRegions] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [compareError, setCompareError] = useState('');
   const [series, setSeries] = useState({});
@@ -168,8 +196,13 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
   const [hoveredState, setHoveredState] = useState(null);
   const [chartData, setChartData] = useState(null);
   const [demandMap, setDemandMap] = useState({});
-
   useEffect(() => {
+    if (shortlist?.length) {
+      setOccupationGroups(shortlist);
+      setSelectedGroup(shortlist.find(g => g.anzsco4_code === String(initialGroupCode)) || shortlist[0]);
+      setIsLoadingGroups(false);
+      return;
+    }
     (async () => {
       setIsLoadingGroups(true);
       setGroupsError('');
@@ -182,39 +215,29 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
       } catch (err) {
         console.error('Could not load occupation groups:', err);
         setGroupsError(err?.message || 'The occupation group list could not be loaded.');
-      } finally { 
+      } finally {
         setIsLoadingGroups(false);
       }
     })();
   }, []);
-
-  // National employment by year for the selected occupation (same data the results cards used to show as tiles).
-  useEffect(() => {
-    if (!selectedGroup) return undefined;
-    let cancelled = false;
-    setTrendState('loading');
-    getOccupationAI(selectedGroup.anzsco4_code)
-      .then(res => {
-        if (cancelled) return;
-        const rows = Array.isArray(res?.employment_trend) ? res.employment_trend : [];
-        setTrend(rows.map(r => ({ year: String(r.year), value: Number(r.employed_k) })).filter(r => r.year && Number.isFinite(r.value)));
-        setTrendState('done');
-      })
-      .catch(() => { if (!cancelled) { setTrend([]); setTrendState('error'); } });
-    return () => { cancelled = true; };
-  }, [selectedGroup]);
-
   const toggleRegion = (region) => {
     setSelectedRegions(prev =>
       prev.includes(region) ? prev.filter(r => r !== region) : [...prev, region]
     );
   };
-
   const handleGenerateComparison = async () => {
     if (!selectedGroup || selectedRegions.length < 2) return;
     setIsGenerating(true);
     setCompareError('');
-
+    setTrend([]);
+    setTrendState('loading');
+    getOccupationAI(selectedGroup.anzsco4_code)
+      .then(res => {
+        const rows = Array.isArray(res?.employment_trend) ? res.employment_trend : [];
+        setTrend(rows.map(r => ({ year: String(r.year), value: Number(r.employed_k) })).filter(r => r.year && Number.isFinite(r.value)));
+        setTrendState('done');
+      })
+      .catch(() => { setTrend([]); setTrendState('error'); });
     try {
       const [results, demandResults] = await Promise.all([
         getMultiRegionOpportunity(selectedGroup.anzsco4_code, selectedRegions),
@@ -224,17 +247,15 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
               const res = await getRegionalDemand(region, selectedGroup.anzsco4_code);
               const records = Array.isArray(res) ? res : (res ? [res] : []);
               if (records.length === 0) return { region, vacancies: null, points: [] };
-
               const points = records
                 .map(r => ({ month: String(r.month ?? ''), value: Number(r.vacancy_3m_moving_average) }))
                 .filter(p => p.month && Number.isFinite(p.value))
                 .sort((a, b) => a.month.localeCompare(b.month));
 
               // Extract the record corresponding to the latest month
-              const latestRecord = records.reduce((latest, current) => 
+              const latestRecord = records.reduce((latest, current) =>
                 (current.month > latest.month) ? current : latest, records[0]
               );
-
               return {
                 region,
                 vacancies: latestRecord?.vacancy_3m_moving_average ? Number(latestRecord.vacancy_3m_moving_average) : null,
@@ -246,7 +267,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
           })
         )
       ]);
-
       const newDemandMap = {};
       const newSeries = {};
       demandResults.forEach(item => {
@@ -255,15 +275,12 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
       });
       setDemandMap(newDemandMap);
       setSeries(newSeries);
-
       const aggregated = results.map(data => ({
         state: data.state,
         opportunities: data.opportunities || 0
       }));
-
       const hasRealData = aggregated.some(d => d.opportunities > 0);
       if (!hasRealData) throw { status: 404 };
-      
       setChartData(aggregated);
     } catch (err) {
       console.error("Failed to fetch regional data:", err);
@@ -278,27 +295,21 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
       setIsGenerating(false);
     }
   };
-
   const maxOpps = chartData ? Math.max(...chartData.map(d => d.opportunities), 1) : 1;
   const totalOpps = chartData ? chartData.reduce((acc, curr) => acc + curr.opportunities, 0) : 0;
-
   const getStateFillStyle = (stateCode) => {
     const data = chartData?.find(d => d.state === stateCode);
     if (!data || !selectedRegions.includes(stateCode)) {
       return { fill: '#3f3f46', fillOpacity: 0.3 };
     }
-
     const ratio = Math.min(Math.max(data.opportunities / maxOpps, 0), 1);
-
     const r = Math.round(147 + (30 - 147) * ratio);
     const g = Math.round(197 + (58 - 197) * ratio);
     const b = Math.round(253 + (138 - 253) * ratio);
-
     return { fill: `rgb(${r}, ${g}, ${b})` };
   };
-
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-24 space-y-8 text-zinc-900 dark:text-zinc-100">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-10 space-y-6 text-zinc-900 dark:text-zinc-100">
       <div>
         <button
           onClick={onBack}
@@ -313,21 +324,18 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
           Compare job demand and market density for specific occupation groups across Australia.
         </p>
       </div>
-
       {compareError && (
         <div role="alert" className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
           <ShieldAlert className="w-4 h-4 flex-shrink-0" />
           <span>{compareError}</span>
         </div>
       )}
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-7 h-7 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-xs flex items-center justify-center">1</span>
             <h2 className="font-bold text-base text-zinc-900 dark:text-white">Target Occupation Group</h2>
           </div>
-
           {isLoadingGroups ? (
             <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 py-2.5">
               <Loader2 className="w-4 h-4 animate-spin" /> Loading occupation groups...
@@ -344,12 +352,13 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
               onChange={(e) => {
                 const group = occupationGroups.find(g => String(g.anzsco4_code) === e.target.value);
                 setSelectedGroup(group || null);
+                setChartData(null); setTrendState('idle');
               }}
               className="w-full px-3 py-2.5 text-sm border border-zinc-300 dark:border-zinc-700 rounded-xl bg-white dark:bg-[#131B2F] text-zinc-900 dark:text-white outline-none focus:ring-2 focus:ring-blue-500 [color-scheme:light_dark]"
             >
               {occupationGroups.map(group => (
-                <option 
-                  key={group.anzsco4_code} 
+                <option
+                  key={group.anzsco4_code}
                   value={group.anzsco4_code}
                   className="bg-white dark:bg-[#131B2F] text-zinc-900 dark:text-white"
                 >
@@ -364,7 +373,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
             </p>
           )}
         </div>
-
         <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
@@ -373,7 +381,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
             </div>
             <span className="text-xs text-zinc-500 dark:text-zinc-400">{selectedRegions.length} selected</span>
           </div>
-
           <div className="flex flex-wrap gap-2 mb-4">
             {ALL_REGIONS.map(region => {
               const active = selectedRegions.includes(region);
@@ -392,7 +399,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
               );
             })}
           </div>
-
           <button
             onClick={handleGenerateComparison}
             disabled={!selectedGroup || selectedRegions.length < 2 || isGenerating}
@@ -406,13 +412,11 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
           )}
         </div>
       </div>
-
       {chartData && (
-        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
-          <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mb-6 sm:mb-8">
+        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-5 sm:p-6 shadow-sm">
+          <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white mb-4 sm:mb-5">
             Comparison results for {selectedGroup?.anzsco4_name}
           </h3>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start min-w-0">
             {/* Left Bar Chart */}
             <div className="lg:col-span-7 min-w-0 relative pt-4 sm:pt-8 pb-4 pl-0 sm:pl-14 pr-0 sm:pr-4 border-b sm:border-l border-zinc-200 dark:border-zinc-800 flex items-end overflow-hidden">
@@ -422,12 +426,10 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
               >
                 EMPLOYMENT (LATEST MONTH)
               </div>
-
               <div className="flex items-end justify-between h-56 sm:h-64 w-full min-w-0 gap-1.5 sm:gap-3">
                 {chartData.map((data) => {
                   const heightPercent = maxOpps > 0 ? (data.opportunities / maxOpps) * 100 : 0;
                   const isHovered = hoveredState === data.state;
-
                   return (
                     <div
                       key={data.state}
@@ -438,7 +440,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
                       <span className={`text-[10px] sm:text-xs font-bold transition-colors tabular-nums ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-700 dark:text-zinc-300'}`}>
                         {data.opportunities.toLocaleString()}
                       </span>
-
                       <div className="w-full bg-zinc-100 dark:bg-zinc-800/80 rounded-t-lg h-full max-h-[200px] flex items-end p-1">
                         <div
                           className={`w-full rounded-md transition-all duration-300 ${
@@ -449,7 +450,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
                           style={{ height: `${Math.max(heightPercent, 5)}%` }}
                         />
                       </div>
-
                       <span className={`text-[10px] sm:text-xs font-bold uppercase transition-colors ${isHovered ? 'text-blue-500 dark:text-blue-400' : 'text-zinc-500 dark:text-zinc-400'}`}>
                         {data.state}
                       </span>
@@ -458,25 +458,22 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
                 })}
               </div>
             </div>
-
             {/* Right Geographic Australia Map */}
             <div className="lg:col-span-5 min-w-0 bg-zinc-50 dark:bg-zinc-900/60 rounded-2xl p-4 sm:p-6 relative flex flex-col items-center justify-center min-h-[300px] sm:min-h-[340px] border border-zinc-200 dark:border-white/5 overflow-hidden">
               <div className="static sm:absolute top-4 right-4 self-end mb-2 sm:mb-0 bg-white/90 dark:bg-[#131B2F]/90 backdrop-blur-sm p-3 rounded-xl border border-zinc-200 dark:border-white/10 shadow-sm z-10 max-w-full">
                 <p className="text-[10px] font-bold uppercase text-zinc-500 dark:text-zinc-400 mb-1.5">Employment Level</p>
-                <div 
-                  className="h-2 w-28 rounded-full mb-1" 
-                  style={{ background: 'linear-gradient(to right, #93c5fd, #2563eb, #1e3a8a)' }} 
+                <div
+                  className="h-2 w-28 rounded-full mb-1"
+                  style={{ background: 'linear-gradient(to right, #93c5fd, #2563eb, #1e3a8a)' }}
                 />
                 <div className="flex justify-between text-[10px] font-semibold text-zinc-500 dark:text-zinc-400">
                   <span>Low</span>
                   <span>High</span>
                 </div>
               </div>
-
               <svg viewBox="0 0 500 480" preserveAspectRatio="xMidYMid meet" className="block w-full max-w-[430px] h-auto max-h-[250px] sm:max-h-[280px] drop-shadow-xl">
                 {Object.entries(AU_STATE_PATHS).map(([code, { name, path }]) => {
                   const isHovered = hoveredState === code;
-
                   return (
                     <path
                       key={code}
@@ -507,12 +504,10 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
                   );
                 })}
               </svg>
-
               {hoveredState && (() => {
                 const stateOpps = chartData?.find(d => d.state === hoveredState)?.opportunities ?? 0;
                 const vacancies = demandMap[hoveredState];
                 const share = totalOpps > 0 ? Math.round((stateOpps / totalOpps) * 100) : 0;
-
                 return (
                   <div className="static sm:absolute bottom-4 left-4 right-4 mt-3 sm:mt-0 w-full sm:w-auto bg-white/95 dark:bg-[#1A233A]/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-zinc-200 dark:border-white/10 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 justify-between pointer-events-none">
                     <div className="flex items-center gap-3">
@@ -527,7 +522,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
                           <span className="text-[11px] font-medium text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-zinc-200 dark:border-white/10">
                             <strong className="font-bold text-zinc-900 dark:text-white">{stateOpps.toLocaleString()}</strong> Employment
                           </span>
-
                           {vacancies !== undefined && vacancies !== null && (
                             <span className="text-[11px] font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
                               <strong className="font-bold">{vacancies.toLocaleString()}</strong> Vacancies
@@ -536,7 +530,6 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
                         </div>
                       </div>
                     </div>
-                    
                     <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/20">
                       {share}% of selected employment
                     </span>
@@ -547,12 +540,11 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
           </div>
         </div>
       )}
-
-      {selectedGroup && (
-        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
+      {trendState !== 'idle' && (
+        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-5 sm:p-6 shadow-sm">
           <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">Employment trend</h3>
-          <p className="mt-1 mb-6 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-            {selectedGroup.anzsco4_name}: employment estimates by year, Australia (thousands of Workers).
+          <p className="mt-1 mb-4 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+            {selectedGroup.anzsco4_name}: employment estimates by year, Australia (thousands of People).
           </p>
           {trendState === 'loading' ? (
             <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 py-6"><Loader2 className="w-4 h-4 animate-spin" /> Loading employment trend...</div>
@@ -561,8 +553,9 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
               <LineChart
                 ariaLabel={`Line graph of employment by year for ${selectedGroup.anzsco4_name}`}
                 showLegend={false}
+                notes={[{ x: '2022', text: 'ChatGPT launched' }]}
                 yFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 1 })}k`}
-                tipFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 2 })}k (${Math.round(v * 1000).toLocaleString()} Workers)`}
+                tipFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 2 })}k (${Math.round(v * 1000).toLocaleString()} People)`}
                 lines={[{ id: 'employment', label: selectedGroup.anzsco4_name, color: LINE_COLORS[0], points: trend.map(t => ({ x: t.year, y: t.value })) }]}
               />
               {(() => {
@@ -584,11 +577,10 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
           )}
         </div>
       )}
-
       {chartData && selectedRegions.some(r => (series[r] || []).length >= 2) && (
-        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
+        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-5 sm:p-6 shadow-sm">
           <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">Vacancy trend by region</h3>
-          <p className="mt-1 mb-6 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">3-month moving average of job vacancies. Hover a region to highlight its line.</p>
+          <p className="mt-1 mb-4 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">3-month moving average of job vacancies. Hover a region to highlight its line.</p>
           <LineChart
             ariaLabel="Line graph of job vacancies over time for each selected region"
             highlighted={hoveredState}
