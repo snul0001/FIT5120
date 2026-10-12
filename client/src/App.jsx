@@ -285,6 +285,9 @@ const ResultCard = ({
           <span className="mt-1 block text-lg sm:text-2xl font-bold tracking-tight leading-snug text-zinc-900 dark:text-white">{role.title}</span>
           {ai && <span className="sm:hidden mt-1 block text-xs text-zinc-500 dark:text-slate-400">AI Resilience score: {resilienceText}</span>}
         </span>
+        {!ai && aiLoading && (
+          <span className="hidden sm:block shrink-0 min-w-[120px] h-[62px] rounded-lg bg-zinc-100 dark:bg-white/5 animate-pulse" />
+        )}
         {ai && (
           <span {...tooltip('AI Resilience Score', TOOLTIP_TEXT.resilience)} className="hidden sm:block shrink-0 min-w-[120px] rounded-lg border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] px-4 py-2.5 cursor-help">
             <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Resilience</span>
@@ -349,14 +352,14 @@ const ResultCard = ({
                   <button type="button" onClick={() => onSkillGap(role)} className={`${actionBase} bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200`}>
                     Check Skill Gap <ArrowRight className="w-3.5 h-3.5" />
                   </button>
-                  {onAskAI && (
-                    <button type="button" onClick={() => onAskAI(role)} className={`${actionBase} border border-zinc-300 dark:border-white/15 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10`}>
-                      Ask AI
-                    </button>
-                  )}
                   {onRegional && (
                     <button type="button" onClick={() => onRegional(role)} className={`${actionBase} border border-zinc-300 dark:border-white/15 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10`}>
                       Regional Insights
+                    </button>
+                  )}
+                  {onAskAI && (
+                    <button type="button" onClick={() => onAskAI(role)} className={`${actionBase} border border-zinc-300 dark:border-white/15 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10`}>
+                      Ask AI
                     </button>
                   )}
                 </div>
@@ -520,6 +523,7 @@ export default function App() {
   const confirmNavigation = (target, ctx = null) => {
     if (currentView === 'results' && !hasDownloaded && !window.confirm('You haven\'t downloaded your results yet. Leave anyway?')) return;
     if (ctx) setNavContext(ctx);
+    else if (target === 'regional-insights') setNavContext(null);
     setCurrentView(target);
     setIsMobileMenuOpen(false);
     setIsMobileSourcesOpen(false);
@@ -633,6 +637,7 @@ export default function App() {
       }
 
       setMatches(normalizedMatches);
+      normalizedMatches.forEach(m => loadRoleAI(m.anzsco_code));
       setQuizDone(true);
       setCurrentView('results');
     } catch (error) {
@@ -706,16 +711,8 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Loads AI details only when a match is expanded.
-  // Each occupation's result, loading state, and error are stored by ANZSCO code.
-  const handleToggleRole = async code => {
-    if (expandedRoleId === code && !aiErrorMap[code]) {
-      setExpandedRoleId(null);
-      return;
-    }
-
-    setExpandedRoleId(code);
-
+  // Loads AI details for a role. Results are stored by ANZSCO code.
+  const loadRoleAI = async code => {
     if (aiDetailsMap[code] || aiLoadingMap[code]) return;
 
     setAiLoadingMap(previous => ({ ...previous, [code]: true }));
@@ -787,6 +784,17 @@ export default function App() {
         [code]: false
       }));
     }
+  };
+
+
+  const handleToggleRole = code => {
+    if (expandedRoleId === code && !aiErrorMap[code]) {
+      setExpandedRoleId(null);
+      return;
+    }
+
+    setExpandedRoleId(code);
+    loadRoleAI(code);
   };
 
   // Tooltip
@@ -1364,7 +1372,12 @@ export default function App() {
               key="regional-insights"
               className="view-enter-animation max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32"
             >
-              <RegionalInsights initialGroupCode={navContext?.anzsco4} onBack={() => confirmNavigation(quizDone ? 'results' : 'home')} />
+              <RegionalInsights
+                key={navContext?.anzsco4 ? 'shortlist' : 'all'}
+                initialGroupCode={navContext?.anzsco4}
+                shortlist={navContext?.anzsco4 ? matches.map(m => ({ anzsco4_code: String(m.anzsco_code).slice(0, 4), anzsco4_name: m.title })) : null}
+                onBack={() => confirmNavigation(quizDone ? 'results' : 'home')}
+              />
             </main>
           )}
 
