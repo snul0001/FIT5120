@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import {
-  ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Cpu, Download,
+  ArrowLeft, ArrowRight, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Cpu, Download,
   ExternalLink, LayoutDashboard, Loader2, Moon, Sun, X, Zap
 } from 'lucide-react';
 
@@ -176,63 +176,70 @@ const TASK_GROUPS = [
   { key: 'augmented', label: 'AI Augmented', dot: 'bg-emerald-500', match: c => /assist|augment/i.test(c) },
   { key: 'automated', label: 'AI Automated', dot: 'bg-amber-500', match: c => /automat/i.test(c) }
 ];
-const TASKS_SHOWN = 4;
-
-const TaskItem = ({ task }) => {
-  const [open, setOpen] = useState(false);
-  const title = capitalise(task.task_core || task.task_text || '');
-  const detail = task.task_core && task.task_text && task.task_text !== task.task_core ? task.task_text : '';
-  const canOpen = Boolean(detail || task.human_need_type || task.impact_level);
-
-  return (
-    <li className="rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-[#131B2F]">
-      <button
-        type="button"
-        disabled={!canOpen}
-        aria-expanded={open}
-        onClick={() => setOpen(v => !v)}
-        className="w-full flex items-center justify-between gap-3 px-3.5 py-3 text-left disabled:cursor-default"
-      >
-        <span className={`text-[13px] font-semibold leading-snug text-zinc-900 dark:text-white ${open ? '' : 'line-clamp-2'}`}>{title}</span>
-        {canOpen && (open ? <ChevronUp className="w-4 h-4 shrink-0 text-zinc-400" /> : <ChevronDown className="w-4 h-4 shrink-0 text-zinc-400" />)}
-      </button>
-      {open && (
-        <div className="px-3.5 pb-3.5 space-y-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {detail && <p>{detail}</p>}
-          {(task.impact_level || task.human_need_type) && (
-            <p className="text-zinc-500">
-              {task.impact_level && <span>{task.impact_level} impact</span>}
-              {task.impact_level && task.human_need_type && <span> · </span>}
-              {task.human_need_type && <span>Human role: {task.human_need_type}</span>}
-            </p>
-          )}
-        </div>
-      )}
-    </li>
-  );
-};
-
 const TaskGroup = ({ group, tasks }) => {
-  const [showAll, setShowAll] = useState(false);
-  const shown = showAll ? tasks : tasks.slice(0, TASKS_SHOWN);
+  const trackRef = useRef(null);
+  const [index, setIndex] = useState(0);
+
+  const goTo = i => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollTo({ left: Math.max(0, Math.min(tasks.length - 1, i)) * el.clientWidth, behavior: 'smooth' });
+  };
+  const onScroll = e => setIndex(Math.round(e.currentTarget.scrollLeft / (e.currentTarget.clientWidth || 1)));
+  const arrow = 'w-7 h-7 rounded-md flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent transition-colors';
 
   return (
     <section>
-      <div className="flex items-center justify-between rounded-lg bg-zinc-100 dark:bg-white/5 px-3 py-2">
+      <div className="flex items-center justify-between rounded-lg bg-zinc-100 dark:bg-white/5 px-3 py-1.5">
         <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-300">
           <span className={`w-2 h-2 rounded-full ${group.dot}`} />{group.label}
+          <span className="rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-1.5 py-0.5 text-[11px] tabular-nums">{tasks.length}</span>
         </span>
-        <span className="min-w-[1.5rem] text-center rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-[11px] font-bold px-1.5 py-0.5 tabular-nums">{tasks.length}</span>
+        {tasks.length > 1 && (
+          <span className="flex items-center gap-0.5">
+            <button type="button" aria-label={`Previous ${group.label} task`} disabled={index === 0} onClick={() => goTo(index - 1)} className={arrow}><ChevronLeft className="w-4 h-4" /></button>
+            <button type="button" aria-label={`Next ${group.label} task`} disabled={index >= tasks.length - 1} onClick={() => goTo(index + 1)} className={arrow}><ChevronRight className="w-4 h-4" /></button>
+          </span>
+        )}
       </div>
-      {tasks.length > 0 ? (
-        <ul className="mt-2 space-y-2">{shown.map((task, i) => <TaskItem key={task.id ?? i} task={task} />)}</ul>
-      ) : (
+
+      {tasks.length === 0 ? (
         <p className="mt-2 px-1 text-xs text-zinc-400">No tasks in this group.</p>
-      )}
-      {tasks.length > TASKS_SHOWN && (
-        <button type="button" onClick={() => setShowAll(v => !v)} className="mt-2 px-1 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline">
-          {showAll ? 'Show fewer' : `Show ${tasks.length - TASKS_SHOWN} more`}
-        </button>
+      ) : (
+        <>
+          <div ref={trackRef} onScroll={onScroll} className="mt-2 flex w-full min-w-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {tasks.map((task, i) => {
+              const title = capitalise(task.task_core || task.task_text || '');
+              const detail = task.task_core && task.task_text && task.task_text !== task.task_core ? task.task_text : '';
+              return (
+                <div key={task.id ?? i} className="w-full min-w-0 shrink-0 snap-center">
+                  <div className="h-full rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-[#131B2F] p-4">
+                    <p className="text-[13px] font-semibold leading-snug text-zinc-900 dark:text-white">{title}</p>
+                    {detail && <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">{detail}</p>}
+                    {(task.impact_level || task.human_need_type) && (
+                      <p className="mt-2 text-[11px] text-zinc-500">
+                        {task.impact_level && <span>{task.impact_level} impact</span>}
+                        {task.impact_level && task.human_need_type && <span> · </span>}
+                        {task.human_need_type && <span>Human role: {task.human_need_type}</span>}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {tasks.length > 1 && (
+            <div className="mt-2.5 flex items-center justify-between px-1">
+              <div className="flex gap-1.5">
+                {tasks.length <= 8 && tasks.map((_, i) => (
+                  <button key={i} type="button" aria-label={`Go to task ${i + 1}`} onClick={() => goTo(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === index ? 'w-5 bg-zinc-900 dark:bg-white' : 'w-1.5 bg-zinc-300 dark:bg-white/20'}`} />
+                ))}
+              </div>
+              <span className="text-[11px] text-zinc-400 tabular-nums">{index + 1} / {tasks.length}</span>
+            </div>
+          )}
+        </>
       )}
     </section>
   );
@@ -300,9 +307,9 @@ const ResultCard = ({
               <button type="button" onClick={() => onRetry?.(role.anzsco_code)} className="mt-3 font-semibold underline underline-offset-2">Try again</button>
             </div>
           ) : ai ? (
-            <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Left: tasks grouped by how AI may change them */}
-              <div className="order-2 lg:order-1 space-y-5">
+              <div className="order-2 lg:order-1 lg:col-span-2 space-y-5 min-w-0">
                 <h4 className="text-base font-bold text-zinc-900 dark:text-white">AI Task Impact</h4>
                 {tasks.length ? (
                   groups.map(group => <TaskGroup key={group.key} group={group} tasks={group.tasks} />)
@@ -322,7 +329,7 @@ const ResultCard = ({
               </div>
 
               {/* Right: headline metrics and next steps */}
-              <div className="order-1 lg:order-2 space-y-5">
+              <div className="order-1 lg:order-2 lg:col-span-1 min-w-0 space-y-5">
                 <h4 className="text-base font-bold text-zinc-900 dark:text-white">AI Metrics</h4>
                 <div className="grid grid-cols-2 gap-3">
                   {metrics.map(m => (
@@ -335,7 +342,7 @@ const ResultCard = ({
                 </div>
 
                 <p className="text-sm text-slate-600 dark:text-slate-300">
-                  JSA market assessment indicates <strong className="text-zinc-900 dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()}</strong> demand for this occupation.
+                  JSA market assessment indicates <strong className="text-zinc-900 dark:text-white font-semibold">{formatLabel(ai.resilience_label).toLowerCase()}</strong> demand for this occupation.
                 </p>
 
                 <div className="flex flex-wrap gap-2">
