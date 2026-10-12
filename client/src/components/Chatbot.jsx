@@ -8,7 +8,8 @@ import {
 } from 'lucide-react';
 import { sendChat } from '../api/client';
 
-const MAX_MESSAGES = 5;
+// Quiet safety limit on session length. No counter is shown to the user.
+const MAX_MESSAGES = 30;
 
 const SUGGESTIONS = [
   'Which career match should I explore first?',
@@ -21,7 +22,8 @@ function buildCareerSummary(careers = []) {
     anzsco_code: career?.occupation_id ?? career?.anzsco_code ?? null,
     title: career?.title ?? career?.name ?? null,
     rank: career?.rank ?? null,
-    match_score: career?.match_score ?? null
+    match_score: career?.match_score ?? null,
+    ai: career?.ai ?? null
   }));
 }
 
@@ -32,7 +34,9 @@ function buildOccupationSummary(occupation) {
     anzsco_code: occupation?.occupation_id ?? occupation?.anzsco_code ?? null,
     title: occupation?.title ?? occupation?.name ?? null,
     rank: occupation?.rank ?? null,
-    match_score: occupation?.match_score ?? null
+    match_score: occupation?.match_score ?? null,
+    ai: occupation?.ai ?? null,
+    tasks: occupation?.tasks ?? null
   };
 }
 
@@ -43,7 +47,8 @@ export default function Chatbot({
   selectedOccupation = null,
   skillGap = null,
   region = null,
-  sessionId = 0
+  sessionId = 0,
+  chatRequest = null
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -54,13 +59,19 @@ export default function Chatbot({
 
   const messagesEndRef = useRef(null);
   const previousVisible = useRef(false);
+  const sessionRef = useRef(0);
+  const sendRef = useRef(null);
+  const handledRequest = useRef(null);
+  const [sendError, setSendError] = useState('');
 
   // A new quiz starts a fresh chatbot session.
   useEffect(() => {
+    sessionRef.current += 1; // any reply still in flight belongs to the old session and is ignored
     setMessages([]);
     setConversationHistory([]);
     setMessageCount(0);
     setInput('');
+    setSendError('');
     setIsSending(false);
   }, [sessionId]);
 
@@ -77,6 +88,14 @@ export default function Chatbot({
       block: 'nearest'
     });
   }, [messages, isSending]);
+
+  // "Ask AI" buttons: open the chat and send their question once.
+  useEffect(() => {
+    if (!visible || !chatRequest?.id || handledRequest.current === chatRequest.id) return;
+    handledRequest.current = chatRequest.id;
+    setIsOpen(true);
+    sendRef.current?.(chatRequest.message);
+  }, [chatRequest, visible]);
 
   if (!visible) return null;
 
@@ -104,8 +123,10 @@ export default function Chatbot({
       content: message
     };
 
+    const session = sessionRef.current;
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
+    setSendError('');
     setIsSending(true);
 
     try {
@@ -114,6 +135,8 @@ export default function Chatbot({
         conversationHistory,
         profileContext
       });
+
+      if (session !== sessionRef.current) return; // a new quiz started while waiting
 
       const reply =
         typeof response?.reply === 'string' && response.reply.trim()
@@ -137,18 +160,19 @@ export default function Chatbot({
       setMessageCount((count) => count + 1);
     } catch (error) {
       console.error('[Chatbot] Failed to send message:', error);
+      if (session !== sessionRef.current) return;
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: 'assistant',
-          content: 'I could not reach the career assistant right now. Please try again.'
-        }
-      ]);
+      // Take the unsent question back out of the chat so what the user sees matches what the
+      // assistant has received, and put the text back in the box so it can be resent.
+      setMessages((prev) => prev.filter((m) => m !== userMessage));
+      setInput(message);
+      setSendError('That message did not send, and it has not been counted. Please try again.');
     } finally {
-      setIsSending(false);
+      if (session === sessionRef.current) setIsSending(false);
     }
   };
+
+  sendRef.current = handleSend;
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -224,12 +248,6 @@ export default function Chatbot({
                 {!selectedOccupation && matchedCareers[0] && (
                   <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-300 border border-blue-500/15">
                     {matchedCareers[0]?.title || matchedCareers[0]?.name}
-                  </span>
-                )}
-
-                {messageCount < MAX_MESSAGES && (
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-medium text-zinc-400 dark:text-zinc-500 border border-zinc-200 dark:border-white/10">
-                    {MAX_MESSAGES - messageCount} messages left
                   </span>
                 )}
               </div>
@@ -324,10 +342,13 @@ export default function Chatbot({
 
           {/* Input */}
           <div className="border-t border-zinc-200 dark:border-white/10 p-3">
+            {sendError && (
+              <p role="alert" className="mb-2 text-xs text-rose-500 dark:text-rose-400">{sendError}</p>
+            )}
             {messageCount >= MAX_MESSAGES ? (
               <div className="text-center py-2">
                 <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                  You have used all 5 assistant messages for this session.
+                  This chat has reached its length limit. Start a new quiz for a fresh session.
                 </p>
               </div>
             ) : (
@@ -376,10 +397,6 @@ export default function Chatbot({
                     )}
                   </button>
                 </div>
-
-                <p className="mt-1.5 text-[9px] text-center text-zinc-400 dark:text-zinc-600">
-                  {messageCount}/{MAX_MESSAGES} messages used
-                </p>
               </>
             )}
           </div>

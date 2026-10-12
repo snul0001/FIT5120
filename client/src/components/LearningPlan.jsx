@@ -87,66 +87,55 @@ function LoadingScreen() {
   );
 }
 
+// ─── Phase colours (same hues as the PDF; used only as small accents) ─────────
+const PHASE_COLORS = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B'];
+const phaseColor = index => PHASE_COLORS[index % PHASE_COLORS.length];
+
+// "1-3" -> [1, 3]
+const getPhaseRange = phase => {
+  const match = String(phase?.phase || '').match(/(\d+)\s*[-–]\s*(\d+)/);
+  return match ? [Number(match[1]), Number(match[2])] : null;
+};
+
 // ─── Skill row inside a phase ─────────────────────────────────────────────────
-function SkillRow({ skill, monthLabel }) {
+function SkillRow({ skill, monthLabel, accent }) {
   const [open, setOpen] = useState(false);
   const category = skill.ai_category || skill.category || '';
   const meta = category ? getAIMeta(category) : NEUTRAL_META;
-  const Icon = meta.icon;
   const hours = parseHours(skill.hours);
   const explanation = skill.why || skill.rationale || skill.description;
   const resource = getResource(skill);
-
-  // Pills sit under the name on phones and to the right on larger screens.
-  const pills = (
-    <>
-      {hours != null && (
-        <span className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-full whitespace-nowrap">
-          ~{hours}h
-        </span>
-      )}
-      {meta.label && (
-        <span className={`text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border whitespace-nowrap ${meta.bg} ${meta.color}`}>
-          {meta.label}
-        </span>
-      )}
-    </>
-  );
+  const canOpen = Boolean(explanation || resource);
 
   return (
-    <div className={`rounded-xl border ${meta.bg} overflow-hidden`}>
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen(v => !v)}
-        className="w-full flex items-start gap-3 px-3 sm:px-4 py-3 text-left"
-      >
-        <div className={`w-7 h-7 mt-0.5 rounded-lg flex items-center justify-center shrink-0 ${meta.bg}`}>
-          <Icon className={`w-3.5 h-3.5 ${meta.color}`} />
-        </div>
+    <div className="rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-[#131B2F] overflow-hidden" style={{ borderLeft: `3px solid ${accent}` }}>
+      <button type="button" disabled={!canOpen} aria-expanded={open} onClick={() => setOpen(v => !v)}
+        className="w-full flex items-start gap-3 px-3.5 sm:px-4 py-3.5 text-left disabled:cursor-default">
         <div className="flex-1 min-w-0">
           <p className="text-sm font-semibold text-zinc-900 dark:text-white break-words">{getSkillName(skill)}</p>
           {monthLabel && <p className="text-[10px] text-zinc-400 mt-0.5">{monthLabel}</p>}
-          <div className="mt-1.5 flex flex-wrap items-center gap-2 sm:hidden">{pills}</div>
+          <div className="mt-1.5 flex flex-wrap items-center gap-2 sm:hidden">
+            {hours != null && <span className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">~{hours}h</span>}
+            {meta.label && <span className={`text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border ${meta.bg} ${meta.color}`}>{meta.label}</span>}
+          </div>
         </div>
-        <div className="hidden sm:flex items-center gap-3 shrink-0 mt-0.5">{pills}</div>
-        <span className="shrink-0 mt-1.5">
-          {open ? <ChevronUp className="w-3.5 h-3.5 text-zinc-400" /> : <ChevronDown className="w-3.5 h-3.5 text-zinc-400" />}
-        </span>
+        <div className="hidden sm:flex items-center gap-3 shrink-0 mt-0.5">
+          {meta.label && <span className={`text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded border ${meta.bg} ${meta.color}`}>{meta.label}</span>}
+          {hours != null && <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 tabular-nums">~{hours}h</span>}
+        </div>
+        {canOpen && (
+          <span className="shrink-0 mt-1">
+            {open ? <ChevronUp className="w-4 h-4 text-zinc-400" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
+          </span>
+        )}
       </button>
 
-      {open && (explanation || resource) && (
-        <div className="px-3 sm:px-4 pb-4 pt-3 border-t border-inherit space-y-2">
-          {explanation && (
-            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">{explanation}</p>
-          )}
+      {open && canOpen && (
+        <div className="px-3.5 sm:px-4 pb-4 space-y-2.5">
+          {explanation && <p className="text-xs sm:text-[13px] text-zinc-600 dark:text-zinc-400 leading-relaxed">{explanation}</p>}
           {resource && (
-            <a
-              href={resource.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 py-1 text-xs font-semibold text-blue-500 hover:underline"
-            >
+            <a href={resource.href} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline">
               {resource.label} →
             </a>
           )}
@@ -159,50 +148,43 @@ function SkillRow({ skill, monthLabel }) {
 // ─── Phase block ──────────────────────────────────────────────────────────────
 function PhaseBlock({ phase, index }) {
   const [collapsed, setCollapsed] = useState(false);
+  const accent = phaseColor(index);
   const skills = getPhaseSkills(phase);
   const totalHours = skills.reduce((sum, s) => sum + (parseHours(s.hours) || 0), 0);
 
   return (
-    <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-sm overflow-hidden">
-      <button
-        onClick={() => setCollapsed(v => !v)}
-        className="w-full flex items-center gap-3 sm:gap-4 p-4 sm:p-6 text-left hover:bg-zinc-50/50 dark:hover:bg-white/[0.02] transition-colors"
-      >
-        <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-sm font-bold text-zinc-800 dark:text-zinc-200 shrink-0">
-          {index + 1}
-        </div>
+    <div id={`phase-${index}`} className="rounded-2xl bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 shadow-sm scroll-mt-24">
+      <button type="button" aria-expanded={!collapsed} onClick={() => setCollapsed(v => !v)}
+        className="w-full flex items-center gap-3 sm:gap-4 p-4 sm:p-5 text-left hover:bg-zinc-50/70 dark:hover:bg-white/[0.02] transition-colors rounded-2xl">
+        <span className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0" style={{ backgroundColor: accent }}>{index + 1}</span>
         <div className="flex-1 min-w-0">
-          <p className="text-base font-bold text-zinc-900 dark:text-white">{getPhaseLabel(phase, index)}</p>
+          <p className="text-base font-bold text-zinc-900 dark:text-white">{getPhaseLabel(phase, index)}{phase.focus ? <span className="font-medium text-zinc-500 dark:text-zinc-400"> · {phase.focus}</span> : null}</p>
           <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-            {skills.length} skill{skills.length === 1 ? '' : 's'}
-            {totalHours > 0 && ` · ~${totalHours}h total`}
-            {phase.focus && ` · ${phase.focus}`}
+            {skills.length} skill{skills.length === 1 ? '' : 's'}{totalHours > 0 && ` · ~${totalHours}h`}
           </p>
         </div>
         {collapsed ? <ChevronDown className="w-4 h-4 text-zinc-400 shrink-0" /> : <ChevronUp className="w-4 h-4 text-zinc-400 shrink-0" />}
       </button>
 
       {!collapsed && (
-        <div className="px-3 sm:px-6 pb-5 sm:pb-6 space-y-3 border-t border-zinc-100 dark:border-zinc-800 pt-4">
+        <div className="px-3 sm:px-5 pb-5 pt-1 space-y-5 border-t border-zinc-100 dark:border-zinc-800">
           {Array.isArray(phase.months) ? (
             phase.months.map((month, mi) => {
               const monthHours = parseHours(month.total_hrs);
               return (
-                <div key={mi} className="space-y-2">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
-                    {month.label || month.month || `Month ${mi + 1}`}
-                    {monthHours != null && ` · ~${monthHours}h`}
-                  </p>
-                  {(month.skills || []).map((skill, si) => (
-                    <SkillRow key={si} skill={skill} />
-                  ))}
+                <div key={mi} className="space-y-2.5 pt-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">{month.label || month.month || `Month ${mi + 1}`}</p>
+                    {monthHours != null && <p className="text-[11px] text-zinc-400 tabular-nums">~{monthHours}h</p>}
+                  </div>
+                  {(month.skills || []).map((skill, si) => <SkillRow key={si} skill={skill} accent={accent} />)}
                 </div>
               );
             })
           ) : (
-            (phase.skills || []).map((skill, si) => (
-              <SkillRow key={si} skill={skill} />
-            ))
+            <div className="space-y-2.5 pt-4">
+              {(phase.skills || []).map((skill, si) => <SkillRow key={si} skill={skill} accent={accent} />)}
+            </div>
           )}
         </div>
       )}
@@ -488,108 +470,114 @@ export default function LearningPlan({ config, onBack, onNavigate }) {
   const [error,     setError]     = useState(null);
   const hasFetched = useRef(false);
 
+  const generate = async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const res = await createLearningPlan({
+        anzscoCode,
+        occupationName:  occupationTitle,
+        durationMonths:  duration,
+        hrsPerWeek,
+        missingSkills:   missingSkills.map(getSkillName),
+      });
+      setPlan(res);
+      setPlanCode(res.code || res.plan_code || null);
+    } catch (err) {
+      console.error('[LearningPlan] API error:', err);
+      setError('Could not generate the plan. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (hasFetched.current) return;
     hasFetched.current = true;
-
-    const fetch = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const res = await createLearningPlan({
-          anzscoCode,
-          occupationName:  occupationTitle,
-          durationMonths:  duration,
-          hrsPerWeek,
-          missingSkills:   missingSkills.map(getSkillName),
-        });
-        setPlan(res);
-        setPlanCode(res.code || res.plan_code || null);
-      } catch (err) {
-        console.error('[LearningPlan] API error:', err);
-        setError('Could not generate the plan. Please try again.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetch();
+    generate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const totalWeeks  = duration * 4.33;
-  const totalHours  = Math.round(totalWeeks * hrsPerWeek);
-  const phases      = plan?.phases || [];
+  const totalHours = Math.round(duration * 4.33 * hrsPerWeek);
+  const phases     = plan?.phases || [];
+  const card = 'bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-sm';
+
+  // Roadmap bar: each phase takes its share of the plan's months.
+  const ranges = phases.map(getPhaseRange);
+  const useRanges = phases.length > 0 && ranges.every(Boolean);
+  const segmentWidth = i => (useRanges ? ((ranges[i][1] - ranges[i][0] + 1) / duration) * 100 : 100 / phases.length);
+  const jumpTo = i => document.getElementById(`phase-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return (
     <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 py-2 sm:p-6 font-sans text-zinc-900 dark:text-zinc-100">
 
-      {/* Back */}
-      <button onClick={onBack} className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to skill gap
-      </button>
+      <div>
+        <button onClick={onBack} className="mb-5 inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back to skill gap
+        </button>
+        <p className="text-[10px] font-bold uppercase tracking-widest text-blue-500">Your learning plan</p>
+        <h1 className="mt-1 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white break-words">{occupationTitle}</h1>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">A {duration}-month roadmap at {hrsPerWeek} hours a week.</p>
+      </div>
 
       {isLoading ? (
         <LoadingScreen />
       ) : error ? (
         <div className="flex flex-col items-center justify-center py-20 sm:py-32 gap-4 text-center">
           <p className="text-sm text-rose-500">{error}</p>
-          <button onClick={() => { hasFetched.current = false; setIsLoading(true); setError(null); }}
-            className="px-5 py-2.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold">
-            Retry
-          </button>
+          <button onClick={generate} className="px-5 py-2.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold">Retry</button>
         </div>
       ) : (
         <>
-          {/* ── Hero ────────────────────────────────────────────────────────── */}
-          <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-4 sm:p-6 shadow-sm">
-            <div className="flex flex-col gap-5">
-              <div className="min-w-0">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Learning Plan</p>
-                <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white break-words">{occupationTitle}</h1>
-                <div className="grid grid-cols-3 gap-2 mt-3 sm:flex sm:flex-wrap sm:gap-3">
-                  {[
-                    [`${duration} months`, 'Duration'],
-                    [`${hrsPerWeek} hrs/wk`, 'Weekly effort'],
-                    [`${totalHours}h`, 'Total hours'],
-                    [`${missingSkills.length} skills`, 'To build'],
-                    [`${phases.length}`, 'Phases'],
-                  ].map(([val, lbl]) => (
-                    <div key={lbl} className="text-center px-3 py-1.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700">
-                      <p className="text-sm font-bold text-zinc-900 dark:text-white">{val}</p>
-                      <p className="text-[9px] text-zinc-400 uppercase tracking-wider">{lbl}</p>
-                    </div>
-                  ))}
+          {/* Summary */}
+          <div className={`${card} p-4 sm:p-6 space-y-5`}>
+            <dl className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[[duration, 'Months'], [`${hrsPerWeek}h`, 'Per week'], [`${totalHours}h`, 'Total time'], [missingSkills.length, 'Skills to build']].map(([value, label]) => (
+                <div key={label} className="rounded-xl bg-zinc-50 dark:bg-white/[0.03] border border-zinc-200 dark:border-white/10 px-4 py-3">
+                  <dd className="text-2xl font-bold tabular-nums text-zinc-900 dark:text-white">{value}</dd>
+                  <dt className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">{label}</dt>
                 </div>
-              </div>
+              ))}
+            </dl>
 
-              {/* Actions */}
-              <div className="flex flex-wrap items-center gap-2 pt-5 border-t border-zinc-100 dark:border-zinc-800">
-                {planCode && (
-                  <div className="flex w-full sm:w-auto flex-wrap items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Plan code</span>
-                    <span className="text-sm font-bold text-zinc-900 dark:text-white font-mono">{planCode}</span>
-                    <CopyButton text={planCode} />
-                  </div>
-                )}
-                <button
-                  onClick={() => exportPDF(plan, occupationTitle, planCode, { duration, hrsPerWeek })}
-                  className="inline-flex flex-1 sm:flex-none justify-center items-center gap-1.5 px-4 py-2.5 sm:py-2 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-semibold hover:opacity-90 transition-opacity"
-                >
-                  <Download className="w-3.5 h-3.5" /> Download PDF
+            <div className="flex flex-wrap items-center gap-2.5 pt-1">
+              {planCode && (
+                <div className="flex w-full sm:w-auto flex-wrap items-center gap-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/60 pl-3 pr-1.5 py-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Plan code</span>
+                  <span className="font-mono text-sm font-bold text-zinc-900 dark:text-white">{planCode}</span>
+                  <CopyButton text={planCode} />
+                </div>
+              )}
+              <button onClick={() => exportPDF(plan, occupationTitle, planCode, { duration, hrsPerWeek })}
+                className="inline-flex flex-1 sm:flex-none justify-center items-center gap-1.5 px-5 py-2.5 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors">
+                <Download className="w-3.5 h-3.5" /> Download PDF
+              </button>
+              {onNavigate && (
+                <button onClick={() => onNavigate('progress-tracker', { planCode })}
+                  className="inline-flex flex-1 sm:flex-none justify-center items-center gap-1.5 px-5 py-2.5 rounded-full border border-zinc-300 dark:border-white/15 text-zinc-800 dark:text-zinc-100 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors">
+                  Track progress →
                 </button>
-                {onNavigate && (
-                  <button
-                    onClick={() => onNavigate('progress-tracker', { planCode })}
-                    className="inline-flex flex-1 sm:flex-none justify-center items-center gap-1.5 px-4 py-2.5 sm:py-2 rounded-full border border-zinc-200 dark:border-zinc-700 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 transition-colors"
-                  >
-                    Track progress →
-                  </button>
-                )}
-              </div>
+              )}
             </div>
           </div>
 
-          {/* ── Phases ──────────────────────────────────────────────────────── */}
+          {/* Roadmap */}
+          {phases.length > 0 && (
+            <div className={`${card} p-4 sm:p-6`}>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400">Roadmap</p>
+              <div className="mt-4 flex gap-1.5">
+                {phases.map((phase, i) => (
+                  <button key={i} type="button" onClick={() => jumpTo(i)} style={{ width: `${segmentWidth(i)}%` }} className="min-w-0 text-left group">
+                    <span className="block h-1.5 rounded-full" style={{ backgroundColor: phaseColor(i) }} />
+                    <span className="mt-2 block text-[10px] font-bold uppercase tracking-wider text-zinc-400 truncate">{getPhaseLabel(phase, i)}</span>
+                    <span className="block text-sm font-semibold text-zinc-900 dark:text-white truncate group-hover:underline">{phase.focus || `Phase ${i + 1}`}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Phases */}
           <div className="space-y-4">
             {phases.length === 0 ? (
               <p className="text-sm text-zinc-400 text-center py-12">No phases returned from the plan.</p>
@@ -598,20 +586,10 @@ export default function LearningPlan({ config, onBack, onNavigate }) {
             )}
           </div>
 
-          {/* ── Plan code callout ────────────────────────────────────────────── */}
           {planCode && (
-            <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/40 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
-                <p className="text-sm font-semibold text-zinc-900 dark:text-white">Save this plan code</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">You can restore your plan anytime from the Progress Tracker using this code.</p>
-              </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="font-mono text-base font-bold break-all text-zinc-900 dark:text-white bg-white dark:bg-zinc-900 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-700">
-                  {planCode}
-                </span>
-                <CopyButton text={planCode} />
-              </div>
-            </div>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 text-center">
+              Keep your plan code safe. You can restore this plan any time from the Progress Tracker.
+            </p>
           )}
         </>
       )}

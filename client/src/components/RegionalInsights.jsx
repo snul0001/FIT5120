@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Loader2, MapPin, TrendingUp, ShieldAlert } from 'lucide-react';
-import { getRegionalOccupations, getMultiRegionOpportunity, getRegionalDemand } from '../api/client';
+import { getRegionalOccupations, getMultiRegionOpportunity, getRegionalDemand, getOccupationAI } from '../api/client';
 
 const REGION_CODE_TO_API_NAME = {
   ACT: 'ACT',
@@ -49,13 +49,122 @@ const AU_STATE_PATHS = {
   }
 };
 
-export default function RegionalInsights({ onBack }) {
+// ─── Line graph ───────────────────────────────────────────────────────────────
+// lines: [{ id, label, color, points: [{ x: '2024', y: 123 }] }]
+const LINE_COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#06B6D4', '#EF4444', '#84CC16'];
+
+function LineChart({ lines, highlighted = null, onHighlight = () => {}, yFormat = v => v.toLocaleString(), tipFormat, showLegend = true, ariaLabel }) {
+  const [hover, setHover] = useState(null); // { id, i } = the point under the mouse / finger
+  const W = 640, H = 270, P = { l: 56, r: 18, t: 18, b: 34 };
+  const xs = Array.from(new Set(lines.flatMap(l => l.points.map(p => p.x)))).sort();
+  const ys = lines.flatMap(l => l.points.map(p => p.y));
+  const max = Math.max(...ys, 1);
+
+  // Round the top of the axis to a tidy number so the gridlines read well.
+  const rawStep = max / 4;
+  const mag = Math.pow(10, Math.floor(Math.log10(rawStep)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= rawStep) || rawStep;
+  const top = step * 4;
+
+  const x = i => P.l + (xs.length <= 1 ? 0 : (i / (xs.length - 1)) * (W - P.l - P.r));
+  const y = v => P.t + (1 - v / top) * (H - P.t - P.b);
+  const tickEvery = Math.max(1, Math.ceil(xs.length / 6));
+  const tip = tipFormat || yFormat;
+
+  // Tooltip for the hovered point: exact value, drawn above the point (below it if there is no room).
+  const renderTooltip = () => {
+    if (!hover) return null;
+    const line = lines.find(l => l.id === hover.id);
+    const point = line?.points.find(p => xs.indexOf(p.x) === hover.i);
+    if (!point) return null;
+    const rows = [String(point.x).slice(0, 10), lines.length > 1 ? `${line.label}: ${tip(point.y)}` : tip(point.y)];
+    const w = Math.max(...rows.map(r => r.length)) * 6.4 + 20;
+    const h = 40;
+    const cx = x(hover.i), cy = y(point.y);
+    const tx = Math.min(Math.max(cx - w / 2, P.l - 4), W - P.r + 4 - w);
+    const ty = cy - h - 12 < 2 ? cy + 12 : cy - h - 12;
+    return (
+      <g pointerEvents="none">
+        <line x1={cx} x2={cx} y1={P.t} y2={H - P.b} className="stroke-zinc-400/50" strokeWidth="1" strokeDasharray="3 3" />
+        <rect x={tx} y={ty} width={w} height={h} rx="8" className="fill-zinc-900 stroke-zinc-600" strokeWidth="1" />
+        <text x={tx + 10} y={ty + 16} className="fill-zinc-400 text-[10px]">{rows[0]}</text>
+        <text x={tx + 10} y={ty + 31} className="fill-white text-[12px] font-semibold">{rows[1]}</text>
+      </g>
+    );
+  };
+
+  return (
+    <div>
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={ariaLabel} onMouseLeave={() => setHover(null)}>
+        {[0, 1, 2, 3, 4].map(i => (
+          <g key={i}>
+            <line x1={P.l} x2={W - P.r} y1={y(step * i)} y2={y(step * i)} className="stroke-zinc-200 dark:stroke-zinc-700/60" strokeWidth="1" strokeDasharray={i === 0 ? undefined : '3 4'} />
+            <text x={P.l - 8} y={y(step * i) + 4} textAnchor="end" className="fill-zinc-400 text-[10px]">{yFormat(step * i)}</text>
+          </g>
+        ))}
+        {xs.map((label, i) => (i % tickEvery === 0 || i === xs.length - 1) && (
+          <text key={label} x={x(i)} y={H - 10} textAnchor="middle" className="fill-zinc-400 text-[10px]">{String(label).slice(0, 7)}</text>
+        ))}
+
+        {lines.map(line => {
+          const pts = line.points.map(p => ({ i: xs.indexOf(p.x), v: p.y })).filter(p => p.i >= 0);
+          if (!pts.length) return null;
+          const dim = highlighted && highlighted !== line.id;
+          const active = highlighted === line.id;
+          return (
+            <g key={line.id} opacity={dim ? 0.2 : 1} style={{ transition: 'opacity 0.2s' }}>
+              <path d={pts.map((p, k) => `${k === 0 ? 'M' : 'L'}${x(p.i).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ')}
+                fill="none" stroke={line.color} strokeWidth={active ? 3.5 : 2.5} strokeLinecap="round" strokeLinejoin="round" />
+              {pts.map(p => {
+                const isHover = hover?.id === line.id && hover.i === p.i;
+                return (
+                  <g key={p.i}>
+                    <circle cx={x(p.i)} cy={y(p.v)} r={isHover ? 6 : active ? 4.5 : 3.5} fill={line.color} />
+                    {/* Larger invisible target so the point is easy to hover or tap */}
+                    <circle cx={x(p.i)} cy={y(p.v)} r="14" fill="transparent" className="cursor-pointer"
+                      onMouseEnter={() => setHover({ id: line.id, i: p.i })}
+                      onClick={() => setHover(isHover ? null : { id: line.id, i: p.i })} />
+                  </g>
+                );
+              })}
+            </g>
+          );
+        })}
+        {renderTooltip()}
+      </svg>
+
+      {showLegend && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {lines.map(line => {
+            const latest = line.points.length ? line.points[line.points.length - 1].y : null;
+            return (
+              <button key={line.id} type="button"
+                onMouseEnter={() => onHighlight(line.id)} onMouseLeave={() => onHighlight(null)}
+                onFocus={() => onHighlight(line.id)} onBlur={() => onHighlight(null)}
+                className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors text-zinc-700 dark:text-zinc-200 ${highlighted === line.id ? 'border-zinc-400 dark:border-zinc-500 bg-zinc-100 dark:bg-white/10' : 'border-zinc-200 dark:border-white/10'}`}>
+                <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: line.color }} />
+                {line.label}
+                <span className="text-zinc-400 font-medium tabular-nums">{latest !== null ? yFormat(Math.round(latest)) : 'N/A'}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function RegionalInsights({ onBack, initialGroupCode }) {
   const [occupationGroups, setOccupationGroups] = useState([]);
   const [isLoadingGroups, setIsLoadingGroups] = useState(true);
+  const [groupsError, setGroupsError] = useState('');
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedRegions, setSelectedRegions] = useState([...ALL_REGIONS]);
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isUsingMock, setIsUsingMock] = useState(false);
+  const [compareError, setCompareError] = useState('');
+  const [series, setSeries] = useState({});
+  const [trend, setTrend] = useState([]);
+  const [trendState, setTrendState] = useState('idle'); // idle | loading | done | error
   const [hoveredState, setHoveredState] = useState(null);
   const [chartData, setChartData] = useState(null);
   const [demandMap, setDemandMap] = useState({});
@@ -63,19 +172,37 @@ export default function RegionalInsights({ onBack }) {
   useEffect(() => {
     (async () => {
       setIsLoadingGroups(true);
+      setGroupsError('');
       try {
         const groups = await getRegionalOccupations();
         setOccupationGroups(groups || []);
         if (groups && groups.length > 0) {
-          setSelectedGroup(groups[0]);
+          setSelectedGroup(groups.find(g => String(g.anzsco4_code) === String(initialGroupCode)) || groups[0]);
         }
       } catch (err) {
-        if (err.status === 404) setIsUsingMock(true);
+        console.error('Could not load occupation groups:', err);
+        setGroupsError(err?.message || 'The occupation group list could not be loaded.');
       } finally { 
         setIsLoadingGroups(false);
       }
     })();
   }, []);
+
+  // National employment by year for the selected occupation (same data the results cards used to show as tiles).
+  useEffect(() => {
+    if (!selectedGroup) return undefined;
+    let cancelled = false;
+    setTrendState('loading');
+    getOccupationAI(selectedGroup.anzsco4_code)
+      .then(res => {
+        if (cancelled) return;
+        const rows = Array.isArray(res?.employment_trend) ? res.employment_trend : [];
+        setTrend(rows.map(r => ({ year: String(r.year), value: Number(r.employed_k) })).filter(r => r.year && Number.isFinite(r.value)));
+        setTrendState('done');
+      })
+      .catch(() => { if (!cancelled) { setTrend([]); setTrendState('error'); } });
+    return () => { cancelled = true; };
+  }, [selectedGroup]);
 
   const toggleRegion = (region) => {
     setSelectedRegions(prev =>
@@ -86,7 +213,7 @@ export default function RegionalInsights({ onBack }) {
   const handleGenerateComparison = async () => {
     if (!selectedGroup || selectedRegions.length < 2) return;
     setIsGenerating(true);
-    setIsUsingMock(false);
+    setCompareError('');
 
     try {
       const [results, demandResults] = await Promise.all([
@@ -94,9 +221,14 @@ export default function RegionalInsights({ onBack }) {
         Promise.all(
           selectedRegions.map(async (region) => {
             try {
-              const res = await getRegionalDemand(region);
+              const res = await getRegionalDemand(region, selectedGroup.anzsco4_code);
               const records = Array.isArray(res) ? res : (res ? [res] : []);
-              if (records.length === 0) return { region, vacancies: null };
+              if (records.length === 0) return { region, vacancies: null, points: [] };
+
+              const points = records
+                .map(r => ({ month: String(r.month ?? ''), value: Number(r.vacancy_3m_moving_average) }))
+                .filter(p => p.month && Number.isFinite(p.value))
+                .sort((a, b) => a.month.localeCompare(b.month));
 
               // Extract the record corresponding to the latest month
               const latestRecord = records.reduce((latest, current) => 
@@ -105,20 +237,24 @@ export default function RegionalInsights({ onBack }) {
 
               return {
                 region,
-                vacancies: latestRecord?.vacancy_3m_moving_average ? Number(latestRecord.vacancy_3m_moving_average) : null
+                vacancies: latestRecord?.vacancy_3m_moving_average ? Number(latestRecord.vacancy_3m_moving_average) : null,
+                points
               };
             } catch {
-              return { region, vacancies: null };
+              return { region, vacancies: null, points: [] };
             }
           })
         )
       ]);
 
       const newDemandMap = {};
+      const newSeries = {};
       demandResults.forEach(item => {
         if (item.vacancies !== null) newDemandMap[item.region] = item.vacancies;
+        newSeries[item.region] = item.points || [];
       });
       setDemandMap(newDemandMap);
+      setSeries(newSeries);
 
       const aggregated = results.map(data => ({
         state: data.state,
@@ -131,18 +267,13 @@ export default function RegionalInsights({ onBack }) {
       setChartData(aggregated);
     } catch (err) {
       console.error("Failed to fetch regional data:", err);
-      if (err.status === 404) {
-        setIsUsingMock(true);
-        setChartData(
-          selectedRegions.map(state => ({
-            state,
-            opportunities: Math.floor(Math.random() * 600) + 350
-          }))
-        );
-      } else {
-        setIsUsingMock(false);
-        setChartData([]);
-      }
+      setChartData(null);
+      setSeries({});
+      setCompareError(
+        err?.status === 404
+          ? 'No regional data was returned for this occupation group and these regions.'
+          : (err?.message || 'Regional data could not be loaded.')
+      );
     } finally {
       setIsGenerating(false);
     }
@@ -183,10 +314,10 @@ export default function RegionalInsights({ onBack }) {
         </p>
       </div>
 
-      {isUsingMock && (
-        <div className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
+      {compareError && (
+        <div role="alert" className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
           <ShieldAlert className="w-4 h-4 flex-shrink-0" />
-          <span>API disconnected or no data for this selection — displaying fallback preview data.</span>
+          <span>{compareError}</span>
         </div>
       )}
 
@@ -200,6 +331,12 @@ export default function RegionalInsights({ onBack }) {
           {isLoadingGroups ? (
             <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 py-2.5">
               <Loader2 className="w-4 h-4 animate-spin" /> Loading occupation groups...
+            </div>
+          ) : groupsError || occupationGroups.length === 0 ? (
+            <div role="alert" className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2.5 text-xs text-amber-700 dark:text-amber-400">
+              {groupsError
+                ? `Occupation groups could not be loaded (${groupsError}).`
+                : 'No occupation groups were returned by the API.'}
             </div>
           ) : (
             <select
@@ -408,6 +545,59 @@ export default function RegionalInsights({ onBack }) {
               })()}
             </div>
           </div>
+        </div>
+      )}
+
+      {selectedGroup && (
+        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
+          <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">Employment trend</h3>
+          <p className="mt-1 mb-6 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
+            {selectedGroup.anzsco4_name}: employment estimates by year, Australia (thousands of people).
+          </p>
+          {trendState === 'loading' ? (
+            <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 py-6"><Loader2 className="w-4 h-4 animate-spin" /> Loading employment trend...</div>
+          ) : trend.length >= 2 ? (
+            <>
+              <LineChart
+                ariaLabel={`Line graph of employment by year for ${selectedGroup.anzsco4_name}`}
+                showLegend={false}
+                yFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 1 })}k`}
+                tipFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 2 })}k (${Math.round(v * 1000).toLocaleString()} people)`}
+                lines={[{ id: 'employment', label: selectedGroup.anzsco4_name, color: LINE_COLORS[0], points: trend.map(t => ({ x: t.year, y: t.value })) }]}
+              />
+              {(() => {
+                const first = trend[0], last = trend[trend.length - 1];
+                const change = last.value - first.value;
+                const pct = first.value ? (change / first.value) * 100 : null;
+                return (
+                  <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
+                    {first.year} to {last.year}: <strong className="text-zinc-900 dark:text-white">{change >= 0 ? '+' : ''}{change.toFixed(1)}k</strong>
+                    {pct !== null && <> ({pct >= 0 ? '+' : ''}{pct.toFixed(1)}%)</>}
+                  </p>
+                );
+              })()}
+            </>
+          ) : (
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
+              {trendState === 'error' ? 'Employment trend could not be loaded.' : 'Employment trend data is not available for this occupation.'}
+            </p>
+          )}
+        </div>
+      )}
+
+      {chartData && selectedRegions.some(r => (series[r] || []).length >= 2) && (
+        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
+          <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">Vacancy trend by region</h3>
+          <p className="mt-1 mb-6 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">3-month moving average of job vacancies. Hover a region to highlight its line.</p>
+          <LineChart
+            ariaLabel="Line graph of job vacancies over time for each selected region"
+            highlighted={hoveredState}
+            onHighlight={setHoveredState}
+            lines={selectedRegions.map((region, i) => ({
+              id: region, label: region, color: LINE_COLORS[i % LINE_COLORS.length],
+              points: (series[region] || []).map(p => ({ x: p.month, y: p.value }))
+            }))}
+          />
         </div>
       )}
     </div>

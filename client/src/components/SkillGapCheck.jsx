@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ArrowLeft, ArrowRight, Loader2, ShieldAlert, CheckCircle2, AlertCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Loader2, ShieldAlert, CheckCircle2, AlertCircle, Check, MapPin } from 'lucide-react';
 import { getSkillGap } from '../api/client';
 
 // ─── Importance pill tier ─────────────────────────────────────────────────────
@@ -19,6 +19,8 @@ const resilienceStyle = (score) => {
 
 const DURATION_OPTIONS = [3, 6, 9];
 const HOURS_OPTIONS    = [3, 5, 8, 12];
+const DURATION_META = { 3: 'Sprint', 6: 'Balanced', 9: 'Deep dive' };
+const HOURS_META    = { 3: 'Light', 5: 'Steady', 8: 'Focused', 12: 'Intensive' };
 
 // ─── Normalize API response → internal shape ──────────────────────────────────
 function normalizeResponse(raw) {
@@ -48,7 +50,7 @@ function normalizeResponse(raw) {
   };
 }
 
-export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate }) {
+export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate, onSkillGapChange }) {
   const anzscoCode   = targetOccupation?.anzsco_code ? String(targetOccupation.anzsco_code) : '';
   const occupationTitle = targetOccupation?.title || targetOccupation?.name || 'Selected Career';
 
@@ -116,15 +118,35 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
     }
   };
 
+  const anzsco4 = anzscoCode.slice(0, 4);
+
+  // Let the chatbot know what the user has told us about their skills.
+  useEffect(() => {
+    if (!data) return;
+    onSkillGapChange?.({
+      occupation: occupationTitle,
+      skillsHave: data.all_skills.filter(s => selected.has(s.id)).map(s => s.name),
+      skillsToBuild: data.all_skills.filter(s => !selected.has(s.id)).slice(0, 12).map(s => s.name),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, selected]);
+
+  const coverage = data?.all_skills.length ? Math.round((haveSkills.length / data.all_skills.length) * 100) : 0;
+  const stepBadge = 'flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-sm shrink-0';
+  const card = 'bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-sm';
+  const optionBase = 'rounded-xl border px-3 py-3 text-center text-sm font-semibold transition-colors';
+  const optionOn = 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 border-zinc-900 dark:border-white';
+  const optionOff = 'border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-zinc-200 hover:border-zinc-400 dark:hover:border-white/30';
+
   // ─── Loading ─────────────────────────────────────────────────────────────────
   if (isLoading) {
     return (
-      <div className="max-w-5xl mx-auto space-y-6 p-4 sm:p-6">
+      <div className="max-w-5xl mx-auto space-y-6 py-2 sm:p-6">
         <button onClick={onBack} className="inline-flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back
         </button>
-        <div className="flex flex-col items-center justify-center py-32 gap-4 text-zinc-500">
-          <Loader2 className="w-8 h-8 animate-spin" />
+        <div className="flex flex-col items-center justify-center py-24 sm:py-32 gap-4 text-zinc-500">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
           <p className="text-sm">Analysing skill requirements…</p>
         </div>
       </div>
@@ -132,14 +154,17 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
   }
 
   return (
-    <div className="max-w-5xl mx-auto space-y-8 p-4 sm:p-6 font-sans text-zinc-900 dark:text-zinc-100">
+    <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 py-2 sm:p-6 font-sans text-zinc-900 dark:text-zinc-100">
 
-      {/* Back */}
-      <button onClick={onBack} className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
-        <ArrowLeft className="w-4 h-4" /> Back to results
-      </button>
+      <div>
+        <button onClick={onBack} className="mb-5 inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back
+        </button>
+        <p className="text-[10px] font-bold uppercase tracking-widest text-blue-500">Skill gap check</p>
+        <h1 className="mt-1 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white break-words">{occupationTitle}</h1>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">Tick the skills you already have. We&apos;ll show what&apos;s left and help you plan for it.</p>
+      </div>
 
-      {/* Load error */}
       {error && (
         <div role="alert" className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
           <ShieldAlert className="w-4 h-4 shrink-0" />
@@ -148,218 +173,170 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
         </div>
       )}
 
-      {/* ── Resilience Banner ──────────────────────────────────────────────── */}
-      <div className={`rounded-2xl border p-6 ${rs.bg}`}>
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-1">Skill Gap Check</p>
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">{occupationTitle}</h1>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-              Tap the skills you already have — we'll build your gap and plan from the rest.
-            </p>
+      {/* AI context for this career */}
+      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+        {[
+          ['Resilience', metrics.resilience_score != null ? `${metrics.resilience_score}%` : 'N/A', rs.label, 'text-zinc-900 dark:text-white'],
+          ['Augmentation', augPct != null ? `${augPct}%` : 'N/A', 'Human capacity elevated', 'text-emerald-600 dark:text-emerald-400'],
+          ['Automation risk', autoPct != null ? `${autoPct}%` : 'N/A', 'Tasks fully automated', 'text-amber-600 dark:text-amber-400'],
+        ].map(([label, value, copy, color]) => (
+          <div key={label} className={`${card} p-4 sm:p-5`}>
+            <p className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">{label}</p>
+            <p className={`mt-1.5 text-2xl sm:text-3xl font-bold tracking-tight tabular-nums ${value === 'N/A' ? 'text-zinc-400' : color}`}>{value}</p>
+            <p className="mt-1 hidden sm:block text-[11px] text-slate-500 dark:text-slate-400">{copy}</p>
           </div>
-
-          <div className="flex items-center gap-6 shrink-0">
-            {/* Resilience score */}
-            <div className="text-center">
-              <div className={`text-4xl font-bold tabular-nums ${rs.text}`}>{metrics.resilience_score ?? 'N/A'}</div>
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mt-0.5">Resilience</div>
-              <div className={`text-xs font-medium mt-0.5 ${rs.text}`}>{rs.label}</div>
-            </div>
-            {/* Augmentation / Automation */}
-            <div className="space-y-3 min-w-[140px]">
-              <div>
-                <div className="flex justify-between text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
-                  <span>Augmentation</span>
-                  <span className="text-emerald-600 dark:text-emerald-400">{augPct != null ? `${augPct}%` : 'N/A'}</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-zinc-200/60 dark:bg-white/10 overflow-hidden">
-                  <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${augPct ?? 0}%` }} />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-1">
-                  <span>Automation</span>
-                  <span className="text-amber-600 dark:text-amber-400">{autoPct != null ? `${autoPct}%` : 'N/A'}</span>
-                </div>
-                <div className="h-1.5 rounded-full bg-zinc-200/60 dark:bg-white/10 overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: `${autoPct ?? 0}%` }} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
 
-      {/* ── Interactive Skill Selector ─────────────────────────────────────── */}
-      <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
-        <div className="flex items-start justify-between gap-4 mb-5">
-          <div>
-            <h2 className="text-base font-bold text-zinc-900 dark:text-white">Select skills you already have</h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-              {selected.size} of {data.all_skills.length} selected · {missingSkills.length} missing
-            </p>
+      {/* 1. Skill selector */}
+      <div className={`${card} p-5 sm:p-6`}>
+        <div className="flex items-start gap-3">
+          <span className={stepBadge}>1</span>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Select the skills you already have</h2>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{haveSkills.length} of {data.all_skills.length} selected</p>
           </div>
-          {selected.size > 0 && (
-            <button
-              onClick={() => setSelected(new Set())}
-              className="text-xs text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors shrink-0"
-            >
-              Clear all
-            </button>
+          {haveSkills.length > 0 && (
+            <button onClick={() => setSelected(new Set())} className="text-xs text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors shrink-0">Clear</button>
           )}
         </div>
 
+        <div className="mt-4 h-1.5 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden" role="progressbar" aria-valuenow={coverage} aria-valuemin={0} aria-valuemax={100} aria-label="Skills covered">
+          <div className="h-full rounded-full bg-emerald-500 transition-all duration-500" style={{ width: `${coverage}%` }} />
+        </div>
+
         {data.all_skills.length === 0 && (
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          <p className="mt-5 text-sm text-zinc-500 dark:text-zinc-400">
             {error ? 'Skills could not be loaded for this occupation.' : 'No skill data is available for this occupation.'}
           </p>
         )}
 
-        <div className="flex flex-wrap gap-2.5">
+        <div className="mt-5 flex flex-wrap gap-2">
           {data.all_skills.map(skill => {
             const tier = tierStyle(skill.importance);
             const isSelected = selected.has(skill.id);
             return (
-              <button
-                key={skill.id}
-                onClick={() => toggleSkill(skill.id)}
-                className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border text-xs font-medium transition-all ${
-                  isSelected
-                    ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 border-transparent shadow-sm'
-                    : 'bg-zinc-50 dark:bg-zinc-800/60 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-500'
-                }`}
-              >
-                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isSelected ? 'bg-white dark:bg-zinc-900' : tier.dot}`} />
+              <button key={skill.id} type="button" aria-pressed={isSelected} onClick={() => toggleSkill(skill.id)}
+                className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full border text-xs font-semibold transition-colors ${isSelected ? optionOn : optionOff}`}>
+                {isSelected ? <Check className="w-3.5 h-3.5" /> : <span className={`w-2 h-2 rounded-full shrink-0 ${tier.dot}`} />}
                 {skill.name}
-                <span className={`text-[9px] font-bold px-1 py-0.5 rounded border ml-0.5 ${isSelected ? 'bg-white/20 dark:bg-black/20 text-white dark:text-zinc-900 border-transparent' : tier.badge}`}>
-                  {skill.importance.toFixed(1)}
-                </span>
               </button>
             );
           })}
         </div>
-      </div>
 
-      {/* ── Gap Result Boxes ───────────────────────────────────────────────── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Skills you have */}
-        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-5 shadow-sm">
-          <div className="flex items-center gap-2 mb-4">
-            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-            <h3 className="text-sm font-bold text-zinc-900 dark:text-white">Skills you have</h3>
-            <span className="ml-auto text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-              {haveSkills.length}
-            </span>
-          </div>
-          {haveSkills.length === 0 ? (
-            <p className="text-xs text-zinc-400 italic">Tap any skill above to add it here.</p>
-          ) : (
-            <div className="space-y-2">
-              {haveSkills.map(s => (
-                <div key={s.id} className="flex items-center justify-between text-xs">
-                  <span className="text-zinc-700 dark:text-zinc-300">{s.name}</span>
-                  <span className="text-zinc-400 text-[10px]">{s.category}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Skills missing */}
-        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-5 shadow-sm">
-          <div className="flex items-center gap-2 mb-4">
-            <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
-            <h3 className="text-sm font-bold text-zinc-900 dark:text-white">Skills to build</h3>
-            <span className="ml-auto text-[10px] font-semibold text-rose-600 dark:text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded-full">
-              {missingSkills.length}
-            </span>
-          </div>
-          {missingSkills.length === 0 ? (
-            <p className="text-xs text-zinc-400 italic">You've covered all required skills 🎉</p>
-          ) : (
-            <div className="space-y-2">
-              {missingSkills.map(s => (
-                <div key={s.id} className="flex items-center justify-between text-xs">
-                  <span className="text-zinc-700 dark:text-zinc-300">{s.name}</span>
-                  <span className={`text-[9px] font-semibold ${tierStyle(s.importance).text || 'text-zinc-400'}`}>
-                    {s.importance.toFixed(1)}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
+        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+          {[['bg-rose-500', 'High importance'], ['bg-amber-400', 'Medium'], ['bg-zinc-400', 'Lower']].map(([dot, label]) => (
+            <span key={label} className="inline-flex items-center gap-1.5"><span className={`w-2 h-2 rounded-full ${dot}`} />{label}</span>
+          ))}
         </div>
       </div>
 
-      {/* ── Plan Config ───────────────────────────────────────────────────── */}
+      {/* 2. Result */}
+      <div className={`${card} p-5 sm:p-6`}>
+        <div className="flex items-center gap-3">
+          <span className={stepBadge}>2</span>
+          <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Your skill comparison</h2>
+        </div>
+
+        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0 md:divide-x divide-zinc-200 dark:divide-zinc-800">
+          <div className="md:pr-6">
+            <h3 className="flex items-center justify-between text-sm font-bold text-zinc-900 dark:text-white">
+              <span className="inline-flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Skills you have</span>
+              <span className="text-xs font-semibold text-zinc-400 tabular-nums">{haveSkills.length}</span>
+            </h3>
+            {haveSkills.length === 0 ? (
+              <p className="mt-3 text-xs text-zinc-400 italic">Select skills above to see them here.</p>
+            ) : (
+              <ol className="mt-3 space-y-2.5">
+                {haveSkills.map((s, i) => (
+                  <li key={s.id} className="text-sm text-zinc-700 dark:text-zinc-300"><span className="font-semibold mr-2 text-zinc-400 tabular-nums">{i + 1}.</span>{s.name}</li>
+                ))}
+              </ol>
+            )}
+          </div>
+
+          <div className="md:pl-6">
+            <h3 className="flex items-center justify-between text-sm font-bold text-zinc-900 dark:text-white">
+              <span className="inline-flex items-center gap-2"><AlertCircle className="w-4 h-4 text-rose-500" /> Skills to build</span>
+              <span className="text-xs font-semibold text-zinc-400 tabular-nums">{missingSkills.length}</span>
+            </h3>
+            {missingSkills.length === 0 ? (
+              <p className="mt-3 text-xs text-zinc-400 italic">You&apos;ve covered every required skill.</p>
+            ) : (
+              <ol className="mt-3 space-y-3">
+                {missingSkills.map((s, i) => (
+                  <li key={s.id}>
+                    <div className="flex items-baseline justify-between gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                      <span className="min-w-0 break-words"><span className="font-semibold mr-2 text-zinc-400 tabular-nums">{i + 1}.</span>{s.name}</span>
+                      <span className="text-[10px] font-semibold tabular-nums text-zinc-400 shrink-0">{s.importance.toFixed(1)}</span>
+                    </div>
+                    <div className="mt-1.5 h-1 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden">
+                      <div className={`h-full rounded-full ${tierStyle(s.importance).dot}`} style={{ width: `${Math.min(100, s.importance * 10)}%` }} />
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* 3. Build a plan */}
       {missingSkills.length > 0 && (
-        <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-6 shadow-sm space-y-6">
+        <div className={`${card} p-5 sm:p-6 space-y-6`}>
+          <div className="flex items-start gap-3">
+            <span className={stepBadge}>3</span>
+            <div>
+              <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Build your learning plan</h2>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Choose your pace. We&apos;ll spread {missingSkills.length} skill{missingSkills.length === 1 ? '' : 's'} across a phased plan.</p>
+            </div>
+          </div>
+
           <div>
-            <h2 className="text-base font-bold text-zinc-900 dark:text-white">Build a learning plan</h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Choose your timeline and availability.</p>
-          </div>
-
-          {/* Duration */}
-          <div className="space-y-2.5">
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Duration</p>
-            <div className="flex gap-2">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2.5">Duration</p>
+            <div className="grid grid-cols-3 gap-2.5">
               {DURATION_OPTIONS.map(m => (
-                <button
-                  key={m}
-                  onClick={() => setDuration(m)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all ${
-                    duration === m
-                      ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 border-transparent'
-                      : 'border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400'
-                  }`}
-                >
+                <button key={m} type="button" aria-pressed={duration === m} onClick={() => setDuration(m)} className={`${optionBase} ${duration === m ? optionOn : optionOff}`}>
                   {m} months
+                  <span className="block mt-0.5 text-[10px] font-medium opacity-60">{DURATION_META[m]}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Hours per week */}
-          <div className="space-y-2.5">
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Hours per week</p>
-            <div className="flex gap-2 flex-wrap">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2.5">Hours per week</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
               {HOURS_OPTIONS.map(h => (
-                <button
-                  key={h}
-                  onClick={() => setHrsPerWeek(h)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all ${
-                    hrsPerWeek === h
-                      ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 border-transparent'
-                      : 'border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400'
-                  }`}
-                >
-                  {h} hrs/wk
+                <button key={h} type="button" aria-pressed={hrsPerWeek === h} onClick={() => setHrsPerWeek(h)} className={`${optionBase} ${hrsPerWeek === h ? optionOn : optionOff}`}>
+                  {h} hrs
+                  <span className="block mt-0.5 text-[10px] font-medium opacity-60">{HOURS_META[h]}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Summary sentence */}
-          <div className="rounded-xl bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 p-4">
-            <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              You'll have{' '}
-              <span className="font-semibold text-zinc-900 dark:text-white">{totalHours} hours</span> over{' '}
-              <span className="font-semibold text-zinc-900 dark:text-white">{duration} months</span> to build{' '}
-              <span className="font-semibold text-zinc-900 dark:text-white">{missingSkills.length} skills</span>.
-              {hoursPerSkill > 0 && (
-                <> That's roughly <span className="font-semibold text-zinc-900 dark:text-white">~{hoursPerSkill} hrs</span> per skill.</>
-              )}
-            </p>
-          </div>
+          <dl className="grid grid-cols-3 divide-x divide-zinc-200 dark:divide-zinc-800 rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] text-center">
+            {[[totalHours, 'Total hours'], [missingSkills.length, 'Skills'], [hoursPerSkill > 0 ? `~${hoursPerSkill}` : '-', 'Hours per skill']].map(([value, label]) => (
+              <div key={label} className="py-4 px-2">
+                <dd className="text-2xl font-bold tabular-nums text-zinc-900 dark:text-white">{value}</dd>
+                <dt className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">{label}</dt>
+              </div>
+            ))}
+          </dl>
 
-          {/* CTA */}
-          <button
-            onClick={handleGeneratePlan}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
-          >
-            Generate learning plan <ArrowRight className="w-4 h-4" />
-          </button>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            {onNavigate && (
+              <button type="button" onClick={() => onNavigate('regional-insights', { anzsco4 })} className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                <MapPin className="w-3.5 h-3.5" /> See regional demand for this career
+              </button>
+            )}
+            <button type="button" onClick={handleGeneratePlan}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors">
+              Generate learning plan <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       )}
     </div>
