@@ -123,15 +123,41 @@ export async function getRegionalVacancies(anzscoCode) {
 }
 
 // Regional Insights page (RegionalInsights.jsx)
-// TODO: these three are imported by RegionalInsights.jsx but no v3 routes were provided,
-// so they fail loudly instead of guessing an endpoint. Replace each body with the real request, e.g.
-//   return request(`/v3/...`);
-const regionalNotConfigured = name => {
-  throw new Error(`${name}: API route not configured in api/client.js`);
-};
-export async function getRegionalOccupations() { return regionalNotConfigured('getRegionalOccupations'); }
-export async function getMultiRegionOpportunity(/* anzsco4Code, regions */) { return regionalNotConfigured('getMultiRegionOpportunity'); }
-export async function getRegionalDemand(/* regionCode */) { return regionalNotConfigured('getRegionalDemand'); }
+// Occupations the user can pick from.
+export async function getRegionalOccupations() {
+  const data = await request('/v3/occupations');
+  return (data?.occupations || []).map(o => ({
+    anzsco4_code: o.anzsco_code,
+    anzsco4_name: o.name,
+  }));
+}
+
+// Employment by state for one occupation: [{ state, opportunities }]
+export async function getMultiRegionOpportunity(anzsco4Code, regions) {
+  const data = await request(`/v3/regional/${anzsco4Code}`);
+  const snapshot = data?.state_snapshot || [];
+  return regions.map(state => ({
+    state,
+    opportunities: snapshot.find(s => s.state === state)?.employed || 0,
+  }));
+}
+
+// Vacancies for one state. The vacancy route is keyed by the 2-digit ANZSCO group of the occupation
+// being viewed. It only exists for some groups (ICT is 26), so any other group returns [] and the
+// page simply shows no vacancy figure.
+export async function getRegionalDemand(regionCode, anzsco4Code = '') {
+  const anzsco2 = String(anzsco4Code).slice(0, 2);
+  if (!anzsco2) return [];
+  try {
+    const data = await request(`/v3/regional/${anzsco2}/vacancies`);
+    const stateData = (data?.state_snapshot || []).find(s => s.state === regionCode);
+    return stateData
+      ? [{ month: data.latest_month, vacancy_3m_moving_average: stateData.vacancies }]
+      : [];
+  } catch {
+    return [];
+  }
+}
 
 // Step 7 — Chatbot
 export async function sendChat({ message, conversationHistory = [], profileContext = {} }) {

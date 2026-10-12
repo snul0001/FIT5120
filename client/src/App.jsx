@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import {
-  ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Cpu, Download,
+  ArrowLeft, ArrowRight, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Cpu, Download,
   ExternalLink, LayoutDashboard, Loader2, Moon, Sun, X, Zap
 } from 'lucide-react';
 
@@ -170,49 +170,132 @@ const ProgressBar = ({ label, value, color = 'bg-emerald-500', textColor = 'text
   );
 };
 
+// ─── Task groups (Matches & AI Impact) ────────────────────────────────────────
+const TASK_GROUPS = [
+  { key: 'human', label: 'Human-led', dot: 'bg-blue-500', match: c => /human/i.test(c) },
+  { key: 'augmented', label: 'AI Augmented', dot: 'bg-emerald-500', match: c => /assist|augment/i.test(c) },
+  { key: 'automated', label: 'AI Automated', dot: 'bg-amber-500', match: c => /automat/i.test(c) }
+];
+const TaskGroup = ({ group, tasks }) => {
+  const trackRef = useRef(null);
+  const [index, setIndex] = useState(0);
+
+  const goTo = i => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.scrollTo({ left: Math.max(0, Math.min(tasks.length - 1, i)) * el.clientWidth, behavior: 'smooth' });
+  };
+  const onScroll = e => setIndex(Math.round(e.currentTarget.scrollLeft / (e.currentTarget.clientWidth || 1)));
+  const arrow = 'w-7 h-7 rounded-md flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent transition-colors';
+
+  return (
+    <section>
+      <div className="flex items-center justify-between rounded-lg bg-zinc-100 dark:bg-white/5 px-3 py-1.5">
+        <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-300">
+          <span className={`w-2 h-2 rounded-full ${group.dot}`} />{group.label}
+          <span className="rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-1.5 py-0.5 text-[11px] tabular-nums">{tasks.length}</span>
+        </span>
+        {tasks.length > 1 && (
+          <span className="flex items-center gap-0.5">
+            <button type="button" aria-label={`Previous ${group.label} task`} disabled={index === 0} onClick={() => goTo(index - 1)} className={arrow}><ChevronLeft className="w-4 h-4" /></button>
+            <button type="button" aria-label={`Next ${group.label} task`} disabled={index >= tasks.length - 1} onClick={() => goTo(index + 1)} className={arrow}><ChevronRight className="w-4 h-4" /></button>
+          </span>
+        )}
+      </div>
+
+      {tasks.length === 0 ? (
+        <p className="mt-2 px-1 text-xs text-zinc-400">No tasks in this group.</p>
+      ) : (
+        <>
+          <div ref={trackRef} onScroll={onScroll} className="mt-2 flex w-full min-w-0 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {tasks.map((task, i) => {
+              const title = capitalise(task.task_core || task.task_text || '');
+              const detail = task.task_core && task.task_text && task.task_text !== task.task_core ? task.task_text : '';
+              return (
+                <div key={task.id ?? i} className="w-full min-w-0 shrink-0 snap-center">
+                  <div className="h-full rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-[#131B2F] p-4">
+                    <p className="text-[13px] font-semibold leading-snug text-zinc-900 dark:text-white">{title}</p>
+                    {detail && <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">{detail}</p>}
+                    {(task.impact_level || task.human_need_type) && (
+                      <p className="mt-2 text-[11px] text-zinc-500">
+                        {task.impact_level && <span>{task.impact_level} impact</span>}
+                        {task.impact_level && task.human_need_type && <span> · </span>}
+                        {task.human_need_type && <span>Human role: {task.human_need_type}</span>}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          {tasks.length > 1 && (
+            <div className="mt-2.5 flex items-center justify-between px-1">
+              <div className="flex gap-1.5">
+                {tasks.length <= 8 && tasks.map((_, i) => (
+                  <button key={i} type="button" aria-label={`Go to task ${i + 1}`} onClick={() => goTo(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === index ? 'w-5 bg-zinc-900 dark:bg-white' : 'w-1.5 bg-zinc-300 dark:bg-white/20'}`} />
+                ))}
+              </div>
+              <span className="text-[11px] text-zinc-400 tabular-nums">{index + 1} / {tasks.length}</span>
+            </div>
+          )}
+        </>
+      )}
+    </section>
+  );
+};
+
 const ResultCard = ({
-  role, ai, expanded, colors, onToggle, onSkillGap, tooltip,
+  role, ai, expanded, colors, onToggle, onSkillGap, onRegional, onAskAI, tooltip,
   aiLoading = false, aiError = '', onRetry
 }) => {
   const taskCounts = ai?.task_counts || {};
-  const employmentTrend = Array.isArray(ai?.employment_trend) ? ai.employment_trend : [];
   const tasks = Array.isArray(ai?.tasks) ? ai.tasks : [];
   const hasAugmentation = ai?.avg_augmentation != null;
   const hasAutomation = ai?.avg_automation != null;
   const hasResilience = ai?.resilience_score != null;
-  const hasAIData = Boolean(ai && (
-    hasResilience || hasAugmentation || hasAutomation ||
-    Object.keys(taskCounts).length > 0 || tasks.length || employmentTrend.length
-  ));
+  const resilienceText = hasResilience ? `${ai.resilience_score}%` : 'N/A';
+  const dot = colors.rankBg.split(' ')[0];
+
+  const groups = TASK_GROUPS.map(g => ({ ...g, tasks: tasks.filter(t => g.match(String(t.category || ''))) }));
+  const otherTasks = tasks.filter(t => !TASK_GROUPS.some(g => g.match(String(t.category || ''))));
+  if (otherTasks.length) groups.push({ key: 'other', label: 'Other', dot: 'bg-zinc-400', tasks: otherTasks });
+
+  const metrics = [
+    { label: 'Augmentation', value: ai?.avg_augmentation, ok: hasAugmentation, copy: 'Human capacity elevated', tip: TOOLTIP_TEXT.augmentation, color: 'text-emerald-600 dark:text-emerald-400' },
+    { label: 'Automation risk', value: ai?.avg_automation, ok: hasAutomation, copy: 'Tasks fully automated', tip: TOOLTIP_TEXT.automation, color: 'text-amber-600 dark:text-amber-400' }
+  ];
+
+  const actionBase = 'inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer';
 
   return (
-    <div className={`bg-white/90 dark:bg-[#131B2F]/90 backdrop-blur-sm border-t border-r border-b border-zinc-200/80 dark:border-white/5 ${colors.cardBorder} rounded-2xl sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] dark:shadow-none overflow-hidden transition-all duration-300`}>
-      <div onClick={() => onToggle(role.anzsco_code)} className={`p-5 sm:p-8 cursor-pointer flex items-center gap-4 sm:gap-6 transition-colors ${colors.cardHover}`}>
-        <div className={`w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl flex items-center justify-center text-base sm:text-lg shadow-sm ${colors.rankBg}`}>#{role.rank}</div>
-        <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1.5">
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wide ${colors.badge}`}>
-              {role.match_label} {role.match_score != null ? `• ${role.match_score}%` : ''}
-            </span>
-          </div>
-          <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white truncate">{role.title}</h3>
-        </div>
+    <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl overflow-hidden">
+      <button
+        type="button"
+        aria-expanded={expanded}
+        onClick={() => onToggle(role.anzsco_code)}
+        className="w-full flex items-center gap-4 sm:gap-5 p-4 sm:p-6 text-left hover:bg-zinc-50 dark:hover:bg-white/[0.02] transition-colors"
+      >
+        <span className="w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full bg-zinc-100 dark:bg-white/10 text-zinc-800 dark:text-white font-bold text-base flex items-center justify-center">{role.rank}</span>
+        <span className="flex-1 min-w-0">
+          <span className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <span className={`w-2 h-2 rounded-full ${dot}`} />
+            {role.match_label}{role.match_score != null ? ` · ${role.match_score}%` : ''}
+          </span>
+          <span className="mt-1 block text-lg sm:text-2xl font-bold tracking-tight leading-snug text-zinc-900 dark:text-white">{role.title}</span>
+          {ai && <span className="sm:hidden mt-1 block text-xs text-zinc-500 dark:text-slate-400">Resilience {resilienceText}</span>}
+        </span>
         {ai && (
-          <div {...tooltip('Resilience Score', TOOLTIP_TEXT.resilience)} className={`cursor-help hidden sm:flex flex-col items-start px-4 py-2 mr-4 rounded-xl border transition-colors ${hasResilience && ai.resilience_score >= 50 ? 'bg-emerald-500/5 hover:bg-emerald-500/10 border-emerald-500/20' : 'bg-amber-500/5 hover:bg-amber-500/10 border-amber-500/20'}`}>
-            <span className="text-[9px] font-bold uppercase tracking-widest mb-1 text-slate-500 dark:text-slate-400">Resilience Score</span>
-            <div className="flex items-baseline gap-1.5">
-              <span className="text-base font-bold leading-none text-zinc-800 dark:text-white">{hasResilience ? `${ai.resilience_score}%` : 'N/A'}</span>
-              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">({formatLabel(ai.resilience_label)})</span>
-            </div>
-          </div>
+          <span {...tooltip('Resilience Score', TOOLTIP_TEXT.resilience)} className="hidden sm:block shrink-0 min-w-[120px] rounded-lg border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] px-4 py-2.5 cursor-help">
+            <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Resilience</span>
+            <span className="block mt-0.5 text-xl font-bold tabular-nums text-zinc-900 dark:text-white">{resilienceText}</span>
+          </span>
         )}
-        <div className="shrink-0 p-2 sm:p-3 rounded-full border border-zinc-200 dark:border-white/10 text-zinc-400">
-          {expanded ? <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5" /> : <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />}
-        </div>
-      </div>
+        {expanded ? <ChevronUp className="w-5 h-5 shrink-0 text-zinc-400" /> : <ChevronDown className="w-5 h-5 shrink-0 text-zinc-400" />}
+      </button>
 
       {expanded && (
-        <div className="accordion-enter-animation px-5 sm:px-8 pb-6 sm:pb-8 pt-5 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-[#0E1525]">
+        <div className="accordion-enter-animation border-t border-zinc-200 dark:border-white/10 p-4 sm:p-6">
           {aiLoading ? (
             <div className="flex items-center justify-center gap-3 py-10 text-slate-500 dark:text-slate-400">
               <Loader2 className="w-5 h-5 animate-spin" /><span className="text-sm">Loading AI impact and market data…</span>
@@ -224,121 +307,60 @@ const ResultCard = ({
               <button type="button" onClick={() => onRetry?.(role.anzsco_code)} className="mt-3 font-semibold underline underline-offset-2">Try again</button>
             </div>
           ) : ai ? (
-            <div className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-1"><LayoutDashboard className="w-4 h-4" /> MARKET INTELLIGENCE</h4>
-                    <p className="text-sm text-slate-700 dark:text-slate-300">JSA market assessment indicates <strong className="text-black dark:text-white font-semibold">{formatLabel(ai.demand_label).toLowerCase()}</strong> demand for this occupation.</p>
-                  </div>
-                  <button onClick={() => onSkillGap(role)} className="group inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200/80 text-slate-700 border border-slate-200/80 dark:bg-white/10 dark:hover:bg-white/15 dark:text-slate-200 dark:border-white/10 transition-all cursor-pointer">
-                    Check Skill Gap <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                  </button>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {[
-                      { label: 'Augmentation', tag: 'Support', value: ai.avg_augmentation, available: hasAugmentation, copy: 'Human capacity elevated', tip: TOOLTIP_TEXT.augmentation, box: 'border-emerald-500/20 bg-emerald-500/5', labelColor: 'text-emerald-600 dark:text-[#34D399]', tagColor: 'text-emerald-700 dark:text-[#6EE7B7] bg-emerald-500/20' },
-                      { label: 'Automation', tag: 'Replace', value: ai.avg_automation, available: hasAutomation, copy: 'Tasks fully automated', tip: TOOLTIP_TEXT.automation, box: 'border-amber-500/20 bg-amber-500/5', labelColor: 'text-amber-600 dark:text-[#FBBF24]', tagColor: 'text-amber-700 dark:text-[#FCD34D] bg-amber-500/20' }
-                    ].map(stat => (
-                      <div key={stat.label} {...tooltip(stat.label, stat.tip)} className={`p-5 rounded-xl border ${stat.box} flex flex-col justify-between`}>
-                        <div className="flex justify-between items-start mb-4">
-                          <span className={`text-[10px] font-bold ${stat.labelColor} uppercase tracking-widest`}>{stat.label}</span>
-                          <span className={`text-[9px] font-bold ${stat.tagColor} px-2 py-0.5 rounded uppercase`}>{stat.tag}</span>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+              {/* Left: tasks grouped by how AI may change them */}
+              <div className="order-2 lg:order-1 lg:col-span-2 space-y-5 min-w-0">
+                <h4 className="text-base font-bold text-zinc-900 dark:text-white">AI Task Impact</h4>
+                {tasks.length ? (
+                  groups.map(group => <TaskGroup key={group.key} group={group} tasks={group.tasks} />)
+                ) : (
+                  <div className="space-y-3">
+                    <p className="text-sm text-slate-600 dark:text-slate-300">Individual task descriptions are not available for this occupation.</p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {[['Human-led', taskCounts.human_led ?? 0], ['AI Augmented', taskCounts.ai_assisted ?? 0], ['AI Automated', taskCounts.ai_automated ?? 0]].map(([label, count]) => (
+                        <div key={label} className="rounded-lg bg-zinc-100 dark:bg-white/5 p-3 text-center">
+                          <div className="text-xl font-bold text-zinc-900 dark:text-white tabular-nums">{count}</div>
+                          <div className="mt-1 text-[10px] leading-tight text-slate-500 dark:text-slate-400">{label}</div>
                         </div>
-                        <div>
-                          <div className={`text-4xl font-bold tracking-tight ${stat.labelColor}`}>{stat.available ? `${Math.round(stat.value * 100)}%` : 'N/A'}</div>
-                          <div className="text-xs text-slate-600 dark:text-slate-400 mt-1">{stat.available ? stat.copy : 'Score not available from the API'}</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
+                )}
+              </div>
+
+              {/* Right: headline metrics and next steps */}
+              <div className="order-1 lg:order-2 lg:col-span-1 min-w-0 space-y-5">
+                <h4 className="text-base font-bold text-zinc-900 dark:text-white">AI Metrics</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  {metrics.map(m => (
+                    <div key={m.label} {...tooltip(m.label, m.tip)} className="rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] p-4 cursor-help">
+                      <p className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">{m.label}</p>
+                      <p className={`mt-2 text-3xl font-bold tracking-tight tabular-nums ${m.ok ? m.color : 'text-zinc-400'}`}>{m.ok ? `${Math.round(m.value * 100)}%` : 'N/A'}</p>
+                      <p className="mt-1 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{m.ok ? m.copy : 'Not available from the API'}</p>
+                    </div>
+                  ))}
                 </div>
 
-                <div>
-                  <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2 mb-4"><Cpu className="w-4 h-4" /> TASK IMPACT ANALYSIS</h4>
-                  {tasks.length ? (
-                    <>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 -mt-2 mb-4">
-                        {tasks.length} task{tasks.length === 1 ? '' : 's'} in this role, grouped by how AI may change them.
-                      </p>
-                      <ol className="space-y-3 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
-                        {tasks.map((task, idx) => (
-                          <li key={task.id ?? idx} className="flex gap-3 p-4 rounded-xl border border-slate-200 dark:border-white/5 bg-white/70 dark:bg-white/[0.02]">
-                            <span className="shrink-0 w-6 h-6 mt-0.5 rounded-full bg-slate-200 dark:bg-white/10 text-[11px] font-bold text-slate-600 dark:text-slate-300 flex items-center justify-center">
-                              {idx + 1}
-                            </span>
-                            <div className="min-w-0 flex-1 space-y-2.5">
-                              <div className="flex flex-wrap items-center gap-2">
-                                {task.category && (
-                                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide ${getImpactStyle(task.category)}`}>
-                                    {formatCategory(task.category)}
-                                  </span>
-                                )}
-                                {task.impact_level && (
-                                  <span className="px-2 py-0.5 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-400 text-[10px] font-semibold uppercase tracking-wide">
-                                    {task.impact_level} impact
-                                  </span>
-                                )}
-                              </div>
-                              {task.task_core && task.task_core !== task.task_text && (
-                                <p className="text-sm font-semibold text-slate-900 dark:text-white leading-snug break-words">{capitalise(task.task_core)}</p>
-                              )}
-                              <p className={`leading-relaxed break-words ${task.task_core && task.task_core !== task.task_text ? 'text-[13px] text-slate-600 dark:text-slate-400' : 'text-sm font-medium text-slate-800 dark:text-slate-200'}`}>{task.task_text}</p>
-                              {task.human_need_type && (
-                                <p className="text-xs text-slate-500 dark:text-slate-400"><span className="font-semibold">Human role:</span> {task.human_need_type}</p>
-                              )}
-                              {(task.augmentation_score != null || task.automation_score != null) && (
-                                <div className="space-y-2 pt-1">
-                                  {task.augmentation_score != null && <ProgressBar label="Augment" value={task.augmentation_score} />}
-                                  {task.automation_score != null && <ProgressBar label="Automate" value={task.automation_score} color="bg-amber-500" textColor="text-amber-600 dark:text-[#FBBF24]" />}
-                                </div>
-                              )}
-                            </div>
-                          </li>
-                        ))}
-                      </ol>
-                    </>
-                  ) : (
-                    <div className="rounded-xl border border-slate-200 dark:border-white/5 bg-white/60 dark:bg-white/[0.02] p-5">
-                      <p className="text-sm text-slate-600 dark:text-slate-300">Individual task descriptions are not included in this response.</p>
-                      <div className="grid grid-cols-3 gap-2 mt-4">
-                        {[
-                          ['Human-led', taskCounts.human_led ?? 0],
-                          ['AI-assisted', taskCounts.ai_assisted ?? 0],
-                          ['AI-automated', taskCounts.ai_automated ?? 0]
-                        ].map(([label, count]) => (
-                          <div key={label} className="rounded-lg bg-slate-100 dark:bg-white/5 p-3 text-center">
-                            <div className="text-xl font-bold text-zinc-900 dark:text-white">{count}</div>
-                            <div className="mt-1 text-[10px] leading-tight text-slate-500 dark:text-slate-400">{label}</div>
-                          </div>
-                        ))}
-                      </div>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-3">Total tasks: {taskCounts.total ?? (tasks.length || 'N/A')}</p>
-                    </div>
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  JSA market assessment indicates <strong className="text-zinc-900 dark:text-white font-semibold">{formatLabel(ai.resilience_label).toLowerCase()}</strong> demand for this occupation.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  <button type="button" onClick={() => onSkillGap(role)} className={`${actionBase} bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200`}>
+                    Check Skill Gap <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  {onAskAI && (
+                    <button type="button" onClick={() => onAskAI(role)} className={`${actionBase} border border-zinc-300 dark:border-white/15 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10`}>
+                      Ask AI
+                    </button>
+                  )}
+                  {onRegional && (
+                    <button type="button" onClick={() => onRegional(role)} className={`${actionBase} border border-zinc-300 dark:border-white/15 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-white/10`}>
+                      Regional Insights
+                    </button>
                   )}
                 </div>
               </div>
-
-              {employmentTrend.length > 0 && (
-                <section className="border-t border-zinc-200 dark:border-white/10 pt-6">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">EMPLOYMENT TREND</h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Employment estimates by year (in thousands).</p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-                    {employmentTrend.map(item => {
-                      const employment = Number(item.employed_k);
-                      const maxEmployment = Math.max(...employmentTrend.map(point => Number(point.employed_k) || 0), 1);
-                      const width = Number.isFinite(employment) ? Math.max(0, Math.min(100, employment / maxEmployment * 100)) : 0;
-                      return (
-                        <div key={item.year} className="rounded-xl border border-zinc-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] p-3">
-                          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">{item.year}</div>
-                          <div className="text-sm font-bold text-zinc-900 dark:text-white mt-1">{Number.isFinite(employment) ? employment.toFixed(1) : 'N/A'}k</div>
-                          <div className="h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 mt-3 overflow-hidden"><div className="h-full rounded-full bg-blue-500" style={{ width: `${width}%` }} /></div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </section>
-              )}
-              {!hasAIData && <p className="text-sm text-slate-500">No additional AI or market data is available for this occupation yet.</p>}
             </div>
           ) : (
             <div className="flex items-center justify-center gap-3 py-8 text-slate-500 dark:text-slate-400"><Loader2 className="w-5 h-5 animate-spin" /><span className="text-sm">Preparing occupation details…</span></div>
@@ -348,6 +370,7 @@ const ResultCard = ({
     </div>
   );
 };
+
 
 const Tooltip = ({ info }) => {
   if (!info.show || typeof document === 'undefined') return null;
@@ -471,6 +494,8 @@ export default function App() {
   const [hollandCode, setHollandCode] = useState('');
   const [quizDone, setQuizDone] = useState(false);
   const [chatSessionId, setChatSessionId] = useState(0);
+  const [skillGapSummary, setSkillGapSummary] = useState(null);
+  const [chatRequest, setChatRequest] = useState(null);
 
   // The deep link has been used; remove it from the address bar so a refresh doesn't re-trigger it.
   useEffect(() => {
@@ -513,6 +538,8 @@ export default function App() {
     setExpandedRoleId(null);
     setShowAllMatches(false);
     setChatSessionId(id => id + 1);
+    setSkillGapSummary(null);
+    setChatRequest(null);
     setCurrentView('quiz');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -635,6 +662,41 @@ export default function App() {
     const code = getTopHollandCodes(answers);
     setHollandCode(code);
     await runMatch(code);
+  };
+
+  // Opens Regional Insights with this role's occupation group (first 4 ANZSCO digits) preselected.
+  // Facts the chatbot is allowed to use: the same numbers the user sees on screen.
+  const aiFacts = code => {
+    const ai = aiDetailsMap[code];
+    return ai ? {
+      resilience_score: ai.resilience_score,
+      resilience_label: ai.resilience_label,
+      demand: ai.demand_label,
+      augmentation: ai.avg_augmentation,
+      automation: ai.avg_automation,
+      task_counts: ai.task_counts
+    } : null;
+  };
+  const chatMatches = matches.map(m => ({ ...m, ai: aiFacts(m.anzsco_code) }));
+  const chatSelected = activeOccupation ? {
+    ...activeOccupation,
+    ai: aiFacts(activeOccupation.anzsco_code),
+    tasks: (aiDetailsMap[activeOccupation.anzsco_code]?.tasks || []).slice(0, 8).map(t => ({
+      task: t.task_core || t.task_text, impact: t.category || null, level: t.impact_level || null
+    }))
+  } : null;
+
+  // "Ask AI" on a result card: open the assistant with a question about that career.
+  const askAI = role => {
+    setActiveOccupation(role);
+    setChatRequest({ id: Date.now(), message: `How could AI change the work of a ${role.title}, and what should I focus on?` });
+  };
+
+  const openRegional = role => {
+    setActiveOccupation(role);
+    setNavContext({ anzsco4: String(role?.anzsco_code || '').slice(0, 4) });
+    setCurrentView('regional-insights');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const openSkillGap = role => {
@@ -1302,7 +1364,7 @@ export default function App() {
               key="regional-insights"
               className="view-enter-animation max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32"
             >
-              <RegionalInsights onBack={() => confirmNavigation(quizDone ? 'results' : 'home')} />
+              <RegionalInsights initialGroupCode={navContext?.anzsco4} onBack={() => confirmNavigation(quizDone ? 'results' : 'home')} />
             </main>
           )}
 
@@ -1366,22 +1428,27 @@ export default function App() {
               key="results"
               className="view-enter-animation max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-36 pb-24 sm:pb-32"
             >
-              <header className="mb-10 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-200/60 dark:border-white/10 pb-8 sm:pb-10">
+              <button
+                onClick={() => confirmNavigation('home')}
+                className="mb-6 inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" /> Back
+              </button>
+
+              <header className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-5">
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-blue-500 mb-2">
-                    Your Career Matches
-                  </p>
                   <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-black dark:text-white">
                     Matches & AI Impact
                   </h1>
-                  <p className="mt-3 text-xs sm:text-sm text-zinc-500 dark:text-slate-400">
-                    Based on your RIASEC profile
+                  <p className="mt-2 text-xs sm:text-sm text-zinc-500 dark:text-slate-400">
+                    Based on your RIASEC profile{hollandCode ? ` (${hollandCode})` : ''}
+                    {matches.length > 0 ? ` · ${matches.length} careers found` : ''}
                   </p>
                 </div>
 
                 <button
                   onClick={handleDownload}
-                  className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium shadow-sm ${
+                  className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium ${
                     hasDownloaded
                       ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30'
                       : 'bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-slate-300'
@@ -1419,7 +1486,7 @@ export default function App() {
                   </p>
                 </div>
               ) : matches.length > 0 ? (
-                <div className="space-y-4 sm:space-y-6">
+                <div className="space-y-3 sm:space-y-4">
                   {visibleMatches.map(role => (
                     <ResultCard
                       key={role.anzsco_code}
@@ -1432,6 +1499,8 @@ export default function App() {
                       )}
                       onToggle={handleToggleRole}
                       onSkillGap={openSkillGap}
+                      onRegional={openRegional}
+                      onAskAI={askAI}
                       tooltip={tooltip}
                       aiLoading={Boolean(aiLoadingMap[role.anzsco_code])}
                       aiError={aiErrorMap[role.anzsco_code] || ''}
@@ -1478,6 +1547,7 @@ export default function App() {
                 ai={aiDetailsMap[activeOccupation?.anzsco_code]}
                 onBack={() => confirmNavigation('results')}
                 onNavigate={confirmNavigation}
+                onSkillGapChange={setSkillGapSummary}
               />
             </main>
           )}
@@ -1522,10 +1592,11 @@ export default function App() {
       <Chatbot
         visible={!['home', 'quiz'].includes(currentView)}
         currentPage={currentView}
-        matchedCareers={matches}
-        selectedOccupation={activeOccupation}
-        skillGap={null}
+        matchedCareers={chatMatches}
+        selectedOccupation={chatSelected}
+        skillGap={skillGapSummary}
         region={null}
+        chatRequest={chatRequest}
         sessionId={chatSessionId}
       />
     </PasswordGate>
