@@ -1,341 +1,344 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Star, ShieldAlert } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ArrowLeft, ArrowRight, Loader2, ShieldAlert, CheckCircle2, AlertCircle, Check, MapPin } from 'lucide-react';
 import { getSkillGap } from '../api/client';
 
-const CATEGORY_COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#6366F1'];
-
-// Fallback Mock Data
-const MOCK_GAP_DATA = {
-  occupation_title: 'Cyber Security Architect',
-  occupation_id: '273333',
-  matched: [
-    { id: 'm1', name: 'Python Scripting' },
-    { id: 'm2', name: 'Critical Thinking' },
-    { id: 'm3', name: 'Git & Version Control' },
-    { id: 'm4', name: 'Linux Administration' },
-  ],
-  missing: [
-    { id: 'x1', name: 'Identity & Access Management (IAM)', category: 'Identity & Access Management' },
-    { id: 'x2', name: 'Cloud Security Architecture', category: 'Cloud Security' },
-    { id: 'x3', name: 'NIST Compliance & Governance', category: 'Risk, Governance & Compliance' },
-    { id: 'x4', name: 'Zero Trust Network Security', category: 'Network Security' },
-  ],
-  categories: [
-    { name: 'Identity & Access Management', percentage: 35, color: '#3B82F6' },
-    { name: 'Cloud Security', percentage: 25, color: '#10B981' },
-    { name: 'Security Architecture', percentage: 20, color: '#F59E0B' },
-    { name: 'Network Security', percentage: 10, color: '#8B5CF6' },
-    { name: 'Risk, Governance & Compliance', percentage: 10, color: '#EC4899' },
-  ],
-  priorities: [
-    { rank: 1, skill: 'Identity & Access Management (IAM)', rating: 5, link: 'https://learn.microsoft.com' },
-    { rank: 2, skill: 'Cloud Security Architecture (AWS/Azure)', rating: 5, link: 'https://aws.amazon.com/training/' },
-    { rank: 3, skill: 'Risk & Governance (NIST / ISO 27001)', rating: 4, link: 'https://www.nist.gov' },
-    { rank: 4, skill: 'Zero Trust Network Design', rating: 3, link: 'https://www.cisa.gov' },
-  ]
+// ─── Importance pill tier ─────────────────────────────────────────────────────
+const tierStyle = (score) => {
+  if (score >= 8) return { dot: 'bg-rose-500', badge: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20', label: 'high' };
+  if (score >= 6) return { dot: 'bg-amber-400', badge: 'bg-amber-400/10 text-amber-700 dark:text-amber-400 border-amber-400/20', label: 'med' };
+  return { dot: 'bg-zinc-400', badge: 'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400 border-zinc-200/50 dark:border-zinc-700', label: 'low' };
 };
 
-// Computes category distribution dynamically from missing skills API response
-const computeCategories = (missingList) => {
-  if (!missingList || missingList.length === 0) return MOCK_GAP_DATA.categories;
+// ─── Resilience colour ────────────────────────────────────────────────────────
+const resilienceStyle = (score) => {
+  if (score == null) return { bar: 'bg-zinc-400', text: 'text-zinc-500 dark:text-zinc-400', bg: 'bg-zinc-500/5 border-zinc-500/20', label: 'Not available' };
+  if (score >= 70) return { bar: 'bg-emerald-500', text: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20', label: 'Highly Resilient' };
+  if (score >= 50) return { bar: 'bg-blue-500',    text: 'text-blue-600 dark:text-blue-400',    bg: 'bg-blue-500/10 border-blue-500/20',    label: 'Moderately Resilient' };
+  return              { bar: 'bg-amber-500',        text: 'text-amber-600 dark:text-amber-400',  bg: 'bg-amber-500/10 border-amber-500/20',  label: 'Needs Attention' };
+};
 
-  const counts = {};
-  missingList.forEach((item) => {
-    const rawCat = typeof item === 'object' && item.category ? item.category : 'General';
-    // Format category string (e.g. 'software' -> 'Software Requirements')
-    const catName = rawCat.charAt(0).toUpperCase() + rawCat.slice(1);
-    counts[catName] = (counts[catName] || 0) + 1;
-  });
+const DURATION_OPTIONS = [3, 6, 9];
+const HOURS_OPTIONS    = [3, 5, 8, 12];
+const DURATION_META = { 3: 'Sprint', 6: 'Balanced', 9: 'Deep dive' };
+const HOURS_META    = { 3: 'Light', 5: 'Steady', 8: 'Focused', 12: 'Intensive' };
 
-  const total = missingList.length;
-  return Object.keys(counts).map((catName, idx) => ({
-    name: catName,
-    percentage: Math.round((counts[catName] / total) * 100),
-    color: CATEGORY_COLORS[idx % CATEGORY_COLORS.length],
+// ─── Normalize API response → internal shape ──────────────────────────────────
+function normalizeResponse(raw) {
+  // raw.all_skills OR raw.required_skills OR derive from raw.matched + raw.missing
+  const rawSkills =
+    raw.all_skills ||
+    raw.required_skills ||
+    [...(raw.matched || []), ...(raw.missing || [])];
+
+  const all_skills = rawSkills.map((s, i) => ({
+    id:         s.id || s.skill_id || `s${i}`,
+    name:       s.name || s.skill_name || String(s),
+    importance: typeof s.importance === 'number'
+      ? s.importance
+      : typeof s.importance_score === 'number'
+        ? s.importance_score * 10
+        : 5,
+    category:   s.category || 'General',
   }));
-};
 
-export default function SkillGapCheck({ targetOccupation, userSkills = ['python', 'critical thinking', 'git'], onBack, onNavigate }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isUsingMock, setIsUsingMock] = useState(false);
-  
-  const activeRole = targetOccupation?.title || targetOccupation?.name || MOCK_GAP_DATA.occupation_title;
-  // Ensure we pass a valid 6-digit occupation_id to the API contract
-  const activeId = String(targetOccupation?.occupation_id || targetOccupation?.id || MOCK_GAP_DATA.occupation_id);
+  return {
+    all_skills,
+    resilience_score: raw.resilience_score ?? null,
+    resilience_label: raw.resilience_label ?? null,
+    avg_augmentation: raw.avg_augmentation ?? null,
+    avg_automation:   raw.avg_automation   ?? null,
+  };
+}
 
-  const [data, setData] = useState(MOCK_GAP_DATA);
+export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate, onSkillGapChange }) {
+  const anzscoCode   = targetOccupation?.anzsco_code ? String(targetOccupation.anzsco_code) : '';
+  const occupationTitle = targetOccupation?.title || targetOccupation?.name || 'Selected Career';
 
-  useEffect(() => {
-    fetchData(activeId);
-  }, [activeId]);
+  const [isLoading,  setIsLoading]  = useState(true);
+  const [error,      setError]      = useState('');
+  const [data,       setData]       = useState(null);
+  const [selected,   setSelected]   = useState(new Set()); // skill ids user has
+  const [duration,   setDuration]   = useState(6);
+  const [hrsPerWeek, setHrsPerWeek] = useState(5);
 
-  const fetchData = async (occId) => {
+  // ─── Fetch ──────────────────────────────────────────────────────────────────
+  const fetchGap = useCallback(async () => {
     setIsLoading(true);
-    setIsUsingMock(false);
-
+    setError('');
     try {
-      const res = await getSkillGap(occId, userSkills);
-
-      // Handle 404 / error response objects from client.js
-      if (!res || res.error || (!res.matched && !res.missing)) {
-        throw new Error(res?.error || 'No skill data found');
-      }
-
-      const matchedItems = res.matched || [];
-      const missingItems = res.missing || [];
-
-      setData({
-        occupation_title: activeRole,
-        occupation_id: occId,
-        matched: matchedItems.length 
-          ? matchedItems.map((s, i) => ({ id: s.id || `m_${i}`, name: s.skill_name || s })) 
-          : [],
-        missing: missingItems.length 
-          ? missingItems.map((s, i) => ({ id: s.id || `x_${i}`, name: s.skill_name || s, category: s.category })) 
-          : [],
-        categories: missingItems.length 
-          ? computeCategories(missingItems) 
-          : MOCK_GAP_DATA.categories,
-        priorities: missingItems.length 
-          ? missingItems.map((s, idx) => ({
-              rank: idx + 1,
-              skill: s.skill_name || s,
-              // Convert API importance_score (0.0 - 1.0) directly to 1-5 star ratings
-              rating: typeof s.importance_score === 'number' 
-                ? Math.max(1, Math.round(s.importance_score * 5)) 
-                : Math.max(1, 5 - Math.floor(idx / 2)),
-              link: '#'
-            }))
-          : MOCK_GAP_DATA.priorities
-      });
+      if (!anzscoCode) throw new Error('No occupation was selected.');
+      const res = await getSkillGap(anzscoCode, []);
+      if (!res || res.error) throw new Error(res?.error || 'The API returned an empty response.');
+      setData(normalizeResponse(res));
     } catch (err) {
-      if (err.status === 404) {
-        console.warn('⚠️ API fetch failed. Displaying fallback mock preview data.', err);
-        setIsUsingMock(true);
-        setData(MOCK_GAP_DATA);
-      } else {
-        console.error('API Error:', err);
-        setIsUsingMock(false);
-        setData({ matched: [], missing: [], categories: [], priorities: [] });
-      }
+      console.warn('[SkillGapCheck] Could not load skill gap data', err);
+      setData(normalizeResponse({}));
+      setError(err?.message || 'Could not load skill data.');
     } finally {
       setIsLoading(false);
     }
+  }, [anzscoCode]);
+
+  useEffect(() => { fetchGap(); }, [fetchGap]);
+
+  // ─── Derived ─────────────────────────────────────────────────────────────────
+  const haveSkills    = data?.all_skills.filter(s => selected.has(s.id))  || [];
+  const missingSkills = data?.all_skills.filter(s => !selected.has(s.id)) || [];
+  // Use the real AI data from the results page; never substitute placeholder numbers.
+  const metrics = {
+    resilience_score: ai?.resilience_score ?? data?.resilience_score ?? null,
+    avg_augmentation: ai?.avg_augmentation ?? data?.avg_augmentation ?? null,
+    avg_automation:   ai?.avg_automation   ?? data?.avg_automation   ?? null,
+  };
+  const toPct = (v) => (v == null || !Number.isFinite(Number(v)) ? null : Math.round(Math.max(0, Math.min(1, Number(v))) * 100));
+  const augPct = toPct(metrics.avg_augmentation);
+  const autoPct = toPct(metrics.avg_automation);
+  const rs = resilienceStyle(metrics.resilience_score);
+
+  const totalWeeks   = duration * 4.33;
+  const totalHours   = Math.round(totalWeeks * hrsPerWeek);
+  const hoursPerSkill = missingSkills.length > 0 ? Math.round(totalHours / missingSkills.length) : 0;
+
+  const toggleSkill = (id) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
   };
 
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`w-4 h-4 ${i < rating ? 'fill-amber-400 text-amber-400' : 'text-zinc-300 dark:text-zinc-700'}`}
-      />
-    ));
+  const handleGeneratePlan = () => {
+    if (typeof onNavigate === 'function') {
+      onNavigate('learning-plan', {
+        occupation: targetOccupation,
+        missingSkills,
+        duration,
+        hrsPerWeek,
+      });
+    }
   };
 
-  return (
-    <div className="max-w-6xl mx-auto space-y-8 p-4 sm:p-6 text-zinc-900 dark:text-zinc-100 font-sans">
-      
-      {/* Header Section */}
-      <div>
-        <button 
-          onClick={onBack}
-          className="mb-4 inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
-        >
+  const anzsco4 = anzscoCode.slice(0, 4);
+
+  // Let the chatbot know what the user has told us about their skills.
+  useEffect(() => {
+    if (!data) return;
+    onSkillGapChange?.({
+      occupation: occupationTitle,
+      skillsHave: data.all_skills.filter(s => selected.has(s.id)).map(s => s.name),
+      skillsToBuild: data.all_skills.filter(s => !selected.has(s.id)).map(s => s.name),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, selected]);
+
+  const coverage = data?.all_skills.length ? Math.round((haveSkills.length / data.all_skills.length) * 100) : 0;
+  const stepBadge = 'flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-sm shrink-0';
+  const card = 'bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-sm';
+  const optionBase = 'rounded-xl border px-3 py-3 text-center text-sm font-semibold transition-colors';
+  const optionOn = 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 border-zinc-900 dark:border-white';
+  const optionOff = 'border-zinc-200 dark:border-white/10 text-zinc-700 dark:text-zinc-200 hover:border-zinc-400 dark:hover:border-white/30';
+
+  // ─── Loading ─────────────────────────────────────────────────────────────────
+  if (isLoading) {
+    return (
+      <div className="max-w-5xl mx-auto space-y-6 py-2 sm:p-6">
+        <button onClick={onBack} className="inline-flex items-center gap-2 text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
           <ArrowLeft className="w-4 h-4" /> Back
         </button>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          Skill gap check
-        </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-          Compare your current skills with the skills required for your target career.
-        </p>
+        <div className="flex flex-col items-center justify-center py-24 sm:py-32 gap-4 text-zinc-500">
+          <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+          <p className="text-sm">Analysing skill requirements…</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 py-2 sm:p-6 font-sans text-zinc-900 dark:text-zinc-100">
+
+      <div>
+        <button onClick={onBack} className="mb-5 inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back
+        </button>
+        <p className="text-[10px] font-bold uppercase tracking-widest text-blue-500">Skill gap check</p>
+        <h1 className="mt-1 text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white break-words">{occupationTitle}</h1>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">Tick the skills you already have. We&apos;ll show what&apos;s left and help you plan for it.</p>
       </div>
 
-      {/* Mock Data Warning Banner */}
-      {isUsingMock && (
-        <div className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
-          <ShieldAlert className="w-4 h-4 flex-shrink-0" />
-          <span>API disconnected or missing skill data for ID ({activeId}) — displaying fallback preview data.</span>
+      {error && (
+        <div role="alert" className="flex items-center gap-2 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs">
+          <ShieldAlert className="w-4 h-4 shrink-0" />
+          <span className="flex-1">Skill data could not be loaded for this occupation ({error}).</span>
+          <button onClick={fetchGap} className="font-semibold underline underline-offset-2 shrink-0">Try again</button>
         </div>
       )}
 
-      {/* STEP 1: Target Career Badge */}
-      <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-6 shadow-sm">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          
-          <div className="flex items-center gap-3">
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-sm flex-shrink-0">
-              1
-            </span>
-            <div>
-              <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
-                Selected career target
-              </h2>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                Evaluating skill gap metrics for this role
-              </p>
-            </div>
+      {/* AI context for this career */}
+      <div className="grid grid-cols-3 gap-3 sm:gap-4">
+        {[
+          ['Resilience', metrics.resilience_score != null ? `${metrics.resilience_score}%` : 'N/A', rs.label, 'text-zinc-900 dark:text-white'],
+          ['Augmentation', augPct != null ? `${augPct}%` : 'N/A', 'Human capacity elevated', 'text-emerald-600 dark:text-emerald-400'],
+          ['Automation risk', autoPct != null ? `${autoPct}%` : 'N/A', 'Tasks fully automated', 'text-amber-600 dark:text-amber-400'],
+        ].map(([label, value, copy, color]) => (
+          <div key={label} className={`${card} p-4 sm:p-5`}>
+            <p className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">{label}</p>
+            <p className={`mt-1.5 text-2xl sm:text-3xl font-bold tracking-tight tabular-nums ${value === 'N/A' ? 'text-zinc-400' : color}`}>{value}</p>
+            <p className="mt-1 hidden sm:block text-[11px] text-slate-500 dark:text-slate-400">{copy}</p>
           </div>
-
-          <div className="bg-zinc-50 dark:bg-[#0E1525] px-6 py-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800">
-            <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider block">
-              Current Selected Career
-            </span>
-            <span className="text-lg font-bold text-zinc-900 dark:text-white">
-              {activeRole}
-            </span>
-          </div>
-
-        </div>
+        ))}
       </div>
 
-      {/* STEP 2: Your Skill Comparison */}
-      <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-6 shadow-sm space-y-6">
-        <div className="flex items-center gap-3">
-          <span className="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-sm">
-            2
-          </span>
-          <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
-            Your skill comparison
-          </h2>
+      {/* 1. Skill selector */}
+      <div className={`${card} p-5 sm:p-6`}>
+        <div className="flex items-start gap-3">
+          <span className={stepBadge}>1</span>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Select the skills you already have</h2>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{haveSkills.length} of {data.all_skills.length} selected</p>
+          </div>
+          {haveSkills.length > 0 && (
+            <button onClick={() => setSelected(new Set())} className="text-xs text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors shrink-0">Clear</button>
+          )}
         </div>
 
-        {isLoading ? (
-          <div className="py-12 text-center text-zinc-400 text-sm animate-pulse">
-            Loading skill metrics from backend...
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-zinc-200 dark:divide-zinc-800">
-            
-            {/* Matched Skills */}
-            <div className="space-y-4 pt-4 md:pt-0 md:pr-4">
-              <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
-                Matched skills
-              </h3>
-              <ol className="space-y-3 pl-2">
-                {data.matched.map((item, idx) => (
-                  <li key={item.id} className="text-sm text-zinc-700 dark:text-zinc-300">
-                    <span className="font-semibold mr-2">{idx + 1}.</span> {item.name}
-                  </li>
-                ))}
-              </ol>
-            </div>
+        <div className="mt-4 h-1.5 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden" role="progressbar" aria-valuenow={coverage} aria-valuemin={0} aria-valuemax={100} aria-label="Skills covered">
+          <div className="h-full rounded-full bg-emerald-500 transition-all duration-500" style={{ width: `${coverage}%` }} />
+        </div>
 
-            {/* Missing Skills */}
-            <div className="space-y-4 pt-4 md:pt-0 md:px-4">
-              <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
-                Missing skills
-              </h3>
-              <ol className="space-y-3 pl-2">
-                {data.missing.map((item, idx) => (
-                  <li key={item.id} className="text-sm text-zinc-700 dark:text-zinc-300">
-                    <span className="font-semibold mr-2">{idx + 1}.</span> {item.name}
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            {/* Dynamic Category Donut */}
-            <div className="space-y-4 pt-4 md:pt-0 md:pl-6 flex flex-col items-center">
-              <h3 className="text-sm font-bold text-center text-zinc-900 dark:text-white">
-                Overview of missing skill categories
-              </h3>
-              
-              <div className="relative w-44 h-44 flex items-center justify-center my-2">
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#E5E7EB" strokeWidth="4" />
-                  {data.categories.reduce((acc, cat, idx) => {
-                    const strokeDasharray = `${cat.percentage} ${100 - cat.percentage}`;
-                    const strokeDashoffset = acc.offset;
-                    acc.offset -= cat.percentage;
-                    acc.elements.push(
-                      <circle
-                        key={idx}
-                        cx="18"
-                        cy="18"
-                        r="15.915"
-                        fill="transparent"
-                        stroke={cat.color}
-                        strokeWidth="4"
-                        strokeDasharray={strokeDasharray}
-                        strokeDashoffset={strokeDashoffset}
-                      />
-                    );
-                    return acc;
-                  }, { offset: 25, elements: [] }).elements}
-                </svg>
-              </div>
-
-              <div className="w-full space-y-1.5 text-xs">
-                {data.categories.map((cat, idx) => (
-                  <div key={idx} className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: cat.color }} />
-                      <span className="text-zinc-600 dark:text-zinc-400 truncate max-w-[170px]">{cat.name}</span>
-                    </div>
-                    <span className="font-semibold text-zinc-800 dark:text-zinc-200">{cat.percentage}%</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
+        {data.all_skills.length === 0 && (
+          <p className="mt-5 text-sm text-zinc-500 dark:text-zinc-400">
+            {error ? 'Skills could not be loaded for this occupation.' : 'No skill data is available for this occupation.'}
+          </p>
         )}
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {data.all_skills.map(skill => {
+            const tier = tierStyle(skill.importance);
+            const isSelected = selected.has(skill.id);
+            return (
+              <button key={skill.id} type="button" aria-pressed={isSelected} onClick={() => toggleSkill(skill.id)}
+                className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-full border text-xs font-semibold transition-colors ${isSelected ? optionOn : optionOff}`}>
+                {isSelected ? <Check className="w-3.5 h-3.5" /> : <span className={`w-2 h-2 rounded-full shrink-0 ${tier.dot}`} />}
+                {skill.name}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+          {[['bg-rose-500', 'High importance'], ['bg-amber-400', 'Medium'], ['bg-zinc-400', 'Lower']].map(([dot, label]) => (
+            <span key={label} className="inline-flex items-center gap-1.5"><span className={`w-2 h-2 rounded-full ${dot}`} />{label}</span>
+          ))}
+        </div>
       </div>
 
-      {/* STEP 3: Priority Skills Table */}
-      <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-2xl p-6 shadow-sm space-y-6">
+      {/* 2. Result */}
+      <div className={`${card} p-5 sm:p-6`}>
         <div className="flex items-center gap-3">
-          <span className="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 font-bold text-sm">
-            3
-          </span>
-          <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
-            Priority skills to improve
-          </h2>
+          <span className={stepBadge}>2</span>
+          <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Your skill comparison</h2>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="border-b border-zinc-200 dark:border-zinc-800 text-xs font-semibold text-zinc-500 uppercase tracking-wider">
-                <th className="py-3 px-4">Rank</th>
-                <th className="py-3 px-4">Skill</th>
-                <th className="py-3 px-4">Rating</th>
-                <th className="py-3 px-4 text-right">Suggestions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800/60 text-sm">
-              {data.priorities.map((row) => (
-                <tr key={row.rank} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors">
-                  <td className="py-4 px-4 font-semibold text-zinc-900 dark:text-white">
-                    {row.rank}
-                  </td>
-                  <td className="py-4 px-4 font-medium text-zinc-800 dark:text-zinc-200">
-                    {row.skill}
-                  </td>
-                  <td className="py-4 px-4">
-                    <div className="flex items-center gap-1">
-                      {renderStars(row.rating)}
+        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0 md:divide-x divide-zinc-200 dark:divide-zinc-800">
+          <div className="md:pr-6">
+            <h3 className="flex items-center justify-between text-sm font-bold text-zinc-900 dark:text-white">
+              <span className="inline-flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Skills you have</span>
+              <span className="text-xs font-semibold text-zinc-400 tabular-nums">{haveSkills.length}</span>
+            </h3>
+            {haveSkills.length === 0 ? (
+              <p className="mt-3 text-xs text-zinc-400 italic">Select skills above to see them here.</p>
+            ) : (
+              <ol className="mt-3 space-y-2.5">
+                {haveSkills.map((s, i) => (
+                  <li key={s.id} className="text-sm text-zinc-700 dark:text-zinc-300"><span className="font-semibold mr-2 text-zinc-400 tabular-nums">{i + 1}.</span>{s.name}</li>
+                ))}
+              </ol>
+            )}
+          </div>
+
+          <div className="md:pl-6">
+            <h3 className="flex items-center justify-between text-sm font-bold text-zinc-900 dark:text-white">
+              <span className="inline-flex items-center gap-2"><AlertCircle className="w-4 h-4 text-rose-500" /> Skills to build</span>
+              <span className="text-xs font-semibold text-zinc-400 tabular-nums">{missingSkills.length}</span>
+            </h3>
+            {missingSkills.length === 0 ? (
+              <p className="mt-3 text-xs text-zinc-400 italic">You&apos;ve covered every required skill.</p>
+            ) : (
+              <ol className="mt-3 space-y-3">
+                {missingSkills.map((s, i) => (
+                  <li key={s.id}>
+                    <div className="flex items-baseline justify-between gap-3 text-sm text-zinc-700 dark:text-zinc-300">
+                      <span className="min-w-0 break-words"><span className="font-semibold mr-2 text-zinc-400 tabular-nums">{i + 1}.</span>{s.name}</span>
+                      <span className="text-[10px] font-semibold tabular-nums text-zinc-400 shrink-0">{s.importance.toFixed(1)}</span>
                     </div>
-                  </td>
-                  <td className="py-4 px-4 text-right">
-                    <a
-                        /* Replace 'https://your-specific-url.com/search?q=' with your actual base URL */
-                        href={`https://www.google.com/search?udm=50&q=Can+you+please+give+me+relevant+resources+with+links+to+learn+${encodeURIComponent(row.skill)}`}
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-blue-500 hover:underline cursor-pointer bg-transparent border-none p-0"
-                    >
-                        View resources &rarr;
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    <div className="mt-1.5 h-1 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden">
+                      <div className={`h-full rounded-full ${tierStyle(s.importance).dot}`} style={{ width: `${Math.min(100, s.importance * 10)}%` }} />
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            )}
+          </div>
         </div>
       </div>
 
+      {/* 3. Build a plan */}
+      {missingSkills.length > 0 && (
+        <div className={`${card} p-5 sm:p-6 space-y-6`}>
+          <div className="flex items-start gap-3">
+            <span className={stepBadge}>3</span>
+            <div>
+              <h2 className="text-lg font-bold text-zinc-900 dark:text-white">Build your learning plan</h2>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Choose your pace. We&apos;ll spread {missingSkills.length} skill{missingSkills.length === 1 ? '' : 's'} across a phased plan.</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2.5">Duration</p>
+            <div className="grid grid-cols-3 gap-2.5">
+              {DURATION_OPTIONS.map(m => (
+                <button key={m} type="button" aria-pressed={duration === m} onClick={() => setDuration(m)} className={`${optionBase} ${duration === m ? optionOn : optionOff}`}>
+                  {m} months
+                  <span className="block mt-0.5 text-[10px] font-medium opacity-60">{DURATION_META[m]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 mb-2.5">Hours per week</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {HOURS_OPTIONS.map(h => (
+                <button key={h} type="button" aria-pressed={hrsPerWeek === h} onClick={() => setHrsPerWeek(h)} className={`${optionBase} ${hrsPerWeek === h ? optionOn : optionOff}`}>
+                  {h} hrs
+                  <span className="block mt-0.5 text-[10px] font-medium opacity-60">{HOURS_META[h]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <dl className="grid grid-cols-3 divide-x divide-zinc-200 dark:divide-zinc-800 rounded-xl border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] text-center">
+            {[[totalHours, 'Total hours'], [missingSkills.length, 'Skills'], [hoursPerSkill > 0 ? `~${hoursPerSkill}` : '-', 'Hours per skill']].map(([value, label]) => (
+              <div key={label} className="py-4 px-2">
+                <dd className="text-2xl font-bold tabular-nums text-zinc-900 dark:text-white">{value}</dd>
+                <dt className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">{label}</dt>
+              </div>
+            ))}
+          </dl>
+
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            {onNavigate && (
+              <button type="button" onClick={() => onNavigate('regional-insights', { anzsco4 })} className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+                <MapPin className="w-3.5 h-3.5" /> See regional demand for this career
+              </button>
+            )}
+            <button type="button" onClick={handleGeneratePlan}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors">
+              Generate learning plan <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

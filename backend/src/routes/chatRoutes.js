@@ -150,22 +150,41 @@ Your rules:
 
   // Skill gap
   if (skillGap) {
+    const occupation = skillGap.occupation ?? selectedOccupation?.title ?? null
+    if (occupation) prompt += `Skill gap check for: ${occupation}\n`
+
+    // Shape 1: from SkillGapCheck component — { skillsHave: string[], skillsToBuild: string[] }
+    if (skillGap.skillsHave != null || skillGap.skillsToBuild != null) {
+      const have = skillGap.skillsHave ?? []
+      const build = skillGap.skillsToBuild ?? []
+      if (have.length > 0) {
+        prompt += `Skills the student already has (${have.length}): ${have.slice(0, 10).join(", ")}\n`
+      } else {
+        prompt += `Skills the student already has: none selected yet\n`
+      }
+      if (build.length > 0) {
+        prompt += `Skills the student still needs to build (${build.length}): ${build.slice(0, 10).join(", ")}\n`
+      }
+    }
+
+    // Shape 2: from skills API — { matched: [], missing: [], match_percentage, total_required }
     if (skillGap.match_percentage != null) {
-      prompt += `Skill match: student has ${skillGap.match_percentage}% of required skills (${skillGap.matched?.length ?? 0}/${skillGap.total_required ?? "?"} skills matched)\n`
+      prompt += `Skill match: student has ${skillGap.match_percentage}% of required skills (${skillGap.matched?.length ?? 0}/${skillGap.total_required ?? "?"} matched)\n`
     }
     if (skillGap.matched?.length > 0) {
-      prompt += `Skills the student already has: ${skillGap.matched.slice(0, 5).map(s => s.skill_name ?? s).join(", ")}\n`
-    }
-    // Support both field naming conventions (matchedSkills/missingSkills from old format, matched/missing from new)
-    if (skillGap.matchedSkills?.length > 0 && !skillGap.matched) {
-      prompt += `Skills the student already has: ${skillGap.matchedSkills.slice(0, 5).map(s => s.skill_name).join(", ")}\n`
+      prompt += `Matched skills: ${skillGap.matched.slice(0, 8).map(s => s.skill_name ?? s).join(", ")}\n`
     }
     if (skillGap.missing?.length > 0) {
-      prompt += `Skills the student still needs: ${skillGap.missing.slice(0, 5).map(s => `${s.skill_name ?? s} (importance: ${s.importance_score ?? "?"})`).join(", ")}\n`
+      prompt += `Missing skills: ${skillGap.missing.slice(0, 8).map(s => s.skill_name ?? s).join(", ")}\n`
+    }
+    // Legacy field names
+    if (skillGap.matchedSkills?.length > 0 && !skillGap.matched) {
+      prompt += `Matched skills: ${skillGap.matchedSkills.slice(0, 8).map(s => s.skill_name).join(", ")}\n`
     }
     if (skillGap.missingSkills?.length > 0 && !skillGap.missing) {
-      prompt += `Skills the student still needs: ${skillGap.missingSkills.slice(0, 5).map(s => `${s.skill_name} (importance: ${s.importance_score})`).join(", ")}\n`
+      prompt += `Missing skills: ${skillGap.missingSkills.slice(0, 8).map(s => s.skill_name).join(", ")}\n`
     }
+
     prompt += "\n"
   }
 
