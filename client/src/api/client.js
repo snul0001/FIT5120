@@ -22,7 +22,6 @@ async function request(endpoint, options = {}) {
   }
 }
 
-// Step 1 — Quiz match (unchanged)
 // Step 1 — Quiz matching
 export async function matchOccupations({
   interest_ids,
