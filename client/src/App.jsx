@@ -262,8 +262,8 @@ const ResultCard = ({
   if (otherTasks.length) groups.push({ key: 'other', label: 'Other', dot: 'bg-zinc-400', tasks: otherTasks });
 
   const metrics = [
-    { label: 'Augmentation', value: ai?.avg_augmentation, ok: hasAugmentation, copy: 'Human capacity elevated', tip: TOOLTIP_TEXT.augmentation, color: 'text-emerald-600 dark:text-emerald-400' },
-    { label: 'Automation risk', value: ai?.avg_automation, ok: hasAutomation, copy: 'Tasks fully automated', tip: TOOLTIP_TEXT.automation, color: 'text-amber-600 dark:text-amber-400' }
+    { label: 'AI Augmentation score', value: ai?.avg_augmentation, ok: hasAugmentation, copy: 'Potential for AI to support human work', tip: TOOLTIP_TEXT.augmentation, color: 'text-emerald-600 dark:text-emerald-400' },
+    { label: 'AI Automation risk score', value: ai?.avg_automation, ok: hasAutomation, copy: 'Potential for AI to automate tasks', tip: TOOLTIP_TEXT.automation, color: 'text-amber-600 dark:text-amber-400' }
   ];
 
   const actionBase = 'inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer';
@@ -283,10 +283,10 @@ const ResultCard = ({
             {role.match_label}{role.match_score != null ? ` · ${role.match_score}%` : ''}
           </span>
           <span className="mt-1 block text-lg sm:text-2xl font-bold tracking-tight leading-snug text-zinc-900 dark:text-white">{role.title}</span>
-          {ai && <span className="sm:hidden mt-1 block text-xs text-zinc-500 dark:text-slate-400">Resilience {resilienceText}</span>}
+          {ai && <span className="sm:hidden mt-1 block text-xs text-zinc-500 dark:text-slate-400">AI Resilience score: {resilienceText}</span>}
         </span>
         {ai && (
-          <span {...tooltip('Resilience Score', TOOLTIP_TEXT.resilience)} className="hidden sm:block shrink-0 min-w-[120px] rounded-lg border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] px-4 py-2.5 cursor-help">
+          <span {...tooltip('AI Resilience Score', TOOLTIP_TEXT.resilience)} className="hidden sm:block shrink-0 min-w-[120px] rounded-lg border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] px-4 py-2.5 cursor-help">
             <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Resilience</span>
             <span className="block mt-0.5 text-xl font-bold tabular-nums text-zinc-900 dark:text-white">{resilienceText}</span>
           </span>
@@ -410,7 +410,7 @@ const AppNav = ({ isDark, currentView, mobileMenu, mobileSources, actions, quizD
       <div className="flex items-center gap-2 sm:gap-4">
         <div className="hidden md:flex items-center gap-1 sm:gap-2">
           <NavItem label="Progress Tracker" active={currentView === 'progress-tracker'} onClick={() => actions.navigate('progress-tracker')} />
-          <NavItem label="Regional Insights" active={currentView === 'regional-insights'} onClick={() => actions.navigate('regional-insights')} />
+          <NavItem label="Career Insights" active={currentView === 'regional-insights'} onClick={() => actions.navigate('regional-insights')} />
           <div className="relative group">
             <button className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 transition-all">
               <span>Data Sources</span><ChevronDown className="w-3.5 h-3.5 text-zinc-500 group-hover:rotate-180 transition-transform" />
@@ -1111,17 +1111,17 @@ export default function App() {
           ['Indicator', 'Value', 'Interpretation'],
           [
             [
-              'Resilience score',
+              'AI Resilience score',
               ai.resilience_score == null ? 'Not available' : `${ai.resilience_score}`,
               textOrNA(ai.resilience_label)
             ],
             [
-              'AI augmentation',
+              'AI augmentation score',
               percentOrNA(ai.avg_augmentation),
               'Tasks supported or enhanced by AI'
             ],
             [
-              'AI automation',
+              'AI automation score',
               percentOrNA(ai.avg_automation),
               'Tasks that may be automated'
             ],

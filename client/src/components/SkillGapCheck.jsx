@@ -176,9 +176,9 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
       {/* AI context for this career */}
       <div className="grid grid-cols-3 gap-3 sm:gap-4">
         {[
-          ['Resilience', metrics.resilience_score != null ? `${metrics.resilience_score}%` : 'N/A', rs.label, 'text-zinc-900 dark:text-white'],
-          ['Augmentation', augPct != null ? `${augPct}%` : 'N/A', 'Human capacity elevated', 'text-emerald-600 dark:text-emerald-400'],
-          ['Automation risk', autoPct != null ? `${autoPct}%` : 'N/A', 'Tasks fully automated', 'text-amber-600 dark:text-amber-400'],
+          ['AI Resilience score', metrics.resilience_score != null ? `${metrics.resilience_score}%` : 'N/A', rs.label, 'text-zinc-900 dark:text-white'],
+          ['AI Augmentation score', augPct != null ? `${augPct}%` : 'N/A', 'Potential for AI to support human work', 'text-emerald-600 dark:text-emerald-400'],
+          ['AI Automation risk score', autoPct != null ? `${autoPct}%` : 'N/A', 'Potential for AI to automate tasks', 'text-amber-600 dark:text-amber-400'],
         ].map(([label, value, copy, color]) => (
           <div key={label} className={`${card} p-4 sm:p-5`}>
             <p className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">{label}</p>
