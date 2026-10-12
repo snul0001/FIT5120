@@ -1,6 +1,6 @@
 """
 Filter Software_Skills.xlsx down to the O*NET-SOC codes that actually
-appear in the OSCA-O*NET crosswalk (OSCA_ONET_Map.csv), then rank each
+appear in the ANZSCO-O*NET crosswalk (mapping.csv), then rank each
 skill row:
 
   rank 1 -> Hot Technology = Y  AND In Demand = Y
@@ -12,7 +12,7 @@ Previously this filtered on a hardcoded '15-' SOC prefix, which silently
 dropped any crosswalk occupation whose SOC code falls outside that prefix
 (e.g. 11-3021.00 Chief Information Officer, 13-1151.00 Training and
 Development Specialists). Filtering against the crosswalk's own SOC set
-keeps this in sync with whatever occupations OSCA_ONET_Map.csv defines.
+keeps this in sync with whatever occupations mapping.csv defines.
 """
 import csv
 from pathlib import Path
@@ -30,16 +30,16 @@ OUTPUT_DIR = BASE_DIR / "output"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 SRC = DATA_DIR / "software_skills.csv"
-CROSSWALK_SRC = DATA_DIR / "OSCA_ONET_Map.csv"
+CROSSWALK_SRC = DATA_DIR / "mapping.csv"
 
 
 def load_valid_soc_codes() -> set[str]:
-    """SOC codes referenced anywhere in the OSCA-O*NET crosswalk."""
+    """SOC codes referenced anywhere in the ANZSCO-O*NET crosswalk."""
     if not CROSSWALK_SRC.exists():
         raise FileNotFoundError(f"{CROSSWALK_SRC} not found — needed to know which SOC codes to keep.")
     with open(CROSSWALK_SRC, newline="", encoding="utf-8-sig") as f:
         rows = list(csv.DictReader(f))
-    codes = {r["O*NET_ID"].strip() for r in rows}
+    codes = {r["ONET_code"].strip() for r in rows}
     print(f"crosswalk SOC codes to filter against: {len(codes)}")
     return codes
 
