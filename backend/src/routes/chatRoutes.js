@@ -62,7 +62,10 @@ function buildSystemPrompt(ctx) {
     matchedCareers = [],
     selectedOccupation = null,
     skillGap = null,
-    region = null
+    region = null,
+    interestCodes = null,
+    employmentTrend = null,
+    taskBreakdown = null
   } = ctx
 
   let prompt = `You are an AI career advisor for IResi, an Australian career guidance platform for university students.
@@ -76,37 +79,103 @@ Your rules:
 - Keep responses under 80 words. Be direct and conversational, not corporate.
 - Do not make up salary figures, statistics or job data not provided below\n\n`
 
+  // RIASEC interest profile
+  if (interestCodes && interestCodes.length > 0) {
+    const codeNames = {
+      R: "Realistic (hands-on, practical)",
+      I: "Investigative (analytical, research)",
+      A: "Artistic (creative, expressive)",
+      S: "Social (helping, teaching)",
+      E: "Enterprising (leadership, business)",
+      C: "Conventional (organised, detail-oriented)"
+    }
+    const codeList = interestCodes.map(c => codeNames[c] ?? c).join(", ")
+    prompt += `Student's RIASEC interest profile: ${interestCodes.join("")} — ${codeList}\n\n`
+  }
+
+  // Top matched careers
   if (matchedCareers.length > 0) {
     prompt += `Student's top matched careers (from RIASEC quiz):\n`
     matchedCareers.slice(0, 5).forEach((c, i) => {
-      prompt += `${i + 1}. ${c.title} — match score: ${c.match_score ?? "N/A"}, AI resilience: ${c.resilience_score ?? "N/A"}/100\n`
+      const ai = c.ai ?? {}
+      const resilience = ai.resilience_score ?? c.resilience_score ?? "N/A"
+      const label = ai.resilience_label ? ` (${ai.resilience_label})` : ""
+      prompt += `${i + 1}. ${c.title} — match score: ${c.match_score ?? "N/A"}, AI resilience: ${resilience}/100${label}\n`
     })
     prompt += "\n"
   }
 
+  // Currently viewed occupation + AI breakdown
   if (selectedOccupation) {
     prompt += `Student is currently viewing: ${selectedOccupation.title}\n`
-    if (selectedOccupation.resilience_score != null) {
-      prompt += `AI resilience score: ${selectedOccupation.resilience_score}/100\n`
+
+    if (taskBreakdown) {
+      if (taskBreakdown.resilience_score != null) {
+        prompt += `AI resilience score: ${taskBreakdown.resilience_score}/100 (${taskBreakdown.resilience_label ?? ""})\n`
+      }
+      if (taskBreakdown.human_led != null || taskBreakdown.ai_assisted != null || taskBreakdown.ai_automated != null) {
+        prompt += `Task breakdown: ${taskBreakdown.human_led ?? 0} human-led tasks, ${taskBreakdown.ai_assisted ?? 0} AI-assisted tasks, ${taskBreakdown.ai_automated ?? 0} AI-automated tasks\n`
+      }
+      if (taskBreakdown.demand != null) prompt += `Demand (human judgment still needed): ${taskBreakdown.demand}%\n`
+      if (taskBreakdown.augmentation != null) prompt += `Augmentation (AI helps but human leads): ${taskBreakdown.augmentation}%\n`
+      if (taskBreakdown.automation != null) prompt += `Automation risk (AI replaces): ${taskBreakdown.automation}%\n`
+    } else if (selectedOccupation.ai?.resilience_score != null) {
+      prompt += `AI resilience score: ${selectedOccupation.ai.resilience_score}/100\n`
+    }
+
+    // Specific tasks the student can see
+    if (selectedOccupation.tasks && selectedOccupation.tasks.length > 0) {
+      prompt += `Key tasks for this role:\n`
+      selectedOccupation.tasks.slice(0, 6).forEach(t => {
+        prompt += `  - "${t.task}" → ${t.impact} (${t.level} impact)\n`
+      })
     }
     prompt += "\n"
   }
 
+  // Employment trend data
+  if (employmentTrend && employmentTrend.length > 0) {
+    const sorted = [...employmentTrend].sort((a, b) => a.year - b.year)
+    const first = sorted[0]
+    const last = sorted[sorted.length - 1]
+    const change = last.employed_k - first.employed_k
+    const direction = change >= 0 ? "increased" : "decreased"
+    prompt += `Employment trend for this occupation (${first.year}–${last.year}): ${direction} from ${first.employed_k}k to ${last.employed_k}k workers`
+    if (sorted.length > 2) {
+      const mid = sorted[Math.floor(sorted.length / 2)]
+      prompt += ` (${mid.year}: ${mid.employed_k}k)`
+    }
+    prompt += "\n\n"
+  }
+
+  // Skill gap
   if (skillGap) {
-    if (skillGap.matchedSkills?.length > 0) {
+    if (skillGap.match_percentage != null) {
+      prompt += `Skill match: student has ${skillGap.match_percentage}% of required skills (${skillGap.matched?.length ?? 0}/${skillGap.total_required ?? "?"} skills matched)\n`
+    }
+    if (skillGap.matched?.length > 0) {
+      prompt += `Skills the student already has: ${skillGap.matched.slice(0, 5).map(s => s.skill_name ?? s).join(", ")}\n`
+    }
+    // Support both field naming conventions (matchedSkills/missingSkills from old format, matched/missing from new)
+    if (skillGap.matchedSkills?.length > 0 && !skillGap.matched) {
       prompt += `Skills the student already has: ${skillGap.matchedSkills.slice(0, 5).map(s => s.skill_name).join(", ")}\n`
     }
-    if (skillGap.missingSkills?.length > 0) {
-      prompt += `Skills the student is missing: ${skillGap.missingSkills.slice(0, 5).map(s => `${s.skill_name} (importance: ${s.importance_score})`).join(", ")}\n`
+    if (skillGap.missing?.length > 0) {
+      prompt += `Skills the student still needs: ${skillGap.missing.slice(0, 5).map(s => `${s.skill_name ?? s} (importance: ${s.importance_score ?? "?"})`).join(", ")}\n`
+    }
+    if (skillGap.missingSkills?.length > 0 && !skillGap.missing) {
+      prompt += `Skills the student still needs: ${skillGap.missingSkills.slice(0, 5).map(s => `${s.skill_name} (importance: ${s.importance_score})`).join(", ")}\n`
     }
     prompt += "\n"
   }
 
+  // Region
   if (region) {
     prompt += `Student's selected region: ${region} (Australia)\n\n`
   }
 
-  if (!matchedCareers.length && !selectedOccupation && !skillGap && !region) {
+  // Fallback when no profile data at all
+  if (!matchedCareers.length && !selectedOccupation && !skillGap && !region && !interestCodes) {
     prompt += `The student has not yet completed the quiz or selected a career. Answer general career questions and encourage them to complete the RIASEC quiz for personalised advice.\n\n`
   }
 
