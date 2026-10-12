@@ -4,8 +4,13 @@ import { getSkillGap } from '../api/client';
 
 // ─── Importance pill tier ─────────────────────────────────────────────────────
 const tierStyle = (score) => {
+<<<<<<< HEAD
   if (score >= 8) return { dot: 'bg-rose-500', badge: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20', label: 'high' };
   if (score >= 6) return { dot: 'bg-amber-400', badge: 'bg-amber-400/10 text-amber-700 dark:text-amber-400 border-amber-400/20', label: 'med' };
+=======
+  if (score >= 80) return { dot: 'bg-rose-500', badge: 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20', label: 'high' };
+  if (score >= 60) return { dot: 'bg-amber-400', badge: 'bg-amber-400/10 text-amber-700 dark:text-amber-400 border-amber-400/20', label: 'med' };
+>>>>>>> origin/main
   return { dot: 'bg-zinc-400', badge: 'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400 border-zinc-200/50 dark:border-zinc-700', label: 'low' };
 };
 
@@ -34,9 +39,17 @@ function normalizeResponse(raw) {
     id:         s.id || s.skill_id || `s${i}`,
     name:       s.name || s.skill_name || String(s),
     importance: typeof s.importance === 'number'
+<<<<<<< HEAD
       ? s.importance
       : typeof s.importance_score === 'number'
         ? s.importance_score * 10
+=======
+    ? s.importance
+    : typeof s.importance_score === 'number'
+      ? s.importance_score * 10
+      : typeof s.score === 'number'
+        ? s.score
+>>>>>>> origin/main
         : 5,
     category:   s.category || 'General',
   }));
@@ -126,7 +139,11 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
     onSkillGapChange?.({
       occupation: occupationTitle,
       skillsHave: data.all_skills.filter(s => selected.has(s.id)).map(s => s.name),
+<<<<<<< HEAD
       skillsToBuild: data.all_skills.filter(s => !selected.has(s.id)).map(s => s.name),
+=======
+      skillsToBuild: data.all_skills.filter(s => !selected.has(s.id)).slice(0, 12).map(s => s.name),
+>>>>>>> origin/main
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, selected]);
@@ -176,6 +193,7 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
       {/* AI context for this career */}
       <div className="grid grid-cols-3 gap-3 sm:gap-4">
         {[
+<<<<<<< HEAD
           ['Resilience', metrics.resilience_score != null ? `${metrics.resilience_score}%` : 'N/A', rs.label, 'text-zinc-900 dark:text-white'],
           ['Augmentation', augPct != null ? `${augPct}%` : 'N/A', 'Human capacity elevated', 'text-emerald-600 dark:text-emerald-400'],
           ['Automation risk', autoPct != null ? `${autoPct}%` : 'N/A', 'Tasks fully automated', 'text-amber-600 dark:text-amber-400'],
@@ -184,6 +202,20 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
             <p className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">{label}</p>
             <p className={`mt-1.5 text-2xl sm:text-3xl font-bold tracking-tight tabular-nums ${value === 'N/A' ? 'text-zinc-400' : color}`}>{value}</p>
             <p className="mt-1 hidden sm:block text-[11px] text-slate-500 dark:text-slate-400">{copy}</p>
+=======
+          ['AI Resilience score', metrics.resilience_score != null ? `${metrics.resilience_score}%` : 'N/A', rs.label, 'text-zinc-900 dark:text-white', 'Measures how adaptable a role is to AI disruption based on high task augmentation versus lower automation risk.'],
+          ['AI Augmentation score', augPct != null ? `${augPct}%` : 'N/A', 'Potential for AI to support human work', 'text-emerald-600 dark:text-emerald-400', 'The percentage of tasks where AI boosts human capability rather than replacing the job.'],
+          ['AI Automation risk score', autoPct != null ? `${autoPct}%` : 'N/A', 'Potential for AI to automate tasks', 'text-amber-600 dark:text-amber-400', 'The percentage of core role tasks that can be fully automated without human intervention.'],
+        ].map(([label, value, copy, color, tip]) => (
+          <div key={label} title={tip} tabIndex={0} className={`${card} group relative cursor-help p-4 sm:p-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500`}>
+            <p className="text-[10px] sm:text-[11px] font-semibold text-slate-500 dark:text-slate-400">{label}</p>
+            <p className={`mt-1.5 text-2xl sm:text-3xl font-bold tracking-tight tabular-nums ${value === 'N/A' ? 'text-zinc-400' : color}`}>{value}</p>
+            <p className="mt-1 hidden sm:block text-[11px] text-slate-500 dark:text-slate-400">{copy}</p>
+            <span role="tooltip" className="pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-20 w-64 -translate-x-1/2 rounded-xl border border-zinc-200 bg-white p-3 text-left text-xs font-normal leading-relaxed text-zinc-600 opacity-0 shadow-xl transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 dark:border-white/10 dark:bg-[#1A233A] dark:text-slate-300">
+              <span className="mb-1 block text-sm font-semibold text-zinc-900 dark:text-white">{label}</span>
+              {tip}
+            </span>
+>>>>>>> origin/main
           </div>
         ))}
       </div>
@@ -271,9 +303,16 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
                       <span className="min-w-0 break-words"><span className="font-semibold mr-2 text-zinc-400 tabular-nums">{i + 1}.</span>{s.name}</span>
                       <span className="text-[10px] font-semibold tabular-nums text-zinc-400 shrink-0">{s.importance.toFixed(1)}</span>
                     </div>
+<<<<<<< HEAD
                     <div className="mt-1.5 h-1 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden">
                       <div className={`h-full rounded-full ${tierStyle(s.importance).dot}`} style={{ width: `${Math.min(100, s.importance * 10)}%` }} />
                     </div>
+=======
+                    {/* THE BAR REMOVED HERE DONT ADD IF NOT NEEDED */}
+                    {/* <div className="mt-1.5 h-1 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden">
+                      <div className={`h-full rounded-full ${tierStyle(s.importance).dot}`} style={{ width: `${Math.min(100, s.importance * 10)}%` }} />
+                    </div> */}
+>>>>>>> origin/main
                   </li>
                 ))}
               </ol>
@@ -329,7 +368,11 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
           <div className="flex flex-wrap items-center justify-between gap-3">
             {onNavigate && (
               <button type="button" onClick={() => onNavigate('regional-insights', { anzsco4 })} className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors">
+<<<<<<< HEAD
                 <MapPin className="w-3.5 h-3.5" /> See regional demand for this career
+=======
+                {/* DONT ADD ANYTHING HERE, THIS KEEPS THE Generate learning plan towards right */}
+>>>>>>> origin/main
               </button>
             )}
             <button type="button" onClick={handleGeneratePlan}
