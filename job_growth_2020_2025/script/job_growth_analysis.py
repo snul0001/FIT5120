@@ -1,7 +1,7 @@
-"""Analysis behind the employment trend card (reads the two files written by the pipeline; writes nothing).
+"""
+Data analysis of job_growth from the output of cleaned_quarterly_unitgroup.csv, looking through percentage changes,
+annual average as well as checking for less than 10k workers on some unitgroups
 
-The card draws employed_2020_k ... employed_2025_k as a line and prints one headline,
-total_change_2020_2025 (thousands) and total_pct_change_2020_2025 (a ratio shown as %).
 """
 import pandas as pd
 from global_variable import CLEAN_FILE, GROWTH_FILE, YEARS
@@ -39,7 +39,7 @@ print("One-quarter headline vs Annual-average headline, ABS gap (points):",
       "| Gap over 5 points:", f"{(diffs.stack() > .05).mean():.0%}",
       "| Opposite direction:", flips, "of", diffs.size)
 
-# 5. Small occupations (fewer than 10k workers in 2020)
+# 5. Small unit group (fewer than 10k workers in 2020)
 small = g.employed_2020_k < 10
 sw = g[yoy].abs().median(axis=1)
 print("Small:", small.sum(), "Median yearly swing small vs others:", f"{sw[small].median():.1%},", f"{sw[~small].median():.1%}")
