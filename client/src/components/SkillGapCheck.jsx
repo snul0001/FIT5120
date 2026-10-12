@@ -34,9 +34,11 @@ function normalizeResponse(raw) {
     id:         s.id || s.skill_id || `s${i}`,
     name:       s.name || s.skill_name || String(s),
     importance: typeof s.importance === 'number'
-      ? s.importance
-      : typeof s.importance_score === 'number'
-        ? s.importance_score * 10
+    ? s.importance
+    : typeof s.importance_score === 'number'
+      ? s.importance_score * 10
+      : typeof s.score === 'number'
+        ? s.score
         : 5,
     category:   s.category || 'General',
   }));
@@ -271,9 +273,10 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
                       <span className="min-w-0 break-words"><span className="font-semibold mr-2 text-zinc-400 tabular-nums">{i + 1}.</span>{s.name}</span>
                       <span className="text-[10px] font-semibold tabular-nums text-zinc-400 shrink-0">{s.importance.toFixed(1)}</span>
                     </div>
-                    <div className="mt-1.5 h-1 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden">
+                    {/* THE BAR REMOVED HERE DONT ADD IF NOT NEEDED */}
+                    {/* <div className="mt-1.5 h-1 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden">
                       <div className={`h-full rounded-full ${tierStyle(s.importance).dot}`} style={{ width: `${Math.min(100, s.importance * 10)}%` }} />
-                    </div>
+                    </div> */}
                   </li>
                 ))}
               </ol>

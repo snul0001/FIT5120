@@ -552,7 +552,7 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
         <div className="bg-white dark:bg-[#131B2F] border border-zinc-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
           <h3 className="text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">Employment trend</h3>
           <p className="mt-1 mb-6 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-            {selectedGroup.anzsco4_name}: employment estimates by year, Australia (thousands of Workers).
+            {selectedGroup.anzsco4_name}: employment estimates by year, Australia (thousands of People).
           </p>
           {trendState === 'loading' ? (
             <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 py-6"><Loader2 className="w-4 h-4 animate-spin" /> Loading employment trend...</div>
@@ -562,7 +562,7 @@ export default function RegionalInsights({ onBack, initialGroupCode }) {
                 ariaLabel={`Line graph of employment by year for ${selectedGroup.anzsco4_name}`}
                 showLegend={false}
                 yFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 1 })}k`}
-                tipFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 2 })}k (${Math.round(v * 1000).toLocaleString()} Workers)`}
+                tipFormat={v => `${v.toLocaleString(undefined, { maximumFractionDigits: 2 })}k (${Math.round(v * 1000).toLocaleString()} People)`}
                 lines={[{ id: 'employment', label: selectedGroup.anzsco4_name, color: LINE_COLORS[0], points: trend.map(t => ({ x: t.year, y: t.value })) }]}
               />
               {(() => {
