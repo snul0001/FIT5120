@@ -301,7 +301,7 @@ export default function SkillGapCheck({ targetOccupation, ai, onBack, onNavigate
                   <li key={s.id}>
                     <div className="flex items-baseline justify-between gap-3 text-sm text-zinc-700 dark:text-zinc-300">
                       <span className="min-w-0 break-words"><span className="font-semibold mr-2 text-zinc-400 tabular-nums">{i + 1}.</span>{s.name}</span>
-                      <span className="text-[10px] font-semibold tabular-nums text-zinc-400 shrink-0">{s.importance.toFixed(1)}</span>
+                      {/* <span className="text-[10px] font-semibold tabular-nums text-zinc-400 shrink-0">{s.importance.toFixed(1)}</span> */}
                     </div>
 <<<<<<< HEAD
                     <div className="mt-1.5 h-1 rounded-full bg-zinc-100 dark:bg-white/10 overflow-hidden">
