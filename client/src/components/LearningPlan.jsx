@@ -48,7 +48,7 @@ const getResource = skill => {
   if (/^https?:\/\//i.test(resource)) return { href: resource, label: 'Suggested resource' };
   return {
     href: resource 
-      ? `https://www.google.com/search?q=${encodeURIComponent(`getSkillName(skill) {resource}`)}`
+      ? `https://www.google.com/search?q=${encodeURIComponent(`${getSkillName(skill)} ${resource}`)}`
       : `https://www.google.com/search?q=${encodeURIComponent(getSkillName(skill))}`, 
     label: resource ? `Find on ${resource}` : 'Find on Google'
   };
