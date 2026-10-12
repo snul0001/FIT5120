@@ -44,11 +44,13 @@ const getPhaseLabel = (phase, index) =>
 // resource can be a URL or just a provider name such as "LinkedIn Learning"
 const getResource = skill => {
   const resource = String(skill?.resource || '').trim();
-  if (!resource) return null;
+  // if (!resource) return null;
   if (/^https?:\/\//i.test(resource)) return { href: resource, label: 'Suggested resource' };
   return {
-    href: `https://www.google.com/search?q=${encodeURIComponent(`${getSkillName(skill)} ${resource}`)}`,
-    label: `Find on ${resource}`
+    href: resource 
+      ? `https://www.google.com/search?q=${encodeURIComponent(`getSkillName(skill) {resource}`)}`
+      : `https://www.google.com/search?q=${encodeURIComponent(getSkillName(skill))}`, 
+    label: resource ? `Find on ${resource}` : 'Find on Google'
   };
 };
 
