@@ -290,7 +290,7 @@ const ResultCard = ({
         )}
         {ai && (
           <span {...tooltip('AI Resilience Score', TOOLTIP_TEXT.resilience)} className="hidden sm:block shrink-0 min-w-[120px] rounded-lg border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-white/[0.03] px-4 py-2.5 cursor-help">
-            <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Resilience</span>
+            <span className="block text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">AI Resilience score</span>
             <span className="block mt-0.5 text-xl font-bold tabular-nums text-zinc-900 dark:text-white">{resilienceText}</span>
           </span>
         )}
