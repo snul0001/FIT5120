@@ -48,7 +48,13 @@ export default function Chatbot({
   skillGap = null,
   region = null,
   sessionId = 0,
+<<<<<<< HEAD
+  chatRequest = null,
+  interestCodes = [],
+  employmentTrend = []
+=======
   chatRequest = null
+>>>>>>> origin/main
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -104,7 +110,25 @@ export default function Chatbot({
     matchedCareers: buildCareerSummary(matchedCareers),
     selectedOccupation: buildOccupationSummary(selectedOccupation),
     skillGap: skillGap ?? null,
+<<<<<<< HEAD
+    region: region ?? null,
+    interestCodes: interestCodes.length > 0 ? interestCodes : null,
+    employmentTrend: employmentTrend.length > 0 ? employmentTrend : null,
+    taskBreakdown: selectedOccupation?.ai
+      ? {
+          resilience_score: selectedOccupation.ai.resilience_score ?? null,
+          resilience_label: selectedOccupation.ai.resilience_label ?? null,
+          human_led: selectedOccupation.ai.task_counts?.human ?? null,
+          ai_assisted: selectedOccupation.ai.task_counts?.assisted ?? null,
+          ai_automated: selectedOccupation.ai.task_counts?.automated ?? null,
+          demand: selectedOccupation.ai.demand ?? null,
+          augmentation: selectedOccupation.ai.augmentation ?? null,
+          automation: selectedOccupation.ai.automation ?? null
+        }
+      : null
+=======
     region: region ?? null
+>>>>>>> origin/main
   };
 
   const greeting = selectedOccupation?.title
