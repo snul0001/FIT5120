@@ -464,7 +464,7 @@ const AppNav = ({ isDark, currentView, mobileMenu, mobileSources, actions, quizD
 );
 
 // ─── Deep link ────────────────────────────────────────────────────────────────
-// e.g. https://your-site/?view=progress-tracker&code=252-6M-U25P (used by the plan PDF)
+// e.g. https://site/?view=progress-tracker&code=252-6M-U25P (used by the plan PDF)
 const getDeepLink = () => {
   if (typeof window === 'undefined') return null;
   const params = new URLSearchParams(window.location.search);
@@ -1294,7 +1294,8 @@ export default function App() {
   };
 
   return (
-        <PasswordGate>
+      // <PasswordGate>
+      <>
       <style>{`
         @keyframes continuousMove {
           0% { background-position: 0 0; }
@@ -1612,6 +1613,7 @@ export default function App() {
         chatRequest={chatRequest}
         sessionId={chatSessionId}
       />
-    </PasswordGate>
+    {/* </PasswordGate> */}
+    </>
   );
 }

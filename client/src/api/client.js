@@ -164,16 +164,4 @@ export async function sendChat({ message, conversationHistory = [], profileConte
   return request('/chat', { method: 'POST', body: { message: message.trim(), conversationHistory, profileContext } });
 }
 
-// Legacy — used by PDF export in App.jsx
-export async function getSkills(limit = 400) {
-  let page = 1, all = [], hasNext = true;
-  do {
-    const params = new URLSearchParams({ page: String(page), limit: String(limit) });
-    const data = await request(`/profile/skills?${params}`);
-    const batch = data?.skills ? data.skills.map(s => s.label) : [];
-    if (!batch.length) { hasNext = false; } else { all.push(...batch); page++; }
-  } while (hasNext);
-  return all;
-}
-
 export const BASE_URL_EXPORT = BASE_URL;
