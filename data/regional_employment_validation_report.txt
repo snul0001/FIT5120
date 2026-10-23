@@ -1,0 +1,65 @@
+Iteration 2 Regional Employment Insights - Validation Report
+Validation date: 2026-09-10
+
+Files checked:
+- regional_employment_opportunity_clean.csv
+- regional_employment_demand_clean.csv
+- regional_ict_occupation_mapping.csv
+
+Opportunity data: PASS
+- Rows: 81,312
+- Months: 132 (2015-09 to 2026-08)
+- SA4 regions: 88
+- ANZSCO4 occupations: 7
+- Missing values: 0
+- Duplicate keys: 0
+- July 2026 rows: 616 (expected 616)
+- Month format valid: True
+- Code formats valid: True
+- Employment values numeric: True
+
+Demand data: PASS
+- Rows: 4,550
+- Months: 91 (2019-01 to 2026-07)
+- Regions: 50 (42 SA4, 8 GCCSA)
+- Missing values: 0
+- Duplicate keys: 0
+- July 2026 rows: 50 (expected 50)
+- Month format valid: True
+- Code formats valid: True
+- Vacancy values numeric: True
+
+Occupation mapping: PASS
+- Rows: 7
+- Codes: 2611, 2612, 2613, 2621, 2631, 2632, 2633
+- Parent: 26 ICT Professionals
+- Missing values: 0
+- Duplicate ANZSCO4 codes: 0
+
+Cross-file occupation consistency: PASS
+- Opportunity codes missing from mapping: []
+- Unexpected mapping codes: []
+- Occupation name mismatches: 0
+- Unexpected demand groups: []
+
+Regional consistency: PASS
+- Matching demand SA4 codes: 42 of 42
+- Matching demand SA4 names: 42 of 42
+- Unmatched demand SA4 codes: []
+- SA4 name mismatches: []
+- GCCSA regions retained separately: 8
+
+Time compatibility: PASS
+- Shared months: 91
+- Common period: 2019-01 to 2026-07
+- July 2026 exists in both: True
+
+Final summary:
+- Opportunity data: PASS
+- Demand data: PASS
+- Occupation mapping: PASS
+- Cross-file occupation consistency: PASS
+- Regional consistency: PASS
+- Time compatibility: PASS
+
+Issues found: None

@@ -1,0 +1,1157 @@
+osca_code,osca_title,onet_code,onet_title,similarity_score,second_similarity_score,score_gap,candidate_count,mapping_status,mapping_method
+121131,Chief Executive or Managing Director,,,0.1971892866654193,0.1005488376968072,0.0966404489686121,18,manual_review,manual_review
+121231,Corporate General Manager,,,0.161231567603942,0.1269755872392632,0.034255980364678806,18,manual_review,manual_review
+121232,Defence Force Senior Officer,,,,,,0,no_candidate,no_candidate
+149231,Commissioned Defence Force Officer,,,,,,0,no_candidate,no_candidate
+121331,Local Government Legislator,11-1031.00,Legislators,0.2863868774867621,,,1,accepted,single_candidate
+121332,Member of Parliament,11-1031.00,Legislators,0.2756817182639988,,,1,accepted,single_candidate
+121399,Legislators nec,11-1031.00,Legislators,,,,1,accepted,single_candidate
+151331,Aquaculture Farmer,,,0.15390779528682,0.1202369447825034,0.033670850504316605,3,manual_review,manual_review
+343131,Aquaculture Supervisor,,,0.1586927884257143,0.0156016002944368,0.1430911881312775,2,manual_review,manual_review
+151131,Cotton Grower,,,0.1240838627090584,0.091588469436377,0.0324953932726814,3,manual_review,manual_review
+343136,Senior Broadacre Crop Farm Worker,,,0.1432916755782733,0.1104013623097805,0.0328903132684928,2,manual_review,manual_review
+151231,Flower Grower,,,0.1375104722375137,0.0653182052220714,0.0721922670154423,4,manual_review,manual_review
+343134,Horticultural Supervisor or Specialist,,,0.1427460999587104,0.106291815815893,0.0364542841428174,4,manual_review,manual_review
+151232,Fruit Grower,,,0.1020812560541209,0.0896652786424631,0.0124159774116578,3,manual_review,manual_review
+151233,Nut Grower,,,0.1224236697250159,0.0790706516225423,0.04335301810247359,3,manual_review,manual_review
+151132,"Grain, Oilseed, Pulse or Pasture Grower",,,0.0992949253778972,0.0588377825961701,0.04045714278172711,3,manual_review,manual_review
+151237,Wine Grape Grower,,,0.0865066951555159,0.0752718267369716,0.011234868418544305,3,manual_review,manual_review
+343137,Vineyard Supervisor,,,0.1112805863418904,0.0662430645895595,0.0450375217523309,2,manual_review,manual_review
+151299,Horticultural Crop Growers nec,,,,,,5,manual_review,manual_review
+151399,Mixed Production and Aquaculture Farmers nec,,,,,,4,manual_review,manual_review
+151133,Sugar Cane Grower,,,0.0979822889393505,0.071997024972595,0.025985263966755504,3,manual_review,manual_review
+151235,Turf Grower,,,0.1020037617043944,0.052252299244311,0.049751462460083405,3,manual_review,manual_review
+151236,Vegetable Grower,,,0.102346447829649,0.0943825993848011,0.00796384844484789,3,manual_review,manual_review
+151199,Broadacre Crop Growers nec,,,,,,3,manual_review,manual_review
+151234,Production Nursery Grower,,,0.0888694989530759,0.0401425584881593,0.0487269404649166,3,manual_review,manual_review
+343199,"Senior Aquaculture, Crop and Forestry Workers nec",,,,,,2,manual_review,manual_review
+152931,Apiarist,,,0.0717107125316232,0.0294561193619597,0.0422545931696635,3,manual_review,manual_review
+152131,Beef Cattle Farmer,,,0.1293036503052773,0.0505658254813002,0.07873782482397709,3,manual_review,manual_review
+343231,Senior Beef Cattle Station Worker,,,0.0569011095875939,0.006648369362737,0.0502527402248569,2,manual_review,manual_review
+152231,Dairy Cattle Farmer,,,0.1218125868499388,0.050462322554509,0.0713502642954298,3,manual_review,manual_review
+343233,Senior Dairy Cattle Farm Worker,,,0.0504319696986413,0.005914674601161,0.0445172950974803,2,manual_review,manual_review
+152999,Livestock Farmers nec,,,,,,3,manual_review,manual_review
+152932,Goat Farmer,,,0.1245857578823661,0.0437368356294639,0.0808489222529022,3,manual_review,manual_review
+152933,Horse Breeder,,,0.1010068516633003,0.0339907571398198,0.06701609452348051,3,manual_review,manual_review
+343234,Senior Horse Stable or Stud Worker,,,0.0719096731841943,0.0065734975761278,0.06533617560806651,2,manual_review,manual_review
+152331,Mixed Cattle and Sheep Farmer,,,0.1387031670785141,0.0413202796659764,0.0973828874125377,3,manual_review,manual_review
+343232,Senior Cattle and Sheep Farm Worker,,,0.0579464476161645,0.0067705074611542,0.0511759401550103,2,manual_review,manual_review
+152934,Pig Farmer,,,0.1311758631340024,0.0477675826523899,0.0834082804816125,3,manual_review,manual_review
+343235,Senior Piggery Stockperson,,,0.0823049127309186,0.0250306705769901,0.0572742421539285,2,manual_review,manual_review
+152935,Poultry Farmer,,,0.1627160799397421,0.0587094381919428,0.1040066417477993,3,manual_review,manual_review
+343299,Senior Livestock Farm Workers nec,,,,,,2,manual_review,manual_review
+152431,Sheep Farmer,,,0.1130533270585872,0.0412529545324983,0.0718003725260889,3,manual_review,manual_review
+343236,Senior Sheep Farm Worker,,,0.0669879752064414,0.0079469170040713,0.0590410582023701,2,manual_review,manual_review
+151332,Broadacre Crop and Livestock Farmer,,,0.1991906880543635,0.0904617075504632,0.10872898050390029,4,manual_review,manual_review
+343135,Senior Broadacre Crop and Livestock Farm Worker,,,0.1147095526385399,0.114521920069491,0.00018763256904889836,3,manual_review,manual_review
+112132,Business Development Manager,,,0.1741896682470537,0.1677605246116537,0.006429143635400009,2,manual_review,manual_review
+112133,Sales and Marketing Manager,11-2022.00,Sales Managers,0.3554024300568194,0.2394848749799612,0.11591755507685816,2,accepted,score_and_gap_rule
+112131,Advertising Manager,,,0.2516339448406174,0.0899816302319139,0.1616523146087035,3,manual_review,manual_review
+112231,Communications Manager (Public Relations),11-2032.00,Public Relations Managers,0.3362295595545608,0.1744247898189115,0.1618047697356493,3,accepted,score_and_gap_rule
+111131,Corporate Services Manager,,,0.2403061110738689,0.2116213796133323,0.0286847314605366,23,manual_review,manual_review
+111231,Finance Manager,11-3031.01,Treasurers and Controllers,0.3998028127833921,0.2046086622798166,0.19519415050357547,3,accepted,score_and_gap_rule
+111331,Human Resources Manager,,,0.2916687546009096,0.2734064766534907,0.01826227794741886,3,manual_review,manual_review
+111633,Work Health and Safety Manager,,,0.1092134605697142,0.0785855182667975,0.03062794230291671,3,manual_review,manual_review
+111431,Policy and Planning Manager,,,0.1098205985591492,0.1027739326794511,0.0070466658796981,12,manual_review,manual_review
+111531,Research and Development Manager,,,0.1663338783943637,0.144271945613398,0.022061932780965687,5,manual_review,manual_review
+131131,Construction Project Manager,11-9021.00,Construction Managers,0.3514813741238109,,,1,accepted,single_candidate
+131331,Project Builder,11-9021.00,Construction Managers,0.2975772080610756,,,1,accepted,single_candidate
+131231,Engineering Manager,,,0.1783853708216614,0.1171067779390367,0.06127859288262469,12,manual_review,manual_review
+133131,Importer or Exporter,,,0.1360144752785786,0.0859014781611461,0.0501129971174325,2,manual_review,manual_review
+133132,Wholesaler,11-1021.00,General and Operations Managers,0.2355144652937879,,,1,accepted,single_candidate
+132131,Manufacturer,,,0.229045568572904,0.1812058696678327,0.04783969890507131,6,manual_review,manual_review
+132231,Forest Manager,11-9013.00,"Farmers, Ranchers, and Other Agricultural Managers",0.0860138480800476,,,1,accepted,single_candidate
+132232,Production Manager (Manufacturing),,,0.28227184268512,0.2733122871953923,0.00895955548972771,7,manual_review,manual_review
+132233,Production Manager (Mining),,,0.1416005115813524,0.1014188109561356,0.040181700625216796,12,manual_review,manual_review
+133331,Supply and Distribution Manager,,,0.1453062514379287,0.1322096193278703,0.013096632110058404,2,manual_review,manual_review
+133231,Procurement Manager,,,0.2415072674979618,0.1213982613030655,0.12010900619489631,2,manual_review,manual_review
+141231,Children's Education and Care Service Director,11-9031.00,"Education and Childcare Administrators, Preschool and Daycare",0.1527723621751198,,,1,accepted,single_candidate
+141333,Medical Administrator,11-9111.00,Medical and Health Services Managers,0.3708413925996984,,,1,accepted,single_candidate
+141331,Aged Care Manager,,,0.1735458716579921,0.0692134208125841,0.104332450845408,2,manual_review,manual_review
+141332,Director of Nursing / Midwifery,11-9111.00,Medical and Health Services Managers,0.256042406734792,,,1,accepted,single_candidate
+141399,Health and Welfare Service Managers nec,,,,,,3,manual_review,manual_review
+141335,Welfare Centre Manager,11-9151.00,Social and Community Service Managers,0.1807842226431153,,,1,accepted,single_candidate
+141334,Paramedic Manager,11-9111.00,Medical and Health Services Managers,0.1949850351876845,,,1,accepted,single_candidate
+141131,Assistant School Principal,11-9032.00,"Education Administrators, Kindergarten through Secondary",0.3433077237271702,0.0959061644381772,0.24740155928899302,3,accepted,score_and_gap_rule
+141132,School Principal,11-9032.00,"Education Administrators, Kindergarten through Secondary",0.3114457533256992,0.0937926602863821,0.21765309303931707,3,accepted,score_and_gap_rule
+141431,Faculty Manager,,,0.2701319071834285,0.188858779561393,0.08127312762203551,3,manual_review,manual_review
+141432,Regional Education Manager,11-9032.00,"Education Administrators, Kindergarten through Secondary",0.3409347334697279,0.1456804227840869,0.195254310685641,3,accepted,score_and_gap_rule
+141499,Education Managers nec,,,,,,3,manual_review,manual_review
+113131,Chief Information Officer,11-3021.00,Computer and Information Systems Managers,0.1165306792588418,,,1,accepted,single_candidate
+113132,Chief Information Security Officer,11-3021.00,Computer and Information Systems Managers,0.1476643960566085,,,1,accepted,single_candidate
+113232,ICT Project Manager,11-3021.00,Computer and Information Systems Managers,0.069928996956748,,,1,accepted,single_candidate
+113231,ICT Operations Manager,11-3021.00,Computer and Information Systems Managers,0.0851426174283981,,,1,accepted,single_candidate
+113233,ICT Service Delivery Manager,11-3021.00,Computer and Information Systems Managers,0.0492966801408656,,,1,accepted,single_candidate
+113299,ICT Managers nec,11-3021.00,Computer and Information Systems Managers,,,,1,accepted,single_candidate
+149232,Commissioned Fire Officer,,,0.0621996598983375,0.0602772410309826,0.0019224188673548984,12,manual_review,manual_review
+149233,Commissioned Police Officer,,,0.1191607559166196,0.1018978435433639,0.01726291237325571,12,manual_review,manual_review
+149431,Senior Non-commissioned Defence Force Member,,,,,,0,no_candidate,no_candidate
+149131,Arts Administrator or Manager,,,0.0481951662272706,0.0466298617720999,0.0015653044551707032,12,manual_review,manual_review
+149331,Environmental Manager,,,0.1774119367461458,0.1355241876927044,0.04188774905344139,12,manual_review,manual_review
+149333,Laboratory Manager,,,0.1142231154147945,0.10036944537707,0.013853670037724503,12,manual_review,manual_review
+111631,Quality Assurance Manager,,,0.1157397105514026,0.0892908231865685,0.026448887364834098,16,manual_review,manual_review
+111632,Regulatory Affairs Manager,11-9199.01,Regulatory Affairs Managers,0.6500388452029826,0.1601852788951409,0.4898535663078417,16,accepted,score_and_gap_rule
+149133,Sports Administrator,,,0.2002474439642877,0.0515262484678784,0.1487211954964093,12,manual_review,manual_review
+131931,Surveying Manager,,,0.1690726811116866,0.0998965894154802,0.06917609169620641,12,manual_review,manual_review
+131999,Construction and Engineering Managers nec,,,,,,12,manual_review,manual_review
+149199,"Arts, Culture and Sports Administrators nec",,,,,,14,manual_review,manual_review
+149332,Exploration Manager,,,0.0399246525863192,0.0295540442873,0.010370608299019198,12,manual_review,manual_review
+149399,Scientific and Environmental Managers nec,,,,,,12,manual_review,manual_review
+149931,Airport Manager,,,0.1056633184937822,0.0857316215687879,0.019931696924994302,12,manual_review,manual_review
+149932,Correctional Facility Manager,,,0.1192004211392114,0.0733620834281346,0.04583833771107679,12,manual_review,manual_review
+149933,Emergency Management Officer,,,0.0802784826952154,0.0700140297398398,0.010264452955375591,12,manual_review,manual_review
+149999,Specialist Managers nec,,,,,,16,manual_review,manual_review
+172934,Security Manager (Non-ICT),11-3013.01,Security Managers,0.570688091811169,0.1060967221905077,0.4645913696206613,20,accepted,score_and_gap_rule
+161231,Cafe or Restaurant Manager,,,0.2556243865307288,0.130407746660952,0.12521663986977677,2,manual_review,manual_review
+161232,Catering Manager,11-9051.00,Food Service Managers,0.3042376528583246,,,1,accepted,single_candidate
+161931,Caravan Park and Camping Ground Manager,,,0.1421361096602098,0.0839831440473438,0.05815296561286598,12,manual_review,manual_review
+161431,Hotel or Motel Manager,11-9081.00,Lodging Managers,0.18897171875864,,,1,accepted,single_candidate
+161531,Licensed Club Manager,,,0.0825498445621824,0.0745611057727394,0.007988738789442992,12,manual_review,manual_review
+161932,Hosted Accommodation Operator,,,0.0401965058861612,0.0113591584047154,0.0288373474814458,3,manual_review,manual_review
+172933,Retirement Village Manager,,,0.0807118907156119,0.0428889577192701,0.0378229329963418,2,manual_review,manual_review
+161999,"Hospitality, Tourism and Venue Managers nec",,,,,,13,manual_review,manual_review
+162131,Retail Manager (General),11-1021.00,General and Operations Managers,0.1644577924676741,,,1,accepted,single_candidate
+162132,Antique Dealer,11-1021.00,General and Operations Managers,0.0233496859362518,,,1,accepted,single_candidate
+161332,Betting Agency Manager,11-1021.00,General and Operations Managers,0.068785222938428,,,1,accepted,single_candidate
+172431,Hair or Beauty Salon Manager,11-1021.00,General and Operations Managers,0.052786541812573,,,1,accepted,single_candidate
+162133,Post Office Manager,11-1021.00,General and Operations Managers,0.0563565764258636,,,1,accepted,single_candidate
+161933,Travel Agency Manager,,,0.0919497935949369,0.0890316247644966,0.0029181688304402986,12,manual_review,manual_review
+161331,Amusement Centre Manager,,,0.1854634350964439,0.0867815948811427,0.09868184021530119,13,manual_review,manual_review
+161334,Fitness Centre Manager,11-9179.01,Fitness and Wellness Coordinators,0.3859936476678474,0.0491685040290097,0.3368251436388377,13,accepted,score_and_gap_rule
+161335,Sports Centre Manager,,,0.0514975575340284,0.0385116422891179,0.012985915244910495,13,manual_review,manual_review
+172131,Call or Contact Centre Manager,,,0.0607427760249432,0.0490491731847042,0.011693602840239,12,manual_review,manual_review
+172132,Customer Service Manager,,,0.1648948202713937,0.1261430816079008,0.03875173866349291,20,manual_review,manual_review
+172231,Event Manager,13-1121.00,"Meeting, Convention, and Event Planners",0.2954117626678177,,,1,accepted,single_candidate
+172531,Fleet Manager,,,0.0425800753560793,0.0163888792206849,0.0261911961353944,2,manual_review,manual_review
+172532,Railway Station Manager,,,0.0446185731687705,0.0308316519732428,0.013786921195527699,2,manual_review,manual_review
+172533,Transport Company Manager,,,0.1289400867992877,0.0717451914778029,0.05719489532148481,2,manual_review,manual_review
+172931,Boarding Kennel or Cattery Operator,,,0.0558856427724177,0.0493217189901999,0.006563923782217797,12,manual_review,manual_review
+161333,Cinema or Theatre Manager,,,0.1220230722060688,0.0895491287904588,0.032473943415609996,13,manual_review,manual_review
+172331,Facilities Manager,,,0.2245362901604413,0.2113522474411218,0.0131840427193195,20,manual_review,manual_review
+171131,Financial Institution Manager,,,0.19931281623204,0.1417400520876363,0.05757276414440371,4,manual_review,manual_review
+172932,Equipment Hire Manager,,,0.1572855908642495,0.1367016724807249,0.020583918383524608,12,manual_review,manual_review
+161399,"Entertainment, Fitness and Sports Venue Managers nec",,,,,,12,manual_review,manual_review
+172499,"Hair, Body and Beauty Service Managers nec",,,,,,12,manual_review,manual_review
+172999,Service Managers nec,,,,,,12,manual_review,manual_review
+231131,Actor,27-2011.00,Actors,0.1365203810501938,,,1,accepted,single_candidate
+231134,Dancer or Choreographer,27-2031.00,Dancers,0.7032456082774518,0.6244657911443008,0.07877981713315096,2,accepted,score_and_gap_rule
+231132,Circus Performer or Trainer,,,0.0030896048686177,,,2,manual_review,manual_review
+231135,Entertainer or Variety Performer,,,0.0855871651400834,0.0747090136595484,0.01087815148053499,4,manual_review,manual_review
+231133,Content Creator (Social Media),,,0.037358189653348,,,2,manual_review,manual_review
+231199,"Actors, Dancers and Other Entertainers nec",,,,,,9,manual_review,manual_review
+231699,Music Professionals nec,,,,,,4,manual_review,manual_review
+231631,Composer,27-2041.00,Music Directors and Composers,0.4294597454659676,0.3235089627495381,0.10595078271642949,2,accepted,score_and_gap_rule
+231632,Music Director,,,0.3878303611976587,0.3711111535990348,0.016719207598623886,2,manual_review,manual_review
+231633,Musician (Instrumental),,,0.4051567097011395,0.3672776321255683,0.037879077575571185,2,manual_review,manual_review
+231634,Singer,,,0.1718816576630578,0.1653482033218082,0.006533454341249606,2,manual_review,manual_review
+391331,Photographer,27-4021.00,Photographers,0.246939135050164,,,1,accepted,single_candidate
+231731,Painter (Visual Arts),,,0.240507657640772,0.0293128909891592,0.2111947666516128,2,manual_review,manual_review
+231732,Potter or Ceramic Artist,51-9195.05,"Potters, Manufacturing",0.4024377500539359,0.1010224507550765,0.3014152992988594,6,accepted,score_and_gap_rule
+231733,Sculptor,,,0.21072769594734,0.1111142423453251,0.0996134536020149,2,manual_review,manual_review
+231799,Visual Arts and Crafts Professionals nec,,,,,,3,manual_review,manual_review
+231431,Artistic Director,,,0.0806055121347394,0.0645161616013728,0.016089350533366603,6,manual_review,manual_review
+221131,Advertising Specialist,,,0.2674314847197674,0.171604136302136,0.09582734841763141,10,manual_review,manual_review
+231435,Production Manager (Screen or Live Performance),,,0.1833913679095984,0.1617571633144122,0.021634204595186196,14,manual_review,manual_review
+231531,Audio Producer,,,0.2250108588990008,0.1013349174521534,0.1236759414468474,6,manual_review,manual_review
+231532,Live Performance Producer,,,0.2157958770680924,0.1770842425280007,0.03871163454009169,6,manual_review,manual_review
+231533,Screen Producer,,,0.1644852465443516,0.14769081550708,0.0167944310372716,6,manual_review,manual_review
+231932,Media Presenter,27-3011.00,Broadcast Announcers and Radio Disc Jockeys,0.3000571405920739,0.2043059788105773,0.09575116178149659,3,accepted,score_and_gap_rule
+231231,Author,,,0.1674420833581233,0.1443485796747592,0.023093503683364103,4,manual_review,manual_review
+231232,Book or Script Editor,,,0.1123666794408113,0.0566144057546233,0.055752273686188,4,manual_review,manual_review
+231437,Screen or Live Performance Designer,,,0.1621709378196652,0.1295614805478154,0.0326094572718498,6,manual_review,manual_review
+231432,Audio or Live Performance Director,27-2012.00,Producers and Directors,0.3042454148619463,0.1964258668042213,0.10781954805772498,6,accepted,score_and_gap_rule
+231436,Screen Director,,,0.2950059724981523,0.2034042143112036,0.09160175818694871,6,manual_review,manual_review
+231433,Cinematographer,,,0.2639977406076799,0.218916836454293,0.04508090415338689,6,manual_review,manual_review
+231434,Film and Video Editor,27-4032.00,Film and Video Editors,0.3052185720320656,0.1618158777337709,0.1434026942982947,6,accepted,score_and_gap_rule
+231438,Technical Director,,,0.2137771847244457,0.2129483837740033,0.0008288009504424099,6,manual_review,manual_review
+231499,Media Directors and Designers nec,,,,,,6,manual_review,manual_review
+231331,Copywriter,,,0.153357282818188,0.1202086369795621,0.033148645838625895,5,manual_review,manual_review
+231333,Print or Digital Content Editor,,,0.1772880183435816,0.134115336716005,0.04317268162757659,3,manual_review,manual_review
+231332,Journalist,27-3023.00,"News Analysts, Reporters, and Journalists",0.6488811471090377,0.2978936094955872,0.3509875376134505,2,accepted,score_and_gap_rule
+231334,Technical Writer,,,0.093989243477222,0.0493651965140164,0.0446240469632056,4,manual_review,manual_review
+231399,Journalists and Other Writers nec,,,,,,5,manual_review,manual_review
+211131,Accountant (General),,,0.2190002043205973,0.1420663913737649,0.07693381294683241,3,manual_review,manual_review
+211133,Forensic Accountant,,,0.1635126351093216,0.0572107237913537,0.1063019113179679,3,manual_review,manual_review
+211134,Management Accountant,,,0.2473558872284716,0.0932642699314863,0.15409161729698528,3,manual_review,manual_review
+211135,Taxation Accountant,13-2082.00,Tax Preparers,0.3942447589061043,0.1785467546344505,0.21569800427165378,3,accepted,score_and_gap_rule
+223931,Company Secretary,,,0.0926599818037536,0.0907135285633597,0.0019464532403939,3,manual_review,manual_review
+211132,Corporate Treasurer,,,0.242765224165332,0.1620290969175934,0.0807361272477386,3,manual_review,manual_review
+211231,External Auditor,,,0.2458111195855228,0.1112233307677685,0.1345877888177543,3,manual_review,manual_review
+211232,Internal Auditor,,,0.1974113521343495,0.0436464019235732,0.1537649502107763,3,manual_review,manual_review
+531332,Commodities Trader,,,0.2204826051726419,0.0597526613185097,0.1607299438541322,4,manual_review,manual_review
+531333,Finance Broker,,,0.1223696729205916,0.0168380153814394,0.1055316575391522,2,manual_review,manual_review
+531334,Insurance Broker,41-3021.00,Insurance Sales Agents,0.5097336209117476,0.2308540847523391,0.27887953615940847,3,accepted,score_and_gap_rule
+531399,Financial and Insurance Brokers nec,,,,,,17,manual_review,manual_review
+212231,Financial Market Dealer,41-3031.00,"Securities, Commodities, and Financial Services Sales Agents",0.4236775308230121,0.0264780511285288,0.3971994796944833,2,accepted,score_and_gap_rule
+212232,Stockbroker,41-3031.00,"Securities, Commodities, and Financial Services Sales Agents",0.4019896683960571,0.0266614959622107,0.3753281724338464,2,accepted,score_and_gap_rule
+212331,Capital Markets Specialist,,,0.2351429173856283,0.0,0.2351429173856283,2,manual_review,manual_review
+212332,Investment Analyst,13-2051.00,Financial and Investment Analysts,0.4249764990928472,0.2776729894006555,0.1473035096921917,6,accepted,score_and_gap_rule
+212931,Credit Risk Manager,13-2041.00,Credit Analysts,0.4116418536507371,0.3460169652117582,0.0656248884389789,6,accepted,score_and_gap_rule
+212999,Financial Services and Investment Specialists nec,,,,,,6,manual_review,manual_review
+212131,Financial Adviser,13-2052.00,Personal Financial Advisors,0.5520266286693316,0.4058956333126373,0.14613099535669433,3,accepted,score_and_gap_rule
+212333,Investment Manager,13-2051.00,Financial and Investment Analysts,0.3603151247861894,0.2518463159264836,0.10846880885970578,3,accepted,score_and_gap_rule
+222131,Human Resources Adviser,,,0.2106843742749898,0.1737636949234091,0.03692067935158069,4,manual_review,manual_review
+222231,Recruitment Consultant,,,0.2598233282087593,0.1712965863851304,0.08852674182362891,21,manual_review,manual_review
+411431,Employment Consultant,,,0.2151554253385452,0.1851154170730858,0.03004000826545941,22,manual_review,manual_review
+222132,Workplace Relations Adviser,,,0.293200776565609,0.1786769921765265,0.1145237843890825,4,manual_review,manual_review
+599941,Union Organiser,,,0.2140850311337787,0.1275797604109552,0.08650527072282349,4,manual_review,manual_review
+222431,Training and Development Professional,13-1151.00,Training and Development Specialists,0.3875029122055738,,,1,accepted,single_candidate
+223131,Actuary,,,0.1263105030905784,0.085645639389912,0.040664863700666395,6,manual_review,manual_review
+223132,Mathematician,15-2021.00,Mathematicians,0.6091131711080697,0.2915242693576635,0.3175889017504062,6,accepted,score_and_gap_rule
+223133,Statistician,,,0.2705983042269991,0.2042103641084546,0.06638794011854449,6,manual_review,manual_review
+223231,Data Analyst,,,0.2396290384084937,0.1912505377541136,0.0483785006543801,6,manual_review,manual_review
+223234,Data Scientist,,,0.2344867940587932,0.1994390973649292,0.03504769669386398,6,manual_review,manual_review
+232332,Archivist,25-4011.00,Archivists,0.3262963619242953,0.0258179095875574,0.30047845233673787,2,accepted,score_and_gap_rule
+232334,Gallery or Museum Curator,,,0.1595650172430291,0.13056586989618,0.028999147346849108,2,manual_review,manual_review
+223933,Health Information Manager,,,0.2583953876358696,0.2577070780381238,0.0006883095977457954,2,manual_review,manual_review
+223935,Records or Information Manager,,,0.1083461753444659,0.0525197281447144,0.0558264471997515,3,manual_review,manual_review
+232333,Economist,,,0.3700839218416841,0.3512946248914184,0.01878929695026571,2,manual_review,manual_review
+223331,Intelligence Analyst,,,0.19344028355228,0.1059462990407117,0.08749398451156828,6,manual_review,manual_review
+223332,Policy Analyst,,,0.0461074720166058,0.042194683764637,0.003912788251968793,6,manual_review,manual_review
+131431,Property Developer,11-9021.00,Construction Managers,0.0852052569588463,,,1,accepted,single_candidate
+223531,Asset Manager (Property),,,0.1417145835801941,0.1083587283738841,0.03335585520630999,16,manual_review,manual_review
+223532,Valuer,,,0.2744093170063368,0.2573136993133727,0.017095617692964082,4,manual_review,manual_review
+149132,Library Services Manager,,,0.0920534408488013,0.0903500868609351,0.0017033539878661963,12,manual_review,manual_review
+232131,Librarian,25-4022.00,Librarians and Media Collections Specialists,0.4347497713298197,,,1,accepted,single_candidate
+223432,Management Consultant,,,0.0842004792046076,0.0616604583161686,0.022540020888439004,4,manual_review,manual_review
+223434,Supply Chain Analyst,,,0.1832955049697663,0.1056149512471865,0.07768055372257979,4,manual_review,manual_review
+223433,Organisation and Methods Analyst,,,0.0979134401983354,0.0763161057064756,0.0215973344918598,4,manual_review,manual_review
+221331,Electorate Officer,,,0.0257587115849058,0.0206642649745758,0.005094446610330001,6,manual_review,manual_review
+221332,Liaison Officer,,,0.1223323490262615,0.0568778994250838,0.0654544496011777,18,manual_review,manual_review
+281236,Migration Agent,23-1022.00,"Arbitrators, Mediators, and Conciliators",0.0492722940578108,,,1,accepted,single_candidate
+223934,Patents Examiner,45-2011.00,Agricultural Inspectors,0.018661288959447,,,1,accepted,single_candidate
+223932,Cost Controller,13-1051.00,Cost Estimators,0.3135817155341059,0.225294211100918,0.08828750443318792,16,accepted,score_and_gap_rule
+223999,Information and Organisation Professionals nec,,,,,,18,manual_review,manual_review
+221532,Digital Marketing Analyst,,,0.2147850281098424,0.1198912617876662,0.0948937663221762,4,manual_review,manual_review
+221533,Market Research Analyst,,,0.2792815005563488,0.147960907032196,0.13132059352415282,4,manual_review,manual_review
+221531,Content Creator (Marketing),,,0.2227435176823371,0.088251604726275,0.1344919129560621,4,manual_review,manual_review
+221534,Marketing Specialist,,,0.2561764914336801,0.1808064447447964,0.0753700466888837,4,manual_review,manual_review
+221631,ICT Account Manager,,,0.187526692835759,0.1267392257337439,0.0607874671020151,4,manual_review,manual_review
+221431,ICT Business Development Manager,,,0.1635196006153705,0.1027462839434767,0.0607733166718938,4,manual_review,manual_review
+221632,ICT Sales Representative,,,0.2320571682416153,0.2093375674965039,0.022719600745111396,4,manual_review,manual_review
+221231,Communications Officer (Public Relations),27-3031.00,Public Relations Specialists,0.2546222967030628,,,1,accepted,single_candidate
+221633,Sales Representative (Industrial Products),41-4011.00,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",0.3290346779496302,0.1526362583562891,0.1763984195933411,3,accepted,score_and_gap_rule
+221634,Sales Representative (Medical and Pharmaceutical Products),41-4011.00,"Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",0.3551320996775153,0.1603806301293119,0.1947514695482034,3,accepted,score_and_gap_rule
+221699,Technical Sales Representatives nec,,,,,,3,manual_review,manual_review
+244133,Agronomist,,,0.2613852492657728,0.259796533610626,0.0015887156551467885,19,manual_review,manual_review
+299131,Aeroplane Pilot,53-2011.00,"Airline Pilots, Copilots, and Flight Engineers",0.4726701787774972,0.3888148909514062,0.08385528782609097,5,accepted,score_and_gap_rule
+299132,Air Traffic Controller,53-2021.00,Air Traffic Controllers,0.5083875402486097,0.0414879639191781,0.4668995763294316,4,accepted,score_and_gap_rule
+299133,Flight Instructor,53-2011.00,"Airline Pilots, Copilots, and Flight Engineers",0.4246615104714654,0.3468717948544521,0.07778971561701331,5,accepted,score_and_gap_rule
+299134,Helicopter Pilot,53-2011.00,"Airline Pilots, Copilots, and Flight Engineers",0.4085515624105023,0.353065029186108,0.055486533224394285,5,accepted,score_and_gap_rule
+299199,Air Transport Professionals nec,,,,,,5,manual_review,manual_review
+313434,Master Fisher,,,0.2997375547425382,0.0529296321836055,0.24680792255893272,2,manual_review,manual_review
+313431,Marine Engineer,,,0.2585457070878211,0.0876501634426592,0.1708955436451619,4,manual_review,manual_review
+313432,Marine Pilot,,,0.2522283012015752,0.0189812296802605,0.2332470715213147,4,manual_review,manual_review
+313435,Ship's Master,,,0.1851733956329426,0.0775308825797457,0.1076425130531969,4,manual_review,manual_review
+313436,Ship's Officer,53-5021.00,"Captains, Mates, and Pilots of Water Vessels",0.3298234390254965,0.0806525339264724,0.2491709050990241,4,accepted,score_and_gap_rule
+313433,Marine Surveyor,,,0.0602111812042106,0.0485584312275861,0.0116527499766245,9,manual_review,manual_review
+313499,"Marine Transport Masters, Officers and Technicians nec",,,,,,4,manual_review,manual_review
+241131,Architect,17-1011.00,"Architects, Except Landscape and Naval",0.3190979317897192,,,1,accepted,single_candidate
+241132,Landscape Architect,17-1012.00,Landscape Architects,0.251873975437267,,,1,accepted,single_candidate
+241133,Urban Designer,17-1012.00,Landscape Architects,0.1516481672264114,,,1,accepted,single_candidate
+312134,Landscape Designer,17-1012.00,Landscape Architects,0.3239747827704071,,,1,accepted,single_candidate
+241232,Engineering Surveyor,,,0.259680118870391,0.2175736851467695,0.042106433723621495,3,manual_review,manual_review
+241234,Land Surveyor,,,0.2613295572008802,0.2264513079551693,0.034878249245710896,3,manual_review,manual_review
+241235,Mine Surveyor,,,0.0649586503456482,0.0622502349295723,0.0027084154160758947,3,manual_review,manual_review
+241299,Geospatial Information Professionals and Surveyors nec,,,,,,3,manual_review,manual_review
+241231,Cartographer,,,0.145058466636935,0.0711060305902724,0.0739524360466626,3,manual_review,manual_review
+241233,Geospatial Specialist,,,0.1281957158872927,0.1133911232133645,0.014804592673928196,3,manual_review,manual_review
+242231,Fashion Designer,,,0.1904555352765163,0.1896803338355785,0.0007752014409377894,3,manual_review,manual_review
+242232,Industrial Designer,27-1021.00,Commercial and Industrial Designers,0.3367665492988587,0.1073365011118148,0.22943004818704388,3,accepted,score_and_gap_rule
+242234,Textile Designer,,,0.2177954115259354,0.1454846885842098,0.07231072294172561,3,manual_review,manual_review
+242233,Jewellery Designer,,,0.1361995287355717,0.0776824446281128,0.0585170841074589,3,manual_review,manual_review
+242331,Animator or Visual Effects Artist,,,0.2562443991303166,0.0576269413688251,0.1986174577614915,2,manual_review,manual_review
+242332,Graphic Designer,,,0.2536670493443704,0.1146774676732943,0.1389895816710761,2,manual_review,manual_review
+242333,Illustrator,,,0.2880236397184786,0.1707226570054187,0.11730098271305991,4,manual_review,manual_review
+242131,Multimedia Designer,,,0.2168321252317678,0.1190865547311775,0.09774557050059031,2,manual_review,manual_review
+259331,Education Adviser,25-9031.00,Instructional Coordinators,0.2003964766773375,,,1,accepted,single_candidate
+273131,Digital Game Developer,15-1255.01,Video Game Designers,0.3925708040910809,0.0913049249156586,0.3012658791754223,3,accepted,score_and_gap_rule
+242133,Web Designer,,,0.1108205006332929,0.0347400890832454,0.07608041155004751,2,manual_review,manual_review
+242431,Interior Designer,,,0.2753480961971554,0.2611630447585196,0.014185051438635798,4,manual_review,manual_review
+241331,Urban and Regional Planner,19-3051.00,Urban and Regional Planners,0.4088862763629366,,,1,accepted,single_candidate
+243131,Chemical Engineer,17-2041.00,Chemical Engineers,0.6114089148410043,,,1,accepted,single_candidate
+243133,Materials Engineer,,,0.2568738255511187,0.2391425062533295,0.017731319297789205,17,manual_review,manual_review
+243231,Civil Engineer,17-2051.00,Civil Engineers,0.3476287171216661,0.1854876537987607,0.1621410633229054,3,accepted,score_and_gap_rule
+243236,Water Engineer,17-2051.02,Water/Wastewater Engineers,0.5510300679862344,0.1095746890238049,0.44145537896242953,3,accepted,score_and_gap_rule
+243232,Geotechnical Engineer,,,0.2063613511300507,0.1743683584690904,0.031992992660960284,3,manual_review,manual_review
+241932,Quantity Surveyor,,,0.08749047997986,0.0624378369539544,0.025052643025905597,14,manual_review,manual_review
+243234,Structural Engineer,,,0.1522967641136961,0.0786814965829675,0.07361526753072861,3,manual_review,manual_review
+243233,Rail Engineer,,,0.0875822196771285,0.0605032481271322,0.027078971549996292,3,manual_review,manual_review
+243235,Transport Engineer,17-2051.01,Transportation Engineers,0.3311949940786384,0.1727652606615517,0.1584297334170867,3,accepted,score_and_gap_rule
+243331,Electrical Engineer,17-2071.00,Electrical Engineers,0.4056032871703167,,,1,accepted,single_candidate
+243332,Rail Signalling Engineer,17-2071.00,Electrical Engineers,0.1424422097747051,,,1,accepted,single_candidate
+243431,Electronics Engineer,17-2072.00,"Electronics Engineers, Except Computer",0.3383696619872977,0.1081993506688229,0.23017031131847476,3,accepted,score_and_gap_rule
+243531,Industrial Engineer,,,0.2824149330905923,0.2395294196113048,0.042885513479287485,18,manual_review,manual_review
+243532,Mechanical Engineer,,,0.2475709745056315,0.1688792765772571,0.07869169792837441,6,manual_review,manual_review
+243533,Production or Plant Engineer,,,0.1616200255738598,0.0909225855366252,0.07069744003723459,4,manual_review,manual_review
+243631,Mining Engineer (excluding Petroleum),17-2151.00,"Mining and Geological Engineers, Including Mining Safety Engineers",0.4739650812290076,0.2264803675188826,0.247484713710125,4,accepted,score_and_gap_rule
+243632,Petroleum Engineer,17-2171.00,Petroleum Engineers,0.4437505596502727,0.1404075844399939,0.3033429752102788,4,accepted,score_and_gap_rule
+243932,Aerospace Engineer,17-2011.00,Aerospace Engineers,0.4313943618555285,0.1241049246808801,0.3072894371746484,6,accepted,score_and_gap_rule
+243999,Engineering Professionals nec,,,,,,14,manual_review,manual_review
+243933,Biomedical Engineer,,,0.2643677596617229,0.1880186564271289,0.07634910323459398,14,manual_review,manual_review
+243934,Engineering Technologist,,,0.2430186399119022,0.2172707034398458,0.025747936472056393,35,manual_review,manual_review
+243935,Environmental Engineer,17-2081.00,Environmental Engineers,0.4522451402281178,,,1,accepted,single_candidate
+243938,Naval Architect,17-2121.00,Marine Engineers and Naval Architects,0.3409897222193515,0.0996163452068571,0.2413733770124944,6,accepted,score_and_gap_rule
+243931,Acoustic Engineer,,,0.0852285124786751,0.0485345701937368,0.03669394228493831,14,manual_review,manual_review
+243936,Fire Safety Engineer,,,0.256651470307598,0.2246611386864325,0.03199033162116549,14,manual_review,manual_review
+243937,Mechatronics Engineer,17-2199.05,Mechatronics Engineers,0.3951740664014814,0.0835328739129286,0.3116411924885528,14,accepted,score_and_gap_rule
+244131,Agricultural Consultant,25-9021.00,Farm and Home Management Educators,0.3672873487196498,0.22535581974523,0.1419315289744198,3,accepted,score_and_gap_rule
+244132,Agricultural Research Scientist,,,0.2639730015551574,0.2510596047192884,0.012913396835869007,3,manual_review,manual_review
+244134,Aquaculture or Fisheries Scientist,,,0.2297696734452316,0.0777502933517351,0.15201938009349653,16,manual_review,manual_review
+244135,Forester,19-1032.00,Foresters,0.6477141996562943,0.0901064560340203,0.5576077436222739,3,accepted,score_and_gap_rule
+244231,Chemist,19-2031.00,Chemists,0.315765126996786,0.2079433833452252,0.1078217436515608,2,accepted,score_and_gap_rule
+244232,Food Technologist,17-2041.00,Chemical Engineers,0.0615432126337124,,,1,accepted,single_candidate
+244233,Winemaker,17-2041.00,Chemical Engineers,0.0622917461890849,,,1,accepted,single_candidate
+244332,Conservation Officer,,,0.2497759463596438,0.117917562625632,0.13185838373401182,7,manual_review,manual_review
+244431,Environmental Consultant,,,0.3124278007030213,0.3012557571261918,0.011172043576829493,7,manual_review,manual_review
+244333,Ecologist,,,0.282803100592086,0.1883127569138598,0.09449034367822623,7,manual_review,manual_review
+244432,Environmental Research Scientist,19-2041.00,"Environmental Scientists and Specialists, Including Health",0.3441344162793368,0.2811372004407621,0.06299721583857465,7,accepted,score_and_gap_rule
+244331,Aboriginal and Torres Strait Islander Land and Sea Ranger,,,0.1279508080958275,0.1248744993145597,0.003076308781267814,18,manual_review,manual_review
+244334,Park Ranger,19-1031.03,Park Naturalists,0.412381382205543,0.140926418215225,0.271454963990318,18,accepted,score_and_gap_rule
+244499,Environmental Consultants and Scientists nec,,,,,,10,manual_review,manual_review
+244531,Geologist,,,0.1667428476069833,0.0679778546842532,0.0987649929227301,2,manual_review,manual_review
+244532,Geophysicist,,,0.1635799270170439,0.1135406666333202,0.05003926038372371,2,manual_review,manual_review
+244533,Hydrologist,,,0.2246253996153541,0.1069395453270038,0.11768585428835031,2,manual_review,manual_review
+244699,Life Scientists nec,,,,,,14,manual_review,manual_review
+244631,Biotechnologist,,,0.2134392401307865,0.1748370660532327,0.038602174077553786,14,manual_review,manual_review
+244632,Botanist,,,0.1691887417472133,0.1643784415708268,0.004810300176386506,14,manual_review,manual_review
+244634,Marine Biologist,,,0.1560820907348376,0.0897103293413672,0.06637176139347038,14,manual_review,manual_review
+244635,Microbiologist,19-1022.00,Microbiologists,0.3218902674031996,0.1531337817467397,0.1687564856564599,14,accepted,score_and_gap_rule
+244633,Entomologist,,,0.1608460958307737,0.096403513999205,0.06444258183156869,14,manual_review,manual_review
+244636,Zoologist,,,0.3289242546662044,0.3066313380879423,0.0222929165782621,14,manual_review,manual_review
+263934,Neurophysiology Scientist,,,0.130977552126569,0.1150749948257015,0.01590255730086751,13,manual_review,manual_review
+244731,Medical Laboratory Scientist,29-2011.00,Medical and Clinical Laboratory Technologists,0.4063093274404343,0.2861681902970502,0.12014113714338409,20,accepted,score_and_gap_rule
+269531,Veterinarian,29-1131.00,Veterinarians,0.5053395042666156,,,1,accepted,single_candidate
+244931,Conservator,,,0.140156070133187,0.0899310755185234,0.05022499461466361,2,manual_review,manual_review
+243132,Extractive Metallurgist,,,0.1707066699901353,0.1042108240125823,0.06649584597755301,4,manual_review,manual_review
+244932,Meteorologist,19-2021.00,Atmospheric and Space Scientists,0.6136608310527286,,,1,accepted,single_candidate
+244732,Medical Physicist,,,0.1443048577859209,0.0397875607219332,0.10451729706398769,2,manual_review,manual_review
+244933,Physicist,,,0.2847402587618886,0.2555748402857487,0.029165418476139904,2,manual_review,manual_review
+262231,Exercise Physiologist,,,0.1717172871238216,0.1694225769574826,0.0022947101663389757,13,manual_review,manual_review
+262232,Exercise and Sports Scientist,,,0.1801077159217191,0.1515829810572234,0.028524734864495693,13,manual_review,manual_review
+244999,Natural and Physical Science Professionals nec,,,,,,13,manual_review,manual_review
+263936,Respiratory or Sleep Scientist,,,0.0731900751157152,0.059435187427152,0.013754887688563193,13,manual_review,manual_review
+251131,Early Childhood (Pre-primary School) Teacher,,,0.254408193216197,0.2421906253733127,0.012217567842884303,2,manual_review,manual_review
+251231,Primary School Teacher,,,0.4150672907786534,0.4043449874622354,0.010722303316417992,2,manual_review,manual_review
+251931,Teacher Librarian,,,0.2388277933602841,0.2266934476542269,0.012134345706057204,3,manual_review,manual_review
+251331,Secondary School Teacher,25-2031.00,"Secondary School Teachers, Except Special and Career/Technical Education",0.3886176651051555,,,1,accepted,single_candidate
+251431,Special Education Teacher,,,0.362305051110018,0.3554640609347854,0.0068409901752325974,7,manual_review,manual_review
+259999,Education Professionals nec,,,,,,12,manual_review,manual_review
+251433,Teacher of the Deaf,,,0.2254449511268598,0.2231868516549013,0.0022580994719585135,7,manual_review,manual_review
+251432,Specialist Teacher (Vision Impairment),,,0.3127095537075462,0.292165946497286,0.020543607210260217,7,manual_review,manual_review
+252131,University Lecturer,,,0.3199045949981005,0.3136542069637796,0.006250388034320875,37,manual_review,manual_review
+252132,University Tutor,,,0.318804162466183,0.308741452068133,0.010062710398049957,37,manual_review,manual_review
+252231,Vocational Education Teacher,,,0.4294870107445522,0.4192783810962095,0.010208629648342682,40,manual_review,manual_review
+259931,Adult Literacy / Numeracy Teacher,,,0.0919896891730393,0.0916952926043274,0.00029439656871189934,3,manual_review,manual_review
+259332,Education Reviewer,25-9031.00,Instructional Coordinators,0.1075012438086576,,,1,accepted,single_candidate
+259231,Art Teacher (Private Tuition),,,0.3205213444331027,0.3036276262896845,0.016893718143418224,4,manual_review,manual_review
+259232,Dance Teacher (Private Tuition),,,0.2391432628347726,0.2132409495654849,0.025902313269287713,4,manual_review,manual_review
+259233,Speech and Drama Teacher (Private Tuition),,,0.2033296799209455,0.2008442928819712,0.0024853870389743016,4,manual_review,manual_review
+259431,Music Teacher (Private Tuition),25-3021.00,Self-Enrichment Teachers,0.3326161358039863,,,1,accepted,single_candidate
+259131,Academic Tutor (Private Tuition),,,0.3276413556121212,0.2921043067361167,0.03553704887600451,7,manual_review,manual_review
+259299,Arts and Personal Enrichment Teachers (Private Tuition) nec,,,,,,7,manual_review,manual_review
+259531,Teacher of English to Speakers of Other Languages,,,0.3357419477951989,0.3045126583428139,0.031229289452385012,5,manual_review,manual_review
+263231,Dietitian,29-1031.00,Dietitians and Nutritionists,0.3180437474213554,,,1,accepted,single_candidate
+263232,Nutritionist,29-1031.00,Dietitians and Nutritionists,0.4274548099706276,,,1,accepted,single_candidate
+263133,Radiographer,29-2035.00,Magnetic Resonance Imaging Technologists,0.4294227737365637,0.213510003418535,0.2159127703180287,5,accepted,score_and_gap_rule
+263132,Radiation Therapist,29-1124.00,Radiation Therapists,0.4379584051899038,0.3130312561576655,0.12492714903223828,5,accepted,score_and_gap_rule
+263131,Nuclear Medicine Technologist,29-2035.00,Magnetic Resonance Imaging Technologists,0.3236525847325421,0.1842244181974972,0.13942816653504492,5,accepted,score_and_gap_rule
+263531,Sonographer,29-2032.00,Diagnostic Medical Sonographers,0.3657842179887763,0.2474557558320453,0.11832846215673101,5,accepted,score_and_gap_rule
+263932,Cardiac Physiologist,29-2031.00,Cardiovascular Technologists and Technicians,0.3037520545598889,0.1894252969637626,0.11432675759612632,23,accepted,score_and_gap_rule
+269331,Environmental Health Officer,,,0.2118248869025531,0.1916235396003144,0.020201347302238715,10,manual_review,manual_review
+222331,Rehabilitation Consultant,,,0.0718927517483766,0.0441037142750709,0.027789037473305703,2,manual_review,manual_review
+222332,Work Health and Safety Adviser,19-5011.00,Occupational Health and Safety Specialists,0.3215358599609861,0.1694740359410894,0.1520618240198967,2,accepted,score_and_gap_rule
+263331,Optometrist,29-1041.00,Optometrists,0.4603329747179055,,,1,accepted,single_candidate
+263935,Orthoptist,29-1041.00,Optometrists,0.4270550226535962,,,1,accepted,single_candidate
+263432,Hospital Pharmacist,29-1051.00,Pharmacists,0.270437308750973,,,1,accepted,single_candidate
+263431,Community Pharmacist,29-1051.00,Pharmacists,0.3059956035941709,,,1,accepted,single_candidate
+263933,Diabetes Educator,21-1094.00,Community Health Workers,0.1053060242465883,,,1,accepted,single_candidate
+265131,Midwife,29-1161.00,Nurse Midwives,0.3256556710417779,,,1,accepted,single_candidate
+269332,Health Promotion Officer,21-1094.00,Community Health Workers,0.2184234481469885,,,1,accepted,single_candidate
+262931,Orthotist / Prosthetist,,,0.2002805357642202,0.1134043462215395,0.0868761895426807,4,manual_review,manual_review
+261999,"Allied Health Counselling, Psychology, Social Work and Creative Therapy Professionals nec",,,,,,13,manual_review,manual_review
+262999,Allied Health Physical and Sensory Therapy Professionals nec,,,,,,13,manual_review,manual_review
+263999,Allied Health Science Professionals nec,,,,,,13,manual_review,manual_review
+269999,Health Professionals nec,,,,,,17,manual_review,manual_review
+262131,Chiropractor,,,0.3056485178705361,0.3055869753319704,6.154253856571756e-05,13,manual_review,manual_review
+262932,Osteopath,,,0.245700154957194,0.2425194670597442,0.0031806878974497965,13,manual_review,manual_review
+269931,Acupuncturist,,,0.1932801985273238,0.1524490442770061,0.04083115425031772,4,manual_review,manual_review
+269933,Naturopath,,,0.1809087044829638,0.1788488642511403,0.002059840231823512,4,manual_review,manual_review
+269932,Chinese Medicine Practitioner,,,0.2836526765456193,0.17271936081402,0.11093331573159931,4,manual_review,manual_review
+261931,Arts Therapist,,,0.2909336578147007,0.1911484984747307,0.09978515933997001,13,manual_review,manual_review
+261933,Music Therapist,29-1129.02,Music Therapists,0.4742129083763369,0.2436336871223072,0.2305792212540297,13,accepted,score_and_gap_rule
+269231,Dental Specialist,,,0.5461060121452388,0.521563101713824,0.024542910431414766,5,manual_review,manual_review
+269232,Dentist,,,0.5772168117060056,0.5571131830898947,0.020103628616110925,5,manual_review,manual_review
+262331,Occupational Therapist,,,0.1901465960402814,0.1469751059766042,0.04317149006367718,13,manual_review,manual_review
+262431,Physiotherapist,,,0.1694726433947813,0.1229358503149925,0.046536793079788794,2,manual_review,manual_review
+262531,Podiatrist,,,0.2184631252178015,0.1632744540570751,0.0551886711607264,13,manual_review,manual_review
+263931,Audiologist,29-1181.00,Audiologists,0.6412641306122849,0.2356262498920008,0.40563788072028417,2,accepted,score_and_gap_rule
+262631,Speech Pathologist,,,0.2496978129961053,0.0794292114286474,0.1702686015674579,2,manual_review,manual_review
+264231,General Practitioner,,,0.3817770949210645,0.3479749204018927,0.03380217451917178,17,manual_review,manual_review
+264531,Resident Medical Officer,,,0.3294944228242794,0.2828999763607365,0.04659444646354288,17,manual_review,manual_review
+264131,Anaesthetist,,,0.2858019090507865,0.2743251857515876,0.01147672329919891,20,manual_review,manual_review
+264331,General Medicine Physician,,,0.1926780440004951,0.1848150699674891,0.00786297403300601,20,manual_review,manual_review
+264332,Cardiologist,29-1212.00,Cardiologists,0.4272747044773799,0.1305713891159028,0.2967033153614771,20,accepted,score_and_gap_rule
+264336,Haematologist,,,0.1687670155745945,0.156306924006107,0.012460091568487514,20,manual_review,manual_review
+264338,Medical Oncologist,,,0.2156251203317696,0.1799766323420275,0.0356484879897421,20,manual_review,manual_review
+264333,Endocrinologist,,,0.1193152690703394,0.1148433373586898,0.004471931711649599,20,manual_review,manual_review
+264334,Gastroenterologist,,,0.1773282639376142,0.174515214546532,0.0028130493910822063,20,manual_review,manual_review
+264337,Intensive Care Specialist,,,0.2406713037387686,0.2044104631526654,0.03626084058610321,20,manual_review,manual_review
+264342,Neurologist,29-1217.00,Neurologists,0.4818673357505795,0.1760081132167438,0.3058592225338357,20,accepted,score_and_gap_rule
+264343,Paediatrician,,,0.2104290905153776,0.1405428998879957,0.06988619062738188,20,manual_review,manual_review
+264345,Respiratory Physician,,,0.1831688311791704,0.1380178720931148,0.0451509590860556,20,manual_review,manual_review
+264341,Nephrologist,,,0.0968772720954948,0.0953889688905417,0.0014883032049531064,20,manual_review,manual_review
+264346,Rheumatologist,,,0.1593380047808677,0.1577898537144545,0.0015481510664132059,20,manual_review,manual_review
+264335,Geriatrician,,,0.1357647818424706,0.1334995522201459,0.0022652296223246993,20,manual_review,manual_review
+264344,Public Health Physician,29-1229.05,Preventive Medicine Physicians,0.4267393194759748,0.1507293294848849,0.27600998999108994,20,accepted,score_and_gap_rule
+264399,Physicians nec,,,,,,20,manual_review,manual_review
+264431,Psychiatrist,,,0.2527369245007979,0.2103329808341891,0.04240394366660877,20,manual_review,manual_review
+264631,General Surgeon,,,0.3457544034636249,0.3220437817524628,0.023710621711162116,20,manual_review,manual_review
+264632,Cardiothoracic Surgeon,,,0.2944903290978491,0.2777219787049101,0.016768350392939002,20,manual_review,manual_review
+264633,Neurosurgeon,29-1217.00,Neurologists,0.404913527443126,0.2292845224009268,0.17562900504219917,20,accepted,score_and_gap_rule
+264634,Orthopaedic Surgeon,,,0.2871607258396883,0.169034452812419,0.11812627302726933,20,manual_review,manual_review
+264635,Otolaryngologist,,,0.1830724996728298,0.1401107255405288,0.042961774132300984,20,manual_review,manual_review
+264636,Paediatric Surgeon,,,0.2983871992641327,0.2771968286068339,0.021190370657298785,20,manual_review,manual_review
+264637,Plastic and Reconstructive Surgeon,,,0.1803605717089878,0.1468265539867761,0.033534017722211706,20,manual_review,manual_review
+264638,Urologist,,,0.2187238320868001,0.2074463253775943,0.011277506709205798,20,manual_review,manual_review
+264641,Vascular Surgeon,,,0.2176596258846329,0.1313379486574921,0.08632167722714079,20,manual_review,manual_review
+264931,Dermatologist,29-1213.00,Dermatologists,0.4088267394905535,0.3059063001905339,0.1029204393000196,20,accepted,score_and_gap_rule
+264932,Emergency Medicine Specialist,29-1214.00,Emergency Medicine Physicians,0.3814454382528943,0.272115391432044,0.10933004682085029,20,accepted,score_and_gap_rule
+264933,Obstetrician and Gynaecologist,,,0.2297671025715504,0.1282743735250718,0.1014927290464786,20,manual_review,manual_review
+264934,Ophthalmologist,29-1241.00,"Ophthalmologists, Except Pediatric",0.345551855868408,0.1322366956007684,0.21331516026763958,20,accepted,score_and_gap_rule
+264935,Pathologist,,,0.2011028200822032,0.1779753993239344,0.02312742075826879,20,manual_review,manual_review
+264937,Radiologist,,,0.2728275373781956,0.2405068379623219,0.032320699415873705,20,manual_review,manual_review
+264936,Radiation Oncologist,,,0.2205023184614616,0.207065845169657,0.013436473291804585,20,manual_review,manual_review
+264999,Medical Practitioners nec,,,,,,20,manual_review,manual_review
+265231,Nurse Educator,29-1141.04,Clinical Nurse Specialists,0.4154262135347445,0.2479674966158045,0.16745871691894001,7,accepted,score_and_gap_rule
+265232,Nurse Researcher,29-1141.04,Clinical Nurse Specialists,0.3524625824449824,0.1844776574728892,0.16798492497209322,7,accepted,score_and_gap_rule
+265331,Nursing / Midwifery Unit Manager,29-1141.04,Clinical Nurse Specialists,0.4478880180515874,0.2568783127674995,0.1910097052840879,7,accepted,score_and_gap_rule
+265431,Nurse Practitioner,,,0.3660572636705568,0.3215471787666599,0.04451008490389691,7,manual_review,manual_review
+265433,Registered Nurse (Aged Care),,,0.3079089471422547,0.2816594385329656,0.026249508609289096,7,manual_review,manual_review
+265435,Registered Nurse (Primary Health Care),,,0.3931158028894077,0.3553579729002076,0.037757829989200076,7,manual_review,manual_review
+265432,Registered Nurse (Acute Care),,,0.2909919328225673,0.2359921178455019,0.05499981497706541,7,manual_review,manual_review
+265434,Registered Nurse (Mental Health),29-1141.02,Advanced Practice Psychiatric Nurses,0.3370817644525042,0.2372183707306001,0.09986339372190411,7,accepted,score_and_gap_rule
+265499,Registered Nurses nec,,,,,,7,manual_review,manual_review
+223431,Enterprise Architect,,,0.1014053030743922,0.0737719414257765,0.027633361648615698,4,manual_review,manual_review
+273231,Cloud Architect,,,0.0406086988208724,0.0330670954787078,0.007541603342164603,3,manual_review,manual_review
+273232,ICT Business Analyst,,,0.1598402444120937,0.096712052784504,0.06312819162758972,3,manual_review,manual_review
+273233,Solution Architect,,,0.1048286646061217,0.102447714660992,0.00238094994512969,3,manual_review,manual_review
+273234,Systems Analyst,,,0.1039785131987338,0.0788559451392547,0.0251225680594791,3,manual_review,manual_review
+273132,Web Developer,,,0.3155684328811569,0.2839380221183802,0.03163041076277667,3,manual_review,manual_review
+273333,Software Engineer,,,0.2762282520762389,0.1805331073981488,0.09569514467809012,3,manual_review,manual_review
+223232,Data Architect,,,0.2455366619845845,0.2349231149299658,0.0106135470546187,6,manual_review,manual_review
+223233,Data Engineer,,,0.1679649686463008,0.1325013101514427,0.03546365849485811,6,manual_review,manual_review
+271135,Cyber Security Engineer,,,0.2438261310928903,0.2028428345988383,0.040983296494051996,2,manual_review,manual_review
+273331,Cloud Engineer,,,0.0415305171748136,0.0263249201816577,0.015205596993155896,2,manual_review,manual_review
+273332,DevOps Engineer,,,0.1950592439891049,0.1234056564245354,0.07165358756456951,2,manual_review,manual_review
+271137,Penetration Tester,,,0.4407662660669463,0.3973110216950906,0.04345524437185572,16,manual_review,manual_review
+272233,ICT Test Analyst,15-1253.00,Software Quality Assurance Analysts and Testers,0.4009005396209918,0.2701177208218523,0.1307828187991395,16,accepted,score_and_gap_rule
+271231,Database Administrator,,,0.4752294660946526,0.4580467842861737,0.017182681808478928,3,manual_review,manual_review
+271131,Cyber Governance Risk and Compliance Specialist,,,0.4069948431753376,0.360148540461902,0.046846302713435595,17,manual_review,manual_review
+271132,Cyber Security Advice and Assessment Specialist,15-1299.05,Information Security Engineers,0.6171174433104564,0.4782120993376343,0.13890534397282206,17,accepted,score_and_gap_rule
+271133,Cyber Security Analyst,15-1299.04,Penetration Testers,0.4849818485512174,0.4175626149020292,0.06741923364918817,17,accepted,score_and_gap_rule
+271134,Cyber Security Architect,15-1299.05,Information Security Engineers,0.5391443644782438,0.4450397180392948,0.09410464643894895,17,accepted,score_and_gap_rule
+271136,Cyber Security Operations Coordinator,,,0.5369922168680585,0.5029855788129304,0.03400663805512816,17,manual_review,manual_review
+271232,Systems Administrator,15-1244.00,Network and Computer Systems Administrators,0.3042849559687423,,,1,accepted,single_candidate
+272131,ICT Network and Systems Engineer,15-1241.00,Computer Network Architects,0.5586952815548885,0.3026941913816329,0.25600109017325556,2,accepted,score_and_gap_rule
+272132,Network Administrator,15-1244.00,Network and Computer Systems Administrators,0.4179559173232613,,,1,accepted,single_candidate
+272133,Network Architect,15-1241.00,Computer Network Architects,0.6822932983884481,0.1924450888549896,0.48984820953345853,2,accepted,score_and_gap_rule
+272231,ICT Quality Assurance Engineer,,,0.1718772046994271,0.1633182258996934,0.008558978799733719,16,manual_review,manual_review
+272232,ICT Support Engineer,,,0.2971603050803818,0.2364684247109642,0.06069188036941764,16,manual_review,manual_review
+242132,UI / UX Designer,,,0.0679055327280727,0.0502197888465736,0.017685743881499107,2,manual_review,manual_review
+272331,Telecommunications Engineer,,,0.1321951094472324,0.0258863638110201,0.10630874563621229,2,manual_review,manual_review
+281131,Barrister,23-1011.00,Lawyers,0.2546147888579487,,,1,accepted,single_candidate
+281237,Police Prosecutor,23-1011.00,Lawyers,0.2618865482271735,,,1,accepted,single_candidate
+281233,Judge,23-1023.00,"Judges, Magistrate Judges, and Magistrates",0.3334919380466141,0.1658110561954975,0.1676808818511166,2,accepted,score_and_gap_rule
+281235,Magistrate,,,0.2388261220126321,0.1431879028449044,0.09563821916772769,2,manual_review,manual_review
+281238,Tribunal Member,23-1022.00,"Arbitrators, Mediators, and Conciliators",0.196026086556658,,,1,accepted,single_candidate
+281232,Intellectual Property Lawyer,23-1011.00,Lawyers,0.1519901844618962,,,1,accepted,single_candidate
+281231,Family Dispute Resolution Practitioner,23-1022.00,"Arbitrators, Mediators, and Conciliators",0.1044036654929417,,,1,accepted,single_candidate
+281299,Judicial and Other Legal Professionals nec,23-1022.00,"Arbitrators, Mediators, and Conciliators",,,,1,accepted,single_candidate
+281331,Solicitor,23-1011.00,Lawyers,0.3246553322181821,,,1,accepted,single_candidate
+259932,Careers Adviser,21-1012.00,"Educational, Guidance, and Career Counselors and Advisors",0.3347035333445224,0.1915092324228369,0.1431943009216855,4,accepted,score_and_gap_rule
+261132,Alcohol and Other Drugs Counsellor,,,0.2602664416114533,0.2094942657038241,0.0507721759076292,11,manual_review,manual_review
+261133,Family and Relationship Counsellor,,,0.1036389433359828,0.087638406222036,0.01600053711394679,11,manual_review,manual_review
+261135,Rehabilitation Counsellor,21-1015.00,Rehabilitation Counselors,0.3755192937700122,0.2579128734217334,0.11760642034827878,11,accepted,score_and_gap_rule
+261136,School Counsellor,,,0.2801054242141916,0.2761696361294915,0.003935788084700076,5,manual_review,manual_review
+259933,Student Services Adviser,,,0.0977778850976133,0.0850725487174731,0.012705336380140195,11,manual_review,manual_review
+261131,Counsellor (General),,,0.1821261378287031,0.1679970516125918,0.014129086216111308,11,manual_review,manual_review
+232231,Religious Leader,21-2011.00,Clergy,0.458895319689057,0.3500307918170087,0.10886452787204831,3,accepted,score_and_gap_rule
+261231,Psychologist,,,0.2946878099023092,0.1595656466899601,0.1351221632123491,6,manual_review,manual_review
+261134,Psychotherapist,,,0.2013456252061903,0.0963546090800908,0.10499101612609948,6,manual_review,manual_review
+261932,Behaviour Support Practitioner,,,0.1764332961270448,0.1747042257855948,0.0017290703414500064,11,manual_review,manual_review
+232336,Historian,19-3093.00,Historians,0.5762833469083717,0.1841814607869203,0.39210188612145136,4,accepted,score_and_gap_rule
+411531,Interpreter,,,0.1434057106314818,0.0019538598693816,0.1414518507621002,3,manual_review,manual_review
+411532,Translator,,,0.257362320175816,0.0138773169120448,0.2434850032637712,3,manual_review,manual_review
+232331,Archaeologist,,,0.1195033994694423,0.0516126452641461,0.0678907542052962,3,manual_review,manual_review
+232335,Heritage Consultant,,,0.1124895371962174,0.0672734362383313,0.0452161009578861,7,manual_review,manual_review
+232399,Social Science and Related Professionals nec,,,,,,8,manual_review,manual_review
+261331,Social Worker,,,0.2490022182373377,0.2423348603105087,0.006667357926829015,11,manual_review,manual_review
+231931,Community Arts Worker,,,0.1162572898221391,0.0962589397972568,0.019998350024882303,11,manual_review,manual_review
+411931,Recreation Officer,,,0.1511058863889311,0.1377495013749766,0.013356385013954503,11,manual_review,manual_review
+411131,Child Protection Practitioner,,,0.2306907760306493,0.1472341277560946,0.0834566482745547,11,manual_review,manual_review
+411132,Family Violence Practitioner,,,0.1110067199628463,0.1024928864115035,0.008513833551342803,11,manual_review,manual_review
+411633,Financial Counsellor (Community),,,0.1190169826431794,0.0919398089137206,0.02707717372945881,11,manual_review,manual_review
+411636,Welfare Worker,,,0.192457338059779,0.1724875600366757,0.01996977802310329,11,manual_review,manual_review
+441331,Mental Health Worker,,,0.2536692381963408,0.223724558712739,0.0299446794836018,11,manual_review,manual_review
+311131,Agricultural and Agritech Technician,,,0.2914707618601651,0.1470198252100946,0.14445093665007047,3,manual_review,manual_review
+311132,Animal Husbandry Technician,,,0.031235717806227,0.0185244151123158,0.0127113026939112,3,manual_review,manual_review
+311133,Aquaculture or Fisheries Technician,,,0.0563511309095237,0.0431530480023804,0.013198082907143298,3,manual_review,manual_review
+311136,Irrigation Designer,,,0.1113802489496107,0.0796970793473689,0.031683169602241795,3,manual_review,manual_review
+311231,Anaesthetic Technician,,,0.1727982776214674,0.1192426307697448,0.05355564685172261,18,manual_review,manual_review
+311233,Medical Laboratory Technician,,,0.3449038444696849,0.3142948565908516,0.030608987878833316,6,manual_review,manual_review
+311234,Operating Theatre Technician,29-2055.00,Surgical Technologists,0.4813284805380914,0.338728660568301,0.14259981996979043,18,accepted,score_and_gap_rule
+311331,Community Pharmacy Technician,29-2052.00,Pharmacy Technicians,0.2760496437008437,,,1,accepted,single_candidate
+311332,Hospital Pharmacy Technician,29-2052.00,Pharmacy Technicians,0.2259225796135911,,,1,accepted,single_candidate
+311431,Phlebotomist,,,0.2819443135146832,0.1143283057888688,0.1676160077258144,10,manual_review,manual_review
+311235,Respiratory Technician,,,0.0682725425273367,0.0548090944138296,0.013463448113507095,4,manual_review,manual_review
+311299,Medical and Dental Technicians nec,,,,,,24,manual_review,manual_review
+441933,Audiometrist,29-1181.00,Audiologists,0.5064902360409023,0.215504446010192,0.29098579003071023,2,accepted,score_and_gap_rule
+311135,Fisheries Officer,45-2011.00,Agricultural Inspectors,0.0419055526456817,,,1,accepted,single_candidate
+311137,Meat Inspector,45-2011.00,Agricultural Inspectors,0.3263002440264657,0.0984216278714097,0.22787861615505597,8,accepted,score_and_gap_rule
+311134,Biosecurity Officer,,,0.0726780402406603,0.0596843384776544,0.012993701763005898,11,manual_review,manual_review
+311138,Primary Products Quality Assurance Officer,,,0.2191575908030384,0.0976091742471231,0.12154841655591529,8,manual_review,manual_review
+311199,Agricultural Technicians and Inspection Officers nec,,,,,,8,manual_review,manual_review
+311531,Chemical Technician,19-4031.00,Chemical Technicians,0.3059218865832233,0.1090331996421932,0.19688868694103007,6,accepted,score_and_gap_rule
+311532,Earth Science Technician,,,0.1509083248317959,0.0797559307820577,0.0711523940497382,6,manual_review,manual_review
+269532,Veterinary Technologist,,,0.3780493716731005,0.369504417147881,0.008544954525219473,2,manual_review,manual_review
+311535,Life Science Technician,,,0.1826474000933961,0.1051577869138006,0.07748961317959552,3,manual_review,manual_review
+311536,School Laboratory Technician,,,0.1581034844196701,0.1174574021144862,0.04064608230518389,6,manual_review,manual_review
+311534,Hydrographer,,,0.1914626050598506,0.0669813995643381,0.1244812054955125,6,manual_review,manual_review
+311599,Science Technicians nec,,,,,,20,manual_review,manual_review
+312132,Building Designer,,,0.1643565908175007,0.1531286019016423,0.011227988915858411,5,manual_review,manual_review
+312431,Civil Construction Leading Hand,,,0.2728084750448056,0.0447667032965805,0.2280417717482251,2,manual_review,manual_review
+312432,Construction Site Supervisor,47-1011.00,First-Line Supervisors of Construction Trades and Extraction Workers,0.3634660939692447,0.0893110277897012,0.2741550661795435,2,accepted,score_and_gap_rule
+241931,Building Surveyor,,,0.2015648051205699,0.0978476518039672,0.1037171533166027,6,manual_review,manual_review
+312231,Building Inspector,,,0.1714795149864792,0.129536414872601,0.041943100113878196,6,manual_review,manual_review
+312331,Construction Estimator,17-3022.00,Civil Engineering Technologists and Technicians,0.3570771830016357,0.0927876138446467,0.264289569156989,6,accepted,score_and_gap_rule
+312233,Plumbing Inspector,45-2011.00,Agricultural Inspectors,0.0743547157056985,,,1,accepted,single_candidate
+311533,Geospatial Technician,,,0.1756497872140159,0.0619123059971774,0.11373748121683849,11,manual_review,manual_review
+312135,Surveying Technician,,,0.2813395845228899,0.1488722596105302,0.13246732491235969,11,manual_review,manual_review
+312133,Detailer Drafter,,,0.2424537427540222,0.1561469954717935,0.0863067472822287,5,manual_review,manual_review
+312199,Building and Landscape Designers and Technicians nec,,,,,,23,manual_review,manual_review
+312232,Energy Assessor,,,0.0929924260421179,0.0884852448693587,0.004507181172759195,18,manual_review,manual_review
+313131,Civil Engineering Draftsperson,,,0.24202993955252,0.1891222355309112,0.0529077040216088,5,manual_review,manual_review
+313132,Civil Engineering Technician,,,0.187308727948863,0.1000338201413609,0.08727490780750209,6,manual_review,manual_review
+313231,Electrical Engineering Draftsperson,,,0.2724686515739976,0.2458320020940071,0.026636649479990476,5,manual_review,manual_review
+313232,Electrical Engineering Technician,17-3023.00,Electrical and Electronic Engineering Technologists and Technicians,0.3151459016337264,0.176333480764569,0.1388124208691574,3,accepted,score_and_gap_rule
+313937,Other Draftsperson,17-3011.00,Architectural and Civil Drafters,0.3474537901522082,0.2820480283830264,0.06540576176918178,5,accepted,score_and_gap_rule
+313932,Electronic Engineering Technician,17-3023.00,Electrical and Electronic Engineering Technologists and Technicians,0.3353381547866041,,,1,accepted,single_candidate
+313933,Mechanical Engineering Draftsperson,,,0.2502205235524752,0.2175099514698881,0.0327105720825871,5,manual_review,manual_review
+313934,Mechanical Engineering Technician,17-3027.00,Mechanical Engineering Technologists and Technicians,0.310336986301678,0.2114600765168554,0.09887690978482261,9,accepted,score_and_gap_rule
+312234,Safety Inspector,17-2111.00,"Health and Safety Engineers, Except Mining Safety Engineers and Inspectors",0.3539674475451935,0.2378691395039932,0.1160983080412003,28,accepted,score_and_gap_rule
+313331,Maintenance Planner,43-5061.00,"Production, Planning, and Expediting Clerks",0.2197651621723155,,,1,accepted,single_candidate
+313935,Metallurgical or Materials Technician,,,0.1714388771621245,0.1506633121940148,0.0207755649681097,19,manual_review,manual_review
+313936,Non-destructive Testing Technician,,,0.1248298146743407,0.0698349910978912,0.05499482357644951,19,manual_review,manual_review
+313531,Mining Supervisor,,,0.0440535709448077,0.0265020629523478,0.017551507992459896,2,manual_review,manual_review
+312131,Architectural Technician,,,0.2152614116909065,0.1860578325289422,0.02920357916196431,5,manual_review,manual_review
+313931,Biomedical Technician,,,0.0859195634079532,0.0692427769255254,0.016676786482427805,18,manual_review,manual_review
+313999,Engineering Technicians nec,,,,,,18,manual_review,manual_review
+314131,ICT Hardware Technician,,,0.0667234579117961,0.0530399005215841,0.013683557390211994,7,manual_review,manual_review
+314231,ICT Customer Support Officer,15-1232.00,Computer User Support Specialists,0.3875916258810062,0.1751591452022202,0.212432480678786,2,accepted,score_and_gap_rule
+314136,Web Administrator,,,0.3355237493964701,0.2952345998587443,0.04028914953772583,4,manual_review,manual_review
+314199,ICT and Telecommunications Technicians nec,,,,,,17,manual_review,manual_review
+314132,Radiocommunications Technician,17-3023.00,Electrical and Electronic Engineering Technologists and Technicians,0.1167610507812644,,,1,accepted,single_candidate
+314133,Telecommunications Field Engineer,17-3023.00,Electrical and Electronic Engineering Technologists and Technicians,0.1388627624787325,,,1,accepted,single_candidate
+314134,Telecommunications Network Designer,17-3023.00,Electrical and Electronic Engineering Technologists and Technicians,0.0513306890523931,,,1,accepted,single_candidate
+314135,Telecommunications Technical Officer or Technologist,17-3023.00,Electrical and Electronic Engineering Technologists and Technicians,0.0904767527384287,,,1,accepted,single_candidate
+351231,Automotive Electrician,,,0.2679556361793762,0.1702707909196054,0.09768484525977078,13,manual_review,manual_review
+351434,Electric Vehicle Technician,,,0.1648075002808576,0.1397668439625629,0.02504065631829472,13,manual_review,manual_review
+351131,Automotive Technician (General),,,0.1575261362366342,0.1423490300190008,0.015177106217633407,10,manual_review,manual_review
+351435,Marine Technician,,,0.1936661832152604,0.11754436486698,0.07612181834828041,10,manual_review,manual_review
+351433,Diesel Technician,,,0.3060420749197993,0.2781796654950528,0.027862409424746493,10,manual_review,manual_review
+351436,Motorcycle Technician,,,0.1895258900218522,0.1672839557614105,0.022241934260441687,10,manual_review,manual_review
+351437,Small Engine Technician,49-3053.00,Outdoor Power Equipment and Other Small Engine Mechanics,0.3059595354605574,0.2555204757613423,0.05043905969921508,10,accepted,score_and_gap_rule
+331931,Blacksmith,,,0.1246740601019731,,,2,manual_review,manual_review
+331932,Electroplater,51-4193.00,"Plating Machine Setters, Operators, and Tenders, Metal and Plastic",0.3307764426699167,0.1522804395405559,0.1784960031293608,3,accepted,score_and_gap_rule
+331933,Farrier,,,0.0,,,2,manual_review,manual_review
+331934,Metal Casting Trades Worker,,,0.1523922054522906,0.112720961292914,0.039671244159376604,2,manual_review,manual_review
+331935,Metal Polisher,,,0.1877383703301764,0.1376747782567369,0.050063592073439495,2,manual_review,manual_review
+331936,Sheetmetal Worker,,,0.2358232831667242,0.21363635454921,0.0221869286175142,3,manual_review,manual_review
+331131,Metal Fabricator,,,0.1599292171465514,0.1597122900341624,0.00021692711238899265,8,manual_review,manual_review
+331132,Pressure Welder,,,0.1426390561785075,0.1192498102626741,0.023389245915833398,2,manual_review,manual_review
+331133,Welder (First Class),,,0.2194850371612325,0.212999390973181,0.006485646188051503,2,manual_review,manual_review
+332131,Aircraft Maintenance Technician (Avionics),,,0.2575181817290686,0.1572436761157259,0.1002745056133427,7,manual_review,manual_review
+332134,Licensed Aircraft Maintenance Engineer,49-3011.00,Aircraft Mechanics and Service Technicians,0.3077668184949346,0.1551995282109616,0.15256729028397298,8,accepted,score_and_gap_rule
+332132,Aircraft Maintenance Technician (Mechanical),49-3011.00,Aircraft Mechanics and Service Technicians,0.3430091356153504,0.035388706066716,0.3076204295486344,2,accepted,score_and_gap_rule
+332133,Aircraft Maintenance Technician (Structures),,,0.0417475320581182,0.0356368724243596,0.006110659633758599,3,manual_review,manual_review
+332231,Fitter (General),,,0.3670755375770905,0.3519821561918632,0.015093381385227311,21,manual_review,manual_review
+332232,Fitter and Turner,51-4041.00,Machinists,0.3233661545986093,0.2334384939199253,0.08992766067868399,12,accepted,score_and_gap_rule
+332233,Fitter-Welder,,,0.3025104786966697,0.2822809212295042,0.020229557467165482,2,manual_review,manual_review
+332234,Metal Machinist (First Class),51-4041.00,Machinists,0.342563017923349,0.2769631678338927,0.06559985008945629,12,accepted,score_and_gap_rule
+332299,Metal Fitters and Machinists nec,,,,,,9,manual_review,manual_review
+351431,Agricultural Mechanic,,,0.2375220227999099,0.2338714597500417,0.0036505630498681885,9,manual_review,manual_review
+332332,Engraver,51-9194.00,Etchers and Engravers,0.3788069685200362,0.0547318347190656,0.3240751338009706,2,accepted,score_and_gap_rule
+332333,Gunsmith,,,0.02048557867461,0.0087019249616261,0.011783653712983901,6,manual_review,manual_review
+332334,Locksmith,,,0.2198189322315368,0.0197111025728722,0.2001078296586646,6,manual_review,manual_review
+332335,Precision Instrument Maker and Repairer,,,0.2413163363682745,0.1310619985062487,0.11025433786202579,5,manual_review,manual_review
+332336,Saw Technician,,,0.1433718671055314,0.1238573758094526,0.01951449129607881,8,manual_review,manual_review
+332338,Watch and Clock Maker and Repairer,49-9064.00,Watch and Clock Repairers,0.4189395259388216,0.0396948842415466,0.379244641697275,5,accepted,score_and_gap_rule
+332331,Engineering Patternmaker,51-4062.00,"Patternmakers, Metal and Plastic",0.3024042081516418,0.1021996390197748,0.20020456913186702,6,accepted,score_and_gap_rule
+332337,Toolmaker,,,0.2545170933810268,0.2439483181594676,0.01056877522155919,6,manual_review,manual_review
+351331,Panelbeater,,,0.1162655106786842,0.0921035775005081,0.024161933178176095,3,manual_review,manual_review
+351531,Vehicle Body Builder,,,0.0884574636570575,0.0837825757694392,0.004674887887618301,3,manual_review,manual_review
+351532,Vehicle Trimmer,51-6093.00,Upholsterers,0.1233907928529769,,,1,accepted,single_candidate
+351631,Vehicle Painter,51-9124.00,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",0.262261803417153,,,1,accepted,single_candidate
+371131,Bricklayer,47-2021.00,Brickmasons and Blockmasons,0.301443222192955,0.1168306319627735,0.1846125902301815,2,accepted,score_and_gap_rule
+371132,Stonemason,,,0.2889473995214252,0.0684231634473983,0.22052423607402688,2,manual_review,manual_review
+369931,Shopfitter,47-2031.00,Carpenters,0.0782043760170133,,,1,accepted,single_candidate
+372131,Carpenter and Joiner,47-2031.00,Carpenters,0.3362182524820907,,,1,accepted,single_candidate
+372132,Carpenter,47-2031.00,Carpenters,0.1965330602573428,,,1,accepted,single_candidate
+372133,Joiner,47-2031.00,Carpenters,0.0742231520345364,,,1,accepted,single_candidate
+361131,Floor Finisher,,,0.2071299046282513,0.1550096822527173,0.05212022237553399,15,manual_review,manual_review
+361231,Painter,47-2141.00,"Painters, Construction and Maintenance",0.374041194011725,0.2296391457026955,0.14440204830902947,2,accepted,score_and_gap_rule
+362131,Glazier,47-2121.00,Glaziers,0.5734714432369077,,,1,accepted,single_candidate
+362231,Plasterer (Wall and Ceiling),,,0.2615118644773476,0.2144090839846986,0.04710278049264899,3,manual_review,manual_review
+362232,Renderer (Solid Plaster),47-2161.00,Plasterers and Stucco Masons,0.3079513173765373,0.1552835911541175,0.1526677262224198,3,accepted,score_and_gap_rule
+362331,Roof Tiler,47-2181.00,Roofers,0.2511188205050817,,,1,accepted,single_candidate
+362431,Wall and Floor Tiler,47-2044.00,Tile and Stone Setters,0.3748772549185005,0.1712135085077167,0.2036637464107838,4,accepted,score_and_gap_rule
+363131,Plumber (General),,,0.2861669937390911,0.2674744107223766,0.018692583016714504,3,manual_review,manual_review
+363932,Fire Protection Plumber,,,0.0850322504192978,0.0727624559376527,0.0122697944816451,3,manual_review,manual_review
+363933,Mechanical Services Plumber,,,0.1790766326803357,0.09256107271772,0.08651555996261569,3,manual_review,manual_review
+363931,Drainer,,,0.1691783031723047,0.1353570676652122,0.03382123550709251,3,manual_review,manual_review
+363231,Gasfitter,,,0.0878185057247599,0.0633668259049199,0.02445167981983999,3,manual_review,manual_review
+399934,Gas Network Technician,,,0.0156268722838714,0.0148179720152225,0.0008089002686488978,3,manual_review,manual_review
+363331,Roof Plumber,47-2181.00,Roofers,0.399986512154025,0.0510500512866903,0.34893646086733465,4,accepted,score_and_gap_rule
+381231,Electrician (General),47-2111.00,Electricians,0.4082905585598796,0.2573054130818035,0.15098514547807612,15,accepted,score_and_gap_rule
+381232,Electrical Fitter,,,0.2159834800510765,0.2063835909815027,0.00959988906957382,13,manual_review,manual_review
+381233,Industrial Electrician,,,0.2762655968799339,0.2165848968121475,0.05968070006778642,15,manual_review,manual_review
+381234,Lift Mechanic,,,0.223440561077721,0.1807200277752573,0.0427205333024637,13,manual_review,manual_review
+382131,Air Conditioning and Refrigeration Technician,,,0.2468177547636809,0.0363552805284727,0.2104624742352082,2,manual_review,manual_review
+381131,Electrical Distribution Trades Worker,49-9051.00,Electrical Power-Line Installers and Repairers,0.3940512121103836,0.0839840470758385,0.31006716503454507,2,accepted,score_and_gap_rule
+382234,Office Equipment Technician,,,0.2888002013353817,0.2145864220979936,0.07421377923738809,7,manual_review,manual_review
+382231,Communications Operator,,,0.1349164783838509,0.0432419475590321,0.0916745308248188,7,manual_review,manual_review
+382232,Electronic Equipment Trades Worker,,,0.2674956849409422,0.262793174347464,0.004702510593478204,7,manual_review,manual_review
+382233,Electronic Instrument Technician,,,0.1805979677149111,0.1594216119658247,0.021176355749086412,7,manual_review,manual_review
+382331,Cabler (Data and Telecommunications),,,0.1589121988819949,0.1128028438899298,0.0461093549920651,7,manual_review,manual_review
+382332,Telecommunications Cable Technician,,,0.2644735129081172,0.1787873063287234,0.08568620657939383,7,manual_review,manual_review
+382333,Telecommunications Linesworker,,,0.2170292111979982,0.1276584075616465,0.08937080363635169,7,manual_review,manual_review
+382334,Telecommunications Technician,,,0.1681169495105429,0.1014812111171757,0.0666357383933672,7,manual_review,manual_review
+322131,Baker,51-3011.00,Bakers,0.3410547771489682,,,1,accepted,single_candidate
+322431,Pastrycook,51-3011.00,Bakers,0.2078967744499342,,,1,accepted,single_candidate
+322231,Butcher or Smallgoods Maker,51-3021.00,Butchers and Meat Cutters,0.619194262599489,0.4942105496238687,0.12498371297562028,4,accepted,score_and_gap_rule
+161631,Senior Chef,,,0.2060708107513465,0.1600733426254566,0.045997468125889895,2,manual_review,manual_review
+321131,Chef,35-1011.00,Chefs and Head Cooks,0.5637998011371503,0.3048250789434512,0.25897472219369916,2,accepted,score_and_gap_rule
+322331,Cook,35-2014.00,"Cooks, Restaurant",0.3679903122212529,0.3142436289968238,0.053746683224429104,6,accepted,score_and_gap_rule
+341131,Dog Handler or Trainer,,,0.1434170023674979,0.039041466963977,0.1043755354035209,6,manual_review,manual_review
+341132,Horse Trainer,,,0.2813010387221665,0.0461401854416986,0.2351608532804679,6,manual_review,manual_review
+461433,Pet Groomer,,,0.1937983728899297,0.0496818953712551,0.14411647751867462,6,manual_review,manual_review
+341134,Zookeeper,39-2021.00,Animal Caretakers,0.4548015110251958,0.4043177751592244,0.05048373586597138,6,accepted,score_and_gap_rule
+461432,Domestic Animal Attendant,,,0.4878270763325465,0.4651072730156374,0.022719803316909093,6,manual_review,manual_review
+341199,Animal Trainers and Zookeepers nec,,,,,,6,manual_review,manual_review
+461499,Domestic Animal Care Workers nec,,,,,,6,manual_review,manual_review
+343331,Shearer,45-2021.00,Animal Breeders,0.4056444436015499,0.0984755202103569,0.307168923391193,2,accepted,score_and_gap_rule
+341231,Veterinary Nurse,,,0.4757718647951611,0.438326206713626,0.037445658081535105,7,manual_review,manual_review
+342331,Florist,,,0.2697280908715632,0.0038172002851152,0.265910890586448,2,manual_review,manual_review
+342131,Gardener (General),,,0.2359367962770536,0.1560662588411523,0.0798705374359013,3,manual_review,manual_review
+342231,Arborist,,,0.2667265777087149,0.0337693026973009,0.232957275011414,3,manual_review,manual_review
+342232,Tree Worker,37-3013.00,Tree Trimmers and Pruners,0.5548780115074481,0.1689005225116278,0.3859774889958203,3,accepted,score_and_gap_rule
+342431,Irrigation Technician,,,0.0532431267251636,0.044673879530034,0.008569247195129595,3,manual_review,manual_review
+342432,Landscape Gardener,,,0.1075707189314754,0.0462741561482366,0.061296562783238806,3,manual_review,manual_review
+342531,Sports Turf Manager,,,0.1081788013478896,0.0169488546627502,0.0912299466851394,3,manual_review,manual_review
+342532,Sports Turf Trades Worker,,,0.1113839859705078,0.035087259795775,0.0762967261747328,3,manual_review,manual_review
+342931,Nurseryperson,,,0.1180574253348944,0.0820606314090301,0.0359967939258643,3,manual_review,manual_review
+392131,Barber,,,0.5748483295528088,0.5411260071155654,0.03372232243724349,5,manual_review,manual_review
+392132,Hairdresser,,,0.6009596469317994,0.5797736977544746,0.021185949177324748,5,manual_review,manual_review
+391432,Print Finisher,51-5113.00,Print Binding and Finishing Workers,0.178267557818942,,,1,accepted,single_candidate
+391434,Screen Printer,51-5112.00,Printing Press Operators,0.1792675158353648,,,1,accepted,single_candidate
+391431,Graphic Pre-press Operator,,,0.2943155578131148,0.2096913438950218,0.084624213918093,2,manual_review,manual_review
+391433,Printing Machinist,51-5112.00,Printing Press Operators,0.3964782184548149,,,1,accepted,single_candidate
+399432,Canvas Goods Fabricator,,,0.0529318000830217,0.0166870591901911,0.0362447408928306,4,manual_review,manual_review
+399435,Leather Goods Maker,,,0.2772633990930855,0.0778556745970973,0.1994077244959882,4,manual_review,manual_review
+399436,Sail Maker,,,0.0334902633799551,0.0318732910928984,0.001616972287056699,4,manual_review,manual_review
+399437,Shoemaker,51-6041.00,Shoe and Leather Workers and Repairers,0.3790020678794928,,,1,accepted,single_candidate
+399431,Apparel Cutter,51-6062.00,"Textile Cutting Machine Setters, Operators, and Tenders",0.362182024683404,0.2756083936850799,0.0865736309983241,3,accepted,score_and_gap_rule
+399434,Garment Technician,51-6092.00,Fabric and Apparel Patternmakers,0.4363106044857918,0.1286834634618591,0.3076271410239327,3,accepted,score_and_gap_rule
+399433,Dressmaker or Tailor,51-6052.00,"Tailors, Dressmakers, and Custom Sewers",0.4243859424749822,,,1,accepted,single_candidate
+399438,Upholsterer,51-6093.00,Upholsterers,0.3860658975975595,,,1,accepted,single_candidate
+369131,Cabinet Maker,,,0.0972403755399329,0.0396295194920706,0.05761085604786229,4,manual_review,manual_review
+399532,Furniture Maker,,,0.2754199437140093,0.2120797928148896,0.06334015089911971,4,manual_review,manual_review
+399531,Furniture Finisher,51-7021.00,Furniture Finishers,0.336251591153419,0.1815954501810498,0.1546561409723692,4,accepted,score_and_gap_rule
+399533,Picture Framer,,,0.0382483996735444,0.0235565809534034,0.014691818720141005,4,manual_review,manual_review
+399534,Wood Machinist,51-7042.00,"Woodworking Machine Setters, Operators, and Tenders, Except Sawing",0.2881273435909016,,,1,accepted,single_candidate
+399599,Wood Machinists and Other Wood Trades Workers nec,,,,,,2,manual_review,manual_review
+399931,Boat Builder and Repairer,,,0.0704697078719053,0.0614224373254099,0.009047270546495408,18,manual_review,manual_review
+399938,Shipwright,,,0.1019292798203804,0.0956487879109151,0.006280491909465294,5,manual_review,manual_review
+399131,Chemical Plant Operator,51-8091.00,Chemical Plant and System Operators,0.2038436881024822,,,1,accepted,single_candidate
+399132,Gas or Petroleum Production Technician,,,0.2731925934320764,0.2606657426767301,0.01252685075534632,10,manual_review,manual_review
+399133,Power Generation Plant Operator,51-8013.00,Power Plant Operators,0.3385448407165428,0.240466878579939,0.09807796213660377,6,accepted,score_and_gap_rule
+391131,Gallery or Museum Technician,,,0.1141102582348113,0.0834822700168311,0.030627988217980198,3,manual_review,manual_review
+391132,Library Technician,25-4031.00,Library Technicians,0.4995819377204963,0.0238838590978887,0.4756980786226076,3,accepted,score_and_gap_rule
+391932,Jeweller,,,0.1737011451017339,0.0990561825028735,0.0746449625988604,2,manual_review,manual_review
+391232,Broadcast Technician,27-4012.00,Broadcast Technicians,0.3300926875178794,0.1586218633987187,0.1714708241191607,7,accepted,score_and_gap_rule
+391233,"Camera Operator (Film, Television or Video)",27-4031.00,"Camera Operators, Television, Video, and Film",0.5473912045654852,0.2696294364511418,0.2777617681143434,7,accepted,score_and_gap_rule
+391234,Lighting Technician,27-4015.00,Lighting Technicians,0.6942417787590601,0.0403906932241711,0.653851085534889,8,accepted,score_and_gap_rule
+461232,Make-up Artist,,,0.2035324290086571,0.1796997086953964,0.023832720313260697,8,manual_review,manual_review
+391933,Musical Instrument Maker or Repairer,49-9063.00,Musical Instrument Repairers and Tuners,0.3592222664529705,0.0441257493620265,0.315096517090944,2,accepted,score_and_gap_rule
+391231,Audio Engineer,27-4011.00,Audio and Video Technicians,0.4269801167703818,0.3000647950821027,0.12691532168827907,7,accepted,score_and_gap_rule
+391299,Performing Arts Technicians nec,,,,,,13,manual_review,manual_review
+391531,Signwriter,,,0.0997214795980095,0.0650438912173759,0.0346775883806336,2,manual_review,manual_review
+399932,Diver,49-9092.00,Commercial Divers,0.4448099579196185,,,1,accepted,single_candidate
+391931,Interior Decorator,,,0.1989621186647937,0.0769631156794162,0.12199900298537751,3,manual_review,manual_review
+442431,Optical Dispenser,29-2081.00,"Opticians, Dispensing",0.2098279976328713,,,1,accepted,single_candidate
+399935,Optical Mechanic,51-9083.00,Ophthalmic Laboratory Technicians,0.3979734768113912,0.0378612617323798,0.3601122150790114,8,accepted,score_and_gap_rule
+461936,Photographer's Assistant,27-4021.00,Photographers,0.3167709139991495,0.1747745848323894,0.14199632916676008,2,accepted,score_and_gap_rule
+399936,Plastics Technician,,,0.2922693847454515,0.0983302127716667,0.1939391719737848,18,manual_review,manual_review
+343332,Wool Classer,51-9061.00,"Inspectors, Testers, Sorters, Samplers, and Weighers",0.0089148379267081,,,1,accepted,single_candidate
+399933,Fire Protection Equipment Technician,,,0.1683981665339712,0.1572468856053025,0.011151280928668683,18,manual_review,manual_review
+399999,Technicians and Trades Workers nec,,,,,,21,manual_review,manual_review
+269432,Paramedic,,,0.2063990431644521,0.1833225671759364,0.0230764759885157,2,manual_review,manual_review
+442931,Patient Transport Officer,,,0.1364222166719607,0.0627086643041265,0.0737135523678342,8,manual_review,manual_review
+269431,Critical Care Paramedic,,,0.2411769198993201,0.1991085663026424,0.04206835359667771,4,manual_review,manual_review
+269131,Dental Hygienist,31-9091.00,Dental Assistants,0.4195646261091277,0.3551685136853797,0.06439611242374799,2,accepted,score_and_gap_rule
+269132,Dental Prosthetist,,,0.2348666284302651,0.1424342097220624,0.09243241870820271,4,manual_review,manual_review
+311232,Dental Technician,,,0.2244476038734208,0.1043453233748788,0.120102280498542,4,manual_review,manual_review
+269133,Oral Health Therapist or Dental Therapist,31-9091.00,Dental Assistants,0.4073316589401801,0.3396961888081751,0.067635470132005,2,accepted,score_and_gap_rule
+411331,Diversional Therapist,,,0.0993104318207687,0.0864742412141838,0.01283619060658489,18,manual_review,manual_review
+411332,Lifestyle Coordinator,,,0.1132246548382298,0.0608927448736937,0.0523319099645361,18,manual_review,manual_review
+411333,Lifestyle Officer,,,0.099180381580885,0.0737887230247514,0.02539165855613361,18,manual_review,manual_review
+441131,Enrolled Nurse,,,0.2897569041806465,0.2178492560251366,0.07190764815550987,5,manual_review,manual_review
+441931,Aboriginal and Torres Strait Islander Health Practitioner,21-1094.00,Community Health Workers,0.2838404261930934,,,1,accepted,single_candidate
+441932,Aboriginal and Torres Strait Islander Health Worker,21-1094.00,Community Health Workers,0.2797454776799243,,,1,accepted,single_candidate
+411232,Community Support Worker,21-1093.00,Social and Human Service Assistants,0.2285761241146011,,,1,accepted,single_candidate
+441231,Massage Therapist,31-9011.00,Massage Therapists,0.4372127745206458,0.1504823295007445,0.2867304450199013,6,accepted,score_and_gap_rule
+441232,Myotherapist,,,0.2923150313953894,0.1916702693114488,0.1006447620839406,6,manual_review,manual_review
+441233,Remedial Massage Therapist,,,0.2445154227252774,0.1939524406191342,0.05056298210614321,6,manual_review,manual_review
+411231,Community Development Officer,21-1093.00,Social and Human Service Assistants,0.088802504384965,,,1,accepted,single_candidate
+411634,Housing Officer,21-1093.00,Social and Human Service Assistants,0.1157403834391935,,,1,accepted,single_candidate
+411933,Volunteer Coordinator,21-1093.00,Social and Human Service Assistants,0.0432251594309511,,,1,accepted,single_candidate
+421131,Aged Care Coordinator,21-1093.00,Social and Human Service Assistants,0.2544880544239139,,,1,accepted,single_candidate
+431231,Family Day Care Coordinator,,,0.1532254352337531,0.1306138080608925,0.022611627172860582,6,manual_review,manual_review
+422131,Disability Services Officer,21-1093.00,Social and Human Service Assistants,0.146277252356725,,,1,accepted,single_candidate
+411632,Family Support Worker,21-1093.00,Social and Human Service Assistants,0.127837884876696,,,1,accepted,single_candidate
+411631,Community Corrections Officer,21-1092.00,Probation Officers and Correctional Treatment Specialists,0.5793553046211218,0.0814509822100165,0.4979043224111053,11,accepted,score_and_gap_rule
+411731,Residential Youth Worker,,,0.3821978194029685,0.3555669185134326,0.026630900889535902,6,manual_review,manual_review
+422132,Residential Care Officer,21-1093.00,Social and Human Service Assistants,0.229823139400863,,,1,accepted,single_candidate
+411732,Youth Justice Worker,21-1093.00,Social and Human Service Assistants,0.0419109965883153,,,1,accepted,single_candidate
+411733,Youth Worker,21-1093.00,Social and Human Service Assistants,0.0937810273391496,,,1,accepted,single_candidate
+431131,Early Childhood Education Room Leader,,,0.2913322190872584,0.2856343910312571,0.005697828056001331,5,manual_review,manual_review
+431132,Early Childhood Educator,,,0.4136360106305162,0.3804731617944774,0.033162848836038816,5,manual_review,manual_review
+431232,Family Day Care Educator,,,0.341377501788916,0.3370219843431244,0.004355517445791601,5,manual_review,manual_review
+431331,Nanny,,,0.4566943697182339,0.4343200992893756,0.02237427042885831,5,manual_review,manual_review
+431431,Out of School Hours Care Educator,,,0.3569020302814743,0.3135602891037879,0.04334174117768641,5,manual_review,manual_review
+432931,Aboriginal and Torres Strait Islander Education Officer,,,0.1158295487112675,0.1101860782123426,0.005643470498924899,3,manual_review,manual_review
+432131,Inclusion Support Assistant,,,0.3162681881404912,0.3046263794332207,0.011641808707270496,3,manual_review,manual_review
+432231,Teaching Assistant,,,0.3295229183240887,0.3288862828786278,0.0006366354454608869,3,manual_review,manual_review
+421132,Aged Care Team Leader,,,0.0999251616937405,0.0726715338390421,0.027253627854698398,7,manual_review,manual_review
+421231,Community Aged Care Support Worker,,,0.175395218222224,0.1324020889744314,0.04299312924779261,5,manual_review,manual_review
+422231,Disability Support Worker,,,0.1308335630870584,0.1239245545500786,0.006909008536979802,5,manual_review,manual_review
+422232,Disability Team Leader,,,0.1265808467299274,0.1162623862751932,0.010318460454734196,5,manual_review,manual_review
+442331,Dental Assistant,31-9091.00,Dental Assistants,0.4784322174640413,0.3580516081619462,0.1203806093020951,11,accepted,score_and_gap_rule
+442532,Patient Services Assistant,,,0.2689695694435792,0.1594297624731011,0.1095398069704781,10,manual_review,manual_review
+442231,Assistant in Nursing,,,0.3023033876189845,0.3003350561785384,0.001968331440446114,2,manual_review,manual_review
+421331,Residential Aged Care Worker,,,0.0793768999317709,0.0756122443783969,0.003764655553373991,2,manual_review,manual_review
+442531,Patient Care Assistant,,,0.1468627891618432,0.1269078332162965,0.019954955945546693,2,manual_review,manual_review
+442131,Allied Health Assistant,,,0.2213422744240908,0.1655301992036508,0.05581207522043999,24,manual_review,manual_review
+432932,Boarding Supervisor,,,0.2252621050286582,0.2162431260153302,0.009018979013328016,5,manual_review,manual_review
+411635,Refuge Worker,21-1093.00,Social and Human Service Assistants,0.124434285306268,,,1,accepted,single_candidate
+471131,Bar Attendant,35-3011.00,Bartenders,0.4267941975059403,,,1,accepted,single_candidate
+471531,Bar Supervisor,35-3011.00,Bartenders,0.3717306722593707,,,1,accepted,single_candidate
+471231,Barista,35-3011.00,Bartenders,0.0856140637336435,,,1,accepted,single_candidate
+471331,Cafe Worker,,,0.3162394237577728,0.2942652441964865,0.021974179561286333,5,manual_review,manual_review
+471532,Cafe or Restaurant Supervisor,,,0.193201924033787,0.1051174667348113,0.0880844572989757,2,manual_review,manual_review
+471432,Gaming Dealer or Croupier,,,0.4361637591120394,0.4065496666266,0.02961409248543939,5,manual_review,manual_review
+471534,Gaming Supervisor,,,0.2405361632275634,0.2181703138960299,0.022365849331533516,5,manual_review,manual_review
+161131,Accommodation Service Manager,11-9081.00,Lodging Managers,0.0606221000757754,,,1,accepted,single_candidate
+471533,Front Office Supervisor (Accommodation),11-9081.00,Lodging Managers,0.0916918674477347,,,1,accepted,single_candidate
+471535,Housekeeping Supervisor,37-1011.00,First-Line Supervisors of Housekeeping and Janitorial Workers,0.0384877553289466,,,1,accepted,single_candidate
+471631,Sommelier,,,0.2678999667809767,0.1085600848441773,0.15933988193679943,2,manual_review,manual_review
+471632,Waiter,,,0.2878832329662496,0.1411610219919865,0.14672221097426313,2,manual_review,manual_review
+471931,Bar Useful,,,0.0810266153760035,0.0569533811016235,0.024073234274380004,3,manual_review,manual_review
+471932,Doorperson or Porter,39-6011.00,Baggage Porters and Bellhops,0.3363877766119855,0.0194300846473873,0.31695769196459816,2,accepted,score_and_gap_rule
+471999,Hospitality Workers nec,,,,,,13,manual_review,manual_review
+451131,Defence Force Member - Other Ranks,,,,,,0,no_candidate,no_candidate
+451231,Emergency Services Officer,,,0.2909738274605495,0.0982823306672779,0.1926914967932716,11,manual_review,manual_review
+451232,Firefighter,,,0.2662565800291384,0.1754171787844125,0.09083940124472589,2,manual_review,manual_review
+299231,Specialist Police Officer,,,0.181496917139555,0.1793173102712776,0.002179606868277395,7,manual_review,manual_review
+451331,General Duties Police Officer,,,0.1720736692795189,0.115891016180354,0.0561826530991649,4,manual_review,manual_review
+452131,Correctional Officer,,,0.3684901001569377,0.366680625858948,0.0018094742979897216,2,manual_review,manual_review
+452231,"Alarm, Security or Surveillance Monitor",,,0.2454420852628915,0.1807398297972816,0.0647022554656099,5,manual_review,manual_review
+452232,Cash In Transit Officer,,,0.0356674421613827,0.0234819102756235,0.012185531885759198,5,manual_review,manual_review
+452233,Crowd Controller,,,0.123790677325874,0.1081508048811895,0.015639872444684497,5,manual_review,manual_review
+452234,Private Investigator,33-9021.00,Private Detectives and Investigators,0.3278371542456287,0.1801055255781798,0.1477316286674489,7,accepted,score_and_gap_rule
+452236,Retail Loss Prevention Officer,,,0.1908778956374303,0.179014144942528,0.011863750694902309,5,manual_review,manual_review
+452237,Security Consultant,13-1199.07,Security Management Specialists,0.6666689497349122,0.3105952455258054,0.3560737042091068,27,accepted,score_and_gap_rule
+452235,Protective Services Officer,,,0.068172782014986,0.0647992026669731,0.003373579348012898,5,manual_review,manual_review
+452238,Security Officer,,,0.3589877996220943,0.3136809819192414,0.04530681770285294,5,manual_review,manual_review
+452241,Security Screening Officer,,,0.3524704806012763,0.3279287034538193,0.024541777147456978,5,manual_review,manual_review
+461131,Beauty Therapist,39-5094.00,Skincare Specialists,0.3383360698642151,0.1374148284936124,0.20092124137060272,8,accepted,score_and_gap_rule
+461132,Dermal Therapist,39-5094.00,Skincare Specialists,0.3346328265758088,0.1137710332564628,0.22086179331934597,8,accepted,score_and_gap_rule
+461531,Driving Instructor,25-3021.00,Self-Enrichment Teachers,0.0515710906836095,,,1,accepted,single_candidate
+461332,Funeral Director,,,0.5666759331837773,0.5388311796065156,0.027844753577261683,3,manual_review,manual_review
+461333,Funeral Worker,39-4021.00,Funeral Attendants,0.5706269202909262,0.4973066980264061,0.07332022226452012,3,accepted,score_and_gap_rule
+461631,Gallery or Museum Guide,,,0.1877050833120645,0.0186975343015075,0.169007549010557,5,manual_review,manual_review
+461632,Tour Guide,,,0.5057657948112383,0.4805078340081363,0.025257960803101998,5,manual_review,manual_review
+461935,Natural Remedy Consultant,,,0.0909676301810655,0.017458186756432,0.0735094434246335,4,manual_review,manual_review
+461941,Weight Loss Consultant,,,0.0791420270012206,0.0638744712258688,0.015267555775351799,8,manual_review,manual_review
+461633,Tourist Information Officer,,,0.165956896820921,0.1024121966712708,0.06354470014965019,3,manual_review,manual_review
+461831,Travel Consultant,43-4181.00,Reservation and Transportation Ticket Agents and Travel Clerks,0.5580538947354778,0.4389114361783171,0.11914245855716071,3,accepted,score_and_gap_rule
+461731,Flight Attendant,53-2031.00,Flight Attendants,0.4737824873767153,0.3592409842714631,0.11454150310525218,5,accepted,score_and_gap_rule
+461799,Travel Attendants nec,,,,,,5,manual_review,manual_review
+461331,Civil Celebrant,,,0.0211632536937902,0.0168374446180684,0.0043258090757218,8,manual_review,manual_review
+461934,Hair or Beauty Salon Assistant,,,0.2652493865860565,0.1019748894152439,0.1632744971708126,8,manual_review,manual_review
+461938,Sex Worker or Escort,,,0.0409532201846174,0.0300842200878913,0.010869000096726103,8,manual_review,manual_review
+461231,Body Artist,,,0.0176295709898589,0.0132360245087813,0.0043935464810775995,8,manual_review,manual_review
+461933,First Aid Trainer,,,0.0670494919224536,0.0479942442091691,0.019055247713284505,8,manual_review,manual_review
+461937,Religious Assistant,21-2099.00,"Religious Workers, All Other",,,,1,accepted,single_candidate
+442999,Patient and Health Care Assistants nec,,,,,,18,manual_review,manual_review
+461431,Dog Walker,,,0.0163530168799695,0.0121755559988377,0.004177460881131802,8,manual_review,manual_review
+461999,Personal Service and Travel Workers nec,,,,,,12,manual_review,manual_review
+462131,Fitness Instructor (General),,,0.2015069833286248,0.0966128479104541,0.10489413541817069,6,manual_review,manual_review
+462231,Pilates Instructor,,,0.0837384519227284,0.0214588938545388,0.0622795580681896,6,manual_review,manual_review
+462232,Yoga Teacher,,,0.2086523333408351,0.0495027128204581,0.159149620520377,6,manual_review,manual_review
+462438,Outdoor Adventure Leader or Guide,,,0.2227409036979429,0.0356942836834689,0.18704662001447397,6,manual_review,manual_review
+462432,Diving Instructor (Open Water),,,0.1475040826073081,0.0381253735851265,0.10937870902218161,3,manual_review,manual_review
+462434,Gymnastics Coach or Instructor,,,0.1003001495724968,0.0725940469471196,0.027706102625377205,3,manual_review,manual_review
+462435,Horse Riding Coach or Instructor,39-9031.00,Exercise Trainers and Group Fitness Instructors,0.3757194506173752,0.0333267439323541,0.3423927066850211,6,accepted,score_and_gap_rule
+462441,Snowsport Instructor,,,0.1691879774678898,0.0944978573020104,0.0746901201658794,3,manual_review,manual_review
+462442,Swimming Instructor or Coach,,,0.0836792520416678,0.0786465657115683,0.005032686330099498,3,manual_review,manual_review
+462443,Tennis Coach,,,0.0859504815654289,0.0743726666435381,0.011577814921890792,3,manual_review,manual_review
+462431,Basketball Coach,,,0.1654480656686075,0.1012618649690279,0.0641862006995796,3,manual_review,manual_review
+462433,Football Coach,,,0.1210837839569712,0.1099087975530705,0.011174986403900702,3,manual_review,manual_review
+462436,Martial Arts Instructor,,,0.1218117917675501,0.0901880495559944,0.0316237422115557,3,manual_review,manual_review
+462437,Netball Coach,,,0.1132405418066861,0.0623245063886378,0.05091603541804831,3,manual_review,manual_review
+462499,Sports Coaches and Outdoor Adventure Guides nec,,,,,,3,manual_review,manual_review
+462531,Dog and Horse Racing Official,,,0.1257261600329927,0.0343347458412967,0.091391414191696,3,manual_review,manual_review
+411932,Sports Development Officer,,,0.248482588454366,0.0971757557830503,0.1513068326713157,3,manual_review,manual_review
+462532,Sports Umpire,27-2023.00,"Umpires, Referees, and Other Sports Officials",0.3196171149318166,0.1217588657147419,0.1978582492170747,3,accepted,score_and_gap_rule
+462599,Sports Officials and Umpires nec,,,,,,3,manual_review,manual_review
+462631,Footballer,27-2021.00,Athletes and Sports Competitors,0.104113508349286,,,1,accepted,single_candidate
+462632,Golfer,27-2021.00,Athletes and Sports Competitors,0.0624751022555921,,,1,accepted,single_candidate
+462633,Jockey,27-2021.00,Athletes and Sports Competitors,0.121986915506568,,,1,accepted,single_candidate
+462331,Lifeguard,,,0.269053473890908,0.1029891218589809,0.1660643520319271,11,manual_review,manual_review
+462399,Sport and Recreation Safety Patrollers nec,,,,,,11,manual_review,manual_review
+462699,Sportspersons nec,27-2021.00,Athletes and Sports Competitors,,,,1,accepted,single_candidate
+511131,Contract Administrator,,,0.0645923703323845,0.0426769550802354,0.021915415252149108,16,manual_review,manual_review
+511231,Program or Project Administrator,13-1082.00,Project Management Specialists,0.3419613005693283,0.0990694463177945,0.24289185425153376,16,accepted,score_and_gap_rule
+171231,Office Manager,43-1011.00,First-Line Supervisors of Office and Administrative Support Workers,0.2965847905149514,,,1,accepted,single_candidate
+171331,Health Practice Manager,,,0.1681637537249529,0.0390935468661836,0.1290702068587693,3,manual_review,manual_review
+171332,Legal Practice Manager,43-6012.00,Legal Secretaries and Administrative Assistants,0.2128895355584872,,,1,accepted,single_candidate
+171333,Veterinary Practice Manager,43-1011.00,First-Line Supervisors of Office and Administrative Support Workers,0.0852160283411396,,,1,accepted,single_candidate
+171399,Practice Managers nec,43-1011.00,First-Line Supervisors of Office and Administrative Support Workers,,,,1,accepted,single_candidate
+522231,Executive Assistant,,,0.2998960740195661,0.0047769205798901,0.295119153439676,2,manual_review,manual_review
+522131,Secretary (General),,,0.1374348393779669,0.1294323996379669,0.008002439740000006,3,manual_review,manual_review
+521235,Legal Secretary,43-6012.00,Legal Secretaries and Administrative Assistants,0.3784602619924435,,,1,accepted,single_candidate
+561131,General Clerk,,,0.2324953778768712,0.0556772242771632,0.17681815359970798,2,manual_review,manual_review
+561231,Data Entry Operator,43-9021.00,Data Entry Keyers,0.1378064765067863,,,1,accepted,single_candidate
+561232,Machine Shorthand Reporter,27-3092.00,Court Reporters and Simultaneous Captioners,0.4082578254657972,0.0284851217389329,0.3797727037268643,2,accepted,score_and_gap_rule
+561233,Word Processing Operator,43-9022.00,Word Processors and Typists,0.1559565729456868,,,1,accepted,single_candidate
+551132,Call or Contact Centre Team Leader,43-1011.00,First-Line Supervisors of Office and Administrative Support Workers,0.1096374734394314,,,1,accepted,single_candidate
+551131,Call or Contact Centre Operator,,,0.1618301388093938,0.1391567983934334,0.02267334041596039,2,manual_review,manual_review
+551231,Information Officer,,,0.0989490789528756,0.0425327953260449,0.056416283626830696,2,manual_review,manual_review
+553131,Receptionist (General),43-4171.00,Receptionists and Information Clerks,0.1770881104983857,,,1,accepted,single_candidate
+552231,Ward Clerk,,,0.0491208045781578,,,3,manual_review,manual_review
+553231,Hotel or Motel Receptionist,43-4081.00,"Hotel, Motel, and Resort Desk Clerks",0.3191434192490608,0.2075797723311613,0.11156364691789952,2,accepted,score_and_gap_rule
+552131,Medical Receptionist,,,0.166241037857869,0.129333514753293,0.03690752310457601,3,manual_review,manual_review
+541131,Accounts Clerk,,,0.2829686110073216,0.1513646281783588,0.13160398282896282,2,manual_review,manual_review
+541231,Estimator,,,0.0736598619388159,0.0456854025571134,0.027974459381702496,2,manual_review,manual_review
+542131,Bookkeeper,,,0.2913146825422659,0.1725034198766536,0.11881126266561229,2,manual_review,manual_review
+171232,Payroll Manager,43-3051.00,Payroll and Timekeeping Clerks,0.4303748901920748,,,1,accepted,single_candidate
+541331,Payroll Officer,43-3051.00,Payroll and Timekeeping Clerks,0.1901775492267636,,,1,accepted,single_candidate
+531131,Bank Officer,43-3071.00,Tellers,0.3015472158601214,0.0641040526601981,0.2374431631999233,2,accepted,score_and_gap_rule
+531231,Credit or Loans Officer,13-2072.00,Loan Officers,0.4826340685973593,0.2249173260289707,0.2577167425683886,2,accepted,score_and_gap_rule
+549132,Bookmaker,,,0.1396853084169114,0.1298801018907963,0.009805206526115107,5,manual_review,manual_review
+531431,Insurance Consultant,,,0.4141621383996048,0.3838303150899447,0.03033182330966011,9,manual_review,manual_review
+531931,Investment Administrator,,,0.0860109183509583,0.0612220916774323,0.024788826673526,6,manual_review,manual_review
+531932,Paraplanner,,,0.0429041223935001,0.0394605787715142,0.0034435436219859006,6,manual_review,manual_review
+599999,Clerical and Administrative Workers nec,,,,,,32,manual_review,manual_review
+549131,Betting Clerk,,,0.1720777809431902,0.1471847607835946,0.024893020159595602,5,manual_review,manual_review
+712231,Delivery Person,43-5021.00,Couriers and Messengers,0.3571346863951262,0.1221470022400765,0.23498768415504967,14,accepted,score_and_gap_rule
+712232,Postal Delivery Officer,,,0.5394343666069928,0.5060885366671685,0.03334582993982438,13,manual_review,manual_review
+599131,Filing or Registry Clerk,,,0.1931963503673864,0.1198706263703366,0.07332572399704979,4,manual_review,manual_review
+599331,Mail Clerk,,,0.5333974678164135,0.5221723011344056,0.011225166682007903,5,manual_review,manual_review
+599332,Postal Sorting Officer,,,0.5116775950095109,0.4990523890250748,0.012625205984436116,5,manual_review,manual_review
+599938,Survey Interviewer,43-4111.00,"Interviewers, Except Eligibility and Loan",0.2143796700398976,,,1,accepted,single_candidate
+551232,Switchboard Operator,,,0.2558372795736519,0.2190521790721507,0.03678510050150119,2,manual_review,manual_review
+591135,Meter Reader,43-5041.00,"Meter Readers, Utilities",0.404967003914605,0.0312462424983704,0.3737207614162346,2,accepted,score_and_gap_rule
+591137,Parking Officer,45-2011.00,Agricultural Inspectors,0.0082389768295487,,,1,accepted,single_candidate
+571131,Logistics Officer,43-5032.00,"Dispatchers, Except Police, Fire, and Ambulance",0.0500664788200089,,,1,accepted,single_candidate
+571932,Production Coordinator (Logistics),43-5061.00,"Production, Planning, and Expediting Clerks",0.2422695258314336,,,1,accepted,single_candidate
+571331,Procurement Officer,,,0.0959140785793842,0.0377814492141203,0.058132629365263894,3,manual_review,manual_review
+571332,Purchasing Officer,,,0.097435732470576,0.0763280159230578,0.02110771654751821,3,manual_review,manual_review
+571431,Stock Clerk,,,0.189969380565256,0.1649933450948365,0.02497603547041949,3,manual_review,manual_review
+571531,Warehouse Administrator,,,0.1449921022659903,0.0741135169971042,0.0708785852688861,3,manual_review,manual_review
+571231,Order Clerk,,,0.2189526027950334,0.1564162506265115,0.06253635216852191,3,manual_review,manual_review
+571931,Freight Forwarder,,,0.2724559051113878,0.2692812541769186,0.00317465093446917,3,manual_review,manual_review
+599932,Customs Broker,,,0.2265891006258295,0.210239593471388,0.0163495071544415,3,manual_review,manual_review
+521131,Conveyancer,,,0.1658598711425964,0.1338337260359693,0.0320261451066271,7,manual_review,manual_review
+521234,Law Clerk,23-2011.00,Paralegals and Legal Assistants,0.3760541794519753,0.2663491482852777,0.10970503116669755,7,accepted,score_and_gap_rule
+521231,Clerk of Court,23-1012.00,Judicial Law Clerks,0.4175066830390868,0.3192239054613955,0.09828277757769127,7,accepted,score_and_gap_rule
+521232,Court Bailiff or Sheriff,23-1012.00,Judicial Law Clerks,0.3266859862774242,0.2343270978379136,0.09235888843951057,7,accepted,score_and_gap_rule
+521233,Court Orderly,,,0.2477449547363731,0.1924268901426729,0.0553180645937002,7,manual_review,manual_review
+281234,Judge's Associate,23-1022.00,"Arbitrators, Mediators, and Conciliators",0.1060008318819392,,,1,accepted,single_candidate
+521236,Trust Officer,,,0.177896741544252,0.1361621657385979,0.041734575805654095,7,manual_review,manual_review
+549133,Debt Collector,,,0.234559141560391,0.0055479873608943,0.22901115419949672,2,manual_review,manual_review
+599231,Human Resources Administration Assistant,43-4161.00,"Human Resources Assistants, Except Payroll and Timekeeping",0.3147455762520449,,,1,accepted,single_candidate
+599232,Rostering Officer,43-4161.00,"Human Resources Assistants, Except Payroll and Timekeeping",0.0304723073115837,,,1,accepted,single_candidate
+451931,Border Enforcement Operations Officer,,,0.2020339018891395,0.1431019986258727,0.058931903263266805,10,manual_review,manual_review
+591233,Visa and Citizenship Processing Officer,45-2011.00,Agricultural Inspectors,0.0225410075510654,,,1,accepted,single_candidate
+591136,Motor Vehicle Licence Examiner,,,0.2280497854051378,0.0636285777179253,0.1644212076872125,8,manual_review,manual_review
+591134,"Invasive Pest, Weed and Disease Inspector",,,0.0425196419876837,0.0347404422692822,0.0077791997184015055,8,manual_review,manual_review
+591231,Social Security Assessor,,,0.2298202266664866,0.128255468774287,0.1015647578921996,8,manual_review,manual_review
+591232,Taxation Compliance Officer,13-2081.00,"Tax Examiners and Collectors, and Revenue Agents",0.3257078562699163,,,1,accepted,single_candidate
+591999,Inspectors and Regulatory Officers nec,,,,,,19,manual_review,manual_review
+591141,Water Inspector,,,0.0949170525008722,0.0583981522039597,0.03651890029691251,8,manual_review,manual_review
+591131,Aerodrome Reporting Officer,45-2011.00,Agricultural Inspectors,0.0199765153168177,,,1,accepted,single_candidate
+591132,Council Ranger,,,0.1419077772083219,0.094787942098735,0.047119835109586894,19,manual_review,manual_review
+591133,Electrical Asset Inspector,,,0.0772661275194614,0.0722524712272066,0.005013656292254795,8,manual_review,manual_review
+591138,Transport Revenue Officer,,,0.1595249481117554,0.0996126367502666,0.05991231136148881,13,manual_review,manual_review
+531531,Insurance Investigator,13-1031.00,"Claims Adjusters, Examiners, and Investigators",0.3564464896996344,0.0595656550806943,0.2968808346189401,4,accepted,score_and_gap_rule
+531532,Insurance Loss Adjuster,13-1031.00,"Claims Adjusters, Examiners, and Investigators",0.3888401823867465,0.2468843894841937,0.1419557929025528,4,accepted,score_and_gap_rule
+531533,Insurance Risk Surveyor,,,0.149905007020018,0.103817578909383,0.046087428110635,4,manual_review,manual_review
+599132,Library Assistant,,,0.4078854253724494,0.3899372056367748,0.017948219735674564,2,manual_review,manual_review
+599934,"Production Assistant (Audio, Screen or Live Performance)",,,0.0832473777045546,0.030772449912575,0.05247492779197961,8,manual_review,manual_review
+599935,"Production Coordinator (Audio, Screen or Live Performance)",,,0.1207575737617135,0.0247949720902108,0.09596260167150271,8,manual_review,manual_review
+599936,Radio Dispatcher,,,0.0300392947195742,,,3,manual_review,manual_review
+599931,Clinical Coder,29-2072.00,Medical Records Specialists,0.3177972492747822,0.245972262214693,0.07182498706008919,2,accepted,score_and_gap_rule
+599933,Facilities Administrator,,,0.1339480715911994,0.0393210656546076,0.09462700593659179,16,manual_review,manual_review
+619131,Marketing Assistant,,,0.0105335653864193,0.0065501344354868,0.003983430950932499,4,manual_review,manual_review
+622231,Auctioneer,,,0.1845750336186488,0.0870326288408872,0.0975424047777616,16,manual_review,manual_review
+622234,Stock and Station Agent,,,0.071111062443823,0.0619901357103305,0.009120926733492497,16,manual_review,manual_review
+621131,Insurance Agent,41-3021.00,Insurance Sales Agents,0.4949011307437567,0.1507849643628273,0.3441161663809294,3,accepted,score_and_gap_rule
+621231,Sales Representative (Building and Plumbing Supplies),,,0.1883559343746274,0.1498323548389135,0.03852357953571389,5,manual_review,manual_review
+621232,Sales Representative (Business Services),13-1011.00,"Agents and Business Managers of Artists, Performers, and Athletes",0.3743032710077966,0.2512662706658796,0.123037000341917,20,accepted,score_and_gap_rule
+621233,Sales Representative (Motor Vehicle Parts and Accessories),,,0.346158414019926,0.3389479479905901,0.0072104660293358935,5,manual_review,manual_review
+621234,Sales Representative (Personal and Household Goods),,,0.3761805282668989,0.3608776159046637,0.015302912362235188,5,manual_review,manual_review
+621299,Sales Representatives nec,,,,,,5,manual_review,manual_review
+531331,Business Broker,,,0.2331641657739856,0.0899096347980014,0.1432545309759842,4,manual_review,manual_review
+599937,Strata Manager,,,0.2045462638489551,0.1122580734954506,0.09228819035350451,4,manual_review,manual_review
+622131,Property Manager,11-9141.00,"Property, Real Estate, and Community Association Managers",0.3772435645732592,0.1900186887790763,0.1872248757941829,4,accepted,score_and_gap_rule
+171431,Real Estate Agency Principal,41-9021.00,Real Estate Brokers,0.3308831759706091,0.2807665342086506,0.050116641761958514,4,accepted,score_and_gap_rule
+622232,Real Estate Agent,,,0.2777313612653307,0.2739605167284587,0.0037708445368719867,4,manual_review,manual_review
+622233,Real Estate Representative,41-9022.00,Real Estate Sales Agents,0.4423598735365082,0.3386939531629481,0.1036659203735601,4,accepted,score_and_gap_rule
+631131,Sales Assistant (General),,,0.141920103453043,0.1354572351930073,0.006462868260035698,15,manual_review,manual_review
+631331,ICT Sales Assistant,,,0.115776579748581,0.093631852493942,0.022144727254638993,2,manual_review,manual_review
+631431,Motor Vehicle or Caravan Salesperson,,,0.1136584971901945,0.1067887933859998,0.006869703804194702,2,manual_review,manual_review
+631432,Motor Vehicle Parts Interpreter,,,0.2741832083045724,0.0344284065061507,0.23975480179842168,2,manual_review,manual_review
+631231,Community Pharmacy Sales Assistant,,,0.0828113620729416,0.0806616006856345,0.002149761387307103,2,manual_review,manual_review
+631531,Retail Supervisor,41-1011.00,First-Line Supervisors of Retail Sales Workers,0.2441581061627109,,,1,accepted,single_candidate
+631631,Service Station Attendant,,,0.1991439169593857,0.06473730396093,0.1344066129984557,4,manual_review,manual_review
+631934,Street Vendor,,,0.1004498674134182,0.0768743087834769,0.023575558629941304,2,manual_review,manual_review
+631931,Door-to-door Salesperson,41-9091.00,"Door-to-Door Sales Workers, News and Street Vendors, and Related Workers",0.118348388943881,,,1,accepted,single_candidate
+631932,Materials Recycler,53-7081.00,Refuse and Recyclable Material Collectors,0.1672439230872398,,,1,accepted,single_candidate
+631933,Rental Salesperson,,,0.5281039170113299,,,2,manual_review,manual_review
+631999,Sales Assistants and Salespersons nec,,,,,,2,manual_review,manual_review
+471431,Gaming Attendant,,,0.0953294132739769,0.023188251423409,0.0721411618505679,2,manual_review,manual_review
+611131,Checkout Operator,41-2011.00,Cashiers,0.3485004771987478,0.0518934335122425,0.2966070436865053,2,accepted,score_and_gap_rule
+619132,Model,41-9012.00,Models,0.1863887224831203,,,1,accepted,single_candidate
+619133,Sales Demonstrator,41-9011.00,Demonstrators and Product Promoters,0.211982993702253,,,1,accepted,single_candidate
+619932,Merchandise Planner,,,0.2660305673873493,0.1138174999176053,0.152213067469744,3,manual_review,manual_review
+619935,Retail Buyer,,,0.2425757985675594,0.1076424671609933,0.1349333314065661,3,manual_review,manual_review
+619999,Sales Support Workers nec,,,,,,5,manual_review,manual_review
+619134,Telemarketer,41-9041.00,Telemarketers,0.412340609245043,,,1,accepted,single_candidate
+461931,Airline Customer Support Worker,,,0.0702648895630148,0.0127667302621411,0.0574981593008737,3,manual_review,manual_review
+619931,Entertainment Venue Attendant,,,0.169863691097383,0.157495949865622,0.012367741231761015,7,manual_review,manual_review
+619934,Reservations Agent,,,0.2403986210233733,0.1471393873367897,0.09325923368658362,5,manual_review,manual_review
+899532,Railways Assistant,,,0.0441412053089886,0.0426350881728492,0.0015061171361393996,5,manual_review,manual_review
+899531,Rail Guard or Conductor,53-6061.00,Passenger Attendants,0.3462581733017319,0.0670132379673625,0.27924493533436945,4,accepted,score_and_gap_rule
+461932,Fashion Stylist,,,0.0472559443167641,0.028012987039798,0.0192429572769661,8,manual_review,manual_review
+619135,Visual Merchandiser,27-1026.00,Merchandise Displayers and Window Trimmers,0.4452923279591742,0.1337174403766243,0.31157488758254986,3,accepted,score_and_gap_rule
+619933,Personal Shopper,,,0.0654309606905302,,,2,manual_review,manual_review
+731932,Clay Products Machine Operator,51-9195.05,"Potters, Manufacturing",0.3455372612829223,0.1255870634155119,0.21995019786741038,9,accepted,score_and_gap_rule
+731933,Concrete Products Machine Operator,,,0.1858301985854129,0.1824054774584288,0.0034247211269840816,5,manual_review,manual_review
+731935,Glass Production Machine Operator,51-9195.04,"Glass Blowers, Molders, Benders, and Finishers",0.4076757228179308,0.1332520278661105,0.2744236949518203,9,accepted,score_and_gap_rule
+731938,Stone Processing Machine Operator,,,0.2480955875207296,0.0816589892134815,0.1664365983072481,5,manual_review,manual_review
+731999,Machine Operators nec,,,,,,17,manual_review,manual_review
+731131,Industrial Spray Painter,51-9124.00,"Coating, Painting, and Spraying Machine Setters, Operators, and Tenders",0.3500067951882191,,,1,accepted,single_candidate
+731231,Paper and Pulp Production Operator,,,0.1526341309658547,0.0906552799096402,0.06197885105621451,4,manual_review,manual_review
+731232,Timber and Wood Production Operator,,,0.1640724047077979,0.1248666350275594,0.039205769680238506,3,manual_review,manual_review
+731936,Photographic Print Processor,51-9151.00,Photographic Process Workers and Processing Machine Operators,0.3558853450690782,0.0546855428126442,0.301199802256434,11,accepted,score_and_gap_rule
+731332,Plastics Production Machine Operator,,,0.1888971438740248,0.1664433815238765,0.022453762350148287,13,manual_review,manual_review
+731331,Plastics Fabricator or Welder,,,0.1495532031041072,0.1080839802115688,0.04146922289253839,13,manual_review,manual_review
+731333,Reinforced Plastic and Composite Production Worker,,,0.1361435960114551,0.1242475387036632,0.01189605730779189,13,manual_review,manual_review
+731334,Rubber Production Machine Operator,,,0.1971344831813986,0.1566343485940467,0.04050013458735188,8,manual_review,manual_review
+731399,Plastics and Rubber Production Machine Operators nec,,,,,,13,manual_review,manual_review
+731431,Sewing Machinist,51-6031.00,Sewing Machine Operators,0.3019062606862087,,,1,accepted,single_candidate
+731432,Textile or Footwear Production Machine Operator,,,0.2561738985075376,0.1591095507680821,0.09706434773945549,6,manual_review,manual_review
+731931,Chemical Production Machine Operator,,,0.1988840700734043,0.1987447108829992,0.0001393591904051139,6,manual_review,manual_review
+731132,Sandblaster,,,0.1897834037721364,0.1007031965210551,0.0890802072510813,4,manual_review,manual_review
+731937,Sterilisation Technician,,,0.1846214525335577,0.0790596639033254,0.10556178863023229,10,manual_review,manual_review
+732131,"Crane, Hoist or Lift Operator",,,0.2568053884718086,0.2147339341568599,0.042071454314948714,7,manual_review,manual_review
+399231,Driller,,,0.3357779641378861,0.2858694931708171,0.04990847096706896,15,manual_review,manual_review
+732331,Miner,,,0.1922877511175901,0.085940208783476,0.10634754233411411,10,manual_review,manual_review
+732332,Shot Firer,47-5032.00,"Explosives Workers, Ordnance Handling Experts, and Blasters",0.5292541699900861,,,1,accepted,single_candidate
+732231,Engineering Production Worker,,,0.2141089841829875,0.166480712117124,0.04762827206586348,25,manual_review,manual_review
+732931,Boiler or Engine Operator,51-8021.00,Stationary Engineers and Boiler Operators,0.2694549421112993,,,1,accepted,single_candidate
+732932,Bulk Materials Handling Plant Operator,,,0.1293015032595794,0.0944508316207971,0.034850671638782305,6,manual_review,manual_review
+731934,Crushing Machine Operator,,,0.2203120654731599,0.1811891487003962,0.039122916772763694,6,manual_review,manual_review
+732999,Stationary Plant Operators nec,,,,,,13,manual_review,manual_review
+732933,Concrete Batching Plant Operator,,,0.2542245268013781,0.1908789848188232,0.06334554198255488,5,manual_review,manual_review
+732934,Concrete Pump Operator,,,0.0484283948602321,0.0317392877361077,0.0166891071241244,5,manual_review,manual_review
+732935,Railway Signal Operator,,,0.1404303709361098,0.0859009732756194,0.054529397660490406,6,manual_review,manual_review
+741934,Railway Shunter,,,0.2014392717581901,0.1805635550045282,0.0208757167536619,6,manual_review,manual_review
+399937,Railway Network Controller,,,0.1825047143992406,0.1205745330537972,0.0619301813454434,6,manual_review,manual_review
+732431,Wastewater or Water Plant Operator,,,0.1540258945654974,0.0597123664700562,0.09431352809544119,5,manual_review,manual_review
+732936,Weighbridge Operator,,,0.1499688782023895,0.0374171949465123,0.1125516832558772,3,manual_review,manual_review
+741131,Agricultural and Horticultural Mobile Plant Operator,,,0.0945782188714823,0.0,0.0945782188714823,2,manual_review,manual_review
+741132,Logging Plant Operator,,,0.2936378097168181,0.2714093404668672,0.022228469249950866,7,manual_review,manual_review
+741231,Earthmoving Plant Operator (General),,,0.0776963586312614,0.0481740685838485,0.0295222900474129,6,manual_review,manual_review
+741232,Backhoe Operator,,,0.0855393563890864,0.057959364456281,0.0275799919328054,6,manual_review,manual_review
+741233,Bulldozer Operator,,,0.1258388125401133,0.0413575309338644,0.0844812816062489,6,manual_review,manual_review
+741234,Excavator Operator,,,0.1548266086183759,0.1081399055446306,0.04668670307374531,6,manual_review,manual_review
+741235,Grader Operator,,,0.0812467574368966,0.0496618281306116,0.031584929306285,6,manual_review,manual_review
+741236,Loader Operator,,,0.0437558905453964,0.0326100955890397,0.011145794956356703,6,manual_review,manual_review
+741331,Forklift Driver,,,0.1084859936814155,0.0681001605531027,0.0403858331283128,4,manual_review,manual_review
+741931,Aircraft Baggage Handler and Ground Crew,53-1041.00,Aircraft Cargo Handling Supervisors,0.310905907566575,0.1361095264014701,0.1747963811651049,6,accepted,score_and_gap_rule
+741933,Linemarker,,,0.0305481018159049,0.0235900422036342,0.006958059612270702,4,manual_review,manual_review
+741999,Mobile Plant Operators nec,,,,,,6,manual_review,manual_review
+741935,Railway Track Plant Operator,,,0.0605709686308116,0.0361419027645618,0.0244290658662498,6,manual_review,manual_review
+741936,Road Roller Operator,,,0.0192114411133644,0.0158586260883197,0.003352815025044701,6,manual_review,manual_review
+741938,Streetsweeper Operator,,,0.0866102033912316,0.0267946768589165,0.0598155265323151,6,manual_review,manual_review
+741237,Tunnel Constructor,,,0.1030538367436946,0.0975417390401183,0.005512097703576302,6,manual_review,manual_review
+741937,Stevedore,53-1041.00,Aircraft Cargo Handling Supervisors,0.3111315406161267,0.2061804246598066,0.10495111595632009,13,accepted,score_and_gap_rule
+711131,Chauffeur,,,0.3800646547433512,0.3533345528172144,0.02673010192613684,8,manual_review,manual_review
+711134,Taxi Driver,53-3054.00,Taxi Drivers,0.3895415651756125,0.3251274662860302,0.06441409888958233,8,accepted,score_and_gap_rule
+711132,Oversize Load Pilot Escort,,,0.0823451484106723,0.0721304261865162,0.010214722224156092,8,manual_review,manual_review
+711133,Rideshare Driver,,,0.3895798046805159,0.3700709094754572,0.01950889520505872,8,manual_review,manual_review
+711199,Automobile Drivers nec,,,,,,8,manual_review,manual_review
+711231,Bus Driver,53-3052.00,"Bus Drivers, Transit and Intercity",0.5348392373284755,0.376456122389628,0.1583831149388475,7,accepted,score_and_gap_rule
+711232,Charter and Tour Bus Driver,53-3052.00,"Bus Drivers, Transit and Intercity",0.3155867977236576,0.2563423722696225,0.05924442545403513,7,accepted,score_and_gap_rule
+711233,Passenger Coach Driver,53-3052.00,"Bus Drivers, Transit and Intercity",0.4091263857157158,0.312704244563804,0.09642214115191178,7,accepted,score_and_gap_rule
+711331,Freight Train Driver,,,0.2148010188271106,0.1425038921383685,0.07229712668874211,8,manual_review,manual_review
+711332,Passenger Train Driver,,,0.2060721707262893,0.1006241862487854,0.1054479844775039,8,manual_review,manual_review
+711333,Tram Driver,,,0.129565171814994,0.0829066139565979,0.046658557858396094,7,manual_review,manual_review
+713131,Truck Driver (General),,,0.19419819013047,0.0287753340328746,0.16542285609759538,4,manual_review,manual_review
+713231,Articulated Truck Driver,,,0.2050117385642854,0.060043810329853,0.14496792823443239,4,manual_review,manual_review
+741932,Aircraft Refueller,,,0.0981418277932643,0.0938671641316647,0.004274663661599606,4,manual_review,manual_review
+712131,Furniture Removalist,,,0.1492301297198124,0.1104080979034813,0.03882203181633109,4,manual_review,manual_review
+713232,Tanker Truck Driver,,,0.0736606086187405,0.0346692121103063,0.03899139650843421,4,manual_review,manual_review
+713132,Tow Truck Driver,,,0.1189994561259478,0.0964039461163623,0.0225955100095855,4,manual_review,manual_review
+721131,Storeperson,,,0.1457626898395207,0.13778681671707,0.00797587312245071,14,manual_review,manual_review
+721132,Warehouse Supervisor,,,0.104859938238418,0.0765482471542642,0.028311691084153795,14,manual_review,manual_review
+811531,Vehicle Detailer,53-7061.00,Cleaners of Vehicles and Equipment,0.2447773022142771,,,1,accepted,single_candidate
+811131,Commercial Cleaner,,,0.1864595110417454,0.156490718284919,0.0299687927568264,5,manual_review,manual_review
+811231,Domestic Cleaner,37-2012.00,Maids and Housekeeping Cleaners,0.1372516803624312,,,1,accepted,single_candidate
+811431,Commercial Housekeeper,,,0.2077359850082782,0.0964219650485434,0.11131401995973479,4,manual_review,manual_review
+811432,Domestic Housekeeper,,,0.0535308518991503,0.0126153490188058,0.0409155028803445,3,manual_review,manual_review
+811332,Laundry Worker,51-6011.00,Laundry and Dry-Cleaning Workers,0.3984748677964671,0.3028379188329415,0.09563694896352565,2,accepted,score_and_gap_rule
+811331,Drycleaner,51-6011.00,Laundry and Dry-Cleaning Workers,0.3430263749933503,0.1398932078024131,0.2031331671909372,2,accepted,score_and_gap_rule
+811931,Carpet Cleaner,,,0.0312509478102218,,,2,manual_review,manual_review
+811933,Window Cleaner,37-2011.00,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",0.1147524169503132,,,1,accepted,single_candidate
+811932,Roof Gutter Cleaner,,,0.0193360631661364,,,2,manual_review,manual_review
+811999,Cleaners and Laundry Workers nec,,,,,,3,manual_review,manual_review
+899937,Swimming Pool or Spa Technician,,,0.0239056378009761,,,2,manual_review,manual_review
+821131,Asbestos Removalist,,,0.0657783421595208,0.0572604360782948,0.008517906081226004,8,manual_review,manual_review
+821132,Builder's Labourer,,,0.17005490710452,0.1649248132893494,0.0051300938151706,8,manual_review,manual_review
+821134,Demolition Labourer,,,0.1411001810661394,0.0980081287536003,0.0430920523125391,8,manual_review,manual_review
+821632,Pipe Layer,47-2152.00,"Plumbers, Pipefitters, and Steamfitters",0.5040864288736671,0.4195977936122335,0.08448863526143358,3,accepted,score_and_gap_rule
+821631,"Drainage, Sewerage and Stormwater Labourer",,,0.0339414925094275,0.0060108867560818,0.027930605753345696,3,manual_review,manual_review
+821135,Earthmoving Labourer,,,0.0511579600144499,0.0191609526247089,0.031997007389741,3,manual_review,manual_review
+821633,Plumber's Assistant,,,0.1795948405797169,0.076290834321211,0.10330400625850589,8,manual_review,manual_review
+371231,Concreter,47-2051.00,Cement Masons and Concrete Finishers,0.4878965916626557,0.3139149518108812,0.1739816398517745,3,accepted,score_and_gap_rule
+821133,Concreter's Labourer,,,0.2627394461247254,0.0863629337950634,0.17637651232966198,8,manual_review,manual_review
+821331,Fencer,,,0.0498705215186622,0.038103020101681,0.0117675014169812,8,manual_review,manual_review
+369933,Waterproofer,,,0.1220535978893249,0.0921962965795458,0.029857301309779108,2,manual_review,manual_review
+821431,Building Insulation Installer,47-2132.00,"Insulation Workers, Mechanical",0.3634779259957573,0.2925934729454545,0.07088445305030278,2,accepted,score_and_gap_rule
+369932,Swimming Pool and Spa Builder,,,0.0489761858013144,0.0474578549551902,0.0015183308461242037,6,manual_review,manual_review
+821432,Garage Door Installer,,,0.028763706496076,0.0114956547326631,0.017268051763412902,9,manual_review,manual_review
+821433,Shed Builder,11-9021.00,Construction Managers,0.0039573344775995,,,1,accepted,single_candidate
+821434,Window Furnishing Installer,,,0.0469137916817103,0.0309976212077478,0.0159161704739625,9,manual_review,manual_review
+821499,Home Improvement and Insulation Installers nec,,,,,,10,manual_review,manual_review
+821531,Paving and Surfacing Labourer,,,0.1595690081436323,0.0331547677800699,0.1264142403635624,3,manual_review,manual_review
+821934,Rail Protection Officer,,,0.0844028197667945,0.0737639710914998,0.010638848675294701,8,manual_review,manual_review
+821935,Railway Track Worker,,,0.2853418222171064,0.0404415920302471,0.2449002301868593,3,manual_review,manual_review
+821231,Construction Rigger,49-9096.00,Riggers,0.4543343496599761,,,1,accepted,single_candidate
+821731,Scaffolder,,,0.0775766962504431,0.0225600623110432,0.0550166339393999,6,manual_review,manual_review
+821732,Steel Fixer,,,0.0875020173553516,0.0488019184538584,0.038700098901493195,8,manual_review,manual_review
+821733,Structural Steel Erector,47-2221.00,Structural Iron and Steel Workers,0.4240918821703234,0.0648176660280604,0.359274216142263,3,accepted,score_and_gap_rule
+821232,Dogger,,,0.0230800443038291,0.0092433295243999,0.013836714779429202,8,manual_review,manual_review
+821931,Driller's Offsider,,,0.1583418549423872,,,2,manual_review,manual_review
+821932,Lagger,47-2132.00,"Insulation Workers, Mechanical",0.3414207420613299,0.2269621572264691,0.1144585848348608,2,accepted,score_and_gap_rule
+821933,Mining Support Worker,,,0.0499998695296235,,,2,manual_review,manual_review
+821936,Surveyor's Assistant,,,0.0356157505802432,0.004320569830945,0.0312951807492982,3,manual_review,manual_review
+831131,Baking Factory Worker,,,0.1202365634367142,0.087198644818886,0.03303791861782819,6,manual_review,manual_review
+831132,Brewery Worker,,,0.1359090744606454,0.0927001006541481,0.0432089738064973,6,manual_review,manual_review
+831134,Confectionery Maker,,,0.1851520110644774,0.1439690401519537,0.04118297091252371,7,manual_review,manual_review
+831135,Dairy Products Factory Worker,,,0.1884483640255293,0.1571248704548505,0.03132349357067882,13,manual_review,manual_review
+831136,Fruit and Vegetable Factory Worker,,,0.0844424482191333,0.0683299078847627,0.016112540334370595,6,manual_review,manual_review
+831137,Grain Mill Worker,,,0.2013039527410629,0.1817714211390817,0.019532531601981207,6,manual_review,manual_review
+831138,Sugar Mill Worker,,,0.0816544453695307,0.0654734427001464,0.016181002669384298,6,manual_review,manual_review
+831141,Winery Cellar Hand,,,0.0605403876416851,0.0457016439151439,0.014838743726541204,6,manual_review,manual_review
+831133,Coffee Roaster,,,0.1469820927855898,0.0433731800349336,0.1036089127506562,12,manual_review,manual_review
+831199,Food and Drink Factory Workers nec,,,,,,12,manual_review,manual_review
+831231,Meat Boner and Slicer,,,0.5736116239564846,0.5474205542886829,0.026191069667801714,4,manual_review,manual_review
+831232,Slaughterer,,,0.2176490040324604,0.0702293105107293,0.14741969352173112,4,manual_review,manual_review
+831331,Meat Process Worker,51-3021.00,Butchers and Meat Cutters,0.6331124554754244,0.5458726357713726,0.08723981970405181,9,accepted,score_and_gap_rule
+831332,Poultry Process Worker,,,0.1600402423682298,0.1332466492356606,0.02679359313256921,9,manual_review,manual_review
+831333,Seafood Process Worker,,,0.0716207737434405,0.0658100013293839,0.0058107724140566,9,manual_review,manual_review
+832132,Chocolate Packer,,,0.2769809709067051,0.1433479462572848,0.13363302464942028,2,manual_review,manual_review
+832131,Packer (General),,,0.2318664252664088,0.1778901888706288,0.05397623639578,2,manual_review,manual_review
+832133,Fruit and Vegetable Packer,,,0.1219539872922353,0.0635970245013815,0.05835696279085381,2,manual_review,manual_review
+832134,Meat Packer,,,0.241143937755218,0.1573255227669553,0.0838184149882627,2,manual_review,manual_review
+832135,Seafood Packer,,,0.2413550288617178,0.1100112025974501,0.13134382626426772,2,manual_review,manual_review
+832231,Product Assembler,,,0.4191380764961522,0.3702244326315322,0.04891364386461999,10,manual_review,manual_review
+839135,Metal Engineering Process Worker,,,0.1126551742406723,0.1029722919078758,0.009682882332796502,7,manual_review,manual_review
+839137,Plastics Factory Worker,,,0.2512412180511825,0.1743668908602611,0.07687432719092138,7,manual_review,manual_review
+839199,Materials and Chemical Process Workers nec,,,,,,9,manual_review,manual_review
+839231,Product Examiner,51-9061.00,"Inspectors, Testers, Sorters, Samplers, and Weighers",0.1730837456995415,,,1,accepted,single_candidate
+839232,Product Grader,,,0.0873901467516414,0.0805501981227258,0.006839948628915599,3,manual_review,manual_review
+839233,Product Tester,,,0.1536715731328981,0.1293436051643951,0.024327967968502978,3,manual_review,manual_review
+839136,Paper and Pulp Process Worker,,,0.2186928527456105,0.182786690974914,0.0359061617706965,7,manual_review,manual_review
+839141,Timber and Wood Process Worker,,,0.1747424697919816,0.1528916599441019,0.02185080984787971,7,manual_review,manual_review
+839131,Cement and Concrete Plant Worker,,,0.204798621299831,0.1705215149064653,0.0342771063933657,7,manual_review,manual_review
+839132,Chemical Plant Worker,,,0.1384889694198471,0.0845509282711322,0.053938041148714894,7,manual_review,manual_review
+839133,Fabric and Textile Factory Worker,,,0.0861735134384856,0.0848779856641809,0.0012955277743047083,7,manual_review,manual_review
+839134,Glass Processing Worker,,,0.1085333894498142,0.0842717572657105,0.024261632184103696,7,manual_review,manual_review
+839138,Recycling Worker,53-7081.00,Refuse and Recyclable Material Collectors,0.1657443502318464,,,1,accepted,single_candidate
+841331,Aquaculture Worker,,,0.1630192738450942,0.058929367973713,0.1040899058713812,2,manual_review,manual_review
+841132,Fruit Farm Worker,,,0.1773494948002502,,,2,manual_review,manual_review
+841136,Nut Farm Worker,,,0.144882722275382,,,2,manual_review,manual_review
+841133,Fruit Picker,,,0.0031657948722984,,,2,manual_review,manual_review
+841134,"Grain, Oilseed, Pulse and Pasture Farm Worker",,,0.1245869133460192,,,2,manual_review,manual_review
+841138,Vegetable Farm Worker,,,0.1534716756641721,,,2,manual_review,manual_review
+841141,Vegetable Picker,,,0.0492333506681289,,,2,manual_review,manual_review
+841142,Vineyard Worker,,,0.0942672136229181,,,2,manual_review,manual_review
+841135,Mushroom Picker,,,0.0027374022441166,,,2,manual_review,manual_review
+841131,Cotton Farm Worker,,,0.1301575266933031,,,2,manual_review,manual_review
+841137,Sugar Cane Farm Worker,,,0.1446605104174021,,,2,manual_review,manual_review
+841199,Crop Farm Workers nec,,,,,,2,manual_review,manual_review
+343133,Forestry Operations Supervisor,,,0.1543591288267519,0.0744389726644728,0.0799201561622791,6,manual_review,manual_review
+842932,Forestry Worker,,,0.2431669088435976,0.1096341561849303,0.1335327526586673,6,manual_review,manual_review
+842131,Garden Labourer,,,0.2433889284389596,0.1417972969719966,0.10159163146696298,3,manual_review,manual_review
+842231,Horticultural Nursery Assistant,,,0.1611255763221532,0.0903026581907592,0.07082291813139402,3,manual_review,manual_review
+841231,Beef Cattle Farm Worker,,,0.0888044941946752,,,2,manual_review,manual_review
+841233,Dairy Cattle Farm Worker,,,0.0545838718456084,,,2,manual_review,manual_review
+841232,Cattle and Sheep Farm Worker,,,0.0594146354783027,,,2,manual_review,manual_review
+841299,Livestock Farm Workers nec,,,,,,2,manual_review,manual_review
+841236,Poultry Farm Worker,,,0.0971870099276653,,,2,manual_review,manual_review
+841234,Livestock Husbandry Worker,,,0.3096197453221324,,,2,manual_review,manual_review
+841237,Sheep Farm Worker,,,0.0749706936235394,,,2,manual_review,manual_review
+341133,Track Rider,,,0.035663979205546,0.0256678286472011,0.009996150558344904,2,manual_review,manual_review
+841238,Stablehand,,,0.0313827580688074,,,2,manual_review,manual_review
+841241,Wool Handler,,,0.0509553882338308,,,2,manual_review,manual_review
+841235,Piggery Farm Worker,,,0.0357628819423719,,,2,manual_review,manual_review
+841332,Broadacre Crop and Livestock Farm Worker,45-2093.00,"Farmworkers, Farm, Ranch, and Aquacultural Animals",0.3499664404340366,0.0730248467489737,0.2769415936850629,3,accepted,score_and_gap_rule
+841399,Mixed Production and Aquaculture Farm Workers nec,,,,,,3,manual_review,manual_review
+842999,Garden and Forestry Workers nec,,,,,,7,manual_review,manual_review
+399331,Pest Control Technician,,,0.1465206856663838,0.0523596422656855,0.0941610434006983,3,manual_review,manual_review
+842931,Bush Regenerator,,,0.0909475386383033,,,2,manual_review,manual_review
+842933,Irrigation Assistant,,,0.08225408907888,0.0050136742862775,0.0772404147926025,4,manual_review,manual_review
+851131,Fast Food Cook,,,0.2777878973029353,0.093530211839583,0.1842576854633523,2,manual_review,manual_review
+851233,Pastrycook's Assistant,,,0.1257326091060253,0.1041248477333694,0.021607761372655895,4,manual_review,manual_review
+851299,Food Preparation Assistants nec,,,,,,4,manual_review,manual_review
+851231,Kitchenhand (General),35-2021.00,Food Preparation Workers,0.3060636789665037,0.1486098787327417,0.15745380023376201,4,accepted,score_and_gap_rule
+851232,Dishwasher,35-9021.00,Dishwashers,0.3223958290638035,0.2582415407221362,0.06415428834166731,4,accepted,score_and_gap_rule
+891131,Freight Handler (Rail or Road),,,0.2427923603801831,0.1962424779850269,0.0465498823951562,6,manual_review,manual_review
+891132,Truck Driver's Offsider,,,0.2021516249486893,0.1609519632982049,0.04119966165048439,6,manual_review,manual_review
+891231,Shelf Filler,53-7065.00,Stockers and Order Fillers,0.2767483233819218,,,1,accepted,single_candidate
+899131,Caretaker,37-2011.00,"Janitors and Cleaners, Except Maids and Housekeeping Cleaners",0.1407101854570955,,,1,accepted,single_candidate
+899231,Deck Hand,,,0.1099208743505989,0.1098283016396455,9.257271095339248e-05,2,manual_review,manual_review
+343132,Fishing Leading Hand,,,0.2382650142068363,0.0460225458454172,0.1922424683614191,2,manual_review,manual_review
+899232,Fishing Hand,45-3031.00,Fishing and Hunting Workers,0.3729417075561838,0.0230429174769781,0.34989879007920566,2,accepted,score_and_gap_rule
+899331,Handyperson,,,0.19267752701915,0.1705377092021208,0.0221398178170292,5,manual_review,manual_review
+899431,Motor Vehicle Parts and Accessories Fitter (General),,,0.2000484788466884,0.1521315144017941,0.047916964444894294,10,manual_review,manual_review
+899432,Autoglazier,47-2121.00,Glaziers,0.5930308104228289,,,1,accepted,single_candidate
+899434,Tyre Fitter,,,0.1227554649954481,0.1213650249389737,0.0013904400564743874,10,manual_review,manual_review
+899935,Recycling or Waste Collector,,,0.1982178493925433,0.0415622882601635,0.1566555611323798,4,manual_review,manual_review
+899941,Vending Machine Attendant,,,0.2995233668939137,0.0024645191512199,0.29705884774269375,2,manual_review,manual_review
+351432,Bicycle Technician,49-3091.00,Bicycle Repairers,0.5076777861312683,0.0472586831421741,0.4604191029890943,2,accepted,score_and_gap_rule
+899931,Car Park Attendant,53-6021.00,Parking Attendants,0.485750232194341,0.0739234662587254,0.4118267659356156,5,accepted,score_and_gap_rule
+899932,Crossing Supervisor,33-9091.00,Crossing Guards and Flaggers,0.3999189632883116,0.0949961395082426,0.304922823780069,11,accepted,score_and_gap_rule
+899933,Electrical or Telecommunications Trades Assistant,,,0.172196536125456,0.0600065981275206,0.11218993799793539,8,manual_review,manual_review
+899934,Leaflet or Newspaper Deliverer,,,0.2185003096944395,0.0325151183007711,0.18598519139366843,2,manual_review,manual_review
+899433,Mechanic's Assistant,,,0.0995723649133444,0.0453132545049362,0.054259110408408195,5,manual_review,manual_review
+899936,Sign Installer,,,0.0386807117636456,0.032233644150119,0.006447067613526598,5,manual_review,manual_review
+899938,Trolley Collector,,,0.0379777480154955,0.0101344879166345,0.027843260098860997,5,manual_review,manual_review
+899631,Road Traffic Controller,33-9091.00,Crossing Guards and Flaggers,0.5303507873566214,0.1659445339740809,0.3644062533825405,11,accepted,score_and_gap_rule
+899999,Labourers nec,,,,,,16,manual_review,manual_review

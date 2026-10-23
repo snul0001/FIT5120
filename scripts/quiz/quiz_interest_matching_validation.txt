@@ -1,0 +1,585 @@
+IResi detailed quiz validation and schema-ready selection audit
+
+Input: /Users/xuer/Desktop/5120/iteration3/quiz/quiz_questions_riasec.csv — 60 rows, 6 columns
+question_id      object
+question         object
+answer_id        object
+answer_text      object
+riasec_code      object
+display_order     int64
+PASS: 10 questions, 60 answers, six RIASEC choices each; Q1 remains 'Which activity sounds most interesting to you?'
+
+Input: /Users/xuer/Documents/Codex/2026-10-05/i-am-working-on-the-iresi/outputs/interest_code_pipeline/onet_interest_codes_clean.csv — 923 rows, 4 columns
+ONET_code        string[python]
+ONET_title       string[python]
+Interest_Code    string[python]
+Job_Zone         string[python]
+
+Input: /Users/xuer/Documents/Codex/2026-10-05/i-am-working-on-the-iresi/outputs/interest_code_pipeline/anzsco4_interest_mapping.csv — 179 rows, 8 columns
+ANZSCO_code      string[python]
+ANZSCO_title             object
+ONET_code        string[python]
+ONET_title               object
+Interest_Code    string[python]
+Match_score             float64
+Rationale                object
+Review                   object
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Realistic.csv — 404 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Investigative.csv — 147 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Artistic.csv — 65 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Social.csv — 139 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Enterprising.csv — 114 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Input: /Users/xuer/Desktop/5120/iteration3/data/raw/Conventional.csv — 180 rows, 5 columns
+Interest Code    string[python]
+Job Zone         string[python]
+Code             string[python]
+Occupation       string[python]
+Featured         string[python]
+
+Combined interest rows: 1049
+Missing interest fields: {'ONET_code': 0, 'ONET_title': 0, 'Interest_Code': 0, 'Job_Zone': 0}
+Conflicting official Interest Codes: None
+Repeated occupation/Interest Code rows removed: 126
+Unique O*NET occupations: 923
+Official code lengths: {np.int64(1): 20, np.int64(2): 413, np.int64(3): 490}
+PASS: one official Interest Code per O*NET occupation.
+
+Input: /Users/xuer/Desktop/5120/iteration3/quiz/preprocessed_mapping.csv — 179 rows, 7 columns
+ANZSCO_code     string[python]
+ANZSCO_title            object
+ONET_code       string[python]
+ONET_title              object
+Match_score            float64
+Rationale               object
+Review                  object
+
+Mapping missing values: {'ANZSCO_code': 0, 'ANZSCO_title': 0, 'ONET_code': 0, 'ONET_title': 0, 'Match_score': 0, 'Rationale': 0, 'Review': 0}
+Exact duplicate mapping rows: 0
+Repeated ANZSCO/O*NET pairs: 0
+Review counts (all retained): {'matches': 118, 'partial': 61}
+Mapped O*NET coverage: 159/159 unique occupations; 179/179 rows
+ANZSCO group coverage: 81/81
+Unmatched O*NET codes: None
+Joined missing values: {'ANZSCO_code': 0, 'ANZSCO_title': 0, 'ONET_code': 0, 'ONET_title': 0, 'Match_score': 0, 'Rationale': 0, 'Review': 0, 'Interest_Code': 0}
+Mapping weight sums:
+ANZSCO_code
+2111    1.0
+2112    1.0
+2113    1.0
+2114    1.0
+2121    1.0
+2122    1.0
+2124    1.0
+2211    1.0
+2212    1.0
+2221    1.0
+2223    1.0
+2231    1.0
+2232    1.0
+2241    1.0
+2243    1.0
+2244    1.0
+2247    1.0
+2251    1.0
+2252    1.0
+2253    1.0
+2323    1.0
+2324    1.0
+2325    1.0
+2346    1.0
+2511    1.0
+2512    1.0
+2515    1.0
+2523    1.0
+2524    1.0
+2525    1.0
+2527    1.0
+2541    1.0
+2544    1.0
+2611    1.0
+2612    1.0
+2613    1.0
+2621    1.0
+2631    1.0
+2632    1.0
+2633    1.0
+2723    1.0
+3112    1.0
+3131    1.0
+3132    1.0
+3211    1.0
+3212    1.0
+3223    1.0
+3231    1.0
+3232    1.0
+3311    1.0
+3312    1.0
+3322    1.0
+3341    1.0
+3411    1.0
+3421    1.0
+3423    1.0
+3424    1.0
+3513    1.0
+3514    1.0
+3613    1.0
+3622    1.0
+3911    1.0
+3941    1.0
+3995    1.0
+4111    1.0
+4112    1.0
+4114    1.0
+4231    1.0
+4232    1.0
+4233    1.0
+5111    1.0
+5211    1.0
+5311    1.0
+5511    1.0
+5512    1.0
+5521    1.0
+5522    1.0
+5911    1.0
+5994    1.0
+6121    1.0
+6212    1.0
+
+SCHEMA SELECTION AUDIT — before selection
+Original rows: 179; unique ANZSCO codes: 81; groups with multiple rows: 69
+All rows for every ANZSCO group with multiple mappings:
+ANZSCO_code                                                      ANZSCO_title  ONET_code                                                                            ONET_title Interest_Code  Match_score  Review
+       2111                            Actors, Dancers and Other Entertainers 27-2011.00                                                                                Actors           ASE         0.40 matches
+       2111                            Actors, Dancers and Other Entertainers 27-2031.00                                                                               Dancers           ARS         0.35 matches
+       2111                            Actors, Dancers and Other Entertainers 27-2032.00                                                                        Choreographers            AS         0.25 partial
+       2112                                               Music Professionals 27-2041.00                                                         Music Directors and Composers            AE         0.50 matches
+       2112                                               Music Professionals 27-2042.00                                                                 Musicians and Singers            AE         0.50 matches
+       2113                                                     Photographers 27-4021.00                                                                         Photographers            RA         0.70 matches
+       2113                                                     Photographers 51-9151.00                         Photographic Process Workers and Processing Machine Operators            RC         0.30 matches
+       2114                              Visual Arts and Crafts Professionals 27-1012.00                                                                         Craft Artists            AR         0.40 matches
+       2114                              Visual Arts and Crafts Professionals 27-1013.00                         Fine Artists, Including Painters, Sculptors, and Illustrators            AR         0.60 matches
+       2121                Artistic Directors, Media Producers and Presenters 27-2012.00                                                               Producers and Directors            AE         0.55 matches
+       2121                Artistic Directors, Media Producers and Presenters 27-3011.00                                           Broadcast Announcers and Radio Disc Jockeys           AES         0.45 matches
+       2122                              Authors, and Book and Script Editors 27-3041.00                                                                               Editors           ACE         0.50 matches
+       2122                              Authors, and Book and Script Editors 27-3043.00                                                                   Writers and Authors            AE         0.50 matches
+       2124                                     Journalists and Other Writers 27-3023.00                                             News Analysts, Reporters, and Journalists           AIE         0.35 matches
+       2124                                     Journalists and Other Writers 27-3041.00                                                                               Editors           ACE         0.20 partial
+       2124                                     Journalists and Other Writers 27-3042.00                                                                     Technical Writers           CAI         0.25 partial
+       2124                                     Journalists and Other Writers 27-3043.00                                                                   Writers and Authors            AE         0.20 matches
+       2211                                                       Accountants 13-2011.00                                                              Accountants and Auditors           CEI         0.70 matches
+       2211                                                       Accountants 13-2082.00                                                                         Tax Preparers            CE         0.30 partial
+       2212            Auditors, Company Secretaries and Corporate Treasurers 13-1041.00                                                                   Compliance Officers            CE         0.25 matches
+       2212            Auditors, Company Secretaries and Corporate Treasurers 13-2011.00                                                              Accountants and Auditors           CEI         0.45 matches
+       2212            Auditors, Company Secretaries and Corporate Treasurers 13-2054.00                                                            Financial Risk Specialists           CIE         0.30 partial
+       2221                                                 Financial Brokers 13-2072.00                                                                         Loan Officers           CES         0.40 matches
+       2221                                                 Financial Brokers 41-3021.00                                                                Insurance Sales Agents           ECS         0.30 matches
+       2221                                                 Financial Brokers 41-3031.00                          Securities, Commodities, and Financial Services Sales Agents            EC         0.30 partial
+       2223                        Financial Investment Advisers and Managers 13-2051.00                                                     Financial and Investment Analysts           CEI         0.30 matches
+       2223                        Financial Investment Advisers and Managers 13-2052.00                                                           Personal Financial Advisors           ECS         0.50 matches
+       2223                        Financial Investment Advisers and Managers 41-3031.00                          Securities, Commodities, and Financial Services Sales Agents            EC         0.20 partial
+       2231                                      Human Resource Professionals 13-1071.00                                                           Human Resources Specialists           ECS         0.60 matches
+       2231                                      Human Resource Professionals 13-1075.00                                                           Labor Relations Specialists           ECS         0.40 matches
+       2232                                                      ICT Trainers 13-1151.00                                                  Training and Development Specialists            SI         0.70 matches
+       2232                                                      ICT Trainers 27-3042.00                                                                     Technical Writers           CAI         0.30 partial
+       2241                       Actuaries, Mathematicians and Statisticians 15-2011.00                                                                             Actuaries           CIE         0.40 matches
+       2241                       Actuaries, Mathematicians and Statisticians 15-2021.00                                                                        Mathematicians            IC         0.25 matches
+       2241                       Actuaries, Mathematicians and Statisticians 15-2041.00                                                                         Statisticians            IC         0.35 matches
+       2244                                  Intelligence and Policy Analysts 19-3094.00                                                                  Political Scientists            IA         0.45 matches
+       2244                                  Intelligence and Policy Analysts 33-3021.06                                                                 Intelligence Analysts           ICE         0.55 matches
+       2251                           Advertising and Marketing Professionals 13-1161.00                                    Market Research Analysts and Marketing Specialists           ECI         0.70 matches
+       2251                           Advertising and Marketing Professionals 13-1161.01                                                          Search Marketing Strategists           ECI         0.30 partial
+       2252                                           ICT Sales Professionals 41-4011.00 Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products            EC         0.60 matches
+       2252                                           ICT Sales Professionals 41-9031.00                                                                       Sales Engineers            EC         0.40 partial
+       2253                                    Public Relations Professionals 13-1121.00                                               Meeting, Convention, and Event Planners           ECS         0.25 partial
+       2253                                    Public Relations Professionals 27-3031.00                                                          Public Relations Specialists           EAS         0.75 matches
+       2323                       Fashion, Industrial and Jewellery Designers 27-1021.00                                                   Commercial and Industrial Designers           ARI         0.40 matches
+       2323                       Fashion, Industrial and Jewellery Designers 27-1022.00                                                                     Fashion Designers           ARE         0.35 matches
+       2323                       Fashion, Industrial and Jewellery Designers 51-9071.00                                         Jewelers and Precious Stone and Metal Workers           RAC         0.25 matches
+       2324                       Graphic and Web Designers, and Illustrators 15-1255.00                                                   Web and Digital Interface Designers           IAC         0.35 matches
+       2324                       Graphic and Web Designers, and Illustrators 27-1013.00                         Fine Artists, Including Painters, Sculptors, and Illustrators            AR         0.25 matches
+       2324                       Graphic and Web Designers, and Illustrators 27-1024.00                                                                     Graphic Designers            AC         0.40 matches
+       2346                                     Medical Laboratory Scientists 19-1022.00                                                                       Microbiologists           IRC         0.20 partial
+       2346                                     Medical Laboratory Scientists 29-2011.00                                         Medical and Clinical Laboratory Technologists           IRC         0.60 matches
+       2346                                     Medical Laboratory Scientists 29-2011.04                                                                    Histotechnologists           IRC         0.20 partial
+       2511                                           Nutrition Professionals 29-1031.00                                                          Dietitians and Nutritionists            SI         0.80 matches
+       2511                                           Nutrition Professionals 29-2051.00                                                                  Dietetic Technicians           SCR         0.20 partial
+       2512                                     Medical Imaging Professionals 29-1124.00                                                                  Radiation Therapists           RSI         0.20 matches
+       2512                                     Medical Imaging Professionals 29-2032.00                                                       Diagnostic Medical Sonographers           RCI         0.25 matches
+       2512                                     Medical Imaging Professionals 29-2033.00                                                        Nuclear Medicine Technologists           RIC         0.20 matches
+       2512                                     Medical Imaging Professionals 29-2034.00                                              Radiologic Technologists and Technicians           RCI         0.35 matches
+       2515                                                       Pharmacists 19-1042.00                                            Medical Scientists, Except Epidemiologists            IR         0.30 partial
+       2515                                                       Pharmacists 29-1051.00                                                                           Pharmacists           ISC         0.70 matches
+       2523                                              Dental Practitioners 29-1021.00                                                                     Dentists, General           IRS         0.70 matches
+       2523                                              Dental Practitioners 29-1023.00                                                                         Orthodontists           IRC         0.15 partial
+       2523                                              Dental Practitioners 29-1024.00                                                                       Prosthodontists           RIS         0.15 partial
+       2527                 Audiologists and Speech Pathologists / Therapists 29-1127.00                                                          Speech-Language Pathologists           SIC         0.50 matches
+       2527                 Audiologists and Speech Pathologists / Therapists 29-1181.00                                                                          Audiologists            IS         0.50 matches
+       2541                                                          Midwives 29-1161.00                                                                        Nurse Midwives            SI         0.50 matches
+       2541                                                          Midwives 29-9099.01                                                                              Midwives            SR         0.50 matches
+       2611                                 ICT Business and Systems Analysts 13-1111.00                                                                   Management Analysts           CIE         0.30 partial
+       2611                                 ICT Business and Systems Analysts 15-1211.00                                                             Computer Systems Analysts            IC         0.70 matches
+       2612                         Multimedia Specialists and Web Developers 15-1254.00                                                                        Web Developers            CI         0.40 partial
+       2612                         Multimedia Specialists and Web Developers 15-1255.00                                                   Web and Digital Interface Designers           IAC         0.35 partial
+       2612                         Multimedia Specialists and Web Developers 27-1014.00                                                 Special Effects Artists and Animators            AR         0.25 partial
+       2613                             Software and Applications Programmers 15-1251.00                                                                  Computer Programmers            CI         0.35 partial
+       2613                             Software and Applications Programmers 15-1252.00                                                                   Software Developers            IC         0.45 partial
+       2613                             Software and Applications Programmers 15-1253.00                                       Software Quality Assurance Analysts and Testers           ICR         0.20 partial
+       2621 Database and Systems Administrators, and ICT Security Specialists 15-1212.00                                                         Information Security Analysts            CI         0.30 partial
+       2621 Database and Systems Administrators, and ICT Security Specialists 15-1242.00                                                               Database Administrators            CI         0.35 partial
+       2621 Database and Systems Administrators, and ICT Security Specialists 15-1244.00                                           Network and Computer Systems Administrators           CRI         0.35 partial
+       2631                                    Computer Network Professionals 15-1231.00                                                  Computer Network Support Specialists           CIR         0.20 partial
+       2631                                    Computer Network Professionals 15-1241.00                                                           Computer Network Architects           ICR         0.30 partial
+       2631                                    Computer Network Professionals 15-1244.00                                           Network and Computer Systems Administrators           CRI         0.50 matches
+       2632                                    ICT Support and Test Engineers 15-1232.00                                                     Computer User Support Specialists           CRI         0.50 matches
+       2632                                    ICT Support and Test Engineers 15-1253.00                                       Software Quality Assurance Analysts and Testers           ICR         0.50 matches
+       2633                      Telecommunications Engineering Professionals 15-1241.01                                            Telecommunications Engineering Specialists           CRI         0.60 matches
+       2633                      Telecommunications Engineering Professionals 17-2072.00                                                Electronics Engineers, Except Computer           RIC         0.40 matches
+       2723                                Psychologists and Psychotherapists 19-3032.00                                               Industrial-Organizational Psychologists           IEC         0.30 matches
+       2723                                Psychologists and Psychotherapists 19-3033.00                                                 Clinical and Counseling Psychologists            SI         0.50 matches
+       2723                                Psychologists and Psychotherapists 19-3034.00                                                                  School Psychologists           SIC         0.20 matches
+       3112                                               Medical Technicians 29-2012.00                                           Medical and Clinical Laboratory Technicians           RIC         0.25 matches
+       3112                                               Medical Technicians 29-2031.00                                          Cardiovascular Technologists and Technicians           RIC         0.30 matches
+       3112                                               Medical Technicians 29-2052.00                                                                  Pharmacy Technicians            CR         0.20 matches
+       3112                                               Medical Technicians 29-2055.00                                                                Surgical Technologists           RCS         0.25 matches
+       3131                                           ICT Support Technicians 15-1232.00                                                     Computer User Support Specialists           CRI         0.70 matches
+       3131                                           ICT Support Technicians 49-2011.00                              Computer, Automated Teller, and Office Machine Repairers            RC         0.30 partial
+       3132                          Telecommunications Technical Specialists 15-1231.00                                                  Computer Network Support Specialists           CIR         0.25 partial
+       3132                          Telecommunications Technical Specialists 49-2021.00                         Radio, Cellular, and Tower Equipment Installers and Repairers           RCI         0.30 partial
+       3132                          Telecommunications Technical Specialists 49-2022.00         Telecommunications Equipment Installers and Repairers, Except Line Installers            RC         0.45 matches
+       3211                                           Automotive Electricians 49-2096.00                         Electronic Equipment Installers and Repairers, Motor Vehicles           RCI         0.55 matches
+       3211                                           Automotive Electricians 49-3023.00                                          Automotive Service Technicians and Mechanics           RCI         0.45 matches
+       3212                                                   Motor Mechanics 49-3023.00                                          Automotive Service Technicians and Mechanics           RCI         0.80 matches
+       3212                                                   Motor Mechanics 49-3031.00                                 Bus and Truck Mechanics and Diesel Engine Specialists           RCI         0.20 partial
+       3223                       Structural Steel and Welding Trades Workers 47-2221.00                                                     Structural Iron and Steel Workers            RC         0.20 partial
+       3223                       Structural Steel and Welding Trades Workers 51-2041.00                                              Structural Metal Fabricators and Fitters            RC         0.30 partial
+       3223                       Structural Steel and Welding Trades Workers 51-4121.00                                              Welders, Cutters, Solderers, and Brazers            RC         0.50 matches
+       3231                                    Aircraft Maintenance Engineers 49-2091.00                                                                  Avionics Technicians           RCI         0.35 partial
+       3231                                    Aircraft Maintenance Engineers 49-3011.00                                            Aircraft Mechanics and Service Technicians           RCI         0.65 matches
+       3232                                      Metal Fitters and Machinists 49-9041.00                                                        Industrial Machinery Mechanics           RCI         0.45 matches
+       3232                                      Metal Fitters and Machinists 51-4041.00                                                                            Machinists           RCI         0.55 matches
+       3311                                       Bricklayers and Stonemasons 47-2021.00                                                           Brickmasons and Blockmasons            RC         0.55 matches
+       3311                                       Bricklayers and Stonemasons 47-2022.00                                                                           Stonemasons             R         0.45 matches
+       3312                                            Carpenters and Joiners 47-2031.00                                                                            Carpenters            RC         0.70 matches
+       3312                                            Carpenters and Joiners 51-7011.00                                                    Cabinetmakers and Bench Carpenters            RC         0.30 partial
+       3322                                           Painting Trades Workers 47-2141.00                                                Painters, Construction and Maintenance            RC         0.75 matches
+       3322                                           Painting Trades Workers 47-2142.00                                                                          Paperhangers           RCA         0.25 partial
+       3423                                        Electronics Trades Workers 49-2021.00                         Radio, Cellular, and Tower Equipment Installers and Repairers           RCI         0.30 partial
+       3423                                        Electronics Trades Workers 49-2094.00             Electrical and Electronics Repairers, Commercial and Industrial Equipment           RCI         0.70 matches
+       3424                                 Telecommunications Trades Workers 49-2022.00         Telecommunications Equipment Installers and Repairers, Except Line Installers            RC         0.55 matches
+       3424                                 Telecommunications Trades Workers 49-9052.00                                      Telecommunications Line Installers and Repairers            RC         0.45 matches
+       3514                                                             Cooks 35-2012.00                                                      Cooks, Institution and Cafeteria            RC         0.30 matches
+       3514                                                             Cooks 35-2014.00                                                                     Cooks, Restaurant           RCE         0.70 matches
+       3613                                                 Veterinary Nurses 29-2056.00                                              Veterinary Technologists and Technicians           RIC         0.75 matches
+       3613                                                 Veterinary Nurses 31-9096.00                                Veterinary Assistants and Laboratory Animal Caretakers           RIC         0.25 partial
+       3622                                                         Gardeners 37-3011.00                                                Landscaping and Groundskeeping Workers            RC         0.70 matches
+       3622                                                         Gardeners 37-3013.00                                                             Tree Trimmers and Pruners            RC         0.30 matches
+       3911                                                      Hairdressers 39-5011.00                                                                               Barbers           RCS         0.30 matches
+       3911                                                      Hairdressers 39-5012.00                                        Hairdressers, Hairstylists, and Cosmetologists           RCS         0.70 matches
+       3941                                                     Cabinetmakers 51-7011.00                                                    Cabinetmakers and Bench Carpenters            RC         0.75 matches
+       3941                                                     Cabinetmakers 51-7021.00                                                                   Furniture Finishers           RAC         0.25 partial
+       3995                                       Performing Arts Technicians 27-4014.00                                                         Sound Engineering Technicians           RAC         0.25 partial
+       3995                                       Performing Arts Technicians 27-4015.00                                                                  Lighting Technicians            RC         0.25 partial
+       3995                                       Performing Arts Technicians 27-4031.00                                         Camera Operators, Television, Video, and Film           ARC         0.25 partial
+       3995                                       Performing Arts Technicians 39-5091.00                                            Makeup Artists, Theatrical and Performance            AR         0.25 partial
+       4111                                 Ambulance Officers and Paramedics 29-2042.00                                                         Emergency Medical Technicians           SRI         0.40 matches
+       4111                                 Ambulance Officers and Paramedics 29-2043.00                                                                            Paramedics           SRI         0.60 matches
+       4112                     Dental Hygienists, Technicians and Therapists 29-1292.00                                                                     Dental Hygienists           SRI         0.65 matches
+       4112                     Dental Hygienists, Technicians and Therapists 51-9081.00                                                         Dental Laboratory Technicians           RIC         0.35 matches
+       4114                                   Enrolled and Mothercraft Nurses 29-2061.00                                     Licensed Practical and Licensed Vocational Nurses           SCR         0.65 matches
+       4114                                   Enrolled and Mothercraft Nurses 39-9011.01                                                                               Nannies             S         0.35 partial
+       4231                                          Aged and Disabled Carers 31-1121.00                                                                     Home Health Aides           SRC         0.50 matches
+       4231                                          Aged and Disabled Carers 31-1122.00                                                                   Personal Care Aides           SCR         0.50 matches
+       4233                         Nursing Support and Personal Care Workers 31-1131.00                                                                    Nursing Assistants           SRC         0.60 matches
+       4233                         Nursing Support and Personal Care Workers 31-1133.00                                                                     Psychiatric Aides           SIC         0.20 partial
+       4233                         Nursing Support and Personal Care Workers 31-2022.00                                                              Physical Therapist Aides           SRC         0.20 partial
+       5111                      Contract, Program and Project Administrators 13-1041.00                                                                   Compliance Officers            CE         0.40 partial
+       5111                      Contract, Program and Project Administrators 13-1082.00                                                        Project Management Specialists            EC         0.60 matches
+       5211                                               Personal Assistants 43-6011.00                         Executive Secretaries and Executive Administrative Assistants           CES         0.70 matches
+       5211                                               Personal Assistants 43-6014.00       Secretaries and Administrative Assistants, Except Legal, Medical, and Executive           CES         0.30 matches
+       5311                                                    General Clerks 43-4171.00                                                  Receptionists and Information Clerks           CES         0.15 partial
+       5311                                                    General Clerks 43-9022.00                                                           Word Processors and Typists             C         0.20 partial
+       5311                                                    General Clerks 43-9061.00                                                                Office Clerks, General             C         0.65 matches
+       5511                                                 Accounting Clerks 13-1051.00                                                                       Cost Estimators            CE         0.20 partial
+       5511                                                 Accounting Clerks 43-3021.00                                                            Billing and Posting Clerks             C         0.30 partial
+       5511                                                 Accounting Clerks 43-3031.00                                          Bookkeeping, Accounting, and Auditing Clerks            CE         0.50 matches
+       5512                                                       Bookkeepers 13-2082.00                                                                         Tax Preparers            CE         0.30 partial
+       5512                                                       Bookkeepers 43-3031.00                                          Bookkeeping, Accounting, and Auditing Clerks            CE         0.70 matches
+       5521                                                      Bank Workers 43-3071.00                                                                               Tellers            CE         0.70 matches
+       5521                                                      Bank Workers 43-4141.00                                                                   New Accounts Clerks           CES         0.30 partial
+       5522                                         Credit and Loans Officers 13-2072.00                                                                         Loan Officers           CES         0.35 matches
+       5522                                         Credit and Loans Officers 43-4041.00                                              Credit Authorizers, Checkers, and Clerks           CES         0.25 partial
+       5522                                         Credit and Loans Officers 43-4131.00                                                          Loan Interviewers and Clerks           CES         0.40 matches
+       5911                            Purchasing and Supply Logistics Clerks 43-3061.00                                                                    Procurement Clerks           CER         0.35 partial
+       5911                            Purchasing and Supply Logistics Clerks 43-5061.00                                           Production, Planning, and Expediting Clerks            CE         0.25 partial
+       5911                            Purchasing and Supply Logistics Clerks 43-5071.00                                             Shipping, Receiving, and Inventory Clerks           CRE         0.40 partial
+       5994                                             Human Resource Clerks 43-4071.00                                                                           File Clerks             C         0.20 partial
+       5994                                             Human Resource Clerks 43-4161.00                            Human Resources Assistants, Except Payroll and Timekeeping           CES         0.80 matches
+       6121                                          Real Estate Sales Agents 41-9021.00                                                                   Real Estate Brokers            EC         0.25 partial
+       6121                                          Real Estate Sales Agents 41-9022.00                                                              Real Estate Sales Agents           ECS         0.75 matches
+
+Exact highest-weight tie: 2112
+ANZSCO_code        ANZSCO_title  ONET_code                    ONET_title Interest_Code  Match_score  Review
+       2112 Music Professionals 27-2041.00 Music Directors and Composers            AE          0.5 matches
+       2112 Music Professionals 27-2042.00         Musicians and Singers            AE          0.5 matches
+
+Exact highest-weight tie: 2122
+ANZSCO_code                         ANZSCO_title  ONET_code          ONET_title Interest_Code  Match_score  Review
+       2122 Authors, and Book and Script Editors 27-3041.00             Editors           ACE          0.5 matches
+       2122 Authors, and Book and Script Editors 27-3043.00 Writers and Authors            AE          0.5 matches
+
+Exact highest-weight tie: 2527
+ANZSCO_code                                      ANZSCO_title  ONET_code                   ONET_title Interest_Code  Match_score  Review
+       2527 Audiologists and Speech Pathologists / Therapists 29-1127.00 Speech-Language Pathologists           SIC          0.5 matches
+       2527 Audiologists and Speech Pathologists / Therapists 29-1181.00                 Audiologists            IS          0.5 matches
+
+Exact highest-weight tie: 2541
+ANZSCO_code ANZSCO_title  ONET_code     ONET_title Interest_Code  Match_score  Review
+       2541     Midwives 29-1161.00 Nurse Midwives            SI          0.5 matches
+       2541     Midwives 29-9099.01       Midwives            SR          0.5 matches
+
+Exact highest-weight tie: 2621
+ANZSCO_code                                                      ANZSCO_title  ONET_code                                  ONET_title Interest_Code  Match_score  Review
+       2621 Database and Systems Administrators, and ICT Security Specialists 15-1242.00                     Database Administrators            CI         0.35 partial
+       2621 Database and Systems Administrators, and ICT Security Specialists 15-1244.00 Network and Computer Systems Administrators           CRI         0.35 partial
+
+Exact highest-weight tie: 2632
+ANZSCO_code                   ANZSCO_title  ONET_code                                      ONET_title Interest_Code  Match_score  Review
+       2632 ICT Support and Test Engineers 15-1232.00               Computer User Support Specialists           CRI          0.5 matches
+       2632 ICT Support and Test Engineers 15-1253.00 Software Quality Assurance Analysts and Testers           ICR          0.5 matches
+
+Exact highest-weight tie: 3995
+ANZSCO_code                ANZSCO_title  ONET_code                                    ONET_title Interest_Code  Match_score  Review
+       3995 Performing Arts Technicians 27-4014.00                 Sound Engineering Technicians           RAC         0.25 partial
+       3995 Performing Arts Technicians 27-4015.00                          Lighting Technicians            RC         0.25 partial
+       3995 Performing Arts Technicians 27-4031.00 Camera Operators, Television, Video, and Film           ARC         0.25 partial
+       3995 Performing Arts Technicians 39-5091.00    Makeup Artists, Theatrical and Performance            AR         0.25 partial
+
+Exact highest-weight tie: 4231
+ANZSCO_code             ANZSCO_title  ONET_code          ONET_title Interest_Code  Match_score  Review
+       4231 Aged and Disabled Carers 31-1121.00   Home Health Aides           SRC          0.5 matches
+       4231 Aged and Disabled Carers 31-1122.00 Personal Care Aides           SCR          0.5 matches
+
+All eight team-confirmed existing sources:
+ANZSCO_code                                                      ANZSCO_title Interest_Code source_ONET_code                               source_ONET_title  source_Match_score selection_status
+       2112                                               Music Professionals            AE       27-2041.00                   Music Directors and Composers                0.50   team_confirmed
+       2122                              Authors, and Book and Script Editors           ACE       27-3041.00                                         Editors                0.50   team_confirmed
+       2527                 Audiologists and Speech Pathologists / Therapists            IS       29-1181.00                                    Audiologists                0.50   team_confirmed
+       2541                                                          Midwives            SR       29-9099.01                                        Midwives                0.50   team_confirmed
+       2621 Database and Systems Administrators, and ICT Security Specialists            CI       15-1242.00                         Database Administrators                0.35   team_confirmed
+       2632                                    ICT Support and Test Engineers           ICR       15-1253.00 Software Quality Assurance Analysts and Testers                0.50   team_confirmed
+       3995                                       Performing Arts Technicians           RAC       27-4014.00                   Sound Engineering Technicians                0.25   team_confirmed
+       4231                                          Aged and Disabled Carers           SCR       31-1122.00                             Personal Care Aides                0.50   team_confirmed
+PASS: exactly eight team-confirmed codes preserved; remaining 73 selections use unique highest weights; zero unresolved reviews.
+Exact highest-weight ties in source: 8 ['2112', '2122', '2527', '2541', '2621', '2632', '3995', '4231']
+Selection counts: {'unique_highest': 73, 'team_confirmed': 8}
+Manual review required: []
+PASS: 81 unique schema rows; no missing titles/codes; every selected source pair, code and weight matches detailed and official data.
+PASS: schema selection is unchanged when source row order is reversed.
+
+Synthetic responses are software validation inputs only, not saved dataset rows.
+
+Strong Realistic: counts={'R': 10, 'I': 0, 'A': 0, 'S': 0, 'E': 0, 'C': 0}; user Interest Code=R
+2113 | Photographers | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+2512 | Medical Imaging Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+3211 | Automotive Electricians | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+3212 | Motor Mechanics | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+3223 | Structural Steel and Welding Trades Workers | ANZSCO interest score=4.0000
+  Your leading selected interests are Realistic. This career is connected with Realistic interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Realistic -> R; O*NET codes without R score zero.
+
+Strong Investigative: counts={'R': 0, 'I': 10, 'A': 0, 'S': 0, 'E': 0, 'C': 0}; user Interest Code=I
+2243 | Economists | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2244 | Intelligence and Policy Analysts | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2346 | Medical Laboratory Scientists | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2515 | Pharmacists | ANZSCO interest score=4.0000
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+2523 | Dental Practitioners | ANZSCO interest score=3.8500
+  Your leading selected interests are Investigative. This career is connected with Investigative interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Investigative -> I; O*NET codes without I score zero.
+
+Strong Artistic: counts={'R': 0, 'I': 0, 'A': 10, 'S': 0, 'E': 0, 'C': 0}; user Interest Code=A
+2111 | Actors, Dancers and Other Entertainers | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2112 | Music Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2114 | Visual Arts and Crafts Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2121 | Artistic Directors, Media Producers and Presenters | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+2122 | Authors, and Book and Script Editors | ANZSCO interest score=4.0000
+  Your leading selected interests are Artistic. This career is connected with Artistic interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Artistic -> A; O*NET codes without A score zero.
+
+Strong Social: counts={'R': 0, 'I': 0, 'A': 0, 'S': 10, 'E': 0, 'C': 0}; user Interest Code=S
+2511 | Nutrition Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2524 | Occupational Therapists | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2525 | Physiotherapists | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2541 | Midwives | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+2544 | Registered Nurses | ANZSCO interest score=4.0000
+  Your leading selected interests are Social. This career is connected with Social interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Social -> S; O*NET codes without S score zero.
+
+Strong Enterprising: counts={'R': 0, 'I': 0, 'A': 0, 'S': 0, 'E': 10, 'C': 0}; user Interest Code=E
+2231 | Human Resource Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+2251 | Advertising and Marketing Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+2252 | ICT Sales Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+2253 | Public Relations Professionals | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+3513 | Chefs | ANZSCO interest score=4.0000
+  Your leading selected interests are Enterprising. This career is connected with Enterprising interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Enterprising -> E; O*NET codes without E score zero.
+
+Strong Conventional: counts={'R': 0, 'I': 0, 'A': 0, 'S': 0, 'E': 0, 'C': 10}; user Interest Code=C
+2211 | Accountants | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+2212 | Auditors, Company Secretaries and Corporate Treasurers | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+2247 | Management and Organisation Analysts | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+2621 | Database and Systems Administrators, and ICT Security Specialists | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+4232 | Dental Assistants | ANZSCO interest score=4.0000
+  Your leading selected interests are Conventional. This career is connected with Conventional interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+PASS: Strong Conventional -> C; O*NET codes without C score zero.
+
+Mixed 1: counts={'R': 2, 'I': 4, 'A': 0, 'S': 1, 'E': 1, 'C': 2}; user Interest Code=ICR
+2346 | Medical Laboratory Scientists | ANZSCO interest score=10.0000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2632 | ICT Support and Test Engineers | ANZSCO interest score=10.0000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2631 | Computer Network Professionals | ANZSCO interest score=9.6000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2613 | Software and Applications Programmers | ANZSCO interest score=8.1000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional, Realistic interests in the mapped O*NET occupations.
+2243 | Economists | ANZSCO interest score=8.0000
+  Your leading selected interests are Investigative, Conventional, Realistic. This career is connected with Investigative, Conventional interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+
+Mixed 2: counts={'R': 0, 'I': 0, 'A': 4, 'S': 3, 'E': 2, 'C': 1}; user Interest Code=ASE
+2111 | Actors, Dancers and Other Entertainers | ANZSCO interest score=9.2500
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Social, Enterprising interests in the mapped O*NET occupations.
+2121 | Artistic Directors, Media Producers and Presenters | ANZSCO interest score=8.3500
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Social, Enterprising interests in the mapped O*NET occupations.
+2122 | Authors, and Book and Script Editors | ANZSCO interest score=7.5000
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Enterprising interests in the mapped O*NET occupations.
+2253 | Public Relations Professionals | ANZSCO interest score=7.2500
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Social, Enterprising interests in the mapped O*NET occupations.
+2112 | Music Professionals | ANZSCO interest score=7.0000
+  Your leading selected interests are Artistic, Social, Enterprising. This career is connected with Artistic, Enterprising interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+
+Mixed 3: counts={'R': 3, 'I': 1, 'A': 0, 'S': 1, 'E': 2, 'C': 3}; user Interest Code=CRE
+5911 | Purchasing and Supply Logistics Clerks | ANZSCO interest score=10.0500
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic, Enterprising interests in the mapped O*NET occupations.
+3514 | Cooks | ANZSCO interest score=8.8000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic, Enterprising interests in the mapped O*NET occupations.
+2247 | Management and Organisation Analysts | ANZSCO interest score=8.0000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Enterprising interests in the mapped O*NET occupations.
+3513 | Chefs | ANZSCO interest score=8.0000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic, Enterprising interests in the mapped O*NET occupations.
+4232 | Dental Assistants | ANZSCO interest score=8.0000
+  Your leading selected interests are Conventional, Realistic, Enterprising. This career is connected with Conventional, Realistic interests in the mapped O*NET occupations.
+PASS: 81 groups retained; 81 scored; independent weighted calculations agree.
+PASS: user code contains positive-count categories only; no zero-count letters inserted.
+
+Strong-profile ranking comparisons:
+Strong Realistic / Strong Investigative: top-five overlap 0/5
+Strong Realistic / Strong Artistic: top-five overlap 0/5
+Strong Realistic / Strong Social: top-five overlap 0/5
+Strong Realistic / Strong Enterprising: top-five overlap 0/5
+Strong Realistic / Strong Conventional: top-five overlap 0/5
+Strong Investigative / Strong Artistic: top-five overlap 0/5
+Strong Investigative / Strong Social: top-five overlap 0/5
+Strong Investigative / Strong Enterprising: top-five overlap 0/5
+Strong Investigative / Strong Conventional: top-five overlap 0/5
+Strong Artistic / Strong Social: top-five overlap 0/5
+Strong Artistic / Strong Enterprising: top-five overlap 0/5
+Strong Artistic / Strong Conventional: top-five overlap 0/5
+Strong Social / Strong Enterprising: top-five overlap 0/5
+Strong Social / Strong Conventional: top-five overlap 0/5
+Strong Enterprising / Strong Conventional: top-five overlap 0/5
+PASS: 6 distinct top-five lists across six strong profiles.
+PASS: rejected incomplete quiz: Incomplete or invalid quiz: exactly one answer to each of Q1–Q10 is required.
+PASS: rejected duplicate selection: Duplicate answer selection for one question.
+PASS: rejected invalid answer ID: Invalid answer ID 'INVALID' for Q1.
+PASS: rejected wrong question answer: Invalid answer ID 'Q2_3' for Q1.
+PASS: code/tie test RRRIIISSCC -> IRC; reversed submission order gives same result.
+PASS: code/tie test IIIRRRCCSS -> RIS; reversed submission order gives same result.
+PASS: code/tie test SSSSSSSSSS -> S; reversed submission order gives same result.
+PASS: code/tie test IIIIIIICCC -> IC; reversed submission order gives same result.
+PASS: code/tie test IIIIICCCCC -> CI; reversed submission order gives same result.
+PASS: code/tie test CCCCCIIIII -> IC; reversed submission order gives same result.
+PASS: hand-calculated position scores for one-, two- and three-letter user and occupation codes.
+PASS: empty, repeated-letter, overlength and invalid-letter user codes rejected.
+PASS: schema file loads; optional schema ranking retains 81 careers and all review flags. Detailed weighted matching remains separate.
+PASS: quiz wording/answers, raw O*NET CSVs, preprocessed mapping, clean official codes and detailed mapping unchanged (SHA-256).
+/Users/xuer/Desktop/5120/iteration3/quiz/quiz_questions_riasec.csv f6f4809753d2df5bd53bcd6532232bbe50bcb024db3df9889f36bf19e9496f8a
+/Users/xuer/Desktop/5120/iteration3/quiz/preprocessed_mapping.csv 2887ebe99efd88da635e2fb6d5ac2f7699acde13555ac3873bb636b06830725a
+/Users/xuer/Documents/Codex/2026-10-05/i-am-working-on-the-iresi/outputs/interest_code_pipeline/anzsco4_interest_mapping.csv abfdc868fbe901583d9caf581bb511ba76ec2dd756d6dc10be5f38c696a52e15
+/Users/xuer/Documents/Codex/2026-10-05/i-am-working-on-the-iresi/outputs/interest_code_pipeline/onet_interest_codes_clean.csv 033801c1f289d419559382d1ba8834ef9cf1d1a4443e3eecf602ba402d8d49bb
+/Users/xuer/Desktop/5120/iteration3/data/raw/Realistic.csv 4d5ea1a24ddb4cb17cd18efec8b6a9c4ff243684b1451a5d25d2004fc5b969c8
+/Users/xuer/Desktop/5120/iteration3/data/raw/Investigative.csv c2d4f1954bea4fc4da2ed8a2ac5175ea1f193029671adf4f5590f7c71b9ae0c1
+/Users/xuer/Desktop/5120/iteration3/data/raw/Artistic.csv 49ce73340fe9d6e3d1591ea887752962fba53567847260ed880545094c109ea6
+/Users/xuer/Desktop/5120/iteration3/data/raw/Social.csv ecec49353145b1d0fbde4c49864981daf7f0450577471b90e76b8cb035bd7ad2
+/Users/xuer/Desktop/5120/iteration3/data/raw/Enterprising.csv 2f1c99e44ec0412b66fc9e77a39e020becadf62f7b969c44fb2fba5bfd59824f
+/Users/xuer/Desktop/5120/iteration3/data/raw/Conventional.csv c5a1f1b525a1bcbdd4c6beda4cd4bc372660fa674026bc00202d066c9ef4645e
+OVERALL PASS: all validations passed; all eight team decisions preserved; zero unresolved reviews.
